@@ -438,6 +438,11 @@ namespace StarsAbove.Systems
                     drawColor = drawColor.MultiplyRGB(Color.Yellow);
                 }
             }
+            if (npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                //drawColor = drawColor.MultiplyRGBA;
+
+            }
             if (npc.HasBuff(BuffType<Necrosis>()))
             {
                 if (Main.rand.Next(4) < 3)

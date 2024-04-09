@@ -9449,7 +9449,7 @@ namespace StarsAbove.Dialogue
         //Dialouge system rework.
         public override void PostSetupContent()
         {
-            var archive = new DialogueArchive();
+           /* var archive = new DialogueArchive();
 
             var dialogue1 = new Dialogue(a);
             dialogue1.AddPage(a);
@@ -9459,7 +9459,7 @@ namespace StarsAbove.Dialogue
             archive.AddDialogue(dialogue1);
 
             //Remember, dialogue needs to be accessed with the spatial disk and should really be able to be accessed without adding any extra lines
-            base.PostSetupContent();
+            base.PostSetupContent();*/
         }
     }
     public class Dialogue

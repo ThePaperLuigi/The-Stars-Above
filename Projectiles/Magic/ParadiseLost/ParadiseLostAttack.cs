@@ -66,7 +66,17 @@ namespace StarsAbove.Projectiles.Magic.ParadiseLost
                 Main.dust[dust].position = Projectile.Center + spinningpoint5;
                 Main.dust[dust].velocity = spinningpoint5.SafeNormalize(Vector2.UnitY) * 5;
             }
-
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(5f, 5f);
+                //spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemRuby);
+                Main.dust[dust].scale = 2f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                Main.dust[dust].velocity = spinningpoint5.SafeNormalize(Vector2.UnitY) * 3;
+            }
 
 
             //Projectile.alpha -= 20;

@@ -3,6 +3,7 @@ using StarsAbove.Buffs.Boss;
 using StarsAbove.Buffs.Magic.ParadiseLost;
 using StarsAbove.Buffs.Magic.SupremeAuthority;
 using StarsAbove.Items.Essences;
+using StarsAbove.Items.Memories;
 using StarsAbove.Projectiles.Magic.EternalStar;
 using StarsAbove.Projectiles.Magic.ParadiseLost;
 using StarsAbove.Projectiles.Magic.SupremeAuthority;
@@ -171,6 +172,39 @@ namespace StarsAbove.Items.Weapons.Magic
                         Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 15f;
                     }
                     SoundEngine.PlaySound(SoundID.DD2_LightningAuraZap, player.Center);
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(25f, 5f);
+                        //spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                        int dust = Dust.NewDust(Main.MouseWorld, 0, 0, DustID.LifeDrain);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Main.MouseWorld + spinningpoint5;
+                        Main.dust[dust].velocity = spinningpoint5.SafeNormalize(Vector2.UnitY) * 10;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(5f, 25f);
+                        //spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                        int dust = Dust.NewDust(Main.MouseWorld, 0, 0, DustID.LifeDrain);
+                        Main.dust[dust].scale = 1f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Main.MouseWorld + spinningpoint5;
+                        Main.dust[dust].velocity = spinningpoint5.SafeNormalize(Vector2.UnitY) * 5;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(5f, 5f);
+                        //spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                        int dust = Dust.NewDust(Main.MouseWorld, 0, 0, DustID.GemRuby);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = Main.MouseWorld + spinningpoint5;
+                        Main.dust[dust].velocity = spinningpoint5.SafeNormalize(Vector2.UnitY) * 3;
+                    }
                 }
 
             }

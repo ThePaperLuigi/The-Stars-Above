@@ -9626,13 +9626,15 @@ Mods: {
 				// DisplayName: Paradise Lost
 				/* Tooltip:
 					'''
+					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]
 					Holding this weapon grants the buff [c/E2DEB5:Plague's Prophet] (You can not use this weapon to attack while under the effect of [c/E2DEB5:Plague's Prophet])
-					Right click while under the effect of [c/E2DEB5:Plague's Prophet] to [c/F7D76A:Baptise] a town NPC for 10 minutes
+					Right click while under the effect of [c/E2DEB5:Plague's Prophet] to [c/F7D76A:Baptise] a town NPC or player for 10 minutes
 					Press the Weapon Action Key while under the effect of [c/E2DEB5:Plague's Prophet] to ascend into [c/FFD23B:Paradise Lost]
 					While in [c/FFD23B:Paradise Lost] state, damage can not be taken, but health drains over time and health regeneration is disabled (Ends prematurely if health drops below 10)
 					Additionally, all nearby foes are inflicted with [c/D18888:Theophobia], reducing their damage by 20%
-					Upon ascension, all [c/F7D76A:Baptised] town NPCs will transform into [c/EC9797:Apostles] and will be moved to your location
+					Upon ascension, all [c/F7D76A:Baptised] town NPCs will transform into [c/EC9797:Apostles] and will be moved to your location ([c/F7D76A:Baptised] players will not be moved)
 					[c/EC9797:Apostles] deal 50 more base damage with their attacks and have 400% increased defense; [c/EC9797:Apostles] will lose bonuses if [c/FFD23B:Paradise Lost] state ends
+					Player [c/EC9797:Apostles] gain 15% increased damage, but health regeneration is disabled
 					Within [c/FFD23B:Paradise Lost] state, attacks with this weapon explode at your cursor, dealing damage in a wide area multiple times
 					Right click during [c/FFD23B:Paradise Lost] to unleash [c/EA1212:Advent], dealing 200% guaranteed critical damage to all nearby foes
 					[c/EA1212:Advent] deals bonus damage based on the amount of active [c/EC9797:Apostles] (Damage bonus caps at 12 [c/EC9797:Apostles])
