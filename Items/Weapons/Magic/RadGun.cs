@@ -145,7 +145,7 @@ namespace StarsAbove.Items.Weapons.Magic
 			{
 				if (player.GetModPlayer<WeaponPlayer>().RadReload)
 				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RadRound>(), damage * 1 + (combo * 6), knockback * 2, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileType<RadRound>(), damage + (6 * combo), knockback, player.whoAmI, 0f);
 
 
 				}
