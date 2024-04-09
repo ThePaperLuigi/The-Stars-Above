@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using StarsAbove.Mounts.DragaliaFound;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Buffs.Subworlds
@@ -19,8 +20,12 @@ namespace StarsAbove.Buffs.Subworlds
 
         public override void Update(Player player, ref int buffIndex)
         {
-           
-            player.mount.Dismount(player);
+            //Scuffed
+           if(player.mount.Type != ModContent.MountType<DragonshiftMount>())
+            {
+                player.mount.Dismount(player);
+
+            }
             player.noFallDmg = true;
             player.wingTime = 0;
             player.wingsLogic = 0;
