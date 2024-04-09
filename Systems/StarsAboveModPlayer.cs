@@ -2358,7 +2358,7 @@ namespace StarsAbove
         {
             if(mysticIncision == 2 && Player.statLife >= Player.statLifeMax2/2)
             {
-                Player.statMana = neededMana;
+                //Player.statMana = neededMana;
             }
             base.OnMissingMana(item, neededMana);
         }
@@ -2433,6 +2433,10 @@ namespace StarsAbove
                     modifiers.FinalDamage += 0.3f;
                     Player.Heal(10);
                 }
+            }
+            if(mysticIncision == 2)
+            {
+                modifiers.CritDamage += Math.Min(0.6f,MathHelper.Lerp(0f,0.6f,Player.GetTotalArmorPenetration(DamageClass.Generic)/120));
             }
             if (kiTwinburst == 2)
             {
@@ -3545,7 +3549,7 @@ namespace StarsAbove
                 if (timeAfterGettingHit > 600)
                 {
                     lavenderRefrainReductionTimer++;
-                    if(lavenderRefrainReductionTimer > 120)
+                    if(lavenderRefrainReductionTimer > 240)
                     {
                         lavenderRefrainMaxManaReduction += 0.1f;
 
@@ -3584,13 +3588,12 @@ namespace StarsAbove
         }
         private void MysticIncision()
         {
-            Player.GetArmorPenetration(DamageClass.Generic) += 20f;
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
                 if (npc.active && !npc.boss && npc.Distance(Player.Center) < 100)
                 {
-                    Player.GetArmorPenetration(DamageClass.Generic) += 50f;
+                    Player.GetArmorPenetration(DamageClass.Generic) *= 0.3f;
 
                 }
             }
@@ -9495,7 +9498,7 @@ namespace StarsAbove
 
                 if (beyondinfinity == 2)
                 {
-                    Player.GetDamage(DamageClass.Generic) += 0.3f;
+                    //Player.GetDamage(DamageClass.Generic) += 0.3f;
                 }
                 if (keyofchronology == 2)
                 {
@@ -9676,7 +9679,7 @@ namespace StarsAbove
                     Player.manaRegenDelay = 480;
                     Player.immune = true;
                     Player.immuneTime = 60;
-                    lavenderRefrainMaxManaReduction -= 0.1f;
+                    lavenderRefrainMaxManaReduction -= 0.4f;
                 }
             }
             if (ruinedKingPrism)
@@ -9758,7 +9761,7 @@ namespace StarsAbove
         {
             if(lavenderRefrain == 2)
             {
-                if(Player.statMana >= info.Damage)
+                if(Player.statMana >= info.Damage && !Player.immune)
                 {
                     
                     Player.immune = true;
@@ -9771,7 +9774,7 @@ namespace StarsAbove
                     CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
                     Player.statMana -= info.Damage;
                     Player.manaRegenDelay = 480;
-                    lavenderRefrainMaxManaReduction -= 0.1f;
+                    lavenderRefrainMaxManaReduction -= 0.4f;
                     return true;
                 }
             }

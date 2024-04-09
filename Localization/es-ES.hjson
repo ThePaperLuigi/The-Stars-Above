@@ -412,7 +412,7 @@ Mods: {
 
 				MysticIncision: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Mystic Incision']"
-					// Description: Gain 20% armor penetration. Gain an extra 50% armor penetration when in close proximity to foes. If you do not have enough Mana to use a weapon, gain that amount of Mana on use if HP is above 50%.
+					// Description: Armor penetration now grants increased critical strike damage, up to 60% at 120 armor penetration. Gain 30% bonus armor penetration when in close proximity to foes.
 				}
 
 				StayTheCourse: {
@@ -457,7 +457,7 @@ Mods: {
 
 				LavenderRefrain: {
 					// Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Lavender Refrain']"
-					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 10% until Max Mana is reduced by 100%. Max Mana slowly recovers after not taking damage for 10 seconds.
+					// Description: When taking damage, Mana is treated as bonus health. When this effect triggers, Max Mana is reduced by 40% until Max Mana is reduced by 100%. Max Mana slowly recovers after not taking damage for 10 seconds.
 				}
 
 				HealthyConfidence: {
@@ -3445,8 +3445,9 @@ Mods: {
 				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
 				[c/DADADA:ES Translators: Tofu and Zeldris]
 				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
+				[c/DADADA:FR Translators: Maksou and Ariaclipse]
 				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
-				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario]
+				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario, Lion8cake]
 
 
 
@@ -5567,7 +5568,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Magic damage]
 					Right click to reload the weapon with 12 rounds
 					Time the reload perfectly to gain [c/0059FF:Paracausal Anomaly] until all bullets are spent
-					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks critical
+					[c/0059FF:Paracausal Anomaly] increases damage while making all attacks guaranteed critical strikes
 					'What you call Darkness is the end of your evolution'
 					''' */
 				// DisplayName: Hawkmoon
@@ -8748,9 +8749,9 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					When Imprinted into a weapon, gain the following effects:
-					Gain 9% increased damage per 80 Mana
+					Gain 4% increased damage per 80 Mana
 					''' */
-				// TooltipAttached: Gain 9% increased damage per 80 Mana
+				// TooltipAttached: Gain 4% increased damage per 80 Mana
 			}
 
 			NetheriteBar: {
@@ -12664,7 +12665,7 @@ Mods: {
 
 			SpatialStratagem: {
 				// DisplayName: Spatial Gambit
-				// Description: Celestial gambit allows for the negation of the next damage taken while additionally granting a damage bonus once triggered
+				// Description: Damage taken is halved
 			}
 
 			SpatialStratagemActive: {

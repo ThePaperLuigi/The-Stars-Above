@@ -114,9 +114,12 @@ View the official wiki here!
 [url=https://terrariamods.wiki.gg/wiki/The_Stars_Above] The Stars Above Wiki[/url]
 Feel free to contribute (Even one article is a lot!) Thanks again!
 
-The mod includes localization for Chinese and Spanish, thanks to these individuals:
+The mod includes localization for Chinese, French, and Spanish, thanks to these individuals:
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
-Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus
+Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus (Note that the Spanish translation is outdated at the moment!)
+French translation team: Maksou and Ariaclipse
 Thank you, translators!
 
 [H1]I'm active in the Discord, so please visit there if you want to ask questions or report bugs![/h1]
+
+[quote=tModLoader]Developed By PaperLuigi[/quote]

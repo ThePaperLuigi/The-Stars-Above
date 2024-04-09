@@ -32,7 +32,7 @@ namespace StarsAbove.Systems
     public class ArchivePlayer : ModPlayer
     {
         public bool archivePopulated = false;
-        public bool archiveActive;
+        public bool archiveActive = false;
 
         //The Archive has 4 buttons, they correspond to Idle Dialogue, Boss Dialogue, Weapon Dialogue, and Starfarer Prompts.
         //Selecting a button changes the minimum/maximum values of the indicator. Pressing the left and right buttons cycle through the dialogues.

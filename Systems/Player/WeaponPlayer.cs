@@ -2113,9 +2113,10 @@ namespace StarsAbove.Systems
             }
             if (proj.minion && proj.type != ProjectileType<ApalistikProjectile>() && proj.type != ProjectileType<ApalistikUpgradedProjectile>() && (Main.LocalPlayer.HeldItem.ModItem is Apalistik || Main.LocalPlayer.HeldItem.ModItem is ApalistikUpgraded))
             {
-                if (Main.rand.Next(0, 101) <= 10)//
+                if (Main.rand.Next(0, 101) <= 10 && !Player.HasBuff(BuffType<ComboCooldown>()))//
                 {
                     target.AddBuff(BuffType<OceanCulling>(), 240);
+                    Player.AddBuff(BuffType<ComboCooldown>(), 60);
                 }
 
             }
@@ -2263,7 +2264,7 @@ namespace StarsAbove.Systems
                 if (target.HasBuff(BuffType<Riptide>()))
                 {
 
-                    modifiers.SourceDamage += 1.3f;
+                    modifiers.SourceDamage += 0.3f;
 
                     for (int d = 0; d < 30; d++)
                     {
@@ -2286,7 +2287,7 @@ namespace StarsAbove.Systems
             {
                 if (target.HasBuff(BuffType<OceanCulling>()))
                 {
-                    modifiers.SourceDamage += 1.5f;
+                    modifiers.SourceDamage += 0.5f;
                 }
             }
             if (proj.type == ProjectileType<UltimaPlanet1>() || proj.type == ProjectileType<UltimaPlanet2>() || proj.type == ProjectileType<UltimaPlanet3>() || proj.type == ProjectileType<UltimaPlanet4>() || proj.type == ProjectileType<UltimaPlanet5>())
@@ -2334,7 +2335,7 @@ namespace StarsAbove.Systems
                 if (target.HasBuff(BuffID.Frostburn))
                 {
                     Player.statMana += 90;
-                    modifiers.SourceDamage += 200;
+                    modifiers.SourceDamage.Flat += 200;
                     int index = target.FindBuffIndex(BuffID.Frostburn);
                     if (index > -1)
                     {
