@@ -37,7 +37,11 @@ namespace StarsAbove.Projectiles.StellarArray
             DrawOriginOffsetY = -15;
             DrawOffsetX = -26;
         }
-
+        public override bool? CanCutTiles()
+        {
+            
+            return false;
+        }
         public override bool PreDraw(ref Color lightColor)
         {
 
