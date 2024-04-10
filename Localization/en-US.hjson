@@ -1759,7 +1759,76 @@ Mods: {
 
 			PromptDialogue: {
 				Asphodene: {
-					1: Looks like you've been poisoned. I'll send you a get well card.
+					onPoison: {
+						1: Looks like you've been poisoned. I'll send you a get well card.
+						2: Poison, huh? Perhaps a glass of milk would... Never mind.
+						3: You look sick- but I guess you don't need me to say that.
+						4: If you have an antidote, now's the time...
+					}
+					onIchor: {
+						1: It looks like your defenses are lowered! Be careful.
+						2: That substance is weakening your armor- don't get caught unaware.
+						3: Eww, you've been covered in Ichor. Mind your health.
+					}
+					onSilence: {
+						1: You've been silenced! Magic is out of the question.
+						2: Something's silenced you- guess it's time to get physical!
+						3: Your magic has been sealed! Let's get back to basics.
+					}
+					onCurse: {
+						1: I think you've been cursed. That's... not good. You aren't able to use anything for now.
+						2: A curse... your items can't be used- let's try to fall back.
+						3: Looks like you've had your items sealed. High time for a tactical retreat.
+					}
+					onFrozen: {
+						1: You've been frozen! Oh, you probably knew that.
+						2: A total freeze? Great. Get ready to react once you're free.
+					}
+					onFrostburn: {
+						1: You're burning up? Or freezing? It looks like it hurts regardless!
+						2: Yikes- a mix of fire and ice? Hang in there!
+						3: Well, that looks like it hurts.
+					}
+					onWebbed: {
+						1: Ew. It looks like you're covered in webs.
+						2: Covered in webs... Make sure to take a bath later.
+					}
+					onStoned: {
+						1: You've been petrified! How does that even work?
+						2: You've been turned to stone?! Can you even hear me?
+					}
+					onBurning: {
+						1: You're standing on something REALLY hot. I'm no expert on thermodynamics, but you should not do that.
+						2: You should probably move...
+					}
+					onSuffocation: {
+						1: You're dying- and quickly. Get out of there!
+						2: Looks like you're in trouble... time to focus!
+					}
+					onFire: {
+						1: Well, that isn't good.
+						2: Don't think I need to tell you that being on fire does not help the ol' lifespan.
+						3: Uh, did you mean to start melting?
+						4: Why yes, you can catch fire. Unfortunately.
+					}
+					onDrowning: {
+						1: I hate to break this to you, but you're about to drown.
+						2: Whatever you're swimming for, it can wait.
+					}
+					onBleeding: {
+						1: You're losing a LOT of blood. Yikes. You can't regenerate health any more.
+						2: You may be the strongest one here, but you're also bleeding profusely.
+					}
+					onConfusion: {
+						1: "[You can't make out the words- looks like you've been confused.] "
+						2: Something hit you on the head? You're looking a little loopy. Okay, more than a little loopy.
+					}
+					onKillCritter: {
+						1: wip
+						2: wip
+					}
+
+					1: Looks like you've been poisoned. I'll send you a get well card.					
 					2: It looks like your defenses are lowered! Be careful.
 					3: You've been silenced! Magic is out of the question.
 					4: I think you've been cursed. That's.. not good. You aren't able to use anything for now.

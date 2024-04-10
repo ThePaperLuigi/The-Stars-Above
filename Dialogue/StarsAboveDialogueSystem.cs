@@ -9449,17 +9449,27 @@ namespace StarsAbove.Dialogue
         //Dialouge system rework.
         public override void PostSetupContent()
         {
-           /* var archive = new DialogueArchive();
+            /* var archive = new DialogueArchive();
 
-            var dialogue1 = new Dialogue(a);
-            dialogue1.AddPage(a);
-            dialogue1.AddExtraId(1);
+             var dialogue1 = new Dialogue(a);
+             dialogue1.AddPage(a);
+             dialogue1.AddExtraId(1);
 
-            //populate the archive here
-            archive.AddDialogue(dialogue1);
+             //populate the archive here
+             archive.AddDialogue(dialogue1);
 
-            //Remember, dialogue needs to be accessed with the spatial disk and should really be able to be accessed without adding any extra lines
-            base.PostSetupContent();*/
+             //Remember, dialogue needs to be accessed with the spatial disk and should really be able to be accessed without adding any extra lines. i.e. 
+                the disk should just pull from a list of active dialogues
+             base.PostSetupContent();*/
+
+            var dialogueIdle = new Dialogue();
+            //Setup the dialogue.
+        }
+        public override void PostUpdatePlayers()
+        {
+            //If the dialogue's criteria is met AND it has not already been read, add it to the active dialogue page.
+            //think: how to coordinate already read dialogue? make 3 lists?
+            base.PostUpdatePlayers();
         }
     }
     public class Dialogue
@@ -9513,6 +9523,39 @@ namespace StarsAbove.Dialogue
             ExtraIds.Add(id);
         }
     }
-    
-    
+
+    public class DialogueDictionary
+    {
+        //Should be moved and saved to the player.
+
+        //list of dialogues, following the key of the category
+
+        //The Spatial Disk pulls from this list. If dialogue is ready to be read, it'll be added to the Active Dialogues list.
+        //Once it has been read, it'll be moved to the Archive list
+        
+        private Dictionary<string, List<Dialogue>> activeDialogues = new Dictionary<string, List<Dialogue>>();
+        private Dictionary<string, List<Dialogue>> readDialogues = new Dictionary<string, List<Dialogue>>();
+
+
+        public void AddActiveDialogue(Dialogue dialogue)
+        {
+            if (!activeDialogues.ContainsKey(dialogue.Category))
+            {
+                //If the category doesn't exist, add it.
+                activeDialogues[dialogue.Category] = new List<Dialogue>();
+            }
+            //Add the dialogue to the category.
+            activeDialogues[dialogue.Category].Add(dialogue);
+        }
+
+        // Method to get dialogues by category
+        public List<Dialogue> GetDialoguesByCategory(string category)
+        {
+            if (archive.ContainsKey(category))
+            {
+                return archive[category];
+            }
+            return new List<Dialogue>(); // Return an empty list if the category doesn't exist
+        }
+    }
 }
