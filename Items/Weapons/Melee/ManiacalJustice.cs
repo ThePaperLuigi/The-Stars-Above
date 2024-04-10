@@ -224,7 +224,6 @@ namespace StarsAbove.Items.Weapons.Melee
 			CreateRecipe(1)
 				.AddIngredient(ItemID.PsychoKnife, 1)
 				.AddIngredient(ItemID.Bone, 12)
-				.AddIngredient(ItemID.Skull, 1)
 				.AddIngredient(ItemID.BoneSword, 1)
 				.AddIngredient(ItemType<EssenceOfMania>())
 				.AddTile(TileID.Anvils)
