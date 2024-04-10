@@ -43,6 +43,11 @@ namespace StarsAbove.Projectiles.Summon.Chronoclock
         public float sizeY;
         public float sizeFast;
         public float sizePulse;
+        public override bool? CanCutTiles()
+        {
+
+            return false;
+        }
         public override void ModifyDamageHitbox(ref Rectangle hitbox)
         {
             hitbox = new Rectangle((int)(Projectile.Center.X - sizeX / 2), (int)(Projectile.Center.Y - sizeY / 2), (int)sizeX, (int)sizeY);
