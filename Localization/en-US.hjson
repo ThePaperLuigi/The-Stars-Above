@@ -599,7 +599,58 @@ Mods: {
 			}
 
 			WeaponDialogue: {
+				TestDialogue: {
+					Asphodene: {
+						UnlockCondition: Archive.UnlockConditions.KingSlime
+						ArchiveInfo: Test dialogue.
+						Length: 2
+
+						1: Hello, test1 weapon
+						1.Emotion: 3
+
+						2: test2
+						2.Emotion: 1
+					}
+					Eridani: {
+						UnlockCondition: Archive.UnlockConditions.KingSlime
+						ArchiveInfo: Test dialogue.
+						Length: 2
+
+						1: Hi, test1 weapon
+						1.Emotion: 2
+
+						2: test2
+						2.Emotion: 4
+					}
+				}
+				TestDialogue2: {
+					Asphodene: {
+						UnlockCondition: Archive.UnlockConditions.KingSlime
+						ArchiveInfo: Test dialogue 2.
+						Length: 1
+
+
+						1: test1 (Asphodene)
+						1.Emotion: 3
+					}
+					Eridani: {
+						UnlockCondition: Archive.UnlockConditions.KingSlime
+						ArchiveInfo: Test dialogue 2.
+						Length: 3
+
+
+						1: test1 (Eridani)
+						1.Emotion: 3
+
+						2: test2
+						2.Emotion: 1
+
+						3: test3
+						3.Emotion: 0
+					}
+				}
 				Asphodene: {
+
 					1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
 					2: Good luck! I did warn you.
 					3: Here is another Essence for you. Looks like this fancy sewing needle has some pretty powerful movement capabilities.
@@ -1791,7 +1842,7 @@ Mods: {
 					}
 					onWebbed: {
 						1: Ew. It looks like you're covered in webs.
-						2: Covered in webs... Make sure to take a bath later.
+						2: Covered in webs... Don't fret, it usually comes off after a few washes.
 					}
 					onStoned: {
 						1: You've been petrified! How does that even work?
@@ -3486,6 +3537,7 @@ Mods: {
 
 		Common: {
 			DiskReady: The Spatial Disk begins to resonate. Left click while holding the Disk to interact.
+			DiskReadyUnread: The Spatial Disk begins to resonate. Left click while holding the Disk to interact. ({0} unread dialogues)
 			ArrayAbility: The Stellar Array has gained a new ability!
 			NovaUnlocked: Stellar Novas have been unlocked!
 			NewNova: A new Stellar Nova has been unlocked!

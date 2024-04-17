@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using StarsAbove.Dialogue;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Utilities;
 using Terraria;
@@ -78,8 +79,14 @@ namespace StarsAbove.Systems
             {
                 return;
             }
-
             string title = LangHelper.GetTextValue("Common.DiskReady");
+
+            if (Main.LocalPlayer.GetModPlayer<DialoguePlayer>().unreadDialogueCount > 1)
+            {
+                title = LangHelper.GetTextValue("Common.DiskReadyUnread", Main.LocalPlayer.GetModPlayer<DialoguePlayer>().unreadDialogueCount);
+
+            }
+            
 
             // Below is draw-code directly from vanilla with some tweaks to suit our needs.
             // Changes are minimal; important things to note:

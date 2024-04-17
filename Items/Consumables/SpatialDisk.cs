@@ -13,6 +13,7 @@ using StarsAbove.Utilities;
 using System;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Dialogue;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -303,7 +304,19 @@ namespace StarsAbove.Items.Consumables
 			}
 
 			//End of Subworld dialogue.
+			if(player.GetModPlayer<DialoguePlayer>().unreadDialogueCount > 0)
+            {
+				//First priority, boss dialogue- get the first active one:
+				activateDialogue(player.GetModPlayer<DialoguePlayer>().dict.GetActiveDialoguesByCategory("BossDialogue")[0], player);
+				//TODO: handle showing the dialogue, progressing the dialogue, etc.
+				//Next up, weapons:
 
+				//Lastly, extra stuff
+			}
+			else
+            {
+				//idle dialogue- if not read in a while, do a random one; else, do the fallback dialogue
+            }
 
 			if (modPlayer.desertscourgeDialogue == 1)
 			{

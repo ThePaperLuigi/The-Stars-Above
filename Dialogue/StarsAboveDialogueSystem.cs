@@ -1,9 +1,11 @@
+using StarsAbove.Items.Consumables;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace StarsAbove.Dialogue
 {
@@ -9446,50 +9448,27 @@ namespace StarsAbove.Dialogue
 
             dialogue = LangHelper.Wrap(dialogue, 44);
         }
-        //Dialouge system rework.
-        public override void PostSetupContent()
-        {
-            /* var archive = new DialogueArchive();
-
-             var dialogue1 = new Dialogue(a);
-             dialogue1.AddPage(a);
-             dialogue1.AddExtraId(1);
-
-             //populate the archive here
-             archive.AddDialogue(dialogue1);
-
-             //Remember, dialogue needs to be accessed with the spatial disk and should really be able to be accessed without adding any extra lines. i.e. 
-                the disk should just pull from a list of active dialogues
-             base.PostSetupContent();*/
-
-            var dialogueIdle = new Dialogue();
-            //Setup the dialogue.
-        }
-        public override void PostUpdatePlayers()
-        {
-            //If the dialogue's criteria is met AND it has not already been read, add it to the active dialogue page.
-            //think: how to coordinate already read dialogue? make 3 lists?
-            base.PostUpdatePlayers();
-        }
+        
     }
     public class Dialogue
     {
         //Asphodene/Eridani
-        //if the dialogue is by someone else, this can vary
+        //if the dialogue is by someone else, this can vary (think of it like the dialogue's owner)
+        //Note that this appears AFTER title
         public string Name { get; set; }
-
-        //Categories can be longer than 1 segment
+ 
+        //Categories can be longer than 1 segment, the actual "category" is defined when populating dialogue
         //(BossItemDialogue vs BossDialogue.KingSlime)
-        public string Category { get; set; }
+        public string Title { get; set; }
         // category should point to the hjson (Dialogue.[Category].[Name].[Length] i.e. Dialogue.[BossItemDialogue].[Dioskouroi].[4])
         // dialogue should keep track of its unlock condition and if it has been read or not too
         // 
         // Given length, it should automatically populate
-        public int Length { get; set; }
+        public int Length { get; set; } = 1;//Starts at 1 as default
 
         //Dialogue, Emotion
         public Dictionary<string, string> DialoguePages { get; set; } = new Dictionary<string, string>();
-        public string AssociatedItem { get; set; }
+        public int AssociatedItem { get; set; }
         //Unlock condition (This appears in the Archive)
         //Important info: this gives an esssence, or boss summon item, etc. (This appears in the Archive) - if there isnt any important info it defaults to unlock condition
         public string UnlockCondition { get; set; }
@@ -9499,16 +9478,17 @@ namespace StarsAbove.Dialogue
         public List<int> ExtraIds { get; set; } = new List<int>();
 
         //Maybe a place where you can define which line the item spawns on?
-        public Dialogue(string name, string category, int length, string associatedItem, string archiveCategory)
+        public Dialogue(string name, string title, int associatedItemType, string archiveCategory)
         {
             Name = name;
-            Category = category;
-            AssociatedItem = associatedItem; // if associated item is 0, there isn't an item
-
-            for(int i = 0; i < Length; i++)
+            Title = title;
+            AssociatedItem = associatedItemType; // if associated item is 0, there isn't an item
+            Length = Int32.Parse(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "Length"));
+            for (int i = 0; i < Length; i++)
             {
-                AddPage(LangHelper.GetTextValue($"Dialogue." + category + "." + name + "." + i, Main.LocalPlayer.name), LangHelper.GetTextValue($"Dialogue." + category + "." + name + "." + i + ".Emotion"));
+                AddPage(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i, Main.LocalPlayer.name), LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i + ".Emotion"));
             }
+
         }
 
         // Add page to the dialogue
@@ -9537,25 +9517,112 @@ namespace StarsAbove.Dialogue
         private Dictionary<string, List<Dialogue>> readDialogues = new Dictionary<string, List<Dialogue>>();
 
 
-        public void AddActiveDialogue(Dialogue dialogue)
+        //Each dialogue has a category and it checks for that
+
+        //Step 1: after reaching certain criteria, add the dialogue. Make sure to check that the dialogue doesn't already exist.
+        //This is also where you can put the "new disk dialogue available!" pop-up (maybe add a number that shows the amount of dialogue in the active list, like (5 unread dialogues))
+        public void AddActiveDialogue(Dialogue dialogue, string category)
         {
-            if (!activeDialogues.ContainsKey(dialogue.Category))
+            if (!activeDialogues.ContainsKey(category))
             {
                 //If the category doesn't exist, add it.
-                activeDialogues[dialogue.Category] = new List<Dialogue>();
+                activeDialogues[category] = new List<Dialogue>();
             }
             //Add the dialogue to the category.
-            activeDialogues[dialogue.Category].Add(dialogue);
+            activeDialogues[category].Add(dialogue);
+        }
+        public void MoveReadDialogue(Dialogue dialogue, string category)
+        {
+            //Remove the just-read dialogue
+            activeDialogues[category].Remove(dialogue);
+            if (!readDialogues.ContainsKey(category))
+            {
+                //If the category doesn't exist, add it.
+                readDialogues[category] = new List<Dialogue>();
+            }
+            //Add the dialogue to the category
+            readDialogues[category].Add(dialogue);
         }
 
         // Method to get dialogues by category
-        public List<Dialogue> GetDialoguesByCategory(string category)
+        public List<Dialogue> GetActiveDialoguesByCategory(string category)
         {
-            if (archive.ContainsKey(category))
+            if (activeDialogues.ContainsKey(category))
             {
-                return archive[category];
+                return activeDialogues[category];
             }
             return new List<Dialogue>(); // Return an empty list if the category doesn't exist
+        }
+        public List<Dialogue> GetReadDialoguesByCategory(string category)
+        {
+            if (readDialogues.ContainsKey(category))
+            {
+                return readDialogues[category];
+            }
+            return new List<Dialogue>(); // Return an empty list if the category doesn't exist
+        }
+    }
+    public class DialoguePlayer : ModPlayer
+    {
+        public DialogueDictionary dict;
+        public int unreadDialogueCount = 0;
+        public override void SetStaticDefaults()
+        {
+           
+
+
+        }
+        public override void PostUpdate()
+        {
+            string starfarerName = "";
+            if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            {
+                starfarerName = "Asphodene";
+            }
+            else if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            {
+                starfarerName = "Eridani";
+            }
+
+            string category = "WeaponDialogue";
+            bool newDialogueAdded = false;
+
+            newDialogueAdded = PopulateDialogue(starfarerName, "TestDialogue", ModContent.ItemType<SpatialDisk>(), category);
+            newDialogueAdded = PopulateDialogue(starfarerName, "TestDialogue2", ModContent.ItemType<SpatialDisk>(), category);
+
+            //At the end of dialogue population, if new dialogue was added show the pop up + the amount of unread dialogue
+            if(newDialogueAdded)
+            {
+                unreadDialogueCount = dict.GetActiveDialoguesByCategory("WeaponDialogue").Count +
+                    dict.GetActiveDialoguesByCategory("BossDialogue").Count +
+                    dict.GetActiveDialoguesByCategory("ExtraDialogue").Count;
+
+                InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+
+            }
+
+            base.PostUpdate();
+        }
+        public bool PopulateDialogue(string starfarerName, string title, int associatedItemType, string category)
+        {
+            var dialogueInsert = new Dialogue(starfarerName, category + "." + title, ModContent.ItemType<SpatialDisk>(), category);
+            if (!dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert) || !dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert))
+            {
+                //If the dialogue has not been read nor is currently active
+                dict.AddActiveDialogue(dialogueInsert, category);
+                return true;
+            }
+
+            return false;
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            tag["dialogueDictionary"] = dict;
+        }
+        public override void LoadData(TagCompound tag)
+        {
+            dict = tag.Get<DialogueDictionary>("dialogueDictionary");
         }
     }
 }
