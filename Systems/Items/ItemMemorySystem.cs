@@ -1311,6 +1311,10 @@ namespace StarsAbove.Systems.Items
                 ragebladeStacks = 0;
 
             }
+            if(NetheriteBar)
+            {
+                Player.statDefense += 4;
+            }
             if(MercenaryAuracite)
             {
                 Player.GetCritChance(DamageClass.Generic) += MercenaryCritChance;
