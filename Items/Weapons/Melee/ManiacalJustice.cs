@@ -133,7 +133,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 				if (player.HasBuff(BuffType<SpecialAttackBuff>()))
 				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<ManiacalSwing2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<ManiacalSwing2>(), player.GetWeaponDamage(Item)*2, 3, player.whoAmI, 0f);
 
 				}
 				else
