@@ -1,12 +1,12 @@
 Mods: {
 	StarsAbove: {
 		DeathReason: {
-			// SanguineDespair: drained themselves of all life.
-			// SupremeAuthority: returned to the void.
-			// Thespian: failed to follow the act.
+			// SanguineDespair: " drained themselves of all life."
+			// SupremeAuthority: " returned to the void."
+			// Thespian: " failed to follow the act."
 			// ShockAndAwe: ... tried to rocket jump too hard.
-			// InevitableEnd: was caught in the crossfire of {0}'s Inevitable End.
-			// Arbitration: was doomed to chaos.
+			// InevitableEnd: " was caught in the crossfire of {0}'s Inevitable End."
+			// Arbitration: " was doomed to chaos."
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
@@ -599,6 +599,78 @@ Mods: {
 			}
 
 			WeaponDialogue: {
+				TestDialogue: {
+					Asphodene: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue.
+
+						1: {
+							// $parentVal: Hello, test1 weapon
+							// Emotion: "3"
+						}
+
+						2: {
+							// $parentVal: test2
+							// Emotion: "1"
+						}
+
+						// Length: "2"
+					}
+
+					Eridani: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue.
+
+						1: {
+							// $parentVal: Hi, test1 weapon
+							// Emotion: "2"
+						}
+
+						2: {
+							// $parentVal: test2
+							// Emotion: "4"
+						}
+
+						// Length: "2"
+					}
+				}
+
+				TestDialogue2: {
+					Asphodene: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue 2.
+
+						1: {
+							// $parentVal: test1 (Asphodene)
+							// Emotion: "3"
+						}
+
+						// Length: "1"
+					}
+
+					Eridani: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue 2.
+
+						1: {
+							// $parentVal: test1 (Eridani)
+							// Emotion: "3"
+						}
+
+						2: {
+							// $parentVal: test2
+							// Emotion: "1"
+						}
+
+						3: {
+							// $parentVal: test3
+							// Emotion: "0"
+						}
+
+						// Length: "3"
+					}
+				}
+
 				Asphodene: {
 					1: Aquí hay otra Esencia que puedes usar. Creará una arma a distancia con propiedades únicas. Algo me dice que está maldita, así que...
 					2: ¡Buena suerte! ya te he advertido.
@@ -1759,6 +1831,89 @@ Mods: {
 
 			PromptDialogue: {
 				Asphodene: {
+					onPoison: {
+						// 1: Looks like you've been poisoned. I'll send you a get well card.
+						// 2: Poison, huh? Perhaps a glass of milk would... Never mind.
+						// 3: You look sick- but I guess you don't need me to say that.
+						// 4: If you have an antidote, now's the time...
+					}
+
+					onIchor: {
+						// 1: It looks like your defenses are lowered! Be careful.
+						// 2: That substance is weakening your armor- don't get caught unaware.
+						// 3: Eww, you've been covered in Ichor. Mind your health.
+					}
+
+					onSilence: {
+						// 1: You've been silenced! Magic is out of the question.
+						// 2: Something's silenced you- guess it's time to get physical!
+						// 3: Your magic has been sealed! Let's get back to basics.
+					}
+
+					onCurse: {
+						// 1: I think you've been cursed. That's... not good. You aren't able to use anything for now.
+						// 2: A curse... your items can't be used- let's try to fall back.
+						// 3: Looks like you've had your items sealed. High time for a tactical retreat.
+					}
+
+					onFrozen: {
+						// 1: You've been frozen! Oh, you probably knew that.
+						// 2: A total freeze? Great. Get ready to react once you're free.
+					}
+
+					onFrostburn: {
+						// 1: You're burning up? Or freezing? It looks like it hurts regardless!
+						// 2: Yikes- a mix of fire and ice? Hang in there!
+						// 3: Well, that looks like it hurts.
+					}
+
+					onWebbed: {
+						// 1: Ew. It looks like you're covered in webs.
+						// 2: Covered in webs... Don't fret, it usually comes off after a few washes.
+					}
+
+					onStoned: {
+						// 1: You've been petrified! How does that even work?
+						// 2: You've been turned to stone?! Can you even hear me?
+					}
+
+					onBurning: {
+						// 1: You're standing on something REALLY hot. I'm no expert on thermodynamics, but you should not do that.
+						// 2: You should probably move...
+					}
+
+					onSuffocation: {
+						// 1: You're dying- and quickly. Get out of there!
+						// 2: Looks like you're in trouble... time to focus!
+					}
+
+					onFire: {
+						// 1: Well, that isn't good.
+						// 2: Don't think I need to tell you that being on fire does not help the ol' lifespan.
+						// 3: Uh, did you mean to start melting?
+						// 4: Why yes, you can catch fire. Unfortunately.
+					}
+
+					onDrowning: {
+						// 1: I hate to break this to you, but you're about to drown.
+						// 2: Whatever you're swimming for, it can wait.
+					}
+
+					onBleeding: {
+						// 1: You're losing a LOT of blood. Yikes. You can't regenerate health any more.
+						// 2: You may be the strongest one here, but you're also bleeding profusely.
+					}
+
+					onConfusion: {
+						// 1: "[You can't make out the words- looks like you've been confused.] "
+						// 2: Something hit you on the head? You're looking a little loopy. Okay, more than a little loopy.
+					}
+
+					onKillCritter: {
+						// 1: wip
+						// 2: wip
+					}
+
 					1: Parece que te han envenenado. Te enviaré una tarjeta de mejorate pronto.
 					2: ¡Parece que tus defensas han sido reducidas! Ten cuidado.
 					3: ¡Te han silenciado! La magia está fuera de tu alcance.
@@ -3417,6 +3572,7 @@ Mods: {
 
 		Common: {
 			DiskReady: El Disco Espacial comienza a resonar. Click izquierdo para interactuar.
+			// DiskReadyUnread: The Spatial Disk begins to resonate. Left click while holding the Disk to interact. ({0} unread dialogues)
 			ArrayAbility: ¡La Matriz Estelar ha ganado una nueva habilidad!
 			// NovaUnlocked: Stellar Novas have been unlocked!
 			// NewNova: A new Stellar Nova has been unlocked!
@@ -7771,7 +7927,7 @@ Mods: {
 					At 20 [c/FC578E:LV], attack speed is increased by 20% and the cooldown of [c/F4296D:SLAUGHTERING SLASH] is halved
 					At 50 [c/FC578E:LV], attack speed is increased by an additional 10% and all attacks will now inflict [c/DA11B5:Karmic Retribution] for 10 seconds, dealing damage over time
 					At 100 [c/FC578E:LV], all bonuses are removed, but pressing the Weapon Action Key will unleash a [c/C91515:SPECIAL ATTACK] for 15 seconds, consuming all [c/FC578E:LV]
-					During the [c/C91515:SPECIAL ATTACK] attack speed and damage dealt is doubled but damage taken is tripled
+					During the [c/C91515:SPECIAL ATTACK] attack speed and damage dealt is doubled and attacks are guaranteed critical strikes but damage taken is tripled
 					Additionally, gain infinite flight time and a 25% chance to dodge any attack
 					Once the [c/C91515:SPECIAL ATTACK] concludes, this weapon can not be used for 30 seconds
 					''' */
@@ -9711,6 +9867,29 @@ Mods: {
 			SmallOfflineMountedSignage: {
 				// DisplayName: Small Offline Mounted Signage
 				// Tooltip: ""
+			}
+
+			DreadmotherDarkIdol: {
+				/* Tooltip:
+					'''
+					WORK IN PROGRESS!
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
+					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks
+					[c/FFAB4D:Melee]: The weapon transforms into a gauntlet, allowing for a close-ranged combo
+					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
+					Gain brief Invincibility and restore 2% Max HP when defeating foes		
+					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged]
+					Uncharged attacks quickly fires a formation of fast bolts of energy
+					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
+					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration
+					Attacks fire homing energy blasts that arc lightning to nearby foes
+					Gain [Alacrity] for 8 seconds when defeating foes, increasing attack and movement speed
+					[c/00CDFF:Summon]: Summons [Dark Dread] and [Flying Dread], consuming 1 minion slot (Only one group of summons can be active at a time)
+					[Dark Dread] leaps at foes, slashing in a wide arc; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds on hit
+					After striking foes 20 times, grant [Dark Confession] for 20 seconds, negating the next instance of damage
+					'It will agree with you'
+					''' */
+				// DisplayName: Dreadmother's Dark Idol
 			}
 		}
 

@@ -14,7 +14,7 @@ Mods: {
 
 		CombatText: {
 			StellarNovaReady: 天体新星充能完毕！
-			// WarriorOfLightBonus: Determination grants you strength... Health fully restored and cooldowns removed!
+			WarriorOfLightBonus: 你的决心给了你力量……血量完全恢复，冷却取消！
 
 			DevotedHavoc: {
 				Grenade: 手榴弹准备就绪！
@@ -397,7 +397,7 @@ Mods: {
 				CelestialEvanesence: {
 					Name: "[c/C2BDFF:1阶] [c/FFEED1:“天体幻灭”]"
 					Description: 暴击率会额外加上当前最大魔力值除以20后的数值。攻击造成暴击时会获得等同于伤害量5%的魔力值（每次命中至多获得5点魔力值）
-					Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下的拜月教邪教徒"
+					Unlock: "[c/9D9D9D:已锁定：] 击败双子星力，狄俄斯库洛伊"
 				}
 
 				SpectralNail: {
@@ -412,7 +412,7 @@ Mods: {
 
 				MysticIncision: {
 					Name: "[c/C2BDFF:1阶] [c/FFEED1:“神秘切口”]"
-					Description: 增加20%护甲穿透。当靠近敌人时，获得额外50%的护甲穿透。如果你没有足够的魔力值使用武器，在当前生命值大于50%的情况下，你会获得使用武器所需的魔力值。
+					Description: 护甲穿透会增加暴击伤害，最高当你有120点护甲穿透时，增加60%暴击伤害。当靠近敌人时，获得额外30%的护甲穿透。
 				}
 
 				StayTheCourse: {
@@ -457,13 +457,13 @@ Mods: {
 
 				LavenderRefrain: {
 					Name: "[c/C2BDFF:1阶] [c/FFEED1:“薰衣草的副歌”]"
-					Description: 当受到伤害时，你的魔力值被视为额外生命值。此效果触发时，减少10%最大魔力值，直到减少100%最大魔力值。你的最大魔力值会在10秒内不受伤害后逐渐恢复。
+					Description: 当受到伤害时，你的魔力值被视为额外生命值。此效果触发时，减少40%最大魔力值，直到减少100%最大魔力值。你的最大魔力值会在10秒内不受伤害后逐渐恢复。
 				}
 
 				HealthyConfidence: {
 					Name: "[c/9C4FFF:2阶] [c/FFD792:“健康秘诀”]"
 					Description: 所受伤害的15%伤害值会持续转化为生命值（每秒回复储存的生命值的10%）
-					Unlock: "[c/9D9D9D:已锁定：] 击败血肉墙"
+					Unlock: "[c/9D9D9D:已锁定：] 拥有400或更多的生命上限时解锁"
 				}
 
 				InfernalEnd: {
@@ -475,7 +475,7 @@ Mods: {
 				AvatarOfLight: {
 					Name: "[c/9C4FFF:2阶] [c/FFD792:“光之化身”]"
 					Description: 获得等同于最大魔力值一半的最大生命值。当生命值达到500或更高时，获得10点防御、5%伤害和5点天体新星能量恢复速度。
-					Unlock: "[c/9D9D9D:已锁定：] 击败光之战士"
+					Unlock: "[c/9D9D9D:已锁定：] 击退火星暴动"
 				}
 
 				AstralMantle: {
@@ -486,14 +486,14 @@ Mods: {
 
 				Afterburner: {
 					Name: "[c/9C4FFF:2阶] [c/FFD792:“加力燃烧”]"
-					Description: 当魔力值低于40时，获得150点魔力值并使所有攻击必定造成暴击4秒。此效果有25秒冷却时间。
+					Description: 当魔力值低于40时，获得150点魔力值并使所有攻击必定造成暴击4秒。此效果有20秒冷却时间。
 					Unlock: "[c/9D9D9D:已锁定：] 击败世纪之花"
 				}
 
 				SpatialStratagem: {
 					Name: "[c/9C4FFF:2阶] [c/FFD792:“空间谋略”]"
 					Description: 受到伤害后会减半受到的伤害（包括触发该效果的伤害），持续2秒，并获得20%伤害，持续4秒。此效果有30秒冷却时间。（在冷却时间内受到伤害时会重置冷却时间）
-					Unlock: "[c/9D9D9D:已锁定：] 击败来自星海苍穹的除了最终Boss以外的所有Boss"
+					Unlock: "[c/9D9D9D:已锁定：] 击败？？？"
 				}
 
 				WeaknessExploit: {
@@ -505,7 +505,7 @@ Mods: {
 				Aprismatism: {
 					Name: "[c/9C4FFF:2阶] [c/FFD792:“棱彩”]"
 					Description: 星相伤害类型的变更会应用于所有武器。
-					Unlock: "[c/9D9D9D:已锁定：] 击败专家模式下来自星海苍穹的除了最终Boss以外的所有Boss"
+					Unlock: "[c/9D9D9D:已锁定：] 击败炼金术戏剧，狄斯比斯"
 				}
 
 				UnbridledRadiance: {
@@ -517,7 +517,7 @@ Mods: {
 				BetweenTheBoundary: {
 					Name: "[c/D82BFF:3阶] [c/FFC258:“潮涌潮枯”]"
 					Description: 每过8秒，在潮枯（无限耗竭魔力）和潮涌（无限再生魔力）之间切换。此外，在潮涌期间获得40%伤害和20%攻击速度。
-					Unlock: "[c/9D9D9D:已锁定：] 击败所有泰拉瑞亚Boss和来自星海苍穹的除了最终Boss以外的所有Boss"
+					Unlock: "[c/9D9D9D:已锁定：] 击败光之战士"
 				}
 
 				CyclicHunter: {
@@ -534,7 +534,7 @@ Mods: {
 
 				BeyondInfinity: {
 					Name: "[c/D82BFF:3阶] [c/FFC258:“超越无限”]"
-					Description: 当处于战斗状态时，每过两秒便会获得10%伤害加成，至多获得100%伤害加成。伤害加成会在你造成伤害时降低，且受到伤害时会重置伤害加成。
+					Description: 低稀有度的武器会根据稀有度获得巨量的伤害加成，最多获得1200%伤害加成。不会对基础伤害面板大于100的武器生效。
 					Unlock: "[c/9D9D9D:已锁定：] 击败所有泰拉瑞亚Boss"
 				}
 
@@ -599,6 +599,78 @@ Mods: {
 			}
 
 			WeaponDialogue: {
+				TestDialogue: {
+					Asphodene: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue.
+
+						1: {
+							// $parentVal: Hello, test1 weapon
+							// Emotion: "3"
+						}
+
+						2: {
+							// $parentVal: test2
+							// Emotion: "1"
+						}
+
+						// Length: "2"
+					}
+
+					Eridani: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue.
+
+						1: {
+							// $parentVal: Hi, test1 weapon
+							// Emotion: "2"
+						}
+
+						2: {
+							// $parentVal: test2
+							// Emotion: "4"
+						}
+
+						// Length: "2"
+					}
+				}
+
+				TestDialogue2: {
+					Asphodene: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue 2.
+
+						1: {
+							// $parentVal: test1 (Asphodene)
+							// Emotion: "3"
+						}
+
+						// Length: "1"
+					}
+
+					Eridani: {
+						// UnlockCondition: Archive.UnlockConditions.KingSlime
+						// ArchiveInfo: Test dialogue 2.
+
+						1: {
+							// $parentVal: test1 (Eridani)
+							// Emotion: "3"
+						}
+
+						2: {
+							// $parentVal: test2
+							// Emotion: "1"
+						}
+
+						3: {
+							// $parentVal: test3
+							// Emotion: "0"
+						}
+
+						// Length: "3"
+					}
+				}
+
 				Asphodene: {
 					1: 这是另一个可以用的精华。它可以制造出具有独特属性的射手武器。我觉得它是被诅咒的，所以……
 					2: 那只能祝你好运！我已经警告过你了。
@@ -897,15 +969,15 @@ Mods: {
 					Asphodene: {
 						1: 挖藕……我从未见过这样的东西……从未。整个世界似乎爆发出了新的魔法能量。
 						2: 看起来血肉墙是在守护，或者是在阻止某些严重的东西发生。这是我的看法。
-						3: 你知道吗，天体序列现在有了另一项升级。它似乎比你之前用过的都要强大。
-						4: 还有，它好像掉了什么东西…不管如何，它让我感到…熟悉。请小心，但我不得不承认我很好奇。
+						3: 你知道吗，天体序列现在有了另一项升级。
+						4: 无论如何，感觉是时候进行更多的探索了！让我们开始吧。
 					}
 
 					Eridani: {
 						1: 哇……世界在血肉墙被打败后发生了巨大改变……
 						2: 我从来没见过像这样的东西。这个里面藏了什么…？
-						3: 这种力量似乎激活了天体序列的第一个二阶能力。我希望你好好利用它。
-						4: 它掉落了什么东西。我不太确信它是什么，但感觉我应该知道。小心可能出问题的地方。
+						3: 你好像还解锁了一个天体序列，不过这是意料之中的事情。
+						4: 让我们谨慎探索这些新的环境吧。
 					}
 				}
 
@@ -1759,7 +1831,90 @@ Mods: {
 
 			PromptDialogue: {
 				Asphodene: {
-					1: 看上去你中毒了，我会给你寄张慰问卡的。
+					onPoison: {
+						1: 看起来你好像中毒了？我会给你寄一张慰问卡的。
+						2: 中毒了？也许一杯牛奶可以……哦，别在意。
+						3: 你看起来不太舒服，但我想你不需要我多说。
+						4: 如果你有解药，现在是时候了……
+					}
+
+					onIchor: {
+						1: 看起来你的防御能力降低了！注意！
+						2: 这种物质正在削弱你的盔甲，不要无视它。
+						3: 呃呜，你沾满了灵液，注意保持健康。
+					}
+
+					onSilence: {
+						1: 你被沉默了！看来不能施术了。
+						2: 有些什么东西将你沉默了——是时候采取一些行动了。
+						3: 你的魔法被封印了！让我们做点基础的事情。
+					}
+
+					onCurse: {
+						1: 我在想……你好像被诅咒了，真糟糕。你现在无法使用任何东西。
+						2: 诅咒……你的东西都用不了了，我们试着躲避一下吧。
+						3: 看起来你的物品都被封印了。是时候战术撤退了。
+					}
+
+					onFrozen: {
+						1: 你被冻住了！哦，你应该知道的。
+						2: 全面冻结？真棒，做好解冻后的准备。
+					}
+
+					onFrostburn: {
+						1: 你烧起来了？还是冻结了？不管怎样，那看起来真疼！
+						2: 啊哦——冰与火的混合？挺住！
+						3: 哦，那看起来很疼。
+					}
+
+					onWebbed: {
+						1: 噫，你看起来全身都是网。
+						2: 浑身是网……你之后一定要洗个澡。
+					}
+
+					onStoned: {
+						1: 你被石化了！这到底发生了什么？
+						2: 你变成了石头？你能听到我说话吗？
+					}
+
+					onBurning: {
+						1: 你现在站在很烫的东西是，我虽然不是热力学专家，但也建议你不要这么做。
+						2: 我想你该挪挪地儿了。
+					}
+
+					onSuffocation: {
+						1: 你要死了，而且很快！快点出来！
+						2: 看起来你有些麻烦，集中注意力！
+					}
+
+					onFire: {
+						1: 好吧，这可不妙。
+						2: 别让我告诉你，燃烧对老年人延长寿命没有好处。
+						3: 唔，你想开始融化吗？
+						4: 你会着火，是的。那可真不幸。
+					}
+
+					onDrowning: {
+						1: 我不想告诉你，但是你快要淹死了。
+						2: 不管你游泳是为了什么，我想你都可以缓缓。
+					}
+
+					onBleeding: {
+						1: 你失血太 多 了，唔，你不能回复生命值了。
+						2: 你可能是这里最强壮的，但是你还是流了很多血。
+					}
+
+					onConfusion: {
+						1: "[你看不清这些字，看起来你被整糊涂了。] "
+						2: 有什么东西砸了你的头？你看起来有点晕乎乎的。好吧，不只是有点糊涂了。
+					}
+
+					onKillCritter: {
+						1: wip
+						2: wip
+					}
+
+					1: 看起来你好像中毒了？我会给你寄一张慰问卡的。
 					2: 看上去你的防御降低了！当心！
 					3: 你被沉默了，暂时没法释放魔法了。
 					4: 我觉得你被诅咒了。那可……真糟糕。你暂时什么都用不了。
@@ -3417,9 +3572,10 @@ Mods: {
 
 		Common: {
 			DiskReady: 空间光盘开始共鸣。手持点击左键以交互。
+			// DiskReadyUnread: The Spatial Disk begins to resonate. Left click while holding the Disk to interact. ({0} unread dialogues)
 			ArrayAbility: 天体阵列获得了一项新能力！
-			// NovaUnlocked: Stellar Novas have been unlocked!
-			// NewNova: A new Stellar Nova has been unlocked!
+			NovaUnlocked: 天体新星已经解锁！
+			NewNova: 一个新的天体新星解锁了！
 			AstralLocked: 武器无法对你的相位做出反应，这使你无法使用该武器。你只能和爱丝福德妮一起使用星体武器
 			UmbralLocked: 武器无法对你的相位做出反应，这使你无法使用该武器。你只能和埃里达妮一起使用本影武器
 			HarshLight: 天空变得愈发明亮，让人难以忍受……
@@ -3444,7 +3600,7 @@ Mods: {
 				[c/DADADA:子世界建造者：Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
 				[c/DADADA:Discord版主：the_alu, ifune, loligeddon, polluxe, not02]
 				[c/DADADA:ES本地化作者：Tofu和Zeldris]
-				[c/DADADA:CN本地化作者：灾厄维基汉化组]
+				[c/DADADA:CN本地化作者：灾厄维基汉化组，猫化亚砜]
 				[c/DADADA:库：SubworldLibrary, StructureHelper]
 				[c/DADADA:开源代码：ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario]
 
@@ -3692,7 +3848,7 @@ Mods: {
 			BloodMoon: 血月
 			SeveranceOfFate: 命运断绝
 			Titanomachia: 泰坦临世
-			VisionsBeyond: 事线之外
+			VisionsBeyond: 视线之外
 			Argyropeia: 银斑天境
 			//The Warrior of Light
 			TheBitterEnd: 苦涩终局
@@ -3725,8 +3881,8 @@ Mods: {
 			TheFirstAspect: 源初之星相
 			ThreadsOfFate: 命运纺线
 			HypertunedMeteorShower: 超调谐·陨石雨
-			Anosios: 不洁
-			AnosiosTriumverate: 不洁之领
+			Anosios: 匿星
+			AnosiosTriumverate: 匿星连珠
 			CelestialOpposition: 天体异议
 			HypertunedCelestialOpposition: 超调谐·天体异议
 			CelestialPandaemonium: 天体万魔殿
@@ -3781,30 +3937,30 @@ Mods: {
 			WealthFocusTier3Tile.MapEntry: Mods.StarsAbove.MapObject.StellarFoci
 			ReprintedBlueprintTile.MapEntry: 铺设的重绘的蓝图
 			CosmoturgyStation.MapEntry: 宙术站点
-			CorundumOre.MapEntry: Corundum Ore
-			NeonVeilPylon.MapEntry: Neon Veil Pylon
-			CubicMountedSignageTile.MapEntry: Cubic Mounted Signage Tile
-			DeliciousSignageTile.MapEntry: Delicious Signage Tile
-			DisusedSignageTile.MapEntry: Disused Signage Tile
-			GenericMountedSignageTile.MapEntry: Generic Mounted Signage Tile
-			GeometricSignageTile.MapEntry: Geometric Signage Tile
-			HologramPlinthTreeTile.MapEntry: Hologram Plinth Tree Tile
-			LockerAlternateTile.MapEntry: Locker Alternate Tile
-			LockerDefaultTile.MapEntry: Locker Default Tile
-			PairedMountedSignageTile.MapEntry: Paired Mounted Signage Tile
-			ParabolicSignageTile.MapEntry: Parabolic Signage Tile
-			TrashBinTile.MapEntry: Trash Bin Tile
-			TrashDefaultTile.MapEntry: Trash Default Tile
-			VendingStationTile.MapEntry: Vending Station Tile
-			VendorStationTile.MapEntry: Vendor Station Tile
-			// DangerousSignageTile.MapEntry: Dangerous Signage Tile
-			// EnergeticMountedSignageTile.MapEntry: Energetic Mounted Signage Tile
-			// HologramPlinthDrinkTile.MapEntry: Hologram Plinth Drink Tile
-			// HydratedMountedSignageTile.MapEntry: Hydrated Mounted Signage Tile
-			// LavenderSignageTile.MapEntry: Lavender Signage Tile
-			// OfflineMountedSignageTile.MapEntry: Offline Mounted Signage Tile
-			// RadialMountedSignageTile.MapEntry: Radial Mounted Signage Tile
-			// SmallOfflineMountedSignageTile.MapEntry: Small Offline Mounted Signage Tile
+			CorundumOre.MapEntry: 刚玉矿
+			NeonVeilPylon.MapEntry: 霓虹面纱指示塔
+			CubicMountedSignageTile.MapEntry: 方形安装标识
+			DeliciousSignageTile.MapEntry: 美味标识
+			DisusedSignageTile.MapEntry: 废弃标识
+			GenericMountedSignageTile.MapEntry: 通用安装标识
+			GeometricSignageTile.MapEntry: 几何标识
+			HologramPlinthTreeTile.MapEntry: 全息树基座
+			LockerAlternateTile.MapEntry: 备用储物柜
+			LockerDefaultTile.MapEntry: 默认储物柜
+			PairedMountedSignageTile.MapEntry: 成对安装标识
+			ParabolicSignageTile.MapEntry: 抛物线标识
+			TrashBinTile.MapEntry: 垃圾桶
+			TrashDefaultTile.MapEntry: 默认垃圾桶
+			VendingStationTile.MapEntry: 自动贩卖机
+			VendorStationTile.MapEntry: 供应商站点
+			DangerousSignageTile.MapEntry: 危险标识
+			EnergeticMountedSignageTile.MapEntry: 活力安装标识
+			HologramPlinthDrinkTile.MapEntry: 全息饮料基座
+			HydratedMountedSignageTile.MapEntry: 水化安装标识
+			LavenderSignageTile.MapEntry: 淡紫色标识
+			OfflineMountedSignageTile.MapEntry: 离线安装标识
+			RadialMountedSignageTile.MapEntry: 中心安装标识
+			SmallOfflineMountedSignageTile.MapEntry: 小型离线安装标识
 		}
 
 		Items: {
@@ -4085,9 +4241,9 @@ Mods: {
 					过往传说中的一件传奇衣装
 					为你的星海旅者装备来获得以下效果：
 					[c/FFCA5A:闪耀之旅]
-					攻击敌人或受到攻击会堆叠希望光辉（最多100层）
-					每10层希望光辉会为你增加2%的伤害
-					使用天体新星攻击敌人会消耗所有希望光辉层数
+					攻击敌人或受到攻击会堆叠[c/FFCA5A:希望光辉]（最多100层）
+					每10层[c/FFCA5A:希望光辉]会为你增加2%的伤害
+					使用天体新星攻击敌人会消耗所有[c/FFCA5A:希望光辉]层数
 					[c/87E3DE:交锋]
 					敌人更有可能瞄准你
 					受到伤害时，获得铁皮、再生、耐力增益，持续8秒
@@ -4096,7 +4252,7 @@ Mods: {
 					敌人没有以你为目标的攻击伤害减少40%
 					[c/8BB9F8:希冀回音]
 					三阶天体序列获得额外效果
-					超越无限：伤害进一步提升30%
+					超越无限：所有稀有度低于青色的武器在计算稀有度时再降低一个等级
 					年表之钥：激活后净化药水疾病，并获得30秒的拾心，持续30秒
 					边界之间：潮涌时获得40点防御，潮落时损失20点防御
 					无垠光辉：天体新星能量不会低于10点
@@ -4834,16 +4990,12 @@ Mods: {
 					你还会获得持续1秒的羽落效果
 					[c/6090EC:苍天龙血]会为你带来以下效果：
 					处于[c/6090EC:苍天龙血]状态下，你的第一次攻击会使你朝光标位置冲刺
-					处于[c/6090EC:苍天龙血]状态下，你的伤害增加40%
-					处于[c/6090EC:苍天龙血]状态下，你的移动速度增加
-					处于[c/6090EC:苍天龙血]状态下，你不会受到摔落伤害
+					此外，你的伤害增加40%，移动速度增加，且不会受到摔落伤害
 					注入两次[c/6090EC:苍天龙血]后，你的下一次跳跃会为你注入[c/EC6060:红莲龙血]
 					[c/EC6060:红莲龙血]会为你带来以下效果：
 					处于[c/EC6060:红莲龙血]状态下，你的第一次攻击会朝光标位置发射龙火，并降低命中目标的防御力
-					处于[c/EC6060:红莲龙血]状态下，你的伤害和暴击率增加60%
-					处于[c/EC6060:红莲龙血]状态下，你的第一次攻击以外的攻击会使你朝光标位置冲刺，造成大量伤害
-					处于[c/EC6060:红莲龙血]状态下，你的每次攻击都会获得短暂的无敌
-					处于[c/EC6060:红莲龙血]状态下，你不会受到摔落伤害
+					此外，你的伤害和暴击率增加60%，且不会受到摔落伤害
+					在初次攻击之后，每次攻击都会使你朝光标位置冲刺，造成大量额外伤害并获得1秒无敌
 					苍天龙血使用次数会在你切换武器时重置
 					“诞生于人与龙持续不断的冲突中，锻造它是为了能更好的击穿他们死敌的厚实鳞片”
 					'''
@@ -5609,7 +5761,7 @@ Mods: {
 					'''
 					这段记忆对于你来说确实很熟悉
 					[c/F1AF42:向星海旅者们申请进行测试]
-					[c/FA5D5D:一旦所有星海苍穹的Boss都被击败，这场战斗将升级！]
+					[c/FA5D5D:一旦星海苍穹的最终Boss被击败，这场战斗将升级！]
 					升级后的战斗也不会有特殊奖励
 					警告：不建议休闲玩法！
 					不消耗
@@ -5719,7 +5871,6 @@ Mods: {
 					点击右键使用[c/6AD6AF:阿隆戴特]进行攻击
 					[c/6AD6AF:阿隆戴特]的攻击会发射一枚有50%几率冻伤敌人6秒的导弹
 					用[c/6AD6AF:阿隆戴特]攻击被点燃的敌人造成额外的暴击伤害并移除点燃
-					导弹会穿透物块
 					此武器在以上条件之外的情况下无法造成暴击
 					“即便是短暂的梦，我的双翼也会为你而展”
 					'''
@@ -5792,7 +5943,7 @@ Mods: {
 					[c/5dc2e3:星体相位]期间，魔力再生会逐渐增加
 					[c/5dc2e3:星体相位]期间，攻击力将会减半，但防御力会提高
 					[c/b03fed:本影相位]期间，每次攻击会在弧形范围快速切割两次，并生成大量星光弹幕从天而降
-					[c/b03fed:本影相位]期间，被击中的敌人会永远受到星源枯萎减益直到死亡
+					[c/b03fed:本影相位]期间，被击中的敌人会永远受到源星枯萎减益直到死亡
 					[c/b03fed:本影相位]期间，魔力值将会持续减少且不会再生，但伤害增加
 					“宇宙于终结的边缘，宇宙中心，群星燃烬。”
 					'''
@@ -5856,8 +6007,8 @@ Mods: {
 					'''
 					[c/8AC1F1:该武器有独特的伤害类型，会继承所有职业的加成]
 					使用近距离的弹幕攻击敌人；点击右键可以向光标位置冲刺，在短时间内获得无敌（1秒冷却）
-					造成暴击使你获得敏捷3秒，提高你的攻击和移动速度
-					按住武器技能键会放慢自身速度并进入[c/33FF93:吸势]状态，吸收所有到来的伤害同时吸取生命值（生命值的吸取随着时间推移增加）
+					造成暴击使你获得轻快3秒，提高你的攻击和移动速度
+					按住武器技能键会放慢自身速度并进入[c/33FF93:吸势]状态，吸收所有到来的伤害同时持续消耗自身生命值（生命值的消耗速率随着时间推移增加）
 					激活[c/33FF93:吸势]需要消耗10点生命值，在低于50点生命值时无法生效
 					被吸收的伤害的一部分转化为[c/39EEB5:势能]，在攻击时会消耗一部分[c/39EEB5:势能]造成更多的伤害
 					[c/39EEB5:势能]会随着时间的流逝慢慢减少，且在脱离战斗后快速流逝
@@ -6012,7 +6163,7 @@ Mods: {
 					[c/E4CE55:黄色星点]会束缚敌人1秒
 					[c/35EC43:绿色星点]有30%的几率造成暴击
 					[c/3596EC:蓝色星点]命中敌人时为你恢复10点魔力值
-					[c/9E35EC:紫色星点]会对敌人施加4秒的星源枯萎
+					[c/9E35EC:紫色星点]会对敌人施加4秒的源星枯萎
 					'''
 				DisplayName: 群星魔棒
 			}
@@ -6193,7 +6344,7 @@ Mods: {
 					当所有的剑刃都被召唤时，点击右键一次性发射所有剑刃，并产生随机的效果
 					每柄剑刃都有独特的效果：
 					[c/54AFDF:星尘之锋]只造成一半伤害，但命中敌人时会为你恢复20点魔力值
-					[c/54DF80:星旋之锋]发射的更远更快，可以使你获得迅捷，且暴击将会造成600%的伤害
+					[c/54DF80:星旋之锋]发射的更远更快，可以使你获得敏捷，且暴击将会造成600%的伤害
 					[c/DF8454:日耀之锋]射速较慢，射程较短，但是会焚烧命中的敌人，且对处于燃烧的敌人造成双倍伤害
 					[c/C654DF:星云之锋]命中敌人时召唤落星协同攻击
 					[c/BDD5B5:纳甘纳德尔]的召唤需要50点魔力值，但是有以上4种剑刃的所有效果
@@ -7005,7 +7156,7 @@ Mods: {
 				Tooltip:
 					'''
 					点击右键将40魔力值作为12发弹药装填至武器内
-					完美的装填会使你能造成8倍伤害，并返还20魔力值
+					完美的装填会使你能造成6到8倍伤害，并额外返还20魔力值
 					若未能完美装填，则会重置增益
 					“老兄，你够坏吗？”
 					'''
@@ -7270,9 +7421,9 @@ Mods: {
 					[c/14E6FF:空间行星]碰撞后会在2秒后重生
 					在寰宇操纵期间用未蓄力攻击击中敌人后，增益会变为12秒的[c/145BFF:不谐天音]
 					在[c/145BFF:不谐天音]期间用蓄力攻击时，会清除[c/145BFF:不谐天音]并使死星造成三倍伤害且更多星星从天而降
-					右键激活[c/FF9F14:寰宇构思]并使行星向你汇聚，提供[c/EBDD8D:超叠]增益
+					右键激活[c/FF9F14:寰宇构思]并使行星向你汇聚，提供[c/EBDD8D:超叠加态]增益（2分钟冷却）
 					此外，汇聚而来的天体会对进路径上的敌人造成伤害
-					[c/EBDD8D:超叠]会提供极大的生命再生与无敌
+					[c/EBDD8D:超叠加态]会提供极大的生命再生与无敌
 					7秒后，[c/FF9F14:寰宇构思]会清除并爆发出寰宇能量
 					[c/FF9F14:寰宇构思]有两分钟的冷却
 					“你仍可砥砺前行”
@@ -7348,7 +7499,7 @@ Mods: {
 					手持该武器会出现[c/4C3BB6:美德量谱]
 					该武器命中敌人后，[c/49C7EC:星体通量]将会填充[c/4C3BB6:美德量谱]
 					造成暴击将会更快填充[c/4C3BB6:美德量谱]
-					当[c/4C3BB6:美德量谱]填充完成，点击右键在位面中撕开空洞，释放[c/495DEC:天体虚空]，持续8秒
+					当[c/4C3BB6:美德量谱]填充完成，点击右键在位面中撕开空洞，释放[c/495DEC:天体虚空]，持续8秒（45秒冷却）
 					[c/495DEC:天体虚空]将持续对周围敌人造成大量伤害，并将它们吸入中心
 					在此期间使用武器命中敌人后，[c/4C3BB6:本影通量]将会填充[c/4C3BB6:美德量谱]
 					若[c/4C3BB6:美德量谱]在[c/495DEC:天体虚空]持续期间被填充满，则[c/495DEC:天体虚空]在结束后会产生坍缩，造成500%的伤害
@@ -7788,8 +7939,8 @@ Mods: {
 			GoldenKatana: {
 				Tooltip:
 					'''
-					[c/F7D76A:按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
 					[c/8AC1F1:该武器有独特的伤害类型，会继承近战和魔法的伤害加成]
+					[c/F7D76A:按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
 					此外，该武器可以进行[c/F7D76A:过量蓄力]，产生额外的效果
 					该武器未蓄力时无法攻击
 					该武器的蓄力攻击效果取决于[c/F7D76A:过量蓄力]的次数
@@ -8634,7 +8785,7 @@ Mods: {
 			}
 
 			TsukiBossBag: {
-				Tooltip: ""
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 				DisplayName: 宝藏袋（源初之星海旅者，月读）
 			}
 
@@ -8735,7 +8886,7 @@ Mods: {
 					该武器需要3个召唤栏才能使用，但不消耗召唤栏
 					手持该武器时，若武器已经被召唤，按住左键将允许使用光标手动操控剑刃攻击
 					此外，根据该武器速度的不同，会增加或减少至多150%的伤害，每个召唤栏会为该武器提高2%暴击率
-					此武器的暴击会造成[c/4A91FF:断流]2秒，并给予玩家4秒迅捷
+					此武器的暴击会造成[c/4A91FF:断流]2秒，并给予玩家4秒敏捷
 					[c/4A91FF:断流]使召唤物下一次对目标造成的伤害提高30%（该武器也可以触发该效果）
 					手动操控剑刃时，按下武器技能键，会让武器进行回旋切割，并使目标陷入[c/4A91FF:断流]2秒（4秒冷却）
 					“利用海洋风暴的速度和力量保护它的主人”
@@ -8879,9 +9030,9 @@ Mods: {
 					'''
 					[c/D294FF:武器追忆]
 					当刻印在武器上时，获得以下效果：
-					每80点魔力值为你增加9%伤害
+					每80点魔力值为你增4%伤害
 					'''
-				TooltipAttached: 每80点魔力值为你增加9%伤害
+				TooltipAttached: 每80点魔力值为你增加4%伤害
 			}
 
 			NetheriteBar: {
@@ -9021,7 +9172,7 @@ Mods: {
 			}
 
 			GuppyHead: {
-				DisplayName: 嗝屁猫
+				DisplayName: 嗝屁猫的头
 				Tooltip:
 					'''
 					[c/D294FF:武器追忆]
@@ -9142,7 +9293,8 @@ Mods: {
 					随着[c/D81919:叛逆]的叠加，身体会逐渐解放[c/EC2B65:猩红战甲]的部位，每个护甲部位为你提供5点防御力
 					一旦[c/D81919:叛逆]叠加至最大值，且解放全套[c/EC2B65:猩红战甲]，就会进一步增加防御，且可以使用[c/8D0404:对吾华丽父王的叛逆]
 					此外，现在武器攻击连段中会出现第三段攻击，这次攻击会释放多道猩红闪电攻击敌人
-					点击右键释放[c/8D0404:对吾华丽父王的叛逆]，在短暂延迟后对你光标处位置的敌人造成200%的伤害，且对Boss必定暴击（1分钟冷却）
+					点击右键释放[c/8D0404:对吾华丽父王的叛逆]，在短暂延迟后对你光标处位置的敌人造成200%的伤害（1分钟冷却）
+					此外，本次攻击对Boss必定造成暴击
 					'''
 			}
 
@@ -9270,9 +9422,9 @@ Mods: {
 					'''
 					[c/D294FF:武器追忆]
 					当刻印在武器上时，获得以下效果：
-					显著提高弹幕速度
+					显著提高弹幕速度（不对召唤物生效）
 					'''
-				TooltipAttached: 显著提高弹幕速度
+				TooltipAttached: 显著提高弹幕速度（不对召唤物生效）
 			}
 
 			DescenderGemstone: {
@@ -9505,17 +9657,15 @@ Mods: {
 				DisplayName: 传说之盾
 				Tooltip:
 					'''
-					[c/F592BF:该武器不受星相武器切换伤害类型的伤害惩罚]
-					手持该武器时根据最大生命值获得一定比例的防御力，且会反射所有受到的伤害
-					点击右键展开护盾，使受到的下一次攻击伤害减少90%，持续2秒（12秒冷却）
-					按下武器技能键摧毁周围所有敌方弹幕（30秒冷却）
-					在激活这两个技能后切换至其他武器会获得[英雄壁垒]，使你防御力提高15%，持续10秒
-					不同的[c/F592BF:星相伤害类型]会影响[英雄壁垒]的效果
-					[c/FFAB4D:近战]：[英雄壁垒]会抵消受到的第一次伤害，触发后移除增益
-					[c/EF4DFF:魔法]：[英雄壁垒]使你受到伤害时获得等量魔力值
-					[c/4DFF5B:远程]：[英雄壁垒]使暴击伤害提高40%
-					[c/00CDFF:召唤]：[英雄壁垒]使召唤物伤害提高你防御力的5%
-					[其他]：[英雄壁垒]额外增加5%防御力
+					该武器可以无限制的吸收武器追忆，在不消耗槽位的情况下永久获得那些能力
+					可以作为饰品进行装备，使你获得当前持有武器追忆的效果，但是降低你40%伤害（你的原武器上的追忆会被忽略）
+					手持该武器时，获得生命上限1/6的防御力
+					使用该武器会使盾牌就绪2秒，使得你受到的下一次攻击根据你受到的伤害来治疗你
+					持续期间你仍然会受到伤害；持续的伤害会反弹到所有附近的敌人身上，反弹的效果会根据你的防御力而增加
+					当盾牌处于冷却的状态时，药水的治疗效果降低80%
+					当该武器作为饰品进行装备时，在对应的伤害型减益下获得[c/CAF795:英雄诅咒]
+					[c/CAF795:英雄诅咒]会抵消该武器作为饰品装备时的伤害惩罚，并额外增加10点防御力
+					当手持该武器或作为饰品装备时，你可以进行冲刺，敌人更有可能瞄准你
 					'''
 			}
 
@@ -9535,9 +9685,11 @@ Mods: {
 					'''
 					使用该武器造成暴击时暴击伤害会减少50%，但是会叠加[c/62C29B:坏死]，持续4秒
 					陷入[c/62C29B:坏死]的敌人攻击力和防御力减少15%
+					击败敌人时掉落星光的概率增加10%，捡起星光会使你获得5点天体新星能量
+					当天体新星能量充满时，获敏捷、铁皮和拾心
 					使用该武器击败敌人会获得2点天体新星能量，且获得[c/8662C2:诅咒之绳]效果，持续7秒
 					[c/8662C2:诅咒之绳]使攻击速度提高20%，暴击率提高20%，且对具有[c/62C29B:坏死]的敌人造成的伤害提高20%
-					此外，在天体新星充能完毕时，获得迅捷、铁皮和拾心效果
+					此外，在天体新星充能完毕时，获得敏捷、铁皮和拾心效果
 					[c/8662C2:诅咒之绳]状态下击败敌人会刷新[c/8662C2:诅咒之绳]持续时间，治疗10点生命值并额外获得2点天体新星能量
 					'''
 			}
@@ -9558,11 +9710,11 @@ Mods: {
 					'''
 					20 召唤标记伤害
 					手持该武器可以获得[c/9C936F:劣化奇点]，使你对具有召唤标记的敌人增加10%暴击伤害（不包括[c/FAE88E:妖灵]）
-					使用该武器进行攻击会刺穿敌人并施加持续3秒的[c/FAE88E:妖灵]
+					使用该武器进行攻击会施加持续3秒的[c/FAE88E:妖灵]
 					[c/FAE88E:妖灵]视作召唤标记的变体，对所有伤害类型都会生效
 					点击右键按顺序激活[c/9C936F:劣化之锁]、[c/9C936F:劣化之链]和[c/9C936F:劣化之柱]之间的一个
 					[c/9C936F:劣化之锁]：对光标中心的敌人造成伤害，并使其攻击力降低90%，持续2秒
-					[c/9C936F:劣化之链]：对附近的所有敌人造成伤害，并施加[c/EEC152:封印]减益，大幅降低目标的移动速度，持续2秒
+					[c/9C936F:劣化之链]：对附近的所有敌人造成伤害，并施加[c/EEC152:封印]减益，击晕所有非Boss敌人，持续2秒
 					[c/9C936F:劣化之柱]：朝光标位置发射一根快速的柱子，必定造成暴击
 					在多人模式下，若有Boss处于活跃状态，且所有其他队友全部死亡，则进入[c/F9C9AB:奇点共鸣]状态
 					在单人模式下，若有Boss处于活跃状态，且你拥有400以上的最大生命值，则你的生命值低于100时，进入[c/F9C9AB:奇点共鸣]状态
@@ -9764,93 +9916,116 @@ Mods: {
 			}
 
 			ParadiseLost: {
-				// DisplayName: Paradise Lost
-				/* Tooltip:
+				DisplayName: 失乐园
+				Tooltip:
 					'''
-					[c/8AC1F1:This weapon has a unique damage type; inherits bonuses from all damage classes at 70% efficiency, but inherits 150% from critical strike chance modifiers]
-					Holding this weapon grants the buff [c/E2DEB5:Plague's Prophet] (You can not use this weapon to attack while under the effect of [c/E2DEB5:Plague's Prophet])
-					Right click while under the effect of [c/E2DEB5:Plague's Prophet] to [c/F7D76A:Baptise] a town NPC or player for 10 minutes
-					Press the Weapon Action Key while under the effect of [c/E2DEB5:Plague's Prophet] to ascend into [c/FFD23B:Paradise Lost]
-					While in [c/FFD23B:Paradise Lost] state, damage can not be taken, but health drains over time and health regeneration is disabled (Ends prematurely if health drops below 10)
-					Additionally, all nearby foes are inflicted with [c/D18888:Theophobia], reducing their damage by 20%
-					Upon ascension, all [c/F7D76A:Baptised] town NPCs will transform into [c/EC9797:Apostles] and will be moved to your location ([c/F7D76A:Baptised] players will not be moved)
-					[c/EC9797:Apostles] deal 50 more base damage with their attacks and have 400% increased defense; [c/EC9797:Apostles] will lose bonuses if [c/FFD23B:Paradise Lost] state ends
-					Player [c/EC9797:Apostles] gain 15% increased damage, but health regeneration is disabled
-					Within [c/FFD23B:Paradise Lost] state, attacks with this weapon explode at your cursor, dealing damage in a wide area multiple times
-					Right click during [c/FFD23B:Paradise Lost] to unleash [c/EA1212:Advent], dealing 200% guaranteed critical damage to all nearby foes
-					[c/EA1212:Advent] deals bonus damage based on the amount of active [c/EC9797:Apostles] (Damage bonus caps at 12 [c/EC9797:Apostles])
-					Pressing the Weapon Action Key or swapping weapons in [c/FFD23B:Paradise Lost] state will end [c/FFD23B:Paradise Lost]
-					Additionally, when [c/FFD23B:Paradise Lost] ends, incur Vulnerability for 60 seconds, halving defense ([c/FFD23B:Paradise Lost] can not be activated when Vulnerable)
-					'Now rise, my servants- Rise and serve me'
-					''' */
+					[c/8AC1F1:该武器有独特的伤害类型，会继承所有职业的70%伤害加成，但是会继承150%的暴击率加成]
+					手持该武器时获得[c/E2DEB5:疫医]增益（[c/E2DEB5:疫医]状态下，你无法使用该武器进行攻击）
+					在[c/E2DEB5:疫医]状态下，点击右键[c/F7D76A:洗礼]一位玩家或城镇NPC10分钟
+					在[c/E2DEB5:疫医]状态下，按下武器技能键飞升至[c/FFD23B:失乐园]状态
+					在[c/FFD23B:失乐园]状态下，不会受到伤害，但是生命值会随着时间的流逝不断消耗，且期间生命回复会被禁用（若生命值低于10则会提前结束）
+					此外，附近的所有敌人都被施加[c/D18888:！！！敬畏！！！]，使他们的伤害降低20%
+					   在飞升的瞬间，所有被[c/F7D76A:洗礼]的玩家和城镇NPC将会转变成[c/EC9797:使徒]并移动至你当前的位置（被[c/F7D76A:洗礼]的玩家不会移动）
+					[c/EC9797:使徒]会造成50点基础伤害，防御力提高400%；若[c/FFD23B:失乐园]状态结束，[c/EC9797:使徒]会失去加成
+					玩家[c/EC9797:使徒]的伤害提高15%，但是期间生命回复被禁用
+					在[c/FFD23B:失乐园]状态下，使用该武器进行攻击会在光标处产生爆发，在大范围内造成多次伤害
+					在[c/FFD23B:失乐园]期间，点击右键释放[c/EA1212:降临]，对附近所有敌人造成200%的必定暴击的伤害
+					[c/EA1212:降临]会根据当前[c/EC9797:使徒]的数量造成额外的伤害（上限为12名[c/EC9797:使徒]）
+					在[c/FFD23B:失乐园]状态下，按下武器技能键或切换武器将会结束[c/FFD23B:失乐园]状态
+					此外，当[c/FFD23B:失乐园]结束时，你获得1分钟的易伤，防御力减半（易伤状态下，无法飞升为[c/FFD23B:失乐园]状态）
+					“我不是拣选了你们12个么。起来吧，我的仆从，迎接我的到来。”
+					'''
 			}
 
 			InheritedCaseM4A1: {
-				// DisplayName: Inherited Case, M4A1
-				/* Tooltip:
+				DisplayName: 继承案件，M4A1
+				Tooltip:
 					'''
-					[c/F7D76A:Hold left click to charge the weapon; if the weapon is fully charged, the attack varies]
-					Additionally, this weapon can be [c/F7D76A:Overcharged], causing additional effects to occur
-					After charging, fire bullets from your inventory (Musket balls are transformed into powerful, fast bullets)
-					The second stage of [c/F7D76A:Overcharge] will additionally fire a barrage of lasers
-					Upon reaching the final stage of [c/F7D76A:Overcharge], gain a random [c/C6F1AE:Auxiliary Armament] and return to the second stage of [c/F7D76A:Overcharge] (Can be repeated 4 times)
-					[c/C6F1AE:Auxiliary Armaments] provide fire support during combat, but one will be destroyed when taking damage (Removed outside of combat)
-					[c/F195F7:Auxiliary St-AR15]: Rapidly fires bursts of pinpoint accurate bullets
-					[c/F5F546:Auxiliary RO635]: Fires a barrage of bullets that home in on two targets, piercing the first
-					[c/F54646:Auxiliary M4-Sop2]: Fires an explosive howitzer towards the cursor, dealing 300% weapon damage; every 4th grenade tracks targets and flies faster
-					[c/DA46F5:Auxiliary M16A1]: Generates an orbiting shield aimed towards the cursor that absorbs 6 projectiles; once destroyed, fire bullets in retaliation and regenerate after 8 seconds
-					Right click to equip the [c/81C671:Inherited Case] after a short delay, changing attacks into powerful rocket bolts towards your cursor but reducing attack speed drastically
-					Additionally, the weapon can not be charged in this state and active [c/C6F1AE:Auxiliary Armaments] will be lost
-					This attack pierces up to 3 foes and explodes on hit; the final hit will burst in a massive explosion, dealing 300% damage as a critical strike
-					Foes caught in the explosions will take heavy damage over time for a short duration
-					While holding this weapon, attacks can not be dodged and damage reduction is negated
-					'Commander, we are here'
-					''' */
+					[c/F7D76A:按住左键来蓄力；如果武器完全蓄力，攻击会有所不同]
+					此外，该武器可以进行[c/F7D76A:过度蓄力]，产生额外的效果
+					蓄力后，从你的弹药库中发射子弹（火枪子弹变为快速且强力的子弹）
+					在第二阶段[c/F7D76A:过度蓄力]后会发射额外的激光弹幕
+					在[c/F7D76A:过度蓄力]到达最终阶段后，随机获得一把[c/C6F1AE:辅助武装]并返回[c/F7D76A:过度蓄力]的第二阶段
+					[c/C6F1AE:辅助武装]在战斗中会提供火力支援，但是在受到伤害的时候会被摧毁（脱离战斗后移除）
+					[c/F195F7:辅助型St-AR15]：快速发射精确的子弹
+					[c/F5F546:辅助型RO635]：发射密集的子弹追踪2个目标，会穿透第一个目标
+					[c/F54646:辅助型M4-Sop2]：朝光标位置发射一枚爆炸榴弹，造成300%的伤害；每4枚榴弹，会追踪目标，且飞行速度更快
+					[c/DA46F5:辅助型M16A1]：生产一个朝向光标位置的护盾，吸收6发弹幕；一旦被摧毁，发射子弹进行反击，在8秒后护盾恢复
+					点击右键在短暂延迟后装备[c/81C671:继承案件]，让攻击变为强大的火箭弹向光标处发射，但攻击速度大幅降低
+					此外，该武器在这个状态下无法进行蓄力，且激活的[c/C6F1AE:辅助武装]将会丢失
+					该攻击最多可以穿透3个敌人，且在命中时产生爆炸；最后一击会产生爆炸，造成300%的暴击伤害
+					被爆炸命中的敌人会在短时间内受到大量伤害
+					手持该武器时，无法进行闪避，伤害减免失效
+					“指挥官，我们在这”
+					'''
 			}
 
 			LegendaryShieldAccessory: {
-				// DisplayName: Legendary Shield Accessory
-				// Tooltip: ""
+				DisplayName: 传说之盾饰品
+				Tooltip: ""
 			}
 
 			DangerousSignage: {
-				// DisplayName: Dangerous Signage
-				// Tooltip: ""
+				DisplayName: 危险标识
+				Tooltip: ""
 			}
 
 			EnergeticMountedSignage: {
-				// DisplayName: Energetic Mounted Signage
-				// Tooltip: ""
+				DisplayName: 高能安装标识
+				Tooltip: ""
 			}
 
 			HologramPlinthDrink: {
-				// DisplayName: Hologram Plinth Drink
-				// Tooltip: ""
+				DisplayName: 全息饮料基座
+				Tooltip: ""
 			}
 
 			HydratedMountedSignage: {
-				// DisplayName: Hydrated Mounted Signage
-				// Tooltip: ""
+				DisplayName: 水化安装标识
+				Tooltip: ""
 			}
 
 			LavenderSignage: {
-				// DisplayName: Lavender Signage
-				// Tooltip: ""
+				DisplayName: 淡紫色标识
+				Tooltip: ""
 			}
 
 			OfflineMountedSignage: {
-				// DisplayName: Offline Mounted Signage
-				// Tooltip: ""
+				DisplayName: 离线安装标识
+				Tooltip: ""
 			}
 
 			RadialMountedSignage: {
-				// DisplayName: Radial Mounted Signage
-				// Tooltip: ""
+				DisplayName: 中心安装标识
+				Tooltip: ""
 			}
 
 			SmallOfflineMountedSignage: {
-				// DisplayName: Small Offline Mounted Signage
-				// Tooltip: ""
+				DisplayName: 小型离线安装标识
+				Tooltip: ""
+			}
+
+			DreadmotherDarkIdol: {
+				/* Tooltip:
+					'''
+					WORK IN PROGRESS!
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
+					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks
+					[c/FFAB4D:Melee]: The weapon transforms into a gauntlet, allowing for a close-ranged combo
+					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
+					Gain brief Invincibility and restore 2% Max HP when defeating foes		
+					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged]
+					Uncharged attacks quickly fires a formation of fast bolts of energy
+					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
+					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration
+					Attacks fire homing energy blasts that arc lightning to nearby foes
+					Gain [Alacrity] for 8 seconds when defeating foes, increasing attack and movement speed
+					[c/00CDFF:Summon]: Summons [Dark Dread] and [Flying Dread], consuming 1 minion slot (Only one group of summons can be active at a time)
+					[Dark Dread] leaps at foes, slashing in a wide arc; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds on hit
+					After striking foes 20 times, grant [Dark Confession] for 20 seconds, negating the next instance of damage
+					'It will agree with you'
+					''' */
+				// DisplayName: Dreadmother's Dark Idol
 			}
 		}
 
@@ -10838,32 +11013,32 @@ Mods: {
 			ArbiterPillar.DisplayName: Arbiter Pillar
 			FairyAttack.DisplayName: Fairy Attack
 			FairyAttackEffect.DisplayName: Fairy Attack Effect
-			// LegendaryShieldBash.DisplayName: Legendary Shield Bash
-			// M4A1Gun.DisplayName: M4 A1 Gun
-			// M4A1Laser.DisplayName: M4 A1 Laser
-			// M4A1Round.DisplayName: M4 A1 Round
-			// StAR15Gun.DisplayName: St A R15 Gun
-			// M16A1Gun.DisplayName: M16 A1 Gun
-			// M4Sop2Gun.DisplayName: M4 Sop2 Gun
-			// RO635Gun.DisplayName: R O635 Gun
-			// StAR15Round.DisplayName: St A R15 Round
-			// M4Sop2Howitzer.DisplayName: M4 Sop2 Howitzer
-			// M4Sop2HowitzerExplosion.DisplayName: M4 Sop2 Howitzer Explosion
-			// M4Sop2HowitzerHoming.DisplayName: M4 Sop2 Howitzer Homing
-			// RO635Round.DisplayName: R O635 Round
-			// M16A1Shield.DisplayName: M16 A1 Shield
-			// M16A1Round.DisplayName: M16 A1 Round
-			// InheritedCaseExplosion.DisplayName: Inherited Case Explosion
-			// InheritedCaseFireField.DisplayName: Inherited Case Fire Field
-			// InheritedCaseGun.DisplayName: Inherited Case Gun
-			// InheritedCaseRocket.DisplayName: Inherited Case Rocket
-			// InheritedCaseSmallExplosion.DisplayName: Inherited Case Small Explosion
-			// ParadiseLostProjectile.DisplayName: Paradise Lost Projectile
-			// ParadiseLostBurst.DisplayName: Paradise Lost Burst
-			// ParadiseLostExplosion.DisplayName: Paradise Lost Explosion
-			// fastLargeRadiate.DisplayName: fast Large Radiate
-			// ParadiseLostAttack.DisplayName: Paradise Lost Attack
-			// ParadiseLostAttackDamage.DisplayName: Paradise Lost Attack Damage
+			LegendaryShieldBash.DisplayName: Legendary Shield Bash
+			M4A1Gun.DisplayName: M4 A1 Gun
+			M4A1Laser.DisplayName: M4 A1 Laser
+			M4A1Round.DisplayName: M4 A1 Round
+			StAR15Gun.DisplayName: St A R15 Gun
+			M16A1Gun.DisplayName: M16 A1 Gun
+			M4Sop2Gun.DisplayName: M4 Sop2 Gun
+			RO635Gun.DisplayName: R O635 Gun
+			StAR15Round.DisplayName: St A R15 Round
+			M4Sop2Howitzer.DisplayName: M4 Sop2 Howitzer
+			M4Sop2HowitzerExplosion.DisplayName: M4 Sop2 Howitzer Explosion
+			M4Sop2HowitzerHoming.DisplayName: M4 Sop2 Howitzer Homing
+			RO635Round.DisplayName: R O635 Round
+			M16A1Shield.DisplayName: M16 A1 Shield
+			M16A1Round.DisplayName: M16 A1 Round
+			InheritedCaseExplosion.DisplayName: Inherited Case Explosion
+			InheritedCaseFireField.DisplayName: Inherited Case Fire Field
+			InheritedCaseGun.DisplayName: Inherited Case Gun
+			InheritedCaseRocket.DisplayName: Inherited Case Rocket
+			InheritedCaseSmallExplosion.DisplayName: Inherited Case Small Explosion
+			ParadiseLostProjectile.DisplayName: Paradise Lost Projectile
+			ParadiseLostBurst.DisplayName: Paradise Lost Burst
+			ParadiseLostExplosion.DisplayName: Paradise Lost Explosion
+			fastLargeRadiate.DisplayName: fast Large Radiate
+			ParadiseLostAttack.DisplayName: Paradise Lost Attack
+			ParadiseLostAttackDamage.DisplayName: Paradise Lost Attack Damage
 		}
 
 		Buffs: {
@@ -11289,7 +11464,7 @@ Mods: {
 			}
 
 			EridaniBlessing: {
-				DisplayName: "[c/9F5DDE:Umbral Resonance]"
+				DisplayName: "[c/9F5DDE:本影共振]"
 				Description: ""
 			}
 
@@ -11414,7 +11589,7 @@ Mods: {
 			}
 
 			GuilmonPetBuff: {
-				DisplayName: Digital Monster
+				DisplayName: 数码宝贝
 				Description: 一只跟随你的电子怪兽
 			}
 
@@ -11439,17 +11614,17 @@ Mods: {
 			}
 
 			BracingSong: {
-				DisplayName: 激昂之歌
+				DisplayName: 激昂旋律
 				Description: 坚毅的旋律使你的防御力增加12点并抵抗击退
 			}
 
 			ChallengerSong: {
-				DisplayName: 挑战之歌
+				DisplayName: 挑战旋律
 				Description: 强大的旋律使你的伤害增加14%
 			}
 
 			ExpertiseSong: {
-				DisplayName: 看破之歌
+				DisplayName: 看破旋律
 				Description: 雅致的旋律使你的暴击率增加8%
 			}
 
@@ -11479,7 +11654,7 @@ Mods: {
 			}
 
 			VitalitySong: {
-				DisplayName: 活力之歌
+				DisplayName: 活力旋律
 				Description: 轻盈的旋律使你的移动速度增加15%
 			}
 
@@ -11839,13 +12014,13 @@ Mods: {
 			}
 
 			PlasmaGrenadeCooldownBuff: {
-				DisplayName: Plasma Grenade Cooldown
-				Description: Plasma Grenade fail to activate if this debuff is present
+				DisplayName: 溅射等离子榴弹冷却
+				Description: 溅射等离子榴弹无法发动
 			}
 
 			PortalReady: {
-				DisplayName: "[c/DE5D5D:Gateway Proximity]"
-				Description: Use the Bifrost to return from where you came
+				DisplayName: "[c/DE5D5D:接近大门]"
+				Description: 使用寰宇虹桥回到你来的地方
 			}
 
 			PurplePaint: {
@@ -11854,8 +12029,8 @@ Mods: {
 			}
 
 			PyraPetBuff: {
-				DisplayName: Aegis
-				Description: Keep this up, and we'll win for sure!
+				DisplayName: 天之圣杯
+				Description: 坚持下去，我们一定会赢！
 			}
 
 			Pyretic: {
@@ -11864,7 +12039,7 @@ Mods: {
 			}
 
 			RagingTidesStance: {
-				DisplayName: Raging Tides Stance
+				DisplayName: 狂澜姿态
 				Description: 达达利亚转为近战攻击模式
 			}
 
@@ -11884,8 +12059,8 @@ Mods: {
 			}
 
 			RedMageHeldBuff: {
-				DisplayName: 朱红决斗
-				Description: Exhibiting proficiency in maiming and mending
+				DisplayName: 赤红决斗
+				Description: 精通致残并进行修复
 			}
 
 			RedMageStabbing: {
@@ -11919,12 +12094,12 @@ Mods: {
 			}
 
 			RemoveStationarySpiders: {
-				DisplayName: Remove Stationary Spiders!
+				DisplayName: 移除固定的蜘蛛！
 				Description: ""
 			}
 
 			BulwarkOfJade: {
-				DisplayName: Bulwark of Jade
+				DisplayName: 玉璋护盾
 				Description: 防御+30
 			}
 
@@ -11934,13 +12109,13 @@ Mods: {
 			}
 
 			Riptide: {
-				DisplayName: Riptide
-				Description: Weakened
+				DisplayName: 断流
+				Description: 被削弱
 			}
 
 			RobotSpiderBuff: {
-				DisplayName: Mechanical Arachnids
-				Description: The mechanical arachnids aid you
+				DisplayName: 蛛形纲机器
+				Description: 蛛形纲机器正在协助你
 			}
 
 			Ruination: {
@@ -11949,32 +12124,32 @@ Mods: {
 			}
 
 			RyukenStun: {
-				DisplayName: Ryuken Stun
-				Description: Ow.
+				DisplayName: 龙拳眩晕
+				Description: 哦呜
 			}
 
 			ElementalChaos: {
-				DisplayName: Elemental Chaos
+				DisplayName: 元素混沌
 				Description: ""
 			}
 
 			SakuraCoolingBuff: {
-				DisplayName: Cooling Haze
+				DisplayName: 凛冽阴霾
 				Description: ""
 			}
 
 			SakuraEarthBuff: {
-				DisplayName: Earthsplitter
+				DisplayName: 崩裂大地
 				Description: ""
 			}
 
 			SakuraHeavenBuff: {
-				DisplayName: Heavenly Volley
+				DisplayName: 天坠截击
 				Description: ""
 			}
 
 			SakuraVolcanoBuff: {
-				DisplayName: Volcanic Wrath
+				DisplayName: 火山暴怒
 				Description: ""
 			}
 
@@ -11984,33 +12159,33 @@ Mods: {
 			}
 
 			SatedAnguish: {
-				DisplayName: Sated Anguish
-				Description: The detriments of Lucifer's Bargain have been negated... for now
+				DisplayName: 满足苦痛
+				Description: 与路西法交易的危害已经消失了……暂时
 			}
 
 			SeabornCooldown: {
-				DisplayName: Seaborn Wrath Cooldown
-				Description: Seaborn Wrath will fail to activate if this debuff is present
+				DisplayName: 源洋之怒冷却
+				Description: 源洋之怒无法生效
 			}
 
 			SeabornWrath: {
-				DisplayName: Seaborn Wrath
-				Description: The ocean currents grant your minions extra damage and your weapon is strengthened
+				DisplayName: 源洋之怒
+				Description: 洋流为你的召唤物带来额外的伤害，并强化你的武器
 			}
 
 			BloodstainedBelone: {
-				DisplayName: Bloodstained Belone
+				DisplayName: 浴血奋战
 				Description: 伤害+10%
 			}
 
 			SkofnungBuff: {
-				DisplayName: Blade of Grudges
+				DisplayName: 怨念之刃
 				Description: 怨念之刃为你而战
 			}
 
 			Shielded: {
-				DisplayName: Shielded
-				Description: 一位增加你的防御力的盟友
+				DisplayName: 被守护
+				Description: 一位盟友增加了你的防御力
 			}
 
 			StrikerAttackBuff: {
@@ -12034,82 +12209,82 @@ Mods: {
 			}
 
 			SolemnAegis: {
-				DisplayName: Solemn Aegis
+				DisplayName: 庄严之盾
 				Description: 免疫受到的下次攻击造成的伤害
 			}
 
 			SoulSapping: {
-				DisplayName: Soul Sapping
-				Description: Nalhaun is draining your soul; if the Soul Gauge drops to zero, you'll die
+				DisplayName: 灵魂削弱
+				Description: 纳尔赫恩正在吸干你的灵魂，若你的灵魂归零，你就会死亡
 			}
 
 			SoulUnbound: {
-				DisplayName: Soul Unbound
-				Description: You have let go of your mortal form, gaining Movement Speed
+				DisplayName: 破障之锋
+				Description: 你已经摆脱了你的肉体凡胎，移动速度提升
 			}
 
 			SoulUnboundCooldown: {
-				DisplayName: Soul Unbound Cooldown
-				Description: When this debuff ends, you will be able to use Soul Unbound again
+				DisplayName: 破障之锋冷却
+				Description: 破障之锋无法发动
 			}
 
 			SovereignDominion: {
-				DisplayName: Sovereign's Dominion
+				DisplayName: 君主统治
 				Description: 你不值一提！
 			}
 
 			FleetingSparkBuff: {
 				DisplayName: 浮游单元 “浮标”
-				Description: Static electricity arcs from your minions
+				Description: 你的召唤物正在源源不断的产生静电
 			}
 
 			SpatialBurn: {
-				DisplayName: Disintegration
+				DisplayName: 衰变
 				Description: 宇宙真空之触
 			}
 
 			Starblight: {
-				DisplayName: Starblight
-				Description: Taking powerful damage over time
+				DisplayName: 源星枯萎
+				Description: 持续受到大量上海
 			}
 
 			LucentBliss: {
-				DisplayName: Lucent Bliss
+				DisplayName: 光明极乐
 				Description: 精灵之运庇佑着你, 增加运气上限并获得运气值
 			}
 
 			StarshieldBuff: {
-				DisplayName: Starshield
+				DisplayName: 星盾
 				Description: 星体之盾保护着你，最大生命值提高10%，伤害增加20%
 			}
 
 			StarshieldCooldown: {
-				DisplayName: Starshield Cooldown
-				Description: Starshield will fail to activate if this debuff is present
+				DisplayName: 星盾冷却
+				Description: 星盾无法触发
 			}
 
 			StellarListener: {
-				DisplayName: Stellar Listener
+				DisplayName: 星际观众
 				Description: 附近的表演鼓舞了你，增加伤害，魔力再生和生命再生
 			}
 
 			StellarOverload: {
-				DisplayName: Stellar Overload
-				Description: The Stellar Array is above capacity, reducing damage by half and defense to 0
+				DisplayName: 星体过载
+				Description: 星体阵列超过可负载容量，你的伤害减半，且防御力降低至0
 			}
 
 			StellarPerformance: {
-				DisplayName: Stellar Performance
+				DisplayName: 星际演唱会
 				Description: 你的表演鼓舞了你，大幅增加伤害和移动速度
 			}
 
 			StellarPerformanceCooldown: {
-				DisplayName: Stellar Performance Cooldown
-				Description: When this debuff ends, you will be able to use Stellar Performance again
+				DisplayName: 星际演唱会冷却
+				Description: 星际演唱会无法发动
 			}
 
 			StellarSickness: {
-				DisplayName: Stellar Sickness
+				DisplayName: 星体病症
 				Description: 当你适应新获得的力量时伤害和防御力都会减半
 			}
 
@@ -12124,103 +12299,103 @@ Mods: {
 			}
 
 			BifrostCooldown: {
-				DisplayName: "[c/EFB43E:Bifrost Cooldown]"
+				DisplayName: "[c/EFB43E:寰宇虹桥冷却]"
 				Description: ""
 			}
 
 			BleachedWorldTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Exploring a planet bleached clean of ambient energy
-					Natural life regeneration is disabled
-					Below 100 HP, you become Slowed
+					正在探索一颗被漂白的星球
+					自然生命回复被禁用
+					低于100点生命值时，你会变得缓慢
 					'''
 			}
 
 			CityTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Exploring a bustling futuristic cityscape
-					Defenses increased by 10
-					Above 400 HP, gain an extra 10 defense
-					Fall damage is negated
+					正在探索一个繁华的未来都市景观
+					防御力增加10
+					拥有超过400点生命值时，额外获得10点防御力
+					不会受到摔落伤害
 					'''
 			}
 
 			DeadPlanetTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Exploring a planet long lost
-					Max Life is reduced by 80
-					Mana can not regenerate naturally
-					Defense is increased by 25
+					正在探索一颗消失已久的星球
+					最大生命值减少80
+					魔力自然回复被禁用
+					防御力增加25点
 					'''
 			}
 
 			DefaultTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Exploring ruins adrift in the great unknown
-					No special modifiers are active
+					正在探索于未知世界中漂流的废墟
+					没有特殊效果发生
 					'''
 			}
 
 			MoonTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Temporarily transposed to an orbiting celestial body
-					Defenses have been reduced by 50
-					Outgoing damage is reduced by 20%
+					临时移位到绕轨道运行的天体上
+					防御降低50点
+					伤害降低20%
 					'''
 			}
 
 			ObservatoryTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Exploring a structure of great import to the Starfarers
-					Aspected Weapons deal double damage
+					正在探索一个对于星海旅者来说很重要的地方
+					星相武器会造成双倍伤害
 					'''
 			}
 
 			RuinedSpaceshipTurmoil: {
-				DisplayName: "[c/EFB43E:Environmental Turmoil]"
+				DisplayName: "[c/EFB43E:环境紊乱]"
 				Description:
 					'''
-					Exploring derelict, unknown ruins
-					Defense is reduced by 50
-					Mana regeneration is drastically increased
+					正在探索被遗弃的未知废墟
+					防御降低50点
+					魔力自然回复大幅加速
 					'''
 			}
 
 			Superimposed: {
-				DisplayName: "[c/3B9FE4:Cosmic Voyager]"
+				DisplayName: "[c/3B9FE4:寰宇之旅]"
 				Description:
 					'''
-					Corporeal body is transposed into the sea of stars
-					The following actions have been restricted:
-					Building, mining, mounts, explosives, flying, and the Rod of Discord/Harmony
-					Abilities that scale with modded world progression have reverted to initial values
+					你的肉体被转移到了星辰之海中
+					以下行动被禁用：
+					建筑、破坏、使用坐骑、使用炸药、飞行、混沌/和谐传送杖
+					随世界进程强化的能力恢复至默认值
 					'''
 			}
 
 			SurtrTwilight: {
-				DisplayName: Surtr's Twilight
-				Description: All attacks will burn foes
+				DisplayName: 史尔特尔的黄昏
+				Description: 所有攻击都会燃烧敌人
 			}
 
 			ApalistikTagDamage: {
-				DisplayName: Apalistik Tag Damage
+				DisplayName: 埃帕利斯克标记伤害
 				Description: ""
 			}
 
 			KingTagDamage: {
-				DisplayName: King Tag Damage
+				DisplayName: 王之标记伤害
 				Description: ""
 			}
 
@@ -12230,52 +12405,52 @@ Mods: {
 			}
 
 			SeabornApalistikTagDamage: {
-				DisplayName: Seaborn Apalistik Tag Damage
+				DisplayName: 源洋·埃帕利斯克标记伤害
 				Description: ""
 			}
 
 			TakodachiBuff: {
-				DisplayName: Void Octopi
-				Description: The void octopi surround you
+				DisplayName: 虚空章鱼
+				Description: 虚空而来的章鱼围绕着你
 			}
 
 			TakodachiLaserBuff: {
-				DisplayName: Takonomicon Annihilation Beam
+				DisplayName: 异体学怪异爆裂光束
 				Description: ""
 			}
 
 			TakodachiLaserBuffCooldown: {
-				DisplayName: Takonomicon Laser Cooldown
-				Description: Takonomicon's laser will fail to activate if this debuff is present
+				DisplayName: 异体学怪异爆裂光束冷却
+				Description: 怪异爆裂无法发动
 			}
 
 			PrototokiaDualcast: {
-				// DisplayName: Prototokia Dualcast
-				// Description: You are able to cast Prototokia Aster again without cost
+				DisplayName: 始源之星二重施放
+				Description: 你可以不消耗资源再次释放始源之星
 			}
 
 			PrototokiaTricast: {
-				// DisplayName: Prototokia Tricast
-				// Description: You are able to cast Prototokia Aster yet again without cost at limited power
+				DisplayName: 始源之星三重施放
+				Description: 你可以不消耗资源再次释放削弱的始源之星
 			}
 
 			GuntriggerParry: {
-				DisplayName: Guntrigger Parry
+				DisplayName: 扳机招架
 				Description: ""
 			}
 
 			GuntriggerParryCooldown: {
-				DisplayName: Guntrigger Parry Cooldown
-				Description: Guntrigger Parry will fail to activate if this debuff is present
+				DisplayName: 扳机招架冷却
+				Description: 扳机招架无法发动
 			}
 
 			ImpactRecoil: {
-				DisplayName: Impact Recoil
-				Description: Guntrigger Execution has halved damage
+				DisplayName: 后坐反冲
+				Description: 扳机居合伤害减半
 			}
 
 			JetstreamBloodshed: {
-				DisplayName: Jetstream Bloodshed
+				DisplayName: 血脉偾张
 				Description:
 					'''
 					伤害+30%，但是受伤时解除
@@ -12284,7 +12459,7 @@ Mods: {
 			}
 
 			PerfectGuntrigger: {
-				DisplayName: Perfect Guntrigger
+				DisplayName: 完美扳机
 				Description: ""
 			}
 
@@ -12294,13 +12469,13 @@ Mods: {
 			}
 
 			TyphoonPrismCooldown: {
-				DisplayName: Typhoon Prism Cooldown
-				Description: 当此减益存在时，Typhoon Prism的能力将无法激活
+				DisplayName: 台风棱晶
+				Description: 台风棱晶的能力无法激活
 			}
 
 			Ultima: {
-				DisplayName: Edge of the Universe
-				Description: 手中的刀刃，铭刻着命运
+				DisplayName: 寰宇剑刃
+				Description: 手中的利刃，铭刻着命运
 			}
 
 			UmbralAspect: {
@@ -12324,18 +12499,18 @@ Mods: {
 			}
 
 			UmbralRapture: {
-				DisplayName: Umbral Rapture
-				Description: Gain HP and Invincibility when on Eridani's tiles
+				DisplayName: 本影狂欢
+				Description: 在埃里达妮的地砖上获得生命值和无敌帧
 			}
 
 			UmbreonPetBuff: {
-				DisplayName: Mystic Hound
+				DisplayName: 神秘猎犬
 				Description: 一对神秘的猎犬跟随你
 			}
 
 			UniversalManipulation: {
-				DisplayName: Universal Manipulation
-				Description: Cosmos are in flux
+				DisplayName: 不谐天音
+				Description: 宇宙在不断变化
 			}
 
 			CrimsonMark: {
@@ -12349,72 +12524,72 @@ Mods: {
 			}
 
 			SpectralArsenal1: {
-				DisplayName: Spectral Arsenal
+				DisplayName: 幻影武器
 				Description: ""
 			}
 
 			SpectralArsenal2: {
-				DisplayName: Spectral Arsenal
+				DisplayName: 幻影武器
 				Description: ""
 			}
 
 			SpectralArsenal3: {
-				DisplayName: Spectral Arsenal
+				DisplayName: 幻影武器
 				Description: ""
 			}
 
 			CelestialVoidBuff: {
-				DisplayName: Celestial Void
-				Description: You have torn a rift in spacetime!
+				DisplayName: 天体虚空
+				Description: 你在时空之中撕开裂缝
 			}
 
 			VitchPetBuff: {
-				DisplayName: Fox Vixen
-				Description: She'll kill you and charge extra for disposal
+				DisplayName: 狐狸精
+				Description: 她会杀了你，还要收你处理后事的费用
 			}
 
 			VoidAtrophy1: {
-				DisplayName: Void Atrophy1
+				DisplayName: 虚空枯萎1
 				Description: 虚弱
 			}
 
 			VoidAtrophy2: {
-				DisplayName: Void Atrophy2
+				DisplayName: 虚空枯萎2
 				Description: 虚弱
 			}
 
 			Voidform: {
-				DisplayName: Superimposition
-				Description: Corporeal form has transcended dimensions, granting invincibility and drastic life regen but preventing movement
+				DisplayName: 超叠加态
+				Description: 你的肉身形态已经超越维度，获得了无敌和巨量生命回复，但是因此你无法移动
 			}
 
 			VoidStrength: {
-				DisplayName: Strength Of The Void
+				DisplayName: 虚空之力
 				Description: 伤害大幅度增加
 			}
 
 			VoyageCooldown: {
-				DisplayName: Cosmic Voyage Cooldown
+				DisplayName: 寰宇之旅冷却
 				Description:
 					'''
-					Once this debuff expires, you can initiate a Cosmic Voyage again
-					Alternatively, ask a friend to initiate one
+					当该Buff消失后，可以再次进行寰宇之旅
+					或者，你可以让你的朋友发起寰宇之旅
 					'''
 			}
 
 			Vulnerable: {
-				DisplayName: Vulnerability Up
+				DisplayName: 脆弱
 				Description: 防御力超绝降低
 			}
 
 			WarriorEnd: {
-				DisplayName: Warrior End
+				DisplayName: 战士终局
 				Description: ""
 			}
 
 			WarriorPetBuff: {
-				DisplayName: Discount Warrior of Light
-				Description: I will transcend you!
+				DisplayName: 弱化光之战士
+				Description: 我要超越你！
 			}
 
 			Wormhole: {
@@ -12433,13 +12608,13 @@ Mods: {
 			}
 
 			YellowPaint: {
-				DisplayName: Yellow Paint
-				Description: You've been covered in yellow paint
+				DisplayName: 黄漆
+				Description: 你被涂上了黄色油墨
 			}
 
 			DeathsDance: {
-				DisplayName: Death's Dance
-				Description: A graze with death has granted you strength
+				DisplayName: 亡舞
+				Description: 与死神擦肩而过给予了你力量
 			}
 
 			PhantomMinion: {
@@ -12453,476 +12628,476 @@ Mods: {
 			}
 
 			StarchildBuff: {
-				DisplayName: Starchild
-				Description: The starchild is aiding you
+				DisplayName: 星之子
+				Description: 星之子正在援助你
 			}
 
 			AdornmentAttackSpeedBuff: {
-				DisplayName: Pure Chaos (Attack Speed)
-				Description: Chaotic energy has granted a boon
+				DisplayName: 纯粹混沌（攻击速度）
+				Description: 混沌能量赐予你恩惠
 			}
 
 			AdornmentCritBuff: {
-				DisplayName: Pure Chaos (Critical Strikes)
-				Description: Chaotic energy has granted a boon
+				DisplayName: 纯粹混沌（暴击）
+				Description: 混沌能量给你带来恩惠
 			}
 
 			AdornmentMinionBuff: {
-				DisplayName: Adornment of the Chaotic God
-				Description: A manifestation of chaos is attacking your foes
+				DisplayName: 混沌之神的饰物
+				Description: 一个饰物灵正在显现并痛击你的敌人
 			}
 
 			AdornmentRandomObjectsBuff: {
-				DisplayName: Pure Chaos (Random Objects)
-				Description: Chaotic energy has granted a bane
+				DisplayName: 纯粹混沌（随机弹幕）
+				Description: 混沌能量为你种下祸根
 			}
 
 			PureChaosCooldown: {
-				DisplayName: Pure Chaos Cooldown
-				Description: Pure Chaos will fail to activate if this debuff is present
+				DisplayName: 纯粹混沌冷却
+				Description: 纯粹混沌无法发动
 			}
 
 			Alacrity: {
-				DisplayName: Alacrity
-				Description: Attack speed and movement speed are increased
+				DisplayName: 轻快
+				Description: 攻击速度和移动速度提高
 			}
 
 			AllasBuff: {
-				DisplayName: Black Silence: Allas
-				Description: Gain 30% increased Movement Speed
+				DisplayName: 漆黑噤默：阿拉斯
+				Description: 增加30%移动速度
 			}
 
 			AtelierLogicBuff: {
-				DisplayName: Black Silence: Atelier Logic
-				Description: Gain 20% increased Armor Penetration
+				DisplayName: 漆黑噤默：逻辑工作室
+				Description: 增加20%护甲穿透
 			}
 
 			BlackSilenceAttackCooldown: {
-				DisplayName: Attack Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 攻击冷却
+				Description: 能力正在冷却
 			}
 
 			BlackSilenceChoiceCooldown: {
-				DisplayName: Black Silence Choice Cooldown
-				Description: Choosing to swap Black Silence weapons will fail to activate if this debuff is present
+				DisplayName: 漆黑噤默选取冷却
+				Description: 无法进行漆黑噤默武器选取
 			}
 
 			CrystalAtelierBuff: {
-				DisplayName: Black Silence: Crystal Atelier
-				Description: Reflect 80% of damage taken
+				DisplayName: 漆黑噤默：卡莉斯塔工作室
+				Description: 反弹80%的伤害
 			}
 
 			DurandalBuff: {
-				DisplayName: Black Silence: Durandal
-				Description: Critical strikes deal 50% increased damage to foes below 50% HP
+				DisplayName: 漆黑噤默：杜兰达尔
+				Description: 暴击会对生命值低于50%的敌人额外造成50%的伤害
 			}
 
 			FuriosoBuff: {
-				DisplayName: The Black Silence
-				Description: Mastery of armaments, speed, and skill has granted a myriad of buffs while cycling through weapons of the Black Silence
+				DisplayName: 漆黑噤默
+				Description: 对于装备、速度和技能的精通让你在使用漆黑噤默的武器时获得无数的增益
 			}
 
 			MookBuff: {
-				DisplayName: Black Silence: Mook
-				Description: Inflict Bleed for 4 seconds on hit
+				DisplayName: 漆黑噤默：墨工坊
+				Description: 命中时施加流血，持续4秒
 			}
 
 			OldBoysBuff: {
-				DisplayName: Black Silence: Old Boys
-				Description: Gain 20 defense
+				DisplayName: 漆黑噤默：老男孩工坊
+				Description: 增加20点防御
 			}
 
 			RangaBuff: {
-				DisplayName: Black Silence: Ranga
-				Description: Deal 30% increased critical strike damage
+				DisplayName: 漆黑噤默：琅琊工坊
+				Description: 暴击伤害增加30%
 			}
 
 			WheelsIndustryBuff: {
-				DisplayName: Black Silence: Wheels Industry
-				Description: Deal 10% increased damage
+				DisplayName: 漆黑噤默：轮盘重工
+				Description: 伤害增加10%
 			}
 
 			ZelkovaBuff: {
-				DisplayName: Black Silence: Zelkova
-				Description: Deal 30% increased damage to foes below 50% HP
+				DisplayName: 漆黑噤默：榉树工坊
+				Description: 对生命值低于50%的敌人额外造成30%的伤害
 			}
 
 			MonarchPresence: {
-				DisplayName: The Monarch's Presence
-				Description: Proximity to a powerful foe is lowering defense by 20
+				DisplayName: 君王所在
+				Description: 靠近强大的敌人使你防御力降低20
 			}
 
 			NalhaunSword: {
-				DisplayName: Manifest Laevateinn
-				Description: ???
+				DisplayName: 莱瓦汀展现
+				Description: ？？？
 			}
 
 			TsukiyomiTeleport: {
-				DisplayName: Tsukiyomi's Teleport
-				Description: ???
+				DisplayName: 月读的传送
+				Description: ？？？
 			}
 
 			Bedazzled: {
-				DisplayName: Bedazzled
-				Description: Awash in crystalline light, gaining 10% increased attack, 10 defense, and 10% movement speed
+				DisplayName: 耀目之光
+				Description: 沐浴在水晶之光中，增加10%伤害、10点防御和10%移动速度
 			}
 
 			CatalystMemoryPrismicCooldown: {
-				DisplayName: Dazzling Prismic Cooldown
-				Description: Summoning the Dazzling Prismic will fail to activate if this debuff is present
+				DisplayName: 耀目棱晶冷却
+				Description: 无法召唤耀目棱晶
 			}
 
 			CatalyzedBlade: {
-				DisplayName: Catalyzed Blade
-				Description: The empowered blade before you grants 10% increased movement speed
+				DisplayName: 星媒之刃
+				Description: 你手中的强化剑刃使你的移动速度提高10%
 			}
 
 			DazzlingAria: {
-				DisplayName: Dazzling Aria
-				Description: The shattered crystal grants 50 defense and powerful life regeneration
+				DisplayName: 耀目咏叹
+				Description: 破碎的水晶为你提供了50点防御力和大量生命回复
 			}
 
 			DazzlingBladedance: {
-				DisplayName: Dazzling Aria
-				Description: The shattered crystal grants 30% increased attack speed
+				DisplayName: 耀目剑舞
+				Description: 破碎的水晶使你的攻击速度提高30%
 			}
 
 			ChronoclockMinionBuff: {
-				DisplayName: Fragment of Time
-				Description: A fragment of time is aiding you
+				DisplayName: 时间碎片
+				Description: 一段破碎的时间正在协助你
 			}
 
 			TimeBubbleCooldown: {
-				DisplayName: Time Bubble Cooldown
-				Description: The Time Bubble will not shield you from damage if this debuff is present
+				DisplayName: 时间泡冷却
+				Description: 时间泡不会在此期间保护你
 			}
 
 			Conversationalist: {
-				DisplayName: Conversationalist
-				Description: Enemy spawns have been reduced
+				DisplayName: 健谈者
+				Description: 敌人刷新速度降低
 			}
 
 			EverlastingLightPreview: {
-				DisplayName: Harsh Light
+				DisplayName: 严酷之光
 				Description:
 					'''
-					Encroaching light blankets the sky in a faint glint
-					Nighttime becomes faint; with time, the world may be imprisoned in endless daylight
+					渗入天边的微弱闪光逐渐笼罩天空
+					夜晚将会变得短暂；随着时间的推移，世界将可能会被囚禁在无尽的日光中
 					'''
 			}
 
 			EverlastingGunpowderAttackCooldown: {
-				DisplayName: Gunpowder Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 火药冷却
+				Description: 能力正在冷却
 			}
 
 			EverlastingGunpowderCooldown: {
-				DisplayName: Gunpowder Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 火药冷却
+				Description: 能力正在冷却
 			}
 
 			EverlastingGunpowderMiningCooldown: {
-				DisplayName: Gunpowder Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 火药冷却
+				Description: 能力正在冷却
 			}
 
 			EverlastingGunpowderMiningTrigger: {
-				DisplayName: Gunpowder Trigger
-				Description: Ability is on cooldown
+				DisplayName: 火药引爆
+				Description: 能力正在冷却
 			}
 
 			GunpowderSwapCooldown: {
-				DisplayName: Swap Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 火药切换冷却
+				Description: 能力正在冷却
 			}
 
 			FarewellCooldown: {
-				DisplayName: Farewell Cooldown
-				Description: The Kevesi and Agnian Farewells will fail to activate if this debuff is present
+				DisplayName: 永别冷却
+				Description: 克维希/阿格尼亚的永别无法使用
 			}
 
 			FarewellOfFlames: {
-				DisplayName: Farewell of Flames
-				Description: Solidarity with the defeated is increasing Luck
+				DisplayName: 永别之炎
+				Description: 团结与落单都为你增加运气
 			}
 
 			OffSeersJourney: {
-				DisplayName: Off-seer's Journey
-				Description: Memories of the departed fill you, increasing Luck, max Luck, and enemy spawns
+				DisplayName: 远离预言之旅
+				Description: 逝去的记忆充满你的脑海，增加你的运气、最大运气和敌人生成速率
 			}
 
 			OffSeersPurpose: {
-				DisplayName: Off-seer's Purpose
-				Description: Memories of the departed fill you, increasing Luck, max Luck, and enemy spawns
+				DisplayName: 远离预言之计
+				Description: 逝去的记忆充满你的脑海，增加你的运气、最大运气和敌人生成速率
 			}
 
 			GeminiPrismCooldown: {
-				DisplayName: Gemini Prism Cooldown
-				Description: The Gemini Prism's Twincast will fail to activate if this debuff is present
+				DisplayName: 双子座棱晶冷却
+				Description: 双子坐棱晶的能力无法生效
 			}
 
 			Hyperburn: {
-				DisplayName: Hyperburn
-				Description: Intense flames are causing a drastic loss in health
+				DisplayName: 超燃烧
+				Description: 强大的火焰剧烈燃烧你的生命
 			}
 
 			VerdantEmbrace: {
-				DisplayName: Verdant Embrace (Enemy Only)
+				DisplayName: 蕴种印（只在敌人身上生效）
 				Description: Mods.StarsAbove.Buffs.VerdantEmbrace.Description
 			}
 
 			SecurityLevel: {
-				DisplayName: Security Level
-				Description: Level of security is rising
+				DisplayName: 安保等级
+				Description: 安保等级正在提高
 			}
 
 			GatheringLevinstorm: {
-				DisplayName: Gathering Levinstorm
-				Description: Overcharged electrical energy is enhancing certain attacks
+				DisplayName: 聚集巨兽台风
+				Description: 过度充能的电力会强化某些攻击
 			}
 
 			GatheringLevinstormCooldown: {
-				DisplayName: Gathering Levinstorm Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 聚集巨兽台风冷却
+				Description: 能力正在冷却
 			}
 
 			KarmicRetribution: {
-				DisplayName: Karmic Retribution
-				Description: Sins are causing a drastic loss in health
+				DisplayName: 业力报应
+				Description: 你的罪业会损伤你的生命
 			}
 
 			LVBuff: {
-				DisplayName: LV
-				Description: Empowered by karmic strength
+				DisplayName: L V
+				Description: 被罪业赋予力量
 			}
 
 			ManiacalJusticeCooldown: {
-				DisplayName: Maniacal Justice Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 狂乱裁定冷却
+				Description: 能力正在冷却
 			}
 
 			SlaughteringSlashCooldown: {
-				DisplayName: Slaughtering Slash Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 屠杀挥砍冷却
+				Description: 能力正在冷却
 			}
 
 			SpecialAttackBuff: {
-				DisplayName: Special Attack
-				Description: Attack speed and damage drastically increased... at a cost
+				DisplayName: 特殊攻击
+				Description: 攻击速度和伤害都大幅增加……但是代价是什么？
 			}
 
 			EGOManifestedBuff: {
-				DisplayName: E.G.O. Manifestation
+				DisplayName: E.G.O.展现
 				Description:
 					'''
-					Mastery over emotional turbulence has resulted in the physical manifestation of inner emotion
-					Damage increased by 30%
-					Attack speed increased by 40%
-					Movement speed increased by 90%
-					Defense reduced by 30
+					对自我情绪紊乱的控制使你的内在具现化
+					伤害增加30%
+					攻击速度增加40%
+					移动速度增加90%
+					防御力降低30点
 					'''
 			}
 
 			GreatSplitCooldown: {
-				DisplayName: Great Split Cooldown
-				Description: Both Great Splits will fail to activate if this debuff is present
+				DisplayName: E.G.O.攻击冷却
+				Description: 所有E.G.O.攻击都无法发动
 			}
 
 			GreatSplitVertical: {
-				DisplayName: Great Split: Vertical
-				Description: Swinging
+				DisplayName: 血雾弥漫
+				Description: 挥砍
 			}
 
 			NanomachinaLeechCooldown: {
-				DisplayName: Nanomachina Leech Cooldown
-				Description: Nanomachines will not leech HP and Mana if this debuff is present
+				DisplayName: 纳米机器吸收冷却
+				Description: 纳米机器不会吸取生命值和魔力值
 			}
 
 			RealizedNanomachinaActivation: {
-				DisplayName: Realized Nanomachina Activation
-				Description: Nanomachines have been recently deployed, granting powerful damage reduction
+				DisplayName: 纳米机器正在展现
+				Description: 开始展现纳米机器，提供大量伤害减免
 			}
 
 			RealizedNanomachinaBuff: {
-				DisplayName: Realized Nanomachina
-				Description: Nanomachines are strengthening defenses, granting a barrier, damage reduction, and empowered attacks
+				DisplayName: 纳米机器展现
+				Description: 纳米机器正在增强你的防御力，为你提供屏障，减少受到的伤害并强化你的攻击
 			}
 
 			RealizedNanomachinaCooldownBuff: {
-				DisplayName: Realized Nanomachina Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 纳米机器展现冷却
+				Description: 能力正在冷却
 			}
 
 			PodBuff: {
-				DisplayName: Automaton Pod
-				Description: An automaton pod is pressing the attack
+				DisplayName: 自动人形辅助机
+				Description: 自动人形辅助机正在攻击敌人
 			}
 
 			RexLapisMeteorCooldown: {
-				DisplayName: Rex Lapis Meteor Cooldown
-				Description: Rex Lapis's meteor will fail to activate if this debuff is present
+				DisplayName: 天动万象冷却
+				Description: 无法使用天动万象
 			}
 
 			CannonfireDeluge1: {
-				DisplayName: Cannonfire Deluge (1 Stack)
-				Description: Cannonfire Deluge is stacking
+				DisplayName: 加农炮幕（1层）
+				Description: 加农炮幕轰出！
 			}
 
 			CannonfireDeluge2: {
-				DisplayName: Cannonfire Deluge (2 Stacks)
+				DisplayName: 加农炮幕（2层）
 				Description: Mods.StarsAbove.Buffs.CannonfireDeluge2.Description
 			}
 
 			CannonfireDeluge3: {
-				DisplayName: Cannonfire Deluge (3 Stacks)
+				DisplayName: 加农炮幕（3层）
 				Description: Mods.StarsAbove.Buffs.CannonfireDeluge3.Description
 			}
 
 			CannonfireDelugeCooldown: {
-				DisplayName: Cannonfire Deluge Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 加农炮幕冷却
+				Description: 能力正在冷却
 			}
 
 			FeralDespair: {
-				DisplayName: Feral Despair
-				Description: Sanguine energy ebbs and flows in tandem with your life, granting increased damage based on missing HP
+				DisplayName: 阴郁绝望
+				Description: 阴郁的能量随着你的生命起伏，根据你失去的生命值增加伤害
 			}
 
 			SurgingVampirismCooldown: {
-				DisplayName: Surging Vampirism Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 吸血涌流冷却
+				Description: 能力正在冷却
 			}
 
 			DarkSoul: {
-				DisplayName: Dark Soul
-				Description: Harvested souls are granting an increase to offensive capabilities
+				DisplayName: 暗黑灵魂
+				Description: 你收获的灵魂为你增加伤害
 			}
 
 			SoulReaverCharging: {
-				DisplayName: Soul Harvest
-				Description: Ready to harvest
+				DisplayName: 灵魂收割
+				Description: 准备丰收
 			}
 
 			SoulSplit: {
-				DisplayName: Soul Split
-				Description: Corporeal form is recovering, reducing damage and range of Soul Harvest
+				DisplayName: 灵魂分裂
+				Description: 你的肉身还在恢复，降低灵魂收割的伤害和使用范围
 			}
 
 			SpatialStratagem: {
-				DisplayName: Spatial Gambit
-				Description: Celestial gambit allows for the negation of the next damage taken while additionally granting a damage bonus once triggered
+				DisplayName: 空间谋略
+				Description: 受到的伤害减半
 			}
 
 			SpatialStratagemActive: {
-				DisplayName: Spatial Gambit Accepted
-				Description: Stats have been increased
+				DisplayName: 空间谋略准备
+				Description: 属性值增加
 			}
 
 			SpatialStratagemCooldown: {
-				DisplayName: Spatial Stratagem Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 空间谋略冷却
+				Description: 能力正在冷却
 			}
 
 			AnomalyBuff: {
-				DisplayName: "[c/EFB43E:Anomaly Voyage]"
+				DisplayName: "[c/EFB43E:异常旅行]"
 				Description:
 					'''
-					The nearby surroundings disobey laws of reality
-					Lingering for too long will result in something terrifying occuring...
+					你附近的环境不遵守现实法则
+					在这里滞留过久可能会有可怕的事情发生……
 					'''
 			}
 
 			ApproachingEvilBuff: {
-				DisplayName: "[c/EFB43E:Approaching Evil]"
+				DisplayName: "[c/EFB43E:邪恶将近]"
 				Description:
 					'''
-					You are compelled by a strange force...
-					Leave now, or else!
+					你被一种奇怪的力量所牵引……
+					现在就离开，不然就等着瞧吧！
 					'''
 			}
 
 			ArdorInfluence: {
-				DisplayName: "[c/EFB43E:The Ardor's Influence]"
+				DisplayName: "[c/EFB43E:亚铎浸染]"
 				Description:
 					'''
-					Your surroundings are permeated with an unnatural cold
+					你的周围充满了不自然的寒冷
 
-					Defense is reduced by 10
-					Entering combat may have unique effects
+					防御降低10点
+					进入战斗可能会有独特的效果
 					'''
 			}
 
 			ChaosTurmoil: {
-				DisplayName: "[c/EFB43E:Chaos Turmoil]"
-				Description: ???
+				DisplayName: "[c/EFB43E:混沌扰动]"
+				Description: ？？？
 			}
 
 			StellaglyphReady: {
-				DisplayName: "[c/DE5D5D:Stellaglyph Proximity]"
-				Description: The Celestial Cartography menu will allow you to explore the cosmos
+				DisplayName: "[c/DE5D5D:靠近旅星符台]"
+				Description: 天体制图仪允许你在宇宙中穿行
 			}
 
 			StellarFocusOverlimit: {
-				DisplayName: "[c/FF0046:Stellaglyph Overlimit]"
+				DisplayName: "[c/FF0046:旅星符台超限]"
 				Description:
 					'''
-					Stellar Foci buffs will not apply, as there are too many Stellar Foci nearby the Stellaglyph
-					Upgrade the Stellaglyph to support more Stellar Foci
+					星体聚焦Buff将不会生效，因为在旅星符台附近有过多的星体聚焦
+					升级你的旅星符台来放置更多星体聚焦
 					'''
 			}
 
 			SubworldLootCooldown: {
-				DisplayName: Subworld Loot Cooldown
-				Description: Subworld Loot can not be claimed until this buff expires.
+				DisplayName: 子世界掉落物冷却
+				Description: 无法领取子世界掉落物
 			}
 
 			YojimboBuff: {
-				DisplayName: Bounty Hunter's Pointers
-				Description: Yojimbo's casual advice has granted you some extra Luck during Cosmic Voyages
+				DisplayName: 赏金猎人的指点
+				Description: 在寰宇之旅中，佑今波不经意的建议给了你一些额外的运气
 			}
 
 			KarnaCooldown: {
-				DisplayName: Vasavi Shakti Cooldown
-				Description: Ability is on cooldown
+				DisplayName: 日轮啊，顺从死亡冷却
+				Description: 能力正在冷却
 			}
 
 			KarnaLaserBuff: {
-				DisplayName: Vasavi Shakti
-				Description: Overwhelming power is being unleashed
+				DisplayName: 日轮啊，顺从死亡
+				Description: 正在释放压倒性的力量
 			}
 
 			AtrophiedDeifiedBuff: {
-				DisplayName: Atrophied Deification
+				DisplayName: 神威衰退
 				Description:
 					'''
-					Natural life regeneration has been disabled
-					Death will have magnified consequences
-					Can not be removed by right-click
+					生命自然恢复被禁用
+					死亡的代价被放大
+					无法通过点击右键来移除该Buff
 					'''
 			}
 
 			AuthoritySacrificeMark: {
-				DisplayName: Supreme Authority Mark
-				Description: Marked for death
+				DisplayName: 大权在握标记
+				Description: 死亡的标记
 			}
 
 			DarkAura: {
-				DisplayName: Dark Aura
-				Description: Mods.StarsAbove.BuffDescription.DarkAura
+				DisplayName: 暗影光环
+				Description: ""
 			}
 
 			DeifiedBuff: {
-				DisplayName: Deified
+				DisplayName: 神威
 				Description:
 					'''
-					Sacrifices has halved Max HP, but incoming damage is halved and most debuffs are resisted
-					Can not be removed by right-click
+					献祭你的一半最大生命值，使你受到的伤害降低50%且免疫绝大部分减益
+					无法通过点击右键来移除该Buff
 					'''
 			}
 
 			Mortality: {
-				DisplayName: Mortality
-				Description: Movement has been slowed by 10% and damage taken has been doubled
+				DisplayName: 终有一死
+				Description: 移动速度降低10%，受到的伤害翻倍
 			}
 
 			ChronoclockTagDamage: {
@@ -12936,18 +13111,18 @@ Mods: {
 			}
 
 			TwincastActive: {
-				DisplayName: Twincast
-				Description: ???
+				DisplayName: 双生咏唱
+				Description: ？？？
 			}
 
 			TimelessPotential: {
-				DisplayName: Timeless Potential
-				Description: Endless possibilities lay before you, granting a variety of bonuses
+				DisplayName: 永恒潜能
+				Description: 无尽的可能性摆在你的眼前，给予你各式各样的增益
 			}
 
 			TimelessPotentialCooldown: {
-				DisplayName: Timeless Potential Cooldown
-				Description: Timeless Potential will fail to be obtained if this debuff is present
+				DisplayName: 永恒潜能冷却
+				Description: 永恒潜能无法获得
 			}
 
 			ManaSicknessAlter: {
@@ -12958,678 +13133,678 @@ Mods: {
 			// DarkAuraBuff.Description: "{0} sacrifice(s) have been consumed"
 
 			SpectrumAbsorption: {
-				DisplayName: Refractive Absorption
-				Description: Absorbing all incoming damage at the cost of constant HP drain
+				DisplayName: 吸势
+				Description: 以持续消耗生命值为代价吸收所有伤害
 			}
 
 			SpectrumBlazeAffinity: {
-				DisplayName: Thermodynamics
-				Description: Flames have been consumed, granting increased Potential Energy gain
+				DisplayName: 热动力学
+				Description: 身上燃起的火焰已经被耗尽，获得增益
 			}
 
 			SpectrumDashCooldown: {
-				DisplayName: Spectrum Dash Cooldown
+				DisplayName: 热力冲刺冷却
 				Description: Mods.StarsAbove.Buffs.SpectrumDashCooldown.Description
 			}
 
 			SpectrumFrostAffinity: {
-				DisplayName: Spectrum Frost Affinity
-				Description: Aspected to frost, changing attacks but becoming weak to flame
+				DisplayName: 热力学冷适应
+				Description: 受到霜害，变更攻击，但是变得惧怕火焰
 			}
 
 			BrilliantSpectrumBuff: {
-				DisplayName: Brilliant Spectrum
-				Description: Refractive energy is empowering your physical capabilities
+				DisplayName: 精巧光谱
+				Description: 折射的能量正在强化你的身体
 			}
 
 			InkwellGlobalDelay: {
-				DisplayName: Inkwell Global Delay
+				DisplayName: 墨水全局延迟
 				Description: ""
 			}
 
 			InkwellWaterDelay: {
-				DisplayName: Inkwell Water Delay
+				DisplayName: 渊洋墨水延迟
 				Description: ""
 			}
 
 			InkwellWindDelay: {
-				DisplayName: Inkwell Wind Delay
+				DisplayName: 微风墨水延迟
 				Description: ""
 			}
 
 			DeathFromAbove: {
-				DisplayName: Death From Above
-				Description: Air superiority enables weapon special effects
+				DisplayName: 天降神兵
+				Description: 处于空中可以让你激活武器特效
 			}
 
 			KickStartBuff: {
-				DisplayName: Kick Start
-				Description: The next attack with the weapon will deal double damage
+				DisplayName: 快速启动
+				Description: 该武器的下次攻击将会造成双倍伤害
 			}
 
 			TrickspinLeapCooldown: {
-				DisplayName: Trickspin Leap Cooldown
+				DisplayName: 旋转技巧跳跃冷却
 				Description: ""
 			}
 
 			TrickspinTagDamage: {
-				DisplayName: Trickspin Tag Damage
+				DisplayName: 旋转技巧标记伤害
 				Description: Mods.StarsAbove.Buffs.TrickspinTagDamage.Description
 			}
 
 			MeAndMyKillingMachineBuff: {
-				DisplayName: Me And My Killing Machine
-				Description: Killing Bear is prepared to follow up on attacks
+				DisplayName: 我和我的杀戮机器
+				Description: 杀戮熊熊已经准备好进行协同攻击
 			}
 
 			MeAndMyKillingMachineCooldown: {
-				DisplayName: Me And My Killing Machine Cooldown
+				DisplayName: 我和我的杀戮机器冷却
 				Description: ""
 			}
 
 			MeAndMyKillingMachineFollowUpCooldown: {
-				DisplayName: Me And My Killing Machine Follow Up Cooldown
+				DisplayName: 我和我的杀戮机器追加攻击冷却
 				Description: ""
 			}
 
 			WarriorFireImbueBuff: {
-				DisplayName: Warrior Fire Imbue Buff
+				DisplayName: 战士 火焰注入 Buff
 				Description: Mods.StarsAbove.Buffs.WarriorFireImbueBuff.Description
 			}
 
 			WarriorIceImbueBuff: {
-				DisplayName: Warrior Ice Imbue Buff
+				DisplayName: 战士 冰霜注入 Buff
 				Description: Mods.StarsAbove.Buffs.WarriorIceImbueBuff.Description
 			}
 
 			BindingLight: {
-				DisplayName: Binding Light
-				Description: Frozen light is binding you
+				DisplayName: 约束之光
+				Description: 冰洁之光约束着你
 			}
 
 			MirageBladeCooldown: {
-				DisplayName: Mirage Blade Cooldown
+				DisplayName: 幻影剑冷却
 				Description: ""
 			}
 
 			LamentingPocketwatchCooldown: {
-				DisplayName: Lamenting Pocketwatch Cooldown
+				DisplayName: 哀鸣怀表冷却
 				Description: ""
 			}
 
 			Bladeforged: {
-				DisplayName: Bladeforged
-				Description: Projected reality is granting increased damage, knockback, critical strike chance, and armor penetration.
+				DisplayName: 剑刃锻铸
+				Description: 投影的真实为你增加伤害、击退、暴击率和护甲穿透
 			}
 
 			UBWFollowUpCooldown: {
-				DisplayName: U B W Follow Up Cooldown
+				DisplayName: 无限剑制追加攻击冷却
 				Description: Mods.StarsAbove.Buffs.UBWFollowUpCooldown.Description
 			}
 
 			BearerOfDarkness: {
-				DisplayName: Bearer Of Darkness
-				Description: Paracausal darkness is granting newfound strength
+				DisplayName: 侑影者
+				Description: 你掌握了来自暗影的超自然力量
 			}
 
 			BearerOfLight: {
-				DisplayName: Bearer Of Light
-				Description: Paracausal light is granting newfound strength
+				DisplayName: 负光者
+				Description: 你掌握了来自光能的超自然力量
 			}
 
 			ThundercrashActive: {
-				DisplayName: Thundercrash Active
+				DisplayName: 雷霆冲击已激活
 				Description: ""
 			}
 
 			DebugInfiniteNova: {
-				DisplayName: Debug Infinite Nova
+				DisplayName: Debug：无限天体新星
 				Description: Mods.StarsAbove.Buffs.DebugInfiniteNova.Description
 			}
 
 			EmberFlaskUsed: {
-				DisplayName: Ember Flask Used
-				Description: The Ember Flask is empty and will only refill out of combat
+				DisplayName: 余烬瓶已使用
+				Description: 余烬瓶已经空了，脱离战斗会重新装满
 			}
 
 			ShepherdSunstoneCooldown: {
-				DisplayName: Shepherd Sunstone Cooldown
+				DisplayName: 牧羊人的日长石冷却
 				Description: ""
 			}
 
 			GossamerAOECooldown: {
-				DisplayName: Gossamer Storm Cooldown
+				DisplayName: 丝线风暴冷却
 				Description: ""
 			}
 
 			GossamerDashCooldown: {
-				DisplayName: Gossamer Dash Cooldown
+				DisplayName: 丝线冲刺冷却
 				Description: ""
 			}
 
 			DraggedBelowCooldown: {
-				DisplayName: Dragged Below Flood Cooldown
+				DisplayName: 拽入深渊：腐化流冷却
 				Description: ""
 			}
 
 			DraggedBelowCorruption: {
-				DisplayName: Fiendish Corruption
-				Description: Void energy is corrupting mortal form, changing effects of Dragged Below
+				DisplayName: 腐化恶鬼
+				Description: 来自虚空的能量正在侵蚀你的肉体，拽入深渊的攻击方式发生了变化
 			}
 
 			DraggedBelowDrownActive: {
-				DisplayName: Dragged Below Drown Active
+				DisplayName: 拽入深渊：溺亡冷却
 				Description: ""
 			}
 
 			DraggedBelowSuppressCooldown: {
-				DisplayName: Dragged Below Suppress Cooldown
+				DisplayName: 拽入深渊：抑制冷却
 				Description: ""
 			}
 
 			DraggedBelowHealCooldown: {
-				DisplayName: Dragged Below Heal Cooldown
+				DisplayName: 拽入深渊：治愈冷却
 				Description: ""
 			}
 
 			BladeWorksDamageReduction: {
-				DisplayName: Blade Works Damage Reduction
+				DisplayName: 无限剑制伤害减免
 				Description: ""
 			}
 
 			BladeworksDefenseReduction: {
-				DisplayName: Bladeworks Defense Reduction
+				DisplayName: 无限剑制防御减免
 				Description: ""
 			}
 
 			AerialDefensiveArray: {
-				DisplayName: Aerial Defensive Array
+				DisplayName: 立体攻防阵列
 				Description: ""
 			}
 
 			GundbitBeamAttack: {
-				DisplayName: Gundbit Beam Attack
+				DisplayName: GUND-BIT光束攻击
 				Description: ""
 			}
 
 			GundbitMarked: {
-				DisplayName: Gundbit Marked
+				DisplayName: GUND-BIT标记
 				Description: ""
 			}
 
 			GundbitLaserCooldown: {
-				DisplayName: Gundbit Laser Cooldown
+				DisplayName: GUND-BIT光束冷却
 				Description: ""
 			}
 
 			GundbitShieldBuff: {
-				DisplayName: Gundbit Shield Buff
+				DisplayName: GUND-BIT护盾
 				Description: ""
 			}
 
 			GundbitShieldCooldown: {
-				DisplayName: Gundbit Shield Cooldown
+				DisplayName: GUND-BIT护盾冷却
 				Description: ""
 			}
 
 			DragonshiftActiveBuff: {
-				DisplayName: Windwyrm Shift
-				Description: Transformed into a wind-aspected dragon
+				DisplayName: 碧龙状态
+				Description: 变身成强大的风暴之主
 			}
 
 			BondforgedBladeBuff: {
-				DisplayName: Bondforged Blade
-				Description: Charging draconic energy
+				DisplayName: 连结锻刃
+				Description: 获得龙化能量
 			}
 
 			DragonshiftSpecialAttackCooldownBuff: {
-				DisplayName: Dragonshift Special Attack Cooldown
+				DisplayName: 碧龙状态特殊攻击冷却
 				Description: ""
 			}
 
 			TempestDragonlightBuff: {
-				DisplayName: Tempest's Dragonlight
-				Description: Gaining draconic defenses based on minion slots
+				DisplayName: 暴风龙之光
+				Description: 根据召唤栏数量获得防御
 			}
 
 			DragaliaTagDamage: {
-				DisplayName: Dragalia Tag Damage
+				DisplayName: 寻回的龙约标记伤害
 				Description: Mods.StarsAbove.Buffs.DragaliaTagDamage.Description
 			}
 
 			TsukiyomiTeleportBuff: {
-				DisplayName: Tsukiyomi Teleport Buff
+				DisplayName: 月读传送Buff
 				Description: ""
 			}
 
 			WavedancerBuff: {
-				DisplayName: Wavedancer's Edge
+				DisplayName: 波浪舞者剑刃
 				Description: ""
 			}
 
 			WavedancerCooldown: {
-				DisplayName: Wavedancer Cooldown
+				DisplayName: 波浪舞者冷却
 				Description: ""
 			}
 
 			AccursedEdge: {
-				DisplayName: Accursed Edge
-				Description: Prepared to unleash an empowered attack after loss of life
+				DisplayName: 诅咒之锋
+				Description: 准备以失去生命为代价释放强力攻击
 			}
 
 			AccursedEdgeCooldown: {
-				DisplayName: Accursed Edge Cooldown
+				DisplayName: 诅咒之锋冷却
 				Description: ""
 			}
 
 			ChoiceGlassesLock: {
-				DisplayName: Choice Glasses Lock
-				Description: Locked from using any other items
+				DisplayName: 精选眼镜锁定
+				Description: 禁止使用任何其他物品
 			}
 
 			FateDivined: {
-				DisplayName: Fate Divined
-				Description: Fate has been divined, increasing the potency of all Tarot Card Weapon Memories
+				DisplayName: 命运所指
+				Description: 命运已经指明出路，增加塔罗牌武器追忆的所有能力
 			}
 
 			PowderCharge: {
-				DisplayName: Powder Charge
-				Description: Powder charges have been stored and will be expended upon a critical strike to explode nearby foes
+				DisplayName: 火药充能
+				Description: 火药已经存储，将在暴击时消耗，并产生爆炸杀伤附近的敌人
 			}
 
 			NetheriteIngotBuff: {
-				DisplayName: Bastion Defense
-				Description: Defenses are drastically increased
+				DisplayName: 残骸裹身
+				Description: 防御能力大幅提升
 			}
 
 			NetheriteIngotBuffCooldown: {
-				DisplayName: Bastion Defense Cooldown
+				DisplayName: 残骸裹身冷却
 				Description: ""
 			}
 
 			EnderpearlCooldown: {
-				DisplayName: Enderpearl Cooldown
+				DisplayName: 末影珍珠冷却
 				Description: ""
 			}
 
 			ElectricGuitarPickCooldown: {
-				DisplayName: Electric Guitar Pick Cooldown
+				DisplayName: “电”吉他拨片冷却
 				Description: ""
 			}
 
 			PhantomHiltBuff: {
-				DisplayName: Ghostly Hilt
-				Description: Movement speed is increased
+				DisplayName: 幽灵剑柄
+				Description: 移动速度增加
 			}
 
 			PhantomHiltCooldown: {
-				DisplayName: Ghostly Hilt Cooldown
+				DisplayName: 幽灵剑柄冷却
 				Description: ""
 			}
 
 			RagebladeBuff: {
-				DisplayName: Furious Dirk
+				DisplayName: 狂怒短剑
 				Description: ""
 			}
 
 			GuppyHeadCooldown: {
-				DisplayName: Guppy Head Cooldown
+				DisplayName: 嗝屁猫的头冷却
 				Description: ""
 			}
 
 			SoliloquyMinionBuff: {
-				DisplayName: Salon Attendants
-				Description: The salon attendants muse to your whims
+				DisplayName: 沙龙成员
+				Description: 沙龙成员会对你的奇思妙想深思熟虑
 			}
 
 			RebellionLaserBuff: {
-				DisplayName: Rebellion Laser Buff
+				DisplayName: 叛逆光束
 				Description: ""
 			}
 
 			AthanoricCurse: {
-				DisplayName: Athanoric Curse
-				Description: The walls of the arena will corrode you!
+				DisplayName: 浸煮诅咒
+				Description: 竞技场的墙壁会腐蚀你！
 			}
 
 			ForceMoveLeft: {
-				DisplayName: Force Move Left
-				Description: You are compelled to move left once this debuff ends
+				DisplayName: 强迫左移
+				Description: 当该减益结束后，你会被强迫向左移动
 			}
 
 			ForceMoveRight: {
-				DisplayName: Force Move Right
-				Description: You are compelled to move right once this debuff ends
+				DisplayName: 强迫右移
+				Description: 当该减益结束后，你会被强迫向右移动
 			}
 
 			ForceStopMoving: {
-				DisplayName: Force Stop Moving
-				Description: You are compelled to stop moving once this debuff ends
+				DisplayName: 强迫禁止
+				Description: 当该减益结束后，你会被强迫停止移动
 			}
 
 			LaunchLeft: {
-				DisplayName: Launch Left
+				DisplayName: 向左发射
 				Description: ""
 			}
 
 			LaunchRight: {
-				DisplayName: Launch Right
+				DisplayName: 向右发射
 				Description: ""
 			}
 
 			ThespianAngry: {
-				DisplayName: Thespian Angry
+				DisplayName: 狄斯比斯：愤懑
 				Description: Mods.StarsAbove.Buffs.ThespianAngry.Description
 			}
 
 			ThespianSad: {
-				DisplayName: Thespian Sad
+				DisplayName: 狄斯比斯：绝望
 				Description: Mods.StarsAbove.Buffs.ThespianSad.Description
 			}
 
 			ThespianSadAttack: {
-				DisplayName: Thespian Sad Attack
+				DisplayName: 狄斯比斯：绝望攻击
 				Description: Mods.StarsAbove.Buffs.ThespianSadAttack.Description
 			}
 
 			ThespianHappyAttack: {
-				DisplayName: Thespian Happy Attack
+				DisplayName: 狄斯比斯：欢愉攻击
 				Description: Mods.StarsAbove.Buffs.ThespianHappyAttack.Description
 			}
 
 			ThespianTransition: {
-				DisplayName: Thespian Transition
+				DisplayName: 狄斯比斯：转换
 				Description: Mods.StarsAbove.Buffs.ThespianTransition.Description
 			}
 
 			KineticConversionCooldown: {
-				DisplayName: Kinetic Conversion Cooldown
+				DisplayName: 动能转换冷却
 				Description: ""
 			}
 
 			ArmsthriftBuff: {
-				DisplayName: Armsthrift
+				DisplayName: 武装切换
 				Description: ""
 			}
 
 			ArmsthriftBuffStrong: {
-				DisplayName: Armsthrift Empowered
+				DisplayName: 强化-武装切换
 				Description: ""
 			}
 
 			ArmsthriftCooldown: {
-				DisplayName: Armsthrift Cooldown
+				DisplayName: 武装切换冷却
 				Description: ""
 			}
 
 			MindflayerWormCooldown: {
-				DisplayName: Mindflayer Worm Cooldown
+				DisplayName: 夺心魔蝌蚪冷却
 				Description: ""
 			}
 
 			RuinedCrownBuff: {
-				DisplayName: Ruined Crown
+				DisplayName: 破败王剑
 				Description: ""
 			}
 
 			RuinedCrownCooldown: {
-				DisplayName: Ruined Crown Cooldown
+				DisplayName: 破败王剑冷却
 				Description: ""
 			}
 
 			SimulacraShifterCooldown: {
-				DisplayName: Simulacra Shifter Cooldown
+				DisplayName: 相位移动器冷却
 				Description: ""
 			}
 
 			OnyxJackalTagDamage: {
-				DisplayName: Onyx Jackal Tag Damage
+				DisplayName: 缟玛瑙豺狼标记伤害
 				Description: Mods.StarsAbove.Buffs.OnyxJackalTagDamage.Description
 			}
 
 			VisionsBeyondBuff: {
-				DisplayName: Visions Beyond
+				DisplayName: 视线之外
 				Description: ""
 			}
 
 			TerrorTether: {
-				DisplayName: Terror Tether
+				DisplayName: 恐惧栓索
 				Description: ""
 			}
 
 			SharedPower: {
-				DisplayName: Shared Power
-				Description: Your Starfarer is borrowing some of your power, reducing damage, max HP, and defense
+				DisplayName: 力量共享
+				Description: 你的星海旅者正在借用你的一部分力量，降低你的最大生命值、防御力和伤害
 			}
 
 			SharedPowerSpecial: {
-				DisplayName: True Shared Power
-				Description: Your Starfarer is borrowing nearly all of your power, leaving you with only 100 Max HP and 90% less damage
+				DisplayName: 真·力量共享
+				Description: 你的星海旅者几乎借用了你全部的力量，使你只有100点最大生命值并减少90%的伤害
 			}
 
 			RebellionLaserCooldown: {
-				DisplayName: Rebellion Laser Cooldown
+				DisplayName: 叛逆光束冷却
 				Description: ""
 			}
 
 			TwoCrownBowFiring: {
-				DisplayName: Two Crown Bow Firing
+				DisplayName: 二王弓：发射
 				Description: ""
 			}
 
 			TwoCrownBowDepravity: {
-				DisplayName: Two Crown Bow Depravity
+				DisplayName: 二王弓：堕化
 				Description: ""
 			}
 
 			StellarTerminationBuff: {
-				DisplayName: Stellar Termination
+				DisplayName: 繁星终结
 				Description: ""
 			}
 
 			StellarTerminationPreBuff: {
-				DisplayName: Stellar Termination
+				DisplayName: 繁星终结
 				Description: ""
 			}
 
 			TwoCrownBowDepravityCooldown: {
-				DisplayName: Two Crown Bow Depravity Cooldown
+				DisplayName: 二王弓：堕化冷却
 				Description: ""
 			}
 
 			EchoStringRites: {
-				DisplayName: Echo String Rites
+				DisplayName: 鸣弦之仪
 				Description: ""
 			}
 
 			Merculight: {
-				DisplayName: Merculight
+				DisplayName: 魔光
 				Description: ""
 			}
 
 			OrbitalExpresswayPlushCooldown: {
-				DisplayName: Orbital Expressway Plush Cooldown
+				DisplayName: 轨道高速玩偶
 				Description: ""
 			}
 
 			AlignmentBuff: {
-				DisplayName: Alignment Active
-				Description: Catalyst Keys are surging with power
+				DisplayName: 校准激活
+				Description: 转变密钥充满力量
 			}
 
 			AlignmentStack1: {
-				DisplayName: Alignment
+				DisplayName: 校准
 				Description: ""
 			}
 
 			AlignmentStack2: {
-				DisplayName: Alignment
+				DisplayName: 校准
 				Description: ""
 			}
 
 			AlignmentStack3: {
-				DisplayName: Alignment
+				DisplayName: 校准
 				Description: ""
 			}
 
 			AlignmentStack4: {
-				DisplayName: Alignment
+				DisplayName: 校准
 				Description: ""
 			}
 
 			AlignmentStack5: {
-				DisplayName: Alignment
+				DisplayName: 校准
 				Description: ""
 			}
 
 			ElementalSurge: {
-				DisplayName: Elemental Surge
+				DisplayName: 元素涌动
 				Description: ""
 			}
 
 			CatalystKeyBuff: {
-				DisplayName: Catalyst Keys
-				Description: Catalyst keys are assailing foes
+				DisplayName: 转变密钥
+				Description: 转变密钥正在攻击你的敌人
 			}
 
 			PowerMoonCooldown: {
-				DisplayName: Power Moon Cooldown
+				DisplayName: 力量之月冷却
 				Description: ""
 			}
 
 			SugarballMinionBuff: {
-				DisplayName: Sweetened Monster
-				Description: Sweetened monsters are aiding you
+				DisplayName: 糖可梦
+				Description: 糖可梦们正在你的身旁协助你，关注懿糖糖呀谢谢喵
 			}
 
 			Cursewrought: {
-				DisplayName: Cursewrought
-				Description: Cursed energy empowers your weapon
+				DisplayName: 诅咒之绳
+				Description: 诅咒的能量使你的武器变的强大
 			}
 
 			Necrosis: {
-				DisplayName: Necrosis
-				Description: Stats are reduced
+				DisplayName: 坏死
+				Description: 属性降低
 			}
 
 			CrystalshotCooldown: {
-				DisplayName: Crystalshot Cooldown
+				DisplayName: 水晶子弹冷却
 				Description: ""
 			}
 
 			CrystalshotPrepped: {
-				DisplayName: Crystalshot Prepped
+				DisplayName: 水晶子弹已上膛
 				Description: ""
 			}
 
 			OutbackWranglerCooldown: {
-				DisplayName: Outback Wrangler Cooldown
+				DisplayName: 内地争论者冷却
 				Description: ""
 			}
 
 			ArbiterSpecialCooldown: {
-				DisplayName: Arbiter Special Cooldown
+				DisplayName: 调律者特殊攻击冷却
 				Description: ""
 			}
 
 			DegradedSingularity: {
-				DisplayName: Degraded Singularity
-				Description: Manifestations of a Singularity grant increased critical strike damage
+				DisplayName: 劣化奇点
+				Description: 显现不完全的奇点为你增加暴击伤害
 			}
 
 			EmbodiedSingularity: {
-				DisplayName: Embodied Singularity
-				Description: Elegance, grace, and sheer destructive power are at your disposal, drastically increasing critical strike damage but reducing defense to 0
+				DisplayName: 具象化奇点
+				Description: 你支配着完美、优雅、绝对的破坏性力量，大幅增加暴击伤害，但是防御力降为0
 			}
 
 			Ensnared: {
-				DisplayName: Ensnared
+				DisplayName: 封印
 				Description: ""
 			}
 
 			FairyTagDamage: {
-				DisplayName: Fairy Tag Damage
+				DisplayName: 妖灵标记伤害
 				Description: ""
 			}
 
 			LockDebuff: {
-				DisplayName: Lock Debuff
+				DisplayName: “锁”
 				Description: ""
 			}
 
 			HerosBulwark: {
-				DisplayName: Hero's Bulwark
-				Description: The legendary shield's aegis furthers your abilities
+				DisplayName: 英雄壁垒
+				Description: 传说之盾正在增强你的能力
 			}
 
 			LegendaryShieldRaised: {
-				DisplayName: Legendary Shield Raised
-				Description: Shield is raised, drastically reducing incoming damage
+				DisplayName: 举起传说之盾
+				Description: 盾牌已被举起，大幅降低受到的伤害
 			}
 
 			SingularityResonance: {
-				DisplayName: Singularity Resonance
-				Description: Dire conflict has incited inner power
+				DisplayName: 奇点共鸣
+				Description: 激烈的对战激发了你的内在力量
 			}
 
 			CelestialVoidCooldown: {
-				// DisplayName: Celestial Void Cooldown
-				// Description: ""
+				DisplayName: 天体虚空冷却
+				Description: ""
 			}
 
 			AuxiliaryArmamentBuff: {
-				// DisplayName: Auxiliary Armaments
-				// Description: Assailing foes with myriad firearms
+				DisplayName: 辅助武装
+				Description: 使用无数的武器攻击敌人
 			}
 
 			M16A1ShieldCooldown: {
-				// DisplayName: M16A1 Shield Cooldown
-				// Description: ""
+				DisplayName: M16A1护盾冷却
+				Description: ""
 			}
 
 			M16A1Counterfire: {
-				// DisplayName: M16A1 Counterfire
-				// Description: ""
+				DisplayName: M16A1反击发射
+				Description: ""
 			}
 
 			InheritedCaseActive: {
-				// DisplayName: Inherited Case Active
-				// Description: ""
+				DisplayName: 继承案件激活
+				Description: ""
 			}
 
 			HeroicCurse: {
-				// DisplayName: Heroic Curse
-				// Description: ""
+				DisplayName: 英雄诅咒
+				Description: ""
 			}
 
 			LegendaryShieldRaisedCooldown: {
-				// DisplayName: Legendary Shield Raised Cooldown
-				// Description: ""
+				DisplayName: 举起传说之盾冷却
+				Description: ""
 			}
 
 			ParadiseLostBuff: {
-				// DisplayName: Paradise Lost
-				// Description: Ye who are drenched in sin. Rise and face me.
+				DisplayName: 失乐园
+				Description: 不要惊惶，我是你的救主，我与你同在
 			}
 
 			PlagueProphetBuff: {
-				// DisplayName: Plague's Prophet
-				// Description: Rise, my servants. Rise and serve me.
+				DisplayName: 疫医
+				Description: 起来吧，我的仆从，欢唱着迎接我的到来
 			}
 
 			BaptisedBuff: {
-				// DisplayName: Baptised Buff
-				// Description: Mods.StarsAbove.Buffs.BaptisedBuff.Description
+				DisplayName: 洗礼
+				Description: Mods.StarsAbove.Buffs.BaptisedBuff.Description
 			}
 
 			TheophobiaBuff: {
-				// DisplayName: Theophobia Buff
-				// Description: Mods.StarsAbove.Buffs.TheophobiaBuff.Description
+				DisplayName: ！！！敬畏！！！
+				Description: Mods.StarsAbove.Buffs.TheophobiaBuff.Description
 			}
 
 			ApostleBuff: {
-				// DisplayName: Apostle Buff
-				// Description: Mods.StarsAbove.Buffs.ApostleBuff.Description
+				DisplayName: 使徒
+				Description: Mods.StarsAbove.Buffs.ApostleBuff.Description
 			}
 		}
 
@@ -13937,10 +14112,10 @@ Mods: {
 		}
 
 		WorldGen: {
-			// NeonVeilGenerationMessage: Lighting the Neon Veil
-			// ExtraStructuresGenerationMessage: Landing novelties from the stars
+			NeonVeilGenerationMessage: 光亮霓虹面纱
+			ExtraStructuresGenerationMessage: 从星星上落下的新奇物品
 		}
 
-		Conditions.InNeonVeil: Mods.StarsAbove.Conditions.InNeonVeil
+		Conditions.InNeonVeil: 在霓虹面纱之中
 	}
 }
