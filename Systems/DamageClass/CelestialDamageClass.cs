@@ -30,7 +30,7 @@ namespace StarsAbove.Systems
                 return StatInheritanceData.Full;
 
             return new StatInheritanceData(
-                damageInheritance: 1f,
+                damageInheritance: 0.6f,
                 critChanceInheritance: 1f,
                 attackSpeedInheritance: 1f,
                 armorPenInheritance: 1f,
