@@ -4150,10 +4150,18 @@ namespace StarsAbove
                         //NewStellarArrayAbility = true;
                     }
                 }
-                if (DownedBossSystem.downedTsuki && tsukiyomiDialogue == 0)
+                if (DownedBossSystem.downedTsuki)
                 {
-                    //tsukiyomiDialogue = 1;
-                    //NewDiskDialogue = true;
+                    if (tsukiyomiDialogue == 0 || tsukiyomiDialogue == 1)
+                    {
+                        //Force open the dialogue.
+                        chosenDialogue = 73;
+                        tsukiyomiDialogue = 2;
+                        dialoguePrep = true;
+                        starfarerDialogue = true;
+                        //if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
+                        tsukiyomiDialogue = 2;
+                    }
                 }
 
                 if (tsukiyomiDialogue >= 1)
@@ -12875,9 +12883,9 @@ namespace StarsAbove
             }
             if (luminitePrism)
             {
-                if (trueNovaGaugeMax >= 200)
+                if (novaChargeMod >= 20)
                 {
-                    modifiers.FinalDamage *= 1.5f;
+                    modifiers.FinalDamage *= 1.2f;
                 }
             }
         }
