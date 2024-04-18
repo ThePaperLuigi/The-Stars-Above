@@ -492,8 +492,8 @@ namespace StarsAbove.NPCs.Arbitration
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfBloodshed>(), 2)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfMimicry>(), 2));
 
-
-			StellarSpoils.SetupBossStellarSpoils(npcLoot);
+            npcLoot.Add(notExpertRule);
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()
