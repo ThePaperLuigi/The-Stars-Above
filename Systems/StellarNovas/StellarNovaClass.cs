@@ -53,7 +53,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 2:
                     return baseDamage + 250;
                 case 3:
-                    return baseDamage / 2;
+                    return baseDamage + 850;
                 case 4:
                     return baseDamage / 500;
                 case 5:
