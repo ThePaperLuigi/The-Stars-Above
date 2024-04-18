@@ -66,6 +66,11 @@ namespace StarsAbove.Items.Weapons.Magic
             }
             return base.CanUseItem(player);
         }
+        public override void UpdateInventory(Player player)
+        {
+            Item.TurnToAir();
+            base.UpdateInventory(player);
+        }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
 
@@ -247,10 +252,7 @@ namespace StarsAbove.Items.Weapons.Magic
         }
         public override void AddRecipes()
         {
-            CreateRecipe(1)
-                
-                .AddTile(TileID.Anvils)
-                .Register();
+            
         }
     }
 
