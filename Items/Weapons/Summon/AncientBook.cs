@@ -159,8 +159,8 @@ namespace StarsAbove.Items.Weapons.Summon
 					{
 						
 						
-						int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), targetPosition.X + Main.rand.Next(-170, 170), targetPosition.Y + Main.rand.Next(-170, 170), velocity.X, velocity.Y, ProjectileType<TentacleCircle>(), (Item.damage), 2f, player.whoAmI);
-						Main.projectile[index].originalDamage = (Item.damage);
+						int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), targetPosition.X + Main.rand.Next(-170, 170), targetPosition.Y + Main.rand.Next(-170, 170), velocity.X, velocity.Y, ProjectileType<TentacleCircle>(), player.GetWeaponDamage(Item), 2f, player.whoAmI);
+						Main.projectile[index].originalDamage = player.GetWeaponDamage(Item);
 					}
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 
