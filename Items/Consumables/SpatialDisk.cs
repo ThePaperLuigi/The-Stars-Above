@@ -307,7 +307,7 @@ namespace StarsAbove.Items.Consumables
 			if(player.GetModPlayer<DialoguePlayer>().unreadDialogueCount > 0)
             {
 				//First priority, boss dialogue- get the first active one:
-				activateDialogue(player.GetModPlayer<DialoguePlayer>().dict.GetActiveDialoguesByCategory("BossDialogue")[0], player);
+				//activateDialogue(player.GetModPlayer<DialoguePlayer>().dict.GetActiveDialoguesByCategory("BossDialogue")[0], player);
 				//TODO: handle showing the dialogue, progressing the dialogue, etc.
 				//Next up, weapons:
 
