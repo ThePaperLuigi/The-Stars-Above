@@ -10024,12 +10024,12 @@ Mods: {
 					'''
 					WORK IN PROGRESS!
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
-					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks
+					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					[c/FFAB4D:Melee]: The weapon transforms into a gauntlet, allowing for a close-ranged combo
 					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes		
-					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged]
-					Uncharged attacks quickly fires a formation of fast bolts of energy
+					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
+					Uncharged attacks quickly fires a formation of rapid energy
 					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration
 					Attacks fire homing energy blasts that arc lightning to nearby foes
