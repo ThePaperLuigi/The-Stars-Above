@@ -10041,6 +10041,11 @@ Mods: {
 					'''
 				DisplayName: Dreadmother's Dark Idol
 			}
+
+			DreadmotherClaw: {
+				DisplayName: Dreadmother Claw
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -11053,6 +11058,13 @@ Mods: {
 			fastLargeRadiate.DisplayName: fast Large Radiate
 			ParadiseLostAttack.DisplayName: Paradise Lost Attack
 			ParadiseLostAttackDamage.DisplayName: Paradise Lost Attack Damage
+			DreadmotherClaw1.DisplayName: Dreadmother Claw1
+			DreadmotherClaw2.DisplayName: Dreadmother Claw2
+			DreadmotherClaw3.DisplayName: Dreadmother Claw3
+			StarsAboveClawEffect.DisplayName: Stars Above Claw Effect
+			DreadmotherClawAttack.DisplayName: Dreadmother Claw Attack
+			DreadmotherClawAttack2.DisplayName: Dreadmother Claw Attack2
+			DreadmotherClawAttack3.DisplayName: Dreadmother Claw Attack3
 		}
 
 		Buffs: {

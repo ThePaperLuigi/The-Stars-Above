@@ -9456,7 +9456,7 @@ namespace StarsAbove.Dialogue
         //Asphodene/Eridani
         //if the dialogue is by someone else, this can vary (think of it like the dialogue's owner)
         //Note that this appears AFTER title
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
  
         //Categories can be longer than 1 segment, the actual "category" is defined when populating dialogue
         //(BossItemDialogue vs BossDialogue.KingSlime)
@@ -9484,7 +9484,11 @@ namespace StarsAbove.Dialogue
             Name = name;
             Title = title;
             AssociatedItem = associatedItemType; // if associated item is 0, there isn't an item
-            Length = Int32.Parse(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "Length"));
+            if(Name != "")
+            {
+                Length = Int32.Parse(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "Length"));
+
+            }
             for (int i = 0; i < Length; i++)
             {
                 AddPage(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i, Main.LocalPlayer.name), LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i + ".Emotion"));
@@ -9607,12 +9611,16 @@ namespace StarsAbove.Dialogue
         public bool PopulateDialogue(string starfarerName, string title, int associatedItemType, string category)
         {
             var dialogueInsert = new Dialogue(starfarerName, category + "." + title, ModContent.ItemType<SpatialDisk>(), category);
-            if (!dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert) || !dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert))
+            if(dict != null)
             {
-                //If the dialogue has not been read nor is currently active
-                dict.AddActiveDialogue(dialogueInsert, category);
-                return true;
+                if (!dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert) || !dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert))
+                {
+                    //If the dialogue has not been read nor is currently active
+                    dict.AddActiveDialogue(dialogueInsert, category);
+                    return true;
+                }
             }
+            
 
             return false;
         }

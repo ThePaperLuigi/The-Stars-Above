@@ -11,6 +11,8 @@ using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Other.ArchitectLuminance;
 using StarsAbove.Buffs.Other.ArchitectsLuminance;
+using StarsAbove.Projectiles.Other.DreadmotherDarkIdol;
+using StarsAbove.Projectiles.Melee.SoulReaver;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -56,18 +58,7 @@ namespace StarsAbove.Items.Weapons.Other
 			{
 				if (!player.HasBuff(BuffType<ArtificeSirenBuff>()) && !player.HasBuff(BuffType<ArtificeSirenCooldown>()))
 				{
-					player.AddBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArtificeSirenBuff>(), 900);
-					//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, mod.ProjectileType("ErinysFX"), 0, 0, player.whoAmI, 0, 1);
-					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
-
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("Siren").Type, 0, 0, player.whoAmI);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("SirenTurret1").Type, 0, 0, player.whoAmI);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("SirenLaser1").Type, Item.damage, 0, player.whoAmI);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("SirenTurret2").Type, 0, 0, player.whoAmI);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("SirenLaser2").Type, Item.damage, 0, player.whoAmI);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("SirenTurret3").Type, 0, 0, player.whoAmI);
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("SirenLaser3").Type, Item.damage, 0, player.whoAmI);
-
+					
 					return false;
 				}
 				else
@@ -86,17 +77,18 @@ namespace StarsAbove.Items.Weapons.Other
 		}
 		public override void HoldItem(Player player)
 		{
+			player.GetModPlayer<WeaponPlayer>().dreadmotherHeld = true;
 			Item.scale = 2f;
-			player.AddBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArchitectLuminanceBuff>(), 2);
+			//player.AddBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArchitectLuminanceBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+				//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
 
 
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
-				Item.useStyle = ItemUseStyleID.HiddenAnimation;
+				Item.useStyle = ItemUseStyleID.Swing;
 				Item.useTime = 20;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 20;
 				Item.UseSound = SoundID.Item15;
@@ -138,10 +130,7 @@ namespace StarsAbove.Items.Weapons.Other
 			if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
             {
 
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileID.MoonlordBullet, damage/2, knockback, player.whoAmI);
 				
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X/2, velocity.Y/2, ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
-
 
 			}
 			else if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
@@ -159,20 +148,18 @@ namespace StarsAbove.Items.Weapons.Other
 
 
 			}
-			else
+            else if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
             {
-				if (altSwing)
-				{
-					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<ArchitectSword>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
-					altSwing = false;
-				}
-				else
-				{
-					Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<ArchitectSword>(), damage, knockback, player.whoAmI, 0, 1, player.direction);
-					altSwing = true;
-				}
-			}
-			return false;
+                Projectile.NewProjectile(source, player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y, ProjectileType<DreadmotherClawAttack>(), damage, knockback, player.whoAmI, 0f); ;
+
+
+            }
+            else if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+            {
+
+               
+            }
+            return false;
 		}
 
 		public override void AddRecipes()

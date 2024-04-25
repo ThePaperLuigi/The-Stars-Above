@@ -51,6 +51,9 @@ namespace StarsAbove.Systems
         private UserInterface _DraggedBelowBarUserInterface;
         internal DraggedBelowBar DraggedBelowBar;
 
+        private UserInterface _DreadmotherGaugeUserInterface;
+        internal DreadmotherGauge DreadmotherGauge;
+
         private UserInterface _DragonshiftGaugeUserInterface;
         internal DragonshiftGauge DragonshiftGauge;
 
@@ -249,6 +252,10 @@ namespace StarsAbove.Systems
                 DraggedBelowBar = new DraggedBelowBar();
                 _DraggedBelowBarUserInterface = new UserInterface();
                 _DraggedBelowBarUserInterface.SetState(DraggedBelowBar);
+
+                DreadmotherGauge = new DreadmotherGauge();
+                _DreadmotherGaugeUserInterface = new UserInterface();
+                _DreadmotherGaugeUserInterface.SetState(DreadmotherGauge);
 
                 DreamersInkwellUI = new DreamersInkwellGauge();
                 _DreamersInkwellUIUserInterface = new UserInterface();
@@ -486,6 +493,7 @@ namespace StarsAbove.Systems
 
             _DragonshiftGaugeUserInterface?.Update(gameTime);
             _DraggedBelowBarUserInterface?.Update(gameTime);
+            _DreadmotherGaugeUserInterface?.Update(gameTime);
 
             _DreamersInkwellUIUserInterface?.Update(gameTime);
 
@@ -671,6 +679,15 @@ namespace StarsAbove.Systems
                     delegate
                     {
                         _DraggedBelowBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Dreadmother's Dark Idol Gauge",
+                    delegate
+                    {
+                        _DreadmotherGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)

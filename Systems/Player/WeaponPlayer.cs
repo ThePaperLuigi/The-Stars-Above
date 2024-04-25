@@ -59,6 +59,7 @@ using StarsAbove.Buffs.TagDamage;
 using StarsAbove.Dusts;
 using StarsAbove.Items.Armor.CloakOfAnArbiter;
 using StarsAbove.Items.Armor.DraggedBelow;
+using StarsAbove.Items.Armor.DreadmotherClaw;
 using StarsAbove.Items.Armor.LegendaryShield;
 using StarsAbove.Items.Armor.Manifestation;
 using StarsAbove.Items.Weapons.Celestial;
@@ -163,6 +164,9 @@ namespace StarsAbove.Systems
         //Two Crown Bow
         public bool twoCrownBowHeld;
         public float terminationGauge;
+
+        public bool dreadmotherHeld;
+        public float dreadmotherGauge;
 
         //Naganadel
         public bool naganadelWeapon1Summoned;
@@ -3940,6 +3944,7 @@ namespace StarsAbove.Systems
                 ];
 
             }
+            dreadmotherHeld = false;
             CloakOfAnArbiterHeld = false;
             LegendaryShieldHeld = false;
             LegendaryShieldEquippedAsAccessory = false;
@@ -4178,6 +4183,11 @@ namespace StarsAbove.Systems
                 if (DraggedBelowHeld)
                 {
                     Player.UpdateVisibleAccessories(new Item(ItemType<DraggedBelowGloves>()), false);
+
+                }
+                if (dreadmotherHeld && Player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+                {
+                    Player.UpdateVisibleAccessories(new Item(ItemType<DreadmotherClaw>()), false);
 
                 }
                 if (CloakOfAnArbiterHeld)
