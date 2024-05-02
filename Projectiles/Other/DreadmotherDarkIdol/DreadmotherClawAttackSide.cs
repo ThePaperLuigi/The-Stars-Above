@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 {
     //
-    public class DreadmotherClawAttack : ModProjectile
+    public class DreadmotherClawAttackSide : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -83,7 +83,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
             Player projOwner = Main.player[Projectile.owner];
             projOwner.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
             projOwner.GetModPlayer<WeaponPlayer>().dreadmotherGauge += 1f;
-            
+           
             for (int d = 0; d < 8; d++)
             {
                 Dust.NewDust(target.Center, 0, 0, DustID.Clentaminator_Purple, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default, 0.4f);

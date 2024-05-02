@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 {
     //
-    public class DreadmotherClawAttack : ModProjectile
+    public class DreadmotherClawAttackSideAlt : ModProjectile
     {
         public override void SetStaticDefaults()
         {

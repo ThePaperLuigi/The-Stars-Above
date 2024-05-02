@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 using StarsAbove.Systems;
+using StarsAbove.UI;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,7 +9,7 @@ using Terraria.ModLoader;
 namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 {
     //
-    public class DreadmotherClawAttack : ModProjectile
+    public class DreadmotherClawAttackFinish : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -32,7 +34,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
             Projectile.tileCollide = false;
             Projectile.friendly = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = -1;
+            Projectile.localNPCHitCooldown = 20;
             AIType = ProjectileID.Bullet;           //Act exactly like default Bullet
             DrawOriginOffsetY = 0;
         }
@@ -82,8 +84,15 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         {
             Player projOwner = Main.player[Projectile.owner];
             projOwner.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
-            projOwner.GetModPlayer<WeaponPlayer>().dreadmotherGauge += 1f;
-            
+            projOwner.GetModPlayer<WeaponPlayer>().dreadmotherGauge += 2f;
+            if(projOwner.GetModPlayer<WeaponPlayer>().dreadmotherGauge >= 100)
+            {
+                projOwner.GetModPlayer<WeaponPlayer>().dreadmotherGauge = 0;
+                if (Projectile.owner == Main.myPlayer)
+                {
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<DreadmotherClawExplosion>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI);
+                }
+            }
             for (int d = 0; d < 8; d++)
             {
                 Dust.NewDust(target.Center, 0, 0, DustID.Clentaminator_Purple, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default, 0.4f);

@@ -10011,9 +10011,9 @@ Mods: {
 					WORK IN PROGRESS!
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
-					[c/FFAB4D:Melee]: The weapon transforms into a gauntlet, allowing for a close-ranged combo
+					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
 					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
-					Gain brief Invincibility and restore 2% Max HP when defeating foes		
+					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy
 					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
@@ -11051,6 +11051,11 @@ Mods: {
 			// DreadmotherClawAttack.DisplayName: Dreadmother Claw Attack
 			// DreadmotherClawAttack2.DisplayName: Dreadmother Claw Attack2
 			// DreadmotherClawAttack3.DisplayName: Dreadmother Claw Attack3
+			// DreadmotherClawAttackAlt.DisplayName: Dreadmother Claw Attack Alt
+			// DreadmotherClawAttackFinish.DisplayName: Dreadmother Claw Attack Finish
+			// DreadmotherClawExplosion.DisplayName: Dreadmother Claw Explosion
+			// DreadmotherClawAttackSide.DisplayName: Dreadmother Claw Attack Side
+			// DreadmotherClawAttackSideAlt.DisplayName: Dreadmother Claw Attack Side Alt
 		}
 
 		Buffs: {

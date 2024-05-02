@@ -4265,6 +4265,11 @@ namespace StarsAbove.Systems
         }
         private void OnKillEnemy(NPC npc)
         {
+            if(dreadmotherHeld && Player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+            {
+                Player.AddBuff(BuffType<Invincibility>(), 10);
+                Player.Heal((int)(Player.statLifeMax2 * 0.02f));
+            }
             if (Player.HasBuff(BuffType<RealizedNanomachinaBuff>()))
             {
                 nanomachinaGauge += 5;

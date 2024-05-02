@@ -13,6 +13,10 @@ using StarsAbove.Projectiles.Other.ArchitectLuminance;
 using StarsAbove.Buffs.Other.ArchitectsLuminance;
 using StarsAbove.Projectiles.Other.DreadmotherDarkIdol;
 using StarsAbove.Projectiles.Melee.SoulReaver;
+using StarsAbove.Buffs.Summon.DragaliaFound;
+using StarsAbove.Buffs;
+using StarsAbove.Projectiles.Summon.DragaliaFound;
+using System;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -54,7 +58,11 @@ namespace StarsAbove.Items.Weapons.Other
 
 		public override bool CanUseItem(Player player)
 		{
-			if (player.altFunctionUse == 2)
+            if (player.HasBuff(BuffType<ComboCooldown>()))
+            {
+                return false;
+            }
+            if (player.altFunctionUse == 2)
 			{
 				if (!player.HasBuff(BuffType<ArtificeSirenBuff>()) && !player.HasBuff(BuffType<ArtificeSirenCooldown>()))
 				{
@@ -63,6 +71,7 @@ namespace StarsAbove.Items.Weapons.Other
 				}
 				else
 				{
+					
 					return false;
 				}
 
@@ -88,10 +97,16 @@ namespace StarsAbove.Items.Weapons.Other
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
-				Item.useStyle = ItemUseStyleID.Swing;
-				Item.useTime = 20;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-				Item.useAnimation = 20;
-				Item.UseSound = SoundID.Item15;
+                attackComboCooldown--;
+                if (attackComboCooldown <= 0)
+                {
+                    attackType = 0;
+                }
+
+                Item.useStyle = ItemUseStyleID.Swing;
+				Item.useTime = 10;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+				Item.useAnimation = 10;
+				Item.UseSound = SoundID.Item1;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
 			{
@@ -119,12 +134,15 @@ namespace StarsAbove.Items.Weapons.Other
 		}
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			// 
-			// 60 frames = 1 second
-			//player.GetModPlayer<WeaponPlayer>().radiance++;
-			
-		}
-		private bool altSwing;
+            // 
+            // 60 frames = 1 second
+            //player.GetModPlayer<WeaponPlayer>().radiance++;
+
+        }
+        int attackType;
+        int attackComboCooldown;
+
+        private bool altSwing;
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
@@ -150,8 +168,40 @@ namespace StarsAbove.Items.Weapons.Other
 			}
             else if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
             {
-                Projectile.NewProjectile(source, player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y, ProjectileType<DreadmotherClawAttack>(), damage, knockback, player.whoAmI, 0f); ;
+                attackComboCooldown = 60;
 
+                switch (attackType)
+                {
+                    case 0:
+                        Projectile.NewProjectile(source, player.Center, velocity, ProjectileType<DreadmotherClawAttackAlt>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+
+                        attackType++;
+                        return false;
+                    case 1:
+                        Projectile.NewProjectile(source, player.Center, velocity, ProjectileType<DreadmotherClawAttackSideAlt>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+
+                        attackType++;
+                        return false;
+                    case 2:
+                        Projectile.NewProjectile(source, player.Center, velocity, ProjectileType<DreadmotherClawAttackSide>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+
+                        attackType++;
+                        return false;
+                    case 3:
+                        Projectile.NewProjectile(source, player.Center, velocity, ProjectileType<DreadmotherClawAttack>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+
+                        attackType++;
+                        return false;
+                    case 4:
+						player.AddBuff(BuffType<ComboCooldown>(), 20);
+                        Projectile.NewProjectile(source, player.Center, velocity*2, ProjectileType<DreadmotherClawAttackFinish>(), damage, knockback, player.whoAmI, 0, 0, player.direction);
+                        attackType = 0;
+                        return false;
+                }
+                if (attackType > 4)
+                {
+                    attackType = 0;
+                }
 
             }
             else if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
