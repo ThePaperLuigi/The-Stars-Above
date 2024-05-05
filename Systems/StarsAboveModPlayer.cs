@@ -3209,11 +3209,7 @@ namespace StarsAbove
             base.UpdateEquips();
         }
 
-        public override void SetStaticDefaults()
-        {
-
-
-        }
+        
         public override void PreUpdate()
         {
             GlobalRotation++;
@@ -3848,53 +3844,44 @@ namespace StarsAbove
                 }
             }
         }
+
+        public Dictionary<int, int> ActiveDialogues = new Dictionary<int, int>();
+        public override void SetStaticDefaults()
+        {
+            ActiveDialogues = new Dictionary<int, int>();
+
+        }
         private void StellarDiskDialogue()
         {
             if (SyncWorldProgress)
             {
-                /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
-                  {
-                      observatoryDialogue = 1;
-                                          newDiskNotification = true;
-                      NewDiskDialogue = true;
-
-                  }
-                  if (observatoryDialogue == 2 && cosmicVoyageDialogue == 0)
-                  {
-                      cosmicVoyageDialogue = 1;
-                                          newDiskNotification = true;
-                      NewDiskDialogue = true;
-
-                  }*/
                 bool newDiskNotification = false;
                 bool newArrayNotification = false;
-                bool newNovaNotification = false;
-                if (NPC.downedSlimeKing && slimeDialogue == 0)
+                bool newNovaNotification = false;                
+
+                //New system.
+
+                //If slime king is dead
+                if (NPC.downedSlimeKing)
                 {
-                    slimeDialogue = 1;
-                    newDiskNotification = true;
-                    NewDiskDialogue = true;
-                    if (Main.expertMode)
-                    {
-                        newArrayNotification = true;
-                        NewStellarArrayAbility = true;
-                    }
+                    SetupActiveDialogue(ref newDiskNotification, ref newArrayNotification, 51, ref slimeDialogue);
+
                 }
                 if (NPC.downedBoss1 && eyeDialogue == 0)
                 {
                     eyeDialogue = 1;
-                                        newDiskNotification = true;
-                    NewDiskDialogue = true;
+                    newDiskNotification = true;
+                     
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
 
                 }
                 if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
                     astrolabeIntroDialogue = 1;
-                                        newDiskNotification = true;
-                    NewDiskDialogue = true;
+                    newDiskNotification = true;
+                     
 
 
 
@@ -3902,8 +3889,8 @@ namespace StarsAbove
                 if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
                 {
                     observatoryIntroDialogue = 1;
-                                        newDiskNotification = true;
-                    NewDiskDialogue = true;
+                    newDiskNotification = true;
+                     
 
 
 
@@ -3912,18 +3899,18 @@ namespace StarsAbove
                 {
                     corruptBossDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
                 }
                 if (NPC.downedQueenBee && BeeBossDialogue == 0)
                 {
                     BeeBossDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
                 }
 
@@ -3931,16 +3918,16 @@ namespace StarsAbove
                 {
                     SkeletonDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
                 }
                 if (NPC.downedDeerclops && DeerclopsDialogue == 0)
                 {
                     DeerclopsDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                 }
                 if (Main.hardMode && WallOfFleshDialogue == 0)//Hardmode
@@ -3948,16 +3935,16 @@ namespace StarsAbove
                     WallOfFleshDialogue = 1;
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
                 }
                 if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
                 {
                     ForceWeaponDialogue = 1;
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (GolemWeaponDialogue == 2 && GenocideWeaponDialogue == 0)//Hardmode
@@ -3965,7 +3952,7 @@ namespace StarsAbove
                     GenocideWeaponDialogue = 1;
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (CorruptBossWeaponDialogue == 2 && TakodachiWeaponDialogue == 0)//Hardmode
@@ -3973,18 +3960,18 @@ namespace StarsAbove
                     TakodachiWeaponDialogue = 1;
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
                 {
                     TwinsDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     if (bloomingflames == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                     }
 
 
@@ -3994,7 +3981,7 @@ namespace StarsAbove
                     SkyStrikerWeaponDialogue = 1;
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (LunaticCultistWeaponDialogue == 2 && TwinStarsWeaponDialogue == 0)//Hardmode
@@ -4002,7 +3989,7 @@ namespace StarsAbove
                     TwinStarsWeaponDialogue = 1;
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 //Dialogue for Calamity Mod bosses.
@@ -4013,86 +4000,86 @@ namespace StarsAbove
                     if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         desertscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         crabulonDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         hivemindDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         perforatorDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         slimegodDialogue = 1;
                     }
                     //Hardmode
                     if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         cryogenDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         aquaticscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         brimstoneelementalDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         calamitasDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         leviathanDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         astrumaureusDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         plaguebringerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         ravagerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
                     {
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         astrumdeusDialogue = 1;
                     }
                 }
@@ -4101,19 +4088,19 @@ namespace StarsAbove
                 {
                     QueenSlimeDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                 }
                 if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
                 {
                     nalhaunDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
 
 
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
 
                 }
@@ -4121,11 +4108,11 @@ namespace StarsAbove
                 {
                     dioskouroiDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     //NewStellarNova = true;
                     //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    //NewStellarArrayAbility = true;
+                    // 
 
 
                 }
@@ -4133,11 +4120,11 @@ namespace StarsAbove
                 {
                     penthDialogue = 1;
                      newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     NewStellarNova = true;
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
 
                 }
@@ -4145,13 +4132,13 @@ namespace StarsAbove
                 {
                     arbiterDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     //NewStellarNova = true;
                     if (Main.expertMode)
                     {
                         //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                        //NewStellarArrayAbility = true;
+                        // 
                     }
                 }
                 if (DownedBossSystem.downedTsuki)
@@ -4159,12 +4146,12 @@ namespace StarsAbove
                     if (tsukiyomiDialogue == 0 || tsukiyomiDialogue == 1)
                     {
                         //Force open the dialogue.
-                        chosenDialogue = 73;
-                        tsukiyomiDialogue = 2;
-                        dialoguePrep = true;
-                        starfarerDialogue = true;
+                        //chosenDialogue = 73;
+                        //tsukiyomiDialogue = 2;
+                        //dialoguePrep = true;
+                        //starfarerDialogue = true;
                         //if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-                        tsukiyomiDialogue = 2;
+                        //tsukiyomiDialogue = 2;
                     }
                 }
 
@@ -4183,11 +4170,11 @@ namespace StarsAbove
                 {
                     DestroyerDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     if (bloomingflames == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                     }
 
 
@@ -4196,11 +4183,11 @@ namespace StarsAbove
                 {
                     SkeletronPrimeDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     if (bloomingflames == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                     }
 
 
@@ -4209,7 +4196,7 @@ namespace StarsAbove
                 {
                     AllMechsDefeatedDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
 
 
@@ -4219,9 +4206,9 @@ namespace StarsAbove
                 {
                     PlanteraDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
 
                 }
@@ -4229,11 +4216,11 @@ namespace StarsAbove
                 {
                     GolemDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     if (Main.expertMode)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                     }
 
                 }
@@ -4241,7 +4228,7 @@ namespace StarsAbove
                 {
                     EmpressDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
 
                 }
@@ -4249,11 +4236,11 @@ namespace StarsAbove
                 {
                     CultistDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     if (Main.expertMode)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                     }
 
                 }
@@ -4263,10 +4250,10 @@ namespace StarsAbove
 
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
 
                 }
@@ -4274,7 +4261,7 @@ namespace StarsAbove
                 {
                     DukeFishronDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                 }
                 if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
                 {
@@ -4302,7 +4289,7 @@ namespace StarsAbove
 
 
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
                     if (BossChecklist != null)
                     {
                         if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.TsukiyomiBossChecklist"), 241, 255, 180); }
@@ -4310,7 +4297,7 @@ namespace StarsAbove
                     }
 
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
 
                 }
@@ -4318,11 +4305,11 @@ namespace StarsAbove
                 {
                     vagrantDialogue = 1;
 
-                                        newDiskNotification = true;
-                    NewDiskDialogue = true;
+                    newDiskNotification = true;
+                     
 
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
                     newNovaNotification = true;
                     NewStellarNova = true;
@@ -4335,7 +4322,7 @@ namespace StarsAbove
                     thespianDialogue = 1;
 
                     newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     
 
@@ -4346,7 +4333,7 @@ namespace StarsAbove
                     starfarerPostBattleDialogue = 1;
 
                     newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
 
 
@@ -4356,10 +4343,10 @@ namespace StarsAbove
                 {
                     //AllVanillaBossesDefeatedDialogue = 1;
                     //                    newDiskNotification = true;
-                    //NewDiskDialogue = true;
+                    // 
 
                     //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    //NewStellarArrayAbility = true;
+                    // 
 
 
                 }
@@ -4368,10 +4355,10 @@ namespace StarsAbove
                     //Expert mode only
                     EverythingDefeatedDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     newArrayNotification = true;
-                    NewStellarArrayAbility = true;
+                     
 
 
                 }
@@ -4380,21 +4367,21 @@ namespace StarsAbove
                 {
                     HellWeaponDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                 }
                 if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
                 {
                     Stellaglyph2WeaponDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                 }
                 if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
                 {
                     NanomachineWeaponDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                 }
                 //Boss Spawn items
@@ -4440,7 +4427,7 @@ namespace StarsAbove
                 {
                     GoldWeaponDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     return;
 
@@ -4449,7 +4436,7 @@ namespace StarsAbove
                 {
                     FarewellWeaponDialogue = 1;
                                         newDiskNotification = true;
-                    NewDiskDialogue = true;
+                     
 
                     return;
 
@@ -4462,7 +4449,7 @@ namespace StarsAbove
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                     }
                     if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
                     {
@@ -4470,7 +4457,7 @@ namespace StarsAbove
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                     }
                     if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
                     {
@@ -4478,7 +4465,7 @@ namespace StarsAbove
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                     }
                     if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
                     {
@@ -4486,13 +4473,13 @@ namespace StarsAbove
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                     }
                     if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
                     {
                         SkeletonWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
 
@@ -4501,7 +4488,7 @@ namespace StarsAbove
                     {
                         ArchitectWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
 
 
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -4514,7 +4501,7 @@ namespace StarsAbove
                     {
                         CosmicDestroyerWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
 
 
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -4527,7 +4514,7 @@ namespace StarsAbove
                     {
                         KarnaWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
 
 
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
@@ -4542,7 +4529,7 @@ namespace StarsAbove
 
                         //MurasamaWeaponDialogue = 1;
                         //                    newDiskNotification = true;
-                        //NewDiskDialogue = true;
+                        // 
                         //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         //return;
                     }
@@ -4550,7 +4537,7 @@ namespace StarsAbove
                     {
                         MercyWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4558,7 +4545,7 @@ namespace StarsAbove
                     {
                         ThespianWeaponDialogue = 1;
                         newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4566,7 +4553,7 @@ namespace StarsAbove
                     {
                         DragaliaWeaponDialogue = 1;
                         newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4574,7 +4561,7 @@ namespace StarsAbove
                     {
                         WavedancerWeaponDialogue = 1;
                         newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4582,7 +4569,7 @@ namespace StarsAbove
                     {
                         ClarentWeaponDialogue = 1;
                         newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4590,7 +4577,7 @@ namespace StarsAbove
                     {
                         GundbitWeaponDialogue = 1;
                         newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4598,7 +4585,7 @@ namespace StarsAbove
                     {
                         SakuraWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4606,7 +4593,7 @@ namespace StarsAbove
                     {
                         EternalWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4614,7 +4601,7 @@ namespace StarsAbove
                     {
                         DaemonWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4622,7 +4609,7 @@ namespace StarsAbove
                     {
                         OzmaWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4630,7 +4617,7 @@ namespace StarsAbove
                     {
                         UrgotWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4638,7 +4625,7 @@ namespace StarsAbove
                     {
                         BloodWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4646,7 +4633,7 @@ namespace StarsAbove
                     {
                         MorningStarWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4654,7 +4641,7 @@ namespace StarsAbove
                     {
                         VirtueWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4662,7 +4649,7 @@ namespace StarsAbove
                     {
                         QueenSlimeWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4670,7 +4657,7 @@ namespace StarsAbove
                     {
                         NeedlepointWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
                     }
@@ -4678,7 +4665,7 @@ namespace StarsAbove
                     {
                         EyeBossWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
 
@@ -4687,7 +4674,7 @@ namespace StarsAbove
                     {
                         CorruptBossWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
 
@@ -4697,7 +4684,7 @@ namespace StarsAbove
                     {
                         NalhaunWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4708,7 +4695,7 @@ namespace StarsAbove
                     {
                         VagrantWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4718,7 +4705,7 @@ namespace StarsAbove
                     {
                         QueenBeeWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4728,7 +4715,7 @@ namespace StarsAbove
                     {
                         OceanWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4738,7 +4725,7 @@ namespace StarsAbove
                     {
                         MiseryWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4748,7 +4735,7 @@ namespace StarsAbove
                     {
                         KingSlimeWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4758,7 +4745,7 @@ namespace StarsAbove
                     {
                         WallOfFleshWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4767,7 +4754,7 @@ namespace StarsAbove
                     {
                         LumaWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4776,7 +4763,7 @@ namespace StarsAbove
                     {
                         MechBossWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4785,7 +4772,7 @@ namespace StarsAbove
                     {
                         AllMechBossWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4795,7 +4782,7 @@ namespace StarsAbove
                     {
                         HullwroughtWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4805,7 +4792,7 @@ namespace StarsAbove
                     {
                         MonadoWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4816,7 +4803,7 @@ namespace StarsAbove
                     {
                         PlanteraWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4826,7 +4813,7 @@ namespace StarsAbove
                     {
                         FrostMoonWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4836,7 +4823,7 @@ namespace StarsAbove
                     {
                         GolemWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4846,7 +4833,7 @@ namespace StarsAbove
                     {
                         PenthesileaWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4856,7 +4843,7 @@ namespace StarsAbove
                     {
                         MuseWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4866,7 +4853,7 @@ namespace StarsAbove
                     {
                         KifrosseWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4877,7 +4864,7 @@ namespace StarsAbove
                     {
                         ArbitrationWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4887,7 +4874,7 @@ namespace StarsAbove
                     {
                         LevinstormWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4897,7 +4884,7 @@ namespace StarsAbove
                     {
                         ClaimhWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4907,7 +4894,7 @@ namespace StarsAbove
                     {
                         DukeFishronWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4917,7 +4904,7 @@ namespace StarsAbove
                     {
                         ManiacalWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4927,7 +4914,7 @@ namespace StarsAbove
                     {
                         LunaticCultistWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4937,7 +4924,7 @@ namespace StarsAbove
                     {
                         MoonLordWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4947,7 +4934,7 @@ namespace StarsAbove
                     {
                         ShadowlessWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4957,7 +4944,7 @@ namespace StarsAbove
                     {
                         WarriorWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4967,7 +4954,7 @@ namespace StarsAbove
                     {
                         AuthorityWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4977,7 +4964,7 @@ namespace StarsAbove
                     {
                         RedMageWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4987,7 +4974,7 @@ namespace StarsAbove
                     {
                         BlazeWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -4997,7 +4984,7 @@ namespace StarsAbove
                     {
                         PickaxeWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5007,7 +4994,7 @@ namespace StarsAbove
                     {
                         HardwareWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5017,7 +5004,7 @@ namespace StarsAbove
                     {
                         CatalystWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5027,7 +5014,7 @@ namespace StarsAbove
                     {
                         UmbraWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5037,7 +5024,7 @@ namespace StarsAbove
                     {
                         SaltwaterWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5046,7 +5033,7 @@ namespace StarsAbove
                     {
                         ClockWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5055,7 +5042,7 @@ namespace StarsAbove
                     {
                         SanguineWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5064,7 +5051,7 @@ namespace StarsAbove
                     {
                         GoldlewisWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5073,7 +5060,7 @@ namespace StarsAbove
                     {
                         ChaosWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5082,7 +5069,7 @@ namespace StarsAbove
                     {
                         SilenceWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5092,7 +5079,7 @@ namespace StarsAbove
                     {
                         SoulWeaponDialogue = 1;
                                             newDiskNotification = true;
-                        NewDiskDialogue = true;
+                         
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
                         return;
@@ -5290,7 +5277,7 @@ namespace StarsAbove
                     if (astralmantle == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                         astralmantle = 1;
                     }
                 }
@@ -5409,7 +5396,7 @@ namespace StarsAbove
                     if (artofwar == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                         artofwar = 1;
                     }
 
@@ -5421,7 +5408,7 @@ namespace StarsAbove
                     if (aprismatism == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                         aprismatism = 1;
                     }
 
@@ -5443,7 +5430,7 @@ namespace StarsAbove
                     if (beyondtheboundary == 0)
                     {
                         newArrayNotification = true;
-                        NewStellarArrayAbility = true;
+                         
                         beyondtheboundary = 1;
                     }
 
@@ -5486,6 +5473,38 @@ namespace StarsAbove
 
             }
         }
+
+        private void SetupActiveDialogue(ref bool newDiskNotification, ref bool newArrayNotification, int dialogueID, ref int currentFlag)
+        {
+            if (!ActiveDialogues.ContainsKey(dialogueID))//If the dialogue doesn't exist
+            {
+
+                //If the dialogue has not been touched before (remember this int saves)
+                if (currentFlag != 2)//this is the flag of the dialogue
+                {
+                    //Add the ID to the active dialogues
+                    ActiveDialogues.Add(dialogueID, 1);
+                    //Pop up a new disk notification.
+                    newDiskNotification = true;
+                    if (Main.expertMode)
+                    {
+                        //A new Array ability is unlocked in Expert mode.
+                        newArrayNotification = true;
+                    }
+                }
+                else
+                {
+                    //If the dialogue has been touched already...
+                    ActiveDialogues.Add(dialogueID, 2);
+                    currentFlag = 2;
+                }
+            }
+            else
+            {
+                currentFlag = ActiveDialogues[dialogueID];
+            }
+        }
+
         private void SetupVNDialogue()
         {
             if (sceneID != -1 && VNDialogueActive)//All this boils down to moving the crazy amount of dialogue lines outside of StarsAbovePlayer. Future me knows that you could've just made another StarsAbovePlayer. Oops.

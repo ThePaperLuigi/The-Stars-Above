@@ -599,78 +599,6 @@ Mods: {
 			}
 
 			WeaponDialogue: {
-				TestDialogue: {
-					Asphodene: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue.
-
-						1: {
-							// $parentVal: Hello, test1 weapon
-							// Emotion: "3"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "1"
-						}
-
-						// Length: "2"
-					}
-
-					Eridani: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue.
-
-						1: {
-							// $parentVal: Hi, test1 weapon
-							// Emotion: "2"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "4"
-						}
-
-						// Length: "2"
-					}
-				}
-
-				TestDialogue2: {
-					Asphodene: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue 2.
-
-						1: {
-							// $parentVal: test1 (Asphodene)
-							// Emotion: "3"
-						}
-
-						// Length: "1"
-					}
-
-					Eridani: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue 2.
-
-						1: {
-							// $parentVal: test1 (Eridani)
-							// Emotion: "3"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "1"
-						}
-
-						3: {
-							// $parentVal: test3
-							// Emotion: "0"
-						}
-
-						// Length: "3"
-					}
-				}
-
 				Asphodene: {
 					1: Voici une autre essence que vous pouvez utiliser. Cela fera une arme de type à distance avec des propriétés uniques. Quelque chose me dit que c'est maudit, alors...
 					2: Bonne chance! Je t'avais prévenu.
@@ -893,16 +821,30 @@ Mods: {
 					Asphodene: {
 						1: Vous avez vaincu le Slime King, hein ? Bon travail.
 						2: C'est peut-être un peu faible, mais c'est néanmoins un pas en avant infaillible.
-						3: Est-ce que quelqu'un d'autre a vu ce truc de ninja ? Était-ce juste moi ?
-						4: D'une manière ou d'une autre... c'était assez fort pour débloquer une partie du Stellar Array ! Vérifiez-le plus tard, d'accord ?
-						5: ...Bien, c'est tout pour le moment. Continuez comme ça.
+
+						3: {
+							$parentVal: Est-ce que quelqu'un d'autre a vu ce truc de ninja ? Était-ce juste moi ?
+							// E: Thinking
+						}
+
+						4: {
+							$parentVal: D'une manière ou d'une autre... c'était assez fort pour débloquer une partie du Stellar Array ! Vérifiez-le plus tard, d'accord ?
+							// E: Happy
+						}
 					}
 
 					Eridani: {
 						1: Cela semblait peut-être faible, mais le Slime King était vraiment une menace.
-						2: Espérons qu'il reste mort. Je sais que les slimes ne sont pas un grand fan de ça.
-						3: Quelque chose chez cet ennemi a débloqué une partie du Stellar Array. Peut-être était-ce plus féroce que d’habitude ?
-						4: Cependant, s’il revient, vous devriez pouvoir le vaincre facilement à nouveau ; c'est généralement comme ça que ça se passe.
+
+						2: {
+							$parentVal: Espérons qu'il reste mort. Je sais que les slimes ne sont pas un grand fan de ça.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Quelque chose chez cet ennemi a débloqué une partie du Stellar Array. Peut-être était-ce plus féroce que d’habitude ?
+							// E: Happy
+						}
 					}
 				}
 
@@ -10045,7 +9987,7 @@ Mods: {
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
 					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
-					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
+					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy
 					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration

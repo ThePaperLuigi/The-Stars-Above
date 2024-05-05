@@ -14,6 +14,7 @@ using System;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Dialogue;
+using System.Linq;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -252,11 +253,10 @@ namespace StarsAbove.Items.Consumables
 			}
 			SoundEngine.PlaySound(SoundID.MenuOpen, player.position);
 			//DEBUG
-			Main.NewText(LangHelper.GetCategorySize("Dialogue.IdleDialogueHardmode.Asphodene"));
-            modPlayer.chosenDialogue = 3;
-            activateDialogue(player);
+			//Main.NewText(LangHelper.GetCategorySize("Dialogue.IdleDialogueHardmode.Asphodene"));
+            //modPlayer.chosenDialogue = 3;
+            //activateDialogue(player);
 
-            return true;
 
             if (modPlayer.starfarerIntro == true)
 			{
@@ -308,8 +308,131 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+            if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
+            {
+                modPlayer.chosenDialogue = 21;
+                activateDialogue(player);
+				return true;
+            }
 
-			
+            if (modPlayer.ActiveDialogues.Count > 0)
+            {
+                for (int i = 0; i < modPlayer.ActiveDialogues.Count; i++)
+                {
+                    if (modPlayer.ActiveDialogues.Values.ElementAt(i) == 1)
+                    {
+                        //Activate the dialogue's ID.
+                        modPlayer.chosenDialogue = modPlayer.ActiveDialogues.Keys.ElementAt(i);
+						//Set the active dialogue to "read"
+						modPlayer.ActiveDialogues[modPlayer.ActiveDialogues.Keys.ElementAt(i)] = 2;
+                        activateDialogue(player);
+                        return true;
+                    }
+                }
+                //If there aren't any active dialogues, play an idle dialogue instead.
+                if (modPlayer.uniqueDialogueTimer <= 0)
+                {
+                    modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
+                    randomDialogue = Main.rand.Next(1, 24);
+                    switch (randomDialogue)
+                    {
+                        case 1:
+                            modPlayer.chosenDialogue = 12;
+                            break;
+                        case 2:
+                            modPlayer.chosenDialogue = 13;
+                            break;
+                        case 3:
+                            modPlayer.chosenDialogue = 14;
+                            break;
+                        case 4:
+                            modPlayer.chosenDialogue = 15;
+                            break;
+                        case 5:
+                            modPlayer.chosenDialogue = 16;
+                            break;
+                        case 6:
+                            modPlayer.chosenDialogue = 17;
+                            break;
+                        case 7:
+                            modPlayer.chosenDialogue = 18;
+                            break;
+                        case 8:
+                            modPlayer.chosenDialogue = 19;
+                            break;
+                        case 9:
+                            modPlayer.chosenDialogue = 20;
+                            break;
+                        case 10:
+                            modPlayer.chosenDialogue = 400;
+                            break;
+                        case 11:
+                            modPlayer.chosenDialogue = 401;
+                            break;
+                        case 12:
+                            modPlayer.chosenDialogue = 402;
+                            break;
+                        case 13:
+                            modPlayer.chosenDialogue = 403;
+                            break;
+                        case 14:
+                            modPlayer.chosenDialogue = 404;
+                            break;
+                        case 15:
+                            modPlayer.chosenDialogue = 3;
+                            break;
+                        case 16:
+                            modPlayer.chosenDialogue = 4;
+                            break;
+                        case 17:
+                            modPlayer.chosenDialogue = 5;
+                            break;
+                        case 18:
+                            modPlayer.chosenDialogue = 6;
+                            break;
+                        case 19:
+                            modPlayer.chosenDialogue = 7;
+                            break;
+                        case 20:
+                            modPlayer.chosenDialogue = 8;
+                            break;
+                        case 21:
+                            modPlayer.chosenDialogue = 9;
+                            break;
+                        case 22:
+                            modPlayer.chosenDialogue = 10;
+                            break;
+                        case 23:
+                            modPlayer.chosenDialogue = 11;
+                            break;
+						
+                    }
+
+                }
+                else
+                {
+                    modPlayer.chosenDialogue = 2; //Default idle line. (Nothing to comment on right now...)
+
+                    /* Disabled Subworld specific idle lines.
+                    if (SubworldSystem.Current == null)
+                    {
+
+                    }
+                    else
+                    {
+                        if (SubworldSystem.IsActive<Observatory>())
+                        {
+                            modPlayer.chosenDialogue = 23;
+                        }
+                        if (!SubworldSystem.IsActive<Observatory>())
+                        {
+                            modPlayer.chosenDialogue = 25;
+                        }
+                    }*/
+                }
+                
+            }
+			return true;
 
             if (modPlayer.desertscourgeDialogue == 1)
 			{
@@ -319,6 +442,9 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+
+			
+
 			if (modPlayer.slimeDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 51;
@@ -1389,122 +1515,7 @@ namespace StarsAbove.Items.Consumables
 
 
 
-			if (modPlayer.uniqueDialogueTimer <= 0)
-			{
-				modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
-				if (Main.hardMode)
-				{
-					randomDialogue = Main.rand.Next(1, 15);
-
-					switch (randomDialogue)
-					{
-						case 1:
-							modPlayer.chosenDialogue = 12;
-							break;
-						case 2:
-							modPlayer.chosenDialogue = 13;
-							break;
-						case 3:
-							modPlayer.chosenDialogue = 14;
-							break;
-						case 4:
-							modPlayer.chosenDialogue = 15;
-							break;
-						case 5:
-							modPlayer.chosenDialogue = 16;
-							break;
-						case 6:
-							modPlayer.chosenDialogue = 17;
-							break;
-						case 7:
-							modPlayer.chosenDialogue = 18;
-							break;
-						case 8:
-							modPlayer.chosenDialogue = 19;
-							break;
-						case 9:
-							modPlayer.chosenDialogue = 20;
-							break;
-						case 10:
-							modPlayer.chosenDialogue = 400;
-							break;
-						case 11:
-							modPlayer.chosenDialogue = 401;
-							break;
-						case 12:
-							modPlayer.chosenDialogue = 402;
-							break;
-						case 13:
-							modPlayer.chosenDialogue = 403;
-							break;
-						case 14:
-							modPlayer.chosenDialogue = 404;
-							break;
-					}
-				}
-				else
-				{
-					randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
-
-					switch (randomDialogue)
-                    {
-						case 1:
-							modPlayer.chosenDialogue = 3;
-							break;
-						case 2:
-							modPlayer.chosenDialogue = 4;
-							break;
-						case 3:
-							modPlayer.chosenDialogue = 5;
-							break;
-						case 4:
-							modPlayer.chosenDialogue = 6;
-							break;
-						case 5:
-							modPlayer.chosenDialogue = 7;
-							break;
-						case 6:
-							modPlayer.chosenDialogue = 8;
-							break;
-						case 7:
-							modPlayer.chosenDialogue = 9;
-							break;
-						case 8:
-							modPlayer.chosenDialogue = 10;
-							break;
-						case 9:
-							modPlayer.chosenDialogue = 11;
-							break;
-					}
-                }
-			}
-			else
-			{
-
-				modPlayer.chosenDialogue = 2; //Default idle line.
-
-				/*
-				if (SubworldSystem.Current == null)
-				{
-
-
-				}
-				else
-				{
-					if (SubworldSystem.IsActive<Observatory>())
-					{
-						modPlayer.chosenDialogue = 23;
-					}
-					if (!SubworldSystem.IsActive<Observatory>())
-					{
-						modPlayer.chosenDialogue = 25;
-					}
-				}*/
-			}
-			if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
-			{
-				modPlayer.chosenDialogue = 21;
-			}
+			
 
 			//
 			modPlayer.dialoguePrep = true;

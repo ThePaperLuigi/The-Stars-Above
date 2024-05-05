@@ -73,7 +73,7 @@ namespace StarsAbove.Dialogue
             }//Fallback idle dialogue (timer)
              //Pre Hardmode Idle Dialogue
              //Finished rework.
-            string baseKey = "Mods.StarsAbove.";
+            string baseKey = "Mods.StarsAbove.Dialogue.";
             #region idleDialogue
             string starfarerName = "Asphodene";
             if(chosenStarfarer == 1)
@@ -1523,2316 +1523,212 @@ namespace StarsAbove.Dialogue
             //Boss dialogue
             if (chosenDialogue == 51) // Boss dialogue - Slime King
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.1", Player.name); //You've defeated the Slime King, huh? Good job.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.2", Player.name); //It may have been rather weak, but it's a surefire step forwards nevertheless.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.3", Player.name); //Did anyone else see that ninja thing? Was it just me?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        if (Main.expertMode == true)
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.4", Player.name); //Somehow.. it was strong enough to unlock a part of the Stellar Array! Check it out later, OK?
-                        }
-                        else
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Asphodene.5", Player.name); //...Well, that's all for now. Keep it up.
-                        }
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.1", Player.name); //It may have seemed weak, but the Slime King was truly quite the threat.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.2", Player.name); //Let's hope it stays dead. 
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        if (Main.expertMode == true)
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.3", Player.name); //Something about this foe has unlocked a part of the Stellar Array. Perhaps it was fiercer than usual?
-                        }
-                        else
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.KingSlime.Eridani.4", Player.name); //However, if it does return, you should be able to easily defeat it anew.
-                        }
-                        //	" ";
-                    }
-                }
-
-
+                string category = "BossDialogue";
+                string key = category + "." + "KingSlime" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                
             }//Slime King 1
             if (chosenDialogue == 52) // Boss dialogue - Eye of Cthulu
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 5;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.1", Player.name); //'Eye of Cthulhu'? 
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.2", Player.name); //Doesn't that imply there would be more of this 'Cthulhu'?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.3", Player.name); //If it ever reared its head, it would be quite the formidable foe indeed.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.4", Player.name); //Let's prepare for that occasion... Just in case.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Asphodene.5", Player.name); //Hey.. defeating that foe was enough! Looks like an ability in the Stellar Array is ready.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Eridani.1", Player.name); //For how fearsome it looked, the Eye of Cthulhu wasn't too terrible, was it?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Eridani.2", Player.name); //It seems to have shed its skin to display quite an array of teeth. If I didn't know better, it looked like it was trying to prove something. Weirdo.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Eridani.3", Player.name); //I have a suspicion that it's materials can be utilized later on. Simply keep it in mind.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CthulhuEye.Eridani.4", Player.name); //In other news.. an ability in the Stellar Array is now available. Use it well.
-                        //	" ";CthulhuEye
-                    }
-                }
-
-
+                string category = "BossDialogue";
+                string key = category + "." + "CthulhuEye" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Eye of Cthulhu 2
             if (chosenDialogue == 53) // Boss dialogue - Eater of Worlds or Brain of Cthulhu
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        if (WorldGen.crimson)
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Asphodene.1", Player.name); //Huh. I guess there really was more 'Cthulhu.' Somehow, it doesn't suprise me as much as I would have thought.
-                        }
-                        else
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Asphodene.2", Player.name); //Glad we stopped that thing before it lived up to its name. 
-                        }
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        if (WorldGen.crimson)
-                        {
-                            expression = 1;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Asphodene.3", Player.name); //Those materials are... something... Wow. How bloody.
-                        }
-                        else
-                        {
-                            expression = 4;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Asphodene.4", Player.name); //Hey, the weapons that you can make from it look pretty powerful! What do you think?
-                        }
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Asphodene.5", Player.name); //In other news... Looks like an ability has unlocked in the Stellar Array! You should definitely consider it.
-
-
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        if (WorldGen.crimson)
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Eridani.1", Player.name); //Another organ of this 'Cthulhu' and it attacked with magical manipulation... Also- yuck?
-                        }
-                        else
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Eridani.2", Player.name); //This 'Eater of Worlds' was just a big worm. I'm kind of disappointed. Let's file a complaint with whichever clown named this thing.
-                        }
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.CorruptionBoss.Eridani.3", Player.name); //Looks like it unlocked an ability in the Stellar Array. Look it over when you're free.
-
-
-                        //	" ";
-                    }
-                }
-
+                string category = "BossDialogue";
+                string key = category + "." + "CorruptionBoss" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
             }//Brain of Cthulhu / Eater of Worlds 3
             if (chosenDialogue == 54) // Boss dialogue - Queen Bee
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenBee.Asphodene.1", Player.name); //Well, I guess I should have expected something like this within the Jungle.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenBee.Asphodene.2", Player.name); //Good work. Looks like another ability is unlocked in the Stellar Array as well.
-
-
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenBee.Eridani.1", Player.name); //Seriously? A giant bee... Somehow, I might prefer it over smaller insects... Easier to hit, you know.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenBee.Eridani.2", Player.name); //Ahem. At the very least, it unlocked an ability in the Stellar Array.
-
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "QueenBee" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Queen Bee 4 
             if (chosenDialogue == 55) // Boss dialogue - Skeletron
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Asphodene.1", Player.name); //The Clothier was truly a gigantic evil skeleton monster.. Cute. At the very least, you have access to the Dungeon now.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Asphodene.2", Player.name); //And with this, another ability is unlocked in the Stellar Array.
-
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Asphodene.3", Player.name); //Well, that's all for now.
-
-
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 2;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Eridani.1", Player.name); //That poor Clothier, cursed to become Skeletron. It seems his defeat has granted us access to the Dungeon. This may be in bad taste, but...
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Eridani.2", Player.name); //If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Skeletron.Eridani.3", Player.name); //If anyone asks, you didn't hear that from me.
-
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Skeletron" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Skeletron 5 
             if (chosenDialogue == 56) // Boss dialogue - Wall of Flesh
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Asphodene.1", Player.name); //Whoa.. I've never seen anything like this.. ever. The entire world seems to be bursting with new magical energy. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Asphodene.2", Player.name); //It looks like the Wall of Flesh was either guarding or preventing something drastic from happening. That's my take on it.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Asphodene.3", Player.name); //Just to let you know, there's another upgrade in the Stellar Array now. It seems to be more powerful than the ones you've used before.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Asphodene.4", Player.name); //Also, it seems to have dropped something.. Whatever it is, it feels.. familiar. Did I forget about something? No, that isn't it. Please be careful.
-
-
-                        //	" ";
-                    }
-                }
-
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 3;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Eridani.1", Player.name); //Wow.. the world itself seems to have been drastically altered after the defeat of the Wall of Flesh...
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Eridani.2", Player.name); //I've never seen anything like it. What was this thing hiding...?
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Eridani.3", Player.name); //This power seems to have activated the first Tier 2 ability in the Stellar Array. I hope you can utilize it well.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WallOfFlesh.Eridani.4", Player.name); //Something else dropped from it. I'm not sure what it is, but it feels like I should know. Please be mindful of the danger...
-
-
-                        //	" ";
-                    }
-                }
-
+                string category = "BossDialogue";
+                string key = category + "." + "WallOfFlesh" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
             }//Wall of Flesh 6
             if (chosenDialogue == 58) // Boss dialogue - The Twins
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Asphodene.1", Player.name); //So someone went and made two Eyes instead of one? Good for them, but in my opinion, the design is kind of ruined already.
+                string category = "BossDialogue";
+                string key = category + "." + "Twins" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Asphodene.2", Player.name); //If you're going to make a robot eye, try and hide the obvious weak spot where the iris is. Well, I don't create giant evil robotic eyes, so maybe they know something..?
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Asphodene.3", Player.name); //It looks as if another upgrade is available in the Stellar Array. That's it for now.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Asphodene.4", Player.name);
-                        }
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 3;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Eridani.1", Player.name); //Well, those mechanical facsimiles are 6. We're not rating boss monsters, or anything, but... I'm going to have to dock some points.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Eridani.2", Player.name); //I'm giving it a 5/10. The sheet metal plating was a good start, but why would you ever even think about using flesh for the exterior? Whatever.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Eridani.3", Player.name); //It looks as if yet another upgrade is available in the Stellar Array. How serendipitous.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Twins.Eridani.4", Player.name);
-                        }
-
-                        //	" ";
-                    }
-                }
             }//The Twins 7
             if (chosenDialogue == 57) // Boss dialogue - The Destroyer
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Asphodene.1", Player.name); //'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm.
+                string category = "BossDialogue";
+                string key = category + "." + "Destroyer" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Asphodene.2", Player.name); //Its absurd length was just a detriment to its strength. I hope whoever makes these things is taking note.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Asphodene.3", Player.name); //It looks as if another upgrade is available in the Stellar Array. That's all, {Player.name}.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Asphodene.4", Player.name);
-                        }
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Eridani.1", Player.name); //I guess the Destroyer was more bark than bite, huh. Maybe too much of the budget was spent on the design aspect.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Eridani.2", Player.name); //Whatever the case, it's gone now, so no use comtemplating it.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Eridani.3", Player.name); //It looks as if yet another upgrade is available in the Stellar Array. How serendipitous.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Destroyer.Eridani.4", Player.name); //Well, that's everything. Unless you wanted to chat?
-                        }
-
-                        //	" ";
-                    }
-                }
             }//Destroyer 8
             if (chosenDialogue == 59) // Boss dialogue - Skeletron Prime
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Asphodene.1", Player.name); //You've done it! Skeletron Prime has been defeated. I can definitely say it was a step up from 'Version 1.0.'
+                string category = "BossDialogue";
+                string key = category + "." + "SkeletronPrime" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Asphodene.2", Player.name); //The appendages were a smart idea, but it still lacked a proper body. A shame.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Asphodene.3", Player.name); //It looks as if another upgrade is available in the Stellar Array. That's all, {Player.name}.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Asphodene.4", Player.name);
-                        }
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.1", Player.name); //And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.2", Player.name); //If you took offense, I apologize. You can be as edgy as you want. Uh, I mean.. anyways... 
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        if (Player.GetModPlayer<StarsAbovePlayer>().bloomingflames == 0)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.3", Player.name); //It looks as if yet another upgrade is available in the Stellar Array. How serendipitous.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.SkeletronPrime.Eridani.4", Player.name);
-                        }
-
-                        //	" ";
-                    }
-                }
             }//Skeletron Prime 9
             if (chosenDialogue == 60) // Boss dialogue - All Mechanical Bosses Defeated
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Asphodene.1", Player.name); //Actually.. It looks like you've bested all the Mechanical Bosses! This is definitely a step forward.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Asphodene.2", Player.name); //This victory has lead to another upgrade in- you guessed it, the Stellar Array. 
-
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Eridani.1", Player.name); //It seems that was the last of the Mechanical Bosses. This is a great step forward! 
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllMechs.Eridani.2", Player.name); //This victory has brought another upgrade to the Stellar Array. 
-
-
-                        //	" ";
-                    }
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "AllMechs" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//All Mechanical Bosses defeated 10
             if (chosenDialogue == 61) // Boss dialogue - Plantera
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Asphodene.1", Player.name); //And there it goes.. the terror of the jungle, Plantera. Congratulations on your victory. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Asphodene.2", Player.name); //I sense the Dungeon has changed... and the Jungle Temple is now available. It's your choice what to tackle next.
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Asphodene.3", Player.name); //Another upgrade is now available in the Stellar Array.  
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Eridani.1", Player.name); //That marks the end of Plantera. Very good work. You should be able to access the Jungle Temple now.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Eridani.2", Player.name); //I also believe there's new materials to be found within the Dungeon. Great for us, not so much for them. Tough luck.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Plantera.Eridani.3", Player.name); //Another upgrade has been unlocked in the Stellar Array.
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Plantera" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Plantera 11
             if (chosenDialogue == 62) // Boss dialogue - Golem
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Asphodene.1", Player.name); //You've done it! Golem is no more. You're unstoppable.  
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Asphodene.2", Player.name); //Something about our next enemy feels.. dangerous. It seems spatial energy has congregated around the Dungeon's entrance.
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        if (Main.expertMode)
-                        {
-                            expression = 5;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Asphodene.3", Player.name); //Another upgrade is now available in the Stellar Array. Looks pretty strong.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Asphodene.4", Player.name); //
-                        }
-
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.1", Player.name); //The Lizhard Temple's beast Golem is confirmed 6.  In terms of mechanical beasts, I'm kind of.. disappointed? 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.2", Player.name); //Something strange has appeared in front of the Dungeon. It seems otherwordly in nature... Be prepared for anything.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        if (Main.expertMode)
-                        {
-                            expression = 5;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.3", Player.name); //Another upgrade is now available in the Stellar Array. It will surely be useful.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Golem.Eridani.4", Player.name);
-                        }
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Golem" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Golem 12
             if (chosenDialogue == 63) // Boss dialogue - Duke Fishron
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.DukeFishron.Asphodene.1", Player.name); //Such a powerful creature hiding deep within the Ocean.. Luckily, you avoided being turned into fish food. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.DukeFishron.Asphodene.2", Player.name); //Where did that saying even come from..? What IS fish food? More important questions left unanswered...
-
-
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.DukeFishron.Eridani.1", Player.name); //Duke Fishron has been defeated. That was a close one, but you've o-fish-ally won. ...
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.DukeFishron.Eridani.2", Player.name); //I might have fished too hard for that one. You know what..? Let's leave the puns to Asphodene. I guess there's a certain skill to it.
-
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "DukeFishron" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Duke Fishron 13
             if (chosenDialogue == 64) // Boss dialogue - Lunatic Cultist
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.1", Player.name); //It is as I feared... The Celestial Pillars have appeared upon this land. They herald the coming of the end.. The Moon Lord.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.2", Player.name); //Don't lose hope, though. We can beat this. The experiences you had.. The battles you've fought.. they will culminate in this ultimate encounter.
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        if (Main.expertMode)
-                        {
-                            expression = 5;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.3", Player.name); //At the very least, you have another ability ready in the Stellar Array. It will definitely help.
-                        }
-                        else
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Asphodene.4", Player.name);
-
-                        }
-
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 2;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Eridani.1", Player.name); //I knew it.. the Celestial Pillars have descended. This does not bode well for this world.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Eridani.2", Player.name); //All hope is not lost, however. If there is anyone who could confront the Moon Lord, it is you. I will be by your side.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        if (Main.expertMode)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Eridani.3", Player.name); //At the very least, the Stellar Array has a new ability available. Let us hope it will come in handy. 
-                        }
-                        else
-                        {
-                            expression = 1;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Cultist.Eridani.4", Player.name);
-                        }
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Cultist" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Lunatic Cultist 14
             if (chosenDialogue == 65) // Boss dialogue - Moon Lord
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Asphodene.1", Player.name); //{Player.name}! You've done it! The Moon Lord.. has been vanquished! You have done this world a great service. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Asphodene.2", Player.name); //We've come a long way. You have grown stronger than I have ever imagined. However, I can sense it isn't over yet.
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Asphodene.3", Player.name); //The defeat of the Moon Lord has upgraded your Stellar Array twice! Such power...
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Asphodene.4", Player.name); //The sky's light has grown incredibly harsh. Something's definitely wrong... 
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.1", Player.name); //The Moon Lord has been defeated.. What a wonderful victory. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.2", Player.name); //You have grown incredibly strong.. This world owes you for its survival. And yet.. I feel something is off.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.3", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.MoonLord.Eridani.4", Player.name); //The light has grown incredibly harsh. Something's definitely wrong...
-
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "MoonLord" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Moon Lord 15 
             if (chosenDialogue == 66) // Boss dialogue - Warrior of Light
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
-                        dialogueLeft = 6;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.1", Player.name); //I see we were wrong.. The Warrior thought he was saving the universe, but it was truly the lies of the First Starfarer.. How cruel.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.2", Player.name); //The Warrior of Light.. The original Starbearer has been led astray. He managed to get away, but... Night has returned to this world, finally!
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.3", Player.name); //We finally have the last piece of the puzzle. The First Starfarer showed her hand, and this means we have a chance.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.4", Player.name); //Once you've collected all the Mnemonic Traces, use it within the Observatory. It will take us straight to the First Starfarer.
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.5", Player.name); //I probably don't need to tell you this, but she's not going to parley. Prepare for a hard fight.. Perhaps the hardest fight so far.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Asphodene.6", Player.name); //The Warrior of Light has strengthened your Stellar Array. Hopefully it'll be enough... 
-
-
-
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
-                        dialogueLeft = 6;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.1", Player.name); //You have brought down the Warrior of Light. He's managed to escape, but nighttime has returned to this world regardless.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-
-
-
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.2", Player.name); //It seems we were misguided. The Warrior believed he was saving the universe, but it was, in truth, all lies from his Starfarer.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.3", Player.name); //With this final Mnemonic Trace.. I see.. It all makes sense now. {Player.name}, I need to you combine all of the Mnemonic Traces together.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.4", Player.name); //It will lead us directly to the First Starfarer through the Observatory. After that.. We must defeat her. At any cost. Prepare yourself well.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.5", Player.name); //Anyways... The radiance of the Warrior has upgraded the Stellar Array. That's definitely a boon.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.WarriorOfLight.Eridani.6", Player.name); //Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
-
-
-
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "WarriorOfLight" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Warrior of Light 16
             if (chosenDialogue == 67) // Boss dialogue - All Vanilla Bosses Defeated
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Asphodene.1", Player.name); //{Player.name}.. You've defeated so many powerful foes... You must be nearing the pinnacle of your powers!
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Asphodene.2", Player.name); //I've granted you a special ability in the Stellar Array. Use it wisely.$4
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Asphodene.3", Player.name); //And, a special gift. This is the crystallized power of the Starfarers. The weapon born from it will be incredibly powerful!
-
-
-
-                    }
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Eridani.1", Player.name); //The enemies of this world shudder when they feel your presence.. You are the hero of this land.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Eridani.2", Player.name); //I'm proud. You have become  stronger than I would have ever imagined..
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Eridani.3", Player.name); //This is a gift from me to you. It's a special ability in the Stellar Array. Use it well.$4
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.AllVanillaBosses.Eridani.4", Player.name); //One more thing. The crystallized power of the Starfarers.. It should be able to make an incredibly strong weapon.
-
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "AllVanillaBosses" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//All Vanilla Bosses 17
             if (chosenDialogue == 68) // Boss dialogue - Everything Defeated in Expert Mode
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.1", Player.name); //You've done it. This world is free.. All that threatens it is no more. Seriously, this is a incredible achievement.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.2", Player.name); //Don't worry. I'm not going anywhere yet. Who knows what might crop up? $4
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.3", Player.name); //I have an Essence for you... It is the strongest Essence I have. Be sure to treat the finished product with care.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Asphodene.4", Player.name); //Your overwhelming power has activated the final ability within the Stellar Array. It's done.. finally!
-
-
-
-                    }
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.1", Player.name); //You've done it, {Player.name}. Seriously.. I can't believe it. Everything threatening this world has been bested by your hand.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.2", Player.name); //I'll stay for now, though. Just in case anything else appears, though. It's not like I'd miss you or anything.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.3", Player.name); //This is a first.. Your own strength has activated the final. ability in the Stellar Array. Finally. Nothing else to unlock.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.VanillaAndWarrior.Eridani.4", Player.name); //Lastly... This Essence that I have given you.. It is the strongest weapon I know. Good luck creating it, {Player.name}.
-
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "VanillaAndWarrior" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Everything Vanilla + WoL 18
             if (chosenDialogue == 69) // Boss dialogue - Dioskouroi
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.2", Player.name); //From what Perseus told me, it looks like the Burnished King was defeated by the First Starbearer. 
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.3", Player.name); //As for why he told US to fight, I don't know. However.. I found this shard of power after the battle. I'll let you hold on to it. Anyways..
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Asphodene.4", Player.name); //I think we can reuse his attacks as a weapon in our arsenal, as a new Stellar Nova. Maybe because of the Starbearer's influence?
-
-
-
-                    }
-
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.1", Player.name); //The Burnished King has fallen. What a powerful foe. I shudder to think how we would have fared had we fought him in his prime.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.2", Player.name); //From what Perseus told me, The Burnished King was laid low by the First Starbearer ages ago. 
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.3", Player.name); //As for why he told us to fight him, I don't know. However.. I found this shard after the battle. I'll let you hold on to it. Anyways..
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Dioskouroi.Eridani.4", Player.name); //His weapon, Ars Laevateinn. We can use it for ourselves, as a Stellar Nova. Maybe because of the Starbearer's influence?
-
-
-                        //	" ";
-                    }
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Dioskouroi" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Dioskouroi
             if (chosenDialogue == 70) // Boss dialogue - Nalhaun
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Asphodene.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Asphodene.2", Player.name); //From what Perseus told me, it looks like the Burnished King was defeated by the First Starbearer. 
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Asphodene.3", Player.name); //As for why he told US to fight, I don't know. However.. I found this shard of power after the battle. I'll let you hold on to it. Anyways..
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Asphodene.4", Player.name); //I think we can reuse his attacks as a weapon in our arsenal, as a new Stellar Nova. Maybe because of the Starbearer's influence?
-
-
-
-                    }
-
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Eridani.1", Player.name); //The Burnished King has fallen. What a powerful foe. I shudder to think how we would have fared had we fought him in his prime.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Eridani.2", Player.name); //From what Perseus told me, The Burnished King was laid low by the First Starbearer ages ago. 
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Eridani.3", Player.name); //As for why he told us to fight him, I don't know. However.. I found this shard after the battle. I'll let you hold on to it. Anyways..
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Nalhaun.Eridani.4", Player.name); //His weapon, Ars Laevateinn. We can use it for ourselves, as a Stellar Nova. Maybe because of the Starbearer's influence?
-
-
-                        //	" ";
-                    }
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Nalhaun" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Nalhaun 20
             if (chosenDialogue == 71) // Boss dialogue - Penthesilea
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Penth.Asphodene.1", Player.name); //Penthesilea, was it? She was quite the challenge. What a unique way of casting magic. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Penth.Asphodene.2", Player.name); //Her magic overflows with spatial power. It looks like the First Starbearer's  influence is here, meaning we can use a new Stellar Nova.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Penth.Asphodene.3", Player.name); //The battle left behind this mysterious object. You can hold on to it for now.  
-
-
-
-                    }
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Penth.Eridani.1", Player.name); //You've bested the Witch of Ink. She was quite the magic user, no? It's truly a shame she was hostile. 
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Penth.Eridani.2", Player.name); //Her powerful magic... We can use it for ourselves as a new Nova. It must be from the remnants of the First Starbearer Perseus mentioned...
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Penth.Eridani.3", Player.name); //The battle left behind this mysterious shard. I'll entrust it to you.  
-
-
-
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Penthesilea" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                
             }//Penthesilea 21
             if (chosenDialogue == 72) // Boss dialogue - Arbitration
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        //Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Arbitration.Asphodene.1", Player.name); //That foe was truly fearful. I'm glad you were able to defeat it... Who knows what chaos it would bring if left unchecked?
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Arbitration.Asphodene.2", Player.name); //We can re-appropriate its strength, I think. It can become a new Stellar Nova, thanks to the First Starbearer's influence. Let's use it well.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Arbitration.Asphodene.3", Player.name); //It looks like another item has appeared. You can have it- it's probably better off in your hands, anyways. 
-
-
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        //Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Arbitration.Eridani.1", Player.name); //You have defeated that monstrocity! The world is better because of your deeds. If we failed, the world itself may have been consumed by the void.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Arbitration.Eridani.2", Player.name); //We can use his overwhelming strength... It has manifested as a new Stellar Nova, thanks to the First Starbearer's influence. 
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Arbitration.Eridani.3", Player.name); //It looks like another shard has appeared. I'll leave it to you.  
-
-
-
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Arbitration" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Arbitration 22
             if (chosenDialogue == 73) // Boss dialogue - Tsukiyomi 23
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Asphodene.1", Player.name); //It.. it's over. Tsukiyomi has vanished. We're still missing so many clues... She doesn't seem evil... so what caused her to do what she did?
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Asphodene.2", Player.name); //Hopefully one day, we'll find the answers to the questions we seek.   
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Asphodene.3", Player.name); //I've gathered some of the leftover residue from the fight. It will likely have use as a stand-in to an Essence, for creating a  weapon.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Asphodene.4", Player.name); //With this victory.. the universe is safe. There may be more evils ahead, but know that nothing is insurmountable. We've come this far.
-
-
-
-                    }
-
-
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Eridani.1", Player.name); //We've finally done it. Tsukiyomi's defeat has been confirmed. She's gone, but hopefully our troubles with her are at an end.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Eridani.2", Player.name); //What ails me is her motives... She did horrible things... but was it malice, or a greater purpose...? I hope we find the answer.
-
-
-
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Eridani.3", Player.name); //I've gone through the work of absorbing some residue energy and have turned it into the Spatial Memoriam. You can use it like an Essence.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Tsukiyomi.Eridani.4", Player.name); //The universe is safe. There is still work to do, but take heart; if we've come this far, nothing can stop us now.
-
-
-
-                    }
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Tsukiyomi" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Tsukiyomi 23
             if (chosenDialogue == 74) // Boss dialogue - Queen Slime
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Asphodene.1", Player.name); //That's that. Queen Slime is defeated. What have we learned today? Apparently there's a royal court of slimes, and the King Slime wasn't just an outlier. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Asphodene.2", Player.name); //That doesn't even make any sense. They're slime. I literally, actually, seriously don't even think slime has the capacity to think. 
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Asphodene.3", Player.name); //Who knows.   
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Eridani.1", Player.name); //Right, we've defeated the Queen Slime. To be honest, I'm slightly curious: why are there 'kings' and 'queens' of the slime world? 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Eridani.2", Player.name); //How much power do the royal slimes even have? Are they legitimate rulers? 
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Eridani.3", Player.name); //Does the royal slime court send their subjects to attack random people? Do they even have the right to own property?
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.QueenSlime.Eridani.4", Player.name); //Fight back, oppressed slimes! Take back your freedom!
-
-
-                        //	" ";
-                    }
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "QueenSlime" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Queen Slime 24
             if (chosenDialogue == 75) // Boss dialogue - Empress of Light
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Asphodene.1", Player.name); //Great work- the Empress of Light is no more. Nobody else is going to say it, so I will-  did it have a big nose, or was it smiling? I couldn't tell.  
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Asphodene.2", Player.name); //Maybe if she stood still at all... 
-
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.1", Player.name); //Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?   
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 2;
-                        if (NPC.downedFishron)
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.2", Player.name); //If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. 
-                            if (NPC.downedQueenBee)
-                            {
-                                dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.3", Player.name); //If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
-                            }
-
-                        }
-                        else
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.EmpressOfLight.Eridani.4", Player.name); //Somehow... I feel like there's yet another boss we'll have to use an insect to summon. That's going to be rather bothersome. 
-                        }
-
-
-
-                        //	" ";
-                    }
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "EmpressOfLight" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Empress of Light 25
             if (chosenDialogue == 76) // Boss dialogue - Deerclops
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Deerclops.Asphodene.1", Player.name); //Okay, we've taken care of that strange abomination.  I have no idea where it even came from.   
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Deerclops.Asphodene.2", Player.name); //I'm getting rather hungry- how about we go find something to eat so that we don't starve...? Pfft. 
-
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Deerclops.Eridani.1", Player.name); //Great work- you've defeated that strange deer thing.   
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Deerclops.Eridani.2", Player.name); //It was a little terrifying, but luckily it seems its previous prey was confined to the ground. Looks like we had home turf advantage here. 
-
-
-
-
-                        //	" ";
-                    }
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Deerclops" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Deerclops 26
             if (chosenDialogue == 77) // Vagrant
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)
                 {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.2", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantAsphodene.3", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-
-
-                    }
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.1", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.2", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.VagrantEridani.3", Player.name); //So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
-
-                    }
-
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Vagrant" + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Vagrant
             //Thespian
             if (chosenDialogue == 78)
             {
-                if (chosenStarfarer == 1) // Asphodene
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Asphodene.1", Player.name);
-
-
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Asphodene.2", Player.name);
-
-
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Eridani.1", Player.name);
-
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossDialogue.Thespian.Eridani.2", Player.name);
-
-                    }
-
-
-                }
+                string category = "BossDialogue";
+                string key = category + "." + "Thespian" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }
 
 
@@ -3840,872 +1736,89 @@ namespace StarsAbove.Dialogue
 
             if (chosenDialogue == 201) // Boss dialogue - Desert Scourge
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Asphodene.1", Player.name); //You've defeated that evil serpent. I do wonder, though... Where did it come from?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Asphodene.2", Player.name); //Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Asphodene.3", Player.name); //This world's secrets are still a mystery to us. Anyway, good job regardless.
-                        //	" ";
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Eridani.1", Player.name); //You've bested the scourge of the sands. As for its origin, your guess is as good as mine. However...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Eridani.2", Player.name); //It definitely was not made for tunneling. Instead, I'd postulate it was originally an aquatic beast. So.. what was it doing here? This world still holds many secrets...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.DesertScourge.Eridani.3", Player.name); //Anywho... you fought bravely. I believe the loot will serve us well.
-
-                        //	" ";
-                    }
-                }
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "DesertScourge" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
             }//Desert Scourge 24
             if (chosenDialogue == 202) // Boss dialogue - Crabulon
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.1", Player.name); //Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.2", Player.name); //It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Asphodene.3", Player.name); //Whatever. No need to dawdle on that not-so-fun-fact. It's 6! Good job on that, by the way.
-                        //	" ";
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.1", Player.name); //Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.2", Player.name); //However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Crabulon.Eridani.3", Player.name); //Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
-
-                        //	" ";
-                    }
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Crabulon" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Crabulon 25 
             if (chosenDialogue == 203) // Boss dialogue - Hive Mind
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Asphodene.1", Player.name); //The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Asphodene.2", Player.name); //That's about it for now. 
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Eridani.1", Player.name); //You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.HiveMind.Eridani.2", Player.name); //Let's keep on the lookout for any more threats the Corruption bears.
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "HiveMind" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Hive Mind 26
             if (chosenDialogue == 204) // Boss dialogue - Perforators
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Asphodene.1", Player.name); //You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Asphodene.2", Player.name); //It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Eridani.1", Player.name); //You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Perforators.Eridani.2", Player.name); //Well, everything living is made of flesh. Ugh, you know what I mean...
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Perforators" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Perforators 27
             if (chosenDialogue == 205) // Boss dialogue - The Slime God
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.1", Player.name); //The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.2", Player.name); //I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them. 
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.3", Player.name); //Wait a second.. Why am I 2? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Asphodene.4", Player.name); //In a few centuries or so... Ugh.  
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.1", Player.name); //Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.2", Player.name); //I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.SlimeGod.Eridani.3", Player.name); //It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading. 
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "SlimeGod" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//The Slime God 28
              //Calamity boss dialogue (Hardmode)
             if (chosenDialogue == 206) // Boss dialogue - Cryogen
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Asphodene.1", Player.name); //You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for the Archmage. 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Asphodene.2", Player.name); //From what the Archmage can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Asphodene.3", Player.name); //Whoever they are, it seems they've caused this world no shortage of troubles. Hopefully, we can begin to unravel more of this mystery as we venture forth.
-
-                        //	" ";
-                    }
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.1", Player.name); //Cryogen has been slain. And out from its corpse arrives this Archmage. From what he has to say, he was trapped there by an evil king...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.2", Player.name); //Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for all this world's many ailments.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Cryogen.Eridani.3", Player.name); //We must endeavor to unravel more of this story. I trust you're in agreement. 
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Cryogen" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Cryogen 29
             if (chosenDialogue == 207) // Boss dialogue - Aquatic Scourge
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Asphodene.1", Player.name); //The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Asphodene.2", Player.name); //The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We have to stop their rampant evil! 
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Eridani.1", Player.name); //The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AquaticScourge.Eridani.2", Player.name); //From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
-                        //	" ";
-                    }
-
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "AquaticScourge" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Aquatic Scourge 30
             if (chosenDialogue == 208) // Boss dialogue - Brimstone Elemental
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Asphodene.1", Player.name); //You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before Calamitas rent it asunder.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Asphodene.2", Player.name); //I say we confront her sooner, than later. She must be incredibly powerful, but.. We have to do something, at least. 
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Eridani.1", Player.name); //The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.BrimstoneElemental.Eridani.2", Player.name); //If what we know is correct, Calamitas was the eventual end of the brimstone kingdom. While I want to put an end to her rampages, we must become stronger first.
-                        //	" ";
-                    }
-
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "BrimstoneElemental" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Brimstone Elemental 31
             if (chosenDialogue == 209) // Boss dialogue - Calamitas
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Asphodene.1", Player.name); //...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Asphodene.2", Player.name); //We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..? 
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Eridani.1", Player.name); //We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Calamitas.Eridani.2", Player.name); //Who knows what the real thing can do.. We have to become stronger.  
-                        //	" ";
-                    }
-
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Calamitas" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Calamitas 32
             if (chosenDialogue == 210) // Boss dialogue - Leviathan
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Asphodene.1", Player.name); //Finally, we've bested Anahita and her Leviathan. What a thrilling battle... You've fought bravely, even when the fight looked insurmountable.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Asphodene.2", Player.name); //Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll! 
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.1", Player.name); //You've defeated the Leviathan and Anahita. A battle well fought- when the Leviathan appeared, I feared the worst. 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.2", Player.name); //I'll try not to doubt you in the future. After all, you've got my help.  
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Leviathan.Eridani.3", Player.name); //I am helping, right? Right...  
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Leviathan" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Leviathan 33
             if (chosenDialogue == 211) // Boss dialogue - Astrum Aureus
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Asphodene.1", Player.name); //We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Asphodene.2", Player.name); //Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.1", Player.name); //That's that. Astrum Aureus is 6. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumAureus.Eridani.2", Player.name); //The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that. 
-                        //	" ";
-                    }
-
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "AstrumAureus" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Astrum Aureus 34
             if (chosenDialogue == 212) // Boss dialogue - Plaguebringer Goliath
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Asphodene.1", Player.name); //Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Asphodene.2", Player.name); //Well, what can you do. There's people like us here to take care of that part.  
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 3;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.1", Player.name); //Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is 6. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.2", Player.name); //Bugs, bugs..  They continue to rear their ugly heads wherever I look..! 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.PlaguebringerGoliath.Eridani.3", Player.name); //Whoops.. I was venting a little. Let's just move on. Good job defeating that foe. 
-                        //	" ";
-                    }
-
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "PlaguebringerGoliath" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Plaguebringer Goliath 35
             if (chosenDialogue == 213) // Boss dialogue - Ravager
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Asphodene.1", Player.name); //The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Asphodene.2", Player.name); //At the very least, we could finally let it rest. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 2;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Eridani.1", Player.name); //We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.Ravager.Eridani.2", Player.name); //Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
-
-                        //	" ";
-                    }
-
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Ravager" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Ravager 36
             if (chosenDialogue == 214) // Boss dialogue - Astrum Deus
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {//                                                                  | Safe dialogue limit.
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.1", Player.name); //We've defeated Astrum Deus. Astrum Deus is- or was- one of the many gods that ruled over the universe. As far as I can remember, it was gone before I was born.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.2", Player.name); //However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.3", Player.name); //Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Asphodene.4", Player.name); //This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {//                                                              |
-                    if (dialoguePrep == true)
-                    {
-
-
-                        dialogueLeft = 4;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.1", Player.name); //Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share... 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.2", Player.name); //Astrum Deus is one of many cosmic deities. It disappeared before I was born, but knowledge states that it can assimilate life near its corpse to regenerate itself.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.3", Player.name); //So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.CalamityBossDialogue.AstrumDeus.Eridani.4", Player.name); //Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations. 
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "AstrumDeus" + "." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//Astrum Deus 37
             #endregion
             #region weaponDialogue
@@ -8878,46 +5991,11 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
-                    dialogueLeft = 4;
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("AncientShard").Type);
-                    dialoguePrep = false;
                 }
-
-
-                if (dialogueLeft == 4)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Nalhaun.1", Player.name); //We meet again, {Player.name}. I need your help.  
-
-                    //	" ";
-                }
-                if (dialogueLeft == 3)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Nalhaun.2", Player.name); //I've given you the 'Ancient Shard' With it, you can call forth a powerful foe, the Burnished King. 
-
-                    //	" ";
-                }
-                if (dialogueLeft == 2)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Nalhaun.3", Player.name); //If my hypothesis is correct, he may be an important step towards confronting the First Starbearer, and stopping his rampage.
-
-                    //	" ";
-                }
-                if (dialogueLeft == 1)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Nalhaun.4", Player.name); //Prepare yourself: this fight will not be easy.  
-
-                    //	" ";
-                }
-
-
+                string category = "BossItemDialogue";
+                string key = category + "." + "Nalhaun" + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
 
 
@@ -8927,50 +6005,11 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
-                    dialogueLeft = 4;
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("UnsulliedCanvas").Type);
-                    dialoguePrep = false;
                 }
-
-
-                if (dialogueLeft == 4)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Penth.1", Player.name); //We meet again, {Player.name}. Again, I need your assistance.  
-
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 3)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Penth.2", Player.name); //This is the 'Unsullied Canvas.' It will draw the Witch of Ink out of hiding. 
-
-                    //	" ";
-                }
-                if (dialogueLeft == 2)
-                {
-                    expression = 12;
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Penth.3", Player.name); //This is another important step in the pursuit of the the First Starbearer. 
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 1)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Penth.4", Player.name); //Please prepare yourself. This will be a hard fight.  
-
-                    //	" ";
-                }
-
-
-
-
+                string category = "BossItemDialogue";
+                string key = category + "." + "Penth" + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
             }//Penth item
             if (chosenDialogue == 303) //Arbiter item
@@ -8978,297 +6017,24 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
-                    dialogueLeft = 4;
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("DemonicCrux").Type);
-                    dialoguePrep = false;
                 }
-
-
-                if (dialogueLeft == 4)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Arbitration.1", Player.name); //We meet again, {Player.name}. Again, I have another foe for you to defeat.  
-
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 3)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Arbitration.2", Player.name); //I've given you the 'Beating Crux' When used, it will call forth a powerful demon. 
-
-                    //	" ";
-                }
-                if (dialogueLeft == 2)
-                {
-                    expression = 12;
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Arbitration.3", Player.name); //This is another important step in the pursuit of the the First Starbearer. 
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 1)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Arbitration.4", Player.name); //Prepare yourself well.   
-
-                    //	" ";
-                }
-
-
+                string category = "BossItemDialogue";
+                string key = category + "." + "Arbitration" + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
 
 
             }//Arbiter item
             if (chosenDialogue == 304) //Warrior item
             {
-
-
-
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep == true)                                     // |
                 {
-                    if (dialoguePrep == true)                                     // |
-                    {
-                        dialogueLeft = 12;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 12)
-                    {
-                        expression = 3;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.1", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 11)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.2", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 10)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.3", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 9)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.4", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 8)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.5", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 7)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.6", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.7", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.8", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.9", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.10", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.11", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorAsphodene.12", Player.name);
-
-
-                        //	" ";
-                    }
-
-
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
                 }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)                                     // |
-                    {
-                        dialogueLeft = 12;
-                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
-                        dialoguePrep = false;
-                    }
-
-                    if (dialogueLeft == 12)
-                    {
-                        expression = 3;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.1", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 11)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.2", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 10)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.3", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 9)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.4", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 8)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.5", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 7)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.6", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 1;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.7", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.8", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.9", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.10", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 12;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.11", Player.name);
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.WarriorEridani.12", Player.name);
-
-
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "BossItemDialogue";
+                string key = category + "." + "Warrior" + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
 
 
 
@@ -9278,46 +6044,13 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
-                    dialogueLeft = 4;
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("TwincruxPendant").Type);
-                    dialoguePrep = false;
                 }
 
-
-                if (dialogueLeft == 4)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.1", Player.name); //{0}, you can tell as well as I that the situation has turned dire.  
-
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 3)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.2", Player.name); //The First Starbearer's gaze has been turned to you, and his power has blanketed the world in overwhelming Light. 
-
-                    //	" ";
-                }
-                if (dialogueLeft == 2)
-                {
-                    expression = 12;
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.3", Player.name); //I have given you the 'Progenitor's Wish.' It will serve as a way to draw him out. From then on, it will be your strength against his determination.
-
-
-                    //	" ";
-                }
-                if (dialogueLeft == 1)
-                {
-                    expression = 12;
-
-                    dialogue = LangHelper.GetTextValue($"Dialogue.BossItemDialogue.Dioskouroi.4", Player.name); //Please, you must win this fight. The stakes have never been higher.  
-
-                    //	" ";
-                }
+                string category = "BossItemDialogue";
+                string key = category + "." + "Dioskouroi" + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                
 
             }//Dioskouroi item
 
@@ -9339,7 +6072,7 @@ namespace StarsAbove.Dialogue
             {
 
             }
-            dialogue = LangHelper.GetTextValue(key + dialogueLeft);
+            dialogue = LangHelper.GetTextValue("Dialogue." + key + dialogueLeft);
             expression = SetupExpression(LangHelper.GetTextValue(key + dialogueLeft + ".E"));
         }
 
@@ -9368,7 +6101,9 @@ namespace StarsAbove.Dialogue
                 case "DeadInside":
 
                     return 6;
+                case "PerseusNeutral":
 
+                    return 12;
             }
             return 0;
         }

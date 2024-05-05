@@ -599,78 +599,6 @@ Mods: {
 			}
 
 			WeaponDialogue: {
-				TestDialogue: {
-					Asphodene: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue.
-
-						1: {
-							// $parentVal: Hello, test1 weapon
-							// Emotion: "3"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "1"
-						}
-
-						// Length: "2"
-					}
-
-					Eridani: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue.
-
-						1: {
-							// $parentVal: Hi, test1 weapon
-							// Emotion: "2"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "4"
-						}
-
-						// Length: "2"
-					}
-				}
-
-				TestDialogue2: {
-					Asphodene: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue 2.
-
-						1: {
-							// $parentVal: test1 (Asphodene)
-							// Emotion: "3"
-						}
-
-						// Length: "1"
-					}
-
-					Eridani: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue 2.
-
-						1: {
-							// $parentVal: test1 (Eridani)
-							// Emotion: "3"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "1"
-						}
-
-						3: {
-							// $parentVal: test3
-							// Emotion: "0"
-						}
-
-						// Length: "3"
-					}
-				}
-
 				Asphodene: {
 					1: 这是另一个可以用的精华。它可以制造出具有独特属性的射手武器。我觉得它是被诅咒的，所以……
 					2: 那只能祝你好运！我已经警告过你了。
@@ -893,16 +821,30 @@ Mods: {
 					Asphodene: {
 						1: 你已经击败了史莱姆王，哈？做得好。
 						2: 它还是挺弱的，但这无疑是迈出了第一步。
-						3: 其他人看到那个忍者了吗？难道只有我？
-						4: 不知怎的…它足够强到来解锁天体序列的一部分！稍后查看一下，好吗？
-						5: ……好了，就这些了。继续前进。
+
+						3: {
+							$parentVal: 其他人看到那个忍者了吗？难道只有我？
+							// E: Thinking
+						}
+
+						4: {
+							$parentVal: 不知怎的…它足够强到来解锁天体序列的一部分！稍后查看一下，好吗？
+							// E: Happy
+						}
 					}
 
 					Eridani: {
 						1: 它可能看起来挺弱的，但是史莱姆王还是有点威胁的。
-						2: 我希望它就这样死透了。虽然我知道史莱姆不喜欢这样。
-						3: 这个敌人的什么东西解锁了天体序列的一部分。或许它比通常想的要凶猛？
-						4: 但是，如果它回来了，你应该能轻易重新击败他；至少通常是这样的。
+
+						2: {
+							$parentVal: 我希望它就这样死透了。虽然我知道史莱姆不喜欢这样。
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: 这个敌人的什么东西解锁了天体序列的一部分。或许它比通常想的要凶猛？
+							// E: Happy
+						}
 					}
 				}
 
@@ -10032,7 +9974,7 @@ Mods: {
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
 					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
-					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
+					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy
 					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration

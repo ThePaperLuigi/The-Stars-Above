@@ -599,78 +599,6 @@ Mods: {
 			}
 
 			WeaponDialogue: {
-				TestDialogue: {
-					Asphodene: {
-						UnlockCondition: Archive.UnlockConditions.KingSlime
-						ArchiveInfo: Test dialogue.
-
-						1: {
-							$parentVal: Hello, test1 weapon
-							Emotion: "3"
-						}
-
-						2: {
-							$parentVal: test2
-							Emotion: "1"
-						}
-
-						Length: "2"
-					}
-
-					Eridani: {
-						UnlockCondition: Archive.UnlockConditions.KingSlime
-						ArchiveInfo: Test dialogue.
-
-						1: {
-							$parentVal: Hi, test1 weapon
-							Emotion: "2"
-						}
-
-						2: {
-							$parentVal: test2
-							Emotion: "4"
-						}
-
-						Length: "2"
-					}
-				}
-
-				TestDialogue2: {
-					Asphodene: {
-						UnlockCondition: Archive.UnlockConditions.KingSlime
-						ArchiveInfo: Test dialogue 2.
-
-						1: {
-							$parentVal: test1 (Asphodene)
-							Emotion: "3"
-						}
-
-						Length: "1"
-					}
-
-					Eridani: {
-						UnlockCondition: Archive.UnlockConditions.KingSlime
-						ArchiveInfo: Test dialogue 2.
-
-						1: {
-							$parentVal: test1 (Eridani)
-							Emotion: "3"
-						}
-
-						2: {
-							$parentVal: test2
-							Emotion: "1"
-						}
-
-						3: {
-							$parentVal: test3
-							Emotion: "0"
-						}
-
-						Length: "3"
-					}
-				}
-
 				Asphodene: {
 					1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
 					2: Good luck! I did warn you.
@@ -893,16 +821,30 @@ Mods: {
 					Asphodene: {
 						1: You've defeated the Slime King, huh? Good job.
 						2: It may have been rather weak, but it's a surefire step forwards nevertheless.
-						3: Did anyone else see that ninja thing? Was it just me?
-						4: Somehow.. it was strong enough to unlock a part of the Stellar Array! Check it out later, OK?
-						5: ...Well, that's all for now. Keep it up.
+
+						3: {
+							$parentVal: Did anyone else see that ninja thing? Was it just me?
+							E: Thinking
+						}
+
+						4: {
+							$parentVal: ...Well, that's all for now. Keep it up.
+							E: Happy
+						}
 					}
 
 					Eridani: {
 						1: It may have seemed weak, but the Slime King was truly quite the threat.
-						2: Let's hope it stays dead. I know slimes aren't a big fan of that.
-						3: Something about this foe has unlocked a part of the Stellar Array. Perhaps it was fiercer than usual?
-						4: However, if it does return, you should be able to easily defeat it anew; that's usually how it goes.
+
+						2: {
+							$parentVal: Let's hope it stays dead. I know slimes aren't a big fan of that.
+							E: Angry
+						}
+
+						3: {
+							$parentVal: However, if it does return, you should be able to easily defeat it anew; that's usually how it goes.
+							E: Happy
+						}
 					}
 				}
 
@@ -910,58 +852,57 @@ Mods: {
 					Asphodene: {
 						1: "'Eye of Cthulhu'? "
 						2: Doesn't that imply there would be more of this 'Cthulhu'?
+						2.E: Thinking
 						3: If it ever reared its head, it would be quite the formidable foe indeed.
+						3.E: Worried
 						4: Let's prepare for that occasion... Just in case.
-						5: Hey.. defeating that foe was enough! Looks like an ability in the Stellar Array is ready.
 					}
 
 					Eridani: {
 						1: For how fearsome it looked, the Eye of Cthulhu wasn't too terrible, was it?
 						2: It seems to have shed its skin to display quite an array of teeth.
 						3: If I didn't know better, it looked like it was trying to prove something. Weirdo.
-						4: In other news.. an ability in the Stellar Array is now available. Use it well.
 					}
 				}
 
 				CorruptionBoss: {
 					Asphodene: {
-						1: Huh. I guess there really was more 'Cthulhu.' Somehow, it doesn't suprise me as much as I would have thought.
-						2: Glad we stopped that thing before it lived up to its name.
-						3: Those materials are... something... Wow- the smell.
-						4: Hey, the weapons that you can make from it look pretty powerful! What do you think?
-						5: Looks like an ability has unlocked in the Stellar Array. You should definitely consider it.
+						1: So, the obviously corroded part of the world also had a big bad monster waiting inside of it. That does track.
+						1.E: Angry
+						2: I'm starting to think that you just like the challenge... Well, something tells me there's more where that comes from.
 					}
 
 					Eridani: {
-						1: Another organ of this 'Cthulhu' and it attacked with magical manipulation... Also- yuck?
-						2: This 'Eater of Worlds' was just a big worm. I'm kind of disappointed. Let's file a complaint with whomever named this thing.
-						3: Looks like it unlocked an ability in the Stellar Array. Look it over when you're free.
+						1: I'm glad you've taken care of that evil looking fiend. Perhaps it's best we stay away from the oddly colored soil from now on?
 					}
 				}
 
 				QueenBee: {
 					Asphodene: {
 						1: Well, I guess I should have expected something like this within the Jungle.
-						2: Good work. Looks like another ability is unlocked in the Stellar Array as well.
+						2: Good work. Let's hope a bath takes all that honey off of you...
 					}
 
 					Eridani: {
 						1: Seriously? A giant bee... Somehow, I might prefer it over smaller insects... Easier to hit, you know.
-						2: Ahem. At the very least, it unlocked an ability in the Stellar Array.
+						2: You'll probably encounter a few, considering you're now dripping with insanely sweet honey.
+						3: Now that I'm thinking of how sticky that honey is, I am truly sorry. At least it's edible...?
+						3.E: Worried
 					}
 				}
 
 				Skeletron: {
 					Asphodene: {
 						1: The Clothier was truly a gigantic evil skeleton monster.. Cute. At the very least, you have access to the Dungeon now.
-						2: And with this, another ability is unlocked in the Stellar Array.
-						3: Well, that's all for now.
+						2: Okay, I know you're chomping at the bit to go down and do some spelunking, but- Actually, never mind. I'm curious too. Let's get going.
 					}
 
 					Eridani: {
 						1: That poor Clothier, cursed to become Skeletron. It seems his defeat has granted us access to the Dungeon. This may be in bad taste, but...
 						2: If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
+						2.E: Thinking
 						3: If anyone asks, you didn't hear that from me.
+						3.E: Worried
 					}
 				}
 
@@ -969,15 +910,13 @@ Mods: {
 					Asphodene: {
 						1: Whoa.. I've never seen anything like this.. ever. The entire world seems to be bursting with new magical energy.
 						2: It looks like the Wall of Flesh was either guarding or preventing something drastic from happening. That's my take on it.
-						3: Just to let you know, there's another upgrade in the Stellar Array now.
-						4: Anyways, feels like it's time to do some more exploring! Let's get to it.
+						3: Anyways, feels like it's time to do some more exploring! Let's get to it.
 					}
 
 					Eridani: {
 						1: Wow.. the world itself seems to have been drastically altered after the defeat of the Wall of Flesh...
 						2: I've never seen anything like it. What was this thing hiding...?
-						3: You've also unlocked a new ability in the Array, but that was a foregone outcome, all things considered.
-						4: Let's explore these new environs with caution.
+						3: Let's explore these new environs with caution.
 					}
 				}
 
@@ -985,59 +924,55 @@ Mods: {
 					Asphodene: {
 						1: So someone went and made two Eyes instead of one? Good for them, but in my opinion, the design is kind of ruined already.
 						2: If you're going to make a robot eye, try and hide the obvious weak spot where the iris is. Well, I don't create giant evil robotic eyes, so they got me there.
-						3: It looks as if another upgrade is available in the Stellar Array. That's it for now.
-						4: That's about all for now.
 					}
 
 					Eridani: {
 						1: Well, those mechanical facsimiles are dead. We're not rating boss monsters, or anything, but... I'm going to have to dock some points.
-						2: Why would you ever even think about using flesh for the exterior? In terms of material, you've got to have better options, if you're already going all this way.
-						3: It looks as if yet another upgrade is available in the Stellar Array. Pretty serendipitous.
-						4: That's all for now.
+						2: Why would you ever even think about using flesh for the exterior? In terms of material, you've got to have better options, if you're already going all this way...
+						2.E: Angry
 					}
 				}
 
 				Destroyer: {
 					Asphodene: {
 						1: "'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm."
-						2: Its absurd length was just a detriment to its strength. Take notes, {0}.
-						3: It looks as if another upgrade is available in the Stellar Array.
-						4: I guess that's all I have for now.
+						2: Its absurd length was just a detriment to its strength. Take notes, {0}!
 					}
 
 					Eridani: {
 						1: I guess the Destroyer was more bark than bite, huh. Maybe too much of the budget was spent on the design aspect.
 						2: In theory, we could technically salvage some of its bits, but it's probably more trouble than its worth.
-						3: It looks as if yet another upgrade is available in the Stellar Array. Pretty serendipitous.
-						4: That's all for now.
 					}
 				}
 
 				SkeletronPrime: {
 					Asphodene: {
-						1: You've done it! Skeletron Prime has been defeated. A bit of a monster, huh?
+						1: You've done it! Skeletron Prime has been defeated. A 'prime' example of a monster, huh?
+						1.E: Happy
 						2: The appendages were a smart idea. Almost got you a few times there.
-						3: It looks as if another upgrade is available in the Stellar Array.
-						4: I guess that's all I have for now.
+						3: A prime example of... wait, I just said that. Ugh.
+						3.E: Worried
 					}
 
 					Eridani: {
 						1: And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
+						1.E: Angry
 						2: If you took offense, I apologize. You can be as edgy as you want. Anyways...
-						3: It looks as if yet another upgrade is available in the Stellar Array. Pretty serendipitous.
-						4: That's all for now.
+						2.E: Worried
 					}
 				}
 
 				AllMechs: {
 					Asphodene: {
 						1: Actually.. It looks like you've bested all the Mechanical Bosses! This is definitely, 100% a step forward.
-						2: This victory has lead to another upgrade in- you guessed it, the Stellar Array. Did it keep you waiting?
+						2: I'd take stock of our resources from this point on- looks like things won't get any easier.
+						2.E: Worried
 					}
 
 					Eridani: {
 						1: It seems that was the last of the Mechanical Bosses. This is a great step forward!
-						2: This victory has brought another upgrade to the Stellar Array. Hopefully you weren't kept too long.
+						1.E: Happy
+						2: Let's prepare for our further trials. From how things have been progressing, it's only going to get harder.
 					}
 				}
 
@@ -1045,29 +980,26 @@ Mods: {
 					Asphodene: {
 						1: And there it goes.. the terror of the jungle, Plantera. Congratulations on your victory.
 						2: I sense the Dungeon has changed... and that temple in the Jungle is now available. It's your choice what to tackle next.
-						3: Another upgrade is now available in the Stellar Array, too.
 					}
 
 					Eridani: {
 						1: That marks the end of Plantera. Very good work. You should be able to access the Jungle Temple now.
 						2: I also believe there's new materials to be found within the Dungeon. We'll just have to... take it by force.
-						3: Another upgrade has been unlocked in the Stellar Array, as well.
 					}
 				}
 
 				Golem: {
 					Asphodene: {
-						1: You've done it! Golem is no more. You're unstoppable.
+						1: You've done it! Golem is no more- you're unstoppable.
 						2: Something about our next enemy feels.. dangerous. It seems spatial energy has congregated around the Dungeon's entrance.
-						3: Another upgrade is now available in the Stellar Array. Looks pretty strong.
-						4: Well, that's about everything.
+						2.E: Worried
 					}
 
 					Eridani: {
 						1: The Lizhard Temple's beast Golem is confirmed dead.  In terms of mechanical beasts, I'm kind of.. disappointed?
+						1.E: Thinking
 						2: Something strange has appeared in front of the Dungeon. It seems otherwordly in nature... Be prepared for anything.
-						3: Another upgrade has been unlocked in the Stellar Array, as well.
-						4: That's about everything.
+						2.E: Angry
 					}
 				}
 
@@ -1075,10 +1007,14 @@ Mods: {
 					Asphodene: {
 						1: Such a powerful creature hiding deep within the Ocean.. Luckily, you avoided being turned into fish food.
 						2: Where did that saying even come from..? What IS fish food? More important questions left unanswered...
+						2.E: Thinking
+						3: What do you mean it isn't important? Duh, of course it's an important question. All questions are important.
+						3.E: Happy
 					}
 
 					Eridani: {
 						1: Duke Fishron has been defeated. That was a close one, but you've o-fish-ally won. ...
+						1.E: Smug
 						2: I might have fished too hard for that one. You know what..? Let's leave the puns to Asphodene. I concede there's a certain skill to it.
 					}
 				}
@@ -1118,35 +1054,33 @@ Mods: {
 				WarriorOfLight: {
 					Asphodene: {
 						1: I see we were wrong.. The Warrior thought he was saving the galaxy, but it was truly the lies of the First Starfarer.. How cruel.
-						2: Anyways, the Warrior of Light. He managed to get away, but... Night has returned to this world, finally!
+						1.E: Worried
+						2: Anyways, the Warrior of Light is defeated... Night has returned to this world, finally!
+						2.E: Happy
 						3: We finally have the last piece of the puzzle. The First Starfarer showed her hand, and this means we have a chance.
-						4: The Stellar Array is yet stronger- something we'll need in the coming conflict, I believe.
-						5: Once you've collected all the Mnemonic Traces, craft them together with use of the Celestriad Root.
-						6: I probably don't need to tell you this, but she's not going to parley. Prepare for a hard fight.. Perhaps the hardest fight so far.
+						4: Once you've collected all the Mnemonic Traces, craft them together with use of the Celestriad Root.
+						5: I probably don't need to tell you this, but she's not going to parley. Prepare for a hard fight.. Perhaps the hardest fight so far.
 					}
 
 					Eridani: {
-						1: You have brought down the Warrior of Light. He's managed to escape, but nighttime has returned to this world regardless.
+						1: You have brought down the Warrior of Light. Nighttime has returned to this world- a wonderful respite.
+						1.E: Happy
 						2: It seems we were misguided. The Warrior believed he was saving the galaxy, but it was, in truth, all lies from his Starfarer.
+						2.E: Angry
 						3: With this final Mnemonic Trace.. I see.. It all makes sense now. {0}, I need you to combine all of the Mnemonic Traces together.
 						4: You'll have to utilize the Observatory's Celestriad Root.
-						5: Not all is lost, however. We've gained some strength from the Warrior of Light in the Stellar Array.
-						6: Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
+						5: Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
+						5.E: Angry
 					}
 				}
 
 				AllVanillaBosses: {
 					Asphodene: {
 						1: You've defeated so many powerful foes- you must be nearing the pinnacle of your powers, for sure.
-						2: How can I tell? Well... there's a new Stellar Array ability available, to boot.
-						3: Here's a little gift, from me to you. It's an Essence of a past Starfarer- you'll be able to use it well.
 					}
 
 					Eridani: {
 						1: You've come quite far- I'm sure our enemies shudder when they think of you.
-						2: I'm seriously proud of your growth. In fact, you've gained the strength of a new Stellar Array ability from it.
-						3: It may not be the best reward, but this Essence of a past Starfarer should be quite helpful to you.
-						4: Let's keep up the good work.
 					}
 				}
 
@@ -1154,15 +1088,13 @@ Mods: {
 					Asphodene: {
 						1: Seriously, this is a incredible achievement- I've had this Essence tucked away, as it was too powerful to use, but...
 						2: With what you've accomplished, I think you're able to finally wield it.
-						3: Be sure to treat the finished product with care. Furthermore...
-						4: A new Stellar Array ability is active. Could this be the very last one?
+						3: Be sure to treat the finished product with care.
 					}
 
 					Eridani: {
 						1: I'm in awe... In truth, I've had this Essence locked away- it was far too powerful to wield. However...
 						2: It would be silly of me to keep it from you now. With everything you've done, it belongs to you now.
 						3: Keep in mind its potential- and good luck crafting it.
-						4: Wait a moment- is this also the last Stellar Array ability, activated? Incredible work.
 					}
 				}
 
@@ -1171,6 +1103,7 @@ Mods: {
 						1: Now that was a strange fight... I don't even think those twins even realized we were there!
 						2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
 						3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
+						3.E: Thinking
 						4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
 					}
 
@@ -1178,6 +1111,7 @@ Mods: {
 						1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
 						2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
 						3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
+						3.E: Thinking
 						4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
 					}
 				}
@@ -1231,7 +1165,8 @@ Mods: {
 						1: It.. it's over. Tsukiyomi has vanished. We're still missing so many clues. She doesn't seem out of it, so what caused her to do what she did?
 						2: Hopefully one day, we'll find the answers to the questions we seek... I have a feeling this journey isn't over yet.
 						3: I've gathered some of the leftover residue from the fight. It will likely have use as a stand-in to an Essence, for creating a weapon.
-						4: With this victory.. the galaxy is saved. There may be more evils ahead, but know that nothing is insurmountable. We've come this far.
+						4: With this victory... There may be more evils ahead, but know that nothing is insurmountable. We've come this far.
+						4.E: Happy
 					}
 
 					Eridani: {
@@ -1239,6 +1174,7 @@ Mods: {
 						2: What ails me is her motives... She did horrible things... but was it malice, or a greater purpose...? I hope we find the answer.
 						3: I've gone through the work of absorbing some residue energy and have turned it into the Spatial Memoriam. You can use it like an Essence.
 						4: There is still work to do, but take heart; if we've come this far, nothing can stop us now.
+						4.E: Happy
 					}
 				}
 
@@ -1246,14 +1182,19 @@ Mods: {
 					Asphodene: {
 						1: That's that. Queen Slime is defeated. What have we learned today? Apparently there's a royal court of slimes, and the King Slime wasn't just an outlier.
 						2: That doesn't even make any sense. They're slime. I seriously, seriously don't think slime has the capacity to think.
+						2.E: Thinking
 						3: Who knows- maybe they're smarter than us. Then again, I'd be really annoyed if my intelligence was dwarfed by some gelatin, so let's say they aren't.
+						3.E: Angry
 					}
 
 					Eridani: {
 						1: Right, we've defeated the Queen Slime. To be honest, I'm slightly curious: why are there 'kings' and 'queens' of the slime world?
 						2: How much power do the royal slimes even have? Are they legitimate rulers?
+						2.E: Thinking
 						3: Does the royal slime court send their subjects to attack random people? Do they even have the right to own property?
+						3.E: Thinking
 						4: Fight back, oppressed slimes! Take back your freedom!
+						4.E: Angry
 					}
 				}
 
@@ -1261,13 +1202,12 @@ Mods: {
 					Asphodene: {
 						1: Great work- the Empress of Light is no more. Nobody else is going to say it, so I will-  did it have a big nose, or was it smiling? I couldn't tell.
 						2: Maybe if she stood still at all, I'd have gotten a better glimpse. Kind of annoying, huh.
+						2.E: Worried
 					}
 
 					Eridani: {
 						1: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?
-						2: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend.
-						3: If I had a nickel for bosses summoned with insects... We fought that rather large fish, right? That's two. Not very much, is it. I was hoping for a trend. Maybe we can count the Queen Bee?
-						4: Somehow... I feel like there's yet another boss we'll have to use an insect to summon. That's going to be rather bothersome.
+						1.E: Worried
 					}
 				}
 
@@ -1287,11 +1227,14 @@ Mods: {
 					Asphodene: {
 						1: That was quite the battle! Remind me to never touch strange potions ever again.
 						2: Actually, this one wasn't even my fault. Remind me to remind you to never touch strange potions again.
+						2.E: Worried
 					}
 
 					Eridani: {
 						1: Looks like you came out of that fight with Thespian in one piece. What a curious phenomenon.
 						2: An alchemist reanimated by a clown that only appears at night time. Hey, am I missing a punchline here?
+						2.E: Worried
+
 					}
 				}
 			}
@@ -1301,6 +1244,7 @@ Mods: {
 					Asphodene: {
 						1: You've defeated that evil serpent. I do wonder, though... Where did it come from?
 						2: Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
+						2.E: Angry
 						3: This world's secrets are still a mystery to us. Anyway, good job regardless.
 					}
 
@@ -1315,12 +1259,14 @@ Mods: {
 					Asphodene: {
 						1: Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
 						2: It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
+						2.E: Angry
 						3: Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
 					}
 
 					Eridani: {
 						1: Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
 						2: However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
+						2.E: Angry
 						3: Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
 					}
 				}
@@ -1341,11 +1287,15 @@ Mods: {
 					Asphodene: {
 						1: You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
 						2: It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
+						2.E: Angry
+
 					}
 
 					Eridani: {
 						1: You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
 						2: Well, everything living is made of flesh. Ugh, you know what I mean...
+						2.E: Angry
+
 					}
 				}
 
@@ -1353,8 +1303,11 @@ Mods: {
 					Asphodene: {
 						1: The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
 						2: I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them.
+						2.E: Angry
 						3: Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
+						3.E: Smug
 						4: In a few centuries or so... Ugh.
+						4.E: Worried
 					}
 
 					Eridani: {
@@ -1368,12 +1321,15 @@ Mods: {
 					Asphodene: {
 						1: You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for this Archmage fellow.
 						2: From what he can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
+						2.E: Angry
 						3: Whoever they are, it seems they've caused this world no shortage of troubles.
+						3.E: Angry
 					}
 
 					Eridani: {
 						1: Cryogen has been slain. And out from its corpse arrives this Archmage sort. From what he has to say, he was trapped there by an evil king...
 						2: Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for many of this world's ailments.
+						2.E: Angry
 						3: We must endeavor to unravel more of this story. I trust you're in agreement.
 					}
 				}
@@ -1381,12 +1337,16 @@ Mods: {
 				AquaticScourge: {
 					Asphodene: {
 						1: The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
+						1.E: Angry
 						2: The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We shouldn't let these misdeeds carry on.
+						2.E: Angry
 					}
 
 					Eridani: {
 						1: The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
+						1.E: Angry
 						2: From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
+						2.E: Angry
 					}
 				}
 
@@ -1394,11 +1354,13 @@ Mods: {
 					Asphodene: {
 						1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before it was destroyed.
 						2: Whoever did this must be a fearsome foe, indeed. While I do like a challenge, there's no beating around the bush: we have to get stronger.
+						2.E: Angry
 					}
 
 					Eridani: {
 						1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
 						2: Whatever caused this destruction has to be stopped... but we must get stronger to do so.
+						2.E: Angry
 					}
 				}
 
@@ -1406,11 +1368,13 @@ Mods: {
 					Asphodene: {
 						1: ...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
 						2: We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..?
+						2.E: Angry
 					}
 
 					Eridani: {
 						1: We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
 						2: Who knows what the real thing can do.. We have to become stronger.
+						2.E: Angry
 					}
 				}
 
@@ -1430,6 +1394,7 @@ Mods: {
 				AstrumAureus: {
 					Asphodene: {
 						1: We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
+						1.E: Angry
 						2: Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
 					}
 
@@ -1442,12 +1407,15 @@ Mods: {
 				PlaguebringerGoliath: {
 					Asphodene: {
 						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
+
 						2: Well, what can you do. There's people like us here to take care of that part.
 					}
 
 					Eridani: {
 						1: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
+						1.E: Angry
 						2: Bugs, bugs..  They continue to rear their ugly heads wherever I look..!
+						2.E: Angry
 						3: Let's just move on. Good job defeating that foe.
 					}
 				}
@@ -1455,12 +1423,16 @@ Mods: {
 				Ravager: {
 					Asphodene: {
 						1: The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
+						1.E: Angry
 						2: At the very least, we could finally stop it. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
+						2.E: Angry
 					}
 
 					Eridani: {
 						1: We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
+						1.E: Angry
 						2: Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
+						2.E: Angry
 					}
 				}
 
@@ -1468,14 +1440,18 @@ Mods: {
 					Asphodene: {
 						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of myriad cosmic beings with lots of power. Etymology around these things is hard, so let's just call it a god.
 						2: However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
+						2.E: Angry
 						3: Let's return to what I said earlier. Astrum Deus was something akin to a god. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
+						3.E: Angry
 						4: This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
 					}
 
 					Eridani: {
 						1: Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share...
 						2: Astrum Deus is one of many cosmic deities. Knowledge states that it can assimilate life near its corpse to regenerate itself.
+						2.E: Angry
 						3: So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
+						3.E: Angry
 						4: Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations.
 					}
 				}
@@ -1485,6 +1461,7 @@ Mods: {
 				VagrantAsphodene: {
 					1: Hang on- I have something you might be interested in. I can't recall how I came across it, but...
 					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+					2.E: Worried
 					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able. No pressure. Okay, a little pressure.
 				}
 
@@ -1492,57 +1469,94 @@ Mods: {
 					1: Hold on a moment. I neglected to bring this up before, but I have something for you... Perhaps you can help me determine its origin.
 					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing. I can't even recall when I acquired it.
 					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+					3.E: Happy
+					4: Who is 'they' you ask? Well, I never quite figured that one out.
 				}
 
 				Nalhaun: {
 					1: We meet again, {0}. Again, I have another foe for you to defeat.
+					1.E: PerseusNeutral
 					2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
+					2.E: PerseusNeutral
 					3: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
+					3.E: PerseusNeutral
 					4: Prepare yourself: this fight will not be easy.
+					4.E: PerseusNeutral
 				}
 
 				Penth: {
 					1: We meet again, {0}. Again, I need your assistance.
+					1.E: PerseusNeutral
 					2: This is the 'Unsullied Canvas.' It will draw the Witch of Ink out of hiding.
+					2.E: PerseusNeutral
 					3: This is another important step in the pursuit of the the First Starbearer.
+					3.E: PerseusNeutral
 					4: Please prepare yourself. This will be a hard fight.
+					4.E: PerseusNeutral
 				}
 
 				Dioskouroi: {
 					1: We meet again, {0}. I need your help.
+					1.E: PerseusNeutral
 					2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
+					2.E: PerseusNeutral
 					3: This foe was once bested by the First Starbearer. My hope is that by studying your conflict with this simulacrum, we may yet find clues to his location.
+					3.E: PerseusNeutral
 					4: Prepare yourself well.
+					4.E: PerseusNeutral
 				}
 
 				WarriorAsphodene: {
 					1: Something's really wrong with the sky... What could be going on...?
+					1.E: Worried
 					2: The answer you seek isn't the answer you are hoping for.
+					2.E: PerseusNeutral
 					3: Wh-
+					3.E: Worried
 					4: Let me finish, Asphodene- Time is of the essence. The First Starbearer has descended on this world.
+					4.E: PerseusNeutral
 					5: Are you kidding me? After all that searching we did, he just waltzes up to us?
+					5.E: Angry
 					6: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
+					6.E: PerseusNeutral
 					7: Yeah, we could tell. So... I assume you have a plan, or something?
 					8: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
+					8.E: PerseusNeutral
 					9: If you have resources that require the night to acquire, I implore you acquire them soon.
+					9.E: PerseusNeutral
 					10: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
+					10.E: PerseusNeutral
 					11: Use it only if you are prepared. The stakes have never been higher.
+					11.E: PerseusNeutral
 					12: ...
+					12.E: Angry
 				}
 
 				WarriorEridani: {
 					1: You can see it too, right? The sky is abnormally bright.
+					1.E: Worried
 					2: The answer you seek isn't the answer you are hoping for.
+					2.E: PerseusNeutral
 					3: Perseus. I-
+					3.E: Angry
 					4: Let me finish, Eridani- Time is of the essence. The First Starbearer has descended on this world.
+					4.E: PerseusNeutral
 					5: We were searching for him for so long- why has he come to us instead?
+					5.E: Thinking
 					6: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
+					6.E: PerseusNeutral
 					7: That makes sense, albeit in a way that makes us seem at fault... Anyways, do you have some sort of plan?
+					7.E: Worried
 					8: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
+					8.E: PerseusNeutral
 					9: If you have resources that require the night to acquire, I implore you acquire them soon.
+					9.E: PerseusNeutral
 					10: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
+					10.E: PerseusNeutral
 					11: Use it only if you are prepared. The stakes have never been higher.
+					11.E: PerseusNeutral
 					12: ...
+					12.E: Worried
 				}
 			}
 

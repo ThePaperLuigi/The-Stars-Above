@@ -599,78 +599,6 @@ Mods: {
 			}
 
 			WeaponDialogue: {
-				TestDialogue: {
-					Asphodene: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue.
-
-						1: {
-							// $parentVal: Hello, test1 weapon
-							// Emotion: "3"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "1"
-						}
-
-						// Length: "2"
-					}
-
-					Eridani: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue.
-
-						1: {
-							// $parentVal: Hi, test1 weapon
-							// Emotion: "2"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "4"
-						}
-
-						// Length: "2"
-					}
-				}
-
-				TestDialogue2: {
-					Asphodene: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue 2.
-
-						1: {
-							// $parentVal: test1 (Asphodene)
-							// Emotion: "3"
-						}
-
-						// Length: "1"
-					}
-
-					Eridani: {
-						// UnlockCondition: Archive.UnlockConditions.KingSlime
-						// ArchiveInfo: Test dialogue 2.
-
-						1: {
-							// $parentVal: test1 (Eridani)
-							// Emotion: "3"
-						}
-
-						2: {
-							// $parentVal: test2
-							// Emotion: "1"
-						}
-
-						3: {
-							// $parentVal: test3
-							// Emotion: "0"
-						}
-
-						// Length: "3"
-					}
-				}
-
 				Asphodene: {
 					1: Aquí hay otra Esencia que puedes usar. Creará una arma a distancia con propiedades únicas. Algo me dice que está maldita, así que...
 					2: ¡Buena suerte! ya te he advertido.
@@ -893,16 +821,30 @@ Mods: {
 					Asphodene: {
 						1: ¿Has derrotado al Rey Slime, eh? Buen trabajo.
 						2: quizás fue un tanto débil, pero ciertamente es un paso adelante.
-						3: ¿pudiste ver a ese ninja? ¿O era cosa mía?
-						4: De alguna manera... ¡fue lo suficientemente fuerte para desbloquear una parte de la Matriz Estelar! Revísalo después, ¿ok?
-						5: ...Bueno, eso es todo por ahora. Sigue así
+
+						3: {
+							$parentVal: ¿pudiste ver a ese ninja? ¿O era cosa mía?
+							// E: Thinking
+						}
+
+						4: {
+							$parentVal: De alguna manera... ¡fue lo suficientemente fuerte para desbloquear una parte de la Matriz Estelar! Revísalo después, ¿ok?
+							// E: Happy
+						}
 					}
 
 					Eridani: {
 						1: Puede haber parecido débil, pero el Rey Slime ciertamente fue una amenaza.
-						2: Esperemos que se mantenga muerto. Sé que los slimes no son muy fan de eso.
-						3: Algo de este enemigo desbloqueó una parte de la Matriz Estelar. ¿Quizás era más feroz de lo usual?
-						4: Sin embargo, si vuelve, deberías ser capaz de derrotarlo de nuevo fácilmente, así suele ser normalmente.
+
+						2: {
+							$parentVal: Esperemos que se mantenga muerto. Sé que los slimes no son muy fan de eso.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Algo de este enemigo desbloqueó una parte de la Matriz Estelar. ¿Quizás era más feroz de lo usual?
+							// E: Happy
+						}
 					}
 				}
 
@@ -9896,7 +9838,7 @@ Mods: {
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
 					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
-					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
+					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy
 					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration
