@@ -3,6 +3,7 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -13,103 +14,9 @@ namespace StarsAbove.Dialogue
     public class StarsAboveDialogueSystem : ModSystem
     {
         //Old dialogue system.
-        public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, Player Player, Mod Mod)
+        public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, ref bool dialogueFinished, Player Player, Mod Mod)
         {
-
-            if (chosenDialogue == 1) // Introduction dialogue. Unused.
-            {
-                if (chosenStarfarer == 1) // Asphodene
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 6;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
-
-
-
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I will lend you my strength so that we may defeat the threats to this world together.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You can use the Spatial Disk I've given you to access the Stellar Array, which provides you with powerful abilities after defeating bosses. Nice, right?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I've added the 'Bifrost' to your inventory. There's a lot to go over, but in short, it'll let you traverse the galaxy when used. We can talk more about it later.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Also, I'll supply you with Essences when I can. Think of them as memories of other worlds. You can combine them with materials to create powerful Aspected Weapons.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 4;
-                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Right. My power is yours. Let's show this world what we can do.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 6;
-
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It's nice to meet you. My name is Eridani.. a Starfarer. You, in turn, are my Starbearer.
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Through this contract, we must work together to bring justice to those willing to harm this world.
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You can use the Spatial Disk I've given you to access the Stellar Array. It will become stronger after defeating bosses, and will grant you strength in return.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //I've added the Bifrost to your inventory. At a later date, I can explain what it does, but in short, it will allow traversal of the universe.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Furthermore, I will grant you Essences. Essences are otherworldy memories that you can combine with this world's materials to forge Aspected Weapons.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //My strength is yours... I will not let you down.
-                    }
-                }
-
-
-            }//Introduction
+            
             if (chosenDialogue == 2) // Contingency text
             {
                 if (chosenStarfarer == 1) // Asphodene
@@ -121,6 +28,8 @@ namespace StarsAbove.Dialogue
                     }
                     if (dialogueLeft == 1)
                     {
+                        string key = $"Dialogue.IdleDialogueHardmode.Asphodene";
+                        LangHelper.GetCategorySize(key);
                         expression = 2;
                         if (Main.hardMode)
                         {
@@ -164,55 +73,21 @@ namespace StarsAbove.Dialogue
             }//Fallback idle dialogue (timer)
              //Pre Hardmode Idle Dialogue
              //Finished rework.
+            string baseKey = "Mods.StarsAbove.";
             #region idleDialogue
+            string starfarerName = "Asphodene";
+            if(chosenStarfarer == 1)
+            {
+                starfarerName = "Asphodene";
+            }
+            else if (chosenStarfarer == 2)
+            {
+                starfarerName = "Eridani";
+            }
             if (chosenDialogue == 3) // Passive Dialogue 1
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.1", Player.name); //My sister likely despises the un6 rising every night.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.2", Player.name); //What about me? 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Asphodene.3", Player.name); //As long as they have money, it's a benefit to us, right?
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Eridani.1", Player.name); //Those disgusting creatures rising from the earth every night...
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue1.Eridani.2", Player.name); //Ew. Let's dispatch of them quickly. And- be mindful of your hygiene after.
-                    }
-                }
-
-
+                string key = "RegularIdleDialogue.NormalIdleDialogue1." + starfarerName + ".";
+                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
             }//1
             if (chosenDialogue == 4) // Passive Dialogue 2
             {
@@ -1376,7 +1251,6 @@ namespace StarsAbove.Dialogue
 
             }//In space (Idle, Unused)
 
-            //wow this code sucks! Too lazy to refactor atm.
             if (chosenDialogue == 400) // Passive Dialogue
             {
                 if (chosenStarfarer == 1) // Asphodene  //placeholder
@@ -9449,7 +9323,55 @@ namespace StarsAbove.Dialogue
 
             dialogue = LangHelper.Wrap(dialogue, 44);
         }
-        
+
+        private static void WriteDialogue(ref bool dialoguePrep, ref int dialogueLeft, out int expression, out string dialogue, ref bool dialogueFinished, string baseKey, string key)
+        {
+            if (dialoguePrep == true)
+            {
+                dialogueLeft = 1;
+                dialoguePrep = false;
+            }
+            if (LangHelper.GetTextValue("Dialogue." + key + (dialogueLeft + 1)) == baseKey + key + (dialogueLeft + 1))//If the next dialogue is going to be the end
+            {
+                dialogueFinished = true;
+            }
+            else
+            {
+
+            }
+            dialogue = LangHelper.GetTextValue(key + dialogueLeft);
+            expression = SetupExpression(LangHelper.GetTextValue(key + dialogueLeft + ".E"));
+        }
+
+        private static int SetupExpression(string key)
+        {
+            switch(key)
+            {
+                case "Neutral":
+
+                    return 0;
+                case "Angry":
+
+                    return 1;
+                case "Worried":
+
+                    return 2;
+                case "Thinking":
+
+                    return 3;
+                case "Smug":
+
+                    return 4;
+                case "Happy":
+
+                    return 5;
+                case "DeadInside":
+
+                    return 6;
+
+            }
+            return 0;
+        }
     }
     public class Dialogue
     {
@@ -9484,18 +9406,23 @@ namespace StarsAbove.Dialogue
             Name = name;
             Title = title;
             AssociatedItem = associatedItemType; // if associated item is 0, there isn't an item
-            if(Name != "")
-            {
-                Length = Int32.Parse(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "Length"));
+            int tempLength = 1;
+            int.TryParse(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "Length"), out tempLength);
 
-            }
-            for (int i = 0; i < Length; i++)
+            for (int i = 0; i < tempLength; i++)
             {
                 AddPage(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i, Main.LocalPlayer.name), LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i + ".Emotion"));
             }
 
         }
-
+        public override bool Equals(object obj)
+        {
+            if (obj is Dialogue other)
+            {
+                return Name == other.Name && Title == other.Title;
+            }
+            return false;
+        }
         // Add page to the dialogue
         public void AddPage(string pageContent, string emotion)
         {
@@ -9509,71 +9436,50 @@ namespace StarsAbove.Dialogue
         }
     }
 
-    public class DialogueDictionary
+    
+    public class DialoguePlayer : ModPlayer
     {
-        //Should be moved and saved to the player.
-
+        public int unreadDialogueCount = 0;
         //list of dialogues, following the key of the category
 
         //The Spatial Disk pulls from this list. If dialogue is ready to be read, it'll be added to the Active Dialogues list.
         //Once it has been read, it'll be moved to the Archive list
-        
-        private Dictionary<string, List<Dialogue>> activeDialogues = new Dictionary<string, List<Dialogue>>();
-        private Dictionary<string, List<Dialogue>> readDialogues = new Dictionary<string, List<Dialogue>>();
+
+
+        private List<Dialogue> activeDialogues = new List<Dialogue>();
+        private List<Dialogue> readDialogues = new List<Dialogue>();
 
 
         //Each dialogue has a category and it checks for that
 
         //Step 1: after reaching certain criteria, add the dialogue. Make sure to check that the dialogue doesn't already exist.
         //This is also where you can put the "new disk dialogue available!" pop-up (maybe add a number that shows the amount of dialogue in the active list, like (5 unread dialogues))
-        public void AddActiveDialogue(Dialogue dialogue, string category)
+        public void AddActiveDialogue(Dialogue dialogue)
         {
-            if (!activeDialogues.ContainsKey(category))
-            {
-                //If the category doesn't exist, add it.
-                activeDialogues[category] = new List<Dialogue>();
-            }
-            //Add the dialogue to the category.
-            activeDialogues[category].Add(dialogue);
+            
+            activeDialogues.Add(dialogue);
         }
-        public void MoveReadDialogue(Dialogue dialogue, string category)
+        public void MoveReadDialogue(Dialogue dialogue)
         {
-            //Remove the just-read dialogue
-            activeDialogues[category].Remove(dialogue);
-            if (!readDialogues.ContainsKey(category))
-            {
-                //If the category doesn't exist, add it.
-                readDialogues[category] = new List<Dialogue>();
-            }
-            //Add the dialogue to the category
-            readDialogues[category].Add(dialogue);
+           
+            activeDialogues.Remove(dialogue);
+            
+            readDialogues.Add(dialogue);
         }
 
         // Method to get dialogues by category
-        public List<Dialogue> GetActiveDialoguesByCategory(string category)
+        public List<Dialogue> GetActiveDialogues()
         {
-            if (activeDialogues.ContainsKey(category))
-            {
-                return activeDialogues[category];
-            }
-            return new List<Dialogue>(); // Return an empty list if the category doesn't exist
+            return activeDialogues;
+
         }
-        public List<Dialogue> GetReadDialoguesByCategory(string category)
+        public List<Dialogue> GetReadDialogues()
         {
-            if (readDialogues.ContainsKey(category))
-            {
-                return readDialogues[category];
-            }
-            return new List<Dialogue>(); // Return an empty list if the category doesn't exist
+            return readDialogues;
+
         }
-    }
-    public class DialoguePlayer : ModPlayer
-    {
-        public DialogueDictionary dict;
-        public int unreadDialogueCount = 0;
         public override void SetStaticDefaults()
         {
-           
 
 
         }
@@ -9584,7 +9490,7 @@ namespace StarsAbove.Dialogue
             {
                 starfarerName = "Asphodene";
             }
-            else if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            else if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
             {
                 starfarerName = "Eridani";
             }
@@ -9595,12 +9501,12 @@ namespace StarsAbove.Dialogue
             newDialogueAdded = PopulateDialogue(starfarerName, "TestDialogue", ModContent.ItemType<SpatialDisk>(), category);
             newDialogueAdded = PopulateDialogue(starfarerName, "TestDialogue2", ModContent.ItemType<SpatialDisk>(), category);
 
+            //Main.NewText(newDialogueAdded);
+
             //At the end of dialogue population, if new dialogue was added show the pop up + the amount of unread dialogue
             if(newDialogueAdded)
             {
-                unreadDialogueCount = dict.GetActiveDialoguesByCategory("WeaponDialogue").Count +
-                    dict.GetActiveDialoguesByCategory("BossDialogue").Count +
-                    dict.GetActiveDialoguesByCategory("ExtraDialogue").Count;
+                unreadDialogueCount = GetActiveDialogues().Count;
 
                 InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
@@ -9611,27 +9517,14 @@ namespace StarsAbove.Dialogue
         public bool PopulateDialogue(string starfarerName, string title, int associatedItemType, string category)
         {
             var dialogueInsert = new Dialogue(starfarerName, category + "." + title, ModContent.ItemType<SpatialDisk>(), category);
-            if(dict != null)
+            if (GetActiveDialogues().Any(d => d.Equals(dialogueInsert)))
             {
-                if (!dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert) || !dict.GetActiveDialoguesByCategory(category).Contains(dialogueInsert))
-                {
-                    //If the dialogue has not been read nor is currently active
-                    dict.AddActiveDialogue(dialogueInsert, category);
-                    return true;
-                }
+                // Optionally, handle the duplicate case, e.g., by logging or modifying behavior
+                return false; // Indicates that the dialogue was not added because it was a duplicate
             }
-            
-
-            return false;
+            AddActiveDialogue(dialogueInsert);
+            return true;
         }
 
-        public override void SaveData(TagCompound tag)
-        {
-            tag["dialogueDictionary"] = dict;
-        }
-        public override void LoadData(TagCompound tag)
-        {
-            dict = tag.Get<DialogueDictionary>("dialogueDictionary");
-        }
     }
 }

@@ -129,21 +129,26 @@ namespace StarsAbove.UI.Starfarers
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true))
 				return;
 
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber < Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue.Length)
+			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+
+
+            if (modPlayer.dialogueScrollNumber < modPlayer.dialogue.Length)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue.Length;
+				modPlayer.dialogueScrollNumber = modPlayer.dialogue.Length;
 			}
 			else
             {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueLeft--;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
+				modPlayer.dialogueLeft++;
 
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueLeft <= 0)
+				modPlayer.dialogueScrollTimer = 0;
+				modPlayer.dialogueScrollNumber = 0;
+
+				if (modPlayer.dialogueFinished) //If the dialogue ends, the next click will end the dialogue.
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = false;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 0;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue = "";
+					modPlayer.starfarerDialogue = false;
+					modPlayer.chosenDialogue = 0;
+					modPlayer.dialogue = "";
+					modPlayer.dialogueFinished = false;
 
 				}
 			}

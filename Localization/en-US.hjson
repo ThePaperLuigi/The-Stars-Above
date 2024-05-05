@@ -1466,15 +1466,15 @@ Mods: {
 
 				AstrumDeus: {
 					Asphodene: {
-						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of the many gods that ruled over the universe. As far as I can remember, it was gone before I was born.
+						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of myriad cosmic beings with lots of power. Etymology around these things is hard, so let's just call it a god.
 						2: However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
-						3: Let's return to what I said earlier. Astrum Deus was a GOD. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
+						3: Let's return to what I said earlier. Astrum Deus was something akin to a god. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
 						4: This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
 					}
 
 					Eridani: {
 						1: Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share...
-						2: Astrum Deus is one of many cosmic deities. It disappeared before I was born, but knowledge states that it can assimilate life near its corpse to regenerate itself.
+						2: Astrum Deus is one of many cosmic deities. Knowledge states that it can assimilate life near its corpse to regenerate itself.
 						3: So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
 						4: Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations.
 					}
@@ -1549,14 +1549,32 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						1: My sister likely despises the undead rising every night.
-						2: What about me?
-						3: As long as they have money, it's a benefit to us, right?
+						1: {
+							$parentVal: My sister likely despises the undead rising every night.
+							E: Happy
+						}
+
+						2: {
+							$parentVal: What about me?
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: As long as they have money, it's a benefit to us, right?
+							E: Smug
+						}
 					}
 
 					Eridani: {
-						1: Those disgusting creatures rising from the earth every night...
-						2: Ew. Let's dispatch of them quickly. And- be mindful of your hygiene after.
+						1: {
+							$parentVal: Those disgusting creatures rising from the earth every night...
+							E: Worried
+						}
+
+						2: {
+							$parentVal: Ew. Let's dispatch of them quickly. And- be mindful of your hygiene after.
+							E: Angry
+						}
 					}
 				}
 
@@ -2372,7 +2390,7 @@ Mods: {
 					3: {
 						Dialogue: {
 							0: Greetings! I am Asphodene- a Starfarer, and in turn, that makes you my Starbearer.
-							1: I will lend you my strength so that we may defeat the threats to this world together- and if things go well, to solve the bigger problems beyond.
+							1: You responded to the Disk, so I'll lend you my strength.
 							2: There's more in it for you, though. If you'd like, I can give you the description of what I can help you with. I recommend it!
 							3: Mods.StarsAbove.Dialogue.VNDialogue.SceneID.3.Dialogue.3
 						}
@@ -2386,10 +2404,10 @@ Mods: {
 
 					4: {
 						Dialogue: {
-							0: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
+							0: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating strong enemies. Nice, right?
 							1: The Spatial Disk can do a lot of other things, but for now, the Stellar Array is the most important. Remember to check it often!
 							2: One last thing.. I can turn energy from other worlds into direct power in the form of Essences. Combining these with other materials should be enough to create powerful Aspected Weapons.
-							3: Right, my power is yours. Let's show this world what we can do.
+							3: Right, that should be everything. Let's get out there.
 							4: Mods.StarsAbove.Dialogue.VNDialogue.SceneID.4.Dialogue.4
 						}
 
@@ -10028,7 +10046,7 @@ Mods: {
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
 					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
-					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
+					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy
 					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration

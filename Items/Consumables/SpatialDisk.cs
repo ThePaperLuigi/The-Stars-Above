@@ -251,8 +251,14 @@ namespace StarsAbove.Items.Consumables
 
 			}
 			SoundEngine.PlaySound(SoundID.MenuOpen, player.position);
-			
-			if (modPlayer.starfarerIntro == true)
+			//DEBUG
+			Main.NewText(LangHelper.GetCategorySize("Dialogue.IdleDialogueHardmode.Asphodene"));
+            modPlayer.chosenDialogue = 3;
+            activateDialogue(player);
+
+            return true;
+
+            if (modPlayer.starfarerIntro == true)
 			{
 				//modPlayer.chosenDialogue = 1;
 
@@ -303,22 +309,9 @@ namespace StarsAbove.Items.Consumables
 				return true;
 			}
 
-			//End of Subworld dialogue.
-			if(player.GetModPlayer<DialoguePlayer>().unreadDialogueCount > 0)
-            {
-				//First priority, boss dialogue- get the first active one:
-				//activateDialogue(player.GetModPlayer<DialoguePlayer>().dict.GetActiveDialoguesByCategory("BossDialogue")[0], player);
-				//TODO: handle showing the dialogue, progressing the dialogue, etc.
-				//Next up, weapons:
+			
 
-				//Lastly, extra stuff
-			}
-			else
-            {
-				//idle dialogue- if not read in a while, do a random one; else, do the fallback dialogue
-            }
-
-			if (modPlayer.desertscourgeDialogue == 1)
+            if (modPlayer.desertscourgeDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 201;
 				modPlayer.desertscourgeDialogue = 2;

@@ -1549,14 +1549,32 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						1: Mi hermana detesta totalmente a los no muertos levantandose todas las noches.
-						2: ¿Que qué hay de mi?
-						3: Mientras tengan dinero, nos beneficia, ¿Cierto?
+						1: {
+							$parentVal: Mi hermana detesta totalmente a los no muertos levantandose todas las noches.
+							// E: Happy
+						}
+
+						2: {
+							$parentVal: ¿Que qué hay de mi?
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: Mientras tengan dinero, nos beneficia, ¿Cierto?
+							// E: Smug
+						}
 					}
 
 					Eridani: {
-						1: Esas desagradables criaturas levantandose desde la tierra todas las noches...
-						2: Ew. Acabemos con ellas rápido. Y- recuerda mantener tu higiene después.
+						1: {
+							$parentVal: Esas desagradables criaturas levantandose desde la tierra todas las noches...
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: Ew. Acabemos con ellas rápido. Y- recuerda mantener tu higiene después.
+							// E: Angry
+						}
 					}
 				}
 
@@ -2386,7 +2404,7 @@ Mods: {
 
 					4: {
 						Dialogue: {
-							// 0: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating bosses. Nice, right?
+							// 0: Okay, where to start... The Spatial Disk you used to form the contract can be used to access the Stellar Array, which provides abilities after defeating strong enemies. Nice, right?
 							1: Okay, por dónde empezar... El disco Espacial que usaste para formar el contrato puede utilizarse para acceder a la Matriz Estelar, la cual otorga habilidades después de derrotar a jefes. genial, ¿verdad?
 							2: El Disco Espacial puede hacer muchas otras cosas, pero por ahora, la Matriz Estelar es la más importante. ¡Recuérda revisarla a menudo!
 							3: Una última cosa... Puedo canalizar la energía de otros mundos en forma de Esencias. Combinarlas con otros materiales debería ser suficiente para crear poderosas Armas Aspectadas.
@@ -9876,7 +9894,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
-					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
+					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy

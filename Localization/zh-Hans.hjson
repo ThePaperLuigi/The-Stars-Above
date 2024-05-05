@@ -1549,14 +1549,32 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						1: 我的妹妹很鄙视每晚重新爬出的亡灵。
-						2: 我？
-						3: 只要他们能爆金币，对我们就有好处，不是吗？
+						1: {
+							$parentVal: 我的妹妹很鄙视每晚重新爬出的亡灵。
+							// E: Happy
+						}
+
+						2: {
+							$parentVal: 我？
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: 只要他们能爆金币，对我们就有好处，不是吗？
+							// E: Smug
+						}
 					}
 
 					Eridani: {
-						1: 那些每天晚上从从地下爬出的恶心生物……
-						2: 呃呃，我们赶紧把它们解决掉吧。还有—以后要注意做“清理”。
+						1: {
+							$parentVal: 那些每天晚上从从地下爬出的恶心生物……
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: 呃呃，我们赶紧把它们解决掉吧。还有—以后要注意做“清理”。
+							// E: Angry
+						}
 					}
 				}
 
@@ -10012,7 +10030,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
-					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
+					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy

@@ -1549,14 +1549,32 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						1: Ma sœur méprise probablement les morts-vivants qui se lèvent chaque nuit.
-						2: Et moi?
-						3: Tant qu’ils ont de l’argent, c’est un avantage pour nous, non ?
+						1: {
+							$parentVal: Ma sœur méprise probablement les morts-vivants qui se lèvent chaque nuit.
+							// E: Happy
+						}
+
+						2: {
+							$parentVal: Et moi?
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: Tant qu’ils ont de l’argent, c’est un avantage pour nous, non ?
+							// E: Smug
+						}
 					}
 
 					Eridani: {
-						1: Ces créatures répugnantes qui sortent de terre chaque nuit...
-						2: Euh. Envoyons-les rapidement. Et faites attention à votre hygiène après.
+						1: {
+							$parentVal: Ces créatures répugnantes qui sortent de terre chaque nuit...
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: Euh. Envoyons-les rapidement. Et faites attention à votre hygiène après.
+							// E: Angry
+						}
 					}
 				}
 
@@ -10025,7 +10043,7 @@ Mods: {
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
-					Attacks will charge [Dread]; at max [Dread], the next attack will cause a shockwave to detonate, dealing damage to all nearby foes
+					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The wepaon transforms into a staff, and can now be [Charged] 
 					Uncharged attacks quickly fires a formation of rapid energy

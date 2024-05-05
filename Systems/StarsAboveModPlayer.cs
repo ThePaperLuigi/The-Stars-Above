@@ -262,6 +262,7 @@ namespace StarsAbove
         public bool dialoguePrep;// This will be flipped to 'false' once dialogueLeft has been established.
         public string dialogue = ""; //Depending on the chosen Starfarer, this will be the string of dialogue pushed to the Text GUI.
                                      //Keep account of dialogueLeft and tie it to that + chosenDialogue
+        public bool dialogueFinished = false;//So the dialogue knows when to close.
 
         static public bool instantText = false;
 
@@ -3424,8 +3425,9 @@ namespace StarsAbove
                 //If there is dialogue...
                 if (chosenDialogue != 0)
                 {
-                    StarsAboveDialogueSystem.SetupDialogueSystem(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, Player, Mod);
+                    StarsAboveDialogueSystem.SetupDialogueSystem(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
                 }
+
                 SetupVNDialogue();
 
                 animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);//Dialogue increment magic
@@ -3853,35 +3855,37 @@ namespace StarsAbove
                 /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
                   {
                       observatoryDialogue = 1;
-                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                          newDiskNotification = true;
                       NewDiskDialogue = true;
 
                   }
                   if (observatoryDialogue == 2 && cosmicVoyageDialogue == 0)
                   {
                       cosmicVoyageDialogue = 1;
-                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                          newDiskNotification = true;
                       NewDiskDialogue = true;
 
                   }*/
-
+                bool newDiskNotification = false;
+                bool newArrayNotification = false;
+                bool newNovaNotification = false;
                 if (NPC.downedSlimeKing && slimeDialogue == 0)
                 {
                     slimeDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                     }
                 }
                 if (NPC.downedBoss1 && eyeDialogue == 0)
                 {
                     eyeDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
 
@@ -3889,7 +3893,7 @@ namespace StarsAbove
                 if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
                     astrolabeIntroDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
 
@@ -3898,7 +3902,7 @@ namespace StarsAbove
                 if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
                 {
                     observatoryIntroDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
 
@@ -3907,18 +3911,18 @@ namespace StarsAbove
                 if (NPC.downedBoss2 && corruptBossDialogue == 0)
                 {
                     corruptBossDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
                 }
                 if (NPC.downedQueenBee && BeeBossDialogue == 0)
                 {
                     BeeBossDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
                 }
@@ -3926,16 +3930,16 @@ namespace StarsAbove
                 if (NPC.downedBoss3 && SkeletonDialogue == 0)
                 {
                     SkeletonDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
                 }
                 if (NPC.downedDeerclops && DeerclopsDialogue == 0)
                 {
                     DeerclopsDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                 }
@@ -3943,16 +3947,16 @@ namespace StarsAbove
                 {
                     WallOfFleshDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
                 }
                 if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
                 {
                     ForceWeaponDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3960,7 +3964,7 @@ namespace StarsAbove
                 {
                     GenocideWeaponDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3968,18 +3972,18 @@ namespace StarsAbove
                 {
                     TakodachiWeaponDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
                 if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
                 {
                     TwinsDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                     }
 
@@ -3989,7 +3993,7 @@ namespace StarsAbove
                 {
                     SkyStrikerWeaponDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -3997,7 +4001,7 @@ namespace StarsAbove
                 {
                     TwinStarsWeaponDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
                 }
@@ -4008,86 +4012,86 @@ namespace StarsAbove
                 {
                     if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         desertscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         crabulonDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         hivemindDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         perforatorDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         slimegodDialogue = 1;
                     }
                     //Hardmode
                     if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         cryogenDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         aquaticscourgeDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         brimstoneelementalDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         calamitasDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         leviathanDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         astrumaureusDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         plaguebringerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         ravagerDialogue = 1;
                     }
                     if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
                     {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         astrumdeusDialogue = 1;
                     }
@@ -4096,19 +4100,19 @@ namespace StarsAbove
                 if (NPC.downedQueenSlime && QueenSlimeDialogue == 0)
                 {
                     QueenSlimeDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                 }
                 if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
                 {
                     nalhaunDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
 
 
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
 
@@ -4116,7 +4120,7 @@ namespace StarsAbove
                 if (DownedBossSystem.downedDioskouroi && dioskouroiDialogue == 0)
                 {
                     dioskouroiDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                     //NewStellarNova = true;
@@ -4128,11 +4132,11 @@ namespace StarsAbove
                 if (DownedBossSystem.downedPenth && penthDialogue == 0)
                 {
                     penthDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                     newDiskNotification = true;
                     NewDiskDialogue = true;
 
                     NewStellarNova = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
 
@@ -4140,7 +4144,7 @@ namespace StarsAbove
                 if (DownedBossSystem.downedArbiter && arbiterDialogue == 0)
                 {
                     arbiterDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                     //NewStellarNova = true;
@@ -4168,7 +4172,7 @@ namespace StarsAbove
                 {
                     if (edingenesisquasar == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                    newNovaNotification = true;
 
                         edingenesisquasar = 1;
                     }
@@ -4178,11 +4182,11 @@ namespace StarsAbove
                 if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
                 {
                     DestroyerDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                     }
 
@@ -4191,11 +4195,11 @@ namespace StarsAbove
                 if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
                 {
                     SkeletronPrimeDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (bloomingflames == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                     }
 
@@ -4204,7 +4208,7 @@ namespace StarsAbove
                 if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2 && AllMechsDefeatedDialogue == 0)//All Mech Bosses Defeated + Dialogue read
                 {
                     AllMechsDefeatedDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
 
@@ -4214,9 +4218,9 @@ namespace StarsAbove
                 if (NPC.downedPlantBoss && PlanteraDialogue == 0)
                 {
                     PlanteraDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
 
@@ -4224,11 +4228,11 @@ namespace StarsAbove
                 if (NPC.downedGolemBoss && GolemDialogue == 0)
                 {
                     GolemDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                     }
 
@@ -4236,7 +4240,7 @@ namespace StarsAbove
                 if (NPC.downedEmpressOfLight && EmpressDialogue == 0)
                 {
                     EmpressDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
 
@@ -4244,11 +4248,11 @@ namespace StarsAbove
                 if (NPC.downedAncientCultist && CultistDialogue == 0)
                 {
                     CultistDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (Main.expertMode)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                     }
 
@@ -4258,10 +4262,10 @@ namespace StarsAbove
                     MoonLordDialogue = 1;
 
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
 
@@ -4269,14 +4273,14 @@ namespace StarsAbove
                 if (NPC.downedFishron && DukeFishronDialogue == 0)
                 {
                     DukeFishronDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                 }
                 if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
                 {
                     warriorBossItemDialogue = 1;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
 
                 }
                 if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
@@ -4297,7 +4301,7 @@ namespace StarsAbove
                     }
 
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
                     if (BossChecklist != null)
                     {
@@ -4305,7 +4309,7 @@ namespace StarsAbove
 
                     }
 
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
 
@@ -4314,13 +4318,13 @@ namespace StarsAbove
                 {
                     vagrantDialogue = 1;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                    newNovaNotification = true;
                     NewStellarNova = true;
 
 
@@ -4330,7 +4334,7 @@ namespace StarsAbove
                 {
                     thespianDialogue = 1;
 
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
                     NewDiskDialogue = true;
 
                     
@@ -4341,7 +4345,7 @@ namespace StarsAbove
                 {
                     starfarerPostBattleDialogue = 1;
 
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
                     NewDiskDialogue = true;
 
 
@@ -4351,7 +4355,7 @@ namespace StarsAbove
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
                 {
                     //AllVanillaBossesDefeatedDialogue = 1;
-                    //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    //                    newDiskNotification = true;
                     //NewDiskDialogue = true;
 
                     //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
@@ -4363,10 +4367,10 @@ namespace StarsAbove
                 {
                     //Expert mode only
                     EverythingDefeatedDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                    newArrayNotification = true;
                     NewStellarArrayAbility = true;
 
 
@@ -4375,21 +4379,21 @@ namespace StarsAbove
                 if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
                 {
                     HellWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                 }
                 if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
                 {
                     Stellaglyph2WeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                 }
                 if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
                 {
                     NanomachineWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                 }
@@ -4397,37 +4401,37 @@ namespace StarsAbove
                 if (vagrantBossItemDialogue == 0 && NPC.downedBoss1)
                 {
                     vagrantBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
                 }
                 if (dioskouroiBossItemDialogue == 0 && SkeletonDialogue == 2 && vagrantDialogue == 2)
                 {
                     dioskouroiBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
 
                 }
                 if (penthBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
                 {
                     penthBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
 
                 }
                 if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth && DownedBossSystem.downedThespian && DownedBossSystem.downedDioskouroi && DownedBossSystem.downedVagrant && NPC.downedPlantBoss)
                 {
                     starfarerBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
 
                 }
                 if (starfarerPostBattleDialogue == 0 && DownedBossSystem.downedStarfarers)
                 {
                     starfarerPostBattleDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
 
                 }
                 if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
                 {
 
                     nalhaunBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
 
                 }
 
@@ -4435,7 +4439,7 @@ namespace StarsAbove
                 if (Player.ZoneHallow && GoldWeaponDialogue == 0)
                 {
                     GoldWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                     return;
@@ -4444,7 +4448,7 @@ namespace StarsAbove
                 if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
                 {
                     FarewellWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                        newDiskNotification = true;
                     NewDiskDialogue = true;
 
                     return;
@@ -4457,7 +4461,7 @@ namespace StarsAbove
                         TrickspinWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                     }
                     if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
@@ -4465,7 +4469,7 @@ namespace StarsAbove
                         SoldierWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                     }
                     if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
@@ -4473,7 +4477,7 @@ namespace StarsAbove
                         DreamerWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                     }
                     if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
@@ -4481,13 +4485,13 @@ namespace StarsAbove
                         KineticWeaponDialogue = 1;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                     }
                     if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
                     {
                         SkeletonWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4496,7 +4500,7 @@ namespace StarsAbove
                     if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
                     {
                         ArchitectWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
 
 
@@ -4509,7 +4513,7 @@ namespace StarsAbove
                     if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
                     {
                         CosmicDestroyerWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
 
 
@@ -4522,7 +4526,7 @@ namespace StarsAbove
                     if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
                     {
                         KarnaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
 
 
@@ -4537,7 +4541,7 @@ namespace StarsAbove
                         //Obtained from Arbitration now.
 
                         //MurasamaWeaponDialogue = 1;
-                        //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        //                    newDiskNotification = true;
                         //NewDiskDialogue = true;
                         //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         //return;
@@ -4545,7 +4549,7 @@ namespace StarsAbove
                     if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
                     {
                         MercyWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4553,7 +4557,7 @@ namespace StarsAbove
                     if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
                     {
                         ThespianWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4561,7 +4565,7 @@ namespace StarsAbove
                     if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
                     {
                         DragaliaWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4569,7 +4573,7 @@ namespace StarsAbove
                     if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
                     {
                         WavedancerWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4577,7 +4581,7 @@ namespace StarsAbove
                     if (ClarentWeaponDialogue == 0 && DownedBossSystem.downedNalhaun)
                     {
                         ClarentWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4585,7 +4589,7 @@ namespace StarsAbove
                     if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
                     {
                         GundbitWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                        newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4593,7 +4597,7 @@ namespace StarsAbove
                     if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                     {
                         SakuraWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4601,7 +4605,7 @@ namespace StarsAbove
                     if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         EternalWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4609,7 +4613,7 @@ namespace StarsAbove
                     if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         DaemonWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4617,7 +4621,7 @@ namespace StarsAbove
                     if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
                     {
                         OzmaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4625,7 +4629,7 @@ namespace StarsAbove
                     if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         UrgotWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4633,7 +4637,7 @@ namespace StarsAbove
                     if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
                     {
                         BloodWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4641,7 +4645,7 @@ namespace StarsAbove
                     if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
                     {
                         MorningStarWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4649,7 +4653,7 @@ namespace StarsAbove
                     if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
                     {
                         VirtueWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4657,7 +4661,7 @@ namespace StarsAbove
                     if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         QueenSlimeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4665,7 +4669,7 @@ namespace StarsAbove
                     if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
                     {
                         NeedlepointWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4673,7 +4677,7 @@ namespace StarsAbove
                     if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
                     {
                         EyeBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4682,7 +4686,7 @@ namespace StarsAbove
                     if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
                     {
                         CorruptBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
                         return;
@@ -4692,7 +4696,7 @@ namespace StarsAbove
                     if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
                     {
                         NalhaunWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4703,7 +4707,7 @@ namespace StarsAbove
                     if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
                     {
                         VagrantWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4713,7 +4717,7 @@ namespace StarsAbove
                     if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
                     {
                         QueenBeeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4723,7 +4727,7 @@ namespace StarsAbove
                     if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
                     {
                         OceanWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4733,7 +4737,7 @@ namespace StarsAbove
                     if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
                     {
                         MiseryWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4743,7 +4747,7 @@ namespace StarsAbove
                     if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
                     {
                         KingSlimeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4753,7 +4757,7 @@ namespace StarsAbove
                     if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
                     {
                         WallOfFleshWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4762,7 +4766,7 @@ namespace StarsAbove
                     if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
                     {
                         LumaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4771,7 +4775,7 @@ namespace StarsAbove
                     if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
                     {
                         MechBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4780,7 +4784,7 @@ namespace StarsAbove
                     if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
                     {
                         AllMechBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4790,7 +4794,7 @@ namespace StarsAbove
                     if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
                     {
                         HullwroughtWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4800,7 +4804,7 @@ namespace StarsAbove
                     if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
                     {
                         MonadoWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4811,7 +4815,7 @@ namespace StarsAbove
                     if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
                     {
                         PlanteraWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4821,7 +4825,7 @@ namespace StarsAbove
                     if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
                     {
                         FrostMoonWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4831,7 +4835,7 @@ namespace StarsAbove
                     if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
                     {
                         GolemWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4841,7 +4845,7 @@ namespace StarsAbove
                     if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
                     {
                         PenthesileaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4851,7 +4855,7 @@ namespace StarsAbove
                     if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
                     {
                         MuseWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4861,7 +4865,7 @@ namespace StarsAbove
                     if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
                     {
                         KifrosseWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4872,7 +4876,7 @@ namespace StarsAbove
                     if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
                     {
                         ArbitrationWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4882,7 +4886,7 @@ namespace StarsAbove
                     if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
                     {
                         LevinstormWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4892,7 +4896,7 @@ namespace StarsAbove
                     if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
                     {
                         ClaimhWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4902,7 +4906,7 @@ namespace StarsAbove
                     if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
                     {
                         DukeFishronWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4912,7 +4916,7 @@ namespace StarsAbove
                     if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
                     {
                         ManiacalWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4922,7 +4926,7 @@ namespace StarsAbove
                     if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
                     {
                         LunaticCultistWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4932,7 +4936,7 @@ namespace StarsAbove
                     if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
                     {
                         MoonLordWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4942,7 +4946,7 @@ namespace StarsAbove
                     if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
                     {
                         ShadowlessWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4952,7 +4956,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
                     {
                         WarriorWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4962,7 +4966,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
                     {
                         AuthorityWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4972,7 +4976,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
                     {
                         RedMageWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4982,7 +4986,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
                     {
                         BlazeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -4992,7 +4996,7 @@ namespace StarsAbove
                     if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
                     {
                         PickaxeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5002,7 +5006,7 @@ namespace StarsAbove
                     if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
                     {
                         HardwareWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5012,7 +5016,7 @@ namespace StarsAbove
                     if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
                     {
                         CatalystWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5022,7 +5026,7 @@ namespace StarsAbove
                     if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
                     {
                         UmbraWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5032,7 +5036,7 @@ namespace StarsAbove
                     if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
                     {
                         SaltwaterWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5041,7 +5045,7 @@ namespace StarsAbove
                     if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
                     {
                         ClockWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5050,7 +5054,7 @@ namespace StarsAbove
                     if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
                     {
                         SanguineWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5059,7 +5063,7 @@ namespace StarsAbove
                     if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
                     {
                         GoldlewisWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5068,7 +5072,7 @@ namespace StarsAbove
                     if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
                     {
                         ChaosWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5077,7 +5081,7 @@ namespace StarsAbove
                     if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
                     {
                         SilenceWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5087,7 +5091,7 @@ namespace StarsAbove
                     if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
                     {
                         SoulWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                                            newDiskNotification = true;
                         NewDiskDialogue = true;
                         WeaponDialogueTimer = Main.rand.Next(3600, 7200);
 
@@ -5107,7 +5111,7 @@ namespace StarsAbove
 
                     if (aquaaffinity == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         aquaaffinity = 1;
                     }
@@ -5122,7 +5126,7 @@ namespace StarsAbove
 
                     if (starshower == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         starshower = 1;
                     }
@@ -5136,7 +5140,7 @@ namespace StarsAbove
                 {
                     if (ironskin == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         ironskin = 1;
                     }
@@ -5150,7 +5154,7 @@ namespace StarsAbove
                 {
                     if (evasionmastery == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         evasionmastery = 1;
                     }
@@ -5164,7 +5168,7 @@ namespace StarsAbove
                 {
                     if (inneralchemy == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         inneralchemy = 1;
                     }
@@ -5178,7 +5182,7 @@ namespace StarsAbove
                 {
                     if (healthyConfidence == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         healthyConfidence = 1;
                     }
@@ -5196,7 +5200,7 @@ namespace StarsAbove
                 {
                     if (unlimitedbladeworks == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                    newNovaNotification = true;
                         NewStellarNova = true;
                         unlimitedbladeworks = 1;
                     }
@@ -5206,7 +5210,7 @@ namespace StarsAbove
                 {
                     if (guardianslight == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                    newNovaNotification = true;
                         NewStellarNova = true;
                         guardianslight = 1;
                     }
@@ -5216,7 +5220,7 @@ namespace StarsAbove
                 {
                     if (butchersdozen == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         butchersdozen = 1;
                     }
@@ -5227,7 +5231,7 @@ namespace StarsAbove
                     }
                     if (laevateinn == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                    newNovaNotification = true;
                         NewStellarNova = true;
                         laevateinn = 1;
                     }
@@ -5240,7 +5244,7 @@ namespace StarsAbove
                 {
                     if (celestialevanesence == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         celestialevanesence = 1;
                     }
@@ -5254,7 +5258,7 @@ namespace StarsAbove
                 {
                     if (mysticforging == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         mysticforging = 1;
                     }
@@ -5264,7 +5268,7 @@ namespace StarsAbove
                     }
                     if (gardenofavalon == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                    newNovaNotification = true;
                         NewStellarNova = true;
                         gardenofavalon = 1;
                     }
@@ -5273,7 +5277,7 @@ namespace StarsAbove
                 {
                     if (bloomingflames == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         bloomingflames = 1;
                     }
@@ -5285,7 +5289,7 @@ namespace StarsAbove
 
                     if (astralmantle == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                         astralmantle = 1;
                     }
@@ -5295,7 +5299,7 @@ namespace StarsAbove
                 {
                     if (afterburner == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         afterburner = 1;
                     }
@@ -5306,7 +5310,7 @@ namespace StarsAbove
 
                     if (livingdead == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         livingdead = 1;
                     }
@@ -5320,7 +5324,7 @@ namespace StarsAbove
                 {
                     if (hikari == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         hikari = 1;
                     }
@@ -5338,7 +5342,7 @@ namespace StarsAbove
 
                     if (weaknessexploit == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         weaknessexploit = 1;
                     }
@@ -5351,7 +5355,7 @@ namespace StarsAbove
                 {
                     if (umbralentropy == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         umbralentropy = 1;
                     }
@@ -5380,7 +5384,7 @@ namespace StarsAbove
                     }
                     if(inevitableEnd == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         inevitableEnd = 1;
 
@@ -5392,7 +5396,7 @@ namespace StarsAbove
                 {
                     if (keyofchronology == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         keyofchronology = 1;
                     }
@@ -5404,7 +5408,7 @@ namespace StarsAbove
 
                     if (artofwar == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                         artofwar = 1;
                     }
@@ -5416,7 +5420,7 @@ namespace StarsAbove
 
                     if (aprismatism == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                         aprismatism = 1;
                     }
@@ -5426,7 +5430,7 @@ namespace StarsAbove
                 {
                     if (avataroflight == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         avataroflight = 1;
                     }
@@ -5438,7 +5442,7 @@ namespace StarsAbove
                 {
                     if (beyondtheboundary == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
                         NewStellarArrayAbility = true;
                         beyondtheboundary = 1;
                     }
@@ -5450,7 +5454,7 @@ namespace StarsAbove
                 {
                     if (beyondinfinity == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         beyondinfinity = 1;
                     }
@@ -5460,13 +5464,25 @@ namespace StarsAbove
                 {
                     if (unbridledradiance == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                        newArrayNotification = true;
 
                         unbridledradiance = 1;
                     }
                 }
                 // 
 
+                if (newDiskNotification)
+                {
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                }
+                if (newArrayNotification)
+                {
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                }
+                if (newNovaNotification)
+                {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                }
 
             }
         }
@@ -5511,6 +5527,8 @@ namespace StarsAbove
 
                     VNDialogueThirdOption = false;
                 }
+
+                
                 dialogue = LangHelper.Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
                 //animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);
 
@@ -7781,6 +7799,7 @@ namespace StarsAbove
         {
             if (NPC.AnyNPCs(NPCID.EyeofCthulhu) && !seenEyeOfCthulhu)
             {
+
                 if (starfarerPromptCooldown > 0)
                 {
                     starfarerPromptCooldown = 0;
@@ -10447,6 +10466,8 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEyeOfCthulhu")
                     {
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneTestGoodLuck);
+
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
                         seenEyeOfCthulhu = true;

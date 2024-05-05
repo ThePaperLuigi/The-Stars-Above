@@ -13,6 +13,14 @@ namespace StarsAbove.Systems
 
         #endregion
 
+        //Prompt Voice Lines
+        #region Prompt Voice Lines
+        public static readonly SoundStyle AsphodeneTestGoodLuck = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/PromptVoiceLines/Testing/goodluck")
+        {
+
+        };
+        #endregion
+
         //Stellar Nova Lines
         #region Asphodene Voice Lines
         /*public static readonly SoundStyle AsphodeneNovaLines = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN0")
