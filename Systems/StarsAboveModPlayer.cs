@@ -43,6 +43,7 @@ using StarsAbove.Utilities;
 using SubworldLibrary;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -3421,7 +3422,7 @@ namespace StarsAbove
                 //If there is dialogue...
                 if (chosenDialogue != 0)
                 {
-                    StarsAboveDialogueSystem.SetupDialogueSystem(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
+                    StarsAboveDialogueSystem.SetupDialogueSystem(false, chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
                 }
 
                 SetupVNDialogue();
@@ -3851,8 +3852,10 @@ namespace StarsAbove
             ActiveDialogues = new Dictionary<int, int>();
 
         }
+        public int activeDialougeCount = 0;
         private void StellarDiskDialogue()
         {
+            activeDialougeCount = 0;
             if (SyncWorldProgress)
             {
                 bool newDiskNotification = false;
@@ -3864,21 +3867,25 @@ namespace StarsAbove
                 //If slime king is dead
                 if (NPC.downedSlimeKing)
                 {
-                    SetupActiveDialogue(ref newDiskNotification, ref newArrayNotification, 51, ref slimeDialogue);
-
+                    SetupActiveDialogue(ref newDiskNotification, 
+                        51, 
+                        ref slimeDialogue, 
+                        true, out newArrayNotification, 
+                        false, out newNovaNotification);
+                    
                 }
                 if (NPC.downedBoss1 && eyeDialogue == 0)
                 {
-                    eyeDialogue = 1;
-                    newDiskNotification = true;
-                     
-                    newArrayNotification = true;
-                     
-
+                    SetupActiveDialogue(ref newDiskNotification, 
+                        52, //The ID of the dialogue.
+                        ref eyeDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
                 }
                 if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
+                    //VN dialogue so untouched.
                     astrolabeIntroDialogue = 1;
                     newDiskNotification = true;
                      
@@ -3888,6 +3895,8 @@ namespace StarsAbove
                 }
                 if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
                 {
+                    //VN dialogue so untouched.
+
                     observatoryIntroDialogue = 1;
                     newDiskNotification = true;
                      
@@ -3895,23 +3904,21 @@ namespace StarsAbove
 
 
                 }
-                if (NPC.downedBoss2 && corruptBossDialogue == 0)
+                if (NPC.downedBoss2)
                 {
-                    corruptBossDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    newArrayNotification = true;
-                     
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                        53, //The ID of the dialogue.
+                        ref corruptBossDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (NPC.downedQueenBee && BeeBossDialogue == 0)
+                if (NPC.downedQueenBee)
                 {
-                    BeeBossDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    newArrayNotification = true;
-                     
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                        54, //The ID of the dialogue.
+                        ref BeeBossDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
 
                 if (NPC.downedBoss3 && SkeletonDialogue == 0)
@@ -5456,7 +5463,13 @@ namespace StarsAbove
                         unbridledradiance = 1;
                     }
                 }
-                // 
+                for (int i = 0; i < ActiveDialogues.Count; i++)
+                {
+                    if (ActiveDialogues.Values.ElementAt(i) == 2)
+                    {
+                        activeDialougeCount++;
+                    }
+                }
 
                 if (newDiskNotification)
                 {
@@ -5474,8 +5487,10 @@ namespace StarsAbove
             }
         }
 
-        private void SetupActiveDialogue(ref bool newDiskNotification, ref bool newArrayNotification, int dialogueID, ref int currentFlag)
+        private void SetupActiveDialogue(ref bool newDiskNotification, int dialogueID, ref int currentFlag, bool newArrayNotification, out bool newArray, bool newNovaNotification, out bool newNova)
         {
+            newNova = false;
+            newArray = false;
             if (!ActiveDialogues.ContainsKey(dialogueID))//If the dialogue doesn't exist
             {
 
@@ -5486,11 +5501,16 @@ namespace StarsAbove
                     ActiveDialogues.Add(dialogueID, 1);
                     //Pop up a new disk notification.
                     newDiskNotification = true;
-                    if (Main.expertMode)
+                    if(newArrayNotification)
                     {
-                        //A new Array ability is unlocked in Expert mode.
-                        newArrayNotification = true;
+                        newArray = true;
+
                     }
+                    if (newNovaNotification)
+                    {
+                        newNova = true;
+                    }
+                    
                 }
                 else
                 {
@@ -5502,6 +5522,11 @@ namespace StarsAbove
             else
             {
                 currentFlag = ActiveDialogues[dialogueID];
+                //Update the Archive
+                StarsAboveDialogueSystem.SetupDialogueSystem(true, chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
+
+
+
             }
         }
 

@@ -589,13 +589,35 @@ Mods: {
 
 		Dialogue: {
 			IdleDialogueHardmode: {
-				Asphodene: Désolé, {0}. Rien à commenter pour le moment.
-				Eridani: Toutes mes excuses, {0}. Il n'y a pas grand chose à commenter pour le moment.
+				Asphodene: {
+					1: {
+						// $parentVal: Sorry, {0}. Nothing to comment on right now.
+						// E: Worried
+					}
+				}
+
+				Eridani: {
+					1: {
+						// $parentVal: Apologies, {0}.. there's not much to comment on at the moment.
+						// E: Worried
+					}
+				}
 			}
 
 			IdleDialogue: {
-				Asphodene: Désolé, je n'ai pas grand chose en tête ces derniers temps.
-				Eridani: Désolé. Il n'y a pas grand chose à dire pour le moment...
+				Asphodene: {
+					1: {
+						// $parentVal: Sorry, there's not much on my mind as of late.
+						// E: Worried
+					}
+				}
+
+				Eridani: {
+					1: {
+						// $parentVal: Sorry. There's not much to say right now...
+						// E: Worried
+					}
+				}
 			}
 
 			WeaponDialogue: {
@@ -808,17 +830,14 @@ Mods: {
 					102: Une essence de mêlée, hein ? On dirait qu’il possède de puissantes capacités. Soyez simplement heureux qu'il vous écoute.
 					103: Il semble que cette essence d’invocation crée de puissants alliés de l’eau pour vous donner le dessus au combat. Comme c'est génial !
 				}
-
-				Perseus: {
-					1: C'est bon de vous revoir, {0}. Je ne suis pas ici pour demander votre aide, mais j'ai un cadeau pour vous.
-					2: Vous avez prouvé que vous êtes un véritable guerrier ; en tant que tel, vous devriez avoir une arme adaptée à votre force.
-					3: Alors, je vous accorde cette arme. Bonne chance et bonne chasse.
-				}
 			}
 
 			BossDialogue: {
 				KingSlime: {
 					Asphodene: {
+						// Name: King Slime Dialogue
+						// UnlockCondition: Defeat King Slime
+						// Description: ""
 						1: Vous avez vaincu le Slime King, hein ? Bon travail.
 						2: C'est peut-être un peu faible, mais c'est néanmoins un pas en avant infaillible.
 
@@ -834,6 +853,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: King Slime Dialogue
+						// UnlockCondition: Defeat King Slime
+						// Description: ""
 						1: Cela semblait peut-être faible, mais le Slime King était vraiment une menace.
 
 						2: {
@@ -850,199 +872,339 @@ Mods: {
 
 				CthulhuEye: {
 					Asphodene: {
+						// Name: Eye of Cthulhu Dialogue
+						// Description: ""
 						1: « 'Œil de Cthulhu' ?
-						2: Cela n'implique-t-il pas qu'il y aurait davantage de ce « Cthulhu » ?
-						3: Si jamais il relevait la tête, ce serait en effet un ennemi redoutable.
+
+						2: {
+							$parentVal: Cela n'implique-t-il pas qu'il y aurait davantage de ce « Cthulhu » ?
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: Si jamais il relevait la tête, ce serait en effet un ennemi redoutable.
+							// E: Worried
+						}
+
 						4: Préparons-nous pour cette occasion... Juste au cas où.
-						5: Hé… vaincre cet ennemi était suffisant ! On dirait qu’une capacité du Stellar Array est prête.
 					}
 
 					Eridani: {
+						// Name: Eye of Cthulhu Dialogue
+						// Description: ""
 						1: Car à quel point il avait l'air effrayant, l'Œil de Cthulhu n'était pas trop terrible, n'est-ce pas ?
 						2: Il semble avoir perdu sa peau pour afficher toute une gamme de dents.
-						3: Si je ne le savais pas mieux, on aurait dit qu'il essayait de prouver quelque chose. Bizarre.
-						4: Par ailleurs… une capacité du Stellar Array est désormais disponible. Utilisez-le bien.
+
+						3: {
+							$parentVal: Si je ne le savais pas mieux, on aurait dit qu'il essayait de prouver quelque chose. Bizarre.
+							// E: Angry
+						}
 					}
 				}
 
 				CorruptionBoss: {
 					Asphodene: {
-						1: Hein. Je suppose qu'il y avait vraiment plus de "Cthulhu". D’une manière ou d’une autre, cela ne me surprend pas autant que je l’aurais pensé.
+						// Name: World Evil Boss Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Hein. Je suppose qu'il y avait vraiment plus de "Cthulhu". D’une manière ou d’une autre, cela ne me surprend pas autant que je l’aurais pensé.
+							// E: Angry
+						}
+
 						2: Heureux d'avoir arrêté cette chose avant qu'elle ne porte bien son nom.
-						3: Ces matériaux sont... quelque chose... Wow, l'odeur.
-						4: Hé, les armes que vous pouvez fabriquer avec cela ont l'air plutôt puissantes ! Qu'en penses-tu?
-						5: On dirait qu'une capacité a été débloquée dans le Stellar Array. Vous devriez certainement y réfléchir.
 					}
 
 					Eridani: {
 						1: Un autre organe de ce 'Cthulhu' et il a attaqué avec une manipulation magique... Et aussi- beurk ?
-						2: Ce « Mangeur de mondes » n’était qu’un gros ver. Je suis un peu déçu. Déposons une plainte auprès de celui qui a nommé cette chose.
-						3: On dirait qu'il a débloqué une capacité dans le Stellar Array. Regardez-le quand vous serez libre.
+						// Name: World Evil Boss Dialogue
+						// Description: ""
 					}
 				}
 
 				QueenBee: {
 					Asphodene: {
+						// Name: Queen Bee Dialogue
+						// Description: ""
 						1: Eh bien, je suppose que j'aurais dû m'attendre à quelque chose comme ça dans la jungle.
 						2: Bon travail. On dirait qu’une autre capacité est également débloquée dans le Stellar Array.
 					}
 
 					Eridani: {
+						// Name: Queen Bee Dialogue
+						// Description: ""
 						1: Sérieusement? Une abeille géante... D'une manière ou d'une autre, je pourrais la préférer aux insectes plus petits... Plus facile à frapper, vous savez.
 						2: Hum. À tout le moins, cela a débloqué une capacité dans le Stellar Array.
+
+						3: {
+							// $parentVal: Now that I'm thinking of how sticky that honey is, I am truly sorry. At least it's edible...?
+							// E: Worried
+						}
 					}
 				}
 
 				Skeletron: {
 					Asphodene: {
+						// Name: Skeletron Dialogue
+						// Description: ""
 						1: Le Drapier était vraiment un gigantesque monstre squelette maléfique... Mignon. Au minimum, vous avez désormais accès au donjon.
 						2: Et avec cela, une autre capacité est débloquée dans le Stellar Array.
-						3: Bien, c'est tout pour le moment.
 					}
 
 					Eridani: {
+						// Name: Skeletron Dialogue
+						// Description: ""
 						1: Ce pauvre Clothier, maudit pour devenir Skeletron. Il semblerait que sa défaite nous ait donné accès au Donjon. C'est peut-être de mauvais goût, mais...
-						2: Si l'incarnation de vos émotions est un énorme monstre... peut-être, juste peut-être, que la malédiction n'était pas le seul facteur.
-						3: Si quelqu'un vous le demande, ce n'est pas moi qui vous l'ai dit.
+
+						2: {
+							$parentVal: Si l'incarnation de vos émotions est un énorme monstre... peut-être, juste peut-être, que la malédiction n'était pas le seul facteur.
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: Si quelqu'un vous le demande, ce n'est pas moi qui vous l'ai dit.
+							// E: Worried
+						}
 					}
 				}
 
 				WallOfFlesh: {
 					Asphodene: {
+						// Name: Wall of Flesh Dialogue
+						// Description: ""
 						1: Whoa... Je n'ai jamais rien vu de pareil... jamais. Le monde entier semble regorger d’une nouvelle énergie magique.
 						2: Il semble que le Mur de Chair gardait ou empêchait que quelque chose de grave se produise. C'est mon point de vue.
 						3: Juste pour vous faire savoir, il y a maintenant une autre mise à niveau dans le Stellar Array.
-						4: Quoi qu’il en soit, j’ai l’impression qu’il est temps d’explorer davantage ! Allons-y.
 					}
 
 					Eridani: {
+						// Name: Wall of Flesh Dialogue
+						// Description: ""
 						1: Wow... le monde lui-même semble avoir été radicalement modifié après la défaite du Mur de Chair...
 						2: Je n'ai jamais rien vu de pareil. Que cachait cette chose... ?
 						3: Vous avez également débloqué une nouvelle capacité dans l'Array, mais c'était une fatalité, tout bien considéré.
-						4: Explorons ces nouveaux environs avec prudence.
 					}
 				}
 
 				Twins: {
 					Asphodene: {
+						// Name: Twins Dialogue
+						// Description: ""
 						1: Alors quelqu'un est allé faire deux yeux au lieu d'un ? Tant mieux pour eux, mais à mon avis, le design est déjà un peu ruiné.
 						2: Si vous envisagez de créer un œil de robot, essayez de cacher le point faible évident où se trouve l'iris. Eh bien, je ne crée pas d'yeux robotiques géants et maléfiques, alors ils m'ont amené là-bas.
-						3: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array. C'est tout pour le moment.
-						4: C'est à peu près tout pour l'instant.
 					}
 
 					Eridani: {
+						// Name: Twins Dialogue
+						// Description: ""
 						1: Eh bien, ces fac-similés mécaniques sont morts. Nous n'évaluons pas les boss monstres, ou quoi que ce soit, mais... je vais devoir retirer quelques points.
-						2: Pourquoi penseriez-vous à utiliser de la chair pour l’extérieur ? En termes de matériel, vous devez avoir de meilleures options, si vous faites déjà tout ce chemin.
-						3: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array. Assez fortuit.
-						4: C'est tout pour le moment.
+
+						2: {
+							$parentVal: Pourquoi penseriez-vous à utiliser de la chair pour l’extérieur ? En termes de matériel, vous devez avoir de meilleures options, si vous faites déjà tout ce chemin.
+							// E: Angry
+						}
 					}
 				}
 
 				Destroyer: {
 					Asphodene: {
+						// Name: Destroyer Dialogue
+						// Description: ""
 						1: "'Le Destructeur...' Je ne suis pas du genre à parler, mais si vous nommez quelque chose 'Le Destructeur', je m'attendrai à plus qu'un gros ver."
 						2: Sa longueur absurde ne faisait que nuire à sa solidité. Prends des notes, {0}.
-						3: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array.
-						4: Je suppose que c'est tout ce que j'ai pour l'instant.
 					}
 
 					Eridani: {
+						// Name: Destroyer Dialogue
+						// Description: ""
 						1: Je suppose que le Destroyer était plus un aboiement qu'un mordant, hein. Peut-être qu’une trop grande partie du budget a été consacrée à l’aspect conception.
 						2: En théorie, nous pourrions techniquement récupérer certains de ses éléments, mais cela pose probablement plus de problèmes que de valeur.
-						3: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array. Assez fortuit.
-						4: C'est tout pour le moment.
 					}
 				}
 
 				SkeletronPrime: {
 					Asphodene: {
-						1: Vous l'avez fait ! Skeletron Prime a été vaincu. Un peu monstre, hein ?
+						// Name: Skeletron Prime Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Vous l'avez fait ! Skeletron Prime a été vaincu. Un peu monstre, hein ?
+							// E: Happy
+						}
+
 						2: Les appendices étaient une bonne idée. Tu as failli t'avoir plusieurs fois là-bas.
-						3: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array.
-						4: Je suppose que c'est tout ce que j'ai pour l'instant.
+
+						3: {
+							$parentVal: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
-						1: Et cela s’occupe de Skeletron Prime. Cela ressemblait certainement à la pièce... si vous êtes un véritable seigneur des bords.
-						2: Si vous avez été offensé, je m'excuse. Vous pouvez être aussi nerveux que vous le souhaitez. De toute façon...
-						3: Il semble qu’une autre mise à niveau soit disponible dans le Stellar Array. Assez fortuit.
-						4: C'est tout pour le moment.
+						// Name: Skeletron Prime Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Et cela s’occupe de Skeletron Prime. Cela ressemblait certainement à la pièce... si vous êtes un véritable seigneur des bords.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Si vous avez été offensé, je m'excuse. Vous pouvez être aussi nerveux que vous le souhaitez. De toute façon...
+							// E: Worried
+						}
 					}
 				}
 
 				AllMechs: {
 					Asphodene: {
+						// Name: All Mechanical Bosses Defeated Dialogue
+						// Description: ""
 						1: En fait... On dirait que vous avez vaincu tous les boss mécaniques ! C’est définitivement un pas en avant à 100%.
-						2: Cette victoire a conduit à une autre amélioration, vous l'aurez deviné, le Stellar Array. Est-ce que ça vous a fait attendre ?
+
+						2: {
+							$parentVal: Cette victoire a conduit à une autre amélioration, vous l'aurez deviné, le Stellar Array. Est-ce que ça vous a fait attendre ?
+							// E: Worried
+						}
 					}
 
 					Eridani: {
-						1: Il semblerait que ce soit le dernier des Boss Mécaniques. C'est un grand pas en avant !
+						// Name: All Mechanical Bosses Defeated Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Il semblerait que ce soit le dernier des Boss Mécaniques. C'est un grand pas en avant !
+							// E: Happy
+						}
+
 						2: Cette victoire a apporté une autre amélioration au Stellar Array. J'espère que vous n'avez pas été retenu trop longtemps.
 					}
 				}
 
 				Plantera: {
 					Asphodene: {
+						// Name: Plantera Dialogue
+						// Description: ""
 						1: Et voilà… la terreur de la jungle, Plantera. Félicitations pour votre victoire.
 						2: J'ai l'impression que le donjon a changé... et que ce temple dans la jungle est désormais disponible. C'est à vous de choisir quoi aborder ensuite.
-						3: Une autre mise à niveau est désormais également disponible dans le Stellar Array.
 					}
 
 					Eridani: {
+						// Name: Plantera Dialogue
+						// Description: ""
 						1: Cela marque la fin de Plantera. Très bon travail. Vous devriez maintenant pouvoir accéder au Temple de la Jungle.
 						2: Je crois également qu'il y a de nouveaux matériaux à trouver dans le donjon. Nous devrons juste... le prendre de force.
-						3: Une autre mise à niveau a également été débloquée dans le Stellar Array.
 					}
 				}
 
 				Golem: {
 					Asphodene: {
+						// Name: Golem Dialogue
+						// Description: ""
 						1: Vous l'avez fait ! Golem n'est plus. Vous êtes imparable.
-						2: Quelque chose chez notre prochain ennemi semble… dangereux. Il semble que l'énergie spatiale se soit rassemblée autour de l'entrée du donjon.
-						3: Une autre mise à niveau est désormais disponible dans le Stellar Array. Ça a l'air assez fort.
-						4: Eh bien, c'est à peu près tout.
+
+						2: {
+							$parentVal: Quelque chose chez notre prochain ennemi semble… dangereux. Il semble que l'énergie spatiale se soit rassemblée autour de l'entrée du donjon.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
-						1: La bête Golem du Temple Lizard est confirmée morte. En termes de bêtes mécaniques, je suis un peu… déçu ?
-						2: Quelque chose d'étrange est apparu devant le Donjon. Cela semble être d'une autre nature... Soyez prêt à tout.
-						3: Une autre mise à niveau a également été débloquée dans le Stellar Array.
-						4: C'est à peu près tout.
+						// Name: Golem Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: La bête Golem du Temple Lizard est confirmée morte. En termes de bêtes mécaniques, je suis un peu… déçu ?
+							// E: Thinking
+						}
+
+						2: {
+							$parentVal: Quelque chose d'étrange est apparu devant le Donjon. Cela semble être d'une autre nature... Soyez prêt à tout.
+							// E: Angry
+						}
 					}
 				}
 
 				DukeFishron: {
 					Asphodene: {
+						// Name: Duke Fishron Dialogue
+						// Description: ""
 						1: Une créature si puissante cachée au fond de l'océan. Heureusement, vous avez évité d'être transformé en nourriture pour poissons.
-						2: D'où vient ce dicton... ? Qu'est-ce que la nourriture pour poissons ? Des questions plus importantes restent sans réponse...
+
+						2: {
+							$parentVal: D'où vient ce dicton... ? Qu'est-ce que la nourriture pour poissons ? Des questions plus importantes restent sans réponse...
+							// E: Thinking
+						}
+
+						3: {
+							// $parentVal: What do you mean it isn't important? Duh, of course it's an important question. All questions are important.
+							// E: Happy
+						}
 					}
 
 					Eridani: {
-						1: Le duc Fishron a été vaincu. C'était serré, mais vous avez gagné. ...
+						// Name: Duke Fishron Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Le duc Fishron a été vaincu. C'était serré, mais vous avez gagné. ...
+							// E: Smug
+						}
+
 						2: J'ai peut-être trop pêché pour celui-là. Vous savez quoi..? Laissons les jeux de mots à Asphodène. J'admets qu'il y a une certaine compétence là-dedans.
 					}
 				}
 
 				Cultist: {
 					Asphodene: {
-						1: Ces piliers célestes ne peuvent pas être de bonnes nouvelles – nous ne pouvons vraiment pas faire de répit.
-						2: Ne perdez pas espoir, cependant... nous pouvons vaincre cela. Juste un autre ennemi à vaincre, n'est-ce pas ? Haha...
-						3: Avant que vous partiez, il y a autre chose que je dois vous dire. Je peux sentir autre chose que les piliers.
+						// Name: Lunatic Cultist Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Ces piliers célestes ne peuvent pas être de bonnes nouvelles – nous ne pouvons vraiment pas faire de répit.
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: Ne perdez pas espoir, cependant... nous pouvons vaincre cela. Juste un autre ennemi à vaincre, n'est-ce pas ? Haha...
+							// E: Worried
+						}
+
+						3: {
+							$parentVal: Avant que vous partiez, il y a autre chose que je dois vous dire. Je peux sentir autre chose que les piliers.
+							// E: Angry
+						}
+
 						4: Je n'arrive pas à le situer, mais j'ai le sentiment que tu devrais bientôt profiter de la nuit.
 					}
 
 					Eridani: {
-						1: Je le savais… quelque chose n'allait pas chez ce Cultiste. Ces Piliers Célestes n’inspirent pas confiance.
-						2: Dans les circonstances actuelles, je pense que vous êtes le seul à pouvoir vaincre cette menace.
-						3: Encore une chose:je peux sentir autre chose que l’approche des Piliers. C’est d’une tout autre nature.
+						// Name: Lunatic Cultist Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Je le savais… quelque chose n'allait pas chez ce Cultiste. Ces Piliers Célestes n’inspirent pas confiance.
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: Dans les circonstances actuelles, je pense que vous êtes le seul à pouvoir vaincre cette menace.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Encore une chose:je peux sentir autre chose que l’approche des Piliers. C’est d’une tout autre nature.
+							// E: Worried
+						}
+
 						4: Ce n’est qu’une intuition, mais je vous conseille de procéder prochainement à toutes les tâches nécessitant la nuit.
 					}
 				}
 
 				MoonLord: {
 					Asphodene: {
+						// Name: Moon Lord Dialogue
+						// Description: ""
 						1: Vous l'avez fait ! Le Seigneur de la Lune a été vaincu. Je savais que vous pouviez le faire.
 						2: La défaite du Seigneur de la Lune a renforcé votre réseau stellaire. Une récompense bien méritée.
 						3: Nous avons parcouru un long chemin... Vous êtes devenu plus fort que je ne l'aurais jamais imaginé !
@@ -1050,6 +1212,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Moon Lord Dialogue
+						// Description: ""
 						1: Le Seigneur de la Lune a été vaincu... Quelle merveilleuse victoire.
 						2: On dirait que sa défaite a donné encore plus de puissance au Stellar Array.
 						3: Je crains que notre voyage ne soit pas encore terminé. Il faut aller de l'avant. En fait...
@@ -1059,73 +1223,118 @@ Mods: {
 
 				WarriorOfLight: {
 					Asphodene: {
-						1: Je vois que nous avions tort... Le Guerrier pensait qu'il sauvait la galaxie, mais c'était vraiment les mensonges du Premier Starfarer... Comme c'est cruel.
-						2: Quoi qu'il en soit, le Guerrier de la Lumière. Il a réussi à s'enfuir, mais... La nuit est enfin revenue dans ce monde !
+						// Name: Warrior of Light Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Je vois que nous avions tort... Le Guerrier pensait qu'il sauvait la galaxie, mais c'était vraiment les mensonges du Premier Starfarer... Comme c'est cruel.
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: Quoi qu'il en soit, le Guerrier de la Lumière. Il a réussi à s'enfuir, mais... La nuit est enfin revenue dans ce monde !
+							// E: Happy
+						}
+
 						3: Nous avons enfin la dernière pièce du puzzle. Le First Starfarer a montré sa main, et cela signifie que nous avons une chance.
 						4: Le Stellar Array est encore plus puissant – quelque chose dont nous aurons besoin dans le conflit à venir, je crois.
 						5: Une fois que vous avez collecté toutes les traces mnémoniques, fabriquez-les ensemble en utilisant la racine de Celestriad.
-						6: Je n'ai probablement pas besoin de vous le dire, mais elle ne va pas discuter. Préparez-vous à un combat difficile. Peut-être le combat le plus dur jusqu'à présent.
 					}
 
 					Eridani: {
-						1: Vous avez abattu le Guerrier de la Lumière. Il a réussi à s'échapper, mais la nuit est revenue dans ce monde malgré tout.
-						2: Il semble que nous nous soyons trompés. Le guerrier croyait qu'il sauvait la galaxie, mais ce n'était, en vérité, que des mensonges de la part de son Starfarer.
+						// Name: Warrior of Light Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Vous avez abattu le Guerrier de la Lumière. Il a réussi à s'échapper, mais la nuit est revenue dans ce monde malgré tout.
+							// E: Happy
+						}
+
+						2: {
+							$parentVal: Il semble que nous nous soyons trompés. Le guerrier croyait qu'il sauvait la galaxie, mais ce n'était, en vérité, que des mensonges de la part de son Starfarer.
+							// E: Angry
+						}
+
 						3: Avec cette trace mnémonique finale… Je vois… Tout prend tout son sens maintenant. {0}, j'ai besoin que vous combiniez toutes les traces mnémoniques ensemble.
 						4: Vous devrez utiliser la racine de Celestriad de l'Observatoire.
-						5: Mais tout n’est pas perdu. Nous avons gagné en force grâce au Guerrier de Lumière du Réseau Stellaire.
-						6: Rappelez-vous:le premier Starfarer. Nous ne pouvons pas laisser passer cette opportunité. Ce sera probablement le combat de nos vies. Préparez-vous bien.
+
+						5: {
+							$parentVal: Mais tout n’est pas perdu. Nous avons gagné en force grâce au Guerrier de Lumière du Réseau Stellaire.
+							// E: Angry
+						}
 					}
 				}
 
 				AllVanillaBosses: {
 					Asphodene: {
+						// Name: All Vanilla Bosses Dialogue
+						// Description: ""
 						1: Vous avez vaincu tant d’ennemis puissants – vous devez certainement être proche du summum de vos pouvoirs.
-						2: Comment puis-je le savoir ? Eh bien... il y a une nouvelle capacité Stellar Array disponible, pour démarrer.
-						3: Voici un petit cadeau de ma part à vous. C'est une essence d'un ancien Starfarer - vous pourrez bien l'utiliser.
 					}
 
 					Eridani: {
+						// Name: All Vanilla Bosses Dialogue
+						// Description: ""
 						1: Vous avez parcouru un long chemin. Je suis sûr que nos ennemis frémissent quand ils pensent à vous.
-						2: Je suis vraiment fier de votre croissance. En fait, vous en avez acquis la force d’une nouvelle capacité Stellar Array.
-						3: Ce n’est peut-être pas la meilleure récompense, mais cette essence d’un ancien Starfarer devrait vous être très utile.
-						4: Continuons notre bon travail.
 					}
 				}
 
 				VanillaAndWarrior: {
 					Asphodene: {
+						// Name: Powerful Weapon Dialogue
+						// Description: Grants the Essence for a powerful weapon
 						1: Sérieusement, c'est une réussite incroyable. J'ai gardé cette Essence de côté, car elle était trop puissante pour être utilisée, mais...
 						2: Avec ce que vous avez accompli, je pense que vous êtes enfin capable de l'exercer.
-						3: Assurez-vous de traiter le produit fini avec soin. En outre...
-						4: Une nouvelle capacité Stellar Array est active. Serait-ce le tout dernier ?
+
+						3: {
+							$parentVal: Assurez-vous de traiter le produit fini avec soin. En outre...
+							// E: Smug
+						}
 					}
 
 					Eridani: {
+						// Name: Powerful Weapon Dialogue
+						// Description: Grants the Essence for a powerful weapon
 						1: Je suis impressionné... En vérité, j'ai gardé cette Essence sous clé – elle était bien trop puissante pour être utilisée. Cependant...
 						2: Ce serait idiot de ma part de vous le cacher maintenant. Avec tout ce que vous avez fait, cela vous appartient désormais.
 						3: Gardez à l’esprit son potentiel et bonne chance pour le créer.
-						4: Attendez un instant, est-ce aussi la dernière capacité du Stellar Array, activée ? Un travail incroyable.
 					}
 				}
 
 				Dioskouroi: {
 					Asphodene: {
+						// Name: Dioskouroi Dialogue
+						// Description: Grants a key item
 						1: C'était un combat étrange... Je ne pense même pas que ces jumeaux aient réalisé que nous étions là !
 						2: Ils n'étaient pas humains, mais probablement une sorte de démon. J'ai senti une trace de Starfarer sur eux – peut-être que le Premier Starbearer les a vaincus dans le passé.
-						3: Je ne sais pas pourquoi Persée nous a dit de les combattre, ni même comment nous y sommes parvenus. À moins que... peut-être que Persée ait trouvé un moyen de transformer les Essences en leur passé ? Hmm...
+
+						3: {
+							$parentVal: Je ne sais pas pourquoi Persée nous a dit de les combattre, ni même comment nous y sommes parvenus. À moins que... peut-être que Persée ait trouvé un moyen de transformer les Essences en leur passé ? Hmm...
+							// E: Thinking
+						}
+
 						4: Notre bataille semble avoir laissé un objet étrange. Je le confie à vos soins. Vous devriez probablement vous en occuper.
 					}
 
 					Eridani: {
+						// Name: Dioskouroi Dialogue
+						// Description: Grants a key item
 						1: Même si c’est nous qui les avons battus, ces jumeaux démons nous ont à peine jeté un coup d’œil.
 						2: D'après le mana restant sur eux, ces jumeaux ont très probablement été abattus par le Premier Porteur Étoile il y a bien longtemps.
-						3: Quant à savoir pourquoi Persée nous a dit de les combattre... je ne sais pas. Je ne sais même pas comment nous avons pu les combattre. Peut-être avons-nous combattu une agence donnée par Essence ?
+
+						3: {
+							$parentVal: Quant à savoir pourquoi Persée nous a dit de les combattre... je ne sais pas. Je ne sais même pas comment nous avons pu les combattre. Peut-être avons-nous combattu une agence donnée par Essence ?
+							// E: Thinking
+						}
+
 						4: Il reste cet objet étrange après la bataille. J'en prendrais bien soin, si j'étais toi. Je pense que cela sera utile plus tard.
 					}
 				}
 
 				Nalhaun: {
 					Asphodene: {
+						// Name: Nalhaun Dialogue
+						// Description: Grants a key item
 						1: C'était donc le Roi Bruni. Sa lame était incroyablement puissante, sans parler de la magie dont il disposait. C'était un triomphe que tu aies survécu à ça.
 						2: D'après ce que je peux dire, il semble que le Roi Bruni ait été vaincu par le Premier Porteur Étoile. De plus, il y a cet objet étrange ici aussi.
 						3: Je suppose que nous allons l'ajouter à la collection - ce n'est pas un mal à cela.
@@ -1133,6 +1342,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Nalhaun Dialogue
+						// Description: Grants a key item
 						1: Le Roi Bruni est tombé. Quel ennemi puissant. Je frémis à l’idée de ce que nous aurions fait si nous l’avions combattu à son apogée.
 						2: D'après ce à quoi cela ressemble, le roi bruni a été abattu par le premier porteur d'étoiles près de cent ans auparavant.
 						3: Prenons soin de cet objet étrange, il doit avoir une certaine signification. Pendant qu'on est sur le sujet...
@@ -1142,12 +1353,16 @@ Mods: {
 
 				Penth: {
 					Asphodene: {
+						// Name: Penthesilea Dialogue
+						// Description: Grants a key item
 						1: Penthésilée, n'est-ce pas ? Elle représentait tout un défi. Quelle façon unique de lancer de la magie.
 						2: Sa magie débordait de puissance. Il semble que l'influence du Premier Starbearer soit là, ce qui signifie que nous pouvons probablement utiliser une nouvelle Stellar Nova.
 						3: La bataille a laissé derrière elle cet objet mystérieux. Vous pouvez le conserver.
 					}
 
 					Eridani: {
+						// Name: Penthesilea Dialogue
+						// Description: Grants a key item
 						1: Vous avez vaincu la Sorcière de l'Encre. Elle était plutôt douée pour la magie, non ? C'est vraiment dommage qu'elle soit hostile.
 						2: Sa puissante magie... Nous pouvons l'utiliser pour nous-mêmes comme une nouvelle Nova. Il doit s'agir des restes du premier porteur d'étoiles Persée mentionné...
 						3: La bataille a laissé derrière elle ce mystérieux éclat. Je vous le confierai.
@@ -1156,12 +1371,16 @@ Mods: {
 
 				Arbitration: {
 					Asphodene: {
+						// Name: Arbitration Dialogue
+						// Description: ""
 						1: Cet ennemi était vraiment craintif. Je suis heureux que vous ayez pu le vaincre. Qui sait quel chaos cela entraînerait si rien n'était fait ?
 						2: Cela montre à quel point les Anomalies peuvent être horribles... !
 						3: On dirait qu'il s'est condensé en une Essence - aucun travail n'est nécessaire de ma part. N'est-ce pas étrange ?
 					}
 
 					Eridani: {
+						// Name: Arbitration Dialogue
+						// Description: ""
 						1: Vous avez complètement vaincu cet être envoyé par le vide. Bon travail; Je n'avais aucune idée de ce qui se serait passé si nous avions perdu.
 						2: En vérité, les horreurs des emplacements d’anomalies ne peuvent être sous-estimées.
 						3: Même sans mon intervention, une Essence est apparue... elle doit être forte pour provenir d'un tel démon.
@@ -1170,56 +1389,105 @@ Mods: {
 
 				Tsukiyomi: {
 					Asphodene: {
+						// Name: Tsukiyomi Dialogue
+						// Description: Grants a key item
 						1: C'est... c'est fini. Tsukiyomi a disparu. Il nous manque encore tellement d'indices. Elle ne semble pas s'en sortir, alors qu'est-ce qui l'a poussée à faire ce qu'elle a fait ?
 						2: Espérons qu'un jour, nous trouverons les réponses aux questions que nous nous posons... J'ai le sentiment que ce voyage n'est pas encore terminé.
 						3: J'ai rassemblé quelques-uns des résidus du combat. Il sera probablement utilisé comme substitut à une Essence, pour créer une arme.
-						4: Avec cette victoire… la galaxie est sauvée. Il y aura peut-être d’autres maux à venir, mais sachez que rien n’est insurmontable. Nous sommes arrivés jusqu'ici.
+
+						4: {
+							$parentVal: Avec cette victoire… la galaxie est sauvée. Il y aura peut-être d’autres maux à venir, mais sachez que rien n’est insurmontable. Nous sommes arrivés jusqu'ici.
+							// E: Happy
+						}
 					}
 
 					Eridani: {
+						// Name: Tsukiyomi Dialogue
+						// Description: Grants a key item
 						1: Nous l'avons enfin fait. La défaite de Tsukiyomi a été confirmée. Elle est partie, mais j'espère que nos ennuis avec elle sont terminés.
 						2: Ce qui me chagrine, ce sont ses motivations... Elle a fait des choses horribles... mais était-ce de la malveillance ou un objectif plus grand... ? J'espère que nous trouverons la réponse.
 						3: J'ai effectué le travail d'absorption d'une partie de l'énergie résiduelle et je l'ai transformée en Mémoire Spatiale. Vous pouvez l'utiliser comme une Essence.
-						4: Il y a encore du travail à faire, mais rassurez-vous ; si nous sommes arrivés jusqu'ici, rien ne peut nous arrêter maintenant.
+
+						4: {
+							$parentVal: Il y a encore du travail à faire, mais rassurez-vous ; si nous sommes arrivés jusqu'ici, rien ne peut nous arrêter maintenant.
+							// E: Happy
+						}
 					}
 				}
 
 				QueenSlime: {
 					Asphodene: {
+						// Name: Queen Slime Dialogue
+						// Description: ""
 						1: C'est ça. La reine Slime est vaincue. Qu'avons-nous appris aujourd'hui? Apparemment, il existe une cour royale de slimes, et le King Slime n'était pas seulement une exception.
-						2: Cela n'a même aucun sens. Ce sont des slimes. Sérieusement, je ne pense pas que le slime ait la capacité de penser.
-						3: Qui sait, peut-être qu'ils sont plus intelligents que nous. Là encore, je serais vraiment ennuyé si mon intelligence était éclipsée par de la gélatine, alors disons que ce n'est pas le cas.
+
+						2: {
+							$parentVal: Cela n'a même aucun sens. Ce sont des slimes. Sérieusement, je ne pense pas que le slime ait la capacité de penser.
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: Qui sait, peut-être qu'ils sont plus intelligents que nous. Là encore, je serais vraiment ennuyé si mon intelligence était éclipsée par de la gélatine, alors disons que ce n'est pas le cas.
+							// E: Angry
+						}
 					}
 
 					Eridani: {
+						// Name: Queen Slime Dialogue
+						// Description: ""
 						1: C'est vrai, nous avons vaincu la Reine Slime. Pour être honnête, je suis un peu curieux:pourquoi y a-t-il des « rois » et des « reines » du monde du slime ?
-						2: Quel est le pouvoir des slimes royaux ? Sont-ils des dirigeants légitimes ?
-						3: La cour royale du slime envoie-t-elle ses sujets attaquer des personnes au hasard ? Ont-ils même le droit de posséder des biens ?
-						4: Combattez, slimes opprimés ! Reprenez votre liberté !
+
+						2: {
+							$parentVal: Quel est le pouvoir des slimes royaux ? Sont-ils des dirigeants légitimes ?
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: La cour royale du slime envoie-t-elle ses sujets attaquer des personnes au hasard ? Ont-ils même le droit de posséder des biens ?
+							// E: Thinking
+						}
+
+						4: {
+							$parentVal: Combattez, slimes opprimés ! Reprenez votre liberté !
+							// E: Angry
+						}
 					}
 				}
 
 				EmpressOfLight: {
 					Asphodene: {
+						// Name: Empress of Light Dialogue
+						// Description: ""
 						1: Excellent travail - l'Impératrice de la Lumière n'est plus. Personne d’autre ne le dira, alors je le ferai:avait-il un gros nez ou souriait-il ? Je ne pouvais pas le dire.
-						2: Peut-être que si elle était restée immobile, j'aurais eu un meilleur aperçu. C'est plutôt ennuyeux, hein.
+
+						2: {
+							$parentVal: Peut-être que si elle était restée immobile, j'aurais eu un meilleur aperçu. C'est plutôt ennuyeux, hein.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
-						1: Félicitations, vous avez vaincu l'Impératrice de la Lumière. Laissons les bugs tranquilles maintenant, d'accord ?
-						2: Si j'avais une pièce de cinq cents pour les boss invoqués avec des insectes... Nous avons combattu ce poisson plutôt gros, n'est-ce pas ? Cela fait deux. Pas grand-chose, n’est-ce pas. J'espérais une tendance.
-						3: Si j'avais une pièce de cinq cents pour les boss invoqués avec des insectes... Nous avons combattu ce poisson plutôt gros, n'est-ce pas ? Cela fait deux. Pas grand-chose, n’est-ce pas. J'espérais une tendance. Peut-être pouvons-nous compter la reine des abeilles ?
-						4: D'une manière ou d'une autre... J'ai l'impression qu'il y a encore un autre boss que nous devrons utiliser un insecte pour invoquer. Cela va être plutôt gênant.
+						// Name: Empress of Light Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Félicitations, vous avez vaincu l'Impératrice de la Lumière. Laissons les bugs tranquilles maintenant, d'accord ?
+							// E: Worried
+						}
 					}
 				}
 
 				Deerclops: {
 					Asphodene: {
+						// Name: Deerclops Dialogue
+						// Description: ""
 						1: D'accord, nous nous sommes occupés de cette étrange abomination. Je n'ai même aucune idée d'où ça vient.
 						2: Pourquoi nous a-t-il attaqué ? Était-ce pour ne pas mourir de faim ? Hein.
 					}
 
 					Eridani: {
+						// Name: Deerclops Dialogue
+						// Description: ""
 						1: Excellent travail:vous avez vaincu cet étrange truc de cerf.
 						2: C'était un peu terrifiant, mais heureusement, il semble que sa proie précédente était confinée au sol. On dirait que nous avions l’avantage du terrain ici.
 					}
@@ -1227,13 +1495,25 @@ Mods: {
 
 				Thespian: {
 					Asphodene: {
+						// Name: Thespian Dialogue
+						// Description: ""
 						1: C'était toute une bataille ! Rappelle-moi de ne plus jamais toucher à des potions étranges.
-						2: En fait, celui-ci n'était même pas de ma faute. Rappelle-moi de te rappeler de ne plus jamais toucher aux potions étranges.
+
+						2: {
+							$parentVal: En fait, celui-ci n'était même pas de ma faute. Rappelle-moi de te rappeler de ne plus jamais toucher aux potions étranges.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
+						// Name: Thespian Dialogue
+						// Description: ""
 						1: On dirait que vous êtes sorti sain et sauf de ce combat avec Thespian. Quel curieux phénomène.
-						2: Un alchimiste réanimé par un clown qui n'apparaît que la nuit. Hé, est-ce que j'ai raté une punchline ici ?
+
+						2: {
+							$parentVal: Un alchimiste réanimé par un clown qui n'apparaît que la nuit. Hé, est-ce que j'ai raté une punchline ici ?
+							// E: Worried
+						}
 					}
 				}
 			}
@@ -1241,12 +1521,21 @@ Mods: {
 			CalamityBossDialogue: {
 				DesertScourge: {
 					Asphodene: {
+						// Name: Desert Scourge Dialogue
+						// Description: ""
 						1: Vous avez vaincu ce serpent maléfique. Je me demande cependant... D'où ça vient ?
-						2: En y regardant de plus près, il semble que ce soit un monstre aquatique… il était une fois. Alors... pourquoi était-ce dans le désert ?
+
+						2: {
+							$parentVal: En y regardant de plus près, il semble que ce soit un monstre aquatique… il était une fois. Alors... pourquoi était-ce dans le désert ?
+							// E: Angry
+						}
+
 						3: Les secrets de ce monde restent encore un mystère pour nous. Quoi qu'il en soit, bon travail malgré tout.
 					}
 
 					Eridani: {
+						// Name: Desert Scourge Dialogue
+						// Description: ""
 						1: Vous avez vaincu le fléau des sables. Quant à son origine, votre supposition est aussi bonne que la mienne. Cependant...
 						2: Ce n’était certainement pas fait pour creuser des tunnels. Au lieu de cela, je postulerais qu'il s'agissait à l'origine d'une bête aquatique. Alors... qu'est-ce qu'il faisait ici ? Ce monde recèle encore de nombreux secrets...
 						3: Quoi qu'il en soit... vous vous êtes battu courageusement. Je pense que le butin nous sera très utile.
@@ -1255,25 +1544,43 @@ Mods: {
 
 				Crabulon: {
 					Asphodene: {
+						// Name: Crabulon Dialogue
+						// Description: ""
 						1: D'accord... alors c'est juste arrivé. Maintenant que j'ai un meilleur aperçu du cadavre de ce crabe champignon, la vérité est révélée - et ce n'est pas joli.
-						2: On dirait que le champignon a réanimé le cadavre du crabe et l'a promené comme une marionnette. C'est dégoutant.
+
+						2: {
+							$parentVal: On dirait que le champignon a réanimé le cadavre du crabe et l'a promené comme une marionnette. C'est dégoutant.
+							// E: Angry
+						}
+
 						3: Peu importe. Inutile de s’attarder sur ce fait pas si amusant. C'est mort! Au fait, bon travail là-dessus.
 					}
 
 					Eridani: {
+						// Name: Crabulon Dialogue
+						// Description: ""
 						1: Crabulon n'est plus. Quand je l’ai vu pour la première fois, j’ai supposé qu’il s’agissait d’une sorte de bête marine mutée, semblable au Fléau du Désert.
-						2: Cependant... la réalité est bien plus sinistre. Il me semble que des champignons parasites utilisaient ce crabe géant comme hôte pour se nourrir plus efficacement.
+
+						2: {
+							$parentVal: Cependant... la réalité est bien plus sinistre. Il me semble que des champignons parasites utilisaient ce crabe géant comme hôte pour se nourrir plus efficacement.
+							// E: Angry
+						}
+
 						3: Maintenant que j'y réfléchis, je me sens malade. Merci d'avoir mis un terme à cela.
 					}
 				}
 
 				HiveMind: {
 					Asphodene: {
+						// Name: HiveMind Dialogue
+						// Description: ""
 						1: L'Esprit de la Ruche a été vaincu. Ce n'est pas la seule source de corruption, mais le tuer n'a certainement pas rendu service à la corruption.
 						2: C'est tout pour l'instant.
 					}
 
 					Eridani: {
+						// Name: HiveMind Dialogue
+						// Description: ""
 						1: Vous avez débarrassé le monde de l'esprit de la ruche. Même si ce n'est pas le principal vecteur d'influence de la corruption, l'étouffer a probablement contribué à atténuer certains maux.
 						2: Restons à l’affût d’autres menaces que représente la corruption.
 					}
@@ -1281,25 +1588,53 @@ Mods: {
 
 				Perforators: {
 					Asphodene: {
+						// Name: Perforators Dialogue
+						// Description: ""
 						1: Vous avez vaincu la Ruche Perforatrice. Je me demande ce qui pousse le Crimson à regrouper son mal sous la forme de monstres spongieux et charnus.
-						2: Il avait soif de terre pure, voulant sans aucun doute propager davantage le mal dans le monde. Bien sûr, il ne fait plus rien de tout cela.
+
+						2: {
+							$parentVal: Il avait soif de terre pure, voulant sans aucun doute propager davantage le mal dans le monde. Bien sûr, il ne fait plus rien de tout cela.
+							// E: Angry
+						}
 					}
 
 					Eridani: {
+						// Name: Perforators Dialogue
+						// Description: ""
 						1: Vous avez vaincu la Ruche Perforatrice et les vers odieux qui l'ont rejoint au combat. Je ne suis pas sûr, mais voir sérieusement des choses charnues me donne la chair de poule.
-						2: Eh bien, tout ce qui vit est fait de chair. Euh, tu vois ce que je veux dire...
+
+						2: {
+							$parentVal: Eh bien, tout ce qui vit est fait de chair. Euh, tu vois ce que je veux dire...
+							// E: Angry
+						}
 					}
 				}
 
 				SlimeGod: {
 					Asphodene: {
+						// Name: SlimeGod Dialogue
+						// Description: ""
 						1: Le Dieu Slime n'est plus ! Il s'avère que ces énormes slimes rouges et violets ne faisaient pas réellement partie du Dieu Slime, mais simplement de puissants serviteurs.
-						2: Je suis heureux que nous l'ayons vaincu, mais je doute sérieusement que cette défaite signifie la fin de tous les slimes. Malheureusement, il y en a tellement.
-						3: Attendez une seconde... Pourquoi suis-je inquiet ? Ils explosent en trois secondes environ ! Je veux dire, si nous continuons à les tuer, ils disparaîtront !
-						4: Dans quelques siècles environ… Pouah.
+
+						2: {
+							$parentVal: Je suis heureux que nous l'ayons vaincu, mais je doute sérieusement que cette défaite signifie la fin de tous les slimes. Malheureusement, il y en a tellement.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Attendez une seconde... Pourquoi suis-je inquiet ? Ils explosent en trois secondes environ ! Je veux dire, si nous continuons à les tuer, ils disparaîtront !
+							// E: Smug
+						}
+
+						4: {
+							$parentVal: Dans quelques siècles environ… Pouah.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
+						// Name: SlimeGod Dialogue
+						// Description: ""
 						1: Enfin. Le Dieu Slime a été tué. Bien sûr, cela ne signifie pas la fin du slime tel que nous le connaissons. Sérieusement, ils sont partout.
 						2: Je suis presque sûr qu'ils peuvent se séparer pour en faire plus. ...Je ne suis pas un expert en étymologie des slimes ou quoi que ce soit.
 						3: Mais cela ne pouvait pas être une mauvaise façon de passer le temps. Peut-être que je ferai quelques lectures légères.
@@ -1308,61 +1643,126 @@ Mods: {
 
 				Cryogen: {
 					Asphodene: {
+						// Name: Cryogen Dialogue
+						// Description: ""
 						1: Vous avez vaincu Cryogen ! Et... il s'avère que "Cryogen" était une prison pour cet archimage.
-						2: D'après ce qu'il peut nous dire, il semble qu'il ait été emprisonné dans Cryogen par le Tyrant de la Jungle Yharim. Si je me souviens bien, nous avons déjà entendu parler de lui.
-						3: Qui qu’ils soient, il semble qu’ils aient causé de nombreux problèmes à ce monde.
+
+						2: {
+							$parentVal: D'après ce qu'il peut nous dire, il semble qu'il ait été emprisonné dans Cryogen par le Tyrant de la Jungle Yharim. Si je me souviens bien, nous avons déjà entendu parler de lui.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Qui qu’ils soient, il semble qu’ils aient causé de nombreux problèmes à ce monde.
+							// E: Angry
+						}
 					}
 
 					Eridani: {
+						// Name: Cryogen Dialogue
+						// Description: ""
 						1: Cryogen a été tué. Et de son cadavre arrive cette sorte d’Archimage. D'après ce qu'il a à dire, il y a été piégé par un roi maléfique...
-						2: Yharim, le tyran de la jungle. Leur réputation les précède. J'ai le sentiment qu'ils ont été à l'origine de nombreux maux de ce monde.
+
+						2: {
+							$parentVal: Yharim, le tyran de la jungle. Leur réputation les précède. J'ai le sentiment qu'ils ont été à l'origine de nombreux maux de ce monde.
+							// E: Angry
+						}
+
 						3: Nous devons nous efforcer de démêler davantage cette histoire. J'espère que vous êtes d'accord.
 					}
 				}
 
 				AquaticScourge: {
 					Asphodene: {
-						1: Le Fléau Aquatique n’est plus, hein ? Mon hypothèse était donc correcte ; le Fléau du Désert a été déplacé et asséché... et nous venons de combattre son ancêtre.
-						2: Le Sea King nous a raconté ce qui s'était passé. Les forces de Yharim sont en effet puissantes. Nous ne devrions pas laisser ces méfaits se poursuivre.
+						// Name: AquaticScourge Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Le Fléau Aquatique n’est plus, hein ? Mon hypothèse était donc correcte ; le Fléau du Désert a été déplacé et asséché... et nous venons de combattre son ancêtre.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Le Sea King nous a raconté ce qui s'était passé. Les forces de Yharim sont en effet puissantes. Nous ne devrions pas laisser ces méfaits se poursuivre.
+							// E: Angry
+						}
 					}
 
 					Eridani: {
-						1: Le Fléau Aquatique est vaincu. Voilà donc ce qu’aurait pu être le Fléau du Désert si l’océan n’avait pas été réduit à un désert.
-						2: D'après ce que nous dit le Sea King, c'était une autre des actions de Yharim. Ils sèment la destruction partout où ils se trouvent... Nous devons y mettre un terme.
+						// Name: AquaticScourge Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Le Fléau Aquatique est vaincu. Voilà donc ce qu’aurait pu être le Fléau du Désert si l’océan n’avait pas été réduit à un désert.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: D'après ce que nous dit le Sea King, c'était une autre des actions de Yharim. Ils sèment la destruction partout où ils se trouvent... Nous devons y mettre un terme.
+							// E: Angry
+						}
 					}
 				}
 
 				BrimstoneElemental: {
 					Asphodene: {
+						// Name: BrimstoneElemental Dialogue
+						// Description: ""
 						// 1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before it was destroyed.
-						// 2: Whoever did this must be a fearsome foe, indeed. While I do like a challenge, there's no beating around the bush: we have to get stronger.
+
+						2: {
+							// $parentVal: Whoever did this must be a fearsome foe, indeed. While I do like a challenge, there's no beating around the bush: we have to get stronger.
+							// E: Angry
+						}
 					}
 
 					Eridani: {
+						// Name: BrimstoneElemental Dialogue
+						// Description: ""
 						// 1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
-						// 2: Whatever caused this destruction has to be stopped... but we must get stronger to do so.
+
+						2: {
+							// $parentVal: Whatever caused this destruction has to be stopped... but we must get stronger to do so.
+							// E: Angry
+						}
 					}
 				}
 
 				Calamitas: {
 					Asphodene: {
+						// Name: Calamitas Clone Dialogue
+						// Description: ""
 						1: ...Calamitas n'est plus. C’est du moins ce que nous pensions. Ce à quoi nous étions confrontés n’était qu’une réplique de la réalité. Malgré tout, c’était un ennemi incroyablement puissant.
-						2: Nous devons nous efforcer de devenir plus forts. Nous devons! Avec des choses comme celle-ci qui parcourent le monde, qui d’autre peut les arrêter… ?
+
+						2: {
+							$parentVal: Nous devons nous efforcer de devenir plus forts. Nous devons! Avec des choses comme celle-ci qui parcourent le monde, qui d’autre peut les arrêter… ?
+							// E: Angry
+						}
 					}
 
 					Eridani: {
+						// Name: Calamitas Clone Dialogue
+						// Description: ""
 						1: Nous avons vaincu Calamitas... mais... ce n'était rien d'autre qu'un clone du véritable ennemi. Même en tant que double, cela représentait l’un de nos défis les plus difficiles à ce jour.
-						2: Qui sait ce que la vraie chose peut faire… Nous devons devenir plus forts.
+
+						2: {
+							$parentVal: Qui sait ce que la vraie chose peut faire… Nous devons devenir plus forts.
+							// E: Angry
+						}
 					}
 				}
 
 				Leviathan: {
 					Asphodene: {
+						// Name: Leviathan Dialogue
+						// Description: ""
 						1: Enfin, nous avons battu Anahita et son Léviathan. Quelle bataille passionnante... Vous avez combattu avec courage, même lorsque le combat semblait insurmontable.
 						2: Espérons que ce que nous avons obtenu de leurs restes nous aidera à l'avenir. Mec, nous sommes sur une lancée !
 					}
 
 					Eridani: {
+						// Name: Leviathan Dialogue
+						// Description: ""
 						1: Vous avez vaincu le Léviathan et Anahita. Une bataille bien menée. Lorsque le Léviathan est apparu, j'ai craint le pire.
 						2: J'essaierai de ne pas douter de toi à l'avenir. Après tout, vous avez mon aide.
 						3: J'aide, non ? OK...
@@ -1371,11 +1771,20 @@ Mods: {
 
 				AstrumAureus: {
 					Asphodene: {
-						1: Nous l'avons fait à Astrum Aureus. C'est un bon rappel que l'Infection Astrale consomme sans discernement. Même les mécaniciens modernes n’y sont pas à l’abri.
+						// Name: AstrumAureus Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Nous l'avons fait à Astrum Aureus. C'est un bon rappel que l'Infection Astrale consomme sans discernement. Même les mécaniciens modernes n’y sont pas à l’abri.
+							// E: Angry
+						}
+
 						2: C’est quand même une preuve solide que nous devenons plus forts. Pouvez-vous imaginer combattre cela juste après avoir combattu Skeletron ? Exactement!
 					}
 
 					Eridani: {
+						// Name: AstrumAureus Dialogue
+						// Description: ""
 						1: C'est ça. Astrum Aureus est mort. Même si l’Infection Astrale a perverti l’original, elle bat toujours avec un cœur de fer.
 						2: L'infection astrale... C'est dangereux. Au moins, nous avons fait de bons progrès. N'oubliez pas cela.
 					}
@@ -1383,41 +1792,96 @@ Mods: {
 
 				PlaguebringerGoliath: {
 					Asphodene: {
+						// Name: PlaguebringerGoliath Dialogue
+						// Description: ""
 						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
 						2: Well, what can you do. There's people like us here to take care of that part.
 					}
 
 					Eridani: {
-						1: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
-						2: Bugs, bugs..  They continue to rear their ugly heads wherever I look..!
+						// Name: PlaguebringerGoliath Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Bugs, bugs..  They continue to rear their ugly heads wherever I look..!
+							// E: Angry
+						}
+
 						3: Let's just move on. Good job defeating that foe.
 					}
 				}
 
 				Ravager: {
 					Asphodene: {
-						1: Le Ravageur a disparu de ce monde. Il a été conçu en représailles aux conquêtes du Tyran de la Jungle, mais il n’a évidemment pas fait grand-chose à cet égard.
-						2: Au moins, nous pourrions enfin l’arrêter. Si c’est à cela que les humains ont été conduits, que s’est-il réellement passé il y a toutes ces années qui a pu conduire à un tel désespoir ?
+						// Name: Ravager Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Le Ravageur a disparu de ce monde. Il a été conçu en représailles aux conquêtes du Tyran de la Jungle, mais il n’a évidemment pas fait grand-chose à cet égard.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Au moins, nous pourrions enfin l’arrêter. Si c’est à cela que les humains ont été conduits, que s’est-il réellement passé il y a toutes ces années qui a pu conduire à un tel désespoir ?
+							// E: Angry
+						}
 					}
 
 					Eridani: {
-						1: Nous avons vaincu le Ravageur. Il était une fois, un sinistre dernier recours contre le Tyran de la Jungle. Maintenant, il peut enfin se reposer.
-						2: Même mort, il traquait sans but. Je suis heureux que nous l'ayons vaincu, mais son existence ne fait que donner du crédit aux récits sur la puissance écrasante de Yharim.
+						// Name: Ravager Dialogue
+						// Description: ""
+
+						1: {
+							$parentVal: Nous avons vaincu le Ravageur. Il était une fois, un sinistre dernier recours contre le Tyran de la Jungle. Maintenant, il peut enfin se reposer.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Même mort, il traquait sans but. Je suis heureux que nous l'ayons vaincu, mais son existence ne fait que donner du crédit aux récits sur la puissance écrasante de Yharim.
+							// E: Angry
+						}
 					}
 				}
 
 				AstrumDeus: {
 					Asphodene: {
+						// Name: AstrumDeus Dialogue
+						// Description: ""
 						1: Nous avons vaincu Astrum Deus. Astrum Deus est – ou était – l'un des nombreux dieux qui régnaient sur l'univers. D'aussi loin que je me souvienne, il avait disparu avant ma naissance.
-						2: Cependant... Astrum Deus peut se régénérer. En assimilant la vie autour de son cadavre, il pourra éventuellement retourner dans le cosmos. C'est proche de l'histoire des ouroboros.
-						3: Revenons à ce que j'ai dit plus tôt. Astrum Deus était un DIEU. Ce que nous avons combattu était bien plus faible. Qu’est-ce qui a pu vaincre une divinité de ce calibre ?
+
+						2: {
+							$parentVal: Cependant... Astrum Deus peut se régénérer. En assimilant la vie autour de son cadavre, il pourra éventuellement retourner dans le cosmos. C'est proche de l'histoire des ouroboros.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Revenons à ce que j'ai dit plus tôt. Astrum Deus était un DIEU. Ce que nous avons combattu était bien plus faible. Qu’est-ce qui a pu vaincre une divinité de ce calibre ?
+							// E: Angry
+						}
+
 						4: C'est une victoire bien disputée... Restez néanmoins vigilant. J'ai le sentiment que notre coupable est plus proche qu'on ne le pense.
 					}
 
 					Eridani: {
+						// Name: AstrumDeus Dialogue
+						// Description: ""
 						1: Bon travail. Vous avez vaincu Astrum Deus. J'ai quelques connaissances personnelles, alors permettez-moi de partager...
-						2: Astrum Deus est l'une des nombreuses divinités cosmiques. Il a disparu avant ma naissance, mais on sait qu'il peut assimiler la vie à proximité de son cadavre pour se régénérer.
-						3: Donc, cela soulève la question… Qu’est-ce qui pourrait bien marcher sur ce plan mortel et pouvoir tomber sur un dieu réel et littéral ? Ce que nous avons combattu n’était qu’un enfant en comparaison.
+
+						2: {
+							$parentVal: Astrum Deus est l'une des nombreuses divinités cosmiques. Il a disparu avant ma naissance, mais on sait qu'il peut assimiler la vie à proximité de son cadavre pour se régénérer.
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Donc, cela soulève la question… Qu’est-ce qui pourrait bien marcher sur ce plan mortel et pouvoir tomber sur un dieu réel et littéral ? Ce que nous avons combattu n’était qu’un enfant en comparaison.
+							// E: Angry
+						}
+
 						4: Laissons de côté cette idée. Même si j'ai mes craintes, c'est notre victoire. Toutes nos félicitations.
 					}
 				}
@@ -1425,72 +1889,241 @@ Mods: {
 
 			BossItemDialogue: {
 				VagrantAsphodene: {
+					// Name: Shattered Disk Item Dialogue
+					// Description: Grants a boss summoning item
 					1: Attendez, j'ai quelque chose qui pourrait vous intéresser. Je ne me souviens pas comment je suis tombé dessus, mais...
-					2: J'ai l'impression que je devrais savoir ce que c'est, mais je n'y arrive pas – c'est comme si ça m'en empêchait.
+
+					2: {
+						$parentVal: J'ai l'impression que je devrais savoir ce que c'est, mais je n'y arrive pas – c'est comme si ça m'en empêchait.
+						// E: Worried
+					}
+
 					3: Au moins, cela me dit une chose:c'est important ! Je préférerais que vous l'examiniez dès que vous le pourrez. Pas de pression. Bon, un peu de pression.
 				}
 
 				VagrantEridani: {
+					// Name: Shattered Disk Item Dialogue
+					// Description: Grants a boss summoning item
 					1: Attendez un instant. J'ai négligé d'en parler auparavant, mais j'ai quelque chose pour vous... Peut-être pourrez-vous m'aider à déterminer son origine.
 					2: Cela semble si familier, et pourtant quelque chose m'empêche de situer son identité - comme c'est vexant. Je ne me souviens même pas quand je l'ai acquis.
-					3: On dit que rencontrer des obstacles signifie que vous allez dans la bonne direction. Regardons de plus près dès que possible.
+
+					3: {
+						$parentVal: On dit que rencontrer des obstacles signifie que vous allez dans la bonne direction. Regardons de plus près dès que possible.
+						// E: Happy
+					}
+
+					// 4: Who is 'they' you ask? Well, I never quite figured that one out.
 				}
 
 				Nalhaun: {
-					1: Nous nous reverrons, {0}. Encore une fois, j'ai un autre ennemi à vaincre.
-					2: Je vous ai donné la « Couronne antique ». Avec lui, vous pouvez invoquer un puissant ennemi, le Roi Bruni.
-					3: Si mon hypothèse est correcte, sa défaite donnera un indice sur l'emplacement du Premier Porteur Étoile.
-					4: Préparez-vous:ce combat ne sera pas facile.
+					// Name: Burnished Crown Dialogue
+					// Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: Nous nous reverrons, {0}. Encore une fois, j'ai un autre ennemi à vaincre.
+						// E: PerseusNeutral
+					}
+
+					2: {
+						$parentVal: Je vous ai donné la « Couronne antique ». Avec lui, vous pouvez invoquer un puissant ennemi, le Roi Bruni.
+						// E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Si mon hypothèse est correcte, sa défaite donnera un indice sur l'emplacement du Premier Porteur Étoile.
+						// E: PerseusNeutral
+					}
+
+					4: {
+						$parentVal: Préparez-vous:ce combat ne sera pas facile.
+						// E: PerseusNeutral
+					}
 				}
 
 				Penth: {
-					1: Nous nous reverrons, {0}. Encore une fois, j'ai besoin de votre aide.
-					2: Il s'agit de la « toile intacte ». Cela fera sortir la Sorcière de l'Encre de sa cachette.
-					3: Il s’agit d’une autre étape importante dans la poursuite du Premier Starbearer.
-					4: Veuillez vous préparer. Ce sera un combat difficile.
+					// Name: Unsullied Canvas Dialogue
+					// Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: Nous nous reverrons, {0}. Encore une fois, j'ai besoin de votre aide.
+						// E: PerseusNeutral
+					}
+
+					2: {
+						$parentVal: Il s'agit de la « toile intacte ». Cela fera sortir la Sorcière de l'Encre de sa cachette.
+						// E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Il s’agit d’une autre étape importante dans la poursuite du Premier Starbearer.
+						// E: PerseusNeutral
+					}
+
+					4: {
+						$parentVal: Veuillez vous préparer. Ce sera un combat difficile.
+						// E: PerseusNeutral
+					}
 				}
 
 				Dioskouroi: {
-					1: Nous nous reverrons, {0}. J'ai besoin de votre aide.
-					2: Il s'agit du « Pendentif Twincrux ». Lorsqu’il est utilisé, il invoque de puissants démons guerriers.
-					3: Cet ennemi a été vaincu par le Premier Starbearer. J'espère qu'en étudiant votre conflit avec ce simulacre, nous pourrons trouver des indices sur sa localisation.
-					4: Préparez-vous bien.
+					// Name: Twincrux Pendant Dialogue
+					// Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: Nous nous reverrons, {0}. J'ai besoin de votre aide.
+						// E: PerseusNeutral
+					}
+
+					2: {
+						$parentVal: Il s'agit du « Pendentif Twincrux ». Lorsqu’il est utilisé, il invoque de puissants démons guerriers.
+						// E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Cet ennemi a été vaincu par le Premier Starbearer. J'espère qu'en étudiant votre conflit avec ce simulacre, nous pourrons trouver des indices sur sa localisation.
+						// E: PerseusNeutral
+					}
+
+					4: {
+						$parentVal: Préparez-vous bien.
+						// E: PerseusNeutral
+					}
 				}
 
 				WarriorAsphodene: {
-					1: Quelque chose ne va vraiment pas avec le ciel... Que pourrait-il se passer... ?
-					2: La réponse que vous cherchez n’est pas celle que vous espérez.
-					3: Quoi-
-					4: Permettez-moi de terminer, Asphodene – Le temps presse. Le Premier Starbearer est descendu sur ce monde.
-					5: Vous plaisantez j'espère? Après toutes ces recherches, il s'approche de nous ?
-					6: Il a dû remarquer votre défaite contre le Seigneur de la Lune – une bête surnaturelle comme elle ne tombe pas à la légère.
+					// Name: Warrior of Light Precursor Dialogue
+					// Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: Quelque chose ne va vraiment pas avec le ciel... Que pourrait-il se passer... ?
+						// E: Worried
+					}
+
+					2: {
+						$parentVal: La réponse que vous cherchez n’est pas celle que vous espérez.
+						// E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Quoi-
+						// E: Worried
+					}
+
+					4: {
+						$parentVal: Permettez-moi de terminer, Asphodene – Le temps presse. Le Premier Starbearer est descendu sur ce monde.
+						// E: PerseusNeutral
+					}
+
+					5: {
+						$parentVal: Vous plaisantez j'espère? Après toutes ces recherches, il s'approche de nous ?
+						// E: Angry
+					}
+
+					6: {
+						$parentVal: Il a dû remarquer votre défaite contre le Seigneur de la Lune – une bête surnaturelle comme elle ne tombe pas à la légère.
+						// E: PerseusNeutral
+					}
+
 					7: Ouais, nous pourrions le dire. Alors... je suppose que tu as un plan, ou quelque chose comme ça ?
-					8: D'après ce que je peux en déduire, il ne reste que quelques jours avant que son emprise sur ce monde atteigne son apogée.
-					9: Si vous avez des ressources qui nécessitent la nuit pour être acquises, je vous implore de les acquérir rapidement.
-					10: Je vous ai donné un artefact de son monde natal ; même si j'en ignore le but, je crois que cela hâtera son arrivée.
-					11: Utilisez-le uniquement si vous êtes prêt. Les enjeux n'ont jamais été aussi importants.
-					12: ...
+
+					8: {
+						$parentVal: D'après ce que je peux en déduire, il ne reste que quelques jours avant que son emprise sur ce monde atteigne son apogée.
+						// E: PerseusNeutral
+					}
+
+					9: {
+						$parentVal: Si vous avez des ressources qui nécessitent la nuit pour être acquises, je vous implore de les acquérir rapidement.
+						// E: PerseusNeutral
+					}
+
+					10: {
+						$parentVal: Je vous ai donné un artefact de son monde natal ; même si j'en ignore le but, je crois que cela hâtera son arrivée.
+						// E: PerseusNeutral
+					}
+
+					11: {
+						$parentVal: Utilisez-le uniquement si vous êtes prêt. Les enjeux n'ont jamais été aussi importants.
+						// E: PerseusNeutral
+					}
+
+					12: {
+						$parentVal: ...
+						// E: Angry
+					}
 				}
 
 				WarriorEridani: {
-					1: Vous pouvez le voir aussi, n'est-ce pas ? Le ciel est anormalement lumineux.
-					2: La réponse que vous cherchez n’est pas celle que vous espérez.
-					3: Persée. JE-
-					4: Permettez-moi de terminer, Eridani. Le temps presse. Le Premier Starbearer est descendu sur ce monde.
-					5: Nous le cherchions depuis si longtemps. Pourquoi est-il venu vers nous à la place ?
-					6: Il a dû remarquer votre défaite contre le Seigneur de la Lune – une bête surnaturelle comme elle ne tombe pas à la légère.
-					7: C'est logique, même si d'une manière qui nous donne l'impression d'être en faute... Quoi qu'il en soit, avez-vous une sorte de plan ?
-					8: D'après ce que je peux en déduire, il ne reste que quelques jours avant que son emprise sur ce monde atteigne son apogée.
-					9: Si vous avez des ressources qui nécessitent la nuit pour être acquises, je vous implore de les acquérir rapidement.
-					10: Je vous ai donné un artefact de son monde natal ; même si j'en ignore le but, je crois que cela hâtera son arrivée.
-					11: Utilisez-le uniquement si vous êtes prêt. Les enjeux n'ont jamais été aussi importants.
-					12: ...
+					// Name: Warrior of Light Precursor Dialogue
+					// Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: Vous pouvez le voir aussi, n'est-ce pas ? Le ciel est anormalement lumineux.
+						// E: Worried
+					}
+
+					2: {
+						$parentVal: La réponse que vous cherchez n’est pas celle que vous espérez.
+						// E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Persée. JE-
+						// E: Angry
+					}
+
+					4: {
+						$parentVal: Permettez-moi de terminer, Eridani. Le temps presse. Le Premier Starbearer est descendu sur ce monde.
+						// E: PerseusNeutral
+					}
+
+					5: {
+						$parentVal: Nous le cherchions depuis si longtemps. Pourquoi est-il venu vers nous à la place ?
+						// E: Thinking
+					}
+
+					6: {
+						$parentVal: Il a dû remarquer votre défaite contre le Seigneur de la Lune – une bête surnaturelle comme elle ne tombe pas à la légère.
+						// E: PerseusNeutral
+					}
+
+					7: {
+						$parentVal: C'est logique, même si d'une manière qui nous donne l'impression d'être en faute... Quoi qu'il en soit, avez-vous une sorte de plan ?
+						// E: Worried
+					}
+
+					8: {
+						$parentVal: D'après ce que je peux en déduire, il ne reste que quelques jours avant que son emprise sur ce monde atteigne son apogée.
+						// E: PerseusNeutral
+					}
+
+					9: {
+						$parentVal: Si vous avez des ressources qui nécessitent la nuit pour être acquises, je vous implore de les acquérir rapidement.
+						// E: PerseusNeutral
+					}
+
+					10: {
+						$parentVal: Je vous ai donné un artefact de son monde natal ; même si j'en ignore le but, je crois que cela hâtera son arrivée.
+						// E: PerseusNeutral
+					}
+
+					11: {
+						$parentVal: Utilisez-le uniquement si vous êtes prêt. Les enjeux n'ont jamais été aussi importants.
+						// E: PerseusNeutral
+					}
+
+					12: {
+						$parentVal: ...
+						// E: Worried
+					}
 				}
 			}
 
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
+						// Name: Idle dialogue
+						// Description: ""
+
 						1: {
 							$parentVal: Ma sœur méprise probablement les morts-vivants qui se lèvent chaque nuit.
 							// E: Happy
@@ -1508,6 +2141,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue
+						// Description: ""
+
 						1: {
 							$parentVal: Ces créatures répugnantes qui sortent de terre chaque nuit...
 							// E: Worried
@@ -1528,12 +2164,20 @@ Mods: {
 				NormalIdleDialogue3: {
 					Asphodene: {
 						1: Honnêtement, je préfère les armes flashy. Un petit « plus » n’a jamais fait de mal à personne.
-						2: À moins que vous ne soyez le destinataire.
+
+						2: {
+							$parentVal: À moins que vous ne soyez le destinataire.
+							// E: Smug
+						}
 					}
 
 					Eridani: {
 						1: L'apparence des armes ? Ils sont importants, mais leur utilité dépasse de loin leur valeur esthétique.
-						2: Mais parfois... Le choix est difficile. Vous comprenez ce que je veux dire, n'est-ce pas ?
+
+						2: {
+							$parentVal: Mais parfois... Le choix est difficile. Vous comprenez ce que je veux dire, n'est-ce pas ?
+							// E: Worried
+						}
 					}
 				}
 
@@ -1577,35 +2221,48 @@ Mods: {
 						1: J'ai cette idée à propos d'une arme, {0}.
 						2: Attendez.
 						3: Euh... Peu importe. Oublie que j'ai dit quoi que ce soit.
-						4: Ce serait beaucoup trop grand, pour démarrer. Et puis il y a tout le problème du chauffage...
+
+						4: {
+							$parentVal: Ce serait beaucoup trop grand, pour démarrer. Et puis il y a tout le problème du chauffage...
+							// E: Worried
+						}
 					}
 
 					Eridani: {
 						1: Alors, il y a cette idée d'arme à laquelle je pensais, {0}.
 						2: Attendez... En fait... Oubliez ça. Pas grave.
-						3: Même si nous dépassions le coût énergétique, il faudrait composer avec le poids...
+
+						3: {
+							$parentVal: Même si nous dépassions le coût énergétique, il faudrait composer avec le poids...
+							// E: Worried
+						}
 					}
 				}
 
 				NormalIdleDialogue8: {
 					Asphodene: {
-						1: Certains de ces citadins ne sont-ils pas horribles ?
-						2: Tout coûte tellement cher ! Et ils ont tous le monopole !!
+						1: {
+							$parentVal: Certains de ces citadins ne sont-ils pas horribles ?
+							// E: Worried
+						}
+
+						2: {
+							$parentVal: Tout coûte tellement cher ! Et ils ont tous le monopole !!
+							// E: Angry
+						}
 					}
 
 					Eridani: {
-						1: Ces marchands vendent définitivement leurs produits à un prix beaucoup trop élevé !
-						2: Pensez-vous qu'ils le remarqueraient si nous les trompions, juste un peu ? On ne devrait pas faire ça ? Je sais je sais.
-					}
-				}
+						1: {
+							$parentVal: Ces marchands vendent définitivement leurs produits à un prix beaucoup trop élevé !
+							// E: Angry
+						}
 
-				NormalIdleDialogue9: {
-					Asphodene: {
-						1: N'oubliez pas le Stellar Array !
-						2: Ce serait dommage si vous le faisiez. Je l'ai fait pour toi, après tout.
+						2: {
+							$parentVal: Pensez-vous qu'ils le remarqueraient si nous les trompions, juste un peu ? On ne devrait pas faire ça ? Je sais je sais.
+							// E: Worried
+						}
 					}
-
-					Eridani.1: Avez-vous utilisé le Stellar Array ?
 				}
 
 				HardIdleDialogue1: {
@@ -1623,18 +2280,8 @@ Mods: {
 				}
 
 				HardIdleDialogue2: {
-					Asphodene: {
-						1: Hmm. Peut-être devrais-je penser à des lignes plus cool à dire quand j'utilise le Stellar Nova ?
-						2: J'ai l'impression qu'il me manque quelque chose d'important..
-						3: Et bien. Inutile de vous inquiéter de ce que vous ne pouvez pas résoudre, n'est-ce pas ?
-					}
-
-					Eridani: {
-						1: Utiliser les Stellar Novas est plutôt fatiguant.
-						2: Il y a beaucoup d'histoires sur des héros empruntant des pouvoirs aux autres, mais elles ne vous disent jamais à quel point c'est difficile de l'autre côté...
-						3: J'ai l'impression qu'il me manque quelque chose d'important..
-						4: Cela me dérange, mais... Il ne semble pas que nous puissions le résoudre maintenant.
-					}
+					Asphodene.1: Hmm. Peut-être devrais-je penser à des lignes plus cool à dire quand j'utilise le Stellar Nova ?
+					Eridani.1: Utiliser les Stellar Novas est plutôt fatiguant.
 				}
 
 				HardIdleDialogue3: {
@@ -1645,13 +2292,26 @@ Mods: {
 				HardIdleDialogue4: {
 					Asphodene: {
 						1: J'aime ta tenue ! Je suppose que nous pensons la même chose.
-						2: Peut-être perdre les chaussures.
+
+						2: {
+							$parentVal: Peut-être perdre les chaussures.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
 						1: Votre armure est-elle à la hauteur ? En apparence, c'est... passable.
-						2: Euh, je dirai ceci de manière préventive:dites n'importe quoi sur ma tenue et...
-						3: Je vais probablement pleurer.
+
+						2: {
+							$parentVal: Euh, je dirai ceci de manière préventive:dites n'importe quoi sur ma tenue et...
+							// E: Angry
+						}
+
+						3: {
+							$parentVal: Je vais probablement pleurer.
+							// E: Worried
+						}
+
 						4: Quoi? C'est la vérité.
 					}
 				}
@@ -1664,21 +2324,38 @@ Mods: {
 				HardIdleDialogue6: {
 					Asphodene: {
 						1: Tu deviens plutôt fort ! Tu penses que tu peux me battre dans un combat ?
-						2: C'était une blague. Vous pourriez probablement le faire.
+
+						2: {
+							$parentVal: C'était une blague. Vous pourriez probablement le faire.
+							// E: DeadInside
+						}
 					}
 
 					Eridani: {
 						1: Tu continues à devenir plus fort, hein ? Je vais devoir travailler plus dur pour suivre le rythme.
-						2: Ou non. Théoriquement, si nous nous battions, je gagnerais probablement. Vous ne pensez pas ?
+
+						2: {
+							$parentVal: Ou non. Théoriquement, si nous nous battions, je gagnerais probablement. Vous ne pensez pas ?
+							// E: Smug
+						}
+
 						3: Mais ne vous faites pas d’idées amusantes. Nous sommes décidément dans la même équipe.
-						4: (Je me demande s'ils ont compris mon bluff.)
+
+						4: {
+							$parentVal: (Je me demande s'ils ont compris mon bluff.)
+							// E: Worried
+						}
 					}
 				}
 
 				HardIdleDialogue7: {
 					Asphodene: {
 						1: J'ai du mal à imaginer d'où viennent certains de ces monstres.
-						2: Une liche quelque part a mangé quelques mauvais champignons et est partie en ville, hein ? Ou peut-être un portail vers une dimension de soupe primordiale ?
+
+						2: {
+							// E: Thinking
+							$parentVal: Une liche quelque part a mangé quelques mauvais champignons et est partie en ville, hein ? Ou peut-être un portail vers une dimension de soupe primordiale ?
+						}
 					}
 
 					Eridani.1: Celui qui continue à inventer ces ennemis ne manque pas d’imagination.
@@ -1686,12 +2363,23 @@ Mods: {
 
 				HardIdleDialogue8: {
 					Asphodene: {
-						1: D'accord, en théorie, parce que je peux te ressusciter du seuil de la mort dans ton lit...
-						2: Et si, écoute-moi bien, on t'attachait le lit. Boum, invincibilité ! OK? OK...
+						1: {
+							$parentVal: D'accord, en théorie, parce que je peux te ressusciter du seuil de la mort dans ton lit...
+							// E: Thinking
+						}
+
+						2: {
+							$parentVal: Et si, écoute-moi bien, on t'attachait le lit. Boum, invincibilité ! OK? OK...
+							// E: Happy
+						}
 					}
 
 					Eridani: {
-						1: Avez-vous déjà essayé... d'utiliser deux armes à la fois ? Genre, une arme dans chaque main ?
+						1: {
+							$parentVal: Avez-vous déjà essayé... d'utiliser deux armes à la fois ? Genre, une arme dans chaque main ?
+							// E: Thinking
+						}
+
 						2: Vous passez tellement de temps dans les airs que vos pieds sont ouverts. Peut-être pourrions-nous quadrupler nos dégâts ou... Ce serait trop difficile ? Je vois. Je suppose que je le savais.
 					}
 				}
@@ -1712,40 +2400,87 @@ Mods: {
 				HardIdleDialogue10: {
 					Asphodene: {
 						1: En la regardant, vous avez probablement l'impression qu'Eridani est un peu du genre « étudiante d'honneur », non ?
-						2: Détrompez-vous ! Elle fait ce qu'elle veut la plupart du temps. Heureusement, elle a toujours sa boussole morale, sinon je la remettrais au clair !
+
+						2: {
+							$parentVal: Détrompez-vous ! Elle fait ce qu'elle veut la plupart du temps. Heureusement, elle a toujours sa boussole morale, sinon je la remettrais au clair !
+							// E: Smug
+						}
 					}
 
 					Eridani: {
-						1: Asphodene est techniquement le plus ancien... mais je parie que vous ne pouvez pas le dire.
+						1: {
+							$parentVal: Asphodene est techniquement le plus ancien... mais je parie que vous ne pouvez pas le dire.
+							// E: Thinking
+						}
+
 						2: Elle a ce genre d’air chez elle. Non, je ne dirais pas enfantin, plutôt… chaotique ? Oui, chaotique.
 					}
 				}
 
 				HardIdleDialogue11: {
 					Asphodene: {
-						1: Ce que j'aime? Je me réveille quand je veux ! Oui, je dirais que cela se situe en haut de la liste.
-						2: D'accord, c'est un peu insipide de ma part. J'aime aussi les fruits frais, est-ce mieux ?
+						1: {
+							$parentVal: Ce que j'aime? Je me réveille quand je veux ! Oui, je dirais que cela se situe en haut de la liste.
+							// E: Happy
+						}
+
+						2: {
+							$parentVal: D'accord, c'est un peu insipide de ma part. J'aime aussi les fruits frais, est-ce mieux ?
+							// E: Thinking
+						}
+
 						3: Oh, oh, la nourriture magique est la meilleure. Une fois qu’on en a essayé, les choses ne sont plus les mêmes.
-						4: Voyager est également un plaisir:si votre cœur ne palpite pas en visitant de nouveaux paysages, êtes-vous encore en vie ?
+
+						4: {
+							$parentVal: Voyager est également un plaisir:si votre cœur ne palpite pas en visitant de nouveaux paysages, êtes-vous encore en vie ?
+							// E: Happy
+						}
 					}
 
 					Eridani: {
-						1: Des choses que j'aime ? Est-ce que vous posez des questions sur des choses banales, ou... D'accord.
+						1: {
+							$parentVal: Des choses que j'aime ? Est-ce que vous posez des questions sur des choses banales, ou... D'accord.
+							// E: Thinking
+						}
+
 						2: Eh bien, j'apprécie l'air de la nuit. Entouré de vie et de bruit, pourtant tout est immobile. C'est vrai, tranquillité et silence.
-						3: Si vous cherchez quelque chose de plus matériel, eh bien... Je l'avoue, j'ai un petit faible pour le sucré.
+
+						3: {
+							$parentVal: Si vous cherchez quelque chose de plus matériel, eh bien... Je l'avoue, j'ai un petit faible pour le sucré.
+							// E: Happy
+						}
 					}
 				}
 
 				HardIdleDialogue12: {
 					Asphodene: {
-						1: Des choses que je n'aime pas ? Voyons...
-						2: Je déteste être faible, mais être trop fort rend les choses ennuyeuses, ce qui n'est pas non plus ce que je souhaite. Vous comprenez, n'est-ce pas ?
-						3: Oh, je n'aime vraiment pas non plus être malade, mais qui aime ?
+						1: {
+							$parentVal: Des choses que je n'aime pas ? Voyons...
+							// E: Thinking
+						}
+
+						2: {
+							$parentVal: Je déteste être faible, mais être trop fort rend les choses ennuyeuses, ce qui n'est pas non plus ce que je souhaite. Vous comprenez, n'est-ce pas ?
+							// E: Worried
+						}
+
+						3: {
+							$parentVal: Oh, je n'aime vraiment pas non plus être malade, mais qui aime ?
+							// E: Angry
+						}
 					}
 
 					Eridani: {
-						1: Qu'est-ce que je n'aime pas ? A part les bugs... D'accord, puis-je me défouler un peu ?
-						2: Il y a des moments où vous commencez quelque chose, où vous êtes vraiment très près de le terminer, et puis tout vous explose au visage. Et puis-
+						1: {
+							$parentVal: Qu'est-ce que je n'aime pas ? A part les bugs... D'accord, puis-je me défouler un peu ?
+							// E: Thinking
+						}
+
+						2: {
+							$parentVal: Il y a des moments où vous commencez quelque chose, où vous êtes vraiment très près de le terminer, et puis tout vous explose au visage. Et puis-
+							// E: Worried
+						}
+
 						3: La deuxième fois, vous n'avez parcouru qu'un tiers du chemin avant que tout soit à nouveau gâché. Je ne vois rien de plus démoralisant...
 					}
 				}
@@ -1753,13 +2488,26 @@ Mods: {
 				HardIdleDialogue13: {
 					Asphodene: {
 						1: Mes passe-temps, hein. Eh bien, je collectionne les bibelots des endroits que je visite. C'est cool, non ?
-						2: J'essaie aussi de créer de nouvelles armes. La plupart d’entre eux sont un peu volatiles, mais je vais mieux !
-						3: Je joue aussi du piano ! Pas génial, mais... C'est un processus étape par étape. Quand je parle étape par étape, je le pense vraiment.
+
+						2: {
+							$parentVal: J'essaie aussi de créer de nouvelles armes. La plupart d’entre eux sont un peu volatiles, mais je vais mieux !
+							// E: Thinking
+						}
+
+						3: {
+							$parentVal: Je joue aussi du piano ! Pas génial, mais... C'est un processus étape par étape. Quand je parle étape par étape, je le pense vraiment.
+							// E: Happy
+						}
 					}
 
 					Eridani: {
 						1: Loisirs? Eh bien, la chose la plus importante à laquelle je puisse penser est l'alchimie. Oui, l’alchimie a été résolue, si l’on pense à l’échelle planétaire.
-						2: Mélangez les fondamentaux de deux planètes différentes avec des époques d’histoire divergente, les choses commencent à devenir assez compliquées.
+
+						2: {
+							$parentVal: Mélangez les fondamentaux de deux planètes différentes avec des époques d’histoire divergente, les choses commencent à devenir assez compliquées.
+							// E: Happy
+						}
+
 						3: Bien sûr, c'est écrasant – c'est pourquoi c'est un passe-temps, et rien d'autre. Je ne suis pas un génie, mais c'est plutôt agréable.
 					}
 				}
@@ -1767,24 +2515,46 @@ Mods: {
 				HardIdleDialogue14: {
 					Asphodene: {
 						1: Vraiment... Le Hallowed n'est qu'une grande façade.
-						2: Pour un si joli biome, il veut VRAIMENT vous tuer.
+
+						2: {
+							$parentVal: Pour un si joli biome, il veut VRAIMENT vous tuer.
+							// E: Worried
+						}
 					}
 
 					Eridani: {
 						1: Enlevez le masque du Sacré, et il pourrait même être plus dur que les Enfers lui-même.
-						2: Si vous partez cultiver des âmes, restez en sécurité. Même les meilleurs peuvent être pris au dépourvu.
+
+						2: {
+							$parentVal: Si vous partez cultiver des âmes, restez en sécurité. Même les meilleurs peuvent être pris au dépourvu.
+							// E: Angry
+						}
 					}
 				}
 
 				LightIdleDialogue: {
 					Asphodene: {
-						1: Cette lumière sans fin est horrible... Il doit y avoir un moyen de l'arrêter.
-						2: Persée nous a dit d'utiliser le « souhait du progéniteur ». Peut-être détient-il la clé ?
+						1: {
+							$parentVal: Cette lumière sans fin est horrible... Il doit y avoir un moyen de l'arrêter.
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Persée nous a dit d'utiliser le « souhait du progéniteur ». Peut-être détient-il la clé ?
+							// E: Worried
+						}
 					}
 
 					Eridani: {
-						1: Cette lumière éternelle est terrible...
-						2: Persée nous a donné le « souhait du géniteur ». Je pense que cela pourrait détenir la clé pour résoudre ce mystère.
+						1: {
+							$parentVal: Cette lumière éternelle est terrible...
+							// E: Angry
+						}
+
+						2: {
+							$parentVal: Persée nous a donné le « souhait du géniteur ». Je pense que cela pourrait détenir la clé pour résoudre ce mystère.
+							// E: Angry
+						}
 					}
 				}
 			}

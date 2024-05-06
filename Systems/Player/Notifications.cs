@@ -81,9 +81,9 @@ namespace StarsAbove.Systems
             }
             string title = LangHelper.GetTextValue("Common.DiskReady");
 
-            if (Main.LocalPlayer.GetModPlayer<DialoguePlayer>().unreadDialogueCount > 1)
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().activeDialougeCount > 1)
             {
-                title = LangHelper.GetTextValue("Common.DiskReadyUnread", Main.LocalPlayer.GetModPlayer<DialoguePlayer>().unreadDialogueCount);
+                title = LangHelper.GetTextValue("Common.DiskReadyUnread", Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().activeDialougeCount);
 
             }
             

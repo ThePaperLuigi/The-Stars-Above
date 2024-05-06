@@ -3,6 +3,7 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
@@ -14,69 +15,11 @@ namespace StarsAbove.Dialogue
     public class StarsAboveDialogueSystem : ModSystem
     {
         //Old dialogue system.
-        public static void SetupDialogueSystem(int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, ref bool dialogueFinished, Player Player, Mod Mod)
+        public static void SetupDialogueSystem(bool writeToArchive, int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, ref bool dialogueFinished, Player Player, Mod Mod)
         {
-            
-            if (chosenDialogue == 2) // Contingency text
-            {
-                if (chosenStarfarer == 1) // Asphodene
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        string key = $"Dialogue.IdleDialogueHardmode.Asphodene";
-                        LangHelper.GetCategorySize(key);
-                        expression = 2;
-                        if (Main.hardMode)
-                        {
-                            /*dialogue = $"Sorry, {Player.name}. Nothing to" +
-                            " comment on right now.";*/
-                            dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogueHardmode.Asphodene", Player.name);
-
-                        }
-                        else
-                        {
-                            /*dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Sorry, there's not much on my mind as of late.*/
-                            dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogue.Asphodene");
-                        }
-
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        if (Main.hardMode)
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogueHardmode.Eridani", Player.name);
-                        }
-                        else
-                        {
-                            dialogue = LangHelper.GetTextValue($"Dialogue.IdleDialogue.Eridani", Player.name);
-                        }
-
-                    }
-                }
-
-
-            }//Fallback idle dialogue (timer)
-             //Pre Hardmode Idle Dialogue
-             //Finished rework.
             string baseKey = "Mods.StarsAbove.Dialogue.";
-            #region idleDialogue
             string starfarerName = "Asphodene";
-            if(chosenStarfarer == 1)
+            if (chosenStarfarer == 1)
             {
                 starfarerName = "Asphodene";
             }
@@ -84,1438 +27,185 @@ namespace StarsAbove.Dialogue
             {
                 starfarerName = "Eridani";
             }
+
+
+            
+            if (chosenDialogue == 2) // Contingency text
+            {
+                if (Main.hardMode)
+                {
+                    string category = "IdleDialogueHardmode";
+                    string key = category + "." + starfarerName + ".";
+                    WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                }
+                else
+                {
+                    string category = "IdleDialogue";
+                    string key = category + "." + starfarerName + ".";
+                    WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                }
+            }//Fallback idle dialogue (timer)
+
+             //Pre Hardmode Idle Dialogue
+             //Finished rework.
+            #region idleDialogue
+            
             if (chosenDialogue == 3) // Passive Dialogue 1
             {
-                string key = "RegularIdleDialogue.NormalIdleDialogue1." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue1" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//1
             if (chosenDialogue == 4) // Passive Dialogue 2
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue2.Asphodene.1", Player.name); //It's fine to relax, but you can't forget our end goal, now.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue2.Eridani.1", Player.name); //Rest is important.. Take as much time as you need.
-                    }
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue2" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//2
             if (chosenDialogue == 5) // Passive Dialogue 2
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Asphodene.1", Player.name); //Honestly, I prefer the flashy weapons. A little 'extra' never hurt anyone.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Asphodene.2", Player.name); //Unless you were on the receiving end. 
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Eridani.1", Player.name); //Weapon looks? They matter, but utility far outweighs cosmetic value.
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue3.Eridani.2", Player.name); //Sometimes, though... The choice is difficult. You get what I mean, right?
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue3" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//3
             if (chosenDialogue == 6) // Passive Dialogue 3
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Asphodene.1", Player.name); //What is a 'Starfarer' you ask? Hmm, there's a lot to go over.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Asphodene.2", Player.name); //In short, we're the manifestation of the universe's will to vanquish threats...?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Asphodene.3", Player.name); //Sorry. I think my memory's a little foggy. Just know I'm on your side, whatever may come.
-                        //	" ";
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Eridani.1", Player.name); //What is a 'Starfarer'? Let me see...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Eridani.2", Player.name); //Using your terms, we would be referred to as a sort of demigod. The universe calls us into action when needed.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue4.Eridani.3", Player.name); //That wasn't very helpful? Sorry. I feel like my memories are foggy. Don't fret, though- I'm with you all the way.
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue4" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//4
             if (chosenDialogue == 7) // Passive Dialogue 4
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue5.Asphodene.1", Player.name); //Don't forget about the Stellar Array! 
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue5.Asphodene.2", Player.name); //It would be a shame if you did. I made it for you, after all.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue5.Eridani.1", Player.name); //Have you been utilizing the Stellar Array? It'll help. Wait, forget I said that. Of course you know it'll help...
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue5" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//5
             if (chosenDialogue == 8) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue6.Asphodene.1", Player.name); //Hmm... 
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue6.Asphodene.2", Player.name); //Ah, it's nothing. Keep up the good work.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue6.Eridani.1", Player.name); //...Hm.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue6.Eridani.2", Player.name); //Ah.. it's nothing.
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue6" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//6
             if (chosenDialogue == 9) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Asphodene.1", Player.name); //{Player.name}! I have this idea about a weapon..   
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Asphodene.2", Player.name); //Wait.   
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Asphodene.3", Player.name); //Uh.. Never mind. Forget I said anything.  
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Asphodene.4", Player.name); //It would be far too large, to boot. And then there's the whole heating problem... 
-                        //	" ";
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Eridani.1", Player.name); //So, there's this weapon idea I was thinking of, {Player.name}.  
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Eridani.2", Player.name); //Wait.. Actually.. Forget it. Never mind.  
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue7.Eridani.3", Player.name); //Even if we got past the energy cost, we'd have to deal with the weight... 
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue7" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//7
             if (chosenDialogue == 10) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //0 Neutral | 1 Dissatisfied | | 3 4 | 4 3 | 5 Sigh | 6 Intrigued
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue8.Asphodene.1", Player.name); //Aren't some of these townspeople kind of awful?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue8.Asphodene.2", Player.name); //Everything costs so much! And they all have a monopoly!!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue8.Eridani.1", Player.name); //These merchants are definitely upselling their wares for far too much!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue8.Eridani.2", Player.name); //Do you think they'd notice if we shortchanged them, just a little? We shouldn't do that? I know... ...I know.
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue8" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//8
             if (chosenDialogue == 11) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue9.Asphodene.1", Player.name); //Don't forget about the Stellar Array! 
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue9.Asphodene.2", Player.name); //It would be a shame if you did. I made it for you, after all.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.NormalIdleDialogue9.Eridani.1", Player.name); //Have you been utilizing the Stellar Array?
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "NormalIdleDialogue9" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//9
              //Post Hardmode Dialogue
             if (chosenDialogue == 12) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Asphodene.1", Player.name); //So, what's next on the agenda? Let's see..
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Asphodene.2", Player.name); //Have you been working on your town? Up for some mining? Ready for the next boss?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Asphodene.3", Player.name); //It's up to you. I'll be here. 
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Eridani.1", Player.name); //Mind if I suggest your next move? Um...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Eridani.2", Player.name); //If you need more town space, there's that. You might also need some more ores, unless you're ready for the next boss?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue1.Eridani.3", Player.name); //Just suggestions. I trust your judgement.
-                        //	" ";
-                    }
-
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue1" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//1
             if (chosenDialogue == 13) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        if (DownedBossSystem.downedVagrant)
-                        {
-                            dialogueLeft = 1;
-                            dialoguePrep = false;
-                        }
-                        else
-                        {
-                            dialogueLeft = 2;
-                            dialoguePrep = false;
-                        }
-
-                    }
-                    if (DownedBossSystem.downedVagrant)
-                    {
-                        if (dialogueLeft == 1)
-                        {
-                            expression = 1;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Asphodene.1", Player.name); //Hmm. Maybe I should think of cooler lines to say when I use the Stellar Nova?.
-                            //	" ";
-                        }
-                    }
-                    else
-                    {
-                        if (dialogueLeft == 2)
-                        {
-                            expression = 3;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Asphodene.2", Player.name); //I feel like I'm missing something important.. 
-                            //	" ";
-                        }
-                        if (dialogueLeft == 1)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Asphodene.3", Player.name); //Ah well. No use worrying about what you can't solve, right?
-                            //	" ";
-                        }
-
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        if (DownedBossSystem.downedVagrant)
-                        {
-                            dialogueLeft = 1;
-                            dialoguePrep = false;
-                        }
-                        else
-                        {
-                            dialogueLeft = 2;
-                            dialoguePrep = false;
-                        }
-
-                    }
-                    if (DownedBossSystem.downedVagrant)
-                    {
-                        if (dialogueLeft == 2)
-                        {
-                            expression = 3;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.1", Player.name); //Using the Stellar Novas is rather tiring. 
-                            //	" ";
-                        }
-                        if (dialogueLeft == 1)
-                        {
-                            expression = 2;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.2", Player.name); //There's a lot of stories about heroes borrowing powers from others, but they never tell you how hard it is on the other side...
-                            //	" ";
-                        }
-                    }
-                    else
-                    {
-                        if (dialogueLeft == 2)
-                        {
-                            expression = 3;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.3", Player.name); //I feel like I'm missing something important.. 
-                            //	" ";
-                        }
-                        if (dialogueLeft == 1)
-                        {
-                            expression = 0;
-                            dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue2.Eridani.4", Player.name); //It's bothering me, but.. It doesn't look like we can solve it now.
-                            //	" ";
-                        }
-                    }
-
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue2" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//2
             if (chosenDialogue == 14) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue3.Asphodene.1", Player.name); //Ah- I wonder what Eri is doing right about now?
-                        //	" ";
-                    }
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue3.Eridani.1", Player.name); //I wonder how my sister is faring?  
-                        //	" ";
-                    }
-
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue3" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//3
             if (chosenDialogue == 15) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Asphodene.1", Player.name); //I'm liking your outfit! I guess we do think alike.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Asphodene.2", Player.name); //Maybe lose the shoes. 
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Eridani.1", Player.name); //Is your armor up to par? Looks-wise, it's... passable.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Eridani.2", Player.name); //Um, I'll pre-emptively say this: Say anything about my outfit and..
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Eridani.3", Player.name); //I'll probably cry. 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue4.Eridani.4", Player.name); //What? It's the truth. 
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue4" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//4
             if (chosenDialogue == 16) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Asphodene.1", Player.name); //After all this is over with, how do you feel about joining me? Think of all the good times we've had already!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue5.Eridani.1", Player.name); //..Maybe we should come back to this conversation. We've still got a long way to go.
-                        //	" ";
-                    }
-
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue5" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//5
             if (chosenDialogue == 17) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Asphodene.1", Player.name); //You're getting pretty strong! Think you can beat me in a fight?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 6;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Asphodene.2", Player.name); //That was a joke. You probably could. 
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Eridani.1", Player.name); //You just keep getting stronger, huh? I'll have to work harder to keep up.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Eridani.2", Player.name); //Or not. Theoretically, if we fought, I'd probably win. Don't you think?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Eridani.3", Player.name); //Don't get any funny ideas, though. We're decidedly on the same team.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue6.Eridani.4", Player.name); //(I wonder if they caught my bluff.) 
-                        //	" ";
-                    }
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue6" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//6
             if (chosenDialogue == 18) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue7.Asphodene.1", Player.name); //I can barely imagine where some of these monsters have come from.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue7.Asphodene.2", Player.name); //Some lich somewhere ate a few bad mushrooms and just went to town, huh? Or maybe a portal to a dimension of primordial soup?
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue7.Eridani.1", Player.name); //Whoever keeps coming up with these foes has no shortage of imagination..
-                        //	" ";
-                    }
-
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue7" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//7
             if (chosenDialogue == 19) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue8.Asphodene.1", Player.name); //Truly... The Hallowed is just a big facade.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue8.Asphodene.2", Player.name); //For such a pretty biome, it REALLY wants to kill you.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue8.Eridani.1", Player.name); //Strip away the Hallowed's mask, and it may even be harsher than the Underworld itself.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue8.Eridani.2", Player.name); //If you're off to farm Souls, stay safe. Even the best can can be caught off-guard.
-                        //	" ";
-                    }
-
-
-                }
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue8" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//8
             if (chosenDialogue == 20) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Asphodene.1", Player.name); //We've come a long way..  don't you think?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.2", Player.name); //Looking back on this journey.. We've come far.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue9.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue9" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//9
             if (chosenDialogue == 21) // A world shrouded in Light
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.LightIdleDialogue.Asphodene.1", Player.name); //This endless light is awful... There must be some way to stop it.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.LightIdleDialogue.Asphodene.2", Player.name); //Perseus told us to use the 'Progenitor's Wish.' Perhaps it holds the key?
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.LightIdleDialogue.Eridani.1", Player.name); //This everlasting light is dreadful...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.LightIdleDialogue.Eridani.2", Player.name);
-                        //	" ";
-                    }
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "LightIdleDialogue" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//A world shrouded in Light
-            if (chosenDialogue == 22) // The first time visiting the Observatory
-            {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 6;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //{Player.name}, you've made it! This place is the Observatory Hyperborea; our base of operations, if you will.$4
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There are quite a few Observatories around the galaxy, but we call this one home. It's not the source of our power, but acts like a magnifying glass of sorts.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is usually a bad sign. Think of it like clouds before a storm.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Enough about us. You're probably wondering what YOU can do in the Observatory, right? Let me tell you. 
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //By accessing the Gateway, you can travel to other worlds. I'm sure you can already see the practical purpose of that.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There may not be many worlds open right now, but I have a feeling when we defeat powerful foes, more places will be available. Good luck!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 6;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //{Player.name}, welcome. This place is the Observatory Hyperborea; both Asphodene and I live here.$4
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There are a few Observatories located around the galaxy, but this is ours. Its main function is an amplifier for our power, to an extent.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 5;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Here, we can search the universe for heavy concentrations of mana, which is kind of like an omen for trouble. It works out more than you'd think.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 3;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You're probably wondering about what you can use this Observatory for, right? Let's see...
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //By accessing the Gateway, you can travel to other worlds. I needn't elaborate on the utility of that, right?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There may not be many worlds open right now, but I have a feeling when we defeat powerful foes, more worlds will open.. Hopefully.
-                        //	" ";
-                    }
-                }
-
-
-            }//Observatory Hyperborea (First visit) 1
-            if (chosenDialogue == 23) //Idle dialogue within the Observatory Hyperborea
-            {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Yeah, I wondered when you would ask about the crates and stuff around the Observatory. Well, unlike the original owners, we need to eat, obviously.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 3;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Wait, did you seriously think we didn't have to eat? That would be awful.    
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Oh, the crates around the Observatory? It's mostly food. Did you think we didn't have to eat? We'd be missing out on a lot.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //As long as we plan on staying here, we'll need supplies. Lucky for us, the galaxy has no shortage of abandoned planets to loot. I mean... they're not using it anymore.
-                        //	" ";
-                    }
-                }
-
-
-            }//Observatory Hyperborea (Idle) 2
-            if (chosenDialogue == 24) //Explaining Cosmic Voyages
-            {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 6;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It's about time I explained Cosmic Voyages. Do you see that blue thing in the Observatory? If you step on it, it'll create a Gateway that you can use the Bifrost on.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Once you're on the voyage, you can't break or place anything. Also, you can't fly or mount. If you'd like to get around, try conventional methods, like a grappling hook.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 3;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You have to use the Bifrost at the Gateway to return to the Observatory. Take care that  you don't get stuck, because.. Self-explanatory. How about keeping a Magic Mirror handy?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Remember that you're visiting harsh places and not everything is friendly. You'll most likely be inflicted with some sort of Environmental  Turmoil, which will affect your stats.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //This is important: any abilities that have become stronger after defeating foes will be significantly weaker. It's the downside of travelling so far away from the Observatory.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Once you've initiated the Voyage, it'll take a little while until you can go on another one. Make every journey count. Good luck out there!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 6;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 6)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Okay. I'm going to brief you on Cosmic Voyages. Do you see that blue platform? Stepping on it will create a Gateway that you can use the Bifrost on to initiate transit.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 5)
-                    {
-                        expression = 1;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You can't break or place blocks during the Voyage. Mounts and flying are also a no-go. You'll have to resort to things like a grappling hook to navigate.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //If you'd like to return to the Observatory, you have to use the Bifrost near the Gateway. Take care to not get trapped away from the Gateway, or bring a Magic Mirror.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Remember that you're visiting harsh locales and not everything is friendly. You'll most likely be inflicted with a kind of Environmental Turmoil, which will affect your physique.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //After you begin a Cosmic Voyage, you'll have to wait a little while until you can initiate another. You should make every excursion count.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //There's one last thing. Anything that has become stronger after defeating powerful foes will be weaker. It's an unfortunate side-effect of travelling so far away from the Observatory.
-                        //	" ";
-                    }
-                }
-
-
-            }//Explaining Cosmic Voyages (Unused)
-            if (chosenDialogue == 25) // The Sea of Stars
-            {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //You're wondering how you can breathe? Simple. The Bifrost is protecting you!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        // dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets to sustain bodily functions. You can't tell me that doesn't sound neat- just don't fall too far from solid ground.
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 3;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //Eh? You're wondering how you can breathe? Ah, that would be the Bifrost you used to reach the Observatory. Right.. I should've probably explained that.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        //dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.", Player.name); //It draws ambient mana from nearby planets and converts it to aether. It should prove ample enough for your journey. Just remember that 'down' is a perspective thing.
-                        //	" ";
-                    }
-                }
-
-
-            }//In space (Idle, Unused)
+            
 
             if (chosenDialogue == 400) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Asphodene.1", Player.name); //We've come a long way..  don't you think?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue10.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue10" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
             if (chosenDialogue == 401) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 4;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 4)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.1", Player.name); //We've come a long way..  don't you think?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.3", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Asphodene.4", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue11.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue11" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
             if (chosenDialogue == 402) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.1", Player.name); //We've come a long way..  don't you think?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Asphodene.3", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 1;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 2;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue12.Eridani.3", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue12" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
             if (chosenDialogue == 403) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name);
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name);
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.3", Player.name);
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.1", Player.name);
-                        //	" ";
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.2", Player.name);
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.3", Player.name);
-                        //	" ";
-                    }
-                }
-
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue13" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                
             }
             if (chosenDialogue == 404) // Passive Dialogue
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.1", Player.name); //We've come a long way..  don't you think?
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Asphodene.2", Player.name); //That doesn't mean it's time to stop!
-                        //	" ";
-                    }
-                }
-                if (chosenStarfarer == 2)
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.1", Player.name); //Looking back on this journey.. We've come far.
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.RegularIdleDialogue.HardIdleDialogue13.Eridani.2", Player.name); //And yet, we have so much more to accomplish.
-                        //	" ";
-                    }
-                }
-
+                string category = "RegularIdleDialogue";
+                string key = category + "." + "HardIdleDialogue14" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }
             #endregion
@@ -1525,27 +215,27 @@ namespace StarsAbove.Dialogue
             {
                 string category = "BossDialogue";
                 string key = category + "." + "KingSlime" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
                 
             }//Slime King 1
             if (chosenDialogue == 52) // Boss dialogue - Eye of Cthulu
             {
                 string category = "BossDialogue";
                 string key = category + "." + "CthulhuEye" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Eye of Cthulhu 2
             if (chosenDialogue == 53) // Boss dialogue - Eater of Worlds or Brain of Cthulhu
             {
                 string category = "BossDialogue";
                 string key = category + "." + "CorruptionBoss" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Brain of Cthulhu / Eater of Worlds 3
             if (chosenDialogue == 54) // Boss dialogue - Queen Bee
             {
                 string category = "BossDialogue";
                 string key = category + "." + "QueenBee" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Queen Bee 4 
@@ -1553,7 +243,7 @@ namespace StarsAbove.Dialogue
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Skeletron" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Skeletron 5 
@@ -1561,71 +251,71 @@ namespace StarsAbove.Dialogue
             {
                 string category = "BossDialogue";
                 string key = category + "." + "WallOfFlesh" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Wall of Flesh 6
             if (chosenDialogue == 58) // Boss dialogue - The Twins
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Twins" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//The Twins 7
             if (chosenDialogue == 57) // Boss dialogue - The Destroyer
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Destroyer" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Destroyer 8
             if (chosenDialogue == 59) // Boss dialogue - Skeletron Prime
             {
                 string category = "BossDialogue";
                 string key = category + "." + "SkeletronPrime" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Skeletron Prime 9
             if (chosenDialogue == 60) // Boss dialogue - All Mechanical Bosses Defeated
             {
                 string category = "BossDialogue";
                 string key = category + "." + "AllMechs" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//All Mechanical Bosses defeated 10
             if (chosenDialogue == 61) // Boss dialogue - Plantera
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Plantera" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Plantera 11
             if (chosenDialogue == 62) // Boss dialogue - Golem
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Golem" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Golem 12
             if (chosenDialogue == 63) // Boss dialogue - Duke Fishron
             {
                 string category = "BossDialogue";
                 string key = category + "." + "DukeFishron" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Duke Fishron 13
             if (chosenDialogue == 64) // Boss dialogue - Lunatic Cultist
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Cultist" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Lunatic Cultist 14
             if (chosenDialogue == 65) // Boss dialogue - Moon Lord
             {
                 string category = "BossDialogue";
                 string key = category + "." + "MoonLord" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Moon Lord 15 
             if (chosenDialogue == 66) // Boss dialogue - Warrior of Light
             {
                 string category = "BossDialogue";
                 string key = category + "." + "WarriorOfLight" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Warrior of Light 16
             if (chosenDialogue == 67) // Boss dialogue - All Vanilla Bosses Defeated
             {
@@ -1635,7 +325,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "AllVanillaBosses" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//All Vanilla Bosses 17
             if (chosenDialogue == 68) // Boss dialogue - Everything Defeated in Expert Mode
             {
@@ -1645,7 +335,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "VanillaAndWarrior" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Everything Vanilla + WoL 18
             if (chosenDialogue == 69) // Boss dialogue - Dioskouroi
             {
@@ -1655,7 +345,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "Dioskouroi" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Dioskouroi
             if (chosenDialogue == 70) // Boss dialogue - Nalhaun
             {
@@ -1665,7 +355,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "Nalhaun" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Nalhaun 20
             if (chosenDialogue == 71) // Boss dialogue - Penthesilea
             {
@@ -1675,14 +365,14 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "Penthesilea" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
                 
             }//Penthesilea 21
             if (chosenDialogue == 72) // Boss dialogue - Arbitration
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Arbitration" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Arbitration 22
             if (chosenDialogue == 73) // Boss dialogue - Tsukiyomi 23
             {
@@ -1692,25 +382,25 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "Tsukiyomi" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Tsukiyomi 23
             if (chosenDialogue == 74) // Boss dialogue - Queen Slime
             {
                 string category = "BossDialogue";
                 string key = category + "." + "QueenSlime" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Queen Slime 24
             if (chosenDialogue == 75) // Boss dialogue - Empress of Light
             {
                 string category = "BossDialogue";
                 string key = category + "." + "EmpressOfLight" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Empress of Light 25
             if (chosenDialogue == 76) // Boss dialogue - Deerclops
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Deerclops" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Deerclops 26
             if (chosenDialogue == 77) // Vagrant
             {
@@ -1721,14 +411,14 @@ namespace StarsAbove.Dialogue
 
                 string category = "BossDialogue";
                 string key = category + "." + "Vagrant" + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Vagrant
             //Thespian
             if (chosenDialogue == 78)
             {
                 string category = "BossDialogue";
                 string key = category + "." + "Thespian" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
 
 
@@ -1738,87 +428,87 @@ namespace StarsAbove.Dialogue
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "DesertScourge" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Desert Scourge 24
             if (chosenDialogue == 202) // Boss dialogue - Crabulon
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Crabulon" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Crabulon 25 
             if (chosenDialogue == 203) // Boss dialogue - Hive Mind
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "HiveMind" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Hive Mind 26
             if (chosenDialogue == 204) // Boss dialogue - Perforators
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Perforators" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Perforators 27
             if (chosenDialogue == 205) // Boss dialogue - The Slime God
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "SlimeGod" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//The Slime God 28
              //Calamity boss dialogue (Hardmode)
             if (chosenDialogue == 206) // Boss dialogue - Cryogen
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Cryogen" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Cryogen 29
             if (chosenDialogue == 207) // Boss dialogue - Aquatic Scourge
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AquaticScourge" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Aquatic Scourge 30
             if (chosenDialogue == 208) // Boss dialogue - Brimstone Elemental
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "BrimstoneElemental" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Brimstone Elemental 31
             if (chosenDialogue == 209) // Boss dialogue - Calamitas
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Calamitas" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Calamitas 32
             if (chosenDialogue == 210) // Boss dialogue - Leviathan
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Leviathan" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Leviathan 33
             if (chosenDialogue == 211) // Boss dialogue - Astrum Aureus
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AstrumAureus" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Astrum Aureus 34
             if (chosenDialogue == 212) // Boss dialogue - Plaguebringer Goliath
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "PlaguebringerGoliath" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Plaguebringer Goliath 35
             if (chosenDialogue == 213) // Boss dialogue - Ravager
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Ravager" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Ravager 36
             if (chosenDialogue == 214) // Boss dialogue - Astrum Deus
             {
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AstrumDeus" + "." + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Astrum Deus 37
             #endregion
             #region weaponDialogue
@@ -5995,7 +4685,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossItemDialogue";
                 string key = category + "." + "Nalhaun" + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
 
@@ -6009,7 +4699,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossItemDialogue";
                 string key = category + "." + "Penth" + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Penth item
             if (chosenDialogue == 303) //Arbiter item
@@ -6021,7 +4711,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossItemDialogue";
                 string key = category + "." + "Arbitration" + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
 
@@ -6034,7 +4724,7 @@ namespace StarsAbove.Dialogue
                 }
                 string category = "BossItemDialogue";
                 string key = category + "." + "Warrior" + starfarerName + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
 
@@ -6049,33 +4739,118 @@ namespace StarsAbove.Dialogue
 
                 string category = "BossItemDialogue";
                 string key = category + "." + "Dioskouroi" + ".";
-                WriteDialogue(ref dialoguePrep, ref dialogueLeft, out expression, out dialogue, ref dialogueFinished, baseKey, key);
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
                 
 
             }//Dioskouroi item
 
-            dialogue = LangHelper.Wrap(dialogue, 44);
+            
+            if(!writeToArchive)
+            {
+                dialogue = LangHelper.Wrap(dialogue, 44);
+
+            }
         }
 
-        private static void WriteDialogue(ref bool dialoguePrep, ref int dialogueLeft, out int expression, out string dialogue, ref bool dialogueFinished, string baseKey, string key)
-        {
-            if (dialoguePrep == true)
+        private static void WriteDialogue(bool writeToArchive, string category, int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, ref bool dialogueFinished, string baseKey, string key)
+        {  
+            if (writeToArchive)
             {
-                dialogueLeft = 1;
-                dialoguePrep = false;
-            }
-            if (LangHelper.GetTextValue("Dialogue." + key + (dialogueLeft + 1)) == baseKey + key + (dialogueLeft + 1))//If the next dialogue is going to be the end
-            {
-                dialogueFinished = true;
+                if(category == "IdleDialogue" || category == "IdleDialogueHardmode" || category == "RegularIdleDialogue")
+                {
+                    // Retrieve the player's mod player instance
+                    var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
+
+                    // Construct a new ArchiveListing instance
+                    var newArchiveListing = new ArchiveListing(
+                        LangHelper.GetTextValue("Dialogue." + key + "Name"), // Name of the archive listing
+                        LangHelper.GetTextValue("Dialogue." + key + "Description"), // Description of the listing
+                        true, // Unlock requirement
+                        chosenDialogue, // Corresponding dialogue ID
+                        LangHelper.GetTextValue("Dialogue." + key + "UnlockCondition") // Unlock requirements UNUSED
+                    );
+
+                    // Check if the new ArchiveListing already exists in the IdleArchiveList
+                    bool exists = archivePlayer.IdleArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
+
+                    // Add the new ArchiveListing to the list if it doesn't already exist
+                    if (!exists)
+                    {
+                        archivePlayer.IdleArchiveList.Add(newArchiveListing);
+                    }                   
+                }
+                if (category == "BossDialogue" || category == "BossItemDialogue" || category == "CalamityBossDialogue")
+                {
+                    // Retrieve the player's mod player instance
+                    var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
+
+                    // Construct a new ArchiveListing instance
+                    var newArchiveListing = new ArchiveListing(
+                        LangHelper.GetTextValue("Dialogue." + key + "Name"), // Name of the archive listing
+                        LangHelper.GetTextValue("Dialogue." + key + "Description"), // Description of the listing
+                        true, // Unlock requirement
+                        chosenDialogue, // Corresponding dialogue ID
+                        LangHelper.GetTextValue("Dialogue." + key + "UnlockCondition") // Unlock requirements UNUSED
+                    );
+
+                    // Check if the new ArchiveListing already exists in the IdleArchiveList
+                    //THIS DOESN'T WORK BUT I AM SUPER TIRED SO I"LL DO IT TOMORROW!
+                    bool exists = archivePlayer.IdleArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
+
+                    // Add the new ArchiveListing to the list if it doesn't already exist
+                    if (!exists)
+                    {
+                        archivePlayer.BossArchiveList.Add(newArchiveListing);
+                    }
+                }
+                if (category == "WeaponDialogue")
+                {
+                    // Retrieve the player's mod player instance
+                    var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
+
+                    // Construct a new ArchiveListing instance
+                    var newArchiveListing = new ArchiveListing(
+                        LangHelper.GetTextValue("Dialogue." + key + "Name"), // Name of the archive listing
+                        LangHelper.GetTextValue("Dialogue." + key + "Description"), // Description of the listing
+                        true, // Unlock requirement
+                        chosenDialogue, // Corresponding dialogue ID
+                        LangHelper.GetTextValue("Dialogue." + key + "UnlockCondition") // Unlock requirements UNUSED
+                    );
+
+                    // Check if the new ArchiveListing already exists in the IdleArchiveList
+                    bool exists = archivePlayer.IdleArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
+
+                    // Add the new ArchiveListing to the list if it doesn't already exist
+                    if (!exists)
+                    {
+                        archivePlayer.WeaponArchiveList.Add(newArchiveListing);
+                    }
+                }
             }
             else
             {
+                if (dialoguePrep == true)
+                {
+                    dialogueLeft = 1;
+                    dialoguePrep = false;
+                }
+                if (LangHelper.GetTextValue("Dialogue." + key + (dialogueLeft + 1)) == baseKey + key + (dialogueLeft + 1))//If the next dialogue is going to be the end
+                {
+                    dialogueFinished = true;
+                }
+                else
+                {
+
+                }
+                dialogue = LangHelper.GetTextValue("Dialogue." + key + dialogueLeft, Main.LocalPlayer.name);
+                expression = SetupExpression(LangHelper.GetTextValue("Dialogue." + key + dialogueLeft + ".E"));
 
             }
-            dialogue = LangHelper.GetTextValue("Dialogue." + key + dialogueLeft);
-            expression = SetupExpression(LangHelper.GetTextValue(key + dialogueLeft + ".E"));
         }
+        private static void AddDialogueToArchive(int dialogueID, string baseKey, string key)
+        {
 
+        }
         private static int SetupExpression(string key)
         {
             switch(key)
@@ -6107,159 +4882,5 @@ namespace StarsAbove.Dialogue
             }
             return 0;
         }
-    }
-    public class Dialogue
-    {
-        //Asphodene/Eridani
-        //if the dialogue is by someone else, this can vary (think of it like the dialogue's owner)
-        //Note that this appears AFTER title
-        public string Name { get; set; } = "";
- 
-        //Categories can be longer than 1 segment, the actual "category" is defined when populating dialogue
-        //(BossItemDialogue vs BossDialogue.KingSlime)
-        public string Title { get; set; }
-        // category should point to the hjson (Dialogue.[Category].[Name].[Length] i.e. Dialogue.[BossItemDialogue].[Dioskouroi].[4])
-        // dialogue should keep track of its unlock condition and if it has been read or not too
-        // 
-        // Given length, it should automatically populate
-        public int Length { get; set; } = 1;//Starts at 1 as default
-
-        //Dialogue, Emotion
-        public Dictionary<string, string> DialoguePages { get; set; } = new Dictionary<string, string>();
-        public int AssociatedItem { get; set; }
-        //Unlock condition (This appears in the Archive)
-        //Important info: this gives an esssence, or boss summon item, etc. (This appears in the Archive) - if there isnt any important info it defaults to unlock condition
-        public string UnlockCondition { get; set; }
-        public string ArchiveInfo { get; set; } //maybe this can be automatically defined for weapons taking into account AssociatedItem if Aspho/Eri's archives are correctly seperated
-        //Archive Category (Idle, Boss, Weapon)
-        public string ArchiveCategory { get; set; }
-        public List<int> ExtraIds { get; set; } = new List<int>();
-
-        //Maybe a place where you can define which line the item spawns on?
-        public Dialogue(string name, string title, int associatedItemType, string archiveCategory)
-        {
-            Name = name;
-            Title = title;
-            AssociatedItem = associatedItemType; // if associated item is 0, there isn't an item
-            int tempLength = 1;
-            int.TryParse(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "Length"), out tempLength);
-
-            for (int i = 0; i < tempLength; i++)
-            {
-                AddPage(LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i, Main.LocalPlayer.name), LangHelper.GetTextValue($"Dialogue." + title + "." + name + "." + i + ".Emotion"));
-            }
-
-        }
-        public override bool Equals(object obj)
-        {
-            if (obj is Dialogue other)
-            {
-                return Name == other.Name && Title == other.Title;
-            }
-            return false;
-        }
-        // Add page to the dialogue
-        public void AddPage(string pageContent, string emotion)
-        {
-            DialoguePages.Add(pageContent, emotion);
-        }
-
-        // WIP
-        public void AddExtraId(int id)
-        {
-            ExtraIds.Add(id);
-        }
-    }
-
-    
-    public class DialoguePlayer : ModPlayer
-    {
-        public int unreadDialogueCount = 0;
-        //list of dialogues, following the key of the category
-
-        //The Spatial Disk pulls from this list. If dialogue is ready to be read, it'll be added to the Active Dialogues list.
-        //Once it has been read, it'll be moved to the Archive list
-
-
-        private List<Dialogue> activeDialogues = new List<Dialogue>();
-        private List<Dialogue> readDialogues = new List<Dialogue>();
-
-
-        //Each dialogue has a category and it checks for that
-
-        //Step 1: after reaching certain criteria, add the dialogue. Make sure to check that the dialogue doesn't already exist.
-        //This is also where you can put the "new disk dialogue available!" pop-up (maybe add a number that shows the amount of dialogue in the active list, like (5 unread dialogues))
-        public void AddActiveDialogue(Dialogue dialogue)
-        {
-            
-            activeDialogues.Add(dialogue);
-        }
-        public void MoveReadDialogue(Dialogue dialogue)
-        {
-           
-            activeDialogues.Remove(dialogue);
-            
-            readDialogues.Add(dialogue);
-        }
-
-        // Method to get dialogues by category
-        public List<Dialogue> GetActiveDialogues()
-        {
-            return activeDialogues;
-
-        }
-        public List<Dialogue> GetReadDialogues()
-        {
-            return readDialogues;
-
-        }
-        public override void SetStaticDefaults()
-        {
-
-
-        }
-        public override void PostUpdate()
-        {
-            string starfarerName = "";
-            if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
-            {
-                starfarerName = "Asphodene";
-            }
-            else if (Player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
-            {
-                starfarerName = "Eridani";
-            }
-
-            string category = "WeaponDialogue";
-            bool newDialogueAdded = false;
-
-            newDialogueAdded = PopulateDialogue(starfarerName, "TestDialogue", ModContent.ItemType<SpatialDisk>(), category);
-            newDialogueAdded = PopulateDialogue(starfarerName, "TestDialogue2", ModContent.ItemType<SpatialDisk>(), category);
-
-            //Main.NewText(newDialogueAdded);
-
-            //At the end of dialogue population, if new dialogue was added show the pop up + the amount of unread dialogue
-            if(newDialogueAdded)
-            {
-                unreadDialogueCount = GetActiveDialogues().Count;
-
-                InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-
-            }
-
-            base.PostUpdate();
-        }
-        public bool PopulateDialogue(string starfarerName, string title, int associatedItemType, string category)
-        {
-            var dialogueInsert = new Dialogue(starfarerName, category + "." + title, ModContent.ItemType<SpatialDisk>(), category);
-            if (GetActiveDialogues().Any(d => d.Equals(dialogueInsert)))
-            {
-                // Optionally, handle the duplicate case, e.g., by logging or modifying behavior
-                return false; // Indicates that the dialogue was not added because it was a duplicate
-            }
-            AddActiveDialogue(dialogueInsert);
-            return true;
-        }
-
     }
 }

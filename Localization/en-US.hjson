@@ -589,13 +589,35 @@ Mods: {
 
 		Dialogue: {
 			IdleDialogueHardmode: {
-				Asphodene: Sorry, {0}. Nothing to comment on right now.
-				Eridani: Apologies, {0}.. there's not much to comment on at the moment.
+				Asphodene: {
+					1: {
+						$parentVal: Sorry, {0}. Nothing to comment on right now.
+						E: Worried
+					}
+				}
+
+				Eridani: {
+					1: {
+						$parentVal: Apologies, {0}.. there's not much to comment on at the moment.
+						E: Worried
+					}
+				}
 			}
 
 			IdleDialogue: {
-				Asphodene: Sorry, there's not much on my mind as of late.
-				Eridani: Sorry. There's not much to say right now...
+				Asphodene: {
+					1: {
+						$parentVal: Sorry, there's not much on my mind as of late.
+						E: Worried
+					}
+				}
+
+				Eridani: {
+					1: {
+						$parentVal: Sorry. There's not much to say right now...
+						E: Worried
+					}
+				}
 			}
 
 			WeaponDialogue: {
@@ -808,19 +830,16 @@ Mods: {
 					102: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
 					103: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat. How brilliant!
 				}
-
-				Perseus: {
-					1: It's good to see you again, {0}. I'm not here to ask for your help- instead, I have a gift for you.
-					2: You have proven yourself as a true warrior; as such, you should have a weapon befitting your strength.
-					3: So, I bestow this weapon unto you. Good luck, and good hunting.
-				}
 			}
 
 			BossDialogue: {
 				KingSlime: {
 					Asphodene: {
+						Name: King Slime Dialogue
+						UnlockCondition: Defeat King Slime
+						Description: ""
 						1: You've defeated the Slime King, huh? Good job.
-						2: It may have been rather weak, but it's a surefire step forwards nevertheless.
+						2: It does do feel like the beginning of a journey. Slimes often serve a good first foe.
 
 						3: {
 							$parentVal: Did anyone else see that ninja thing? Was it just me?
@@ -834,6 +853,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: King Slime Dialogue
+						UnlockCondition: Defeat King Slime
+						Description: ""
 						1: It may have seemed weak, but the Slime King was truly quite the threat.
 
 						2: {
@@ -850,70 +872,114 @@ Mods: {
 
 				CthulhuEye: {
 					Asphodene: {
+						Name: Eye of Cthulhu Dialogue
+						Description: ""
 						1: "'Eye of Cthulhu'? "
-						2: Doesn't that imply there would be more of this 'Cthulhu'?
-						2.E: Thinking
-						3: If it ever reared its head, it would be quite the formidable foe indeed.
-						3.E: Worried
+
+						2: {
+							$parentVal: Doesn't that imply there would be more of this 'Cthulhu'?
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: If it ever reared its head, it would be quite the formidable foe indeed.
+							E: Worried
+						}
+
 						4: Let's prepare for that occasion... Just in case.
 					}
 
 					Eridani: {
+						Name: Eye of Cthulhu Dialogue
+						Description: ""
 						1: For how fearsome it looked, the Eye of Cthulhu wasn't too terrible, was it?
 						2: It seems to have shed its skin to display quite an array of teeth.
-						3: If I didn't know better, it looked like it was trying to prove something. Weirdo.
+
+						3: {
+							$parentVal: If I didn't know better, it looked like it was trying to prove something. Weirdo.
+							E: Angry
+						}
 					}
 				}
 
 				CorruptionBoss: {
 					Asphodene: {
-						1: So, the obviously corroded part of the world also had a big bad monster waiting inside of it. That does track.
-						1.E: Angry
+						Name: World Evil Boss Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: So, the obviously corroded part of the world also had a big bad monster waiting inside of it. That does track.
+							E: Angry
+						}
+
 						2: I'm starting to think that you just like the challenge... Well, something tells me there's more where that comes from.
 					}
 
 					Eridani: {
 						1: I'm glad you've taken care of that evil looking fiend. Perhaps it's best we stay away from the oddly colored soil from now on?
+						Name: World Evil Boss Dialogue
+						Description: ""
 					}
 				}
 
 				QueenBee: {
 					Asphodene: {
+						Name: Queen Bee Dialogue
+						Description: ""
 						1: Well, I guess I should have expected something like this within the Jungle.
 						2: Good work. Let's hope a bath takes all that honey off of you...
 					}
 
 					Eridani: {
+						Name: Queen Bee Dialogue
+						Description: ""
 						1: Seriously? A giant bee... Somehow, I might prefer it over smaller insects... Easier to hit, you know.
 						2: You'll probably encounter a few, considering you're now dripping with insanely sweet honey.
-						3: Now that I'm thinking of how sticky that honey is, I am truly sorry. At least it's edible...?
-						3.E: Worried
+
+						3: {
+							$parentVal: Now that I'm thinking of how sticky that honey is, I am truly sorry. At least it's edible...?
+							E: Worried
+						}
 					}
 				}
 
 				Skeletron: {
 					Asphodene: {
+						Name: Skeletron Dialogue
+						Description: ""
 						1: The Clothier was truly a gigantic evil skeleton monster.. Cute. At the very least, you have access to the Dungeon now.
 						2: Okay, I know you're chomping at the bit to go down and do some spelunking, but- Actually, never mind. I'm curious too. Let's get going.
 					}
 
 					Eridani: {
+						Name: Skeletron Dialogue
+						Description: ""
 						1: That poor Clothier, cursed to become Skeletron. It seems his defeat has granted us access to the Dungeon. This may be in bad taste, but...
-						2: If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
-						2.E: Thinking
-						3: If anyone asks, you didn't hear that from me.
-						3.E: Worried
+
+						2: {
+							$parentVal: If the embodiment of your emotions is a huge monster... maybe, just maybe, the curse wasn't the sole factor.
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: If anyone asks, you didn't hear that from me.
+							E: Worried
+						}
 					}
 				}
 
 				WallOfFlesh: {
 					Asphodene: {
+						Name: Wall of Flesh Dialogue
+						Description: ""
 						1: Whoa.. I've never seen anything like this.. ever. The entire world seems to be bursting with new magical energy.
 						2: It looks like the Wall of Flesh was either guarding or preventing something drastic from happening. That's my take on it.
 						3: Anyways, feels like it's time to do some more exploring! Let's get to it.
 					}
 
 					Eridani: {
+						Name: Wall of Flesh Dialogue
+						Description: ""
 						1: Wow.. the world itself seems to have been drastically altered after the defeat of the Wall of Flesh...
 						2: I've never seen anything like it. What was this thing hiding...?
 						3: Let's explore these new environs with caution.
@@ -922,24 +988,35 @@ Mods: {
 
 				Twins: {
 					Asphodene: {
+						Name: Twins Dialogue
+						Description: ""
 						1: So someone went and made two Eyes instead of one? Good for them, but in my opinion, the design is kind of ruined already.
 						2: If you're going to make a robot eye, try and hide the obvious weak spot where the iris is. Well, I don't create giant evil robotic eyes, so they got me there.
 					}
 
 					Eridani: {
+						Name: Twins Dialogue
+						Description: ""
 						1: Well, those mechanical facsimiles are dead. We're not rating boss monsters, or anything, but... I'm going to have to dock some points.
-						2: Why would you ever even think about using flesh for the exterior? In terms of material, you've got to have better options, if you're already going all this way...
-						2.E: Angry
+
+						2: {
+							$parentVal: Why would you ever even think about using flesh for the exterior? In terms of material, you've got to have better options, if you're already going all this way...
+							E: Angry
+						}
 					}
 				}
 
 				Destroyer: {
 					Asphodene: {
+						Name: Destroyer Dialogue
+						Description: ""
 						1: "'The Destroyer...' I'm not one to talk, but if you name something 'The Destroyer' I'm gonna expect more than a big worm."
 						2: Its absurd length was just a detriment to its strength. Take notes, {0}!
 					}
 
 					Eridani: {
+						Name: Destroyer Dialogue
+						Description: ""
 						1: I guess the Destroyer was more bark than bite, huh. Maybe too much of the budget was spent on the design aspect.
 						2: In theory, we could technically salvage some of its bits, but it's probably more trouble than its worth.
 					}
@@ -947,42 +1024,74 @@ Mods: {
 
 				SkeletronPrime: {
 					Asphodene: {
-						1: You've done it! Skeletron Prime has been defeated. A 'prime' example of a monster, huh?
-						1.E: Happy
+						Name: Skeletron Prime Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: You've done it! Skeletron Prime has been defeated. A 'prime' example of a monster, huh?
+							E: Happy
+						}
+
 						2: The appendages were a smart idea. Almost got you a few times there.
-						3: A prime example of... wait, I just said that. Ugh.
-						3.E: Worried
+
+						3: {
+							$parentVal: A prime example of... wait, I just said that. Ugh.
+							E: Worried
+						}
 					}
 
 					Eridani: {
-						1: And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
-						1.E: Angry
-						2: If you took offense, I apologize. You can be as edgy as you want. Anyways...
-						2.E: Worried
+						Name: Skeletron Prime Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: And that takes care of Skeletron Prime. It certainly looked the part... if you're a total edgelord.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: If you took offense, I apologize. You can be as edgy as you want. Anyways...
+							E: Worried
+						}
 					}
 				}
 
 				AllMechs: {
 					Asphodene: {
+						Name: All Mechanical Bosses Defeated Dialogue
+						Description: ""
 						1: Actually.. It looks like you've bested all the Mechanical Bosses! This is definitely, 100% a step forward.
-						2: I'd take stock of our resources from this point on- looks like things won't get any easier.
-						2.E: Worried
+
+						2: {
+							$parentVal: I'd take stock of our resources from this point on- looks like things won't get any easier.
+							E: Worried
+						}
 					}
 
 					Eridani: {
-						1: It seems that was the last of the Mechanical Bosses. This is a great step forward!
-						1.E: Happy
+						Name: All Mechanical Bosses Defeated Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: It seems that was the last of the Mechanical Bosses. This is a great step forward!
+							E: Happy
+						}
+
 						2: Let's prepare for our further trials. From how things have been progressing, it's only going to get harder.
 					}
 				}
 
 				Plantera: {
 					Asphodene: {
+						Name: Plantera Dialogue
+						Description: ""
 						1: And there it goes.. the terror of the jungle, Plantera. Congratulations on your victory.
 						2: I sense the Dungeon has changed... and that temple in the Jungle is now available. It's your choice what to tackle next.
 					}
 
 					Eridani: {
+						Name: Plantera Dialogue
+						Description: ""
 						1: That marks the end of Plantera. Very good work. You should be able to access the Jungle Temple now.
 						2: I also believe there's new materials to be found within the Dungeon. We'll just have to... take it by force.
 					}
@@ -990,53 +1099,112 @@ Mods: {
 
 				Golem: {
 					Asphodene: {
+						Name: Golem Dialogue
+						Description: ""
 						1: You've done it! Golem is no more- you're unstoppable.
-						2: Something about our next enemy feels.. dangerous. It seems spatial energy has congregated around the Dungeon's entrance.
-						2.E: Worried
+
+						2: {
+							$parentVal: Something about our next enemy feels.. dangerous. It seems spatial energy has congregated around the Dungeon's entrance.
+							E: Worried
+						}
 					}
 
 					Eridani: {
-						1: The Lizhard Temple's beast Golem is confirmed dead.  In terms of mechanical beasts, I'm kind of.. disappointed?
-						1.E: Thinking
-						2: Something strange has appeared in front of the Dungeon. It seems otherwordly in nature... Be prepared for anything.
-						2.E: Angry
+						Name: Golem Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: The Lizhard Temple's beast Golem is confirmed dead.  In terms of mechanical beasts, I'm kind of.. disappointed?
+							E: Thinking
+						}
+
+						2: {
+							$parentVal: Something strange has appeared in front of the Dungeon. It seems otherwordly in nature... Be prepared for anything.
+							E: Angry
+						}
 					}
 				}
 
 				DukeFishron: {
 					Asphodene: {
+						Name: Duke Fishron Dialogue
+						Description: ""
 						1: Such a powerful creature hiding deep within the Ocean.. Luckily, you avoided being turned into fish food.
-						2: Where did that saying even come from..? What IS fish food? More important questions left unanswered...
-						2.E: Thinking
-						3: What do you mean it isn't important? Duh, of course it's an important question. All questions are important.
-						3.E: Happy
+
+						2: {
+							$parentVal: Where did that saying even come from..? What IS fish food? More important questions left unanswered...
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: What do you mean it isn't important? Duh, of course it's an important question. All questions are important.
+							E: Happy
+						}
 					}
 
 					Eridani: {
-						1: Duke Fishron has been defeated. That was a close one, but you've o-fish-ally won. ...
-						1.E: Smug
+						Name: Duke Fishron Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: Duke Fishron has been defeated. That was a close one, but you've o-fish-ally won. ...
+							E: Smug
+						}
+
 						2: I might have fished too hard for that one. You know what..? Let's leave the puns to Asphodene. I concede there's a certain skill to it.
 					}
 				}
 
 				Cultist: {
 					Asphodene: {
-						1: These Celestial Pillars, they can't be good news- we really can't catch a break.
-						2: Don't lose hope, though... we can beat this. Just another foe to defeat, right? Haha...
-						3: Before you go, there's something else I need to tell you. I can sense something else other than the Pillars.
+						Name: Lunatic Cultist Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: These Celestial Pillars, they can't be good news- we really can't catch a break.
+							E: Worried
+						}
+
+						2: {
+							$parentVal: Don't lose hope, though... we can beat this. Just another foe to defeat, right? Haha...
+							E: Worried
+						}
+
+						3: {
+							$parentVal: Before you go, there's something else I need to tell you. I can sense something else other than the Pillars.
+							E: Angry
+						}
+
 						4: I can't quite place it, but I have the feeling like you should take advantage of nighttime soon.
 					}
 
 					Eridani: {
-						1: I knew it.. something wasn't right about that Cultist. These Celestial Pillars do not inspire confidence.
-						2: With our current circumstances, I think you're the only one with a good enough shot at besting this threat.
-						3: One more thing: I can sense something other than the Pillars approaching. It is entirely different in nature.
+						Name: Lunatic Cultist Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: I knew it.. something wasn't right about that Cultist. These Celestial Pillars do not inspire confidence.
+							E: Worried
+						}
+
+						2: {
+							$parentVal: With our current circumstances, I think you're the only one with a good enough shot at besting this threat.
+							E: Angry
+						}
+
+						3: {
+							$parentVal: One more thing: I can sense something other than the Pillars approaching. It is entirely different in nature.
+							E: Worried
+						}
+
 						4: This is only a hunch, but I would advise you to proceed with any tasks that require the night soon.
 					}
 				}
 
 				MoonLord: {
 					Asphodene: {
+						Name: Moon Lord Dialogue
+						Description: ""
 						1: You've done it! The Moon Lord has been vanquished- I knew you could do it.
 						2: The Moon Lord's defeat has strengthened your Stellar Array. A reward well deserved.
 						3: We've come a long way... You have grown stronger than I've ever imagined!
@@ -1044,6 +1212,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Moon Lord Dialogue
+						Description: ""
 						1: The Moon Lord has been defeated... What a wonderful victory.
 						2: Looks like its defeat has granted the Stellar Array even more power.
 						3: I fear our journey isn't over yet. We must press onwards. In fact...
@@ -1053,45 +1223,78 @@ Mods: {
 
 				WarriorOfLight: {
 					Asphodene: {
-						1: I see we were wrong.. The Warrior thought he was saving the galaxy, but it was truly the lies of the First Starfarer.. How cruel.
-						1.E: Worried
-						2: Anyways, the Warrior of Light is defeated... Night has returned to this world, finally!
-						2.E: Happy
+						Name: Warrior of Light Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: I see we were wrong.. The Warrior thought he was saving the galaxy, but it was truly the lies of the First Starfarer.. How cruel.
+							E: Worried
+						}
+
+						2: {
+							$parentVal: Anyways, the Warrior of Light is defeated... Night has returned to this world, finally!
+							E: Happy
+						}
+
 						3: We finally have the last piece of the puzzle. The First Starfarer showed her hand, and this means we have a chance.
 						4: Once you've collected all the Mnemonic Traces, craft them together with use of the Celestriad Root.
 						5: I probably don't need to tell you this, but she's not going to parley. Prepare for a hard fight.. Perhaps the hardest fight so far.
 					}
 
 					Eridani: {
-						1: You have brought down the Warrior of Light. Nighttime has returned to this world- a wonderful respite.
-						1.E: Happy
-						2: It seems we were misguided. The Warrior believed he was saving the galaxy, but it was, in truth, all lies from his Starfarer.
-						2.E: Angry
+						Name: Warrior of Light Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: You have brought down the Warrior of Light. Nighttime has returned to this world- a wonderful respite.
+							E: Happy
+						}
+
+						2: {
+							$parentVal: It seems we were misguided. The Warrior believed he was saving the galaxy, but it was, in truth, all lies from his Starfarer.
+							E: Angry
+						}
+
 						3: With this final Mnemonic Trace.. I see.. It all makes sense now. {0}, I need you to combine all of the Mnemonic Traces together.
 						4: You'll have to utilize the Observatory's Celestriad Root.
-						5: Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
-						5.E: Angry
+
+						5: {
+							$parentVal: Remember: the First Starfarer. We can not let this opportunity slip away. This will likely be the fight of our lives.. Prepare yourself well.
+							E: Angry
+						}
 					}
 				}
 
 				AllVanillaBosses: {
 					Asphodene: {
+						Name: All Vanilla Bosses Dialogue
+						Description: ""
 						1: You've defeated so many powerful foes- you must be nearing the pinnacle of your powers, for sure.
 					}
 
 					Eridani: {
+						Name: All Vanilla Bosses Dialogue
+						Description: ""
 						1: You've come quite far- I'm sure our enemies shudder when they think of you.
 					}
 				}
 
 				VanillaAndWarrior: {
 					Asphodene: {
+						Name: Powerful Weapon Dialogue
+						Description: Grants the Essence for a powerful weapon
 						1: Seriously, this is a incredible achievement- I've had this Essence tucked away, as it was too powerful to use, but...
 						2: With what you've accomplished, I think you're able to finally wield it.
-						3: Be sure to treat the finished product with care.
+
+						3: {
+							$parentVal: Be sure to treat the finished product with care.
+							E: Smug
+						}
 					}
 
 					Eridani: {
+						Name: Powerful Weapon Dialogue
+						Description: Grants the Essence for a powerful weapon
 						1: I'm in awe... In truth, I've had this Essence locked away- it was far too powerful to wield. However...
 						2: It would be silly of me to keep it from you now. With everything you've done, it belongs to you now.
 						3: Keep in mind its potential- and good luck crafting it.
@@ -1100,24 +1303,38 @@ Mods: {
 
 				Dioskouroi: {
 					Asphodene: {
+						Name: Dioskouroi Dialogue
+						Description: Grants a key item
 						1: Now that was a strange fight... I don't even think those twins even realized we were there!
 						2: They weren't human, but probably a sort of demonkin. I felt some Starfarer trace on them- perhaps the First Starbearer defeated them in the past.
-						3: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
-						3.E: Thinking
+
+						3: {
+							$parentVal: I don't know why Perseus told US to fight them, or even how we were able to. Unless... maybe Perseus found a way to turn Essences into their past selves? Hmm...
+							E: Thinking
+						}
+
 						4: Our battle seems to have left a strange remnant object- I'll leave it in your care. You should probably take care of it.
 					}
 
 					Eridani: {
+						Name: Dioskouroi Dialogue
+						Description: Grants a key item
 						1: Even though we're the ones who bested them, those demon twins barely even gave us a glance.
 						2: From the remnant mana on them, those twins were most likely laid low by the First Starbearer ages ago.
-						3: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
-						3.E: Thinking
+
+						3: {
+							$parentVal: As for why Perseus told us to fight them... I don't know. I'm not even sure how we were able to fight them- Perhaps we fought an Essence given agency?
+							E: Thinking
+						}
+
 						4: There's this strange object left over after the battle. I would take good care of it, if I were you. I believe it will be useful later.
 					}
 				}
 
 				Nalhaun: {
 					Asphodene: {
+						Name: Nalhaun Dialogue
+						Description: Grants a key item
 						1: So that was the Burnished King. His blade was incredibly powerful, not to mention the magic at his disposal. It was a triumph you survived that.
 						2: From what I can tell, it looks like the Burnished King was defeated by the First Starbearer. Also, there's this strange item here, too.
 						3: I guess we'll add it to the collection- no harm in that.
@@ -1125,6 +1342,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Nalhaun Dialogue
+						Description: Grants a key item
 						1: The Burnished King has fallen. What a powerful foe. I shudder to think how we would have fared had we fought him in his prime.
 						2: From what it looks like, The Burnished King was laid low by the First Starbearer nigh on a hundred years prior.
 						3: Let's take care of this strange object- it must have some significance. While we're on the topic...
@@ -1134,12 +1353,16 @@ Mods: {
 
 				Penth: {
 					Asphodene: {
+						Name: Penthesilea Dialogue
+						Description: Grants a key item
 						1: Penthesilea, was it? She was quite the challenge. What a unique way of casting magic.
 						2: Her magic was overflowing with power. It looks like the First Starbearer's influence is here- meaning we can probably use a new Stellar Nova.
 						3: The battle left behind this mysterious object- you can hold on to it.
 					}
 
 					Eridani: {
+						Name: Penthesilea Dialogue
+						Description: Grants a key item
 						1: You've bested the Witch of Ink. She was quite the magic user, no? It's truly a shame she was hostile.
 						2: Her powerful magic... We can use it for ourselves as a new Nova. It must be from the remnants of the First Starbearer Perseus mentioned...
 						3: The battle left behind this mysterious shard. I'll entrust it to you.
@@ -1148,12 +1371,16 @@ Mods: {
 
 				Arbitration: {
 					Asphodene: {
+						Name: Arbitration Dialogue
+						Description: ""
 						1: That foe was truly fearful. I'm glad you were able to defeat it- who knows what chaos it would bring if left unchecked?
 						2: Just goes to show how horrifiying Anomalies can be...!
 						3: Looks like it condensed itself into an Essence- no work needed by me. Isn't that strange?
 					}
 
 					Eridani: {
+						Name: Arbitration Dialogue
+						Description: ""
 						1: You have thoroughly defeated that voidsent being. Good work; I had no clue what would've happened had we lost.
 						2: Truly, the horrors of Anomaly locations can not be understated.
 						3: Even without my intervention, an Essence has appeared... it must be strong, to originate from such a fiend.
@@ -1162,62 +1389,105 @@ Mods: {
 
 				Tsukiyomi: {
 					Asphodene: {
+						Name: Tsukiyomi Dialogue
+						Description: Grants a key item
 						1: It.. it's over. Tsukiyomi has vanished. We're still missing so many clues. She doesn't seem out of it, so what caused her to do what she did?
 						2: Hopefully one day, we'll find the answers to the questions we seek... I have a feeling this journey isn't over yet.
 						3: I've gathered some of the leftover residue from the fight. It will likely have use as a stand-in to an Essence, for creating a weapon.
-						4: With this victory... There may be more evils ahead, but know that nothing is insurmountable. We've come this far.
-						4.E: Happy
+
+						4: {
+							$parentVal: With this victory... There may be more evils ahead, but know that nothing is insurmountable. We've come this far.
+							E: Happy
+						}
 					}
 
 					Eridani: {
+						Name: Tsukiyomi Dialogue
+						Description: Grants a key item
 						1: We've finally done it. Tsukiyomi's defeat has been confirmed. She's gone, but hopefully our troubles with her are at an end.
 						2: What ails me is her motives... She did horrible things... but was it malice, or a greater purpose...? I hope we find the answer.
 						3: I've gone through the work of absorbing some residue energy and have turned it into the Spatial Memoriam. You can use it like an Essence.
-						4: There is still work to do, but take heart; if we've come this far, nothing can stop us now.
-						4.E: Happy
+
+						4: {
+							$parentVal: There is still work to do, but take heart; if we've come this far, nothing can stop us now.
+							E: Happy
+						}
 					}
 				}
 
 				QueenSlime: {
 					Asphodene: {
+						Name: Queen Slime Dialogue
+						Description: ""
 						1: That's that. Queen Slime is defeated. What have we learned today? Apparently there's a royal court of slimes, and the King Slime wasn't just an outlier.
-						2: That doesn't even make any sense. They're slime. I seriously, seriously don't think slime has the capacity to think.
-						2.E: Thinking
-						3: Who knows- maybe they're smarter than us. Then again, I'd be really annoyed if my intelligence was dwarfed by some gelatin, so let's say they aren't.
-						3.E: Angry
+
+						2: {
+							$parentVal: That doesn't even make any sense. They're slime. I seriously, seriously don't think slime has the capacity to think.
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: Who knows- maybe they're smarter than us. Then again, I'd be really annoyed if my intelligence was dwarfed by some gelatin, so let's say they aren't.
+							E: Angry
+						}
 					}
 
 					Eridani: {
+						Name: Queen Slime Dialogue
+						Description: ""
 						1: Right, we've defeated the Queen Slime. To be honest, I'm slightly curious: why are there 'kings' and 'queens' of the slime world?
-						2: How much power do the royal slimes even have? Are they legitimate rulers?
-						2.E: Thinking
-						3: Does the royal slime court send their subjects to attack random people? Do they even have the right to own property?
-						3.E: Thinking
-						4: Fight back, oppressed slimes! Take back your freedom!
-						4.E: Angry
+
+						2: {
+							$parentVal: How much power do the royal slimes even have? Are they legitimate rulers?
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: Does the royal slime court send their subjects to attack random people? Do they even have the right to own property?
+							E: Thinking
+						}
+
+						4: {
+							$parentVal: Fight back, oppressed slimes! Take back your freedom!
+							E: Angry
+						}
 					}
 				}
 
 				EmpressOfLight: {
 					Asphodene: {
+						Name: Empress of Light Dialogue
+						Description: ""
 						1: Great work- the Empress of Light is no more. Nobody else is going to say it, so I will-  did it have a big nose, or was it smiling? I couldn't tell.
-						2: Maybe if she stood still at all, I'd have gotten a better glimpse. Kind of annoying, huh.
-						2.E: Worried
+
+						2: {
+							$parentVal: Maybe if she stood still at all, I'd have gotten a better glimpse. Kind of annoying, huh.
+							E: Worried
+						}
 					}
 
 					Eridani: {
-						1: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?
-						1.E: Worried
+						Name: Empress of Light Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: Congratulations, you've bested the Empress of Light. Let's leave the bugs alone now, okay?
+							E: Worried
+						}
 					}
 				}
 
 				Deerclops: {
 					Asphodene: {
+						Name: Deerclops Dialogue
+						Description: ""
 						1: Okay, we've taken care of that strange abomination.  I have no idea where it even came from.
 						2: Why did it even attack us? Was it trying not to starve? Huh.
 					}
 
 					Eridani: {
+						Name: Deerclops Dialogue
+						Description: ""
 						1: Great work- you've defeated that strange deer thing.
 						2: It was a little terrifying, but luckily it seems its previous prey was confined to the ground. Looks like we had home turf advantage here.
 					}
@@ -1225,16 +1495,25 @@ Mods: {
 
 				Thespian: {
 					Asphodene: {
+						Name: Thespian Dialogue
+						Description: ""
 						1: That was quite the battle! Remind me to never touch strange potions ever again.
-						2: Actually, this one wasn't even my fault. Remind me to remind you to never touch strange potions again.
-						2.E: Worried
+
+						2: {
+							$parentVal: Actually, this one wasn't even my fault. Remind me to remind you to never touch strange potions again.
+							E: Worried
+						}
 					}
 
 					Eridani: {
+						Name: Thespian Dialogue
+						Description: ""
 						1: Looks like you came out of that fight with Thespian in one piece. What a curious phenomenon.
-						2: An alchemist reanimated by a clown that only appears at night time. Hey, am I missing a punchline here?
-						2.E: Worried
 
+						2: {
+							$parentVal: An alchemist reanimated by a clown that only appears at night time. Hey, am I missing a punchline here?
+							E: Worried
+						}
 					}
 				}
 			}
@@ -1242,13 +1521,21 @@ Mods: {
 			CalamityBossDialogue: {
 				DesertScourge: {
 					Asphodene: {
+						Name: Desert Scourge Dialogue
+						Description: ""
 						1: You've defeated that evil serpent. I do wonder, though... Where did it come from?
-						2: Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
-						2.E: Angry
+
+						2: {
+							$parentVal: Looking closely, it seems to have been an aquatic monster.. once upon a time. So.. why was it in the desert?
+							E: Angry
+						}
+
 						3: This world's secrets are still a mystery to us. Anyway, good job regardless.
 					}
 
 					Eridani: {
+						Name: Desert Scourge Dialogue
+						Description: ""
 						1: You've bested the scourge of the sands. As for its origin, your guess is as good as mine. However...
 						2: It definitely was not made for tunneling. Instead, I'd postulate it was originally an aquatic beast. So.. what was it doing here? This world still holds many secrets...
 						3: Anywho... you fought bravely. I believe the loot will serve us well.
@@ -1257,27 +1544,43 @@ Mods: {
 
 				Crabulon: {
 					Asphodene: {
+						Name: Crabulon Dialogue
+						Description: ""
 						1: Okay.. so that just happened. Now that I've got a better look at the corpse of this mushroom crab thing, the truth is revealed- and it's not pretty.
-						2: It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
-						2.E: Angry
+
+						2: {
+							$parentVal: It looks like the fungus have reanimated the crab's corpse, and paraded it around like a marionette. That's.. disgusting.
+							E: Angry
+						}
+
 						3: Whatever. No need to dawdle on that not-so-fun-fact. It's dead! Good job on that, by the way.
 					}
 
 					Eridani: {
+						Name: Crabulon Dialogue
+						Description: ""
 						1: Crabulon is no more. When I first laid eyes on it, I assumed it was some sort of mutated sea beast, akin to the Desert Scourge.
-						2: However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
-						2.E: Angry
+
+						2: {
+							$parentVal: However... the reality is much more sinister. It looks to me as if parasitic mushrooms were using this giant crab as a host to feed themselves more efficiently.
+							E: Angry
+						}
+
 						3: Now that I'm reflecting on it, I feel sick. Thanks for putting an end to it.
 					}
 				}
 
 				HiveMind: {
 					Asphodene: {
+						Name: HiveMind Dialogue
+						Description: ""
 						1: The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
 						2: That's about it for now.
 					}
 
 					Eridani: {
+						Name: HiveMind Dialogue
+						Description: ""
 						1: You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
 						2: Let's keep on the lookout for any more threats the Corruption bears.
 					}
@@ -1285,32 +1588,53 @@ Mods: {
 
 				Perforators: {
 					Asphodene: {
+						Name: Perforators Dialogue
+						Description: ""
 						1: You've bested the Perforator Hive. I wonder what causes the Crimson to coalese its evil in the form of spongy, fleshy monsters.
-						2: It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
-						2.E: Angry
 
+						2: {
+							$parentVal: It hungered for pure soil, no doubt wanting to spread the world's evil further. Of course, it isn't doing any of that anymore.
+							E: Angry
+						}
 					}
 
 					Eridani: {
+						Name: Perforators Dialogue
+						Description: ""
 						1: You've beat the Perforator Hive, and those abhorrent worms that joined it in combat. I'm not sure, but seeing fleshy things seriously makes my skin crawl.
-						2: Well, everything living is made of flesh. Ugh, you know what I mean...
-						2.E: Angry
 
+						2: {
+							$parentVal: Well, everything living is made of flesh. Ugh, you know what I mean...
+							E: Angry
+						}
 					}
 				}
 
 				SlimeGod: {
 					Asphodene: {
+						Name: SlimeGod Dialogue
+						Description: ""
 						1: The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
-						2: I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them.
-						2.E: Angry
-						3: Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
-						3.E: Smug
-						4: In a few centuries or so... Ugh.
-						4.E: Worried
+
+						2: {
+							$parentVal: I'm glad we've defeated it, but I seriously doubt this defeat means the end of all slimes. Sadly, there's just.. so many of them.
+							E: Angry
+						}
+
+						3: {
+							$parentVal: Wait a second.. Why am I worried? They explode in like three seconds! I mean, if we keep killing them, they'll go extinct!
+							E: Smug
+						}
+
+						4: {
+							$parentVal: In a few centuries or so... Ugh.
+							E: Worried
+						}
 					}
 
 					Eridani: {
+						Name: SlimeGod Dialogue
+						Description: ""
 						1: Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
 						2: I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
 						3: It couldn't be a bad way to pass the time, though. Maybe I'll do some light reading.
@@ -1319,72 +1643,126 @@ Mods: {
 
 				Cryogen: {
 					Asphodene: {
+						Name: Cryogen Dialogue
+						Description: ""
 						1: You've defeated Cryogen! And.. it turns out, 'Cryogen' was a prison for this Archmage fellow.
-						2: From what he can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
-						2.E: Angry
-						3: Whoever they are, it seems they've caused this world no shortage of troubles.
-						3.E: Angry
+
+						2: {
+							$parentVal: From what he can tell us, it seems he was imprisoned in Cryogen by the Jungle Tyrant Yharim. If I recall correctly, we've heard about him before.
+							E: Angry
+						}
+
+						3: {
+							$parentVal: Whoever they are, it seems they've caused this world no shortage of troubles.
+							E: Angry
+						}
 					}
 
 					Eridani: {
+						Name: Cryogen Dialogue
+						Description: ""
 						1: Cryogen has been slain. And out from its corpse arrives this Archmage sort. From what he has to say, he was trapped there by an evil king...
-						2: Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for many of this world's ailments.
-						2.E: Angry
+
+						2: {
+							$parentVal: Yharim, the Jungle Tyrant. Their reputation precedes them.. I have a feeling that they've been the source for many of this world's ailments.
+							E: Angry
+						}
+
 						3: We must endeavor to unravel more of this story. I trust you're in agreement.
 					}
 				}
 
 				AquaticScourge: {
 					Asphodene: {
-						1: The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
-						1.E: Angry
-						2: The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We shouldn't let these misdeeds carry on.
-						2.E: Angry
+						Name: AquaticScourge Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: The Aquatic Scourge is no more, huh? So my hypothesis was correct; the Desert Scourge was displaced and dried... and we just fought its ancestor.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: The Sea King told us of what transpired. Yharim's forces are powerful indeed.. We shouldn't let these misdeeds carry on.
+							E: Angry
+						}
 					}
 
 					Eridani: {
-						1: The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
-						1.E: Angry
-						2: From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
-						2.E: Angry
+						Name: AquaticScourge Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: The Aquatic Scourge is defeated. So this is what the Desert Scourge could have been, had the ocean not been reduced to a desert.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: From what the Sea King tells us, that was another one of Yharim's doings. They bring destruction wherever they roam... We must put an end to them.
+							E: Angry
+						}
 					}
 				}
 
 				BrimstoneElemental: {
 					Asphodene: {
+						Name: BrimstoneElemental Dialogue
+						Description: ""
 						1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before it was destroyed.
-						2: Whoever did this must be a fearsome foe, indeed. While I do like a challenge, there's no beating around the bush: we have to get stronger.
-						2.E: Angry
+
+						2: {
+							$parentVal: Whoever did this must be a fearsome foe, indeed. While I do like a challenge, there's no beating around the bush: we have to get stronger.
+							E: Angry
+						}
 					}
 
 					Eridani: {
+						Name: BrimstoneElemental Dialogue
+						Description: ""
 						1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
-						2: Whatever caused this destruction has to be stopped... but we must get stronger to do so.
-						2.E: Angry
+
+						2: {
+							$parentVal: Whatever caused this destruction has to be stopped... but we must get stronger to do so.
+							E: Angry
+						}
 					}
 				}
 
 				Calamitas: {
 					Asphodene: {
+						Name: Calamitas Clone Dialogue
+						Description: ""
 						1: ...Calamitas is no more. Or, so we thought. What we faced was naught but a replica of the real thing. Even so, it was an incredibly powerful foe.
-						2: We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..?
-						2.E: Angry
+
+						2: {
+							$parentVal: We must endeavor to get stronger. We have to! With things like this roaming the world, who else can stop them..?
+							E: Angry
+						}
 					}
 
 					Eridani: {
+						Name: Calamitas Clone Dialogue
+						Description: ""
 						1: We've defeated Calamitas... but.. It was naught but a clone of the real foe. Even as a duplicate, it stood as one of our toughest challenges yet.
-						2: Who knows what the real thing can do.. We have to become stronger.
-						2.E: Angry
+
+						2: {
+							$parentVal: Who knows what the real thing can do.. We have to become stronger.
+							E: Angry
+						}
 					}
 				}
 
 				Leviathan: {
 					Asphodene: {
+						Name: Leviathan Dialogue
+						Description: ""
 						1: Finally, we've bested Anahita and her Leviathan. What a thrilling battle... You've fought bravely, even when the fight looked insurmountable.
 						2: Hopefully, what we've obtained from their remains shall help us in the future. Man, we're on a roll!
 					}
 
 					Eridani: {
+						Name: Leviathan Dialogue
+						Description: ""
 						1: You've defeated the Leviathan and Anahita. A battle well fought- when the Leviathan appeared, I feared the worst.
 						2: I'll try not to doubt you in the future. After all, you've got my help.
 						3: I am helping, right? Right...
@@ -1393,12 +1771,20 @@ Mods: {
 
 				AstrumAureus: {
 					Asphodene: {
-						1: We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
-						1.E: Angry
+						Name: AstrumAureus Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: We've done in Astrum Aureus. It's a good reminder that the Astral Infection consumes indiscriminately. Even modern mechanics aren't safe from it.
+							E: Angry
+						}
+
 						2: Even so, it's solid proof that we're getting stronger. Can you imagine fighting that right after we fought Skeletron? Exactly!
 					}
 
 					Eridani: {
+						Name: AstrumAureus Dialogue
+						Description: ""
 						1: That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
 						2: The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that.
 					}
@@ -1406,52 +1792,96 @@ Mods: {
 
 				PlaguebringerGoliath: {
 					Asphodene: {
+						Name: PlaguebringerGoliath Dialogue
+						Description: ""
 						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
-
 						2: Well, what can you do. There's people like us here to take care of that part.
 					}
 
 					Eridani: {
-						1: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
-						1.E: Angry
-						2: Bugs, bugs..  They continue to rear their ugly heads wherever I look..!
-						2.E: Angry
+						Name: PlaguebringerGoliath Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: Seriously.. what's with the Jungle? At least the Plaguebringer Goliath is dead. Even so, I can't shake it out of my mind. I can't handle bugs, like.. at all.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: Bugs, bugs..  They continue to rear their ugly heads wherever I look..!
+							E: Angry
+						}
+
 						3: Let's just move on. Good job defeating that foe.
 					}
 				}
 
 				Ravager: {
 					Asphodene: {
-						1: The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
-						1.E: Angry
-						2: At the very least, we could finally stop it. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
-						2.E: Angry
+						Name: Ravager Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: The Ravager is gone from this world. It was concieved in retaliation against the conquests of the Jungle Tyrant, but it evidently did little in that regard.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: At the very least, we could finally stop it. If this is what humans were led to, what truly happened all those years ago that could lead to such desperation?
+							E: Angry
+						}
 					}
 
 					Eridani: {
-						1: We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
-						1.E: Angry
-						2: Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
-						2.E: Angry
+						Name: Ravager Dialogue
+						Description: ""
+
+						1: {
+							$parentVal: We've defeated the Ravager. Once upon a time, it served as a grim last resort employed against the Jungle Tyrant. Now it can finally rest.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: Even in death, it stalked without purpose. I'm glad we bested it, but its existence does nothing but give credence to the tales of Yharim's overwhelming might.
+							E: Angry
+						}
 					}
 				}
 
 				AstrumDeus: {
 					Asphodene: {
+						Name: AstrumDeus Dialogue
+						Description: ""
 						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of myriad cosmic beings with lots of power. Etymology around these things is hard, so let's just call it a god.
-						2: However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
-						2.E: Angry
-						3: Let's return to what I said earlier. Astrum Deus was something akin to a god. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
-						3.E: Angry
+
+						2: {
+							$parentVal: However... Astrum Deus can regenerate itself. Through assimilating life around its corpse, it can eventually return to the cosmos. It's kin to the story of the ouroboros.
+							E: Angry
+						}
+
+						3: {
+							$parentVal: Let's return to what I said earlier. Astrum Deus was something akin to a god. What we fought was much weaker. What in the world was able to defeat a deity of that caliber?
+							E: Angry
+						}
+
 						4: This was a well fought victory... Even so, stay vigilant. I have a feeling our culprit is closer than we think.
 					}
 
 					Eridani: {
+						Name: AstrumDeus Dialogue
+						Description: ""
 						1: Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share...
-						2: Astrum Deus is one of many cosmic deities. Knowledge states that it can assimilate life near its corpse to regenerate itself.
-						2.E: Angry
-						3: So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
-						3.E: Angry
+
+						2: {
+							$parentVal: Astrum Deus is one of many cosmic deities. Knowledge states that it can assimilate life near its corpse to regenerate itself.
+							E: Angry
+						}
+
+						3: {
+							$parentVal: So, that begs the question.. What could be walking this mortal plane able to befall an actual, literal god? What we fought was but a child in comparison.
+							E: Angry
+						}
+
 						4: Let's shelve that train of thought. While I have my fears, this is our victory. Congratulations.
 					}
 				}
@@ -1459,110 +1889,241 @@ Mods: {
 
 			BossItemDialogue: {
 				VagrantAsphodene: {
+					Name: Shattered Disk Item Dialogue
+					Description: Grants a boss summoning item
 					1: Hang on- I have something you might be interested in. I can't recall how I came across it, but...
-					2: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
-					2.E: Worried
+
+					2: {
+						$parentVal: It feels like I should know what it is, but I just can't- kind of like it's stopping me from doing so.
+						E: Worried
+					}
+
 					3: At least that tells me one thing- it's important! I'd prefer you examine it as soon as you are able. No pressure. Okay, a little pressure.
 				}
 
 				VagrantEridani: {
+					Name: Shattered Disk Item Dialogue
+					Description: Grants a boss summoning item
 					1: Hold on a moment. I neglected to bring this up before, but I have something for you... Perhaps you can help me determine its origin.
 					2: It looks so familiar, and yet something's stopping me from placing its identity- how vexing. I can't even recall when I acquired it.
-					3: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
-					3.E: Happy
+
+					3: {
+						$parentVal: They say encountering obstacles means you're heading in the right direction. Let's take a closer look as soon as possible.
+						E: Happy
+					}
+
 					4: Who is 'they' you ask? Well, I never quite figured that one out.
 				}
 
 				Nalhaun: {
-					1: We meet again, {0}. Again, I have another foe for you to defeat.
-					1.E: PerseusNeutral
-					2: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
-					2.E: PerseusNeutral
-					3: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
-					3.E: PerseusNeutral
-					4: Prepare yourself: this fight will not be easy.
-					4.E: PerseusNeutral
+					Name: Burnished Crown Dialogue
+					Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: We meet again, {0}. Again, I have another foe for you to defeat.
+						E: PerseusNeutral
+					}
+
+					2: {
+						$parentVal: I've given you the 'Ancient Crown.' With it, you can call forth a powerful foe, the Burnished King.
+						E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: If my hypothesis is correct, his defeat will resonate a clue towards the First Starbearer's location.
+						E: PerseusNeutral
+					}
+
+					4: {
+						$parentVal: Prepare yourself: this fight will not be easy.
+						E: PerseusNeutral
+					}
 				}
 
 				Penth: {
-					1: We meet again, {0}. Again, I need your assistance.
-					1.E: PerseusNeutral
-					2: This is the 'Unsullied Canvas.' It will draw the Witch of Ink out of hiding.
-					2.E: PerseusNeutral
-					3: This is another important step in the pursuit of the the First Starbearer.
-					3.E: PerseusNeutral
-					4: Please prepare yourself. This will be a hard fight.
-					4.E: PerseusNeutral
+					Name: Unsullied Canvas Dialogue
+					Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: We meet again, {0}. Again, I need your assistance.
+						E: PerseusNeutral
+					}
+
+					2: {
+						$parentVal: This is the 'Unsullied Canvas.' It will draw the Witch of Ink out of hiding.
+						E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: This is another important step in the pursuit of the the First Starbearer.
+						E: PerseusNeutral
+					}
+
+					4: {
+						$parentVal: Please prepare yourself. This will be a hard fight.
+						E: PerseusNeutral
+					}
 				}
 
 				Dioskouroi: {
-					1: We meet again, {0}. I need your help.
-					1.E: PerseusNeutral
-					2: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
-					2.E: PerseusNeutral
-					3: This foe was once bested by the First Starbearer. My hope is that by studying your conflict with this simulacrum, we may yet find clues to his location.
-					3.E: PerseusNeutral
-					4: Prepare yourself well.
-					4.E: PerseusNeutral
+					Name: Twincrux Pendant Dialogue
+					Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: We meet again, {0}. I need your help.
+						E: PerseusNeutral
+					}
+
+					2: {
+						$parentVal: This is the 'Twincrux Pendant.' When used, it will call forth powerful warring demons.
+						E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: This foe was once bested by the First Starbearer. My hope is that by studying your conflict with this simulacrum, we may yet find clues to his location.
+						E: PerseusNeutral
+					}
+
+					4: {
+						$parentVal: Prepare yourself well.
+						E: PerseusNeutral
+					}
 				}
 
 				WarriorAsphodene: {
-					1: Something's really wrong with the sky... What could be going on...?
-					1.E: Worried
-					2: The answer you seek isn't the answer you are hoping for.
-					2.E: PerseusNeutral
-					3: Wh-
-					3.E: Worried
-					4: Let me finish, Asphodene- Time is of the essence. The First Starbearer has descended on this world.
-					4.E: PerseusNeutral
-					5: Are you kidding me? After all that searching we did, he just waltzes up to us?
-					5.E: Angry
-					6: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
-					6.E: PerseusNeutral
+					Name: Warrior of Light Precursor Dialogue
+					Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: Something's really wrong with the sky... What could be going on...?
+						E: Worried
+					}
+
+					2: {
+						$parentVal: The answer you seek isn't the answer you are hoping for.
+						E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Wh-
+						E: Worried
+					}
+
+					4: {
+						$parentVal: Let me finish, Asphodene- Time is of the essence. The First Starbearer has descended on this world.
+						E: PerseusNeutral
+					}
+
+					5: {
+						$parentVal: Are you kidding me? After all that searching we did, he just waltzes up to us?
+						E: Angry
+					}
+
+					6: {
+						$parentVal: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
+						E: PerseusNeutral
+					}
+
 					7: Yeah, we could tell. So... I assume you have a plan, or something?
-					8: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
-					8.E: PerseusNeutral
-					9: If you have resources that require the night to acquire, I implore you acquire them soon.
-					9.E: PerseusNeutral
-					10: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
-					10.E: PerseusNeutral
-					11: Use it only if you are prepared. The stakes have never been higher.
-					11.E: PerseusNeutral
-					12: ...
-					12.E: Angry
+
+					8: {
+						$parentVal: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
+						E: PerseusNeutral
+					}
+
+					9: {
+						$parentVal: If you have resources that require the night to acquire, I implore you acquire them soon.
+						E: PerseusNeutral
+					}
+
+					10: {
+						$parentVal: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
+						E: PerseusNeutral
+					}
+
+					11: {
+						$parentVal: Use it only if you are prepared. The stakes have never been higher.
+						E: PerseusNeutral
+					}
+
+					12: {
+						$parentVal: ...
+						E: Angry
+					}
 				}
 
 				WarriorEridani: {
-					1: You can see it too, right? The sky is abnormally bright.
-					1.E: Worried
-					2: The answer you seek isn't the answer you are hoping for.
-					2.E: PerseusNeutral
-					3: Perseus. I-
-					3.E: Angry
-					4: Let me finish, Eridani- Time is of the essence. The First Starbearer has descended on this world.
-					4.E: PerseusNeutral
-					5: We were searching for him for so long- why has he come to us instead?
-					5.E: Thinking
-					6: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
-					6.E: PerseusNeutral
-					7: That makes sense, albeit in a way that makes us seem at fault... Anyways, do you have some sort of plan?
-					7.E: Worried
-					8: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
-					8.E: PerseusNeutral
-					9: If you have resources that require the night to acquire, I implore you acquire them soon.
-					9.E: PerseusNeutral
-					10: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
-					10.E: PerseusNeutral
-					11: Use it only if you are prepared. The stakes have never been higher.
-					11.E: PerseusNeutral
-					12: ...
-					12.E: Worried
+					Name: Warrior of Light Precursor Dialogue
+					Description: Grants a boss summoning item
+
+					1: {
+						$parentVal: You can see it too, right? The sky is abnormally bright.
+						E: Worried
+					}
+
+					2: {
+						$parentVal: The answer you seek isn't the answer you are hoping for.
+						E: PerseusNeutral
+					}
+
+					3: {
+						$parentVal: Perseus. I-
+						E: Angry
+					}
+
+					4: {
+						$parentVal: Let me finish, Eridani- Time is of the essence. The First Starbearer has descended on this world.
+						E: PerseusNeutral
+					}
+
+					5: {
+						$parentVal: We were searching for him for so long- why has he come to us instead?
+						E: Thinking
+					}
+
+					6: {
+						$parentVal: He must have noticed your defeat of the Moon Lord- an eldritch beast such as it does not fall lightly.
+						E: PerseusNeutral
+					}
+
+					7: {
+						$parentVal: That makes sense, albeit in a way that makes us seem at fault... Anyways, do you have some sort of plan?
+						E: Worried
+					}
+
+					8: {
+						$parentVal: From what I can derive, there's only a few more days until his grip over this world reaches its peak.
+						E: PerseusNeutral
+					}
+
+					9: {
+						$parentVal: If you have resources that require the night to acquire, I implore you acquire them soon.
+						E: PerseusNeutral
+					}
+
+					10: {
+						$parentVal: I've given you an artifact from his homeworld; while I know not its purpose, I believe it will hasten his arrival.
+						E: PerseusNeutral
+					}
+
+					11: {
+						$parentVal: Use it only if you are prepared. The stakes have never been higher.
+						E: PerseusNeutral
+					}
+
+					12: {
+						$parentVal: ...
+						E: Worried
+					}
 				}
 			}
 
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
+						Name: Idle dialogue
+						Description: ""
+
 						1: {
 							$parentVal: My sister likely despises the undead rising every night.
 							E: Happy
@@ -1580,6 +2141,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue
+						Description: ""
+
 						1: {
 							$parentVal: Those disgusting creatures rising from the earth every night...
 							E: Worried
@@ -1600,12 +2164,20 @@ Mods: {
 				NormalIdleDialogue3: {
 					Asphodene: {
 						1: Honestly, I prefer the flashy weapons. A little 'extra' never hurt anyone.
-						2: Unless you were on the receiving end.
+
+						2: {
+							$parentVal: Unless you were on the receiving end.
+							E: Smug
+						}
 					}
 
 					Eridani: {
 						1: Weapon looks? They matter, but utility far outweighs cosmetic value.
-						2: Sometimes, though... The choice is difficult. You get what I mean, right?
+
+						2: {
+							$parentVal: Sometimes, though... The choice is difficult. You get what I mean, right?
+							E: Worried
+						}
 					}
 				}
 
@@ -1649,35 +2221,48 @@ Mods: {
 						1: I have this idea about a weapon, {0}.
 						2: Wait.
 						3: Uh.. Never mind. Forget I said anything.
-						4: It would be far too large, to boot. And then there's the whole heating problem...
+
+						4: {
+							$parentVal: It would be far too large, to boot. And then there's the whole heating problem...
+							E: Worried
+						}
 					}
 
 					Eridani: {
 						1: So, there's this weapon idea I was thinking of, {0}.
 						2: Wait.. Actually.. Forget it. Never mind.
-						3: Even if we got past the energy cost, we'd have to deal with the weight...
+
+						3: {
+							$parentVal: Even if we got past the energy cost, we'd have to deal with the weight...
+							E: Worried
+						}
 					}
 				}
 
 				NormalIdleDialogue8: {
 					Asphodene: {
-						1: Aren't some of these townspeople kind of awful?
-						2: Everything costs so much! And they all have a monopoly!!
+						1: {
+							$parentVal: Aren't some of these townspeople kind of awful?
+							E: Worried
+						}
+
+						2: {
+							$parentVal: Everything costs so much! And they all have a monopoly!!
+							E: Angry
+						}
 					}
 
 					Eridani: {
-						1: These merchants are definitely upselling their wares for far too much!
-						2: Do you think they'd notice if we shortchanged them, just a little? We shouldn't do that? I know... I know.
-					}
-				}
+						1: {
+							$parentVal: These merchants are definitely upselling their wares for far too much!
+							E: Angry
+						}
 
-				NormalIdleDialogue9: {
-					Asphodene: {
-						1: Don't forget about the Stellar Array!
-						2: It would be a shame if you did. I made it for you, after all.
+						2: {
+							$parentVal: Do you think they'd notice if we shortchanged them, just a little? We shouldn't do that? I know... I know.
+							E: Worried
+						}
 					}
-
-					Eridani.1: Have you been utilizing the Stellar Array?
 				}
 
 				HardIdleDialogue1: {
@@ -1695,18 +2280,8 @@ Mods: {
 				}
 
 				HardIdleDialogue2: {
-					Asphodene: {
-						1: Hmm. Maybe I should think of cooler lines to say when I use the Stellar Nova?
-						2: I feel like I'm missing something important..
-						3: Ah well. No use worrying about what you can't solve, right?
-					}
-
-					Eridani: {
-						1: Using the Stellar Novas is rather tiring.
-						2: There's a lot of stories about heroes borrowing powers from others, but they never tell you how hard it is on the other side...
-						3: I feel like I'm missing something important..
-						4: It's bothering me, but.. It doesn't look like we can solve it now.
-					}
+					Asphodene.1: Hmm. Maybe I should think of cooler lines to say when I use the Stellar Nova?
+					Eridani.1: There's a lot of stories about heroes borrowing powers from others, but they never tell you how hard it is on the other side...
 				}
 
 				HardIdleDialogue3: {
@@ -1717,13 +2292,26 @@ Mods: {
 				HardIdleDialogue4: {
 					Asphodene: {
 						1: I'm liking your outfit! I guess we do think alike.
-						2: Maybe lose the shoes.
+
+						2: {
+							$parentVal: Maybe lose the shoes.
+							E: Worried
+						}
 					}
 
 					Eridani: {
 						1: Is your armor up to par? Looks-wise, it's... passable.
-						2: Um, I'll pre-emptively say this: Say anything about my outfit and..
-						3: I'll probably cry.
+
+						2: {
+							$parentVal: Um, I'll pre-emptively say this: Say anything about my outfit and..
+							E: Angry
+						}
+
+						3: {
+							$parentVal: I'll probably cry.
+							E: Worried
+						}
+
 						4: What? It's the truth.
 					}
 				}
@@ -1736,21 +2324,38 @@ Mods: {
 				HardIdleDialogue6: {
 					Asphodene: {
 						1: You're getting pretty strong! Think you can beat me in a fight?
-						2: That was a joke. You probably could.
+
+						2: {
+							$parentVal: That was a joke. You probably could.
+							E: DeadInside
+						}
 					}
 
 					Eridani: {
 						1: You just keep getting stronger, huh? I'll have to work harder to keep up.
-						2: Or not. Theoretically, if we fought, I'd probably win. Don't you think?
+
+						2: {
+							$parentVal: Or not. Theoretically, if we fought, I'd probably win. Don't you think?
+							E: Smug
+						}
+
 						3: Don't get any funny ideas, though. We're decidedly on the same team.
-						4: (I wonder if they caught my bluff.)
+
+						4: {
+							$parentVal: (I wonder if they caught my bluff.)
+							E: Worried
+						}
 					}
 				}
 
 				HardIdleDialogue7: {
 					Asphodene: {
 						1: I can barely imagine where some of these monsters have come from.
-						2: Some lich somewhere ate a few bad mushrooms and just went to town, huh? Or maybe a portal to a dimension of primordial soup?
+
+						2: {
+							E: Thinking
+							$parentVal: Some lich somewhere ate a few bad mushrooms and just went to town, huh? Or maybe a portal to a dimension of primordial soup?
+						}
 					}
 
 					Eridani.1: Whoever keeps coming up with these foes has no shortage of imagination..
@@ -1758,12 +2363,23 @@ Mods: {
 
 				HardIdleDialogue8: {
 					Asphodene: {
-						1: Okay, theoretically, because I can resurrect you from the brink of death at your bed...
-						2: What if- hear me out- we tied the bed to you. Boom, invincibility! Right? Right...
+						1: {
+							$parentVal: Okay, theoretically, because I can resurrect you from the brink of death at your bed...
+							E: Thinking
+						}
+
+						2: {
+							$parentVal: What if- hear me out- we tied the bed to you. Boom, invincibility! Right? Right...
+							E: Happy
+						}
 					}
 
 					Eridani: {
-						1: Have you ever tried... using two weapons at once? Like, one weapon in each hand?
+						1: {
+							$parentVal: Have you ever tried... using two weapons at once? Like, one weapon in each hand?
+							E: Thinking
+						}
+
 						2: You spend so much time in the air, your feet are open. Maybe we could quadruple our damage ou- It would be too difficult? I see. I guess I knew that.
 					}
 				}
@@ -1784,40 +2400,87 @@ Mods: {
 				HardIdleDialogue10: {
 					Asphodene: {
 						1: From looking at her, you probably get the impression that Eridani is a bit of a "honor student" type, right?
-						2: Think again! She does whatever the heck she wants most of the time. Luckily she still has her moral compass, or I'd set her straight!
+
+						2: {
+							$parentVal: Think again! She does whatever the heck she wants most of the time. Luckily she still has her moral compass, or I'd set her straight!
+							E: Smug
+						}
 					}
 
 					Eridani: {
-						1: Asphodene is technically the older one... but I bet you couldn't tell.
+						1: {
+							$parentVal: Asphodene is technically the older one... but I bet you couldn't tell.
+							E: Thinking
+						}
+
 						2: She has that sort of air about her. No, I wouldn't say childlike- more like... chaotic? Yes, chaotic.
 					}
 				}
 
 				HardIdleDialogue11: {
 					Asphodene: {
-						1: What I like? Waking up when I want to! Yes, I'd say that nears the top of the list.
-						2: Okay, it's a little vapid of me. I like fresh fruit too, is that better?
+						1: {
+							$parentVal: What I like? Waking up when I want to! Yes, I'd say that nears the top of the list.
+							E: Happy
+						}
+
+						2: {
+							$parentVal: Okay, it's a little vapid of me. I like fresh fruit too, is that better?
+							E: Thinking
+						}
+
 						3: Oh, oh- magical food is the best. Once you've tried some, things aren't the same.
-						4: Travelling is a blast, as well- if your heart doesn't flutter upon visiting new vistas, are you even alive?
+
+						4: {
+							$parentVal: Travelling is a blast, as well- if your heart doesn't flutter upon visiting new vistas, are you even alive?
+							E: Happy
+						}
 					}
 
 					Eridani: {
-						1: Things that I like? Are you asking about banal things, or... Okay.
+						1: {
+							$parentVal: Things that I like? Are you asking about banal things, or... Okay.
+							E: Thinking
+						}
+
 						2: Well, I do enjoy the night air. Surrounded by life and noise, yet everything's still. Right, tranquility and silence.
-						3: If you're looking for something more material, well... I concede, I have a bit of a sweet tooth.
+
+						3: {
+							$parentVal: If you're looking for something more material, well... I concede, I have a bit of a sweet tooth.
+							E: Happy
+						}
 					}
 				}
 
 				HardIdleDialogue12: {
 					Asphodene: {
-						1: Things that I dislike? Let's see...
-						2: I hate being weak, but being too strong makes things boring, which isn't what I want either. You get it, right?
-						3: Oh, I also really don't like being sick, but who does?
+						1: {
+							$parentVal: Things that I dislike? Let's see...
+							E: Thinking
+						}
+
+						2: {
+							$parentVal: I hate being weak, but being too strong makes things boring, which isn't what I want either. You get it, right?
+							E: Worried
+						}
+
+						3: {
+							$parentVal: Oh, I also really don't like being sick, but who does?
+							E: Angry
+						}
 					}
 
 					Eridani: {
-						1: What I dislike? Other than bugs... Okay, may I vent a little?
-						2: There are times when you start something, get really, really close to finishing, and then it all blows up in your face. And then-
+						1: {
+							$parentVal: What I dislike? Other than bugs... Okay, may I vent a little?
+							E: Thinking
+						}
+
+						2: {
+							$parentVal: There are times when you start something, get really, really close to finishing, and then it all blows up in your face. And then-
+							E: Worried
+						}
+
 						3: The second time around, you only get a third of the way through before it gets all messed up again. I can't think of anything more demoralizing...
 					}
 				}
@@ -1825,13 +2488,26 @@ Mods: {
 				HardIdleDialogue13: {
 					Asphodene: {
 						1: My hobbies, huh. Well, I collect knicknacks from the places I visit. That's cool, right?
-						2: I also, uh, try to create new weapons. Most of them are a little volatile, but I am getting better!
-						3: I also play the piano! Not great, but... It's a step by step process. When I mean step by step, I really mean it.
+
+						2: {
+							$parentVal: I also, uh, try to create new weapons. Most of them are a little volatile, but I am getting better!
+							E: Thinking
+						}
+
+						3: {
+							$parentVal: I also play the piano! Not great, but... It's a step by step process. When I mean step by step, I really mean it.
+							E: Happy
+						}
 					}
 
 					Eridani: {
 						1: Hobbies? Well, the biggest thing I can think of is alchemy. Yes, alchemy has been solved- if you think on a planetary scale.
-						2: Mix fundamentals from even two different planets with epochs of divergent history, things start getting quite messy.
+
+						2: {
+							$parentVal: Mix fundamentals from even two different planets with epochs of divergent history, things start getting quite messy.
+							E: Happy
+						}
+
 						3: Sure, it's overwhelming- that's why it's a hobby, and not anything more. I'm no genius, but it is quite enjoyable.
 					}
 				}
@@ -1839,24 +2515,46 @@ Mods: {
 				HardIdleDialogue14: {
 					Asphodene: {
 						1: Truly... The Hallowed is just a big facade.
-						2: For such a pretty biome, it REALLY wants to kill you.
+
+						2: {
+							$parentVal: For such a pretty biome, it REALLY wants to kill you.
+							E: Worried
+						}
 					}
 
 					Eridani: {
 						1: Strip away the Hallowed's mask, and it may even be harsher than the Underworld itself.
-						2: If you're off to farm Souls, stay safe. Even the best can can be caught off-guard.
+
+						2: {
+							$parentVal: If you're off to farm Souls, stay safe. Even the best can can be caught off-guard.
+							E: Angry
+						}
 					}
 				}
 
 				LightIdleDialogue: {
 					Asphodene: {
-						1: This endless light is awful... There must be some way to stop it.
-						2: Perseus told us to use the 'Progenitor's Wish.' Perhaps it holds the key?
+						1: {
+							$parentVal: This endless light is awful... There must be some way to stop it.
+							E: Angry
+						}
+
+						2: {
+							$parentVal: Perseus told us to use the 'Progenitor's Wish.' Perhaps it holds the key?
+							E: Worried
+						}
 					}
 
 					Eridani: {
-						1: This everlasting light is dreadful...
-						2: Perseus gave us the 'Progenitor's Wish.' I feel that it may hold the key to solving this mystery.
+						1: {
+							$parentVal: This everlasting light is dreadful...
+							E: Angry
+						}
+
+						2: {
+							$parentVal: Perseus gave us the 'Progenitor's Wish.' I feel that it may hold the key to solving this mystery.
+							E: Angry
+						}
 					}
 				}
 			}

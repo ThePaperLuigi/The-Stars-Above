@@ -7,7 +7,7 @@
 	 * */
 
 
-    public class IdleArchiveListing
+    public class ArchiveListing
     {
         private string name;
         private string listInfo;
@@ -15,7 +15,7 @@
         private int dialogueID;
         private string unlockConditions;
 
-        public IdleArchiveListing(string name, string listInfo, bool viewable, int dialogueID, string unlockConditions)
+        public ArchiveListing(string name, string listInfo, bool viewable, int dialogueID, string unlockConditions)
         {
             this.name = name;
             this.listInfo = listInfo;
@@ -58,210 +58,8 @@
 
     }
 
-    public class BossArchiveListing
-    {
-        private string name;
-        private string listInfo;
-        private bool viewable;
-        private int dialogueID;
-        private string unlockConditions;
 
-
-        public BossArchiveListing(string name, string listInfo, bool viewable, int dialogueID, string unlockConditions)
-        {
-            this.name = name;
-            this.listInfo = listInfo;
-            this.viewable = viewable;
-            this.dialogueID = dialogueID;
-            this.unlockConditions = unlockConditions;
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string ListInformation
-        {
-            get { return listInfo; }
-            set { listInfo = value; }
-        }
-        public bool IsViewable
-        {
-            get { return viewable; }
-            set { viewable = value; }
-        }
-        public int DialogueID
-        {
-            get { return dialogueID; }
-            set { dialogueID = value; }
-        }
-
-        public string UnlockConditions
-        {
-            get { return unlockConditions; }
-            set { unlockConditions = value; }
-        }
-
-
-
-
-
-    }
-    public class BossArchiveListingCalamity
-    {
-        private string name;
-        private string listInfo;
-        private bool viewable;
-        private int dialogueID;
-        private string unlockConditions;
-
-        public BossArchiveListingCalamity(string name, string listInfo, bool viewable, int dialogueID, string unlockConditions)
-        {
-            this.name = name;
-            this.listInfo = listInfo;
-            this.viewable = viewable;
-            this.dialogueID = dialogueID;
-            this.unlockConditions = unlockConditions;
-
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string ListInformation
-        {
-            get { return listInfo; }
-            set { listInfo = value; }
-        }
-        public bool IsViewable
-        {
-            get { return viewable; }
-            set { viewable = value; }
-        }
-        public int DialogueID
-        {
-            get { return dialogueID; }
-            set { dialogueID = value; }
-        }
-
-        public string UnlockConditions
-        {
-            get { return unlockConditions; }
-            set { unlockConditions = value; }
-        }
-
-
-
-
-
-    }
-    public class WeaponArchiveListing
-    {
-        private string name;
-        private string listInfo;
-        private bool viewable;
-        private int dialogueID;
-        private string unlockConditions;
-
-        public WeaponArchiveListing(string name, string listInfo, bool viewable, int dialogueID, string unlockConditions)
-        {
-            this.name = name;
-            this.listInfo = listInfo;
-            this.viewable = viewable;
-            this.dialogueID = dialogueID;
-            this.unlockConditions = unlockConditions;
-
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string ListInformation
-        {
-            get { return listInfo; }
-            set { listInfo = value; }
-        }
-        public bool IsViewable
-        {
-            get { return viewable; }
-            set { viewable = value; }
-        }
-        public int DialogueID
-        {
-            get { return dialogueID; }
-            set { dialogueID = value; }
-        }
-
-        public string UnlockConditions
-        {
-            get { return unlockConditions; }
-            set { unlockConditions = value; }
-        }
-
-
-
-
-
-    }
-    public class VNArchiveListing
-    {
-        private string name;
-        private string listInfo;
-        private bool viewable;
-        private int dialogueID;
-        private string unlockConditions;
-
-        public VNArchiveListing(string name, string listInfo, bool viewable, int dialogueID, string unlockConditions)
-        {
-            this.name = name;
-            this.listInfo = listInfo;
-            this.viewable = viewable;
-            this.dialogueID = dialogueID;
-            this.unlockConditions = unlockConditions;
-
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string ListInformation
-        {
-            get { return listInfo; }
-            set { listInfo = value; }
-        }
-        public bool IsViewable
-        {
-            get { return viewable; }
-            set { viewable = value; }
-        }
-        public int DialogueID
-        {
-            get { return dialogueID; }
-            set { dialogueID = value; }
-        }
-
-        public string UnlockConditions
-        {
-            get { return unlockConditions; }
-            set { unlockConditions = value; }
-        }
-
-
-
-
-
-    }
+    
 }
 
 /*

@@ -48,11 +48,11 @@ namespace StarsAbove.Systems
 
         public bool canViewArchive = false; //Disable viewing the dialogue if it hasn't been unlocked.
 
-        public List<IdleArchiveListing> IdleArchiveList = new List<IdleArchiveListing>();
-        public List<BossArchiveListing> BossArchiveList = new List<BossArchiveListing>();
-        public List<BossArchiveListingCalamity> BossArchiveListCalamity = new List<BossArchiveListingCalamity>();
-        public List<WeaponArchiveListing> WeaponArchiveList = new List<WeaponArchiveListing>();
-        public List<VNArchiveListing> VNArchiveList = new List<VNArchiveListing>();
+        public List<ArchiveListing> IdleArchiveList = new List<ArchiveListing>();
+        public List<ArchiveListing> BossArchiveList = new List<ArchiveListing>();
+        public List<ArchiveListing> BossArchiveListCalamity = new List<ArchiveListing>();
+        public List<ArchiveListing> WeaponArchiveList = new List<ArchiveListing>();
+        public List<ArchiveListing> VNArchiveList = new List<ArchiveListing>();
 
 
         public int IdleArchiveListMax = 2;
@@ -69,337 +69,350 @@ namespace StarsAbove.Systems
             ///
             if (!archivePopulated)
             {
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                       "", //Name of the archive listing.
                       $"", //Description of the listing.
                       false, //Unlock requirements.
                       0,
                       "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
+                      "", //Name of the archive listing.
+                      $"", //Description of the listing.
+                      false, //Unlock requirements.
+                      0,
+                      "")); //Corresponding dialogue ID.
+                WeaponArchiveList.Add(new ArchiveListing(
+                      "", //Name of the archive listing.
+                      $"", //Description of the listing.
+                      false, //Unlock requirements.
+                      0,
+                      "")); //Corresponding dialogue ID.
+                IdleArchiveList.Add(new ArchiveListing(
                LangHelper.GetTextValue($"Archive.DefaultIdleDialogue.Name", Player.name), //Name of the archive listing.
                LangHelper.GetTextValue($"Archive.DefaultIdleDialogue.Description", Player.name), //Description of the listing.
                true, //Unlock requirements.
                2,
                "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                /*
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 1", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        3,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 2", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        4,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 3", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        5,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 4", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        6,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 5", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        7,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 6", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        8,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 7", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        9,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 8", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        10,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 9", //Name of the archive listing.
                        "Pre Hardmode idle dialogue.", //Description of the listing.
                        true, //Unlock requirements.
                        11,
                        "")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 10", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        12,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 11", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        13,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 12", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        14,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 13", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        15,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 14", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        16,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 15", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        17,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 16", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        18,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 17", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        19,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle Conversation 18", //Name of the archive listing.
                        "Hardmode idle dialogue.", //Description of the listing.
                        Main.hardMode, //Unlock requirements.
                        20,
                        "Enter Hardmode")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "'A World Shrouded in Light'", //Name of the archive listing.
                        "Idle dialogue during Light Everlasting.", //Description of the listing.
                        NPC.downedMoonlord, //Unlock requirements.
                        21,
                        "Unlocked after witnessing Light Everlasting for the first time.")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Entering the Observatory", //Name of the archive listing.
                        "Dialogue on the Observatory Hyperborea.", //Description of the listing.
                        player.seenObservatory, //Unlock requirements.
                        22,
                        "Unlocked after entering the Observatory Hyperborea for the first time.")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Explaining Cosmic Voyages", //Name of the archive listing.
                        "An explanation of the mechanics of Cosmic Voyages.", //Description of the listing.
                        player.seenObservatory, //Unlock requirements.
                        24,
                        "Unlocked after entering the Observatory Hyperborea for the first time.")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle in the Observatory", //Name of the archive listing.
                        "Neutral dialogue within the Observatory Hyperborea.", //Description of the listing.
                        player.seenObservatory, //Unlock requirements.
                        23,
                        "Unlocked after entering the Observatory Hyperborea for the first time.")); //Corresponding dialogue ID.
-                IdleArchiveList.Add(new IdleArchiveListing(
+                IdleArchiveList.Add(new ArchiveListing(
                        "Idle in Space", //Name of the archive listing.
                        "Neutral dialogue when on a normal-type Cosmic Voyage. Unused.", //Description of the listing.
                        player.seenObservatory, //Unlock requirements.
                        23,
                        "Unlocked after entering the Observatory Hyperborea for the first time.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                       "", //Name of the archive listing.
                       $"", //Description of the listing.
                       false, //Unlock requirements.
                       0,
                       "")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Slime King Dethroned", //Name of the archive listing.
                        "Unlocked after defeating King Slime.", //Description of the listing.
                        player.slimeDialogue == 2, //Unlock requirements.
                        51,
                        "Defeat King Slime.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Eye of Cthulhu Pierced", //Name of the archive listing.
                        "Unlocked after defeating Eye of Cthulhu.", //Description of the listing.
                        player.eyeDialogue == 2, //Unlock requirements.
                        52,
                        "Defeat Eye of Cthulhu.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Worldly Evil Sanctified", //Name of the archive listing.
                        "Unlocked after defeating the Corruption/Crimson boss.", //Description of the listing.
                        player.corruptBossDialogue == 2, //Unlock requirements.
                        53,
                        "Defeat the world's Corruption/Crimson boss.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Queen Bee Exterminated", //Name of the archive listing.
                        "Unlocked after defeating Queen Bee.", //Description of the listing.
                        player.BeeBossDialogue == 2, //Unlock requirements.
                        54,
                        "Defeat Queen Bee.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Skeletron Buried", //Name of the archive listing.
                        "Unlocked after defeating Skeletron.", //Description of the listing.
                        player.SkeletonDialogue == 2, //Unlock requirements.
                        55,
                        "Defeat Skeletron.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Deerclops Extinct", //Name of the archive listing.
                        "Unlocked after defeating Deerclops.", //Description of the listing.
                        player.DeerclopsDialogue == 2, //Unlock requirements.
                        76,
                        "Defeat Deerclops.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Wall of Flesh Purged", //Name of the archive listing.
                        "Unlocked after defeating the Wall of Flesh.", //Description of the listing.
                        player.WallOfFleshDialogue == 2, //Unlock requirements.
                        56,
                        "Defeat the Wall of Flesh.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Queen Slime Overthrown", //Name of the archive listing.
                        "Unlocked after defeating Queen Slime", //Description of the listing.
                        player.QueenSlimeDialogue == 2, //Unlock requirements.
                        74,
                        "Defeat Queen Slime")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "The Twins Scrapped", //Name of the archive listing.
                        "Unlocked after defeating the Twins.", //Description of the listing.
                        player.TwinsDialogue == 2, //Unlock requirements.
                        57,
                        "Defeat the Twins.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "The Destroyer Deleted", //Name of the archive listing.
                        "Unlocked after defeating the Destroyer.", //Description of the listing.
                        player.DestroyerDialogue == 2, //Unlock requirements.
                        58,
                        "Defeat the Destroyer.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Skeletron Prime Erased", //Name of the archive listing.
                        "Unlocked after defeating Skeletron Prime.", //Description of the listing.
                        player.SkeletronPrimeDialogue == 2, //Unlock requirements.
                        59,
                        "Defeat Skeletron Prime.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "All Mechanical Bosses Rended", //Name of the archive listing.
                        "Unlocked after defeating all of the Mechanical Bosses.", //Description of the listing.
                        player.AllMechsDefeatedDialogue == 2, //Unlock requirements.
                        60,
                        "Defeat all of the Mechanical Bosses.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Plantera Uprooted", //Name of the archive listing.
                        "Unlocked after defeating Plantera.", //Description of the listing.
                        player.PlanteraDialogue == 2, //Unlock requirements.
                        61,
                        "Defeat Plantera.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Golem Deactivated", //Name of the archive listing.
                        "Unlocked after defeating Golem.", //Description of the listing.
                        player.GolemDialogue == 2, //Unlock requirements.
                        62,
                        "Defeat Golem.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Duke Fishron Hunted", //Name of the archive listing.
                        "Unlocked after defeating Duke Fishron.", //Description of the listing.
                        player.DukeFishronDialogue == 2, //Unlock requirements.
                        63,
                        "Defeat Duke Fishron.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Empress of Light Dimmed", //Name of the archive listing.
                        "Unlocked after defeating the Empress of Light.", //Description of the listing.
                        player.EmpressDialogue == 2, //Unlock requirements.
                        75,
                        "Defeat the Empress of Light.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Lunatic Cultist Crucified", //Name of the archive listing.
                        "Unlocked after defeating the Lunatic Cultist.", //Description of the listing.
                        player.CultistDialogue == 2, //Unlock requirements.
                        64,
                        "Defeat the Lunatic Cultist.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Moon Lord Defeated", //Name of the archive listing.
                        "Unlocked after defeating the Moon Lord.", //Description of the listing.
                        player.MoonLordDialogue == 2, //Unlock requirements.
                        65,
                        "Defeat the Moon Lord.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Terraria's Hero", //Name of the archive listing.
                        "Unlocked after defeating all vanilla Terraria bosses. Grants an Essence.", //Description of the listing.
                        player.AllVanillaBossesDefeatedDialogue == 2, //Unlock requirements.
                        67,
                        "Defeat all vanilla bosses.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Hero of the Realm", //Name of the archive listing.
                        "Unlocked after defeating all vanilla Terraria bosses, and cleansing the world of Light Everlasting. Grants an Essence.", //Description of the listing.
                        player.EverythingDefeatedDialogue == 2, //Unlock requirements.
                        68,
                        "Defeat all vanilla bosses and the Warrior of Light in Expert Mode."));
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                       "The Shattered Disk", //Name of the archive listing.
                       "Grants the item to summon the Vagrant of Space and Time.", //Description of the listing.
                       player.vagrantBossItemDialogue == 2, //Unlock requirements.
                       77,
                       "Visit a Meteorite")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                       "Perseus's Appeal: The Twin Forces", //Name of the archive listing.
                       "Grants the item to summon the Twin Forces.", //Description of the listing.
                       player.dioskouroiBossItemDialogue == 2, //Unlock requirements.
                       305,
                       "???")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Perseus's Appeal: The Witch of Ink", //Name of the archive listing.
                        "Grants the item to summon the Witch of Ink", //Description of the listing.
                        player.penthBossItemDialogue == 2, //Unlock requirements.
                        302,
                        "???")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Perseus's Appeal: The Burnished King", //Name of the archive listing.
                        "Grants the item to summon the Burnished King.", //Description of the listing.
                        player.nalhaunBossItemDialogue == 2, //Unlock requirements.
                        301,
                        "???")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Perseus's Appeal: The Warrior of Light", //Name of the archive listing.
                        "Grants the item to summon the Warrior of Light.", //Description of the listing.
                        player.warriorBossItemDialogue == 2, //Unlock requirements.
                        304,
                        "???")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Dioskouroi Defeated", //Name of the archive listing.
                        "Unlocked after defeating Dioskouroi, the Twin Forces. Grants a material needed for confronting the final boss.", //Description of the listing.
                        player.dioskouroiDialogue == 2, //Unlock requirements.
                        69,
                        "Defeat Nalhaun, the Burnished King.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Penthesilea Washed", //Name of the archive listing.
                        "Unlocked after defeating Penthesilea, the Witch of Ink. Grants a material needed for confronting the final boss.", //Description of the listing.
                        player.penthDialogue == 2, //Unlock requirements.
                        71,
                        "Defeat Penthesilea, the Witch of Ink.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                       "Nalhaun Kneeled", //Name of the archive listing.
                       "Unlocked after defeating Nalhaun, the Burnished King. Grants a material needed for confronting the final boss.", //Description of the listing.
                       player.nalhaunDialogue == 2, //Unlock requirements.
                       70,
                       "Defeat Nalhaun, the Burnished King.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "Warrior of Light Vanquished", //Name of the archive listing.
                        "Unlocked after defeating the Warrior of Light. Grants a material needed for confronting the final boss.", //Description of the listing.
                        player.WarriorOfLightDialogue == 2, //Unlock requirements.
                        66,
                        "Defeat the Warrior of Light.")); //Corresponding dialogue ID.
-                BossArchiveList.Add(new BossArchiveListing(
+                BossArchiveList.Add(new ArchiveListing(
                        "The First Starfarer Defeated", //Name of the archive listing.
                        "Unlocked after defeating Tsukiyomi, the First Starfarer. Grants an item used for crafting.", //Description of the listing.
                        player.tsukiyomiDialogue == 2, //Unlock requirements.
@@ -407,112 +420,115 @@ namespace StarsAbove.Systems
                        "Defeat ???")); //Corresponding dialogue ID.
                 if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
                 {
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                        "Desert Scourge Defeated", //Name of the archive listing.
                        "Unlocked after defeating the Desert Scourge", //Description of the listing.
                        player.desertscourgeDialogue == 2, //Unlock requirements.
                        201,
                        "Defeat the Desert Scourge")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Crabulon Defeated", //Name of the archive listing.
                        "Unlocked after defeating Crabulon", //Description of the listing.
                        player.crabulonDialogue == 2, //Unlock requirements.
                        202,
                        "Defeat Crabulon")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Hive Mind Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Hive Mind", //Description of the listing.
                            player.hivemindDialogue == 2, //Unlock requirements.
                            203,
                            "Defeat the Hive Mind")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Perforators Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Perforators", //Description of the listing.
                            player.perforatorDialogue == 2, //Unlock requirements.
                            204,
                            "Defeat the Perforators")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Slime God Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Slime God", //Description of the listing.
                            player.slimegodDialogue == 2, //Unlock requirements.
                            205,
                            "Defeat the Slime God")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Cryogen Defeated", //Name of the archive listing.
                            "Unlocked after defeating Cryogen", //Description of the listing.
                            player.cryogenDialogue == 2, //Unlock requirements.
                            206,
                            "Defeat Cryogen")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Aquatic Scourge Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Aquatic Scourge", //Description of the listing.
                            player.aquaticscourgeDialogue == 2, //Unlock requirements.
                            207,
                            "Defeat the Aquatic Scourge")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Brimstone Elemental Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Brimstone Elemental", //Description of the listing.
                            player.brimstoneelementalDialogue == 2, //Unlock requirements.
                            208,
                            "Defeat the Brimstone Elemental")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Calamitas's Clone Defeated", //Name of the archive listing.
                            "Unlocked after defeating Calamitas's Clone", //Description of the listing.
                            player.calamitasDialogue == 2, //Unlock requirements.
                            209,
                            "Defeat Calamitas")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Leviathan Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Leviathan", //Description of the listing.
                            player.leviathanDialogue == 2, //Unlock requirements.
                            210,
                            "Defeat the Leviathan")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Astrum Aureus Defeated", //Name of the archive listing.
                            "Unlocked after defeating Astrum Aureus", //Description of the listing.
                            player.astrumaureusDialogue == 2, //Unlock requirements.
                            211,
                            "Defeat Astrum Aureus")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Plaguebringer Goliath", //Name of the archive listing.
                            "Unlocked after defeating the Plaguebringer Goliath", //Description of the listing.
                            player.plaguebringerDialogue == 2, //Unlock requirements.
                            212,
                            "Defeat the Plaguebringer Goliath")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Ravager Defeated", //Name of the archive listing.
                            "Unlocked after defeating the Ravager", //Description of the listing.
                            player.ravagerDialogue == 2, //Unlock requirements.
                            213,
                            "Defeat the Ravager")); //Corresponding dialogue ID.
-                    BossArchiveList.Add(new BossArchiveListing(
+                    BossArchiveList.Add(new ArchiveListing(
                            "Astrum Deus Defeated", //Name of the archive listing.
                            "Unlocked after defeating Astrum Deus", //Description of the listing.
                            player.astrumdeusDialogue == 2, //Unlock requirements.
                            214,
                            "Defeat Astrum Deus")); //Corresponding dialogue ID.
+                   
                 }
+                 */
                 //Weapons
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "", //Name of the archive listing.
                       $"", //Description of the listing.
                       false, //Unlock requirements.
                       0,
                       "")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                /*
+                WeaponArchiveList.Add(new ArchiveListing(
                        "King Slime Weapon", //Name of the archive listing.
                        $"Grants the Essence for either the [i:{ItemType<Astral>()}] Aegis Driver or the [i:{ItemType<Umbral>()}] Rad Gun.", //Description of the listing.
                        player.KingSlimeWeaponDialogue == 2, //Unlock requirements.
                        104,
                        "Defeat King Slime")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "King Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Trickspin Two-Step. ", //Description of the listing.
                       player.TrickspinWeaponDialogue == 2, //Unlock requirements.
                       175,
                       "Defeat King Slime.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                        "Eye of Cthulhu Weapon", //Name of the archive listing.
                        $"Grants the Essence for either " +
                        $"[i:{ItemType<Astral>()}] Carian Dark Moon " +
@@ -521,7 +537,7 @@ namespace StarsAbove.Systems
                        player.EyeBossWeaponDialogue == 2, //Unlock requirements.
                        136,
                        "Defeat Eye of Cthulhu")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Graveyard Weapon", //Name of the archive listing.
                      $"Grants the Essence for either " +
                        $"[i:{ItemType<Astral>()}] Kevesi Farewell " +
@@ -530,7 +546,7 @@ namespace StarsAbove.Systems
                     player.FarewellWeaponDialogue == 2, //Unlock requirements.
                     159,
                     "Visit a Graveyard biome.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Corruption/Crimson Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Neo Dealmaker " +
@@ -539,21 +555,21 @@ namespace StarsAbove.Systems
                       player.CorruptBossWeaponDialogue == 2, //Unlock requirements.
                       137,
                       "Defeat the boss of the world's evil.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Corruption/Crimson Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Takonomicon. ", //Description of the listing.
                       player.TakodachiWeaponDialogue == 2, //Unlock requirements.
                       133,
                       "Defeat the boss of the world's evil, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Corruption/Crimson Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Shock & Awe. ", //Description of the listing.
                       player.TrickspinWeaponDialogue == 2, //Unlock requirements.
                       173,
                       "Defeat the boss of the world's evil, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Queen Bee Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Skofnung " +
@@ -562,7 +578,7 @@ namespace StarsAbove.Systems
                       player.QueenBeeWeaponDialogue == 2, //Unlock requirements.
                       103,
                       "Defeat the Queen Bee.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Tier 2 Stellaglyph Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Umbral>()}] Irminsul's Dream " +
@@ -571,7 +587,7 @@ namespace StarsAbove.Systems
                       player.Stellaglyph2WeaponDialogue == 2, //Unlock requirements.
                       160,
                       "Obtain a Tier 2 Stellaglyph.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Umbral>()}] Death in Four Acts " +
@@ -580,28 +596,28 @@ namespace StarsAbove.Systems
                       player.SkeletonWeaponDialogue == 2, //Unlock requirements.
                       101,
                       "Defeat Skeletron.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Misery's Company. ", //Description of the listing.
                       player.MiseryWeaponDialogue == 2, //Unlock requirements.
                       120,
                       "Defeat Skeletron, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Skeletron Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Nanomachina Reactor. ", //Description of the listing.
                      player.NanomachineWeaponDialogue == 2, //Unlock requirements.
                      167,
                      "Defeat Skeletron, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Apalistik. ", //Description of the listing.
                       player.OceanWeaponDialogue == 2, //Unlock requirements.
                       123,
                       "Defeat Skeletron, then visit the beach.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Skeletron Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Gossamer Needle " +
@@ -610,7 +626,7 @@ namespace StarsAbove.Systems
                       player.HellWeaponDialogue == 2, //Unlock requirements.
                       102,
                       "Defeat Skeletron, then visit the Underworld.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Wall of Flesh Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Karlan Truesilver " +
@@ -619,42 +635,42 @@ namespace StarsAbove.Systems
                       player.WallOfFleshWeaponDialogue == 2, //Unlock requirements.
                       105,
                       "Defeat Skeletron.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Wall of Flesh Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Luminary Wand. ", //Description of the listing.
                       player.LumaWeaponDialogue == 2, //Unlock requirements.
                       124,
                       "Defeat the Wall of Flesh, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Wall of Flesh Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Force-of-Nature. ", //Description of the listing.
                       player.ForceWeaponDialogue == 2, //Unlock requirements.
                       131,
                       "Defeat the Wall of Flesh, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Guide Voodoo Doll Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Sanguine Despair.", //Description of the listing.
                      player.SanguineWeaponDialogue == 2, //Unlock requirements.
                      168,
                      "Find a Guide Voodoo Doll on a Hardcore character.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Hallowed Biome Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Aurum Edge. ", //Description of the listing.
                     player.GoldWeaponDialogue == 2, //Unlock requirements.
                     158,
                     "Visit the Hallowed biome.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Pirate Invasion Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Saltwater Scourge. ", //Description of the listing.
                     player.SaltwaterWeaponDialogue == 2, //Unlock requirements.
                     162,
                     "Defeat a pirate invasion, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Queen Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Hunter's Symphony " +
@@ -663,14 +679,14 @@ namespace StarsAbove.Systems
                       player.QueenSlimeWeaponDialogue == 2, //Unlock requirements.
                       149,//Corresponding dialogue ID.
                       "Defeat Queen Slime."));
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Queen Slime Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Adornment of the Chaotic God.", //Description of the listing.
                      player.ChaosWeaponDialogue == 2, //Unlock requirements.
                      163,
                      "Defeat Queen Slime, then wait.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Queen Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Izanagi's Edge " +
@@ -679,14 +695,14 @@ namespace StarsAbove.Systems
                       player.VagrantWeaponDialogue == 2, //Unlock requirements.
                       115,
                       "Defeat Queen Slime.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Queen Slime Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Chronoclock. ", //Description of the listing.
                       player.ClockWeaponDialogue == 2, //Unlock requirements.
                       164,
                       "Defeat Queen Slime.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Any Mechanical Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Veneration of Butterflies " +
@@ -695,7 +711,7 @@ namespace StarsAbove.Systems
                       player.MechBossWeaponDialogue == 2, //Unlock requirements.
                       106,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.AnyMechanical"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Any Mechanical Boss Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Ride the Bull " +
@@ -704,35 +720,35 @@ namespace StarsAbove.Systems
                       player.MechBossWeaponDialogue == 2, //Unlock requirements.
                       107,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.AnyMechanical"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Any Mechanical Boss Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Xenoblade. ", //Description of the listing.
                      player.MonadoWeaponDialogue == 2, //Unlock requirements.
                      125,
                      LangHelper.GetTextValue($"Archive.UnlockConditions.AnyMechanical"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Skeletron Prime Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Armaments of the Sky Striker. ", //Description of the listing.
                      player.SkyStrikerWeaponDialogue == 2, //Unlock requirements.
                      135,
                      LangHelper.GetTextValue($"Archive.UnlockConditions.SkeletronPrime"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "All Mechanical Bosses Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Hullwrought. ", //Description of the listing.
                      player.HullwroughtWeaponDialogue == 2, //Unlock requirements.
                      121,
                      "Defeat all the mechanical bosses.")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                    "All Mechanical Bosses Weapon", //Name of the archive listing.
                    $"Grants the Essence for " +
                    $"[i:{ItemType<Spatial>()}] El Capitan's Hardware.", //Description of the listing.
                    player.HardwareWeaponDialogue == 2, //Unlock requirements.
                    154,
                    LangHelper.GetTextValue($"Archive.UnlockConditions.AllMechanical"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Dioskouroi Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Phantom in the Mirror " +
@@ -741,7 +757,7 @@ namespace StarsAbove.Systems
                       player.NalhaunWeaponDialogue == 2, //Unlock requirements.
                       117,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Nalhaun"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Plantera Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Crimson Outbreak " +
@@ -750,21 +766,21 @@ namespace StarsAbove.Systems
                       player.PlanteraWeaponDialogue == 2, //Unlock requirements.
                       108,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Plantera"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Plantera Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Kifrosse. ", //Description of the listing.
                     player.KifrosseWeaponDialogue == 2, //Unlock requirements.
                     129,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Plantera"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Plantera Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                       $"[i:{ItemType<Spatial>()}] Dreamer's Inkwell. ", //Description of the listing.
                       player.DreamerWeaponDialogue == 2, //Unlock requirements.
                       174,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Plantera"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Frost Queen Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Stygian Nymph " +
@@ -773,7 +789,7 @@ namespace StarsAbove.Systems
                       player.FrostMoonWeaponDialogue == 2, //Unlock requirements.
                       126,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.FrostQueen"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Penthesilea Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Vision of Euthymia " +
@@ -782,14 +798,14 @@ namespace StarsAbove.Systems
                       player.PenthesileaWeaponDialogue == 2, //Unlock requirements.
                       118,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Penthesilea"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Penthesilea Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Penthesilea's Muse. ", //Description of the listing.
                     player.MuseWeaponDialogue == 2, //Unlock requirements.
                     128,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Penthesilea"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Golem Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Plenilune Gaze " +
@@ -798,28 +814,28 @@ namespace StarsAbove.Systems
                       player.GolemWeaponDialogue == 2, //Unlock requirements.
                       109,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Golem"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Golem Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Genocide. ", //Description of the listing.
                     player.GenocideWeaponDialogue == 2, //Unlock requirements.
                     132,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Golem"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Golem Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Gloves of the Black Silence. ", //Description of the listing.
                     player.SilenceWeaponDialogue == 2, //Unlock requirements.
                     156,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Golem"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Martian Madness Weapon", //Name of the archive listing.
                       $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] The Kiss of Death. ", //Description of the listing.
                       player.GoldlewisWeaponDialogue == 2, //Unlock requirements.
                       165,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.MartianMadness"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                         "Nalhaun Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Liberation Blazing " +
@@ -828,21 +844,21 @@ namespace StarsAbove.Systems
                       player.ArbitrationWeaponDialogue == 2, //Unlock requirements.
                       119,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Nalhaun"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Nalhaun Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Claimh Solais. ", //Description of the listing.
                     player.ClaimhWeaponDialogue == 2, //Unlock requirements.
                     127,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Nalhaun"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Nalhaun Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Boltstorm Axe. ", //Description of the listing.
                      player.LevinstormWeaponDialogue == 2, //Unlock requirements.
                      166,
                      LangHelper.GetTextValue($"Archive.UnlockConditions.Nalhaun"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Duke Fishron Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Key of the Sinner " +
@@ -851,21 +867,21 @@ namespace StarsAbove.Systems
                       player.DukeFishronWeaponDialogue == 2, //Unlock requirements.
                       116,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.Nalhaun"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Duke Fishron Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Maniacal Justice. ", //Description of the listing.
                     player.ManiacalWeaponDialogue == 2, //Unlock requirements.
                     170,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.DukeFishron"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Duke Fishron Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Kariumu's Favor. ", //Description of the listing.
                      player.KineticWeaponDialogue == 2, //Unlock requirements.
                      172,
                      LangHelper.GetTextValue($"Archive.UnlockConditions.DukeFishron"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Lunatic Cultist Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Rex Lapis " +
@@ -874,28 +890,28 @@ namespace StarsAbove.Systems
                       player.LunaticCultistWeaponDialogue == 2, //Unlock requirements.
                       110,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.LunaticCultist"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Lunatic Cultist Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Twin Stars of Albiero. ", //Description of the listing.
                     player.TwinStarsWeaponDialogue == 2, //Unlock requirements.
                     134,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.LunaticCultist"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Lunatic Cultist Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Catalyst's Memory. ", //Description of the listing.
                     player.CatalystWeaponDialogue == 2, //Unlock requirements.
                     155,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.LunaticCultist"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Lunatic Cultist Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Umbra. ", //Description of the listing.
                     player.UmbraWeaponDialogue == 2, //Unlock requirements.
                     161,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.LunaticCultist"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Moon Lord Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Suistrume " +
@@ -904,28 +920,28 @@ namespace StarsAbove.Systems
                       player.MoonLordWeaponDialogue == 2, //Unlock requirements.
                       111,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.MoonLord"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Moon Lord Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Shadowless Cerulean. ", //Description of the listing.
                     player.ShadowlessWeaponDialogue == 2, //Unlock requirements.
                     122,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.MoonLord"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Moon Lord Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Soul Reaver. ", //Description of the listing.
                     player.SoulWeaponDialogue == 2, //Unlock requirements.
                     157,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.MoonLord"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                      "Moon Lord Weapon", //Name of the archive listing.
                      $"Grants the Essence for " +
                      $"[i:{ItemType<Spatial>()}] Virtue's Edge. ", //Description of the listing.
                      player.VirtueWeaponDialogue == 2, //Unlock requirements.
                      150,
                      LangHelper.GetTextValue($"Archive.UnlockConditions.MoonLord"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                       "Warrior of Light Weapon", //Name of the archive listing.
                       $"Grants the Essence for either " +
                       $"[i:{ItemType<Astral>()}] Key of the King's Law " +
@@ -934,112 +950,112 @@ namespace StarsAbove.Systems
                       player.WarriorWeaponDialogue == 2, //Unlock requirements.
                       112,
                       LangHelper.GetTextValue($"Archive.UnlockConditions.WarriorOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Warrior of Light Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Vermilion Riposte. ", //Description of the listing.
                     player.RedMageWeaponDialogue == 2, //Unlock requirements.
                     151,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.WarriorOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Warrior of Light Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Supreme Authority. ", //Description of the listing.
                     player.AuthorityWeaponDialogue == 2, //Unlock requirements.
                     171,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.WarriorOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                    "Warrior of Light Weapon", //Name of the archive listing.
                    $"Grants the Essence for " +
                    $"[i:{ItemType<Spatial>()}] Burning Desire. ", //Description of the listing.
                    player.BlazeWeaponDialogue == 2, //Unlock requirements.
                    152,
                    LangHelper.GetTextValue($"Archive.UnlockConditions.WarriorOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                    "Warrior of Light Weapon", //Name of the archive listing.
                    $"Grants the Essence for " +
                    $"[i:{ItemType<Spatial>()}] The Everlasting Pickaxe. ", //Description of the listing.
                    player.PickaxeWeaponDialogue == 2, //Unlock requirements.
                    153,
                    LangHelper.GetTextValue($"Archive.UnlockConditions.WarriorOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Tsukiyomi Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Architect's Luminance. ", //Description of the listing.
                     player.ArchitectWeaponDialogue == 2, //Unlock requirements.
                     130,
                     "???")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Tsukiyomi Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Cosmic Destroyer. ", //Description of the listing.
                     player.CosmicDestroyerWeaponDialogue == 2, //Unlock requirements.i
                     138,
                     "???")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Tsukiyomi Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Sunset of the Sun God. ", //Description of the listing.
                     player.KarnaWeaponDialogue == 2, //Unlock requirements.
                     169,
                     "???")); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Empress of Light Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Arachnid Needlepoint. ", //Description of the listing.
                     player.NeedlepointWeaponDialogue == 2, //Unlock requirements.
                     140,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.EmpressOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Golem Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Mercy. ", //Description of the listing.
                     player.MercyWeaponDialogue == 2, //Unlock requirements.
                     141,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Golem"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Empress of Light Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Sakura's Vengeance. ", //Description of the listing.
                     player.SakuraWeaponDialogue == 2, //Unlock requirements.
                     142,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.EmpressOfLight"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Empress of Light Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Eternal Star. ", //Description of the listing.
                     player.EternalWeaponDialogue == 2, //Unlock requirements.
                     143,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.MoonLord"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Moon Lord Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Vermilion Daemon. ", //Description of the listing.
                     player.DaemonWeaponDialogue == 2, //Unlock requirements.
                     144,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.MoonLord"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Lunatic Cultist Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Ozma Ascendant. ", //Description of the listing.
                     player.OzmaWeaponDialogue == 2, //Unlock requirements.
                     145,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.LunaticCultist"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Queen Slime Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] Dreadnought Chemtank. ", //Description of the listing.
                     player.UrgotWeaponDialogue == 2, //Unlock requirements.
                     146,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.QueenSlime"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Pumpkin King Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] The Blood Blade. ", //Description of the listing.
                     player.BloodWeaponDialogue == 2, //Unlock requirements.
                     147,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Pumpking"))); //Corresponding dialogue ID.
-                WeaponArchiveList.Add(new WeaponArchiveListing(
+                WeaponArchiveList.Add(new ArchiveListing(
                     "Deerclops Weapon", //Name of the archive listing.
                     $"Grants the Essence for " +
                     $"[i:{ItemType<Spatial>()}] The Morning Star. ", //Description of the listing.
@@ -1047,104 +1063,107 @@ namespace StarsAbove.Systems
                     148,
                     LangHelper.GetTextValue($"Archive.UnlockConditions.Deerclops"))); //Corresponding dialogue ID.
                                                                                       //Corresponding dialogue ID.
+                                                                                      */
 
                 //VN
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                       "", //Name of the archive listing.
                       $"", //Description of the listing.
                       false, //Unlock requirements.
                       0,
                       "")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Intro Dialogue", //Name of the archive listing.
                        $"The Starfarer's introduction dialogue.", //Description of the listing.
                        player.chosenStarfarer == 1, //Unlock requirements.
                        3,
                        "Asphodene's intro dialogue.")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Eridani's Intro Dialogue", //Name of the archive listing.
                        $"The Starfarer's introduction dialogue.", //Description of the listing.
                        player.chosenStarfarer == 2, //Unlock requirements.
                        6,
                        "Eridani's intro dialogue.")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Vagrant Post-Battle (Asphodene)", //Name of the archive listing.
                        $"Perseus's introduction.", //Description of the listing.
                        player.chosenStarfarer == 1 && DownedBossSystem.downedVagrant, //Unlock requirements.
                        9,
                        "Defeat the Vagrant of Space and Time. (Asphodene)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Vagrant Post-Battle (Eridani)", //Name of the archive listing.
                        $"Perseus's introduction.", //Description of the listing.
                        player.chosenStarfarer == 2 && DownedBossSystem.downedVagrant, //Unlock requirements.
                        10,
                        "Defeat the Vagrant of Space and Time. (Eridani)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "The Astrolabe (Asphodene)", //Name of the archive listing.
                        $"Acquisition of the Astrolabe.", //Description of the listing.
                        player.chosenStarfarer == 1 && player.astrolabeIntroDialogue == 2, //Unlock requirements.
                        11,
                        "Defeat the Eye of Cthulhu.")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "The Astrolabe (Eridani)", //Name of the archive listing.
                        $"Acquisition of the Astrolabe.", //Description of the listing.
                        player.chosenStarfarer == 2 && player.astrolabeIntroDialogue == 2, //Unlock requirements.
                        12,
                        "Defeat the Eye of Cthulhu.")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "The Observatory's Introduction", //Name of the archive listing.
                        $"Explaining Cosmic Voyages and the Astrolabe.", //Description of the listing.
                        player.observatoryIntroDialogue == 2, //Unlock requirements.
                        13,
                        "Visit the Observatory.")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Yojimbo's Introduction (Asphodene)", //Name of the archive listing.
                        $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
                        player.yojimboIntroDialogue == 2, //Unlock requirements.
                        19,
                        "Meet Yojimbo during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Yojimbo's Introduction (Eridani)", //Name of the archive listing.
                        $"Yojimbo, the lumenkin bounty hunter, makes his appearance.", //Description of the listing.
                        player.yojimboIntroDialogue == 2, //Unlock requirements.
                        20,
                        "Meet Yojimbo during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Yojimbo: About the galaxy...", //Name of the archive listing.
                        $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                        false,//yojimboIntroDialogue == 2, //Unlock requirements.
                        00,
                        "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                       "Yojimbo: About the Empire...", //Name of the archive listing.
                       $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                       false,//yojimboIntroDialogue == 2, //Unlock requirements.
                       00,
                       "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                       "Yojimbo: About the Ardor...", //Name of the archive listing.
                       $"Yojimbo's comments on the state of the galaxy.", //Description of the listing.
                       false,//yojimboIntroDialogue == 2, //Unlock requirements.
                       00,
                       "Talk to Yojimbo during a Cosmic Voyage. (Random unlock)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Garridine's Introduction (Asphodene)", //Name of the archive listing.
                        $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
                        player.garridineIntroDialogue == 2, //Unlock requirements.
                        00,
                        "Meet Garridine during a Cosmic Voyage. (Asphodene)")); //Corresponding dialogue ID.
-                VNArchiveList.Add(new VNArchiveListing(
+                VNArchiveList.Add(new ArchiveListing(
                        "Garridine's Introduction (Eridani)", //Name of the archive listing.
                        $"Garridine, the lupine machinist, makes her appearance.", //Description of the listing.
                        player.garridineIntroDialogue == 2, //Unlock requirements.
                        00,
                        "Meet Garridine during a Cosmic Voyage. (Eridani)")); //Corresponding dialogue ID.
-                IdleArchiveListMax = IdleArchiveList.Count;
-                BossArchiveListMax = BossArchiveList.Count;
-                WeaponArchiveListMax = WeaponArchiveList.Count;
-                VNArchiveListMax = VNArchiveList.Count;
+                                                                             
+                
                 archivePopulated = true;
             }
+            IdleArchiveListMax = IdleArchiveList.Count;
+            BossArchiveListMax = BossArchiveList.Count;
+            WeaponArchiveListMax = WeaponArchiveList.Count;
+            VNArchiveListMax = VNArchiveList.Count;
 
             archiveListInfo = "";
             if (archiveChosenList == 0)//0 is idle, 1 is boss, 2 is weapon (prompts use the OnEvent system.)
