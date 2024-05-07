@@ -2121,7 +2121,7 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						// Name: Idle dialogue
+						// Name: Idle dialogue (Pre-hardmode)
 						// Description: ""
 
 						1: {
@@ -2141,7 +2141,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: Idle dialogue
+						// Name: Idle dialogue (Pre-hardmode)
 						// Description: ""
 
 						1: {
@@ -2163,6 +2163,8 @@ Mods: {
 
 				NormalIdleDialogue3: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Honnêtement, je préfère les armes flashy. Un petit « plus » n’a jamais fait de mal à personne.
 
 						2: {
@@ -2172,6 +2174,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: L'apparence des armes ? Ils sont importants, mais leur utilité dépasse de loin leur valeur esthétique.
 
 						2: {
@@ -2183,12 +2187,16 @@ Mods: {
 
 				NormalIdleDialogue4: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Qu'est-ce qu'un « Starfarer », demandez-vous ? Seriez-vous surpris si je disais que je n’en avais presque aucune idée ?
 						2: Nous apparaissons par invocation, et puis... Eh bien, notre frère nous a renvoyés.
 						3: Vous savez quoi? Je ne me souviens même pas comment ni quand moi ou Eri avons été invoqués – n'est-ce pas étrange ?
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Qu'est-ce qu'un « Starfarer » ? Je déteste vous dire cela, mais nous n'en avons que des connaissances superficielles.
 						2: Nous apparaissons grâce à un sort d'invocation. Non, je ne me souviens pas de mon invocation, étrangement.
 						3: Mes premiers souvenirs sont réorientés par mon frère. Autre que ça...
@@ -2197,6 +2205,8 @@ Mods: {
 
 				NormalIdleDialogue5: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: N'oubliez pas le Stellar Array !
 						2: Ce serait dommage si vous le faisiez. Je l'ai fait pour toi, après tout.
 					}
@@ -2206,11 +2216,15 @@ Mods: {
 
 				NormalIdleDialogue6: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Hmm...
 						2: Ah, ce n'est rien. Continuez votre bon travail.
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: ... Hum.
 						2: Ah... Ce n'est rien.
 					}
@@ -2218,6 +2232,8 @@ Mods: {
 
 				NormalIdleDialogue7: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: J'ai cette idée à propos d'une arme, {0}.
 						2: Attendez.
 						3: Euh... Peu importe. Oublie que j'ai dit quoi que ce soit.
@@ -2229,6 +2245,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Alors, il y a cette idée d'arme à laquelle je pensais, {0}.
 						2: Attendez... En fait... Oubliez ça. Pas grave.
 
@@ -2241,6 +2259,9 @@ Mods: {
 
 				NormalIdleDialogue8: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Certains de ces citadins ne sont-ils pas horribles ?
 							// E: Worried
@@ -2253,6 +2274,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Ces marchands vendent définitivement leurs produits à un prix beaucoup trop élevé !
 							// E: Angry
@@ -2267,12 +2291,16 @@ Mods: {
 
 				HardIdleDialogue1: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Alors, quelle est la prochaine étape à l'ordre du jour ? Voyons..
 						2: Avez-vous travaillé sur votre ville? Envie de miner ? Prêt pour le prochain patron ?
 						3: C'est à vous. Je serai là.
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: Ça vous dérange si je suggère votre prochain mouvement ? Euh...
 						2: Si vous avez besoin de plus d’espace en ville, c’est possible. Vous pourriez également avoir besoin de minerais supplémentaires, à moins que vous ne soyez prêt à affronter le prochain boss ?
 						3: Juste des suggestions. Je fais confiance à votre jugement.
@@ -2291,6 +2319,8 @@ Mods: {
 
 				HardIdleDialogue4: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: J'aime ta tenue ! Je suppose que nous pensons la même chose.
 
 						2: {
@@ -2300,6 +2330,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Votre armure est-elle à la hauteur ? En apparence, c'est... passable.
 
 						2: {
@@ -2317,12 +2349,44 @@ Mods: {
 				}
 
 				HardIdleDialogue5: {
-					Asphodene.1: J'aurais sérieusement besoin d'une pause...
-					Eridani.1: Faisons, euh... faisons une pause de temps en temps.
+					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
+						1: {
+							$parentVal: J'aurais sérieusement besoin d'une pause...
+							// E: Worried
+						}
+
+						2: {
+							// $parentVal: It does nobody any favors if you lose track of yourself in the heat of battle.
+							// E: Neutral
+						}
+					}
+
+					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+						1: Faisons, euh... faisons une pause de temps en temps.
+
+						2: {
+							// $parentVal: "'In the midst of chaos, there is opportunity.'"
+							// E: Smug
+						}
+
+						// 3: Remember that well. ...No, I didn't come up with that.
+
+						4: {
+							// $parentVal: It would have been pretty cool if I did, though.
+							// E: Happy
+						}
+					}
 				}
 
 				HardIdleDialogue6: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Tu deviens plutôt fort ! Tu penses que tu peux me battre dans un combat ?
 
 						2: {
@@ -2332,6 +2396,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Tu continues à devenir plus fort, hein ? Je vais devoir travailler plus dur pour suivre le rythme.
 
 						2: {
@@ -2350,6 +2416,8 @@ Mods: {
 
 				HardIdleDialogue7: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: J'ai du mal à imaginer d'où viennent certains de ces monstres.
 
 						2: {
@@ -2363,6 +2431,9 @@ Mods: {
 
 				HardIdleDialogue8: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: D'accord, en théorie, parce que je peux te ressusciter du seuil de la mort dans ton lit...
 							// E: Thinking
@@ -2375,6 +2446,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Avez-vous déjà essayé... d'utiliser deux armes à la fois ? Genre, une arme dans chaque main ?
 							// E: Thinking
@@ -2386,11 +2460,15 @@ Mods: {
 
 				HardIdleDialogue9: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Oui, mes cheveux sont un peu fatigués de temps en temps. En fait, Eri me coiffe, tu peux le dire ?
 						2: Si je suis assez rapide, je peux quitter l'Observatoire demain matin avant qu'elle ne me trouve. Il h.
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Asphodène aime suivre les règles autant que possible, mais pour être honnête, il y a un temps et un lieu pour tout.
 						2: Parfois, vous devez contourner la réglementation pour aider ceux dont vous avez besoin. C'est ainsi que les choses fonctionnent. Si vous êtes assez rapide, personne ne le remarquera.
 						3: Gardons quelque chose de clair cependant:il existe généralement d'autres options, et vous devez également les peser. Recourir toujours au crime est ce que font les mauvaises personnes.
@@ -2399,6 +2477,8 @@ Mods: {
 
 				HardIdleDialogue10: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: En la regardant, vous avez probablement l'impression qu'Eridani est un peu du genre « étudiante d'honneur », non ?
 
 						2: {
@@ -2408,6 +2488,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Asphodene est techniquement le plus ancien... mais je parie que vous ne pouvez pas le dire.
 							// E: Thinking
@@ -2419,6 +2502,9 @@ Mods: {
 
 				HardIdleDialogue11: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Ce que j'aime? Je me réveille quand je veux ! Oui, je dirais que cela se situe en haut de la liste.
 							// E: Happy
@@ -2438,6 +2524,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Des choses que j'aime ? Est-ce que vous posez des questions sur des choses banales, ou... D'accord.
 							// E: Thinking
@@ -2454,6 +2543,9 @@ Mods: {
 
 				HardIdleDialogue12: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Des choses que je n'aime pas ? Voyons...
 							// E: Thinking
@@ -2471,6 +2563,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: Qu'est-ce que je n'aime pas ? A part les bugs... D'accord, puis-je me défouler un peu ?
 							// E: Thinking
@@ -2487,6 +2582,8 @@ Mods: {
 
 				HardIdleDialogue13: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Mes passe-temps, hein. Eh bien, je collectionne les bibelots des endroits que je visite. C'est cool, non ?
 
 						2: {
@@ -2501,6 +2598,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Loisirs? Eh bien, la chose la plus importante à laquelle je puisse penser est l'alchimie. Oui, l’alchimie a été résolue, si l’on pense à l’échelle planétaire.
 
 						2: {
@@ -2514,6 +2613,8 @@ Mods: {
 
 				HardIdleDialogue14: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Vraiment... Le Hallowed n'est qu'une grande façade.
 
 						2: {
@@ -2523,6 +2624,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: Enlevez le masque du Sacré, et il pourrait même être plus dur que les Enfers lui-même.
 
 						2: {
@@ -2534,6 +2637,9 @@ Mods: {
 
 				LightIdleDialogue: {
 					Asphodene: {
+						// Name: Idle dialogue (Everlasting Light)
+						// Description: ""
+
 						1: {
 							$parentVal: Cette lumière sans fin est horrible... Il doit y avoir un moyen de l'arrêter.
 							// E: Angry
@@ -2546,6 +2652,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Everlasting Light)
+						// Description: ""
+
 						1: {
 							$parentVal: Cette lumière éternelle est terrible...
 							// E: Angry

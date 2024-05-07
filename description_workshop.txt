@@ -121,5 +121,3 @@ French translation team: Maksou and Ariaclipse
 Thank you, translators!
 
 [H1]I'm active in the Discord, so please visit there if you want to ask questions or report bugs![/h1]
-
-[quote=tModLoader]Developed By PaperLuigi[/quote]

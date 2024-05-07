@@ -192,9 +192,15 @@ namespace StarsAbove.NPCs.WarriorOfLight
         {
 
 			potionType = ItemID.SuperHealingPotion;
+            if (ModLoader.TryGetMod("BossChecklist", out Mod BossChecklist))
+            {
+                if (BossChecklist != null)
+                {
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.TsukiyomiBossChecklist"), 241, 255, 180); }
+                }
+            }
 
-
-			NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
 			DownedBossSystem.downedWarrior = true;
 
 			if (Main.netMode == NetmodeID.Server)

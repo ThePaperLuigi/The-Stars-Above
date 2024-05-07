@@ -55,12 +55,17 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue1" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
             }//1
             if (chosenDialogue == 4) // Passive Dialogue 2
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue2" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//2
             if (chosenDialogue == 5) // Passive Dialogue 2
@@ -68,42 +73,56 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue3" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//3
             if (chosenDialogue == 6) // Passive Dialogue 3
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue4" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//4
             if (chosenDialogue == 7) // Passive Dialogue 4
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue5" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//5
             if (chosenDialogue == 8) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue6" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//6
             if (chosenDialogue == 9) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue7" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//7
             if (chosenDialogue == 10) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue8" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//8
             if (chosenDialogue == 11) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue9" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//9
              //Post Hardmode Dialogue
             if (chosenDialogue == 12) // Passive Dialogue
@@ -111,6 +130,8 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue1" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//1
             if (chosenDialogue == 13) // Passive Dialogue
@@ -118,24 +139,32 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue2" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//2
             if (chosenDialogue == 14) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue3" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//3
             if (chosenDialogue == 15) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue4" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//4
             if (chosenDialogue == 16) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue5" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//5
             if (chosenDialogue == 17) // Passive Dialogue
@@ -143,6 +172,8 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue6" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//6
             if (chosenDialogue == 18) // Passive Dialogue
@@ -150,6 +181,8 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue7" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//7
             if (chosenDialogue == 19) // Passive Dialogue
@@ -157,6 +190,8 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue8" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//8
@@ -165,6 +200,8 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue9" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//9
             if (chosenDialogue == 21) // A world shrouded in Light
@@ -172,6 +209,8 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "LightIdleDialogue" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//A world shrouded in Light
             
@@ -181,31 +220,41 @@ namespace StarsAbove.Dialogue
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue10" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
             if (chosenDialogue == 401) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue11" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
             if (chosenDialogue == 402) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue12" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }
             if (chosenDialogue == 403) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue13" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
-                
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
             }
             if (chosenDialogue == 404) // Passive Dialogue
             {
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue14" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                //Scuffed solution, but writing to the archive manually here
+                WriteDialogue(true, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }
             #endregion
@@ -516,631 +565,237 @@ namespace StarsAbove.Dialogue
             //Weapon conversations...........................................................................................................
             if (chosenDialogue == 101) // Death in Four Acts // Der Freischutz
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
-
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFreeshooter").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.1", Player.name); //Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.2", Player.name); //Good luck with that one!
-
-                        //	" ";
-                    }
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
-
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSharpshooter").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.1", Player.name); //Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
-
-                        //	" ";
-                    }
-
                 }
-
-
+                string category = "WeaponDialogue";
+                string key = category + "." + "Skeleton" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+                
             }//Death In Four Acts / Der Freischutz 1
             if (chosenDialogue == 102) // Persephone / Kazimierz Seraphim
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if(dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHallownest").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.3", Player.name); //Here is another Essence for you. This one's from a goddess of the Underworld, or so I'm told. It seems to be a melee weapon. 
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.4", Player.name); //Keep up the good work!
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 3;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePegasus").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 3)
-                    {
-                        expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.2", Player.name); //Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means? ...
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 2)
-                    {
-
-
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.3", Player.name); //I'm telling you to try it out.
-
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 3;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.4", Player.name); //You knew that? Never mind then.
-
-
-                        //	" ";
                     }
                 }
-
+                
+                string category = "WeaponDialogue";
+                string key = category + "." + "Underworld" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Persephone / Kazimierz Seraphim 2
             if (chosenDialogue == 103) // Skofnung / Inugami Ripsaw
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBitterfrost").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.5", Player.name); //Here is another Essence for you. Apparently, this originates from 'Midgard.' It looks to be a rather powerful melee weapon. 
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.6", Player.name); //That's it for now. Keep up the good work!
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFingers").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 4;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.5", Player.name); //I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god.. Or so it seems.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.6", Player.name); //Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
-
-
-                        //	" ";
                     }
                 }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "QueenBee" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
 
 
             }//Skofnung / Inugami Ripsaw 3
             if (chosenDialogue == 104) // Aegis Driver / Rad Gun
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAegis").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.7", Player.name); //Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 4;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.8", Player.name); //I trust you'll know what to do.
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStyle").Type);
-                        dialoguePrep = false;
-                    }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
 
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.7", Player.name); //I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.8", Player.name); //I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
-
-
-                        //	" ";
                     }
                 }
 
+                string category = "WeaponDialogue";
+                string key = category + "." + "KingSlime" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Aegis Driver / Rad Gun 4 
             if (chosenDialogue == 105) // Karlan Truesilver / Every Moment Matters
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilverAsh").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.9", Player.name); //An Essence, for you. This powerful Melee heirloom is said to cleave the way for those less fortunate.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.10", Player.name); //Good luck in crafting it.
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheVoid").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.9", Player.name); //This Essence is used to craft an upgrade to Death in Four Acts. It will most likely boast incredible Ranged power.
-
-                        //	" ";
-                    }
-
-
                 }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "WallOfFlesh" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Karlan Truesilver / Every Moment Matters 5
             if (chosenDialogue == 106) // Veneration of Butterflies / Memento Muse
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfButterflies").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.11", Player.name); //This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.12", Player.name); //Please, use it if you can. I can always use more data!
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDeathsApprentice").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.10", Player.name); //The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.11", Player.name); //Also.. Doesn't it make you feel like rapping?
-
-                        //	" ";
-                    }
-
-
                 }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "MechBoss" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Veneration of Butterflies / Memento Muse 6
             if (chosenDialogue == 107) // Ride The Bull / Drachenlance
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBull").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.13", Player.name); //This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.14", Player.name); //Ahem. Please consider it in your arsenal.
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragonslayer").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.12", Player.name); //This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.13", Player.name); //It's a Melee weapon, so craft it if you can fit it in your arsenal.
-
-                        //	" ";
-                    }
-
-
                 }
 
+                string category = "WeaponDialogue";
+                string key = category + "." + "AllMechBoss" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Ride the Bull / Drachenlance 7
             if (chosenDialogue == 108) // Crimson Outbreak / Voice Of The Fallen
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
-
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSwarm").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.15", Player.name); //This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.16", Player.name); //If your gear supports it, try crafting this weapon!
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFallen").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 2)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.14", Player.name); //This Magic weapon will gain critical chance when shooting, and each crit will deal increased damage. It's powerful stuff.
-
-                        //	" ";
-                    }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.15", Player.name); //Consider it if you're able.
-
-                        //	" ";
-                    }
-
-
                 }
 
+                string category = "WeaponDialogue";
+                string key = category + "." + "Plantera" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Crimson Outbreak / Voice Of The Fallen 8
             if (chosenDialogue == 109) // Plenilune Gaze / Tartaglia
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 2;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheMoonlitAdepti").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 2)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.17", Player.name); //This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
-
-                        //	" ";
-                    }
-
-                    if (dialogueLeft == 1)
-                    {
-
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.18", Player.name); //Hey. Aren't we getting too many Ranged weapons? I'll try and find something else next time.
-
-
-                        //	" ";
-                    }
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHarbinger").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.16", Player.name); //This Ranged weapon allows you to enter a Melee stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
-
-                        //	" ";
-                    }
-
-
-
                 }
 
+                string category = "WeaponDialogue";
+                string key = category + "." + "Golem" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Plenilune Gaze / Tartaglia 9
             if (chosenDialogue == 110) // Rex Lapis / Yunlai Stiletto
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 1;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheUnyieldingEarth").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 1)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.19", Player.name); //This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDrivingThunder").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.17", Player.name); //This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
-
-                        //	" ";
-                    }
-
-
-
                 }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "LunaticCultist" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
 
             }//Rex Lapis / Yunlai Stiletto 10
             if (chosenDialogue == 111) // Naganadel / Suistrume
             {
-                if (chosenStarfarer == 1) // Asphodene  //placeholder | 7 6 Inside
+                if (dialoguePrep)
                 {
-                    if (dialoguePrep == true)
+                    if (chosenStarfarer == 1)
                     {
-                        dialogueLeft = 1;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStarsong").Type);
 
-                        dialoguePrep = false;
                     }
-                    if (dialogueLeft == 1)
+                    else if (chosenStarfarer == 2)
                     {
-                        expression = 5;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Asphodene.20", Player.name); //This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
-
-                        //	" ";
-                    }
-
-
-
-
-                }
-                if (chosenStarfarer == 2)  //placeholder
-                {
-                    if (dialoguePrep == true)
-                    {
-                        dialogueLeft = 1;
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLunarDominion").Type);
-                        dialoguePrep = false;
+
                     }
-                    if (dialogueLeft == 1)
-                    {
-                        expression = 0;
-                        dialogue = LangHelper.GetTextValue($"Dialogue.WeaponDialogue.Eridani.18", Player.name); //This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
-
-
-                        //	" ";
-                    }
-
-
-
                 }
 
+                string category = "WeaponDialogue";
+                string key = category + "." + "MoonLord" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Naganadel / Suistrume 11
             if (chosenDialogue == 112) // Light Unrelenting / Key of the King's Law
@@ -4756,7 +4411,8 @@ namespace StarsAbove.Dialogue
         {  
             if (writeToArchive)
             {
-                if(category == "IdleDialogue" || category == "IdleDialogueHardmode" || category == "RegularIdleDialogue")
+                
+                if (category == "IdleDialogue" || category == "IdleDialogueHardmode" || category == "RegularIdleDialogue")
                 {
                     // Retrieve the player's mod player instance
                     var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
@@ -4781,6 +4437,7 @@ namespace StarsAbove.Dialogue
                 }
                 if (category == "BossDialogue" || category == "BossItemDialogue" || category == "CalamityBossDialogue")
                 {
+
                     // Retrieve the player's mod player instance
                     var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
 
@@ -4794,13 +4451,16 @@ namespace StarsAbove.Dialogue
                     );
 
                     // Check if the new ArchiveListing already exists in the IdleArchiveList
-                    //THIS DOESN'T WORK BUT I AM SUPER TIRED SO I"LL DO IT TOMORROW!
-                    bool exists = archivePlayer.IdleArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
+                    bool exists = archivePlayer.BossArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
 
                     // Add the new ArchiveListing to the list if it doesn't already exist
                     if (!exists)
                     {
                         archivePlayer.BossArchiveList.Add(newArchiveListing);
+                    }
+                    else
+                    {
+
                     }
                 }
                 if (category == "WeaponDialogue")
@@ -4818,7 +4478,7 @@ namespace StarsAbove.Dialogue
                     );
 
                     // Check if the new ArchiveListing already exists in the IdleArchiveList
-                    bool exists = archivePlayer.IdleArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
+                    bool exists = archivePlayer.WeaponArchiveList.Any(archive => archive.DialogueID == newArchiveListing.DialogueID);
 
                     // Add the new ArchiveListing to the list if it doesn't already exist
                     if (!exists)

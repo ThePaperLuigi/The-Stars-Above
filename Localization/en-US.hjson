@@ -373,7 +373,7 @@ Mods: {
 				FlashFreeze: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Flash Freeze']"
 					Description: Landing a critical strike will cause foes to explode, taking half the original damage. Additionally, damaging snowflakes will spew from the target, spreading the damage. 8 second cooldown.
-					Unlock: "[c/9D9D9D:Locked:] Defeat Penthesilea in Expert Mode"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Empress of Light"
 				}
 
 				MysticForging: {
@@ -499,19 +499,19 @@ Mods: {
 				WeaknessExploit: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Weakness Exploit']"
 					Description: 10% of critical strike damage is converted to true damage (Will not kill.) Attacking foes inflicted with vanilla debuffs will deal 15% bonus true damage.
-					Unlock: "[c/9D9D9D:Locked:] Defeat Golem in Expert Mode"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Golem"
 				}
 
 				Aprismatism: {
 					Name: "[c/9C4FFF:Tier 2] [c/FFD792:'Aprismatism']"
 					Description: Aspected Damage Type changes will now apply to all weapons.
-					Unlock: "[c/9D9D9D:Locked:] Defeat Thespian, the Act of Alchemy in Expert Mode"
+					Unlock: "[c/9D9D9D:Locked:] Defeat Thespian, the Act of Alchemy"
 				}
 
 				UnbridledRadiance: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Unbridled Radiance']"
 					Description: Doubles the recharge rate of Stellar Nova Energy. Stellar Nova Energy does not deplete out of combat.
-					Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses and the Warrior of Light in Expert Mode"
+					Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses and the Warrior of Light"
 				}
 
 				BetweenTheBoundary: {
@@ -523,7 +523,7 @@ Mods: {
 				CyclicHunter: {
 					Name: "[c/C2BDFF:Tier 1] [c/FFEED1:'Cyclic Hunter']"
 					Description: After defeating an enemy, gain 10% increased damage for half a second. Additionally, gain Mana based on 5% of the foe's Max HP + 12. 2 second cooldown.
-					Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King in Expert Mode"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Slime King"
 				}
 
 				LivingDead: {
@@ -541,7 +541,7 @@ Mods: {
 				KeyOfChronology: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Key Of Chronology']"
 					Description: Taking over 200 damage at once will instead heal you for that amount and grant 5 seconds of Invincibility. Additionally, all nearby non-boss enemies will be Stunned for 5 seconds. 2 minute cooldown.
-					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord in Expert Mode"
+					Unlock: "[c/9D9D9D:Locked:] Defeat the Moon Lord"
 				}
 			}
 		}
@@ -621,27 +621,155 @@ Mods: {
 			}
 
 			WeaponDialogue: {
+				Skeleton: {
+					Asphodene: {
+						Name: Skeletron Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
+						2: Good luck! Let it be known I did warn you.
+					}
+					Eridani: {
+						Name: Skeletron Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
+					}
+				}
+				Underworld: {
+					Asphodene: {
+						Name: Underworld Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Here is another Essence for you. Looks like this fancy sewing needle has some pretty powerful movement capabilities.
+					}
+					Eridani: {
+						Name: Underworld Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means?
+						2: I'm telling you to try it out.
+						2.E: Smug
+						3: You knew that? Well, in that case, perish the thought.
+						3.E: Worried
+					}
+				}
+				QueenBee: {
+					Asphodene: {
+						Name: Queen Bee Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Another Essence for you. It's a Melee weapon, but seems to have a mind of its own...?
+					}
+					Eridani: {
+						Name: Queen Bee Weapon Dialogue
+						Description: "Grants an Essence"
+						1: I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god... Or so it seems.
+						2: Whatever it may be, it should prove useful to you. You'd probably be better off ignoring the fact that it talks.
+					}
+				}
+				KingSlime: {
+					Asphodene: {
+						Name: King Slime Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
+						2: It seems like it's looking for something... I hope wherever this Essence came from, they found it! ...But we'll borrow this power for now.
+						2.E: Happy
+					}
+					Eridani: {
+						Name: King Slime Weapon Dialogue
+						Description: "Grants an Essence"
+						1: I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
+						2: I have no doubts you can get a handle on it easily. My apologies, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
+					}
+				}
+				WallOfFlesh: {
+					Asphodene: {
+						Name: Wall of Flesh Weapon Dialogue
+						Description: "Grants an Essence"
+						1: An Essence is here for your use. It looks to be a rather powerful melee weapon... and rather cold. Do you have any spare gloves?
+					}
+					Eridani: {
+						Name: Wall of Flesh Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Magic Essence channels void energies to empower you with unique attacks, but don't get too attached. Void stuff is always dangerous.
+					}
+				}
+				MechBoss: {
+					Asphodene: {
+						Name: Mechanical Boss Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Magic weapon is one of my own invention, could you tell? You'll be able to enter a special state in the heat of combat. Sounds great, right? I know!
+					}
+					Eridani: {
+						Name: Mechanical Boss Weapon Dialogue
+						Description: "Grants an Essence"
+						1: The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
+						2: Even holding it makes you feel a certain type of beat...
+					}
+				}
+				AllMechBoss: {
+					Asphodene: {
+						Name: All Mechanical Bosses Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
+						2: Uhh.. ahem. Please consider it in your arsenal.
+					}
+					Eridani: {
+						Name: All Mechanical Bosses Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Essence will create a Melee weapon made for slaying dragons. Huh, dragons are rather ubiquitous across the galaxy. I wonder why that is...?
+						2: Anyways, the weapon will help you with aerial jumps... and piercing whoever's below you after that.
+					}
+				}
+				Plantera: {
+					Asphodene: {
+						Name: Plantera Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Definitely on my shorthand list of ways I wouldn't wanna go.
+
+					}
+					Eridani: {
+						Name: Plantera Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Magic weapon (gun?) seems to excel with striking foe weak points, becoming stronger after multiple shots.
+					}
+				}
+				Golem: {
+					Asphodene: {
+						Name: Golem Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Essence is a Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
+					}
+					Eridani: {
+						Name: Golem Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Ranged weapon allows you to enter a close-ranged stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
+						2: I know it's only an Essence, but it thirsts for combat... Whoever the original owner was, someone tell them to chill out.
+					}
+				}
+				LunaticCultist: {
+					Asphodene: {
+						Name: Lunatic Cultist Weapon Dialogue
+						Description: "Grants an Essence"
+						1: Looks like this weapon will create a poweful Melee weapon, imbued with the powers of earth and stone. Sounds like a good deal to me!
+
+					}
+					Eridani: {
+						Name: Lunatic Cultist Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
+					}
+				}
+				MoonLord: {
+					Asphodene: {
+						Name: Moon Lord Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
+
+					}
+					Eridani: {
+						Name: Moon Lord Weapon Dialogue
+						Description: "Grants an Essence"
+						1: This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
+					}
+				}
 				Asphodene: {
-					1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
-					2: Good luck! I did warn you.
-					3: Here is another Essence for you. Looks like this fancy sewing needle has some pretty powerful movement capabilities.
-					4: Keep up the good work!
-					5: Here is another Essence for you. It looks to be a rather powerful melee weapon.
-					6: That's it for now. Keep up the good work!
-					7: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
-					8: I trust you'll know what to do.
-					9: An Essence is here for your use. This powerful Melee heirloom is said to cleave the way for those less fortunate.
-					10: Good luck in crafting it.
-					11: This Essence is a personal creation of mine! It creates a Magic weapon that lets you enter the 'Butterfly Trance' and gain special bonuses!
-					12: Please, use it if you can. I can always use more data!
-					13: This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
-					14: Ahem. Please consider it in your arsenal.
-					15: This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Truly fearful.
-					16: If your gear supports it, try crafting this weapon!
-					17: This Essence is another Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
-					18: Hey. Aren't we getting too many Ranged weapons? I'll try and find something else next time.
-					19: This is a legendary Melee artifact! The weapon this Essence crafts can inflict a crippling debuff on any foe!
-					20: This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
 					21: The Warrior of Light has inspired this Essence. It appears to be a key to a gateway of infinite weapons, doing Summon damage.
 					22: If you feel inspired, try referring to your foes as mongrels.
 					23: This Essence creates a Ranged weapon with a high Mana cost, and an incredibly high critical damage modifier.
@@ -726,24 +854,6 @@ Mods: {
 				}
 
 				Eridani: {
-					1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
-					2: Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means?
-					3: I'm telling you to try it out.
-					4: You knew that? Never mind then.
-					5: I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god.. Or so it seems.
-					6: Whatever it may be, it should prove useful to you. Ignore the fact that it talks.
-					7: I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
-					8: I have no doubts you can get a handle on it easily. Okay, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
-					9: This Magic Essence channels void energies to empower you with unique attacks, but don't get too attached. Void stuff is always dangerous.
-					10: The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
-					11: Even holding it makes you feel a certain type of beat...
-					12: This Essence will create a legendary weapon made for slaying dragons. Jump into the air and pierce your foes with its strength.
-					13: It's a Melee weapon, so craft it if you can fit it in your arsenal.
-					14: This Magic weapon will gain critical chance when shooting, and each crit will deal increased damage. It's powerful stuff.
-					15: Consider it if you're able.
-					16: This Ranged weapon allows you to enter a Melee stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
-					17: This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
-					18: This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
 					19: From the Warrior of Light.. this Essence allows for the usage of Limit Break. It's an incredibly strong Magic weapon.
 					20: The Light will cleanse your sins! Or something like that.
 					21: This weapon can switch between Ranged and Magic. If you time its reload correctly, it always does critical damage.
@@ -836,7 +946,6 @@ Mods: {
 				KingSlime: {
 					Asphodene: {
 						Name: King Slime Dialogue
-						UnlockCondition: Defeat King Slime
 						Description: ""
 						1: You've defeated the Slime King, huh? Good job.
 						2: It does do feel like the beginning of a journey. Slimes often serve a good first foe.
@@ -854,7 +963,6 @@ Mods: {
 
 					Eridani: {
 						Name: King Slime Dialogue
-						UnlockCondition: Defeat King Slime
 						Description: ""
 						1: It may have seemed weak, but the Slime King was truly quite the threat.
 
@@ -1572,14 +1680,14 @@ Mods: {
 
 				HiveMind: {
 					Asphodene: {
-						Name: HiveMind Dialogue
+						Name: Hive Mind Dialogue
 						Description: ""
 						1: The Hive Mind has been defeated. It isn't the only source of the Corruption, but killing it definitely didn't do the Corruption any favors.
 						2: That's about it for now.
 					}
 
 					Eridani: {
-						Name: HiveMind Dialogue
+						Name: Hive Mind Dialogue
 						Description: ""
 						1: You've rid the world of the Hive Mind. While it isn't the main vector for the Corruption's influence, stifling it has probably helped alleviate some evil.
 						2: Let's keep on the lookout for any more threats the Corruption bears.
@@ -1612,7 +1720,7 @@ Mods: {
 
 				SlimeGod: {
 					Asphodene: {
-						Name: SlimeGod Dialogue
+						Name: Slime God Dialogue
 						Description: ""
 						1: The Slime God is no more! It turns out that those huge red and purple slimes weren't actually part of the Slime God, but just strong minions.
 
@@ -1633,7 +1741,7 @@ Mods: {
 					}
 
 					Eridani: {
-						Name: SlimeGod Dialogue
+						Name: Slime God Dialogue
 						Description: ""
 						1: Finally. The Slime God has been slain. Of course, this doesn't mean the end of slime as we know it. Seriously, they're just everywhere.
 						2: I'm pretty sure they can split to make more. ...I'm no expert on the etymology of slimes or anything.
@@ -1674,7 +1782,7 @@ Mods: {
 
 				AquaticScourge: {
 					Asphodene: {
-						Name: AquaticScourge Dialogue
+						Name: Aquatic Scourge Dialogue
 						Description: ""
 
 						1: {
@@ -1689,7 +1797,7 @@ Mods: {
 					}
 
 					Eridani: {
-						Name: AquaticScourge Dialogue
+						Name: Aquatic Scourge Dialogue
 						Description: ""
 
 						1: {
@@ -1706,7 +1814,7 @@ Mods: {
 
 				BrimstoneElemental: {
 					Asphodene: {
-						Name: BrimstoneElemental Dialogue
+						Name: Brimstone Elemental Dialogue
 						Description: ""
 						1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before it was destroyed.
 
@@ -1717,7 +1825,7 @@ Mods: {
 					}
 
 					Eridani: {
-						Name: BrimstoneElemental Dialogue
+						Name: Brimstone Elemental Dialogue
 						Description: ""
 						1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
 
@@ -1771,7 +1879,7 @@ Mods: {
 
 				AstrumAureus: {
 					Asphodene: {
-						Name: AstrumAureus Dialogue
+						Name: Astrum Aureus Dialogue
 						Description: ""
 
 						1: {
@@ -1783,7 +1891,7 @@ Mods: {
 					}
 
 					Eridani: {
-						Name: AstrumAureus Dialogue
+						Name: Astrum Aureus Dialogue
 						Description: ""
 						1: That's that. Astrum Aureus is dead. Even as the Astral Infection made a perversion of the original, it beat with a heart of iron still.
 						2: The Astral Infection... It's dangerous. At least we've made some good progress, though. Don't forget that.
@@ -1792,14 +1900,14 @@ Mods: {
 
 				PlaguebringerGoliath: {
 					Asphodene: {
-						Name: PlaguebringerGoliath Dialogue
+						Name: Plaguebringer Goliath Dialogue
 						Description: ""
 						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
 						2: Well, what can you do. There's people like us here to take care of that part.
 					}
 
 					Eridani: {
-						Name: PlaguebringerGoliath Dialogue
+						Name: Plaguebringer Goliath Dialogue
 						Description: ""
 
 						1: {
@@ -1850,7 +1958,7 @@ Mods: {
 
 				AstrumDeus: {
 					Asphodene: {
-						Name: AstrumDeus Dialogue
+						Name: Astrum Deus Dialogue
 						Description: ""
 						1: We've defeated Astrum Deus. Astrum Deus is- or was- one of myriad cosmic beings with lots of power. Etymology around these things is hard, so let's just call it a god.
 
@@ -1868,7 +1976,7 @@ Mods: {
 					}
 
 					Eridani: {
-						Name: AstrumDeus Dialogue
+						Name: Astrum Deus Dialogue
 						Description: ""
 						1: Great work. You've defeated Astrum Deus. I have some personal knowledge, so allow me to share...
 
@@ -2121,7 +2229,7 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						Name: Idle dialogue
+						Name: Idle dialogue (Pre-hardmode)
 						Description: ""
 
 						1: {
@@ -2141,7 +2249,7 @@ Mods: {
 					}
 
 					Eridani: {
-						Name: Idle dialogue
+						Name: Idle dialogue (Pre-hardmode)
 						Description: ""
 
 						1: {
@@ -2163,6 +2271,8 @@ Mods: {
 
 				NormalIdleDialogue3: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: Honestly, I prefer the flashy weapons. A little 'extra' never hurt anyone.
 
 						2: {
@@ -2172,6 +2282,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: Weapon looks? They matter, but utility far outweighs cosmetic value.
 
 						2: {
@@ -2183,12 +2295,16 @@ Mods: {
 
 				NormalIdleDialogue4: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: What is a 'Starfarer' you ask? Would you be suprised if I said I had nearly no idea?
 						2: We appear through summoning, and then... Well, our brother sent us off.
 						3: You know what? I don't even remember how or when I or Eri was summoned- isn't that strange?
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: What is a 'Starfarer'? I hate to tell you this, but we only have cursory knowledge.
 						2: We appear through a summoning spell- no, I can't remember my summoning, strangely.
 						3: My earliest memories are being reoriented by my brother. Other than that...
@@ -2197,6 +2313,8 @@ Mods: {
 
 				NormalIdleDialogue5: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: Don't forget about the Stellar Array!
 						2: It would be a shame if you did. I made it for you, after all.
 					}
@@ -2206,11 +2324,15 @@ Mods: {
 
 				NormalIdleDialogue6: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: Hmm...
 						2: Ah, it's nothing. Keep up the good work.
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: ...Hm.
 						2: Ah.. It's nothing.
 					}
@@ -2218,6 +2340,8 @@ Mods: {
 
 				NormalIdleDialogue7: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: I have this idea about a weapon, {0}.
 						2: Wait.
 						3: Uh.. Never mind. Forget I said anything.
@@ -2229,6 +2353,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: So, there's this weapon idea I was thinking of, {0}.
 						2: Wait.. Actually.. Forget it. Never mind.
 
@@ -2241,6 +2367,9 @@ Mods: {
 
 				NormalIdleDialogue8: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: Aren't some of these townspeople kind of awful?
 							E: Worried
@@ -2253,6 +2382,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: These merchants are definitely upselling their wares for far too much!
 							E: Angry
@@ -2267,12 +2399,16 @@ Mods: {
 
 				HardIdleDialogue1: {
 					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: So, what's next on the agenda? Let's see..
 						2: Have you been working on your town? Up for some mining? Ready for the next boss?
 						3: It's up to you. I'll be here.
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
 						1: Mind if I suggest your next move? Um...
 						2: If you need more town space, there's that. You might also need some more ores, unless you're ready for the next boss?
 						3: Just suggestions. I trust your judgement.
@@ -2291,6 +2427,8 @@ Mods: {
 
 				HardIdleDialogue4: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: I'm liking your outfit! I guess we do think alike.
 
 						2: {
@@ -2300,6 +2438,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: Is your armor up to par? Looks-wise, it's... passable.
 
 						2: {
@@ -2317,12 +2457,44 @@ Mods: {
 				}
 
 				HardIdleDialogue5: {
-					Asphodene.1: I could seriously do with a break...
-					Eridani.1: Let's, uh... take a break from time to time.
+					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
+						1: {
+							$parentVal: Make sure to take breaks when necessary.
+							E: Worried
+						}
+
+						2: {
+							$parentVal: It does nobody any favors if you lose track of yourself in the heat of battle.
+							E: Neutral
+						}
+					}
+
+					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+						1: Remember, keeping a cool head in combat is important.
+
+						2: {
+							$parentVal: "'In the midst of chaos, there is opportunity.'"
+							E: Smug
+						}
+
+						3: Remember that well. ...No, I didn't come up with that.
+
+						4: {
+							$parentVal: It would have been pretty cool if I did, though.
+							E: Happy
+						}
+					}
 				}
 
 				HardIdleDialogue6: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: You're getting pretty strong! Think you can beat me in a fight?
 
 						2: {
@@ -2332,6 +2504,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: You just keep getting stronger, huh? I'll have to work harder to keep up.
 
 						2: {
@@ -2350,6 +2524,8 @@ Mods: {
 
 				HardIdleDialogue7: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: I can barely imagine where some of these monsters have come from.
 
 						2: {
@@ -2363,6 +2539,9 @@ Mods: {
 
 				HardIdleDialogue8: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: Okay, theoretically, because I can resurrect you from the brink of death at your bed...
 							E: Thinking
@@ -2375,6 +2554,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: Have you ever tried... using two weapons at once? Like, one weapon in each hand?
 							E: Thinking
@@ -2386,11 +2568,15 @@ Mods: {
 
 				HardIdleDialogue9: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: Yes, my hair does get a bit frazzled from time to time. Actually, Eri does my hair- could you tell?
 						2: If I'm quick enough, I can leave the Observatory in the morning before she finds me. Heh.
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: Asphodene likes to follow rules as much as possible, but to be honest, there's a time and place for everything.
 						2: Sometimes, you have to bend the regulations to help who you need. That's just how things work. If you're quick enough, nobody will even notice.
 						3: Let's keep something straight though- there's usually other options, and you have to weigh those as well. Always resorting to crime is what bad people do.
@@ -2399,6 +2585,8 @@ Mods: {
 
 				HardIdleDialogue10: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: From looking at her, you probably get the impression that Eridani is a bit of a "honor student" type, right?
 
 						2: {
@@ -2408,6 +2596,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: Asphodene is technically the older one... but I bet you couldn't tell.
 							E: Thinking
@@ -2419,6 +2610,9 @@ Mods: {
 
 				HardIdleDialogue11: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: What I like? Waking up when I want to! Yes, I'd say that nears the top of the list.
 							E: Happy
@@ -2438,6 +2632,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: Things that I like? Are you asking about banal things, or... Okay.
 							E: Thinking
@@ -2454,6 +2651,9 @@ Mods: {
 
 				HardIdleDialogue12: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: Things that I dislike? Let's see...
 							E: Thinking
@@ -2471,6 +2671,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
+
 						1: {
 							$parentVal: What I dislike? Other than bugs... Okay, may I vent a little?
 							E: Thinking
@@ -2487,6 +2690,8 @@ Mods: {
 
 				HardIdleDialogue13: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: My hobbies, huh. Well, I collect knicknacks from the places I visit. That's cool, right?
 
 						2: {
@@ -2501,6 +2706,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: Hobbies? Well, the biggest thing I can think of is alchemy. Yes, alchemy has been solved- if you think on a planetary scale.
 
 						2: {
@@ -2514,6 +2721,8 @@ Mods: {
 
 				HardIdleDialogue14: {
 					Asphodene: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: Truly... The Hallowed is just a big facade.
 
 						2: {
@@ -2523,6 +2732,8 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Hardmode)
+						Description: ""
 						1: Strip away the Hallowed's mask, and it may even be harsher than the Underworld itself.
 
 						2: {
@@ -2534,6 +2745,9 @@ Mods: {
 
 				LightIdleDialogue: {
 					Asphodene: {
+						Name: Idle dialogue (Everlasting Light)
+						Description: ""
+
 						1: {
 							$parentVal: This endless light is awful... There must be some way to stop it.
 							E: Angry
@@ -2546,6 +2760,9 @@ Mods: {
 					}
 
 					Eridani: {
+						Name: Idle dialogue (Everlasting Light)
+						Description: ""
+
 						1: {
 							$parentVal: This everlasting light is dreadful...
 							E: Angry

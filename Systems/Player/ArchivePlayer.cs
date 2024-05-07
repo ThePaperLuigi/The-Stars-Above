@@ -1193,13 +1193,13 @@ namespace StarsAbove.Systems
                     if (IdleArchiveList[archiveListNumber].IsViewable)
                     {
                         canViewArchive = true;
-                        archiveListInfo = LangHelper.Wrap("" + IdleArchiveList[archiveListNumber].Name + ":" + "\n" + IdleArchiveList[archiveListNumber].ListInformation, 25);
+                        archiveListInfo = LangHelper.Wrap("" + IdleArchiveList[archiveListNumber].Name + "\n" + IdleArchiveList[archiveListNumber].ListInformation, 20);
 
                     }
                     else
                     {
                         canViewArchive = false;
-                        archiveListInfo = LangHelper.Wrap(IdleArchiveList[archiveListNumber].UnlockConditions, 25);
+                        archiveListInfo = LangHelper.Wrap(IdleArchiveList[archiveListNumber].UnlockConditions, 20);
                     }
 
                 }
@@ -1208,13 +1208,13 @@ namespace StarsAbove.Systems
                     if (BossArchiveList[archiveListNumber].IsViewable)
                     {
                         canViewArchive = true;
-                        archiveListInfo = LangHelper.Wrap("" + BossArchiveList[archiveListNumber].Name + ":" + "\n" + BossArchiveList[archiveListNumber].ListInformation, 25);
+                        archiveListInfo = LangHelper.Wrap("" + BossArchiveList[archiveListNumber].Name + "\n" + BossArchiveList[archiveListNumber].ListInformation, 20);
 
                     }
                     else
                     {
                         canViewArchive = false;
-                        archiveListInfo = LangHelper.Wrap(BossArchiveList[archiveListNumber].UnlockConditions, 25);
+                        archiveListInfo = LangHelper.Wrap(BossArchiveList[archiveListNumber].UnlockConditions, 20);
                     }
 
                 }
@@ -1223,13 +1223,13 @@ namespace StarsAbove.Systems
                     if (WeaponArchiveList[archiveListNumber].IsViewable)
                     {
                         canViewArchive = true;
-                        archiveListInfo = LangHelper.Wrap("" + WeaponArchiveList[archiveListNumber].Name + ":" + "\n" + WeaponArchiveList[archiveListNumber].ListInformation, 25);
+                        archiveListInfo = LangHelper.Wrap("" + WeaponArchiveList[archiveListNumber].Name + "\n" + WeaponArchiveList[archiveListNumber].ListInformation, 20);
 
                     }
                     else
                     {
                         canViewArchive = false;
-                        archiveListInfo = LangHelper.Wrap(WeaponArchiveList[archiveListNumber].UnlockConditions, 25);
+                        archiveListInfo = LangHelper.Wrap(WeaponArchiveList[archiveListNumber].UnlockConditions, 20);
                     }
 
                 }
@@ -1238,13 +1238,13 @@ namespace StarsAbove.Systems
                     if (VNArchiveList[archiveListNumber].IsViewable)
                     {
                         canViewArchive = true;
-                        archiveListInfo = LangHelper.Wrap("" + VNArchiveList[archiveListNumber].Name + ":" + "\n" + VNArchiveList[archiveListNumber].ListInformation, 25);
+                        archiveListInfo = LangHelper.Wrap("" + VNArchiveList[archiveListNumber].Name + "\n" + VNArchiveList[archiveListNumber].ListInformation, 20);
 
                     }
                     else
                     {
                         canViewArchive = false;
-                        archiveListInfo = LangHelper.Wrap(VNArchiveList[archiveListNumber].UnlockConditions, 25);
+                        archiveListInfo = LangHelper.Wrap(VNArchiveList[archiveListNumber].UnlockConditions, 20);
                     }
 
                 }

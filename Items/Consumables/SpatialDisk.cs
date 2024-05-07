@@ -308,6 +308,57 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
+            if (modPlayer.vagrantDialogue == 1 && DownedBossSystem.downedVagrant)
+            {
+                if (modPlayer.chosenStarfarer == 1)
+                {
+                    modPlayer.dialogueScrollTimer = 0;
+                    modPlayer.dialogueScrollNumber = 0;
+                    modPlayer.sceneProgression = 0;
+                    modPlayer.sceneID = 9;
+                    modPlayer.VNDialogueActive = true;
+                    modPlayer.vagrantDialogue = 2;
+                }
+                if (modPlayer.chosenStarfarer == 2)
+                {
+                    modPlayer.dialogueScrollTimer = 0;
+                    modPlayer.dialogueScrollNumber = 0;
+                    modPlayer.sceneProgression = 0;
+                    modPlayer.sceneID = 10;
+                    modPlayer.VNDialogueActive = true;
+                    modPlayer.vagrantDialogue = 2;
+                }
+
+                return true;
+
+            }
+            if (modPlayer.starfarerBossItemDialogue == 1)
+            {
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 23;
+                modPlayer.VNDialogueActive = true;
+                modPlayer.starfarerBossItemDialogue = 2;
+
+
+                //Spawn item here.
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<StarfarerEssence>());
+                return true;
+
+            }
+            if (modPlayer.starfarerPostBattleDialogue == 1)
+            {
+                modPlayer.dialogueScrollTimer = 0;
+                modPlayer.dialogueScrollNumber = 0;
+                modPlayer.sceneProgression = 0;
+                modPlayer.sceneID = 24;
+                modPlayer.VNDialogueActive = true;
+                modPlayer.starfarerPostBattleDialogue = 2;
+
+                return true;
+
+            }
             if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
             {
                 modPlayer.chosenDialogue = 21;
@@ -442,14 +493,6 @@ namespace StarsAbove.Items.Consumables
             activateDialogue(player);
             return true;
 
-            if (modPlayer.desertscourgeDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 201;
-				modPlayer.desertscourgeDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 
 			if (modPlayer.EyeBossWeaponDialogue == 1)
 			{
@@ -459,14 +502,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.crabulonDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 202;
-				modPlayer.crabulonDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
 			if (modPlayer.corruptBossDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 53;
@@ -491,22 +527,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.hivemindDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 203;
-				modPlayer.hivemindDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.perforatorDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 204;
-				modPlayer.perforatorDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			
 			if (modPlayer.QueenSlimeWeaponDialogue == 1)
 			{
@@ -524,46 +545,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.SkeletonDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 55;
-				modPlayer.SkeletonDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
-			if (modPlayer.slimegodDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 205;
-				modPlayer.slimegodDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.SkeletonWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 101;
-				modPlayer.SkeletonWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.HellWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 102;
-				modPlayer.HellWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.QueenBeeWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 103;
-				modPlayer.QueenBeeWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.MiseryWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 120;
@@ -576,30 +558,6 @@ namespace StarsAbove.Items.Consumables
 			{
 				modPlayer.chosenDialogue = 123;
 				modPlayer.OceanWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.DeerclopsDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 76;
-				modPlayer.DeerclopsDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.KingSlimeWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 104;
-				modPlayer.KingSlimeWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.WallOfFleshDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 56;
-				modPlayer.WallOfFleshDialogue = 2;
 				activateDialogue(player);
 
 				return true;
@@ -680,14 +638,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.WallOfFleshWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 105;
-				modPlayer.WallOfFleshWeaponDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
 			if (modPlayer.LumaWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 124;
@@ -696,14 +647,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.QueenSlimeDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 74;
-				modPlayer.QueenSlimeDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
 			if (modPlayer.UrgotWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 146;
@@ -720,110 +664,9 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.cryogenDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 206;
-				modPlayer.cryogenDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
-			if (modPlayer.TwinsDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 57;
-				modPlayer.TwinsDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
-			if (modPlayer.aquaticscourgeDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 207;
-				modPlayer.aquaticscourgeDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
-			if (modPlayer.MechBossWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 106;
-				modPlayer.MechBossWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.DestroyerDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 58;
-				modPlayer.DestroyerDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.vagrantBossItemDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 77;
-				modPlayer.vagrantBossItemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.nalhaunBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 301;
-				modPlayer.nalhaunBossItemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.dioskouroiDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 69;
-				modPlayer.dioskouroiDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.dioskouroiBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 305;
-				modPlayer.dioskouroiBossItemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.brimstoneelementalDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 208;
-				modPlayer.brimstoneelementalDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.SkeletronPrimeDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 59;
-				modPlayer.SkeletronPrimeDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.EmpressDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 75;
-				modPlayer.EmpressDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.SkyStrikerWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 135;
-				modPlayer.SkyStrikerWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.OzmaWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 145;
@@ -832,30 +675,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.calamitasDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 209;
-				modPlayer.calamitasDialogue = 2;
-				activateDialogue(player);
 
-				return true;
-			}
-			if (modPlayer.AllMechsDefeatedDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 60;
-				modPlayer.AllMechsDefeatedDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.AllMechBossWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 107;
-				modPlayer.AllMechBossWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.HullwroughtWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 121;
@@ -872,14 +692,6 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.PlanteraDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 61;
-				modPlayer.PlanteraDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.FrostMoonWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 126;
@@ -888,58 +700,11 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.penthBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 302;
-				modPlayer.penthBossItemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.leviathanDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 210;
-				modPlayer.leviathanDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.astrumaureusDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 211;
-				modPlayer.astrumaureusDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.PlanteraWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 108;
 				modPlayer.PlanteraWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.GolemDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 62;
-				modPlayer.GolemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.arbiterBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 303;
-				modPlayer.arbiterBossItemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.plaguebringerDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 212;
-				modPlayer.plaguebringerDialogue = 2;
 				activateDialogue(player);
 
 				return true;
@@ -1040,14 +805,6 @@ namespace StarsAbove.Items.Consumables
 
                 return true;
             }
-            if (modPlayer.thespianDialogue == 1)
-            {
-                modPlayer.chosenDialogue = 78;
-                modPlayer.thespianDialogue = 2;
-                activateDialogue(player);
-
-                return true;
-            }
             if (modPlayer.ThespianWeaponDialogue == 1)
             {
                 modPlayer.chosenDialogue = 180;
@@ -1064,34 +821,10 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.DukeFishronDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 63;
-				modPlayer.DukeFishronDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ravagerDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 213;
-				modPlayer.ravagerDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.DukeFishronWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 116;
 				modPlayer.DukeFishronWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.CultistDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 64;
-				modPlayer.CultistDialogue = 2;
 				activateDialogue(player);
 
 				return true;
@@ -1112,30 +845,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.MoonLordDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 65;
-				modPlayer.MoonLordDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.warriorBossItemDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 304;
-				modPlayer.warriorBossItemDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.tsukiyomiDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 73;
-				modPlayer.tsukiyomiDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.MoonLordWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 111;
@@ -1152,93 +862,9 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.WarriorOfLightDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 66;
-				modPlayer.WarriorOfLightDialogue = 2;
-				activateDialogue(player);
+			
+            
 
-				return true;
-
-			}
-			if (modPlayer.vagrantDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				if (modPlayer.chosenStarfarer == 1)
-				{//This should be condensed.
-					modPlayer.dialogueScrollTimer = 0;
-					modPlayer.dialogueScrollNumber = 0;
-					modPlayer.sceneProgression = 0;
-					modPlayer.sceneID = 9;
-					modPlayer.VNDialogueActive = true;
-					modPlayer.vagrantDialogue = 2;
-				}
-				if (modPlayer.chosenStarfarer == 2)
-				{
-					modPlayer.dialogueScrollTimer = 0;
-					modPlayer.dialogueScrollNumber = 0;
-					modPlayer.sceneProgression = 0;
-					modPlayer.sceneID = 10;
-					modPlayer.VNDialogueActive = true;
-					modPlayer.vagrantDialogue = 2;
-				}
-
-				return true;
-
-			}
-            if (modPlayer.starfarerBossItemDialogue == 1)
-            {
-                modPlayer.dialogueScrollTimer = 0;
-                modPlayer.dialogueScrollNumber = 0;
-                modPlayer.sceneProgression = 0;
-                modPlayer.sceneID = 23;
-                modPlayer.VNDialogueActive = true;
-                modPlayer.starfarerBossItemDialogue = 2;
-
-
-                //Spawn item here.
-                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<StarfarerEssence>());
-                return true;
-
-            }
-            if (modPlayer.starfarerPostBattleDialogue == 1)
-            {
-                modPlayer.dialogueScrollTimer = 0;
-                modPlayer.dialogueScrollNumber = 0;
-                modPlayer.sceneProgression = 0;
-                modPlayer.sceneID = 24;
-                modPlayer.VNDialogueActive = true;
-                modPlayer.starfarerPostBattleDialogue = 2;
-
-                return true;
-
-            }
-            if (modPlayer.nalhaunDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 70;
-				modPlayer.nalhaunDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-
-			}
-			if (modPlayer.penthDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 71;
-				modPlayer.penthDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-
-			}
-			if (modPlayer.arbiterDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 72;
-				modPlayer.arbiterDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-
-			}
 			if (modPlayer.WarriorWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 112;
@@ -1399,14 +1025,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.ForceWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 131;
-				modPlayer.ForceWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.GenocideWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 132;
@@ -1463,43 +1082,6 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.AllVanillaBossesDefeatedDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 67;
-				modPlayer.AllVanillaBossesDefeatedDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.EverythingDefeatedDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 68;
-				modPlayer.EverythingDefeatedDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.AllVanillaBossesDefeatedWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 113;
-				modPlayer.AllVanillaBossesDefeatedWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.EverythingDefeatedWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 114;
-				modPlayer.EverythingDefeatedWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
-
-
-			
-
 			//
 			modPlayer.dialoguePrep = true;
 			modPlayer.starfarerDialogue = true;

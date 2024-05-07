@@ -3860,48 +3860,59 @@ namespace StarsAbove
             {
                 bool newDiskNotification = false;
                 bool newArrayNotification = false;
-                bool newNovaNotification = false;                
+                bool newNovaNotification = false;
+
+                if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
+                {
+                    //VN dialogue so untouched.
+                    astrolabeIntroDialogue = 1;
+                    newDiskNotification = true;
+                }
+                if (DownedBossSystem.downedVagrant && vagrantDialogue == 0)
+                {
+                    //VN dialogue so untouched.
+                    vagrantDialogue = 1;
+                    newDiskNotification = true;
+                    newArrayNotification = true;
+                    newNovaNotification = true;
+
+
+                }
+                if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth && DownedBossSystem.downedThespian && DownedBossSystem.downedDioskouroi && DownedBossSystem.downedVagrant && NPC.downedPlantBoss)
+                {
+                    starfarerBossItemDialogue = 1;
+                    newDiskNotification = true;
+
+                }
+                if (DownedBossSystem.downedStarfarers && starfarerPostBattleDialogue == 0)
+                {
+                    //VN dialogue so untouched.
+                    starfarerPostBattleDialogue = 1;
+                    newDiskNotification = true;
+                }
+                if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
+                {
+                    //VN dialogue so untouched.
+                    observatoryIntroDialogue = 1;
+                    newDiskNotification = true;
+                }
 
                 //New system.
-
-                //If slime king is dead
                 if (NPC.downedSlimeKing)
                 {
                     SetupActiveDialogue(ref newDiskNotification, 
                         51, 
                         ref slimeDialogue, 
                         true, out newArrayNotification, 
-                        false, out newNovaNotification);
-                    
+                        false, out newNovaNotification);                  
                 }
-                if (NPC.downedBoss1 && eyeDialogue == 0)
+                if (NPC.downedBoss1)
                 {
                     SetupActiveDialogue(ref newDiskNotification, 
                         52, //The ID of the dialogue.
                         ref eyeDialogue, //The flag of the dialogue.
                         true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
-
-                }
-                if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
-                {
-                    //VN dialogue so untouched.
-                    astrolabeIntroDialogue = 1;
-                    newDiskNotification = true;
-                     
-
-
-
-                }
-                if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
-                {
-                    //VN dialogue so untouched.
-
-                    observatoryIntroDialogue = 1;
-                    newDiskNotification = true;
-                     
-
-
 
                 }
                 if (NPC.downedBoss2)
@@ -3921,515 +3932,378 @@ namespace StarsAbove
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
 
-                if (NPC.downedBoss3 && SkeletonDialogue == 0)
+                if (NPC.downedBoss3)
                 {
-                    SkeletonDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    newArrayNotification = true;
-                     
+                    SetupActiveDialogue(ref newDiskNotification,
+                        55, //The ID of the dialogue.
+                        ref SkeletonDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
                 }
-                if (NPC.downedDeerclops && DeerclopsDialogue == 0)
+                if (NPC.downedDeerclops)
                 {
-                    DeerclopsDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                        76, //The ID of the dialogue.
+                        ref DeerclopsDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (Main.hardMode && WallOfFleshDialogue == 0)//Hardmode
+                if (Main.hardMode)//Hardmode
                 {
-                    WallOfFleshDialogue = 1;
+                    SetupActiveDialogue(ref newDiskNotification,
+                        56, //The ID of the dialogue.
+                        ref WallOfFleshDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
-                                        newDiskNotification = true;
-                     
-                    newArrayNotification = true;
-                     
+                }                
+                if (NPC.downedMechBoss1)//The Twins
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        57, //The ID of the dialogue.
+                        ref TwinsDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }                            
+                if (NPC.downedQueenSlime)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        134, //The ID of the dialogue.
+                        ref QueenSlimeDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
+                if (DownedBossSystem.downedNalhaun)
                 {
-                    ForceWeaponDialogue = 1;
-
-                                        newDiskNotification = true;
-                     
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
+                    SetupActiveDialogue(ref newDiskNotification,
+                        70, //The ID of the dialogue.
+                        ref nalhaunDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (GolemWeaponDialogue == 2 && GenocideWeaponDialogue == 0)//Hardmode
+                if (DownedBossSystem.downedDioskouroi)
                 {
-                    GenocideWeaponDialogue = 1;
-
-                                        newDiskNotification = true;
-                     
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
+                    SetupActiveDialogue(ref newDiskNotification,
+                        69, //The ID of the dialogue.
+                        ref dioskouroiDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (CorruptBossWeaponDialogue == 2 && TakodachiWeaponDialogue == 0)//Hardmode
+                if (DownedBossSystem.downedPenth)
                 {
-                    TakodachiWeaponDialogue = 1;
-
-                                        newDiskNotification = true;
-                     
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
+                    SetupActiveDialogue(ref newDiskNotification,
+                        71, //The ID of the dialogue.
+                        ref penthDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
+                if (DownedBossSystem.downedArbiter)
                 {
-                    TwinsDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    if (bloomingflames == 0)
-                    {
-                        newArrayNotification = true;
-                         
-                    }
-
-
-                }
-                if (SkeletronPrimeDialogue == 2 && SkyStrikerWeaponDialogue == 0)//Hardmode
-                {
-                    SkyStrikerWeaponDialogue = 1;
-
-                                        newDiskNotification = true;
-                     
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                if (LunaticCultistWeaponDialogue == 2 && TwinStarsWeaponDialogue == 0)//Hardmode
-                {
-                    TwinStarsWeaponDialogue = 1;
-
-                                        newDiskNotification = true;
-                     
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                //Dialogue for Calamity Mod bosses.
-
-
-                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-                {
-                    if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        desertscourgeDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        crabulonDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        hivemindDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        perforatorDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        slimegodDialogue = 1;
-                    }
-                    //Hardmode
-                    if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        cryogenDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        aquaticscourgeDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        brimstoneelementalDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        calamitasDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        leviathanDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        astrumaureusDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        plaguebringerDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        ravagerDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
-                    {
-                                            newDiskNotification = true;
-                         
-                        astrumdeusDialogue = 1;
-                    }
-                }
-
-                if (NPC.downedQueenSlime && QueenSlimeDialogue == 0)
-                {
-                    QueenSlimeDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                }
-                if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
-                {
-                    nalhaunDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-
-
-                    newArrayNotification = true;
-                     
-
-
-                }
-                if (DownedBossSystem.downedDioskouroi && dioskouroiDialogue == 0)
-                {
-                    dioskouroiDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                    //NewStellarNova = true;
-                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    // 
-
-
-                }
-                if (DownedBossSystem.downedPenth && penthDialogue == 0)
-                {
-                    penthDialogue = 1;
-                     newDiskNotification = true;
-                     
-
-                    NewStellarNova = true;
-                    newArrayNotification = true;
-                     
-
-
-                }
-                if (DownedBossSystem.downedArbiter && arbiterDialogue == 0)
-                {
-                    arbiterDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                    //NewStellarNova = true;
-                    if (Main.expertMode)
-                    {
-                        //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                        // 
-                    }
+                    SetupActiveDialogue(ref newDiskNotification,
+                          72, //The ID of the dialogue.
+                          ref arbiterDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
                 if (DownedBossSystem.downedTsuki)
                 {
-                    if (tsukiyomiDialogue == 0 || tsukiyomiDialogue == 1)
-                    {
-                        //Force open the dialogue.
-                        //chosenDialogue = 73;
-                        //tsukiyomiDialogue = 2;
-                        //dialoguePrep = true;
-                        //starfarerDialogue = true;
-                        //if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-                        //tsukiyomiDialogue = 2;
-                    }
+                    SetupActiveDialogue(ref newDiskNotification,
+                          73, //The ID of the dialogue.
+                          ref tsukiyomiDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
 
-                if (tsukiyomiDialogue >= 1)
+                
+
+
+                if (NPC.downedMechBoss2)//The Destroyer
                 {
-                    if (edingenesisquasar == 0)
-                    {
-                    newNovaNotification = true;
-
-                        edingenesisquasar = 1;
-                    }
-                }
-
-
-                if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
-                {
-                    DestroyerDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    if (bloomingflames == 0)
-                    {
-                        newArrayNotification = true;
-                         
-                    }
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                          58, //The ID of the dialogue.
+                          ref DestroyerDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
                 if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
                 {
-                    SkeletronPrimeDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    if (bloomingflames == 0)
-                    {
-                        newArrayNotification = true;
-                         
-                    }
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                           59, //The ID of the dialogue.
+                           ref SkeletronPrimeDialogue, //The flag of the dialogue.
+                           false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                           false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2)//All Mech Bosses Defeated + Dialogue read
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                            60, //The ID of the dialogue.
+                            ref AllMechsDefeatedDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                            false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                             61, //The ID of the dialogue.
+                             ref PlanteraDialogue, //The flag of the dialogue.
+                             true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                             false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedGolemBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                             62, //The ID of the dialogue.
+                             ref GolemDialogue, //The flag of the dialogue.
+                             true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                             false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedEmpressOfLight)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                             75, //The ID of the dialogue.
+                             ref EmpressDialogue, //The flag of the dialogue.
+                             true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                             false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              64, //The ID of the dialogue.
+                              ref CultistDialogue, //The flag of the dialogue.
+                              true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              65, //The ID of the dialogue.
+                              ref MoonLordDialogue, //The flag of the dialogue.
+                              true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
                 }
-                if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2 && AllMechsDefeatedDialogue == 0)//All Mech Bosses Defeated + Dialogue read
+                if (NPC.downedFishron)
                 {
-                    AllMechsDefeatedDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              63, //The ID of the dialogue.
+                              ref DukeFishronDialogue, //The flag of the dialogue.
+                              true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (NPC.downedPlantBoss && PlanteraDialogue == 0)
+                if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && !SubworldSystem.AnyActive())
                 {
-                    PlanteraDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    newArrayNotification = true;
-                     
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
-
-                }
-                if (NPC.downedGolemBoss && GolemDialogue == 0)
-                {
-                    GolemDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    if (Main.expertMode)
-                    {
-                        newArrayNotification = true;
-                         
-                    }
-
-                }
-                if (NPC.downedEmpressOfLight && EmpressDialogue == 0)
-                {
-                    EmpressDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-
-                }
-                if (NPC.downedAncientCultist && CultistDialogue == 0)
-                {
-                    CultistDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                    if (Main.expertMode)
-                    {
-                        newArrayNotification = true;
-                         
-                    }
-
-                }
-                if (NPC.downedMoonlord && MoonLordDialogue == 0)
-                {
-                    MoonLordDialogue = 1;
-
-
-                                        newDiskNotification = true;
-                     
-
-                    newArrayNotification = true;
-                     
-
-
-                }
-                if (NPC.downedFishron && DukeFishronDialogue == 0)
-                {
-                    DukeFishronDialogue = 1;
-                                        newDiskNotification = true;
-                     
-                }
-                if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
-                {
-                    warriorBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
-                                        newDiskNotification = true;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                                                  304, //The ID of the dialogue.
+                                                  ref warriorBossItemDialogue, //The flag of the dialogue.
+                                                  false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                                                  false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
                 if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
                 {
                     onEverlastingLightText = true;
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
-
-
                 }
-                if (DownedBossSystem.downedWarrior && WarriorOfLightDialogue == 0)
+                if (DownedBossSystem.downedWarrior)
                 {
-                    WarriorOfLightDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLightEnd"), 239, 221, 106); }
-                    if (ModLoader.TryGetMod("BossChecklist", out Mod BossChecklist))
+                    SetupActiveDialogue(ref newDiskNotification,
+                                                   66, //The ID of the dialogue.
+                                                   ref WarriorOfLightDialogue, //The flag of the dialogue.
+                                                   true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                                                   false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                
+
+                if (DownedBossSystem.downedThespian)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              78, //The ID of the dialogue.
+                              ref thespianDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && Main.expertMode)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              68, //The ID of the dialogue.
+                              ref EverythingDefeatedDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }    
+                //Boss Spawn items
+                if (NPC.downedBoss1)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              77, //The ID of the dialogue.
+                              ref vagrantBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (SkeletonDialogue == 2 && vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              305, //The ID of the dialogue.
+                              ref dioskouroiBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if ((SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              302, //The ID of the dialogue.
+                              ref penthBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                
+                if (GolemDialogue == 2 && vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              301, //The ID of the dialogue.
+                              ref nalhaunBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                //Dialogue for Calamity Mod bosses.
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                {
+                    if ((bool)calamityMod.Call("GetBossDowned", "desertscourge"))
                     {
-
-
+                        SetupActiveDialogue(ref newDiskNotification,
+                        201, //The ID of the dialogue.
+                        ref desertscourgeDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                     }
-
-
-                                        newDiskNotification = true;
-                     
-                    if (BossChecklist != null)
+                    if ((bool)calamityMod.Call("GetBossDowned", "crabulon"))
                     {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.TsukiyomiBossChecklist"), 241, 255, 180); }
-
+                        SetupActiveDialogue(ref newDiskNotification,
+                        202, //The ID of the dialogue.
+                        ref crabulonDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                     }
-
-                    newArrayNotification = true;
-                     
-
-
+                    if ((bool)calamityMod.Call("GetBossDowned", "hivemind"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          203, //The ID of the dialogue.
+                          ref hivemindDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "perforator"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          204, //The ID of the dialogue.
+                          ref perforatorDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "slimegod"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         205, //The ID of the dialogue.
+                         ref slimegodDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    //Hardmode
+                    if ((bool)calamityMod.Call("GetBossDowned", "cryogen"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         206, //The ID of the dialogue.
+                         ref cryogenDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         207, //The ID of the dialogue.
+                         ref aquaticscourgeDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          208, //The ID of the dialogue.
+                          ref brimstoneelementalDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          209, //The ID of the dialogue.
+                          ref calamitasDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          210, //The ID of the dialogue.
+                          ref leviathanDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          211, //The ID of the dialogue.
+                          ref astrumaureusDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         212, //The ID of the dialogue.
+                         ref plaguebringerDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "ravager"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         213, //The ID of the dialogue.
+                         ref ravagerDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                        214, //The ID of the dialogue.
+                        ref astrumdeusDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
                 }
-                if (DownedBossSystem.downedVagrant && vagrantDialogue == 0)
-                {
-                    vagrantDialogue = 1;
 
-                    newDiskNotification = true;
-                     
-
-                    newArrayNotification = true;
-                     
-
-                    newNovaNotification = true;
-                    NewStellarNova = true;
-
-
-                }
-
-                if (DownedBossSystem.downedThespian && thespianDialogue == 0)
-                {
-                    thespianDialogue = 1;
-
-                    newDiskNotification = true;
-                     
-
-                    
-
-
-                }
-                if (DownedBossSystem.downedStarfarers && starfarerPostBattleDialogue == 0)
-                {
-                    starfarerPostBattleDialogue = 1;
-
-                    newDiskNotification = true;
-                     
-
-
-
-
-                }
-                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
-                {
-                    //AllVanillaBossesDefeatedDialogue = 1;
-                    //                    newDiskNotification = true;
-                    // 
-
-                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    // 
-
-
-                }
-                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && Main.expertMode && EverythingDefeatedDialogue == 0)
-                {
-                    //Expert mode only
-                    EverythingDefeatedDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                    newArrayNotification = true;
-                     
-
-
-                }
-
-                if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
-                {
-                    HellWeaponDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                }
+                //Weapon dialogues
                 if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
                 {
                     Stellaglyph2WeaponDialogue = 1;
-                                        newDiskNotification = true;
-                     
+                    newDiskNotification = true;
+
 
                 }
                 if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
                 {
                     NanomachineWeaponDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                }
-                //Boss Spawn items
-                if (vagrantBossItemDialogue == 0 && NPC.downedBoss1)
-                {
-                    vagrantBossItemDialogue = 1;
-                    newDiskNotification = true;
-                }
-                if (dioskouroiBossItemDialogue == 0 && SkeletonDialogue == 2 && vagrantDialogue == 2)
-                {
-                    dioskouroiBossItemDialogue = 1;
                     newDiskNotification = true;
 
+
                 }
-                if (penthBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
+                if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
                 {
-                    penthBossItemDialogue = 1;
+                    HellWeaponDialogue = 1;
                     newDiskNotification = true;
 
-                }
-                if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth && DownedBossSystem.downedThespian && DownedBossSystem.downedDioskouroi && DownedBossSystem.downedVagrant && NPC.downedPlantBoss)
-                {
-                    starfarerBossItemDialogue = 1;
-                    newDiskNotification = true;
 
                 }
-                if (starfarerPostBattleDialogue == 0 && DownedBossSystem.downedStarfarers)
-                {
-                    starfarerPostBattleDialogue = 1;
-                    newDiskNotification = true;
-
-                }
-                if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
-                {
-
-                    nalhaunBossItemDialogue = 1;
-                    newDiskNotification = true;
-
-                }
-
-                //Zone specific weapons do not have delay
                 if (Player.ZoneHallow && GoldWeaponDialogue == 0)
                 {
                     GoldWeaponDialogue = 1;
@@ -4448,659 +4322,693 @@ namespace StarsAbove
                     return;
 
                 }
-                if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
-                {//The order of these should not matter.
-                    if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
-                    {
-                        TrickspinWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            newDiskNotification = true;
-                         
-                    }
-                    if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
-                    {
-                        SoldierWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            newDiskNotification = true;
-                         
-                    }
-                    if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
-                    {
-                        DreamerWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            newDiskNotification = true;
-                         
-                    }
-                    if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
-                    {
-                        KineticWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            newDiskNotification = true;
-                         
-                    }
-                    if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
-                    {
-                        SkeletonWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-                    }
-                    if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
-                    {
-                        ArchitectWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-
-
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-
-                    }
-                    if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
-                    {
-                        CosmicDestroyerWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-
-
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-
-
-                    }
-                    if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
-                    {
-                        KarnaWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-
-
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-
-
-                    }
-                    if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
-                    {
-                        //Obtained from Arbitration now.
-
-                        //MurasamaWeaponDialogue = 1;
-                        //                    newDiskNotification = true;
-                        // 
-                        //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        //return;
-                    }
-                    if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
-                    {
-                        MercyWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
-                    {
-                        ThespianWeaponDialogue = 1;
-                        newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
-                    {
-                        DragaliaWeaponDialogue = 1;
-                        newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
-                    {
-                        WavedancerWeaponDialogue = 1;
-                        newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (ClarentWeaponDialogue == 0 && DownedBossSystem.downedNalhaun)
-                    {
-                        ClarentWeaponDialogue = 1;
-                        newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
-                    {
-                        GundbitWeaponDialogue = 1;
-                        newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
-                    {
-                        SakuraWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
-                    {
-                        EternalWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
-                    {
-                        DaemonWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
-                    {
-                        OzmaWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
-                    {
-                        UrgotWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
-                    {
-                        BloodWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
-                    {
-                        MorningStarWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
-                    {
-                        VirtueWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
-                    {
-                        QueenSlimeWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
-                    {
-                        NeedlepointWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
-                    {
-                        EyeBossWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-                    }
-                    if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
-                    {
-                        CorruptBossWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-                    }
-                    //Nalhaun weapons have been moved...
-                    if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
-                    {
-                        NalhaunWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    //Vagrant weapons have been moved...
-                    if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
-                    {
-                        VagrantWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
-                    {
-                        QueenBeeWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
-                    {
-                        OceanWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
-                    {
-                        MiseryWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
-                    {
-                        KingSlimeWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
-                    {
-                        WallOfFleshWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
-                    {
-                        LumaWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
-                    {
-                        MechBossWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
-                    {
-                        AllMechBossWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
-                    {
-                        HullwroughtWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
-                    {
-                        MonadoWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-
-                    if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
-                    {
-                        PlanteraWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
-                    {
-                        FrostMoonWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
-                    {
-                        GolemWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
-                    {
-                        PenthesileaWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
-                    {
-                        MuseWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
-                    {
-                        KifrosseWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    //Moved from Arbitration to Nalhaun.
-                    if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
-                    {
-                        ArbitrationWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
-                    {
-                        LevinstormWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
-                    {
-                        ClaimhWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
-                    {
-                        DukeFishronWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
-                    {
-                        ManiacalWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
-                    {
-                        LunaticCultistWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
-                    {
-                        MoonLordWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
-                    {
-                        ShadowlessWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
-                    {
-                        WarriorWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
-                    {
-                        AuthorityWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
-                    {
-                        RedMageWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
-                    {
-                        BlazeWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
-                    {
-                        PickaxeWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
-                    {
-                        HardwareWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
-                    {
-                        CatalystWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
-                    {
-                        UmbraWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
-                    {
-                        SaltwaterWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
-                    {
-                        ClockWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
-                    {
-                        SanguineWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
-                    {
-                        GoldlewisWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
-                    {
-                        ChaosWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
-                    {
-                        SilenceWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
-                    {
-                        SoulWeaponDialogue = 1;
-                                            newDiskNotification = true;
-                         
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
+                if (WallOfFleshWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        131, //The ID of the dialogue.
+                        ref ForceWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (GolemWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        132, //The ID of the dialogue.
+                        ref GenocideWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (CorruptBossWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        133, //The ID of the dialogue.
+                        ref TakodachiWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (SkeletronPrimeDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        135, //The ID of the dialogue.
+                        ref SkyStrikerWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (LunaticCultistWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        134, //The ID of the dialogue.
+                        ref TwinStarsWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
+                {
+                    TrickspinWeaponDialogue = 1;
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    newDiskNotification = true;
+
+                }
+                if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
+                {
+                    SoldierWeaponDialogue = 1;
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    newDiskNotification = true;
+
+                }
+                if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
+                {
+                    DreamerWeaponDialogue = 1;
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    newDiskNotification = true;
+
+                }
+                if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
+                {
+                    KineticWeaponDialogue = 1;
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    newDiskNotification = true;
+
+                }
+                if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
+                {
+                    SkeletonWeaponDialogue = 1;
+                    newDiskNotification = true;
 
                     WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+
+                }
+                if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
+                {
+                    ArchitectWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+
+                }
+                if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
+                {
+                    CosmicDestroyerWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+
+
+
+                }
+                if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
+                {
+                    KarnaWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+
+
+
+                }
+                if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
+                {
+                    //Obtained from Arbitration now.
+
+                    //MurasamaWeaponDialogue = 1;
+                    //                    newDiskNotification = true;
+                    // 
+                    //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    //return;
+                }
+                if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
+                {
+                    MercyWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
+                {
+                    ThespianWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                {
+                    DragaliaWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                {
+                    WavedancerWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (ClarentWeaponDialogue == 0 && DownedBossSystem.downedNalhaun)
+                {
+                    ClarentWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
+                {
+                    GundbitWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
+                {
+                    SakuraWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
+                {
+                    EternalWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
+                {
+                    DaemonWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
+                {
+                    OzmaWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
+                {
+                    UrgotWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
+                {
+                    BloodWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
+                {
+                    MorningStarWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
+                {
+                    VirtueWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
+                {
+                    QueenSlimeWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
+                {
+                    NeedlepointWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+                }
+                if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
+                {
+                    EyeBossWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+
+                }
+                if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
+                {
+                    CorruptBossWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+                    return;
+
+                }
+                //Nalhaun weapons have been moved...
+                if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
+                {
+                    NalhaunWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                //Vagrant weapons have been moved...
+                if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
+                {
+                    VagrantWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
+                {
+                    QueenBeeWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
+                {
+                    OceanWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
+                {
+                    MiseryWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
+                {
+                    KingSlimeWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
+                {
+                    WallOfFleshWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
+                {
+                    LumaWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
+                {
+                    MechBossWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
+                {
+                    AllMechBossWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
+                {
+                    HullwroughtWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
+                {
+                    MonadoWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+
+                if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
+                {
+                    PlanteraWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
+                {
+                    FrostMoonWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
+                {
+                    GolemWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
+                {
+                    PenthesileaWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
+                {
+                    MuseWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
+                {
+                    KifrosseWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                //Moved from Arbitration to Nalhaun.
+                if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
+                {
+                    ArbitrationWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
+                {
+                    LevinstormWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
+                {
+                    ClaimhWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
+                {
+                    DukeFishronWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
+                {
+                    ManiacalWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
+                {
+                    LunaticCultistWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
+                {
+                    MoonLordWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
+                {
+                    ShadowlessWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
+                {
+                    WarriorWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
+                {
+                    AuthorityWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
+                {
+                    RedMageWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
+                {
+                    BlazeWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
+                {
+                    PickaxeWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
+                {
+                    HardwareWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
+                {
+                    CatalystWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
+                {
+                    UmbraWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
+                {
+                    SaltwaterWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
+                {
+                    ClockWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
+                {
+                    SanguineWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
+                {
+                    GoldlewisWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
+                {
+                    ChaosWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+                }
+                if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
+                {
+                    SilenceWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
+
+                }
+                if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
+                {
+                    SoulWeaponDialogue = 1;
+                    newDiskNotification = true;
+
+                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
+
+                    return;
 
                 }
 
 
 
 
-                if (NPC.downedSlimeKing && Main.expertMode == true)
+                if (NPC.downedSlimeKing)
                 {
 
                     if (aquaaffinity == 0)
@@ -5194,7 +5102,6 @@ namespace StarsAbove
                 {
                     if (unlimitedbladeworks == 0)
                     {
-                    newNovaNotification = true;
                         NewStellarNova = true;
                         unlimitedbladeworks = 1;
                     }
@@ -5204,7 +5111,6 @@ namespace StarsAbove
                 {
                     if (guardianslight == 0)
                     {
-                    newNovaNotification = true;
                         NewStellarNova = true;
                         guardianslight = 1;
                     }
@@ -5214,7 +5120,6 @@ namespace StarsAbove
                 {
                     if (butchersdozen == 0)
                     {
-                        newArrayNotification = true;
 
                         butchersdozen = 1;
                     }
@@ -5225,7 +5130,6 @@ namespace StarsAbove
                     }
                     if (laevateinn == 0)
                     {
-                    newNovaNotification = true;
                         NewStellarNova = true;
                         laevateinn = 1;
                     }
@@ -5238,7 +5142,6 @@ namespace StarsAbove
                 {
                     if (celestialevanesence == 0)
                     {
-                        newArrayNotification = true;
 
                         celestialevanesence = 1;
                     }
@@ -5248,11 +5151,17 @@ namespace StarsAbove
 
                     }
                 }
+                if (tsukiyomiDialogue >= 1)
+                {
+                    if (edingenesisquasar == 0)
+                    {
+                        edingenesisquasar = 1;
+                    }
+                }
                 if (DownedBossSystem.downedPenth)
                 {
                     if (mysticforging == 0)
                     {
-                        newArrayNotification = true;
 
                         mysticforging = 1;
                     }
@@ -5262,7 +5171,6 @@ namespace StarsAbove
                     }
                     if (gardenofavalon == 0)
                     {
-                    newNovaNotification = true;
                         NewStellarNova = true;
                         gardenofavalon = 1;
                     }
@@ -5271,7 +5179,6 @@ namespace StarsAbove
                 {
                     if (bloomingflames == 0)
                     {
-                        newArrayNotification = true;
 
                         bloomingflames = 1;
                     }
@@ -5283,7 +5190,6 @@ namespace StarsAbove
 
                     if (astralmantle == 0)
                     {
-                        newArrayNotification = true;
                          
                         astralmantle = 1;
                     }
@@ -5293,7 +5199,6 @@ namespace StarsAbove
                 {
                     if (afterburner == 0)
                     {
-                        newArrayNotification = true;
 
                         afterburner = 1;
                     }
@@ -5304,7 +5209,6 @@ namespace StarsAbove
 
                     if (livingdead == 0)
                     {
-                        newArrayNotification = true;
 
                         livingdead = 1;
                     }
@@ -5318,7 +5222,6 @@ namespace StarsAbove
                 {
                     if (hikari == 0)
                     {
-                        newArrayNotification = true;
 
                         hikari = 1;
                     }
@@ -5331,12 +5234,11 @@ namespace StarsAbove
                 if (NPC.downedGolemBoss)
                 {
                 }
-                if (NPC.downedGolemBoss && Main.expertMode == true)
+                if (NPC.downedGolemBoss)
                 {
 
                     if (weaknessexploit == 0)
                     {
-                        newArrayNotification = true;
 
                         weaknessexploit = 1;
                     }
@@ -5349,7 +5251,6 @@ namespace StarsAbove
                 {
                     if (umbralentropy == 0)
                     {
-                        newArrayNotification = true;
 
                         umbralentropy = 1;
                     }
@@ -5369,7 +5270,7 @@ namespace StarsAbove
 
 
                 }
-                if (DownedBossSystem.downedPenth && Main.expertMode)
+                if (NPC.downedEmpressOfLight)
                 {
                     if (flashfreeze == 0)
                     {
@@ -5378,7 +5279,6 @@ namespace StarsAbove
                     }
                     if(inevitableEnd == 0)
                     {
-                        newArrayNotification = true;
 
                         inevitableEnd = 1;
 
@@ -5386,11 +5286,10 @@ namespace StarsAbove
 
                 }
 
-                if (NPC.downedMoonlord && Main.expertMode == true)
+                if (NPC.downedMoonlord)
                 {
                     if (keyofchronology == 0)
                     {
-                        newArrayNotification = true;
 
                         keyofchronology = 1;
                     }
@@ -5402,19 +5301,17 @@ namespace StarsAbove
 
                     if (artofwar == 0)
                     {
-                        newArrayNotification = true;
                          
                         artofwar = 1;
                     }
 
                 }
-                if (DownedBossSystem.downedThespian && Main.expertMode)
+                if (DownedBossSystem.downedThespian)
                 {
 
 
                     if (aprismatism == 0)
                     {
-                        newArrayNotification = true;
                          
                         aprismatism = 1;
                     }
@@ -5424,7 +5321,6 @@ namespace StarsAbove
                 {
                     if (avataroflight == 0)
                     {
-                        newArrayNotification = true;
 
                         avataroflight = 1;
                     }
@@ -5436,7 +5332,6 @@ namespace StarsAbove
                 {
                     if (beyondtheboundary == 0)
                     {
-                        newArrayNotification = true;
                          
                         beyondtheboundary = 1;
                     }
@@ -5448,7 +5343,6 @@ namespace StarsAbove
                 {
                     if (beyondinfinity == 0)
                     {
-                        newArrayNotification = true;
 
                         beyondinfinity = 1;
                     }
@@ -5458,7 +5352,6 @@ namespace StarsAbove
                 {
                     if (unbridledradiance == 0)
                     {
-                        newArrayNotification = true;
 
                         unbridledradiance = 1;
                     }
@@ -5523,9 +5416,7 @@ namespace StarsAbove
             {
                 currentFlag = ActiveDialogues[dialogueID];
                 //Update the Archive
-                StarsAboveDialogueSystem.SetupDialogueSystem(true, chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
-
-
+                StarsAboveDialogueSystem.SetupDialogueSystem(true, chosenStarfarer, ref dialogueID, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
 
             }
         }

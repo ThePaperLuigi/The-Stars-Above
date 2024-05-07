@@ -2121,7 +2121,7 @@ Mods: {
 			RegularIdleDialogue: {
 				NormalIdleDialogue1: {
 					Asphodene: {
-						// Name: Idle dialogue
+						// Name: Idle dialogue (Pre-hardmode)
 						// Description: ""
 
 						1: {
@@ -2141,7 +2141,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: Idle dialogue
+						// Name: Idle dialogue (Pre-hardmode)
 						// Description: ""
 
 						1: {
@@ -2163,6 +2163,8 @@ Mods: {
 
 				NormalIdleDialogue3: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 老实说，我更喜欢那些绚丽的武器。一点“额外效果”永远不会伤害任何人。
 
 						2: {
@@ -2172,6 +2174,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 武器外观？它们很重要，但实用性远超外观价值。
 
 						2: {
@@ -2183,12 +2187,16 @@ Mods: {
 
 				NormalIdleDialogue4: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 你问什么是“星海旅者”？如果说我也没什么概念，你会很惊讶吗？
 						2: 我们响应召唤而来，然后……呃，是我们的兄长送我们离开。
 						3: 你知道吗？我也记不清我和埃里是在什么时候，以何种方式被召唤而来的——这是不是很奇怪？
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 什么是“星海旅者”？我本不想这么说，但连我们自己也所知甚少。
 						2: 我们通过一张召唤符咒而来——不，奇怪的是，我也记不清那次召唤了。
 						3: 我早先的记忆被哥哥修改了。除此之外……
@@ -2197,6 +2205,8 @@ Mods: {
 
 				NormalIdleDialogue5: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 别忘了天体序列！
 						2: 你忘了就太可惜了。毕竟这是我为你量身定做的。
 					}
@@ -2206,11 +2216,15 @@ Mods: {
 
 				NormalIdleDialogue6: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 嗯……
 						2: 啊，没什么。继续努力。
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: ……嗯。
 						2: 啊…没什么。
 					}
@@ -2218,6 +2232,8 @@ Mods: {
 
 				NormalIdleDialogue7: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 我有个武器的点子，{0}。
 						2: 等等。
 						3: 呃…没什么。忘了我说的。
@@ -2229,6 +2245,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 所以，我有个武器的点子，{0}。
 						2: 等等…实际上…忘了它。别管了。
 
@@ -2241,6 +2259,9 @@ Mods: {
 
 				NormalIdleDialogue8: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 这些镇民中的一些是不是很糟糕？
 							// E: Worried
@@ -2253,6 +2274,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 这些商人卖的商品血妈贵！
 							// E: Angry
@@ -2267,12 +2291,16 @@ Mods: {
 
 				HardIdleDialogue1: {
 					Asphodene: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 那么，下一步的计划是什么？让我们来看看…
 						2: 监狱盖好了吗？矿挖完了吗？准备好打Boss了吗？
 						3: 这都取决于你。我会一直在的。
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Pre-hardmode)
+						// Description: ""
 						1: 介意我给你的下一步行动提建议吗？嗯……
 						2: 你需要更多监狱。你可能还需要更多矿，除非你已经准备好打Boss了？
 						3: 只是建议。我相信你的决定。
@@ -2291,6 +2319,8 @@ Mods: {
 
 				HardIdleDialogue4: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 我喜欢你的装备！我觉得咱们品味挺一致的。
 
 						2: {
@@ -2300,6 +2330,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 你的盔甲达标了吗？看起来，它……大概通过检验了。
 
 						2: {
@@ -2317,12 +2349,44 @@ Mods: {
 				}
 
 				HardIdleDialogue5: {
-					Asphodene.1: 我真的很需要放松一下……
-					Eridani.1: 让我们，呃……偶尔休息一下。
+					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
+						1: {
+							$parentVal: 我真的很需要放松一下……
+							// E: Worried
+						}
+
+						2: {
+							// $parentVal: It does nobody any favors if you lose track of yourself in the heat of battle.
+							// E: Neutral
+						}
+					}
+
+					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+						1: 让我们，呃……偶尔休息一下。
+
+						2: {
+							// $parentVal: "'In the midst of chaos, there is opportunity.'"
+							// E: Smug
+						}
+
+						// 3: Remember that well. ...No, I didn't come up with that.
+
+						4: {
+							// $parentVal: It would have been pretty cool if I did, though.
+							// E: Happy
+						}
+					}
 				}
 
 				HardIdleDialogue6: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 你变得越来越强大了！你觉得你能打赢我吗？
 
 						2: {
@@ -2332,6 +2396,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 你变的越来越强大了，不是吗？我得努力追上你才行。
 
 						2: {
@@ -2350,6 +2416,8 @@ Mods: {
 
 				HardIdleDialogue7: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 很难想象这些怪物是从哪里来的。
 
 						2: {
@@ -2363,6 +2431,9 @@ Mods: {
 
 				HardIdleDialogue8: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 唔，理论上，由于你濒死时可以在床上复活……
 							// E: Thinking
@@ -2375,6 +2446,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 你以前试过……同时使用两把武器吗？比如每只手拿一把武器？
 							// E: Thinking
@@ -2386,11 +2460,15 @@ Mods: {
 
 				HardIdleDialogue9: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 哦对，我的头发偶尔有点糟糕。实际上，平时都是埃里帮我做发型——你看得出来吗？
 						2: 如果我早上溜的够快，我就能在埃里找到我之前离开极北天文台。乐。
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 爱丝福德妮倾向于尽量遵守规则，但说实话，任何事都留有辗转的余地。
 						2: 有时候为了帮助需要的人，你得学会违反规则。事情向来如此。如果你手脚利索点，甚至没人会注意到你。
 						3: 要我直说的话——你通常有很多可能的选项，你得权衡它们的利弊。只有坏人才总是选择犯罪。
@@ -2399,6 +2477,8 @@ Mods: {
 
 				HardIdleDialogue10: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 表面上看，你可能觉得埃里是那种“优等生”类型的人，对吧？
 
 						2: {
@@ -2408,6 +2488,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 实际上爱丝福德妮才是姐姐……但我赌你看不出来。
 							// E: Thinking
@@ -2419,6 +2502,9 @@ Mods: {
 
 				HardIdleDialogue11: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 我喜欢些什么？当然是睡到自然醒！对，我觉得这是最重要的一点。
 							// E: Happy
@@ -2438,6 +2524,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 我喜欢什么东西？你问那些老生常谈的东西还是……好吧。
 							// E: Thinking
@@ -2454,6 +2543,9 @@ Mods: {
 
 				HardIdleDialogue12: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 我讨厌的东西？让我想想……
 							// E: Thinking
@@ -2471,6 +2563,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
+
 						1: {
 							$parentVal: 我讨厌什么？没什么比BUG更……唉，我可以倾诉一下吗？
 							// E: Thinking
@@ -2487,6 +2582,8 @@ Mods: {
 
 				HardIdleDialogue13: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 我的爱好，嗯？我喜欢从去过的地方收集小摆设。那很酷，对吧？
 
 						2: {
@@ -2501,6 +2598,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 爱好？唔，我想我最大的爱好是炼金术。是的，炼金难题已经被解决了——如果从星际层面来看的话。
 
 						2: {
@@ -2514,6 +2613,8 @@ Mods: {
 
 				HardIdleDialogue14: {
 					Asphodene: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 讲真……神圣之地只不过是表象。
 
 						2: {
@@ -2523,6 +2624,8 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Hardmode)
+						// Description: ""
 						1: 假如你揭开神圣之地的伪装，你会发现它比地狱更加残酷。
 
 						2: {
@@ -2534,6 +2637,9 @@ Mods: {
 
 				LightIdleDialogue: {
 					Asphodene: {
+						// Name: Idle dialogue (Everlasting Light)
+						// Description: ""
+
 						1: {
 							$parentVal: 这无尽的光芒令人恐惧……一定有什么方法停止它。
 							// E: Angry
@@ -2546,6 +2652,9 @@ Mods: {
 					}
 
 					Eridani: {
+						// Name: Idle dialogue (Everlasting Light)
+						// Description: ""
+
 						1: {
 							$parentVal: 这永恒的光芒令人战栗……
 							// E: Angry
