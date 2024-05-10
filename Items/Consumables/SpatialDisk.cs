@@ -365,7 +365,6 @@ namespace StarsAbove.Items.Consumables
                 activateDialogue(player);
 				return true;
             }
-
             if (modPlayer.ActiveDialogues.Count > 0)
             {
                 for (int i = 0; i < modPlayer.ActiveDialogues.Count; i++)
@@ -380,353 +379,120 @@ namespace StarsAbove.Items.Consumables
                         return true;
                     }
                 }
-                //If there aren't any active dialogues, play an idle dialogue instead.
-                if (modPlayer.uniqueDialogueTimer <= 0)
+                
+                
+            }
+            //If there aren't any active dialogues, play an idle dialogue instead.
+            if (modPlayer.uniqueDialogueTimer <= 0)
+            {
+                modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
+                if (Main.hardMode)
                 {
-                    modPlayer.uniqueDialogueTimer = Main.rand.Next(1800, 3600);
-                    if (Main.hardMode)
-                    {
-                        randomDialogue = Main.rand.Next(1, 15);
+                    randomDialogue = Main.rand.Next(1, 15);
 
-                        switch (randomDialogue)
-                        {
-                            case 1:
-                                modPlayer.chosenDialogue = 12;
-                                break;
-                            case 2:
-                                modPlayer.chosenDialogue = 13;
-                                break;
-                            case 3:
-                                modPlayer.chosenDialogue = 14;
-                                break;
-                            case 4:
-                                modPlayer.chosenDialogue = 15;
-                                break;
-                            case 5:
-                                modPlayer.chosenDialogue = 16;
-                                break;
-                            case 6:
-                                modPlayer.chosenDialogue = 17;
-                                break;
-                            case 7:
-                                modPlayer.chosenDialogue = 18;
-                                break;
-                            case 8:
-                                modPlayer.chosenDialogue = 19;
-                                break;
-                            case 9:
-                                modPlayer.chosenDialogue = 20;
-                                break;
-                            case 10:
-                                modPlayer.chosenDialogue = 400;
-                                break;
-                            case 11:
-                                modPlayer.chosenDialogue = 401;
-                                break;
-                            case 12:
-                                modPlayer.chosenDialogue = 402;
-                                break;
-                            case 13:
-                                modPlayer.chosenDialogue = 403;
-                                break;
-                            case 14:
-                                modPlayer.chosenDialogue = 404;
-                                break;
-                        }
-                    }
-                    else
+                    switch (randomDialogue)
                     {
-                        randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
-
-                        switch (randomDialogue)
-                        {
-                            case 1:
-                                modPlayer.chosenDialogue = 3;
-                                break;
-                            case 2:
-                                modPlayer.chosenDialogue = 4;
-                                break;
-                            case 3:
-                                modPlayer.chosenDialogue = 5;
-                                break;
-                            case 4:
-                                modPlayer.chosenDialogue = 6;
-                                break;
-                            case 5:
-                                modPlayer.chosenDialogue = 7;
-                                break;
-                            case 6:
-                                modPlayer.chosenDialogue = 8;
-                                break;
-                            case 7:
-                                modPlayer.chosenDialogue = 9;
-                                break;
-                            case 8:
-                                modPlayer.chosenDialogue = 10;
-                                break;
-                        }
+                        case 1:
+                            modPlayer.chosenDialogue = 12;
+                            break;
+                        case 2:
+                            modPlayer.chosenDialogue = 13;
+                            break;
+                        case 3:
+                            modPlayer.chosenDialogue = 14;
+                            break;
+                        case 4:
+                            modPlayer.chosenDialogue = 15;
+                            break;
+                        case 5:
+                            modPlayer.chosenDialogue = 16;
+                            break;
+                        case 6:
+                            modPlayer.chosenDialogue = 17;
+                            break;
+                        case 7:
+                            modPlayer.chosenDialogue = 18;
+                            break;
+                        case 8:
+                            modPlayer.chosenDialogue = 19;
+                            break;
+                        case 9:
+                            modPlayer.chosenDialogue = 20;
+                            break;
+                        case 10:
+                            modPlayer.chosenDialogue = 400;
+                            break;
+                        case 11:
+                            modPlayer.chosenDialogue = 401;
+                            break;
+                        case 12:
+                            modPlayer.chosenDialogue = 402;
+                            break;
+                        case 13:
+                            modPlayer.chosenDialogue = 403;
+                            break;
+                        case 14:
+                            modPlayer.chosenDialogue = 404;
+                            break;
                     }
                 }
                 else
                 {
-                    modPlayer.chosenDialogue = 2; //Default idle line.
 
-                    /* Disabled Subworld specific idle lines.
-                    if (SubworldSystem.Current == null)
+                    randomDialogue = Main.rand.Next(1, 9); //1-20 are idle lines, 50+ are boss dialogue lines, and 100+ is items available to be crafted (1 less than max)
+
+                    switch (randomDialogue)
                     {
-
+                        case 1:
+                            modPlayer.chosenDialogue = 3;
+                            break;
+                        case 2:
+                            modPlayer.chosenDialogue = 4;
+                            break;
+                        case 3:
+                            modPlayer.chosenDialogue = 5;
+                            break;
+                        case 4:
+                            modPlayer.chosenDialogue = 6;
+                            break;
+                        case 5:
+                            modPlayer.chosenDialogue = 7;
+                            break;
+                        case 6:
+                            modPlayer.chosenDialogue = 8;
+                            break;
+                        case 7:
+                            modPlayer.chosenDialogue = 9;
+                            break;
+                        case 8:
+                            modPlayer.chosenDialogue = 10;
+                            break;
                     }
-                    else
-                    {
-                        if (SubworldSystem.IsActive<Observatory>())
-                        {
-                            modPlayer.chosenDialogue = 23;
-                        }
-                        if (!SubworldSystem.IsActive<Observatory>())
-                        {
-                            modPlayer.chosenDialogue = 25;
-                        }
-                    }*/
                 }
-                
+            }
+            else
+            {
+                modPlayer.chosenDialogue = 2; //Default idle line.
+
+                /* Disabled Subworld specific idle lines.
+                if (SubworldSystem.Current == null)
+                {
+
+                }
+                else
+                {
+                    if (SubworldSystem.IsActive<Observatory>())
+                    {
+                        modPlayer.chosenDialogue = 23;
+                    }
+                    if (!SubworldSystem.IsActive<Observatory>())
+                    {
+                        modPlayer.chosenDialogue = 25;
+                    }
+                }*/
             }
             activateDialogue(player);
             return true;
-
-			
-			if (modPlayer.GoldlewisWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 165;
-				modPlayer.GoldlewisWeaponDialogue = 2;
-
-				activateDialogue(player);
-
-				return true;
-			}
-
-			
-			if (modPlayer.UrgotWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 146;
-				modPlayer.UrgotWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-
-			if (modPlayer.OzmaWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 145;
-				modPlayer.OzmaWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
-			
-			if (modPlayer.KarnaWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 169;
-				modPlayer.KarnaWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ManiacalWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 170;
-				modPlayer.ManiacalWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.KineticWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 172;
-				modPlayer.KineticWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.DreamerWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 174;
-				modPlayer.DreamerWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-            if (modPlayer.DragaliaWeaponDialogue == 1)
-            {
-                modPlayer.chosenDialogue = 176;
-				modPlayer.DragaliaWeaponDialogue = 2;
-                activateDialogue(player);
-
-                return true;
-            }
-            if (modPlayer.GundbitWeaponDialogue == 1)
-            {
-                modPlayer.chosenDialogue = 177;
-                modPlayer.GundbitWeaponDialogue = 2;
-                activateDialogue(player);
-
-                return true;
-            }
-            if (modPlayer.WavedancerWeaponDialogue == 1)
-            {
-                modPlayer.chosenDialogue = 178;
-                modPlayer.WavedancerWeaponDialogue = 2;
-                activateDialogue(player);
-
-                return true;
-            }
-            if (modPlayer.ClarentWeaponDialogue == 1)
-            {
-                modPlayer.chosenDialogue = 179;
-                modPlayer.ClarentWeaponDialogue = 2;
-                activateDialogue(player);
-
-                return true;
-            }
-            
-            if (modPlayer.BloodWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 147;
-				modPlayer.BloodWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.astrumdeusDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 214;
-				modPlayer.astrumdeusDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.SilenceWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 156;
-				modPlayer.SilenceWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.VagrantWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 115;
-				modPlayer.VagrantWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-	
-			if (modPlayer.GoldWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 158;
-				modPlayer.GoldWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.NalhaunWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 117;
-				modPlayer.NalhaunWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			
-			if (modPlayer.KifrosseWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 129;
-				modPlayer.KifrosseWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ArchitectWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 130;
-				modPlayer.ArchitectWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.MurasamaWeaponDialogue == 1 && DownedBossSystem.downedVagrant)
-			{
-				modPlayer.chosenDialogue = 139;
-				modPlayer.MurasamaWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.MercyWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 141;
-				modPlayer.MercyWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.SakuraWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 142;
-				modPlayer.SakuraWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.CosmicDestroyerWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 138;
-				modPlayer.CosmicDestroyerWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.GenocideWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 132;
-				modPlayer.GenocideWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.TakodachiWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 133;
-				modPlayer.TakodachiWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			if (modPlayer.TwinStarsWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 134;
-				modPlayer.TwinStarsWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-			
-			
-			modPlayer.dialoguePrep = true;
-			modPlayer.starfarerDialogue = true;
-			return true;
 
 		}
 		private void activateDialogue(Player player)
