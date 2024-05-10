@@ -493,142 +493,7 @@ namespace StarsAbove.Items.Consumables
             activateDialogue(player);
             return true;
 
-
-			if (modPlayer.EyeBossWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 136;
-				modPlayer.EyeBossWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
-			if (modPlayer.corruptBossDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 53;
-				modPlayer.corruptBossDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.CorruptBossWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 137;
-				modPlayer.CorruptBossWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.Stellaglyph2WeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 160;
-				modPlayer.Stellaglyph2WeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			
-			
-			if (modPlayer.QueenSlimeWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 149;
-				modPlayer.QueenSlimeWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.VirtueWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 150;
-				modPlayer.VirtueWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
-			if (modPlayer.MiseryWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 120;
-				modPlayer.MiseryWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.OceanWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 123;
-				modPlayer.OceanWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.FarewellWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 159;
-				modPlayer.FarewellWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.UmbraWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 161;
-				modPlayer.UmbraWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.SaltwaterWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 162;
-				modPlayer.SaltwaterWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ChaosWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 163;
-				modPlayer.ChaosWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ClockWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 164;
-				modPlayer.ClockWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
-			if (modPlayer.NanomachineWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 167;
-				modPlayer.NanomachineWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.SanguineWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 168;
-				modPlayer.SanguineWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.LevinstormWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 166;
-				modPlayer.LevinstormWeaponDialogue = 2;
-
-				activateDialogue(player);
-
-				return true;
-			}
-
 			if (modPlayer.GoldlewisWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 165;
@@ -639,15 +504,7 @@ namespace StarsAbove.Items.Consumables
 				return true;
 			}
 
-			if (modPlayer.LumaWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 124;
-				modPlayer.LumaWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
+			
 			if (modPlayer.UrgotWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 146;
@@ -656,16 +513,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.MorningStarWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 148;
-				modPlayer.MorningStarWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-
-
+			
 
 			if (modPlayer.OzmaWeaponDialogue == 1)
 			{
@@ -676,47 +524,7 @@ namespace StarsAbove.Items.Consumables
 				return true;
 			}
 
-			if (modPlayer.HullwroughtWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 121;
-				modPlayer.HullwroughtWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-            if (modPlayer.MonadoWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 125;
-				modPlayer.MonadoWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.FrostMoonWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 126;
-				modPlayer.FrostMoonWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			
-			if (modPlayer.PlanteraWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 108;
-				modPlayer.PlanteraWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.GolemWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 109;
-				modPlayer.GolemWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.KarnaWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 169;
@@ -733,14 +541,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.AuthorityWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 171;
-				modPlayer.AuthorityWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.KineticWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 172;
@@ -749,14 +550,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.SoldierWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 173;
-				modPlayer.SoldierWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.DreamerWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 174;
@@ -765,14 +559,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.TrickspinWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 175;
-				modPlayer.TrickspinWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
             if (modPlayer.DragaliaWeaponDialogue == 1)
             {
                 modPlayer.chosenDialogue = 176;
@@ -805,14 +592,7 @@ namespace StarsAbove.Items.Consumables
 
                 return true;
             }
-            if (modPlayer.ThespianWeaponDialogue == 1)
-            {
-                modPlayer.chosenDialogue = 180;
-                modPlayer.ThespianWeaponDialogue = 2;
-                activateDialogue(player);
-
-                return true;
-            }
+            
             if (modPlayer.BloodWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 147;
@@ -821,14 +601,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.DukeFishronWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 116;
-				modPlayer.DukeFishronWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.astrumdeusDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 214;
@@ -837,50 +610,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.LunaticCultistWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 110;
-				modPlayer.LunaticCultistWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			
-			if (modPlayer.MoonLordWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 111;
-				modPlayer.MoonLordWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ShadowlessWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 122;
-				modPlayer.ShadowlessWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			
-            
-
-			if (modPlayer.WarriorWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 112;
-				modPlayer.WarriorWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.CatalystWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 155;
-				modPlayer.CatalystWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
 			if (modPlayer.SilenceWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 156;
@@ -897,14 +627,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.SoulWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 157;
-				modPlayer.SoulWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+	
 			if (modPlayer.GoldWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 158;
@@ -921,38 +644,8 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.PenthesileaWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 118;
-				modPlayer.PenthesileaWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ArbitrationWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 119;
-				modPlayer.ArbitrationWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.ClaimhWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 127;
-				modPlayer.ClaimhWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.MuseWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 128;
-				modPlayer.MuseWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
+			
 			if (modPlayer.KifrosseWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 129;
@@ -993,30 +686,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.EternalWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 143;
-				modPlayer.EternalWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.DaemonWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 144;
-				modPlayer.DaemonWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.NeedlepointWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 140;
-				modPlayer.NeedlepointWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.CosmicDestroyerWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 138;
@@ -1042,14 +712,7 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.HardwareWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 154;
-				modPlayer.HardwareWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
+			
 			if (modPlayer.TwinStarsWeaponDialogue == 1)
 			{
 				modPlayer.chosenDialogue = 134;
@@ -1058,31 +721,9 @@ namespace StarsAbove.Items.Consumables
 
 				return true;
 			}
-			if (modPlayer.RedMageWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 151;
-				modPlayer.RedMageWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.BlazeWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 152;
-				modPlayer.BlazeWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			if (modPlayer.PickaxeWeaponDialogue == 1)
-			{
-				modPlayer.chosenDialogue = 153;
-				modPlayer.PickaxeWeaponDialogue = 2;
-				activateDialogue(player);
-
-				return true;
-			}
-			//
+			
+			
+			
 			modPlayer.dialoguePrep = true;
 			modPlayer.starfarerDialogue = true;
 			return true;

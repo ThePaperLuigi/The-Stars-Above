@@ -621,214 +621,1145 @@ Mods: {
 			}
 
 			WeaponDialogue: {
-				Asphodene: {
-					1: Voici une autre essence que vous pouvez utiliser. Cela fera une arme de type à distance avec des propriétés uniques. Quelque chose me dit que c'est maudit, alors...
-					2: Bonne chance! Je t'avais prévenu.
-					3: Voici une autre Essence pour vous. On dirait que cette aiguille à coudre fantaisie possède des capacités de mouvement assez puissantes.
-					4: Continuez votre bon travail !
-					5: Voici une autre Essence pour vous. Cela semble être une arme de mêlée plutôt puissante.
-					6: C'est tout pour le moment. Continuez votre bon travail !
-					7: Une autre Essence pour vous. Cette épée de feu est classée comme magique. Il semble exploser lorsqu'il est suffisamment chargé.
-					8: J'espère que vous saurez quoi faire.
-					9: Une Essence est là pour votre usage. On dit que ce puissant héritage de mêlée ouvre la voie aux moins fortunés.
-					10: Bonne chance pour le fabriquer.
-					11: Cette Essence est une de mes créations personnelles ! Il crée une arme magique qui vous permet d'entrer dans la « transe du papillon » et de gagner des bonus spéciaux !
-					12: S'il vous plaît, utilisez-le si vous le pouvez. Je peux toujours utiliser plus de données !
-					13: Cette essence crée une arme à distance qui se perpétue après avoir tué des ennemis ! Sentir la chaleur!!
-					14: Hum. Veuillez le considérer dans votre arsenal.
-					15: Cette essence est une arme à distance qui vainc les ennemis avec un essaim de puissantes nanites. Vraiment craintif.
-					16: Si votre équipement le permet, essayez de fabriquer cette arme !
-					17: Cette Essence est une autre arme à distance qui permet de puissantes attaques chargées. Complètement chargé, il se divise et frappe plusieurs ennemis !
-					18: Hé. N'avons-nous pas trop d'armes à distance ? J'essaierai de trouver autre chose la prochaine fois.
-					19: Il s'agit d'un artefact de mêlée légendaire ! L'arme fabriquée par cette Essence peut infliger un débuff paralysant à n'importe quel ennemi !
-					20: Cette Essence créera cette fois un objet de support. Cela donnera de puissants buffs à vous et à vos amis si vous parvenez à continuer.
-					21: Le Guerrier de la Lumière a inspiré cette Essence. Il semble que ce soit la clé d'un portail d'armes infinies, infligeant des dégâts d'invocation.
-					22: Si vous vous sentez inspiré, essayez de qualifier vos ennemis de bâtards.
-					23: Cette essence crée une arme à distance avec un coût en mana élevé et un modificateur de dégâts critiques incroyablement élevé.
-					24: Exploitable ? Sûrement. La théorie, c'est tout vous.
-					25: Il s'agit d'une arme d'invocation. Il semble avoir des propriétés d’évolutivité très uniques et attaque incroyablement rapidement.
-					26: C'est aussi le reflet de votre cœur... ou quelque chose du genre. Je ne comprends pas vraiment ce genre de choses.
-					27: Il s'agit d'une arme d'invocateur, mais vous l'utiliserez comme une arme de mêlée. Il a le pouvoir d’échanger instantanément des places avec une place définie.
-					28: Bien que dangereux, il semble assez puissant. Vous ne serez sûrement pas touché... n'est-ce pas ?
-					29: C'est une arme assez unique. Lorsque vous l'utilisez, il suivra vos attaques et deviendra plus fort lorsque vous dépenserez du mana.
-					30: Cette Essence vient d'un monde en proie à un conflit... Elle possède un pouvoir incroyable, mais si vous devenez trop zélé, cela commencera à vous faire du mal.
-					31: Cette essence crée une arme de mêlée qui peut basculer entre une épée, une faux ou un pistolet. Vous pourrez l'utiliser dans presque toutes les situations !
-					32: D'accord, voici une nouvelle Essence pour vous. C'est une énorme lance de mêlée qui peut être échangée entre une forme de lance et une forme de pistolet. Ça a l'air d'être plutôt fort !
-					33: Eh bien {0}, prends cette Essence. Cette arme de mêlée a une rafale incroyable, mais la période réfractaire peut être dangereuse... Essayez-la, cependant !
-					34: Voici une autre Essence que vous pouvez utiliser ! Il a une synergie incroyable avec les invocations et devient plus fort à mesure que vous le faites, donc si vous prévoyez de vous battre avec des alliés, c'est ça !
-					35: C'est vrai, j'ai une Essence pour vous. C'est une arme d'invocation qui évoque cette mystérieuse étoile sensible. C'est... trop mignon. De toute façon...
-					36: Cela semble être une arme puissante, mais vous devrez collecter les Star Bits pour obtenir le plein effet, ce qui signifie vous mettre en travers du danger. Bonne chance..!
-					37: D'accord. J'ai une autre Essence pour vous. Cette arme de mêlée peut basculer entre cinq formes différentes, accordant ainsi de puissants buffs.
-					38: Voici une essence de type magique. Cela fera une faux avec une portée incroyable et un équilibre entre la lumière et l'obscurité. Maintenant, ça a l'air cool. OK? OK.
-					39: Voici une autre Essence pour votre usage. Cette puissante lame de mêlée peut infliger de puissants dégâts à tous les ennemis à proximité. Dans quelle mesure est-ce utile ?
-					40: Voici une autre Essence que vous pouvez préparer à utiliser, issue de la force de Penthesilea. Avec sa peinture magique, nous devrions pouvoir vaincre des ennemis puissants.
-					41: Et voilà:une essence à utiliser dans l'artisanat. On dirait qu’il va provoquer de puissants accès de flammes et de givre. Ce n’est pas comme ça que j’aimerais sortir, personnellement.
-					42: Whoa, c'est une Essence puissante. Son potentiel semble être amplifié en fonction de votre type de dégâts aspectés. Et si vous essayiez ?
-					43: D'accord..! Il est temps pour une autre Essence ! Cela semble être une arme à distance avec des dégâts élevés à courte portée.
-					44: Cette nouvelle Essence est géniale ! C'est une arme à distance avec un potentiel explosif extrêmement élevé. Dirigez-le simplement vers les méchants.
-					45: J'ai une nouvelle Essence pour vous. Il s'agit d'une arme magique de type invocation qui semble s'adapter à votre propre potentiel. Intéressant..!
-					46: Une essence magique est là cette fois. Grâce à l'énergie cosmique, vous pouvez faire exploser vos ennemis avec une lumière surpuissante. Ça me semble bien !
-					47: Cette Essence de type Mêlée devrait aider. Il semble s’agir d’une combinaison puissante à usages multiples avec une myriade d’attaques. Maintenant, ça a l'air cool !
-					48: D'accord {0}, j'ai une essence pour vous ! Il semble créer une arme de type magique avec de puissants dégâts perçants... Cela semble plutôt utile.
-					49: J'ai trouvé une autre Essence que vous pouvez utiliser... je pense. La seule chose que je peux dire, c'est que c'est une arme à distance. Le reste dépend de toi.
-					50: Ok, je l'ai. Voici une essence de type à distance... elle semble être quelque chose d'assez puissant ! Bonne chance.
-					51: L'essence d'une arme d'invocation est ici. Il ressemble étrangement à un fouet... mais il peut aussi invoquer des serviteurs ? Maintenant, c'est le summum.
-					52: Quoi? 'Culminer?' C'est du jargon new age. Vous l'avez certainement déjà entendu. Tu sais? Comme... le sommet d'une montagne ? Le dessus... de quelque chose ? Pas grave.
-					53: D'accord, c'est une arme de mêlée ! Mon instinct me dit que c'est parfait pour les ennemis en haute défense. Qu'est-ce que tu attends?
-					54: Cette lame de mêlée peut exploiter la puissance des éléments eux-mêmes. Le simple fait de l’avoir entre les mains, c’est déjà quelque chose !
-					55: Cela semble être une arme magique. Grâce à son pouvoir, vous pouvez invoquer des étoiles entières pour vaincre vos ennemis !
-					56: Vous avez peur de finir par en manquer ? Ouais non.
-					57: Cela semble être... une arme magique. Étrange – on a l’impression qu’une armurerie entière est contenue dans cette Essence. Comment est-ce possible ?
-					58: Eh bien, je vous laisse découvrir celui-là. Allez-y, je suis curieux aussi, vous savez ?
-					59: Voici une arme magique à votre disposition. Il me semble que c'est assez compliqué, mais vous êtes à la hauteur, n'est-ce pas ?
-					60: C'est vrai... Voici une essence d'arme de type à distance. J'espère que vous avez développé votre tolérance aux produits chimiques. Il semble utiliser l'énergie chimique pour infliger de puissants dégâts.
-					61: Voici, une nouvelle Essence ! Ce sont des dégâts de mêlée cette fois. Il possède des pouvoirs de vol de vie incroyables, mais semble également épuiser votre santé lors de son utilisation ? Et si vous essayiez ?
-					62: Voici une arme d'invocation. C'est... Eh bien, c'est un fouet, mais il a des propriétés magiques uniques. Il a aussi un bon pouvoir de frappe !
-					63: Écoutez attentivement, {0} ! Ou non. Cette arme magique est une corne géante, mais comprenez ceci:vous pouvez frapper les gens avec ! Rad !
-					64: Soyez prudent avec cette essence. Apparemment, seuls ceux qui en sont dignes peuvent l'utiliser à pleine puissance.
-					65: Il semblerait qu’il s’agisse du magnum opus d’une civilisation ancienne. Ne sous-estimez pas son pouvoir destructeur.
-					66: Regardez ici, une autre Essence..! Ce sera de type Magic. Cela semble tourner autour de l’équilibrage du mana noir et blanc pour attaquer.
-					67: Il semble qu’ils étaient opposés, du moins d’où vient cette chose. On se demande...
-					68: Merci pour votre patience. Voici une autre essence de type mêlée à utiliser. Bien qu'il soit trompeusement à courte portée, il a le potentiel d'infliger des dégâts fous en rafale.
-					69: Bien sûr, cela vous brûlera probablement de l’intérieur. Mais juste un peu.
-					70: D'accord, voici une essence peu orthodoxe pour vous. Bien qu’elle fonctionne comme une pioche assez puissante, il semble qu’elle ait également un grand potentiel de dégâts.
-					71: De mon point de vue, cela semble être une excellente arme simple pour déclencher des explosions. Tout le monde aime les explosions, n'est-ce pas ?
-					72: Voici une arme à distance:elle possède à la fois un tir principal utile et peut également déclencher de puissants drones autonomes pour attaquer.
-					73: J'ai une nouvelle arme pour vous:c'est une puissante lame de milieu de gamme, avec la capacité d'invoquer un cristal qui peut modifier votre style de combat. Intéressant, hein ?
-					74: C'est une Essence qui se transformera en une paire de gants. Maintenant, je sais ce que vous pensez, mais laissez-moi vous expliquer.
-					75: Ces gants peuvent évoquer tout un arsenal d’armes à manier. Compliqué, mais ce sera très puissant s’il est utilisé correctement.
-					76: OK. Cette essence de mêlée plonge dans le vide pour vaincre les ennemis et les absorber ensuite. Ca me semble plutôt pas mal.
-					77: J'ai acquis une nouvelle Essence pour votre usage. Il semble emprunter sa force à la Mêlée et à la Magie - une arme polyvalente, je l'aime bien !
-					78: On dirait que ce Cimetière semble avoir un lien avec cette Essence. J'espère que toutes ces tombes ne proviennent pas uniquement de votre mort, n'est-ce pas ?
-					79: Hmm... cette Essence de type Invocation créera une sorte de drone contrôlable. Je me demande s'il peut parler ?
-					80: Il s'agit certainement d'une arme de mêlée. De plus, elle semble exceller à distance et fournir une puissance de feu supplémentaire en combat rapproché. Bon.
-					81: J'ai pillé une essence à distance à l'effigie de ces pirates. Mer... eau... En fait, on dirait que je suis presque à sec de blagues, alors je vais m'ancrer maintenant.
-					82: Eh bien, je ne sais pas quoi penser de cette essence, à part que c'est une arme d'invocation. Mieux vaut essayer, avant que quoi que ce soit ne se détraque.
-					83: Cette montre est une arme de type invocation – on dirait qu’elle fera appel à un joli allié à aspect temporel. Elle vous apportera son soutien si vous parvenez à travailler avec son style de combat.
-					84: Hmm... Peut-être pourriez-vous même l'utiliser pour esquiver les attaques entrantes... ?
-					86: On dirait que cette Essence est à la fois d'aspect Magie et Mêlée - elle crépite déjà d'éclairs. Et si vous essayiez ?
-					85: Il me semble que cette arme à distance a la capacité d’abattre des hordes d’ennemis assez facilement. On dirait que cela sera utile, en particulier les balançoires géantes en forme de cercueil !
-					87: Et cette Essence ? Cela vous donnera une barrière améliorée, capable de vous protéger tout en vous aidant à infliger des dégâts sans vous soucier des répercussions.
-					88: Il semblerait que cette Essence provienne de cette poupée vaudou que nous avons trouvée aux Enfers – un spectacle étrange. Êtes-vous certain que l’utilisation d’une arme comme celle-ci en vaut la peine ?
-					89: De qui je me moque – bien sûr, vous en êtes certain ! Vous êtes MON Starbearer, après tout ! Ne soyez pas trop imprudent, maintenant.
-					90: Cette Essence est aspectée à l'étoile de ce monde:votre soleil ! Inutile de dire que la puissance du soleil serait une véritable aubaine – voyons cette chose en action !
-					91: Hmm, je vous conseille de faire preuve d'une grande prudence avec cette essence – c'est une essence de mêlée à fort potentiel, mais il semble que vous laissez vos défenses ouvertes.
-					92: Il me semble que cette essence magique a un potentiel puissant, mais je ne suis pas sûr de ce qu'elle nécessite en retour... Vous devriez peut-être y jeter un œil.
-					93: Vous n'allez pas le croire, mais quelqu'un m'a donné cette Essence. Comment est-ce possible ? Ils ont dit quelque chose comme "C'est juste un jeu, donc ça va". Ce même?
-					94: Cette essence à distance semble conduire à une arme de lance-roquettes classique. J'ai entendu parler de l'utilisation d'explosifs pour la traversée, donc ça ne devrait pas faire de mal d'essayer, n'est-ce pas ?
-					95: Cette Essence Magique est assez unique:vous pouvez puiser directement dans le monde pour provoquer différents effets.
-					96: On dirait qu'une Essence de yo-yo est ici – une essence de type Invocation également. Semble également proposer des outils de mouvement utiles !
-					97: Cette arme de type Invocation ne ressemble à rien de ce que vous avez vu auparavant, je pense. Le mieux est d'essayer. Quelle est votre maîtrise de l'épée ?
-					98: Avec cette Essence, vous disposerez d'une arme de type Magique dotée d'un pouvoir d'arrêt dingue ! Essayons celui-ci !
-					99: Cette arme d'invocation est une lame élégante:vous pouvez la contrôler manuellement, ou elle tranchera les ennemis toute seule. Pourquoi tout ne peut-il pas faire ça ?
-					100: Cette lame de mêlée n'a qu'un seul objectif en tête... Vous pourriez probablement le deviner d'après son nom. Cela fera une arme puissante, c'est sûr.
-					101: Cette arme à distance peut renforcer certaines armes de jet... Ou vous pouvez simplement faire exploser les ennemis avec des balles. Vous savez, j'aime ces deux options !
+				Skeleton: {
+					Asphodene: {
+						// Name: Skeletron Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another Essence you can use. It'll make a Ranged-type weapon with unique properties. Something tells me it's cursed, so..
+						// 2: Good luck! Let it be known I did warn you.
+					}
+
+					Eridani: {
+						// Name: Skeletron Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Ranged-type essence. It looks like every fourth shot has increased offensive properties. Whatever the reason, it's powerful.
+					}
 				}
 
-				Eridani: {
-					1: Voici une essence de type à distance. Il semble qu’un tir sur quatre ait des propriétés offensives accrues. Quelle que soit la raison, c'est puissant.
-					2: Vous voilà:une autre Essence. Celui-ci créera une arme de type Invocation. J'espère que tu sais ce que ça veut dire ?
-					3: Je vous dis d'essayer.
-					4: Vous le saviez? Pas de soucis alors.
-					5: J'ai une Essence tout à fait unique pour vous. Il semble que ce soit une tronçonneuse imprégnée de la force d’un dieu chien… Du moins, semble-t-il.
-					6: Quoi qu’il en soit, cela devrait vous être utile. Ignorez le fait qu'il parle.
-					7: J'ai une Essence pour vous. Celui-ci créera une arme de type Magique. Apparemment, un timing approprié est nécessaire pour mieux utiliser cette arme.
-					8: Je suis convaincu que vous pourrez le maîtriser facilement. D'accord, dire « sans aucun doute » serait un mensonge. Peut-être 1/4 de doute.
-					9: Cette essence magique canalise les énergies du Vide pour vous donner des attaques uniques, mais ne vous y attachez pas trop. Les trucs vides sont toujours dangereux.
-					10: L'arme fabriquée à partir de cette essence est basée sur la musique. Le timing de vos swings sera essentiel pour l'utiliser au maximum.
-					11: Même en le tenant, vous ressentez un certain type de rythme...
-					12: Cette Essence créera une arme légendaire conçue pour tuer des dragons. Sautez dans les airs et transpercez vos ennemis avec sa force.
-					13: C'est une arme de mêlée, alors fabriquez-la si vous pouvez l'intégrer à votre arsenal.
-					14: Cette arme magique gagnera une chance de coup critique lors du tir, et chaque coup critique infligera des dégâts accrus. C'est un truc puissant.
-					15: Pensez-y si vous en êtes capable.
-					16: Cette arme à distance vous permet d'entrer en position de mêlée, infligeant plus de dégâts aux ennemis que vous avez touchés avec des flèches. Cela devrait être assez engageant.
-					17: Cette puissante relique de mêlée permet à l'expidenture de Mana de se téléporter et d'infliger de puissants dégâts. C'est un de mes nouveaux favoris.
-					18: Cette arme est fabriquée directement à partir du pouvoir du Seigneur de la Lune et de ses piliers spatiaux. Cela fera du bien entre vos mains.
-					19: Du Guerrier de la Lumière... cette Essence permet l'utilisation de Limit Break. C'est une arme magique incroyablement puissante.
-					20: La Lumière purifiera vos péchés ! Ou quelque chose comme ça.
-					21: Cette arme peut basculer entre la distance et la magie. Si vous chronométrez correctement son rechargement, il inflige toujours des dégâts critiques.
-					22: Je suis sûr que vous pouvez penser à quelque chose qui fonctionne autour de cela...
-					23: Cette arme puissante vous permet d'utiliser des orbes de compétence pour déclencher des mouvements spéciaux. Il dispose également d’une fenêtre de rafale super puissante. C'est une arme de mêlée.
-					24: Vous seriez bien de l'avoir entre vos mains... mais cela signifie que vous devez vous en rapprocher. Je ne t'envie pas.
-					25: Il s'agit d'une arme d'invocation. Le tenir invoque deux canons en orbite autour de vous et vous pouvez tirer avec les deux. Chacun d'eux applique un débuff différent.
-					26: La partie importante est d'utiliser l'autre arme pour déclencher le débuff de l'autre arme. Vous pouvez le comprendre.
-					27: Voici une autre arme d'invocation. Vous pouvez attaquer normalement avec, mais frapper des ennemis avec les montres renforce les attaques de l'arme.
-					28: Ai-je mentionné que vous pouvez remonter le temps ? C'est puissant, c'est sûr.
-					29: Cette essence permet la création de doubles lames uniques offrant des effets variés et vous permettant de laisser votre corps submerger vos ennemis.
-					30: Cette essence est utilisée dans la création d'une arme de mêlée. Ce qui le distingue, c'est la capacité de se manifester sous la forme d'une épée, d'une faux ou d'un pistolet.
-					31: Voici une nouvelle arme à fabriquer. Cette lance peut basculer entre une portée courte et longue, et elle peut également être chargée avec beaucoup d'effet.
-					32: Ceci est pour vous, {0}. C'est une arme de mêlée surpuissante qui possède une incroyable phase d'éclatement, suivie d'une phase de faiblesse. Bonne chance pour l'utiliser.
-					33: J'ai une autre Essence pour vous. Cette arme est une arme d'invocation qui fonctionne en harmonie avec les serviteurs, et elle devient plus forte à mesure que vous le faites.
-					34: J'ai une autre Essence à utiliser. Cette baguette de type invocation appelle cette adorable petite étoile sensible, et elle a l'air tellement... écrasable...
-					35: ... Au-delà de ça. Vous devrez vous rapprocher pour utiliser les Star Bits, mais ils font un grand nombre sur les ennemis si vous pouvez les faire atterrir.
-					36: Je vous ai donné une autre Essence. Il s'agit d'une arme de mêlée qui peut se transformer entre cinq formes différentes, modifiant ainsi l'utilisation de l'arme. Intéressant.
-					37: Voici une autre Essence. Pour toi. Il s'agit d'une arme d'invocation qui vous transformera et invoquera des éclats de cristal qui affaibliront et attaqueront les ennemis proches.
-					38: Hmm... C'est l'essence de l'espoir, mais y a-t-il autre chose qui se cache sous la surface ? Qui sait..
-					39: C'est vrai... Voici une autre Essence. Cette arme de mêlée vous permet d'endommager tous les ennemis proches dans une vaste zone. Cela devrait être très utile.
-					40: C'est une autre Essence que vous pouvez maîtriser. Il vous permettra d'utiliser l'encre de Penthesilea pour supprimer les ennemis et frapper puissamment les boss.
-					41: D'accord, j'ai une autre Essence pour vos combats. Il invoque un renard mystique qui brûle vos ennemis avec une énergie glaciale. Ils pourraient même le mériter aussi.
-					42: Il semble que cette prochaine Essence soit forte. Le type de dégâts aspectés semble renforcer davantage l'arme...
-					43: J'ai trouvé une autre Essence pour votre usage. Il semble que cette arme de type à distance soit hyper concentrée sur le mouvement. Que diriez-vous de l'associer à des outils de mobilité... ?
-					44: Une autre Essence est la vôtre. C'est une arme à distance puissante avec un pouvoir de nettoyage de pièce incroyablement bon. Et ça ?
-					45: Voici une autre Essence à utiliser. Il semble que ce soit une arme de type invocation qui gagne en puissance avec l'utilisation de davantage d'invocations de serviteurs.
-					46: Voici une essence de type magique. Grâce au pouvoir des étoiles, vous pouvez faire fondre même les ennemis les plus puissants. Essaie..?
-					47: Une essence de mêlée est là cette fois. Grâce à sa force, vous pouvez créer une arme aux multiples facettes qui change instantanément son arsenal au combat.
-					48: J'ai une Essence pour vous, {0}. On dirait qu'elle va devenir une arme de type Invocation... et qu'elle gagne en force grâce au danger rasant ? Vous devrez l'essayer.
-					49: C’est une autre Essence puissante. On dirait que c'est une arme de mêlée, et elle a le potentiel d'exécuter des ennemis. Ne le sous-estimez pas.
-					50: Il est temps de passer à une autre essence:cette fois, c'est une arme de type à distance. Semble être assez puissant pour la destruction générale.
-					51: Voici une autre arme. Il semble que ce soit un fouet de type invocation qui peut déployer des robots-araignées pour attaquer les ennemis.
-					52: Ce sont des araignées... mais pas de vraies araignées. Oui, penser ainsi arrêtera la réponse de combat ou de fuite. Prendre des notes!
-					53: C'est une arme de mêlée. Il a de très bonnes propriétés anti-armure – vous pouvez certainement en faire bon usage.
-					54: Une autre arme est là. Il semble que ce soit une arme de mêlée qui utilise le pouvoir des éléments pour attaquer les ennemis.
-					55: Ce bâton de type Magic sera incroyablement utile, si je le dis moi-même. Il a la force d’évoquer des étoiles entières !
-					56: Tant que ce ne sont pas de VRAIES stars. Il y aurait... quelques problèmes.
-					57: Voici une autre arme:magique, semble-t-il. Il y a quelque chose d'étrange là-dedans:cette Essence semble contenir la force d'une myriade d'armes.
-					58: Voici une autre arme magique unique. Cela semble plutôt compliqué, alors bonne chance pour l'utiliser. N'oubliez pas l'ABC:soyez toujours présent !
-					59: Cependant, je ne suis pas trop sûr que cela s'applique ici.
-					60: Cette Essence fournit une arme à distance. Il met l'accent sur la mobilité restreinte, ce qui signifie qu'il vous placera en première ligne. La force devrait compenser.
-					61: Une Essence de type Mêlée est cette fois préparée. Il me semble que cela sacrifie votre santé pour de puissants dégâts de zone. Utilisez-le bien, mais connaissez les risques.
-					62: Bien, voici un fouet de type Invocation. Il a une certaine capacité magique, mais son lancement est un peu aléatoire. Essayez de bien l'utiliser.
-					63: Soyez prudent avec cette essence:pour une raison quelconque, elle décharge tout le temps de l'électricité statique.
-					64: Cela créera une arme d'invocation. Espérons que les propriétés électriques perdurent – ​​cela choquera certainement nos ennemis.
-					65: Cette Essence mène à une arme vraiment puissante. Il porte les vestiges d’une civilisation ancienne et avancée.
-					66: De toute évidence, ils maîtrisaient la manipulation spatiale. J'aimerais que vous essayiez, mais cela pourrait rejeter les indignes.
-					67: À ce stade, je me demande s’il y a une arme que vous n’êtes pas digne de manier. Oui, je te félicite.
-					68: Cette essence de type magique équilibre l'attaque et la guérison grâce à la double utilisation du mana noir et blanc.
-					69: Deux écoles d'apprentissage opposées, du moins dans le monde originel de cette Essence. Cela ne fait pas réfléchir.
-					70: Toutes mes excuses pour le retard, voici une Essence. Cette arme de mêlée a un certain potentiel de recul, mais en échange, vous pourriez infliger des dégâts explosifs.
-					71: Je vous demanderais de l'utiliser avec modération, mais je suis sûr que vous l'utiliserez autant que vous le souhaitez. Apportez au moins des potions de guérison.
-					72: Cette Essence se concentre sur les fouilles ainsi que sur les dégâts. Vous pouvez l'utiliser pour déplacer la terre à une vitesse significative et infliger en outre de puissants dégâts explosifs.
-					73: Voici une arme à distance:elle possède à la fois un tir principal utile et peut également déclencher de puissants drones autonomes pour attaquer.
-					74: J'ai une nouvelle arme céleste à votre disposition. Il sera plus puissant lorsque vous utiliserez sa force pour invoquer un prismique, qui pourra vous aider au combat.
-					75: Voici une nouvelle arme à votre disposition. En vérité, cette Essence est un peu plus que cela ; c'est une paire de gants.
-					76: Bien sûr, ce n'est pas toute l'histoire:vous pouvez utiliser ces gants pour invoquer tout un arsenal d'armes.
-					77: Je sais que la perspective semble intimidante, mais vous infligerez de lourds dégâts si vous savez bien gérer vos armes.
-					78: D'accord, voici une arme de mêlée:grâce au pouvoir des âmes, vous pouvez fendre de vastes zones autour de vous et plonger dans le vide lui-même pour une téléportation instantanée.
-					79: Il semble que ce soit une nouvelle essence à utiliser. Il utilise un type de dégâts unique et de puissantes attaques de charge, mais il subira probablement des dégâts de recul.
-					80: Ce Cimetière semble s'être connecté à cette Essence. J'espère que cela vous aidera à éviter de créer le cimetière en premier lieu.
-					81: Bien que puissant, je pense qu'il s'agit d'un objet utilitaire, et non d'une arme cette fois.
-					82: Cette Essence Magique, bien qu’aspectée à la nature, semble plutôt volatile. Peut-être pourriez-vous mieux l'utiliser en tandem avec d'autres armes ?
-					83: Cette arme de mêlée exploite un aspect du temps lui-même pour vous aider au combat. Il semble également avoir une portée impressionnante.
-					84: Et si ? ce précédent... euh, disons que "rencontrer" avec ces pirates a provoqué des dégâts à distance par essence, d'après ce que je peux dire. Te voilà.
-					85: Je ne sais pas comment définir cette Essence de type Invocation, je vais donc vous laisser cela comme un exercice. Eh bien, bonne chance.
-					86: Cette arme de type Invocation évoque un être à aspect temporel plutôt charmant. Elle contribuera aux tâches offensives et défensives.
-					87: Cette essence est une arme de type à distance, mais elle semble avoir beaucoup d'action à courte portée. Ne soyez pas trop zélé, mais essayez d'en tirer le meilleur parti.
-					88: On dirait qu’il s’agit d’une essence de type mêlée et magie en tandem. D’après ce que je peux voir, cela constituera une arme puissante qui canalisera le pouvoir de la foudre.
-					89: Cette Essence est un objet de type support. Il fournira une barrière puissante et vous permettra également de saper l'énergie vitale de vos ennemis... Ce sera un outil assez puissant.
-					90: Cette Essence semble avoir résonné à partir de cette étrange poupée que nous avons trouvée aux Enfers. Méfiez-vous des dangers:votre affinité avec la résurrection est... provisoire.
-					91: Une essence en harmonie avec la puissance de notre Soleil – et elle est en effet assez rayonnante. Faisons-en bon usage.
-					92: Cette Essence dégage une quantité malsaine de folie:c'est une arme de mêlée qui échange ses prouesses défensives contre une puissance offensive. Soyez prudent.
-					93: Une essence de type Magique. Il semble receler un pouvoir incroyable, mais il semble également exiger des sacrifices en retour...
-					94: Comment puis-je dire ça...? Contrairement aux autres Essences, j'ai senti une présence me donner celle-ci. Ils ont dit quelque chose comme... "C'est juste un jeu, donc ça va."
-					95: Il semble être capable d’absorber l’énergie hostile et de l’utiliser pour vous donner du pouvoir à votre tour. Moi aussi, je suis curieux de savoir à quoi ça ressemble.
-					96: Ce lance-roquettes de type à distance a un homologue de mêlée unique, mais il vous oblige également à le faire. Et bien, j'espère que vous avez des jambes solides.
-					97: Prenez en considération cette essence magique:en bref, elle transforme le monde en une toile avec laquelle vous pouvez interagir et attaquer.
-					98: Voici une nouvelle essence à consulter:elle infligera des dégâts d'invocation. Il est plutôt à courte portée mais possède des capacités de mouvement qui aident à réduire l'écart.
-					99: On pourrait penser que cette essence de type Invocation ne serait pas une épée, mais la voici. Il possède un pouvoir très spécial caché à l'intérieur... Ne le libérez pas à l'intérieur.
-					100: J'espère que vous visez fermement - cette arme magique a une puissante force de perçage, tant que vous gardez votre cible en ligne de mire.
-					101: Cette essence d'invocation créera une lame mystique pour vous aider au combat. Vous pourrez également la contrôler par magie, si vous avez besoin d'une meilleure précision.
-					102: Une essence de mêlée, hein ? On dirait qu’il possède de puissantes capacités. Soyez simplement heureux qu'il vous écoute.
-					103: Il semble que cette essence d’invocation crée de puissants alliés de l’eau pour vous donner le dessus au combat. Comme c'est génial !
+				Underworld: {
+					Asphodene: {
+						// Name: Underworld Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here is another Essence for you. Looks like this fancy sewing needle has some pretty powerful movement capabilities.
+					}
+
+					Eridani: {
+						// Name: Underworld Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here you are: another Essence. This one will create a Summon-type weapon. I trust you know what that means?
+
+						2: {
+							// $parentVal: I'm telling you to try it out.
+							// E: Smug
+						}
+
+						3: {
+							// $parentVal: You knew that? Well, in that case, perish the thought.
+							// E: Worried
+						}
+					}
+				}
+
+				QueenBee: {
+					Asphodene: {
+						// Name: Queen Bee Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Another Essence for you. It's a Melee weapon, but seems to have a mind of its own...?
+					}
+
+					Eridani: {
+						// Name: Queen Bee Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I have quite the unique Essence for you. It looks to be a chainsaw imbued with the strength of a dog god... Or so it seems.
+						// 2: Whatever it may be, it should prove useful to you. You'd probably be better off ignoring the fact that it talks.
+					}
+				}
+
+				KingSlime: {
+					Asphodene: {
+						// Name: King Slime Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Another Essence for you. This firey sword is classified as Magic. It seems to explode when sufficiently charged.
+
+						2: {
+							// $parentVal: It seems like it's looking for something... I hope wherever this Essence came from, they found it! ...But we'll borrow this power for now.
+							// E: Happy
+						}
+					}
+
+					Eridani: {
+						// Name: King Slime Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've gotten an Essence for you. This one will create a Magic-type weapon. Apparently, proper timing is needed to better utilize this weapon.
+						// 2: I have no doubts you can get a handle on it easily. My apologies, saying 'no doubts' would be a lie. Maybe 1/4th of a doubt.
+					}
+				}
+
+				WallOfFlesh: {
+					Asphodene: {
+						// Name: Wall of Flesh Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: An Essence is here for your use. It looks to be a rather powerful melee weapon... and rather cold. Do you have any spare gloves?
+					}
+
+					Eridani: {
+						// Name: Wall of Flesh Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic Essence channels void energies to empower you with unique attacks, but don't get too attached. Void stuff is always dangerous.
+					}
+				}
+
+				MechBoss: {
+					Asphodene: {
+						// Name: Mechanical Boss Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic weapon is one of my own invention, could you tell? You'll be able to enter a special state in the heat of combat. Sounds great, right? I know!
+					}
+
+					Eridani: {
+						// Name: Mechanical Boss Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: The weapon made from this Essence is based around music.. Timing your swings will be critical in using this to its fullest.
+						// 2: Even holding it makes you feel a certain type of beat...
+					}
+				}
+
+				AllMechBoss: {
+					Asphodene: {
+						// Name: All Mechanical Bosses Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence creates a Ranged gun that perpetuates itself after killing foes! Feel the heat!!
+						// 2: Uhh.. ahem. Please consider it in your arsenal.
+					}
+
+					Eridani: {
+						// Name: All Mechanical Bosses Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence will create a Melee weapon made for slaying dragons. Huh, dragons are rather ubiquitous across the galaxy. I wonder why that is...?
+						// 2: Anyways, the weapon will help you with aerial jumps... and piercing whoever's below you after that.
+					}
+				}
+
+				Plantera: {
+					Asphodene: {
+						// Name: Plantera Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence is a Ranged weapon that defeats foes with a swarm of powerful nanites. Definitely on my shorthand list of ways I wouldn't wanna go.
+					}
+
+					Eridani: {
+						// Name: Plantera Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic weapon (gun?) seems to excel with striking foe weak points, becoming stronger after multiple shots.
+					}
+				}
+
+				Golem: {
+					Asphodene: {
+						// Name: Golem Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence is a Ranged weapon that allows for powerful charged attacks. Fully charged, it splits and hits multiple foes!
+					}
+
+					Eridani: {
+						// Name: Golem Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged weapon allows you to enter a close-ranged stance, dealing more damage to foes you've hit with arrows. It should be quite engaging.
+						// 2: I know it's only an Essence, but it thirsts for combat... Whoever the original owner was, someone tell them to chill out.
+					}
+				}
+
+				LunaticCultist: {
+					Asphodene: {
+						// Name: Lunatic Cultist Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Looks like this weapon will create a poweful Melee weapon, imbued with the powers of earth and stone. Sounds like a good deal to me!
+					}
+
+					Eridani: {
+						// Name: Lunatic Cultist Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This powerful Melee relic allows for the expidenture of Mana to teleport and deal powerful damage. It's a new favorite of mine.
+					}
+				}
+
+				MoonLord: {
+					Asphodene: {
+						// Name: Moon Lord Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence will create a support item this time. It'll give powerful buffs to you and your friends if you can keep it up.
+					}
+
+					Eridani: {
+						// Name: Moon Lord Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This weapon is made straight from the power of the Moon Lord and its spatial pillars. It'll do good in your hands.
+					}
+				}
+
+				WarriorOfLight: {
+					Asphodene: {
+						// Name: Warrior of Light Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: The Warrior of Light has inspired this Essence. It appears to be a key to a gateway of infinite weapons, doing Summon damage.
+						// 2: If you feel inspired, try referring to your foes as mongrels.
+					}
+
+					Eridani: {
+						// Name: Warrior of Light Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: From the Warrior of Light.. this Essence allows for the usage of a Limit Break- allowing you to turn HP into Mana. It's an incredibly strong Magic weapon.
+						// 2: The Light will cleanse your sins! Or something to that effect.
+					}
+				}
+
+				Vagrant: {
+					Asphodene: {
+						// Name: ??? Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence creates a Ranged weapon with a high Mana cost, and an incredibly high critical damage modifier.
+						// 2: Exploitable? Surely. Theorycraft is all you.
+					}
+
+					Eridani: {
+						// Name: ??? Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This weapon can switch between Ranged and Magic. If you time its reload correctly, it always does critical damage.
+						// 2: I'm sure you can think of something that works around that...
+					}
+				}
+
+				DukeFishron: {
+					Asphodene: {
+						// Name: Duke Fishron Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is a Summon weapon. It seems to have very unique scaling properties, and attacks incredibly quickly.
+						// 2: It's also a reflection of your heart... or something. I don't really get that stuff.
+					}
+
+					Eridani: {
+						// Name: Duke Fishron Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This powerful weapon allows you to use Skill Orbs to unleash special moves. It also has a super-powered burst window. It's a Melee weapon.
+						// 2: You'd be well off with it in your hands.. but it does mean you have to get up close. I don't envy you.
+					}
+				}
+
+				Nalhaun: {
+					Asphodene: {
+						// Name: Nalhaun Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is a Summoner weapon, but you'll use it like a Melee weapon. It has the power to swap places instantly with a set place.
+						// 2: While dangerous, it looks to be pretty powerful. Surely you won't get hit.. Right?
+					}
+
+					Eridani: {
+						// Name: Nalhaun Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is a Summon weapon. Holding it summons two cannons to orbit you, and you can fire from both of them. Each of them apply a different debuff.
+						// 2: The important part is using the other weapon to trigger the other weapon's debuff. You can figure it out.
+					}
+				}
+
+				Penthesilea: {
+					Asphodene: {
+						// Name: Euthymia Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is a pretty unique weapon. When using it, it'll follow-up your attacks, and become stronger when you spend Mana.
+					}
+
+					Eridani: {
+						// Name: Time Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another Summon weapon. You can attack normally with it, but striking foes with the Timepieces empowers the weapon's attacks.
+						// 2: Did I mention you can go back in time? It's powerful, for sure.
+					}
+				}
+
+				LiberationAzakana: {
+					Asphodene: {
+						// Name: Liberation Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence hails from a world embroiled in conflict... It boasts incredible power, but if you get too overzealous, it'll start to hurt you.
+					}
+
+					Eridani: {
+						// Name: Azakana Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence allows for the creation of unique dual blades which offer varying effects, and allows you to leave your body to overwhelm foes.
+					}
+				}
+
+				Misery: {
+					Asphodene: {
+						// Name: Misery's Company Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence creates a Melee weapon that can swap between sword, scythe, or gun. You will be able to use it in nearly any situation!
+					}
+
+					Eridani: {
+						// Name: Misery's Company Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence is utilized in the creation of a Melee Weapon. What sets it apart is the ability to manifest as a sword, scythe, or gun.
+					}
+				}
+
+				Hullwrought: {
+					Asphodene: {
+						// Name: Hullwrought Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay, here's a new Essence for you. It's a huge Melee lance that can be swap between a lance form and a gun form. It looks to be pretty strong!
+					}
+
+					Eridani: {
+						// Name: Hullwrought Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a new weapon for you to craft. This lance can swap between close and long range, and it can also be charged to great effect.
+					}
+				}
+
+				ShadowlessCerulean: {
+					Asphodene: {
+						// Name: Shadowless Cerulean Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Well {0}, take this Essence. This Melee weapon has an incredible burst, but the refractory period may be dangerous.. Give it a shot, though!
+					}
+
+					Eridani: {
+						// Name: Shadowless Cerulean Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is for you, {0}. It's a super-powered Melee weapon that has an incredible burst phase, followed by a weakness phase. Good luck using it.
+					}
+				}
+
+				Apalistik: {
+					Asphodene: {
+						// Name: Apalistik Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another Essence you can use! It has incredible synergy with Summons and gets stronger as you do, so if you plan on fighting with allies, this is it!
+					}
+
+					Eridani: {
+						// Name: Apalistik Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I have another Essence for you. This weapon is a Summon weapon that works in harmony with minions, and it gets stronger as you do.
+					}
+				}
+
+				Luminary: {
+					Asphodene: {
+						// Name: Luminary Wand Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Right, I have an Essence for you. It's a Summon weapon that conjures this mysterious sentient star. It's.. too cute. Anyways..
+						// 2: It looks to be a powerful weapon, but you'll have to collect the Star Bits for full effect- meaning getting in the way of danger. Good luck..!
+					}
+
+					Eridani: {
+						// Name: Luminary Wand Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I have another Essence for you to use. This Summon-type wand calls forth this adorable little sentient star, and it just looks so.. squishable..
+						// 2: ...Looking past that. You'll have to get up close to use the Star Bits, but they do quite a number on foes if you can land them.
+					}
+				}
+
+				Xenoblade: {
+					Asphodene: {
+						// Name: Xenoblade Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay. I've got another Essence for you. This Melee weapon can swap between five different forms, granting powerful buffs in the process.
+					}
+
+					Eridani: {
+						// Name: Xenoblade Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've given you another Essence. This is a Melee weapon that can morph between five different forms, changing the weapon's usage. Interesting.
+					}
+				}
+
+				DualityIrys: {
+					Asphodene: {
+						// Name: Styigan Nymph Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Magic-type Essence. It'll make a scythe with incredible reach and balances between light and dark. Now THAT sounds cool. Right? Right.
+					}
+
+					Eridani: {
+						// Name: Caesura of Despair Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here is another Essence. For you. This is a Summon weapon that will transform you as well as summon crystal shards that weaken and attack nearby foes.
+						// 2: Hmm.. It's the Essence of Hope, but is there something else lurking beneath the surface? Who knows..
+					}
+				}
+
+				Claimh: {
+					Asphodene: {
+						// Name: Claimh Solais Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another Essence for your use. This powerful Melee blade can deal powerful damage to all foes in your vicinity. How useful is that?
+					}
+
+					Eridani: {
+						// Name: Claimh Solais Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Right... Here's another Essence. This Melee weapon allows you to damage all nearby foes in a huge area. It should be quite useful.
+					}
+				}
+
+				PenthesileaMuse: {
+					Asphodene: {
+						// Name: Penthesilea's Muse Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another Essence you can prepare to use, from Penthesilea's strength. With its magical paint, we should be able to best powerful foes.
+					}
+
+					Eridani: {
+						// Name: Penthesilea's Muse Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is another Essence you can master. It will allow you to use Penthesilea's ink to supress foes and strike bosses powerfully.
+					}
+				}
+
+				Kifrosse: {
+					Asphodene: {
+						// Name: Kifrosse Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here you go: an essence for usage in crafting. It looks like it'll apply powerful bouts of flame and frost alike. Not how I'd want to go out, personally.
+					}
+
+					Eridani: {
+						// Name: Kifrosse Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay, I have another Essence for your battles. It summons a mystical fox that burns your enemies with icy energy. They might even deserve it, too.
+					}
+				}
+
+				Architect: {
+					Asphodene: {
+						// Name: Architect's Luminance Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Whoa, this is a powerful Essence. It's potential seems to be magnified based on your Aspected Damage Type. How about giving it a go?
+					}
+
+					Eridani: {
+						// Name: Architect's Luminance Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: It looks like this next Essence is a strong one. Aspected Damage Type seems to empower the weapon further…
+					}
+				}
+
+				ForceOfNature: {
+					Asphodene: {
+						// Name: Force Of Nature Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay..! Time for another Essence! This looks to be a Ranged weapon with high damage output at close range.
+					}
+
+					Eridani: {
+						// Name: Force Of Nature Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've located another Essence for your use. It seems this Ranged-type weapon is hyperfocused on movement. How about pairing it with some mobility tools..?
+					}
+				}
+
+				Genocide: {
+					Asphodene: {
+						// Name: Genocide Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This new Essence is great! It's a Ranged weapon with crazy high explosive potential. Just point it towards the bad guys.
+					}
+
+					Eridani: {
+						// Name: Genocide Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Another Essence is yours. It's a strong Ranged weapon with incredibly good room-clearing power. How about that?
+					}
+				}
+
+				Takonomicon: {
+					Asphodene: {
+						// Name: Takonomicon Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I have a new Essence for you. This is a magical Summon-type weapon that seems to scale with your own potential. Interesting..!
+					}
+
+					Eridani: {
+						// Name: Takonomicon Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another Essence for you to use. It looks to be a Summon-type weapon that grows in strength with the use of more minion summons.
+					}
+				}
+
+				TwinStarsAlbiero: {
+					Asphodene: {
+						// Name: Twin Stars of Albiero Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Magic Essence is here this time. With cosmic energy, you can blast foes away with superpowered light. Sounds good to me!
+					}
+
+					Eridani: {
+						// Name: Twin Stars of Albiero Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Magic-type Essence. With the power of the stars, you can melt even the strongest of foes. Give it a try..?
+					}
+				}
+
+				Armaments: {
+					Asphodene: {
+						// Name: Armaments of the Sky Striker Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Melee-type Essence should help. It looks to be a multiple-purpose power-suit with myriad attacks. Now that sounds cool!
+					}
+
+					Eridani: {
+						// Name: Armaments of the Sky Striker Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Melee Essence is here this time. With its strength, you can create a multifaceted weapon that swaps its arsenal instantly in combat.
+					}
+				}
+
+				CarianKonpaku: {
+					Asphodene: {
+						// Name: Carian Dark Moon Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay {0}, I have an Essence for you! It seems to create a Magic-type weapon with powerful piercing damage... It sounds rather helpful.
+					}
+
+					Eridani: {
+						// Name: Konpaku Katana Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I have an Essence for you, {0}. Looks like it'll become a Summon-type weapon... and it gains strength from grazing danger? You'll have to try it.
+					}
+				}
+
+				NeonAshen: {
+					Asphodene: {
+						// Name: Neo Dealmaker Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've found another Essence you can use... I think. The only thing I can tell is that it makes a Ranged weapon. The rest is up to you.
+					}
+
+					Eridani: {
+						// Name: Ashen Ambition Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is another powerful Essence. Looks like it's a Melee weapon, and it has the potential to execute foes. Don't underestimate it.
+					}
+				}
+
+				CosmicDestroyer: {
+					Asphodene: {
+						// Name: Cosmic Destroyer Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay- I've got it. Here's a Ranged-type Essence.. it looks to be something pretty powerful! Good luck.
+					}
+
+					Eridani: {
+						// Name: Cosmic Destroyer Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Time for another essence- this time it's a Ranged-type weapon. Seems to be pretty powerful at general destruction.
+					}
+				}
+
+				Arachnid: {
+					Asphodene: {
+						// Name: Arachnid Needlepoint Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Summon weapon's essence is here. It looks suspiciously like a whip... but it also can summon minions? Now that's peak.
+						// 2: What? 'Peak?' It's new age lingo- You've definitely heard it before. You know? Like.. mountain peak? The top.. of something? Never mind.
+					}
+
+					Eridani: {
+						// Name: Arachnid Needlepoint Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another weapon. Looks to be a summon-type whip that can deploy spider-robots to attack foes.
+						// 2: They're spiders... but not real spiders. Yep- thinking like that will stop the fight or flight response. Take notes!
+					}
+				}
+
+				Mercy: {
+					Asphodene: {
+						// Name: Mercy Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay- this is a Melee weapon! My instincts tell me it's perfect for high-defense foes. What are you waiting for?
+					}
+
+					Eridani: {
+						// Name: Mercy Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is a Melee weapon. It has pretty good anti-armor properties- you can definitely put that to good use.
+					}
+				}
+
+				Sakura: {
+					Asphodene: {
+						// Name: Sakura Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Melee blade can harness the power of the elements themselves. Just having it in your hands is quite something!
+					}
+
+					Eridani: {
+						// Name: Sakura Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Another weapon is here. It seems to be a Melee weapon- one that uses the power of the elements to attack foes.
+					}
+				}
+
+				Eternal: {
+					Asphodene: {
+						// Name: Eternal Star Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This looks to be a Magic weapon. With its power, you can call down entire stars to defeat your foes!
+						// 2: You're worried you'll run out eventually? Yeah.. no.
+					}
+
+					Eridani: {
+						// Name: Eternal Star Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic-type staff will be incredibly helpful, if I do say so myself. It has the strength to conjure entire stars!
+						// 2: As long as they aren't REAL stars. There would be... a few problems.
+					}
+				}
+
+				Vermillion: {
+					Asphodene: {
+						// Name: Vermillion Daemon Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This looks to be... a Magic weapon. Strange- it feels like an entire armory is contained in this Essence. How's that possible?
+						// 2: Well, I'll let you figure that one out. Get to it- I'm curious too, you know?
+					}
+
+					Eridani: {
+						// Name: Vermillion Daemon Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another weapon- Magic, it seems. There's something strange about it- this Essence seems to hold the strength of myriad weapons together.
+					}
+				}
+
+				Ozma: {
+					Asphodene: {
+						// Name: Ozma Ascendant Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Magic weapon for your usage. Looks to me like it's pretty complicated- you're up to the task though, right?
+						// 2: Just point the pointy bit towards the bad guys. Usually works for me.
+					}
+
+					Eridani: {
+						// Name: Ozma Ascendant Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's another unique Magic weapon. Looks to be rather complicated, so good luck using it. Don't forget the ABCs- always be casting!
+						// 2: Although, I'm not too sure that it applies here, so use your own judgement.
+					}
+				}
+
+				Dreadnought: {
+					Asphodene: {
+						// Name: Dreadnought Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Right.. Here's a Ranged-type weapon Essence.  I hope you've built up your chemical tolerance- it seems to utilize chemical energy to deal powerful damage.
+					}
+
+					Eridani: {
+						// Name: Dreadnought Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence sources a Ranged weapon. It has a high focus on tight mobility, meaning it'll put you into the front lines. The strength should compensate.
+					}
+				}
+
+				BloodBlade: {
+					Asphodene: {
+						// Name: The Blood Blade Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Behold- a new Essence! It's Melee damage this time. It has some incredible lifesteal powers- but also seems to drain your health on use? How about giving it a go?
+					}
+
+					Eridani: {
+						// Name: The Blood Blade Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Melee-type Essence is prepared this time. It seems to me like it sacrifies your health for powerful area-of-effect damage. Use it well, but know the risks.
+					}
+				}
+
+				MorningStar: {
+					Asphodene: {
+						// Name: The Morning Star Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Summon weapon. It's.. Well, it's a whip, but it has some unique magical properties. It has good striking power, too!
+					}
+
+					Eridani: {
+						// Name: The Morning Star Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Right, here's a Summon-type whip. It has some magic capability, but it's a bit random in its casting. Try and use it well.
+					}
+				}
+
+				HunterSparkblossom: {
+					Asphodene: {
+						// Name: Hunter's Symphony Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Listen close, {0}! Or not. This Magic weapon is a giant horn, but get this: you can whack people with it! Rad!
+					}
+
+					Eridani: {
+						// Name: Sparkblossom's Beacon Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Be careful with this Essence- for some reason, it discharges static electricity all the time.
+						// 2: It'll create a Summon weapon. Hopefully the electric properties carry over- it's sure to give our foes a shock.
+					}
+				}
+
+				Virtue: {
+					Asphodene: {
+						// Name: Virtue's Edge Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Careful with this Essence- Apparently, only the worthy can wield it at full strength.
+						// 2: An ancient civilization's magnum opus, it seems. Don't underestimate its destructive power.
+					}
+
+					Eridani: {
+						// Name: Virtue's Edge Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence leads to a truly powerful weapon. It bears remnants of an ancient, advanced civilization.
+						// 2: Evidently, they bore proficiency in spatial manipulation. I'd like you to give it a try, but it might reject the unworthy.
+						// 3: At this point, I wonder if there was a weapon you weren't worthy to wield. Yes, I'm praising you.
+					}
+				}
+
+				Riposte: {
+					Asphodene: {
+						// Name: Vermilion Riposte Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Look here, another Essence..! It's going to be Magic-type. It seems to revolve around balancing Black and White Mana to attack.
+						// 2: It seems that they were opposites, at least where this thing came from. Makes you wonder…!
+					}
+
+					Eridani: {
+						// Name: Vermilion Riposte Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic-type Essence balances attack and healing through the dual-use of Black and White mana.
+						// 2: Two opposite schools of learning, at least in this Essence's original world. Now isn't some interesting worldbuilding…
+					}
+				}
+
+				BurningDesire: {
+					Asphodene: {
+						// Name: Burning Desire Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Thanks for waiting. Here's another Melee-type Essence for your use. While it's deceptively close-ranged, it has the potential for some crazy burst damage.
+						// 2: Sure, it'll most likely burn you up from the inside. Just a little, though.
+					}
+
+					Eridani: {
+						// Name: Burning Desire Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Apologies for the delay- here's an Essence. This Melee weapon has some recoil potential, but in exchange you could deal some explosive amounts of damage.
+						// 2: I'd ask you to use it in moderation, but I'm sure you'll use it as much as you like. Bring some healing potions, at the very least.
+					}
+				}
+
+				EverlastingPickaxe: {
+					Asphodene: {
+						// Name: The Everlasting Pickaxe Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay, here's an unorthodox Essence for you. While it functions as a pretty strong pickaxe, it looks like it also has some great damage potential.
+						// 2: From my take, it seems to be a great off-hand weapon to pump out explosions. Everyone loves explosions, right?
+					}
+
+					Eridani: {
+						// Name: The Everlasting Pickaxe Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence focuses on excavation as well as damage. You can use it to move earth at significant rates, and additionally deal powerful explosive damage.
+					}
+				}
+
+				CapitanHardware: {
+					Asphodene: {
+						// Name: El Capitan's Hardware Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
+					}
+
+					Eridani: {
+						// Name: El Capitan's Hardware Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a Ranged weapon- it has both a useful primary fire and can unleash strong self-sustaining drones to attack as well.
+					}
+				}
+
+				CatalystMemory: {
+					Asphodene: {
+						// Name: Catalyst's Memory Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've got a new weapon for you: it's a powerful mid-range blade, with the ability to conjure a crystal which can alter your combat style. Interesting, huh?
+					}
+
+					Eridani: {
+						// Name: Catalyst's Memory Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've a new Celestial weapon for your use. It'll be more powerful when you utilize its strength to summon a Prismic, which can assist you in battle.
+					}
+				}
+
+				Gloves: {
+					Asphodene: {
+						// Name: Gloves of the Black Silence Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is an Essence that'll turn into a pair of gloves. Now, I know what you're thinking, but let me explain.
+						// 2: These gloves can conjure a whole arsenal of weapons for you to wield. Complicated, but it'll be very powerful if used right.
+					}
+
+					Eridani: {
+						// Name: Gloves of the Black Silence Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here's a new weapon for your use. In truth, this Essence is a bit more than that; it's a pair of gloves.
+						// 2: Of course, that's not the whole story- you can use these gloves to summon an entire arsenal of weapons.
+						// 3: I know the prospect sounds daunting, but you'll deal some heavy damage if you can manage the weapons well.
+					}
+				}
+
+				SoulReaver: {
+					Asphodene: {
+						// Name: Soul Reaver Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Right. This Melee Essence dips into the void to defeat foes and absorb them after. Sounds pretty cool to me.
+					}
+
+					Eridani: {
+						// Name: Soul Reaver Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay, here's a Melee weapon- with the power of souls, you can cleave huge areas around you and dip into the void itself for instant teleportation.
+						// 2: To be honest, it's... Well, it's pretty cool, but you didn't hear that from me. That isn't hypocritical, so don't try to read too into it.
+					}
+				}
+
+				AurumEdge: {
+					Asphodene: {
+						// Name: Aurum Edge Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I've acquired a new Essence for your use. It seems to borrow strength from Melee and Magic both- a versatile weapon, I like it!
+					}
+
+					Eridani: {
+						// Name: Placeholder Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Looks to be a new Essence for your use. It uses a unique damage type and powerful charge attacks- but it'll probably have some recoil damage.
+					}
+				}
+
+				Farewells: {
+					Asphodene: {
+						// Name: Farewell Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Looks like this Graveyard seems to have some connection to this Essence. Hopefully all these graves weren't just from you dying, right?
+					}
+
+					Eridani: {
+						// Name: Farewell Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Graveyard seems to have connected to this Essence. I hope it'll help you avoid creating the Graveyard in the first place.
+						// 2: While powerful, I believe it's a utility item, and not a weapon this time.
+					}
+				}
+
+				IrminsulPod: {
+					Asphodene: {
+						// Name: Pod Zero-42 Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Hmm... this Summon-type Essence will create some sort of controllable drone- I wonder if it can talk?
+					}
+
+					Eridani: {
+						// Name: Irminsul's Dream Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic Essence, while aspected to nature, seems rather volatile. Perhaps you'd be able to better use it in tandem with other weapons?
+					}
+				}
+
+				Umbra: {
+					Asphodene: {
+						// Name: Umbra Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This is certainly a Melee weapon- furthermore, it seems to be one that excels at a distance, as well as providing extra firepower in close combat. Nice.
+					}
+
+					Eridani: {
+						// Name: Umbra Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Melee weapon harnesses an aspect of time itself to help you in combat. It seems to have some impressive range, as well.
+					}
+				}
+
+				SaltwaterScourge: {
+					Asphodene: {
+						// Name: Saltwater Scourge Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I plundered a Ranged-sort of essence from the likeness of those pirates. Sea... water... Actually, looks like I'm nearly dry with jokes, so I'll anchor myself now.
+					}
+
+					Eridani: {
+						// Name: Saltwater Scourge Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: How about it; that previous... um, let's say 'get-together' with those pirates has churned up an Essence- Ranged damage, from what I can tell. Here you are.
+					}
+				}
+
+				Chaos: {
+					Asphodene: {
+						// Name: Chaos Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Well, I'm not sure what to make of this Essence, other than that it's a Summon weapon. Best you give it a go, before anything else goes haywire.
+					}
+
+					Eridani: {
+						// Name: Chaos Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I'm not sure how to define this Summon-type Essence, so I'll leave it as an exercise for you. Well... good luck.
+					}
+				}
+
+				Chronoclock: {
+					Asphodene: {
+						// Name: Chronoclock Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This watch is a Summon-type weapon- looks like it'll call forth a cute time-aspected ally. She'll help with support if you can work with her combat style.
+						// 2: Hmm... Perhaps you could even use it to dodge incoming attacks...?
+					}
+
+					Eridani: {
+						// Name: Chronoclock Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon-type weapon conjures a rather charming time-aspected being. She'll help with both offensive and defensive duties.
+					}
+				}
+
+				KissOfDeath: {
+					Asphodene: {
+						// Name: Kiss OfD eath Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: It looks to me like this Ranged-weapon has the ability to down hordes of foes pretty easily. Sounds like it'll come in handy- especially the giant coffin swings!
+					}
+
+					Eridani: {
+						// Name: Kiss Of Death Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This essence is a Ranged-type weapon, but it seems to have a lot of close-ranged action. Don't get overzealous, but do try to make the most of it.
+					}
+				}
+
+				Boltstorm: {
+					Asphodene: {
+						// Name: Boltstorm Axe Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Looks like this Essence is both Magic and Melee aspected- it crackles with lightning already. How about giving it a shot?
+					}
+
+					Eridani: {
+						// Name: Boltstorm Axe Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Seems like this is a Melee and Magic type Essence in tandem. From what I can see, it'll make a powerful weapon that channels the power of lightning.
+					}
+				}
+
+				NanomachinaReactor: {
+					Asphodene: {
+						// Name: Nanomachina Reactor Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: How about this Essence? It'll give you an enhanced barrier, able to protect yourself while helping you deal some damage without worry of repercussions.
+					}
+
+					Eridani: {
+						// Name: Nanomachina Reactor Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence is a support-type item. It'll provide a powerful barrier and allow you to sap life energy from your foes as well... It'll be quite the powerful tool.
+					}
+				}
+
+				Sanguine: {
+					Asphodene: {
+						// Name: Sanguine Despair Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Seems that this Essence came from that voodoo doll we found in the Underworld- a strange sight. Are you certain that using a weapon like this is worth the risk?
+						// 2: Who am I kidding- of course you're certain! You chose me, after all! Just don't get TOO reckless, now.
+					}
+
+					Eridani: {
+						// Name: Sanguine Despair Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence seems to have resonated from that strange poppet we found in the Underworld. Beware its dangers- your affinity with resurrection is... tentative.
+					}
+				}
+
+				Sunset: {
+					Asphodene: {
+						// Name: Sunset of the Sun God Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence is aspected to this world's star- your sun! Needless to say, the power of the sun would be quite the boon- let's see this thing in action!
+					}
+
+					Eridani: {
+						// Name: Sunset of the Sun God Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: An Essence attuned to the power of our Sun- and it is quite radiant, indeed. Let's make good use of it.
+					}
+				}
+
+				Mania: {
+					Asphodene: {
+						// Name: Maniacal Justice Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Hmm, I'd advise healthy amounts of caution with this Essence- it's a Melee essence with high potential, but it looks like you're leaving your defenses open for it.
+					}
+
+					Eridani: {
+						// Name: Maniacal Justice Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence exudes an unhealthy amount of madness- it's a Melee weapon that trades defensive prowess for offensive might. Do be careful.
+					}
+				}
+
+				SupremeAuthority: {
+					Asphodene: {
+						// Name: Supreme Authority Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Looks to me like this Magic Essence has some powerful potential, but I'm not quite sure what it requires in turn... Perhaps you should give it a look.
+					}
+
+					Eridani: {
+						// Name: Supreme Authority Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Magic-type essence. It seems to harbor incredible power, but it also seems to require sacrifices in return…
+					}
+				}
+
+				Kinetic: {
+					Asphodene: {
+						// Name: Kariumu's Favor Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: You aren't going to believe this, but someone gave this Essence to me- how is that possible? They said something like 'It's just a game, so it's OK.' What even?
+					}
+
+					Eridani: {
+						// Name: Kariumu's Favor Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: How can I say this...? Unlike the other Essences, I felt a presence give this one to me. They said something like... 'It's just a game, so it's OK.'
+						// 2: It seems to be able to absorb hostile energy and use it to empower you in turn. I, too, am curious on how it looks.
+					}
+				}
+
+				ShockAndAwe: {
+					Asphodene: {
+						// Name: Shock And Awe Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged-essence seems to lead to a classic rocket-launcher weapon- I've heard of using explosives for traversal, so it shouldn't hurt to try, right?
+
+						2: {
+							// $parentVal: Is that irony? I think so- maybe not? To be clear, it WILL hurt to try, but it'll also be quite fun!
+							// E: Happy
+						}
+					}
+
+					Eridani: {
+						// Name: Shock And Awe Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged-type rocket launcher has a unique melee counterpart, but it requires you to- well, I hope you have strong legs.
+					}
+				}
+
+				Dreamer: {
+					Asphodene: {
+						// Name: Dreamer's Inkwell Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic Essence is pretty unique: you can draw directly onto the world to cause different effects to occur.
+					}
+
+					Eridani: {
+						// Name: Dreamer's Inkwell Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Take into consideration this Magic essence: in short, it turns the world into a canvas you can interact and attack with.
+					}
+				}
+
+				Trickspin: {
+					Asphodene: {
+						// Name: Trickspin Two-Step Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Looks like a yo-yo Essence is here- a Summon-type one as well. Seems to boast some helpful movement tools as well!
+					}
+
+					Eridani: {
+						// Name: Trickspin Two-Step Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Here is a new Essence for your perusal- it'll deal Summon damage. It's rather close-ranged but boasts movement capabilities to help close the gap.
+					}
+				}
+
+				Dragalia: {
+					Asphodene: {
+						// Name: Dragalia Found Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon-type weapon isn't like anything you've seen before, I think. Best to just give it a go- how good's your swordsmanship?
+					}
+
+					Eridani: {
+						// Name: Dragalia Found Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: You'd think this Summon-type essence wouldn't be a sword, but here it is. It has a very special power hidden within... Just don't unleash it indoors.
+					}
+				}
+
+				Gundbit: {
+					Asphodene: {
+						// Name: Gund-bit Siege Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: With this Essence, you'll have a Magic-type weapon with some crazy stopping power! Let's give this one a 'shot'!
+					}
+
+					Eridani: {
+						// Name: Gund-bit Siege Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I hope you have steady aim- this Magic weapon has powerful piercing strength, as long as you keep your target in your sights.
+					}
+				}
+
+				Wavedancer: {
+					Asphodene: {
+						// Name: Wavedancer Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon weapon is an elegant blade- you can control it manually, or it will slice foes all on its own. Why can't everything do that?
+					}
+
+					Eridani: {
+						// Name: Wavedancer Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon essence will create a mystical blade to aid you in combat- you can also control it magically, if you need better precision.
+					}
+				}
+
+				Clarent: {
+					Asphodene: {
+						// Name: Clarent Rebellion Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Melee blade has one goal in mind... You could probably guess from its name. It'll make a powerful weapon, that's for sure.
+					}
+
+					Eridani: {
+						// Name: Clarent Rebellion Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Melee essence, huh? It looks like it has some powerful abilities. Just be glad it listens to you.
+					}
+				}
+
+				SoliloquyHavoc: {
+					Asphodene: {
+						// Name: Devoted Havoc Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged weapon can empower some throwing weapons... Or, you could just blast foes away with bullets. You know, I like both of these options!
+					}
+
+					Eridani: {
+						// Name: Soliloquy of Sovereign Seas Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat. How brilliant!
+					}
 				}
 			}
 
@@ -836,7 +1767,6 @@ Mods: {
 				KingSlime: {
 					Asphodene: {
 						// Name: King Slime Dialogue
-						// UnlockCondition: Defeat King Slime
 						// Description: ""
 						1: Vous avez vaincu le Slime King, hein ? Bon travail.
 						2: C'est peut-être un peu faible, mais c'est néanmoins un pas en avant infaillible.
@@ -854,7 +1784,6 @@ Mods: {
 
 					Eridani: {
 						// Name: King Slime Dialogue
-						// UnlockCondition: Defeat King Slime
 						// Description: ""
 						1: Cela semblait peut-être faible, mais le Slime King était vraiment une menace.
 
@@ -1572,14 +2501,14 @@ Mods: {
 
 				HiveMind: {
 					Asphodene: {
-						// Name: HiveMind Dialogue
+						// Name: Hive Mind Dialogue
 						// Description: ""
 						1: L'Esprit de la Ruche a été vaincu. Ce n'est pas la seule source de corruption, mais le tuer n'a certainement pas rendu service à la corruption.
 						2: C'est tout pour l'instant.
 					}
 
 					Eridani: {
-						// Name: HiveMind Dialogue
+						// Name: Hive Mind Dialogue
 						// Description: ""
 						1: Vous avez débarrassé le monde de l'esprit de la ruche. Même si ce n'est pas le principal vecteur d'influence de la corruption, l'étouffer a probablement contribué à atténuer certains maux.
 						2: Restons à l’affût d’autres menaces que représente la corruption.
@@ -1612,7 +2541,7 @@ Mods: {
 
 				SlimeGod: {
 					Asphodene: {
-						// Name: SlimeGod Dialogue
+						// Name: Slime God Dialogue
 						// Description: ""
 						1: Le Dieu Slime n'est plus ! Il s'avère que ces énormes slimes rouges et violets ne faisaient pas réellement partie du Dieu Slime, mais simplement de puissants serviteurs.
 
@@ -1633,7 +2562,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: SlimeGod Dialogue
+						// Name: Slime God Dialogue
 						// Description: ""
 						1: Enfin. Le Dieu Slime a été tué. Bien sûr, cela ne signifie pas la fin du slime tel que nous le connaissons. Sérieusement, ils sont partout.
 						2: Je suis presque sûr qu'ils peuvent se séparer pour en faire plus. ...Je ne suis pas un expert en étymologie des slimes ou quoi que ce soit.
@@ -1674,7 +2603,7 @@ Mods: {
 
 				AquaticScourge: {
 					Asphodene: {
-						// Name: AquaticScourge Dialogue
+						// Name: Aquatic Scourge Dialogue
 						// Description: ""
 
 						1: {
@@ -1689,7 +2618,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: AquaticScourge Dialogue
+						// Name: Aquatic Scourge Dialogue
 						// Description: ""
 
 						1: {
@@ -1706,7 +2635,7 @@ Mods: {
 
 				BrimstoneElemental: {
 					Asphodene: {
-						// Name: BrimstoneElemental Dialogue
+						// Name: Brimstone Elemental Dialogue
 						// Description: ""
 						// 1: You've defeated the Brimstone Elemental. It seems they were once a revered goddess of the Underworld's mighty civilization, before it was destroyed.
 
@@ -1717,7 +2646,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: BrimstoneElemental Dialogue
+						// Name: Brimstone Elemental Dialogue
 						// Description: ""
 						// 1: The fire-borne spirit is no more. The land of brimstone must have been powerful, to worship this spirit as such. We merely fought her at her weakest.
 
@@ -1771,7 +2700,7 @@ Mods: {
 
 				AstrumAureus: {
 					Asphodene: {
-						// Name: AstrumAureus Dialogue
+						// Name: Astrum Aureus Dialogue
 						// Description: ""
 
 						1: {
@@ -1783,7 +2712,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: AstrumAureus Dialogue
+						// Name: Astrum Aureus Dialogue
 						// Description: ""
 						1: C'est ça. Astrum Aureus est mort. Même si l’Infection Astrale a perverti l’original, elle bat toujours avec un cœur de fer.
 						2: L'infection astrale... C'est dangereux. Au moins, nous avons fait de bons progrès. N'oubliez pas cela.
@@ -1792,14 +2721,14 @@ Mods: {
 
 				PlaguebringerGoliath: {
 					Asphodene: {
-						// Name: PlaguebringerGoliath Dialogue
+						// Name: Plaguebringer Goliath Dialogue
 						// Description: ""
 						1: Nice, you've bested the Plaguebringer Goliath. The ingenuity of man never ceases to amaze, even if their knowledge usually is imparted in hyper-active death machines.
 						2: Well, what can you do. There's people like us here to take care of that part.
 					}
 
 					Eridani: {
-						// Name: PlaguebringerGoliath Dialogue
+						// Name: Plaguebringer Goliath Dialogue
 						// Description: ""
 
 						1: {
@@ -1850,7 +2779,7 @@ Mods: {
 
 				AstrumDeus: {
 					Asphodene: {
-						// Name: AstrumDeus Dialogue
+						// Name: Astrum Deus Dialogue
 						// Description: ""
 						1: Nous avons vaincu Astrum Deus. Astrum Deus est – ou était – l'un des nombreux dieux qui régnaient sur l'univers. D'aussi loin que je me souvienne, il avait disparu avant ma naissance.
 
@@ -1868,7 +2797,7 @@ Mods: {
 					}
 
 					Eridani: {
-						// Name: AstrumDeus Dialogue
+						// Name: Astrum Deus Dialogue
 						// Description: ""
 						1: Bon travail. Vous avez vaincu Astrum Deus. J'ai quelques connaissances personnelles, alors permettez-moi de partager...
 

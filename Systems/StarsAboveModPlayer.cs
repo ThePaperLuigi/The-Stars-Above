@@ -3900,15 +3900,15 @@ namespace StarsAbove
                 //New system.
                 if (NPC.downedSlimeKing)
                 {
-                    SetupActiveDialogue(ref newDiskNotification, 
-                        51, 
-                        ref slimeDialogue, 
-                        true, out newArrayNotification, 
-                        false, out newNovaNotification);                  
+                    SetupActiveDialogue(ref newDiskNotification,
+                        51,
+                        ref slimeDialogue,
+                        true, out newArrayNotification,
+                        false, out newNovaNotification);
                 }
                 if (NPC.downedBoss1)
                 {
-                    SetupActiveDialogue(ref newDiskNotification, 
+                    SetupActiveDialogue(ref newDiskNotification,
                         52, //The ID of the dialogue.
                         ref eyeDialogue, //The flag of the dialogue.
                         true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
@@ -3957,7 +3957,7 @@ namespace StarsAbove
                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
-                }                
+                }
                 if (NPC.downedMechBoss1)//The Twins
                 {
                     SetupActiveDialogue(ref newDiskNotification,
@@ -3965,7 +3965,7 @@ namespace StarsAbove
                         ref TwinsDialogue, //The flag of the dialogue.
                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
-                }                            
+                }
                 if (NPC.downedQueenSlime)
                 {
                     SetupActiveDialogue(ref newDiskNotification,
@@ -4015,7 +4015,7 @@ namespace StarsAbove
                           true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
 
-                
+
 
 
                 if (NPC.downedMechBoss2)//The Destroyer
@@ -4112,7 +4112,7 @@ namespace StarsAbove
                                                    true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                                                    false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                
+
 
                 if (DownedBossSystem.downedThespian)
                 {
@@ -4129,7 +4129,7 @@ namespace StarsAbove
                               ref EverythingDefeatedDialogue, //The flag of the dialogue.
                               false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                               false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
-                }    
+                }
                 //Boss Spawn items
                 if (NPC.downedBoss1)
                 {
@@ -4155,7 +4155,7 @@ namespace StarsAbove
                               false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                               false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                
+
                 if (GolemDialogue == 2 && vagrantDialogue == 2)
                 {
                     SetupActiveDialogue(ref newDiskNotification,
@@ -4283,44 +4283,51 @@ namespace StarsAbove
                 }
 
                 //Weapon dialogues
-                if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
+                if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)
                 {
-                    Stellaglyph2WeaponDialogue = 1;
-                    newDiskNotification = true;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              160, //The ID of the dialogue.
+                              ref Stellaglyph2WeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
 
                 }
-                if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
+                if (SkeletonWeaponDialogue == 2 )
                 {
-                    NanomachineWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              167, //The ID of the dialogue.
+                              ref NanomachineWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
+                if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2)
                 {
-                    HellWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              102, //The ID of the dialogue.
+                              ref HellWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (Player.ZoneHallow && GoldWeaponDialogue == 0)
+                if (Player.ZoneHallow )
                 {
-                    GoldWeaponDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              158, //The ID of the dialogue.
+                              ref GoldWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
+                if (Player.ZoneGraveyard)
                 {
-                    FarewellWeaponDialogue = 1;
-                                        newDiskNotification = true;
-                     
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              159, //The ID of the dialogue.
+                              ref FarewellWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
                 if (WallOfFleshWeaponDialogue == 2)//Hardmode
                 {
@@ -4362,647 +4369,616 @@ namespace StarsAbove
                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
+                if (vagrantDialogue == 2)
                 {
-                    TrickspinWeaponDialogue = 1;
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    newDiskNotification = true;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              175, //The ID of the dialogue.
+                              ref TrickspinWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
+                if (NPC.downedBoss2)
                 {
-                    SoldierWeaponDialogue = 1;
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    newDiskNotification = true;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              173, //The ID of the dialogue.
+                              ref SoldierWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
+                if (PlanteraWeaponDialogue == 2)
                 {
-                    DreamerWeaponDialogue = 1;
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    newDiskNotification = true;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              174, //The ID of the dialogue.
+                              ref DreamerWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
                 if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
                 {
-                    KineticWeaponDialogue = 1;
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    newDiskNotification = true;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              172, //The ID of the dialogue.
+                              ref KineticWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
+                if (SkeletonDialogue == 2)
                 {
-                    SkeletonWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              101, //The ID of the dialogue.
+                              ref SkeletonWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
+                if (tsukiyomiDialogue == 2)
                 {
-                    ArchitectWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              130, //The ID of the dialogue.
+                              ref ArchitectWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
+                if (ArchitectWeaponDialogue == 2)
                 {
-                    CosmicDestroyerWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
-
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              138, //The ID of the dialogue.
+                              ref CosmicDestroyerWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
+                if (CosmicDestroyerWeaponDialogue == 2)
                 {
-                    KarnaWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
-
-
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              169, //The ID of the dialogue.
+                              ref KarnaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
+                
+                if (NPC.downedGolemBoss)
                 {
-                    //Obtained from Arbitration now.
-
-                    //MurasamaWeaponDialogue = 1;
-                    //                    newDiskNotification = true;
-                    // 
-                    //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    //return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              141, //The ID of the dialogue.
+                              ref MercyWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
+                if (thespianDialogue == 2)
                 {
-                    MercyWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              180, //The ID of the dialogue.
+                              ref ThespianWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
+                if (ThespianWeaponDialogue == 2)
                 {
-                    ThespianWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              176, //The ID of the dialogue.
+                              ref DragaliaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                if (ThespianWeaponDialogue == 2)
                 {
-                    DragaliaWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              178, //The ID of the dialogue.
+                              ref WavedancerWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
+                if (DownedBossSystem.downedNalhaun)
                 {
-                    WavedancerWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              179, //The ID of the dialogue.
+                              ref ClarentWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (ClarentWeaponDialogue == 0 && DownedBossSystem.downedNalhaun)
+                if (LunaticCultistWeaponDialogue == 2)
                 {
-                    ClarentWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              177, //The ID of the dialogue.
+                              ref GundbitWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
+                if (NPC.downedEmpressOfLight)
                 {
-                    GundbitWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              142, //The ID of the dialogue.
+                              ref SakuraWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
+                if ( NPC.downedMoonlord)
                 {
-                    SakuraWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              143, //The ID of the dialogue.
+                              ref EternalWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
+                if (NPC.downedMoonlord)
                 {
-                    EternalWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              144, //The ID of the dialogue.
+                              ref DaemonWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
+                if (NPC.downedAncientCultist)
                 {
-                    DaemonWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              145, //The ID of the dialogue.
+                              ref OzmaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
+                if (NPC.downedQueenSlime)
                 {
-                    OzmaWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              146, //The ID of the dialogue.
+                              ref UrgotWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
+                if (NPC.downedHalloweenKing)
                 {
-                    UrgotWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              147, //The ID of the dialogue.
+                              ref BloodWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
+                if (NPC.downedDeerclops)
                 {
-                    BloodWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              148, //The ID of the dialogue.
+                              ref MorningStarWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
+                if (NPC.downedMoonlord)
                 {
-                    MorningStarWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              150, //The ID of the dialogue.
+                              ref VirtueWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
+                if (NPC.downedQueenSlime)
                 {
-                    VirtueWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              149, //The ID of the dialogue.
+                              ref QueenSlimeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
+                if (NPC.downedEmpressOfLight)
                 {
-                    QueenSlimeWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              140, //The ID of the dialogue.
+                              ref NeedlepointWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
+                if (eyeDialogue == 2)
                 {
-                    NeedlepointWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              136, //The ID of the dialogue.
+                              ref EyeBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
+                if (corruptBossDialogue == 2)
                 {
-                    EyeBossWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
-
-                }
-                if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
-                {
-                    CorruptBossWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              137, //The ID of the dialogue.
+                              ref CorruptBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
                 //Nalhaun weapons have been moved...
-                if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
+                if (dioskouroiDialogue == 2)
                 {
-                    NalhaunWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              117, //The ID of the dialogue.
+                              ref NalhaunWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
                 //Vagrant weapons have been moved...
-                if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
+                if (QueenSlimeWeaponDialogue == 2)
                 {
-                    VagrantWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              115, //The ID of the dialogue.
+                              ref VagrantWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (BeeBossDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              103, //The ID of the dialogue.
+                              ref QueenBeeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (SkeletonWeaponDialogue == 2 && Player.ZoneBeach)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              123, //The ID of the dialogue.
+                              ref OceanWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (SkeletonWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              120, //The ID of the dialogue.
+                              ref MiseryWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (slimeDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              104, //The ID of the dialogue.
+                              ref KingSlimeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WallOfFleshDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              105, //The ID of the dialogue.
+                              ref WallOfFleshWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WallOfFleshWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              124, //The ID of the dialogue.
+                              ref LumaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2))
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              106, //The ID of the dialogue.
+                              ref MechBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && MechBossWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              107, //The ID of the dialogue.
+                              ref AllMechBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
 
                 }
-                if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
+                if (MechBossWeaponDialogue == 2)
                 {
-                    QueenBeeWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              121, //The ID of the dialogue.
+                              ref HullwroughtWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
+                if (HullwroughtWeaponDialogue == 2)
                 {
-                    OceanWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
-                {
-                    MiseryWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
-                {
-                    KingSlimeWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
-                {
-                    WallOfFleshWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
-                {
-                    LumaWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
-                {
-                    MechBossWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
-                {
-                    AllMechBossWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
-                {
-                    HullwroughtWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
-                {
-                    MonadoWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              125, //The ID of the dialogue.
+                              ref MonadoWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
 
-                if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
+                if (PlanteraDialogue == 2 )
                 {
-                    PlanteraWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              108, //The ID of the dialogue.
+                              ref PlanteraWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
+                if (NPC.downedChristmasIceQueen)
                 {
-                    FrostMoonWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              126, //The ID of the dialogue.
+                              ref FrostMoonWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
+                if (GolemDialogue == 2)
                 {
-                    GolemWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              109, //The ID of the dialogue.
+                              ref GolemWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
+                if (penthDialogue == 2)
                 {
-                    PenthesileaWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              118, //The ID of the dialogue.
+                              ref PenthesileaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
+                if (PenthesileaWeaponDialogue == 2)
                 {
-                    MuseWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              128, //The ID of the dialogue.
+                              ref MuseWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
+                if (PlanteraWeaponDialogue == 2)
                 {
-                    KifrosseWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              129, //The ID of the dialogue.
+                              ref KifrosseWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
                 //Moved from Arbitration to Nalhaun.
-                if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
+                if (nalhaunDialogue == 2)
                 {
-                    ArbitrationWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              119, //The ID of the dialogue.
+                              ref ArbitrationWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (ArbitrationWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              166, //The ID of the dialogue.
+                              ref LevinstormWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
 
                 }
-                if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
+                if (ArbitrationWeaponDialogue == 2)
                 {
-                    LevinstormWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              127, //The ID of the dialogue.
+                              ref ClaimhWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                  
 
                 }
-                if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
+                if (DukeFishronDialogue == 2)
                 {
-                    ClaimhWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              116, //The ID of the dialogue.
+                              ref DukeFishronWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
 
                 }
-                if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
+                if (DukeFishronWeaponDialogue == 2)
                 {
-                    DukeFishronWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              170, //The ID of the dialogue.
+                              ref ManiacalWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (CultistDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              110, //The ID of the dialogue.
+                              ref LunaticCultistWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (MoonLordDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              111, //The ID of the dialogue.
+                              ref MoonLordWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
 
                 }
-                if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
+                if (MoonLordWeaponDialogue == 2 )
                 {
-                    ManiacalWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                              122, //The ID of the dialogue.
+                              ref ShadowlessWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              112, //The ID of the dialogue.
+                              ref WarriorWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              171, //The ID of the dialogue.
+                              ref AuthorityWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              151, //The ID of the dialogue.
+                              ref RedMageWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              152, //The ID of the dialogue.
+                              ref BlazeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              153, //The ID of the dialogue.
+                              ref PickaxeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+          
 
                 }
-                if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
+                if (AllMechsDefeatedDialogue == 2)
                 {
-                    LunaticCultistWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              154, //The ID of the dialogue.
+                              ref HardwareWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
+                if (LunaticCultistWeaponDialogue == 2)
                 {
-                    MoonLordWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              155, //The ID of the dialogue.
+                              ref CatalystWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
+                if (CatalystWeaponDialogue == 2)
                 {
-                    ShadowlessWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              161, //The ID of the dialogue.
+                              ref UmbraWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
+                if (NPC.downedPirates)
                 {
-                    WarriorWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              162, //The ID of the dialogue.
+                              ref SaltwaterWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
                 }
-                if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
+                if (vagrantDialogue == 2)
                 {
-                    AuthorityWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              164, //The ID of the dialogue.
+                              ref ClockWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
+                if (Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
                 {
-                    RedMageWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              168, //The ID of the dialogue.
+                              ref SanguineWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
+                if (NPC.downedMartians)
                 {
-                    BlazeWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              165, //The ID of the dialogue.
+                              ref GoldlewisWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
+                if (NPC.downedQueenSlime)
                 {
-                    PickaxeWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              163, //The ID of the dialogue.
+                              ref ChaosWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
                 }
-                if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
+                if (GolemWeaponDialogue == 2)
                 {
-                    HardwareWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              156, //The ID of the dialogue.
+                              ref SilenceWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
+                if (MoonLordWeaponDialogue == 2)
                 {
-                    CatalystWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
-                {
-                    UmbraWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
-                {
-                    SaltwaterWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
-                {
-                    ClockWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
-                {
-                    SanguineWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
-                {
-                    GoldlewisWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
-                {
-                    ChaosWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-                }
-                if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
-                {
-                    SilenceWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
-                }
-                if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
-                {
-                    SoulWeaponDialogue = 1;
-                    newDiskNotification = true;
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                              157, //The ID of the dialogue.
+                              ref SoulWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
 
 

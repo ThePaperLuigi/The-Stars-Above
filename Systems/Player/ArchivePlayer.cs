@@ -82,8 +82,8 @@ namespace StarsAbove.Systems
                       0,
                       "")); //Corresponding dialogue ID.
                 WeaponArchiveList.Add(new ArchiveListing(
-                      "", //Name of the archive listing.
-                      $"", //Description of the listing.
+                      "???", //Name of the archive listing.
+                      $"< - >", //Description of the listing.
                       false, //Unlock requirements.
                       0,
                       "")); //Corresponding dialogue ID.
@@ -508,12 +508,7 @@ namespace StarsAbove.Systems
                 }
                  */
                 //Weapons
-                WeaponArchiveList.Add(new ArchiveListing(
-                      "", //Name of the archive listing.
-                      $"", //Description of the listing.
-                      false, //Unlock requirements.
-                      0,
-                      "")); //Corresponding dialogue ID.
+               
                 /*
                 WeaponArchiveList.Add(new ArchiveListing(
                        "King Slime Weapon", //Name of the archive listing.
