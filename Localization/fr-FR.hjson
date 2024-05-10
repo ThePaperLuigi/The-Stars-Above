@@ -5120,6 +5120,15 @@ Mods: {
 						8: Votre destin a été scellé lorsque vous vous êtes soulevé contre nous.
 						9: Je vais vous montrer ce que je peux vraiment faire.
 						10: Attends, lequel utilisions-nous déjà ?
+						// 11: Underestimate me if you want!
+						// 12: Let's finish this.
+						// 13: Don't even think about running!
+						// 14: Your wish is my command.
+						// 15: I'll reduce you to stardust!
+						// 16: I've been waiting for this exact moment!
+						// 17: I am NOT about to stop here.
+						// 18: Now or never.
+						// Joke: Wait, which one were we using again?
 					}
 
 					2: {
@@ -5139,32 +5148,15 @@ Mods: {
 						8: Ouah. Est-ce vraiment tout ce que tu as ?
 						9: Je vais vous montrer ce que je peux vraiment faire.
 						10: Euh, comment ça s'est passé encore ? Quelque chose quelque chose...
-					}
-
-					Asphodene: {
-						1: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.1
-						2: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.2
-						3: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.3
-						4: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.4
-						5: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.5
-						6: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.6
-						7: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.7
-						8: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.8
-						9: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.9
-						10: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Asphodene.10
-					}
-
-					Eridani: {
-						1: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.1
-						2: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.2
-						3: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.3
-						4: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.4
-						5: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.5
-						6: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.6
-						7: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.7
-						8: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.8
-						9: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.9
-						10: Mods.StarsAbove.StellarNova.StellarNovaDialogue.StellarNovaQuotes.Eridani.10
+						// 11: Didn't see that one coming, huh?
+						// 12: Don't even think about running!
+						// 13: Time to prove myself.
+						// 14: (Laughs)
+						// 15: We can't stop now!
+						// 16: Time for a counterattack.
+						// 17: No more playing around!
+						// 18: We've got one shot at this; make it count.
+						// Joke: Um, how did it go again? Something something...
 					}
 				}
 

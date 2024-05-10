@@ -5110,16 +5110,25 @@ Mods: {
 						// Special4: Your wish is my command.
 						// Special5: Just give up! At this point, even I can't stop myself.
 						// Special6: I have no regrets; this is the only path.
-						// 1: I've been waiting for this exact moment!
-						// 2: I am not about to stop here.
-						// 3: I'll reduce you to stardust!
-						// 4: Let's finish this!
-						// 5: Underestimate me if you want.
-						// 6: Why hold back when you can solve the problem right now?
-						// 7: Accept your fate.
+						// 1: No more playing around!
+						// 2: Time for a counterattack!
+						// 3: We can't stop now!
+						// 4: (Laughs), alright!
+						// 5: I'll never back down!
+						// 6: Time to turn the tides!
+						// 7: I'll show you what I can REALLY do!
 						// 8: Your fate was sealed when you rose against us.
-						// 9: I'll show you what I can really do.
-						// 10: Wait, which one were we using again?
+						// 9: Accept your fate.
+						// 10: Why hold back when you could solve the problem right now?
+						// 11: Underestimate me if you want!
+						// 12: Let's finish this.
+						// 13: Don't even think about running!
+						// 14: Your wish is my command.
+						// 15: I'll reduce you to stardust!
+						// 16: I've been waiting for this exact moment!
+						// 17: I am NOT about to stop here.
+						// 18: Now or never.
+						// Joke: Wait, which one were we using again?
 					}
 
 					2: {
@@ -5129,42 +5138,25 @@ Mods: {
 						// Special4: I'll show you the domain of the soul.
 						// Special5: Know that you are dimensions below me.
 						// Special6: I am the bone of my sword...
-						// 1: Time to finish this.
-						// 2: Go back to where you belong.
-						// 3: Submit to entropy.
-						// 4: I'm not about to stop here.
-						// 5: Let the stars consume you.
-						// 6: Losing was never an option.
-						// 7: Accept your fate. There is nothing else you can do.
-						// 8: Wow. Is that really all you've got?
-						// 9: I'll show you what I can really do.
-						// 10: Um, how did it go again? Something something...
-					}
-
-					Asphodene: {
-						1: ¡Ahora es mi turno!
-						2: ¡Tomare el lugar de la entropía!
-						3: ¡Adelante, espada llameante!
-						4: Esto es lo que te mereces.
-						5: No te preocupes, te curaré.
-						6: ¡El poder del cosmos!
-						7: No te voy detener ahora.
-						8: ¡Te reduciré a polvos estelares!
-						9: ¡Acabemos con esto!
-						10: No me subestimes.
-					}
-
-					Eridani: {
-						1: Es hora de acabar con esto.
-						2: NO voy a perder contra ti.
-						3: He estado esperando esto.
-						4: Has cometido un error fatal.
-						5: Consigamos un ace bajo la manga.
-						6: Nuestra victoria jamás se puso en duda.
-						7: Es hora de las despedidas.
-						8: Vuelve a donde pertences.
-						9: No te voy a detener.
-						10: No perderé. No ahora, ni nunca.
+						// 1: Locked on target.
+						// 2: I'll show you what I can really do.
+						// 3: Your fate was sealed when you rose against us.
+						// 4: Accept your fate.
+						// 5: Wow. Is that really all you've got?
+						// 6: Accept your fate. There is nothing else you can do.
+						// 7: Losing was never an option.
+						// 8: I am NOT about to stop here.
+						// 9: Submit to entropy!
+						// 10: Time to finish this.
+						// 11: Didn't see that one coming, huh?
+						// 12: Don't even think about running!
+						// 13: Time to prove myself.
+						// 14: (Laughs)
+						// 15: We can't stop now!
+						// 16: Time for a counterattack.
+						// 17: No more playing around!
+						// 18: We've got one shot at this; make it count.
+						// Joke: Um, how did it go again? Something something...
 					}
 				}
 
@@ -5362,9 +5354,11 @@ Mods: {
 				[c/FFF6CD:Sunset, Stardust: PaperLuigi]
 				[c/FFF6CD:Legends Yet Unspun: ShadyCicada]
 				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
+				[c/F19559:- Voice Actors -]
+				[c/FFF6CD:Asphodene and Eridani: Kiera Rhodes]
 				[c/F19559:- Special Thanks -]
 				[c/DADADA:All Patreon supporters!]
-				[c/DADADA:External Music: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
+				[c/DADADA:External Music/Audio: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
 				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
 				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
 				[c/DADADA:ES Translators: Tofu and Zeldris]
@@ -15621,7 +15615,7 @@ Mods: {
 
 				DisableStarfarerVoices: {
 					// Label: Disable Starfarer voice lines
-					// Tooltip: Disables the Starfarer's voice lines.
+					// Tooltip: Disables the Starfarer's voice lines. (CV: Kiera Rhodes)
 				}
 
 				DisableStellarNovaDialogue: {

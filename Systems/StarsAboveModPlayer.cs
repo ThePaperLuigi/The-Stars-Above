@@ -8446,41 +8446,14 @@ namespace StarsAbove
 
         private void StellarNovaVoice()
         {
-            //TEMP until voice acting
-            if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
-            {
-                novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
-
-
-            }
-            else
-            {
-                if (Main.rand.NextBool(100))
-                {
-                    string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
-                    novaDialogue = LangHelper.Wrap(novaQuote, 20);
-
-
-                    return;
-                }
-                else
-                {
-                    randomNovaDialogue = Main.rand.Next(0, 9);
-                    string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
-                    novaDialogue = LangHelper.Wrap(novaQuote, 20);
-
-
-                }
-            }
-            return;//TEMP
-
             //If the ModConfig's voices are enabled, continue.
             if (!voicesDisabled)
             {
-                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+                //Disabled for now
+                if (false) //Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
-
+                    /*
                     switch (chosenStellarNova)
                     {
                         case 1:
@@ -8549,157 +8522,197 @@ namespace StarsAbove
 
                             }
                             break;
-                    }
+                    }*/
                 }
                 else
                 {
+                    StarsAboveAudio audio = new StarsAboveAudio();
+
                     if (Main.rand.NextBool(100))
                     {
-                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".Joke");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
                         //1 in 20 chance for a rare line to play.
                         if (chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN10, Player.Center);
+                            SoundEngine.PlaySound(audio.ASJoke, Player.Center);
 
                         }
                         else if (chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN10, Player.Center);
+                            SoundEngine.PlaySound(audio.ERJoke, Player.Center);
 
                         }
                         return;
                     }
                     else
                     {
-                        randomNovaDialogue = Main.rand.Next(0, 9);
+                        randomNovaDialogue = Main.rand.Next(0, 18);
                         string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
 
 
                     }
-                    if (randomNovaDialogue == 0)
+                    if(chosenStarfarer == 1)
                     {
-                        if (chosenStarfarer == 1)
+                        switch (randomNovaDialogue)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN1, Player.Center);
+                            case 0:
+                                SoundEngine.PlaySound(audio.AS1, Player.Center);
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(audio.AS2, Player.Center);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(audio.AS3, Player.Center);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(audio.AS4, Player.Center);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(audio.AS5, Player.Center);
+
+                                break;
+                            case 5:
+                                SoundEngine.PlaySound(audio.AS6, Player.Center);
+
+                                break;
+                            case 6:
+                                SoundEngine.PlaySound(audio.AS7, Player.Center);
+
+                                break;
+                            case 7:
+                                SoundEngine.PlaySound(audio.AS8, Player.Center);
+
+                                break;
+                            case 8:
+                                SoundEngine.PlaySound(audio.AS9, Player.Center);
+
+                                break;
+                            case 9:
+                                SoundEngine.PlaySound(audio.AS10, Player.Center);
+
+                                break;
+                            case 10:
+                                SoundEngine.PlaySound(audio.AS11, Player.Center);
+
+                                break;
+                            case 11:
+                                SoundEngine.PlaySound(audio.AS12, Player.Center);
+
+                                break;
+                            case 12:
+                                SoundEngine.PlaySound(audio.AS13, Player.Center);
+
+                                break;
+                            case 13:
+                                SoundEngine.PlaySound(audio.AS14, Player.Center);
+
+                                break;
+                            case 14:
+                                SoundEngine.PlaySound(audio.AS15, Player.Center);
+
+                                break;
+                            case 15:
+                                SoundEngine.PlaySound(audio.AS16, Player.Center);
+
+                                break;
+                            case 16:
+                                SoundEngine.PlaySound(audio.AS17, Player.Center);
+
+                                break;
+                            case 17:
+                                SoundEngine.PlaySound(audio.AS18, Player.Center);
+
+                                break;
+                            
 
                         }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN1, Player.Center);
 
-                        }
                     }
-                    else if (randomNovaDialogue == 1)
+                    else if(chosenStarfarer == 2)
                     {
-                        if (chosenStarfarer == 1)
+                        switch (randomNovaDialogue)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN2, Player.Center);
+                            case 0:
+                                SoundEngine.PlaySound(audio.ER1, Player.Center);
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(audio.ER2, Player.Center);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(audio.ER3, Player.Center);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(audio.ER4, Player.Center);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(audio.ER5, Player.Center);
+
+                                break;
+                            case 5:
+                                SoundEngine.PlaySound(audio.ER6, Player.Center);
+
+                                break;
+                            case 6:
+                                SoundEngine.PlaySound(audio.ER7, Player.Center);
+
+                                break;
+                            case 7:
+                                SoundEngine.PlaySound(audio.ER8, Player.Center);
+
+                                break;
+                            case 8:
+                                SoundEngine.PlaySound(audio.ER9, Player.Center);
+
+                                break;
+                            case 9:
+                                SoundEngine.PlaySound(audio.ER10, Player.Center);
+
+                                break;
+                            case 10:
+                                SoundEngine.PlaySound(audio.ER11, Player.Center);
+
+                                break;
+                            case 11:
+                                SoundEngine.PlaySound(audio.ER12, Player.Center);
+
+                                break;
+                            case 12:
+                                SoundEngine.PlaySound(audio.ER13, Player.Center);
+
+                                break;
+                            case 13:
+                                SoundEngine.PlaySound(audio.ER14, Player.Center);
+
+                                break;
+                            case 14:
+                                SoundEngine.PlaySound(audio.ER15, Player.Center);
+
+                                break;
+                            case 15:
+                                SoundEngine.PlaySound(audio.ER16, Player.Center);
+
+                                break;
+                            case 16:
+                                SoundEngine.PlaySound(audio.ER17, Player.Center);
+
+                                break;
+                            case 17:
+                                SoundEngine.PlaySound(audio.ER18, Player.Center);
+
+                                break;
+                            
 
                         }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN2, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 2)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN3, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN3, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 3)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN4, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN4, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 4)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN5, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN5, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 5)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN6, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN6, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 6)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN7, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN7, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 7)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN8, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN8, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 8)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN9, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN9, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 9)
-                    {
-
                     }
 
                 }
@@ -8724,7 +8737,7 @@ namespace StarsAbove
                     }
                     else
                     {
-                        randomNovaDialogue = Main.rand.Next(0, 9);
+                        randomNovaDialogue = Main.rand.Next(0, 18);
                         string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
