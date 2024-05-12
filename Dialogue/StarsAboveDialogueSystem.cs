@@ -362,6 +362,10 @@ namespace StarsAbove.Dialogue
             }//Moon Lord 15 
             if (chosenDialogue == 66) // Boss dialogue - Warrior of Light
             {
+                if (dialoguePrep == true)
+                {
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace1").Type);
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "WarriorOfLight" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);

@@ -4026,7 +4026,7 @@ namespace StarsAbove
                           false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                           false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
+                if (NPC.downedMechBoss3)//Skeletron Prime
                 {
                     SetupActiveDialogue(ref newDiskNotification,
                            59, //The ID of the dialogue.
@@ -4396,7 +4396,7 @@ namespace StarsAbove
                               false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                    
                 }
-                if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
+                if (DukeFishronWeaponDialogue == 2)
                 {
                     SetupActiveDialogue(ref newDiskNotification,
                               172, //The ID of the dialogue.
@@ -10390,8 +10390,6 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEyeOfCthulhu")
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneTestGoodLuck);
-
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
                         seenEyeOfCthulhu = true;
