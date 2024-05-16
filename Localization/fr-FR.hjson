@@ -2153,7 +2153,7 @@ Mods: {
 				WarriorOfLight: {
 					Asphodene: {
 						// Name: Warrior of Light Dialogue
-						// Description: ""
+						// Description: Grants a key item
 
 						1: {
 							$parentVal: Je vois que nous avions tort... Le Guerrier pensait qu'il sauvait la galaxie, mais c'était vraiment les mensonges du Premier Starfarer... Comme c'est cruel.
@@ -2172,7 +2172,7 @@ Mods: {
 
 					Eridani: {
 						// Name: Warrior of Light Dialogue
-						// Description: ""
+						// Description: Grants a key item
 
 						1: {
 							$parentVal: Vous avez abattu le Guerrier de la Lumière. Il a réussi à s'échapper, mais la nuit est revenue dans ce monde malgré tout.

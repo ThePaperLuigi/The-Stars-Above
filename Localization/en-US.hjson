@@ -2153,7 +2153,7 @@ Mods: {
 				WarriorOfLight: {
 					Asphodene: {
 						Name: Warrior of Light Dialogue
-						Description: ""
+						Description: Grants a key item
 
 						1: {
 							$parentVal: I see we were wrong.. The Warrior thought he was saving the galaxy, but it was truly the lies of the First Starfarer.. How cruel.
@@ -2172,7 +2172,7 @@ Mods: {
 
 					Eridani: {
 						Name: Warrior of Light Dialogue
-						Description: ""
+						Description: Grants a key item
 
 						1: {
 							$parentVal: You have brought down the Warrior of Light. Nighttime has returned to this world- a wonderful respite.

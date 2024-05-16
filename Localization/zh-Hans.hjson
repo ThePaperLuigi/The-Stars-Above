@@ -2153,7 +2153,7 @@ Mods: {
 				WarriorOfLight: {
 					Asphodene: {
 						// Name: Warrior of Light Dialogue
-						// Description: ""
+						// Description: Grants a key item
 
 						1: {
 							$parentVal: 我们看错了……光之战士以为他在拯救宇宙，但这确实是最初的星海旅者的谎言…多么残酷。
@@ -2172,7 +2172,7 @@ Mods: {
 
 					Eridani: {
 						// Name: Warrior of Light Dialogue
-						// Description: ""
+						// Description: Grants a key item
 
 						1: {
 							$parentVal: 你已经击败了光之战士。他设法逃脱了，但无论如何，夜色回归了这个世界。

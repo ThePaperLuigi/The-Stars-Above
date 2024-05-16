@@ -2153,7 +2153,7 @@ Mods: {
 				WarriorOfLight: {
 					Asphodene: {
 						// Name: Warrior of Light Dialogue
-						// Description: ""
+						// Description: Grants a key item
 
 						1: {
 							$parentVal: Ya veo en qué estábamos mal.. El Guerrero pensaba que estaba salvando el universo, pero solo eran las mentiras de la Primera Viajerea estelar.. Qué cruel.
@@ -2172,7 +2172,7 @@ Mods: {
 
 					Eridani: {
 						// Name: Warrior of Light Dialogue
-						// Description: ""
+						// Description: Grants a key item
 
 						1: {
 							$parentVal: Has derrotado al Guerrero de la Luz. Ha logrado escapar, pero la noche ha vuelto a este mundo.

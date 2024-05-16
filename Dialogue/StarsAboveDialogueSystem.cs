@@ -364,11 +364,12 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
-                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace1").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
                 }
                 string category = "BossDialogue";
                 string key = category + "." + "WarriorOfLight" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
             }//Warrior of Light 16
             if (chosenDialogue == 67) // Boss dialogue - All Vanilla Bosses Defeated
             {
