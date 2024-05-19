@@ -44,8 +44,9 @@ namespace StarsAbove.UI.StellarNova
 		private UIImageButton edingenesisquasar;
 		private UIImageButton unlimitedbladeworks;
 		private UIImageButton guardianslight;
+        private UIImageButton fireflytypeiv;
 
-		private UIText abilityName;
+        private UIText abilityName;
 		private UIText abilitySubName;
 		private UIText abilityDescription;
 		private UIText starfarerBonus;
@@ -183,7 +184,16 @@ namespace StarsAbove.UI.StellarNova
 			guardianslight.Top.Set(266, 0f);
 			guardianslight.OnMouseOver += guardianslightHover;
 			guardianslight.OnMouseOut += HoverOff;
-			/*Asphodene = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/Eridani"));
+
+            fireflytypeiv = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIV"));
+            fireflytypeiv.OnLeftClick += fireflytypeivSelected;
+            fireflytypeiv.Width.Set(98, 0f);
+            fireflytypeiv.Height.Set(52, 0f);
+            fireflytypeiv.Left.Set(864, 0f);
+            fireflytypeiv.Top.Set(266, 0f);
+            fireflytypeiv.OnMouseOver += fireflytypeivHover;
+            fireflytypeiv.OnMouseOut += HoverOff;
+            /*Asphodene = new UIImage(Request<Texture2D>("StarsAbove/UI/Starfarers/Eridani"));
 			Asphodene.OnMouseOver += MouseOverA;
 			Asphodene.OnClick += MouseClickA;
 			Asphodene.Top.Set(0, 0f);
@@ -191,7 +201,7 @@ namespace StarsAbove.UI.StellarNova
 			Asphodene.Width.Set(0, 0f);
 			Asphodene.Height.Set(0, 0f);*/
 
-			text = new UIText("", 2f);
+            text = new UIText("", 2f);
 			text.Width.Set(150, 0f);
 			text.Height.Set(155, 0f);
 			text.Top.Set(355, 0f);
@@ -540,7 +550,31 @@ namespace StarsAbove.UI.StellarNova
 
 			// We can do stuff in here!
 		}
-		private void edingenesisquasarSelected(UIMouseEvent evt, UIElement listeningElement)
+        private void fireflytypeivSelected(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
+                return;
+
+
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = false;
+            //Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().animatedDescription = "";
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaDialogueScrollTimer = 0;
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().fireflytypeiv == 1)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStellarNova = 8;
+            }
+            else
+            {
+
+
+            }
+
+
+            // We can do stuff in here!
+        }
+        private void edingenesisquasarSelected(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
 				return;
@@ -882,7 +916,43 @@ namespace StarsAbove.UI.StellarNova
 
 			// We can do stuff in here!
 		}
-		private void edingenesisquasarHover(UIMouseEvent evt, UIElement listeningElement)
+        private void fireflytypeivHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
+                return;
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            {
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().fireflytypeiv != 0)
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.FireflyTypeIV.Unlocked.Asphodene", Main.LocalPlayer);
+                    
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.FireflyTypeIV.Locked.Asphodene", Main.LocalPlayer);
+
+                }
+
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+            {
+                if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().fireflytypeiv != 0)
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.FireflyTypeIV.Unlocked.Eridani", Main.LocalPlayer);
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.FireflyTypeIV.Locked.Eridani", Main.LocalPlayer);
+
+                }
+
+            }
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+
+
+            // We can do stuff in here!
+        }
+        private void edingenesisquasarHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIActive)
 				return;
@@ -1012,16 +1082,17 @@ namespace StarsAbove.UI.StellarNova
 			Rectangle edingenesisquasarArea = edingenesisquasar.GetInnerDimensions().ToRectangle();
 			Rectangle unlimitedbladeworksArea = unlimitedbladeworks.GetInnerDimensions().ToRectangle();
 			Rectangle guardianslightArea = guardianslight.GetInnerDimensions().ToRectangle();
+            Rectangle fireflytypeIVArea = fireflytypeiv.GetInnerDimensions().ToRectangle();
 
-			//Rectangle indicator = new Rectangle((600), (280), (700), (440));
-			//indicator.X += 0;
-			//indicator.Width -= 0;
-			//indicator.Y += 0;
-			//indicator.Height -= 0;
+            //Rectangle indicator = new Rectangle((600), (280), (700), (440));
+            //indicator.X += 0;
+            //indicator.Width -= 0;
+            //indicator.Y += 0;
+            //indicator.Height -= 0;
 
-			//Rectangle dialogueBox = new Rectangle((50), (480), (700), (300));
+            //Rectangle dialogueBox = new Rectangle((50), (480), (700), (300));
 
-			if (modPlayer.chosenStarfarer == 1)
+            if (modPlayer.chosenStarfarer == 1)
 			{
 
 				spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairBH"), starfarer,  Color.White * (modPlayer.novaUIOpacity));
@@ -1105,7 +1176,11 @@ namespace StarsAbove.UI.StellarNova
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslight"), guardianslightArea, Color.White * (modPlayer.novaUIOpacity));
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/guardianslightIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 						break;
-					default:
+                    case 8:
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIV"), fireflytypeIVArea, Color.White * (modPlayer.novaUIOpacity));
+                        //spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/guardianslightIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+                        break;
+                    default:
 						break;
 				}
 			}
@@ -1141,7 +1216,11 @@ namespace StarsAbove.UI.StellarNova
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslight"), guardianslightArea, Color.White * (modPlayer.novaUIOpacity));
 						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/guardianslightIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
 						break;
-					default:
+                    case 8:
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIV"), fireflytypeIVArea, Color.White * (modPlayer.novaUIOpacity));
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIVIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+                        break;
+                    default:
 						break;
 				}
 			}
@@ -1292,7 +1371,20 @@ namespace StarsAbove.UI.StellarNova
 			{
 				gardenofavalon.Remove();
 			}
-			if (modPlayer.laevateinn > 0)
+            if (modPlayer.fireflytypeiv > 0)
+            {
+                topStatic -= topAdjustment;
+
+                area.Append(fireflytypeiv);
+                fireflytypeiv.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
+                availableNovas++;
+            }
+            else
+            {
+                gardenofavalon.Remove();
+            }
+            if (modPlayer.laevateinn > 0)
 			{
 				topStatic -= topAdjustment;
 

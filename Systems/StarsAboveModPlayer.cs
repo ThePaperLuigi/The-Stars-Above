@@ -723,6 +723,7 @@ namespace StarsAbove
         public int edingenesisquasar; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int unlimitedbladeworks;
         public int guardianslight;
+        public int fireflytypeiv;
 
         public int goldenGunShots;
         public bool squallReady;
@@ -5089,6 +5090,15 @@ namespace StarsAbove
                     {
                         NewStellarNova = true;
                         guardianslight = 1;
+                    }
+
+                }
+                if (DownedBossSystem.downedStarfarers)
+                {
+                    if (fireflytypeiv == 0)
+                    {
+                        NewStellarNova = true;
+                        fireflytypeiv = 1;
                     }
 
                 }
