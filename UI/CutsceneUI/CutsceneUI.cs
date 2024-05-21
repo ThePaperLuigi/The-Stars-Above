@@ -33,6 +33,11 @@ namespace StarsAbove.UI.CutsceneUI
         private UIVideo warriorCutsceneVideo2;
         private UIVideo starfarerIntroVideo;
 
+        private UIVideo asphodeneFFVideo;
+        private UIVideo eridaniFFVideo;
+
+
+
         public override void OnInitialize() {
 			
 			area = new UIElement();
@@ -109,6 +114,32 @@ namespace StarsAbove.UI.CutsceneUI
             starfarerIntroVideo.Width.Set(Main.screenWidth, 1f);
             starfarerIntroVideo.Height.Set(Main.screenHeight, 1f);
 
+            starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"))
+            {
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            starfarerIntroVideo.Width.Set(Main.screenWidth, 1f);
+            starfarerIntroVideo.Height.Set(Main.screenHeight, 1f);
+
+            asphodeneFFVideo = new UIVideo(Request<Video>("StarsAbove/Video/AsphodeneFFTransformation"))
+            {
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            asphodeneFFVideo.Width.Set(Main.screenWidth, 1f);
+            asphodeneFFVideo.Height.Set(Main.screenHeight, 1f);
+
+            eridaniFFVideo = new UIVideo(Request<Video>("StarsAbove/Video/EridaniFFTransformation"))
+            {
+                ScaleToFit = true,
+                WaitForStart = true,
+                DoLoop = false
+            };
+            eridaniFFVideo.Width.Set(Main.screenWidth, 1f);
+            eridaniFFVideo.Height.Set(Main.screenHeight, 1f);
             //area.Append(edinGenesisQuasarVideo);
             Append(area);
 		}
@@ -154,6 +185,16 @@ namespace StarsAbove.UI.CutsceneUI
             WarriorCutscene1(bossPlayer, ref introWhite, ref outroWhite);
             WarriorCutscene2(bossPlayer, ref introWhite, ref outroWhite);
             IntroCutscene(bossPlayer, ref introWhite, ref outroWhite);
+            if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            {
+                AsphodeneFF(bossPlayer, ref introWhite, ref outroWhite);
+
+            }
+            else if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+            {
+                EridaniFF(bossPlayer, ref introWhite, ref outroWhite);
+
+            }
 
             if (bossPlayer.VideoDuration == 0)
             {
@@ -477,6 +518,100 @@ namespace StarsAbove.UI.CutsceneUI
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
                 Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenIntroCutscene = true;
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.FinishedVideo = false;
+                anyCutsceneActive = false;
+
+                modPlayer.WhiteAlpha = 1f;
+                Video.Remove();
+            }
+
+
+        }
+        private void AsphodeneFF(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = asphodeneFFVideo;
+            var cutsceneProgress = modPlayer.ffCutsceneProgress;
+
+            introWhite = false;
+            outroWhite = true;
+
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+                anyCutsceneActive = true;
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
+                area.Append(Video);
+
+            }
+            if (Video.FinishedVideo)
+            {
+                Video.FinishedVideo = false;
+                anyCutsceneActive = false;
+
+                modPlayer.WhiteAlpha = 1f;
+                Video.Remove();
+            }
+
+
+        }
+        private void EridaniFF(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+        {
+            UIVideo Video = eridaniFFVideo;
+            var cutsceneProgress = modPlayer.ffCutsceneProgress;
+
+            introWhite = false;
+            outroWhite = true;
+
+
+            if (cutsceneProgress <= 60 && cutsceneProgress > 0)
+            {//If the cutscene hasn't started yet, give time for the screen to fade.
+
+                if (introWhite)
+                {
+                    modPlayer.WhiteAlpha += 0.1f;
+                }
+                else
+                {
+                    modPlayer.BlackAlpha += 0.1f;
+                }
+
+
+            }
+            else
+            {
+
+            }
+            if (cutsceneProgress == 1)
+            {
+                anyCutsceneActive = true;
+
+                Video.FinishedVideo = false;
+                Video.StartVideo = true;
                 area.Append(Video);
 
             }

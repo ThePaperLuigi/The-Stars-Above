@@ -5331,8 +5331,8 @@ Mods: {
 
 				FireflyTypeIV: {
 					// AbilityName: Firefly Type-IV
-					// AbilitySubName: "[c/9EF78A:From Undreamt Night, I Thence Shine]"
-					// AbilityDescription: Upon activation, your Starfarer dons the Chrysalid Pyronexus and assists you in battle with a variety of attacks. All Nova damage will inflict Hellfire for 4 seconds. After foes take a certain amount of damage from your Starfarer, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster. Duration in seconds is proportional to Energy Cost divided by 8.
+					// AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
+					// AbilityDescription: Upon activation, your Starfarer dons the Chrysalid Pyronexus and assists you in battle with a variety of attacks. All Nova damage will inflict Hellfire for 4 seconds. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster. Duration in seconds is proportional to Energy Cost divided by 8. (No Energy generation while active)
 					// AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
 					// UmbralBonus: Triggering Complete Combustion increases the duration of the Chrysalid Pyronexus by 10 seconds (Can not exceed 40 seconds.)
 				}
@@ -12849,6 +12849,9 @@ Mods: {
 			// DreadmotherClawExplosion.DisplayName: Dreadmother Claw Explosion
 			// DreadmotherClawAttackSide.DisplayName: Dreadmother Claw Attack Side
 			// DreadmotherClawAttackSideAlt.DisplayName: Dreadmother Claw Attack Side Alt
+			// FireflyMinion.DisplayName: Firefly Minion
+			// AsphodeneFFEnd.DisplayName: Asphodene F F End
+			// EridaniFFEnd.DisplayName: Eridani F F End
 		}
 
 		Buffs: {
@@ -15623,6 +15626,11 @@ Mods: {
 			ApostleBuff: {
 				DisplayName: Apostle Buff
 				Description: Mods.StarsAbove.Buffs.ApostleBuff.Description
+			}
+
+			FireflyActive: {
+				// DisplayName: Firefly Type-IV
+				// Description: Your Starfarer has donned the Crysalid Pyronexus, assisting you in combat
 			}
 		}
 

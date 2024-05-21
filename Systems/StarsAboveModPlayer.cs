@@ -31,6 +31,7 @@ using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Projectiles.StellarArray;
 using StarsAbove.Projectiles.StellarNovas;
+using StarsAbove.Projectiles.StellarNovas.FireflyTypeIV;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
@@ -8191,7 +8192,10 @@ namespace StarsAbove
                 //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
+                    if(chosenStellarNova != 8)
                     StellarNovaCutIn();
+                    StellarNovaVoice();
+
                     //Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
 
 
@@ -8217,7 +8221,7 @@ namespace StarsAbove
                                                                                                                                                                                                                  //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                             onActivateStellarNova();
                         }
-                        if (chosenStellarNova == 2)//Ars Laevateinn
+                        else if(chosenStellarNova == 2)//Ars Laevateinn
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
                             for (int d = 0; d < 105; d++)
@@ -8234,7 +8238,7 @@ namespace StarsAbove
                                                                                                                                                                                    //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                             onActivateStellarNova();                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
-                        if (chosenStellarNova == 4)//The Garden of Avalon
+                        else if(chosenStellarNova == 4)//The Garden of Avalon
                         {
                             //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/prototokiaActive"));
                             for (int d = 0; d < 105; d++)
@@ -8290,7 +8294,7 @@ namespace StarsAbove
 
 
                         }
-                        if (chosenStellarNova == 5)//Edin Shugra Quasar
+                        else if(chosenStellarNova == 5)//Edin Shugra Quasar
                         {
 
 
@@ -8301,7 +8305,7 @@ namespace StarsAbove
 
 
                         }
-                        if (chosenStellarNova == 6)//Unlimited Blade Works
+                        else if (chosenStellarNova == 6)//Unlimited Blade Works
                         {
 
 
@@ -8310,7 +8314,7 @@ namespace StarsAbove
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, trueNovaGaugeMax / 10 * 60);
 
                         }
-                        if (chosenStellarNova == 7)//Guardian's Light
+                        else if(chosenStellarNova == 7)//Guardian's Light
                         {
                             onActivateStellarNova();
 
@@ -8417,7 +8421,22 @@ namespace StarsAbove
                             // Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax / 10) * 60);
 
                         }
+                        else if (chosenStellarNova == 8)//Firefly Type IV
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation, Player.Center);
+
+                            Player.AddBuff(BuffType<FireflyActive>(), trueNovaGaugeMax / 8 * 60 + 120);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 600), Vector2.Zero, ProjectileType<FireflyMinion>(), novaDamage, 0, Player.whoAmI);
+
+                            onActivateStellarNova();
+                            Player.GetModPlayer<BossPlayer>().ffCutsceneProgress = 10;
+                            //Player.AddBuff(BuffType<AstarteDriverPrep>(), 180);
+                            Player.AddBuff(BuffType<Invincibility>(), 120);
+
+
+                        }
                     }
+
 
                 }
             }
@@ -8451,7 +8470,6 @@ namespace StarsAbove
             NovaCutInOpacity = 0;
 
 
-            StellarNovaVoice();
         }
 
         private void StellarNovaVoice()

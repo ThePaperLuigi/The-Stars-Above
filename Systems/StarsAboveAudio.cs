@@ -932,6 +932,10 @@ namespace StarsAbove.Systems
             PitchVariance = 0.3f,
             
         };
+        public static readonly SoundStyle SFX_FFTransformation = new($"{nameof(StarsAbove)}/Sounds/SFX/FFTransformSFX")
+        {
+            Volume = 0.8f,
+        };
         public static readonly SoundStyle SFX_SpeedrunEasterEgg = new($"{nameof(StarsAbove)}/Sounds/SFX/SpeedrunEasterEgg")
         {
 

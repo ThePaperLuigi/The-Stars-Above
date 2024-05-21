@@ -81,7 +81,7 @@ namespace StarsAbove.Systems
         public int tsukiCutscene2Progress = 0;
         public int warriorCutsceneProgress = 0;
         public int warriorCutsceneProgress2 = 0;
-
+        public int ffCutsceneProgress = 0;
         public float WhiteAlpha = 0f;
         public float BlackAlpha = 0f;
         public float VideoAlpha = 0f;
@@ -314,7 +314,7 @@ namespace StarsAbove.Systems
             tsukiCutscene2Progress--;
             warriorCutsceneProgress--;
             warriorCutsceneProgress2--;
-
+            ffCutsceneProgress--;
             VideoDuration--;
 
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);

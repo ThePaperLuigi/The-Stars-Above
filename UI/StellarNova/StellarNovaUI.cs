@@ -1288,7 +1288,7 @@ namespace StarsAbove.UI.StellarNova
 
 		}
 
-		static int topStatic = 266;
+		static int topStatic = 206;
 		int availableNovas;
 
 		public override void Update(GameTime gameTime)
@@ -1308,7 +1308,7 @@ namespace StarsAbove.UI.StellarNova
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			//prototokia is unlocked at base, so there's always 1 available Nova
 			availableNovas = 0;
-			topStatic = 266;
+			topStatic = 246;
 			int topAdjustment = 25;
 			int multiplierAdjustment = 70;
 			if (modPlayer.prototokia > 0)
