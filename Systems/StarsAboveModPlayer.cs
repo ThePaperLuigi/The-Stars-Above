@@ -3019,6 +3019,31 @@ namespace StarsAbove
                 }
 
             }
+            if (proj.type == ProjectileType<FireflySlash>() || proj.type == ProjectileType<FireflySlashFollowUp>() || proj.type == ProjectileType<FireflyKick>() || proj.type == ProjectileType<FireflyKickExplosion>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
@@ -8425,7 +8450,10 @@ namespace StarsAbove
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation, Player.Center);
 
-                            Player.AddBuff(BuffType<FireflyActive>(), trueNovaGaugeMax / 8 * 60 + 120);
+                            //Player.AddBuff(BuffType<FireflyActive>(), trueNovaGaugeMax / 8 * 60 + 120);
+                            //DEBUG
+                            Player.AddBuff(BuffType<FireflyActive>(), 18000);
+
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 600), Vector2.Zero, ProjectileType<FireflyMinion>(), novaDamage, 0, Player.whoAmI);
 
                             onActivateStellarNova();

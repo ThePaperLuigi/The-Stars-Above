@@ -15,6 +15,8 @@ using StarsAbove.Utilities;
 using System.Collections.Generic;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using Terraria.GameContent.Tile_Entities;
+using Terraria.Audio;
+using rail;
 
 namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 {
@@ -67,9 +69,16 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             {
                 return;
             }
-            Visuals();
-
-            Projectile.ai[0]++;
+            Visuals(owner);
+            if(owner.HasBuff(BuffType<FireflyActive>()))
+            {
+                if (owner.buffTime[owner.FindBuffIndex(BuffType<FireflyActive>())] > 120)
+                {
+                    Projectile.ai[0]++;
+                }
+            }
+            
+            
             if (firstSpawn)
             {
                 if (Projectile.ai[0] < 180)
@@ -98,31 +107,100 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
-
-            if (Projectile.ai[0] > 60)
+            
+            if (Projectile.ai[0] > 90)
             {
 
                 if (foundTarget)
                 {
+                    
+                    Projectile.alpha = 255;
+
+                    if(Main.rand.NextBool())
+                    {
+                        int type = ProjectileType<FireflySlash>();
+                        Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
+
+
+
+                        if (targetCenter.X > Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X - 600, targetCenter.Y);
+                        }
+                        else if (targetCenter.X < Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X + 600, targetCenter.Y);
+                        }
+
+
+                        float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
+
+                        float launchSpeed = 66f;
+                        Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
+                        Vector2 direction = Vector2.Normalize(targetCenter - position);
+                        Vector2 velocity = direction * launchSpeed;
+                        Vector2 adjustedVelocity = velocity * 0.04f;
+                        
+                        if (Main.myPlayer == owner.whoAmI)
+                        {
+                            int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
+
+                        }
+                        
+                    }
+                    else
+                    {
+                        int type = ProjectileType<FireflyKick>();
+                        Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
+
+
+
+                        if (targetCenter.X > Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X - 500, targetCenter.Y);
+                        }
+                        else if (targetCenter.X < Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X + 500, targetCenter.Y);
+                        }
+
+
+                        float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
+
+                        float launchSpeed = 26f;
+                        Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
+                        Vector2 direction = Vector2.Normalize(targetCenter - position);
+                        Vector2 velocity = direction * launchSpeed;
+                        Vector2 adjustedVelocity = velocity * 0.04f;
+                        
+                        if (Main.myPlayer == owner.whoAmI)
+                        {
+                            int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y - 40, type, Projectile.damage, 0f, owner.whoAmI);
+
+                        }
+                        
+                    }
+                    
                     Projectile.ai[0] = 0;
-                    int type = ProjectileType<TakodachiRound>();//Placeholder
-
-
-                    Vector2 position = Projectile.Center;
-                    float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
-
-                    float launchSpeed = 66f;
-                    Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-                    Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
-                    Vector2 velocity = direction * launchSpeed;
-
-                    int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
-
-                    Main.projectile[index].originalDamage = Projectile.damage;
-
                 }
             }
+            if(foundTarget)
+            {
+                if (targetCenter.X > Projectile.Center.X)
+                {
+                    Projectile.spriteDirection = Projectile.direction = 1;
+                }
+                else if (targetCenter.X < Projectile.Center.X)
+                {
+                    Projectile.spriteDirection = Projectile.direction = -1;
+                }
+            }
+            else
+            {
+                Projectile.spriteDirection = owner.direction;
 
+            }
+            
         }
 
         public override void OnKill(int timeLeft)
@@ -138,12 +216,12 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 Main.dust[dustIndex].velocity *= 3f;
             }
 
-            if (owner.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            if (owner.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1 && Main.myPlayer == owner.whoAmI)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, ModContent.ProjectileType<AsphodeneFFEnd>(), 0, 0f, Main.myPlayer);
 
             }
-            else if (owner.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+            else if (owner.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2 && Main.myPlayer == owner.whoAmI)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, ModContent.ProjectileType<EridaniFFEnd>(), 0, 0f, Main.myPlayer);
 
@@ -260,7 +338,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                         float between = Vector2.Distance(npc.Center, Projectile.Center);
                         bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
                         bool inRange = between < distanceFromTarget;
-                        bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
+                        bool lineOfSight = true;
                         // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
                         // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
                         bool closeThroughWall = between < 100f;
@@ -285,13 +363,16 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
         private void Movement(bool foundTarget, float distanceFromTarget, Vector2 targetCenter, float distanceToIdlePosition, Vector2 vectorToIdlePosition)
         {
             // Default movement parameters (here for attacking)
-            float speed = 8f;
-            float inertia = 20f;
+            float speed = 1f;
+            float inertia = 1f;
 
+            
             if (foundTarget)
             {
+                Projectile.velocity = Projectile.velocity *= 0.9f;
+                /*
                 // Minion has a target: attack (here, fly towards the enemy)
-                if (distanceFromTarget > 40f)
+                if (distanceFromTarget > 400f)
                 {
                     // The immediate range around the target (so it doesn't latch onto it when close)
                     Vector2 direction = targetCenter - Projectile.Center;
@@ -299,44 +380,45 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                     direction *= speed;
 
                     Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
+                }*/
+            }
+            else
+            {
+                Projectile.Center = Vector2.Lerp(Projectile.Center, new Vector2(Main.player[Projectile.owner].Center.X, Main.player[Projectile.owner].Center.Y - 120), 0.1f);
+                Projectile.velocity = Vector2.Zero;
+            }
+        }
+        bool activeAttack = false;
+        private void Visuals(Player owner)
+        {
+            Projectile.alpha = Math.Clamp(Projectile.alpha, 0, 255);
+            if (owner.ownedProjectileCounts[ProjectileType<FireflySlash>()] > 0 || owner.ownedProjectileCounts[ProjectileType<FireflyKick>()] > 0)
+            {
+                activeAttack = true;
+                Projectile.alpha = 255;
+                for (int i = 0; i < Main.maxProjectiles; i++)
+                {
+                    Projectile projTarget = Main.projectile[i];
+
+                    if (projTarget.active && (projTarget.type == ProjectileType<FireflySlash>() || projTarget.type == ProjectileType<FireflyKick>()) && projTarget.owner == owner.whoAmI)
+                    {
+                        Projectile.Center = new Vector2(projTarget.Center.X, projTarget.Center.Y);
+                        Projectile.velocity = projTarget.velocity;
+                    }
                 }
             }
             else
             {
-                // Minion doesn't have a target: return to player and idle
-                if (distanceToIdlePosition > 150f)
+                if(activeAttack)
                 {
-                    // Speed up the minion if it's away from the player
-                    speed = 12f;
-                    inertia = 60f;
+                    activeAttack = false;
                 }
-                else
-                {
-                    // Slow down the minion if closer to the player
-                    speed = 0f;
-                    inertia = 40f;
-                }
+                Lighting.AddLight(Projectile.Center, TorchID.Green);
 
-                if (distanceToIdlePosition > 20f)
-                {
-                    // The immediate range around the player (when it passively floats about)
-
-                    // This is a simple movement formula using the two parameters and its desired direction to create a "homing" movement
-                    vectorToIdlePosition.Normalize();
-                    vectorToIdlePosition *= speed;
-                    Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
-                }
-                else if (Projectile.velocity == Vector2.Zero)
-                {
-                    
-                }
+                Projectile.alpha = 0;
             }
-        }
-
-        private void Visuals()
-        {
             // So it will lean slightly towards the direction it's moving
-            Projectile.rotation = Projectile.velocity.X * 0.01f;
+            Projectile.rotation = Projectile.velocity.X * 0.02f;
 
             // This is a simple "loop through all frames from top to bottom" animation
             int frameSpeed = 8;
@@ -354,17 +436,9 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 }
             }
 
-            if (Projectile.velocity.X > 0f)
-            {
-                Projectile.spriteDirection = Projectile.direction = 1;
-            }
-            else if (Projectile.velocity.X < 0f)
-            {
-                Projectile.spriteDirection = Projectile.direction = -1;
-            }
+            
 
             // Some visuals here
-            Lighting.AddLight(Projectile.Center, TorchID.Green);
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -428,12 +502,12 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             {
                 position3 = position1 + new Vector2(10f, -100f);
             }*/
-            Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(117, 235, 175, 220); //This is the color of the pulse!
+            Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(117, 235, 175, 220) * MathHelper.Lerp(1, 0, Projectile.alpha / 254); //This is the color of the pulse!
                                                                                                      //Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, Projectile.rotation, drawOrigin, Projectile.scale * 0.5f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
             float num15 = 1.3f; //+ num11 * 2.75f; //Scale?
-            Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, 0 + num11, origin, 1 * 0.8f * num15 + MathHelper.Lerp(-0.2f, 0.2f, quadraticFloat), SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+            Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 , 0 + num11, origin, 1 * 0.8f * num15 + MathHelper.Lerp(-0.2f, 0.2f, quadraticFloat), SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
             float num16 = 1.3f; //+ num13 * 2.75f; //Scale?
-            Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, 0 - timeFloatAlt, origin, 1 * 0.8f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+            Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 , 0 - timeFloatAlt, origin, 1 * 0.8f * num16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 
 
             color3 = new Color(255, 0, 0);
