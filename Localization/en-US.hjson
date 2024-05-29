@@ -5332,9 +5332,9 @@ Mods: {
 				FireflyTypeIV: {
 					AbilityName: Firefly Type-IV
 					AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
-					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle with myriad attacks. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster. Duration in seconds is proportional to Energy Cost divided by 8. (No Nova Energy while active)
+					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster, but crit damage is lower. Duration in seconds is proportional to Energy Cost divided by 8. (No Nova Energy while active)
 					AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
-					UmbralBonus: Triggering Complete Combustion increases the duration of the Chrysalid Pyronexus by 10 seconds (Can not exceed 40 seconds.)
+					UmbralBonus: Triggering Complete Combustion also inflicts Rout, increasing all damage inflicted on the target by 20% for 5 seconds
 				}
 
 				BaseDamage: Base Damage
@@ -12857,8 +12857,6 @@ Mods: {
 			EridaniFFEnd.DisplayName: Eridani F F End
 			FireflySlash.DisplayName: Firefly Slash
 			FireflySlashFollowUp.DisplayName: Firefly Slash Follow Up
-			FireflyKick.DisplayName: Firefly Kick
-			FireflyKickExplosion.DisplayName: Firefly Kick Explosion
 		}
 
 		Buffs: {

@@ -8450,9 +8450,9 @@ namespace StarsAbove
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation, Player.Center);
 
-                            //Player.AddBuff(BuffType<FireflyActive>(), trueNovaGaugeMax / 8 * 60 + 120);
+                            Player.AddBuff(BuffType<FireflyActive>(), trueNovaGaugeMax / 8 * 60 + 120);
                             //DEBUG
-                            Player.AddBuff(BuffType<FireflyActive>(), 18000);
+                            //Player.AddBuff(BuffType<FireflyActive>(), 18000);
 
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 600), Vector2.Zero, ProjectileType<FireflyMinion>(), novaDamage, 0, Player.whoAmI);
 

@@ -72,7 +72,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             Visuals(owner);
             if(owner.HasBuff(BuffType<FireflyActive>()))
             {
-                if (owner.buffTime[owner.FindBuffIndex(BuffType<FireflyActive>())] > 120)
+                if (owner.buffTime[owner.FindBuffIndex(BuffType<FireflyActive>())] > 60)
                 {
                     Projectile.ai[0]++;
                 }
@@ -108,7 +108,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
             
-            if (Projectile.ai[0] > 90)
+            if (Projectile.ai[0] > 70)
             {
 
                 if (foundTarget)
@@ -117,38 +117,6 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                     Projectile.alpha = 255;
 
                     if(Main.rand.NextBool())
-                    {
-                        int type = ProjectileType<FireflySlash>();
-                        Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
-
-
-
-                        if (targetCenter.X > Projectile.Center.X)
-                        {
-                            position = new Vector2(targetCenter.X - 600, targetCenter.Y);
-                        }
-                        else if (targetCenter.X < Projectile.Center.X)
-                        {
-                            position = new Vector2(targetCenter.X + 600, targetCenter.Y);
-                        }
-
-
-                        float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
-
-                        float launchSpeed = 66f;
-                        Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
-                        Vector2 direction = Vector2.Normalize(targetCenter - position);
-                        Vector2 velocity = direction * launchSpeed;
-                        Vector2 adjustedVelocity = velocity * 0.04f;
-                        
-                        if (Main.myPlayer == owner.whoAmI)
-                        {
-                            int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
-
-                        }
-                        
-                    }
-                    else
                     {
                         int type = ProjectileType<FireflyKick>();
                         Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
@@ -172,12 +140,45 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                         Vector2 direction = Vector2.Normalize(targetCenter - position);
                         Vector2 velocity = direction * launchSpeed;
                         Vector2 adjustedVelocity = velocity * 0.04f;
-                        
+
                         if (Main.myPlayer == owner.whoAmI)
                         {
                             int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y - 40, type, Projectile.damage, 0f, owner.whoAmI);
 
                         }
+
+                    }
+                    else
+                    {
+                        int type = ProjectileType<FireflySlash>();
+                        Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
+
+
+
+                        if (targetCenter.X > Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X - 600, targetCenter.Y);
+                        }
+                        else if (targetCenter.X < Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X + 600, targetCenter.Y);
+                        }
+
+
+                        float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
+
+                        float launchSpeed = 66f;
+                        Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
+                        Vector2 direction = Vector2.Normalize(targetCenter - position);
+                        Vector2 velocity = direction * launchSpeed;
+                        Vector2 adjustedVelocity = velocity * 0.04f;
+
+                        if (Main.myPlayer == owner.whoAmI)
+                        {
+                            int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
+
+                        }
+                        
                         
                     }
                     
