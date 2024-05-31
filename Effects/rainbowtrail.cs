@@ -85,6 +85,7 @@ namespace StarsAbove.Effects
 		}
 	}
 
+
 	public struct RedTrail
 	{
 		private static VertexStrip _vertexStrip = new VertexStrip();

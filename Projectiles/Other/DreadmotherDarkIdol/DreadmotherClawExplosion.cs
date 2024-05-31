@@ -19,8 +19,8 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 		}
 
 		public override void SetDefaults() {
-			Projectile.width = 450;
-			Projectile.height = 450;
+			Projectile.width = 550;
+			Projectile.height = 550;
 			Projectile.aiStyle = 0;
 			Projectile.timeLeft = 1;
 			Projectile.penetrate = -1;
@@ -55,8 +55,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 			Player projOwner = Main.player[Projectile.owner];
 			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 			//Boom
-			SoundEngine.PlaySound(StarsAboveAudio.SFX_ScytheImpact, Projectile.Center);
-			
+			SoundEngine.PlaySound(StarsAboveAudio.SFX_ScytheImpact, Projectile.Center);	
 			
 			for (int d = 0; d < 50; d++)
 			{
@@ -70,7 +69,9 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 			{
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.Shadowflame, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 2.5f);
 			}
+
 			float dustAmount = 120f;
+
 			for (int i = 0; (float)i < dustAmount; i++)
 			{
 				Vector2 spinningpoint5 = Vector2.UnitX * 0f;

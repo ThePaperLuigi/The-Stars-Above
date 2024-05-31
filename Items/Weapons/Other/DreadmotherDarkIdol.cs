@@ -17,6 +17,12 @@ using StarsAbove.Buffs.Summon.DragaliaFound;
 using StarsAbove.Buffs;
 using StarsAbove.Projectiles.Summon.DragaliaFound;
 using System;
+using StarsAbove.Projectiles.Other.Hawkmoon;
+using StarsAbove.Buffs.Boss;
+using StarsAbove.Buffs.Melee.SoulReaver;
+using StarsAbove.Buffs.Other.DreadmotherDarkIdol;
+using StarsAbove.Buffs.Other.SoliloquyOfSovereignSeas;
+using StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -107,24 +113,130 @@ namespace StarsAbove.Items.Weapons.Other
 				Item.useTime = 10;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 10;
 				Item.UseSound = SoundID.Item1;
-			}
+                Item.channel = false;
+            }
 			if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
 			{
 				Item.useStyle = 5;
-				Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-				Item.useAnimation = 35;
-				Item.UseSound = SoundID.Item125;
-			}
+				Item.useTime = 25;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+				Item.useAnimation = 25;
+				Item.UseSound = null;
+                Item.channel = true;
+
+                float launchSpeed = 10f;
+                Vector2 mousePosition = Main.MouseWorld;
+                Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                Vector2 arrowVelocity = direction * launchSpeed;
+
+                if (player.channel)
+                {
+                    Item.useTime = 10;
+                    Item.useAnimation = 10;
+                    player.GetModPlayer<WeaponPlayer>().bowChargeActive = true;
+                    player.GetModPlayer<WeaponPlayer>().bowCharge += 2;
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 1)
+                    {
+                        //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/bowstring"), 0.5f);
+                    }
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge == 98)
+                    {
+                        for (int d = 0; d < 32; d++)
+                        {
+                            Dust.NewDust(player.Center, 0, 0, DustID.Shadowflame, 0f + Main.rand.Next(-12, 12), 0f + Main.rand.Next(-12, 12), 150, default(Color), 0.8f);
+                        }
+                    }
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge < 100)
+                    {
+                        for (int i = 0; i < 30; i++)
+                        {//Circle
+                            Vector2 offset = new Vector2();
+                            double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                            offset.X += (float)(Math.Sin(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+                            offset.Y += (float)(Math.Cos(angle) * (100 - player.GetModPlayer<WeaponPlayer>().bowCharge));
+
+                            Dust d2 = Dust.NewDustPerfect(player.MountedCenter + offset, DustID.Clentaminator_Purple, player.velocity, 200, default(Color), 0.5f);
+                            d2.fadeIn = 0.1f;
+                            d2.noGravity = true;
+                        }
+                        //Charge dust
+                        Vector2 vector = new Vector2(
+                            Main.rand.Next(-28, 28) * (0.003f * 40 - 10),
+                            Main.rand.Next(-28, 28) * (0.003f * 40 - 10));
+                        Dust d = Main.dust[Dust.NewDust(
+                            player.MountedCenter + vector, 1, 1,
+                            DustID.Clentaminator_Purple, 0, 0, 255,
+                            new Color(0.8f, 0.4f, 1f), 0.8f)];
+                        d.velocity = -vector / 12;
+                        d.velocity -= player.velocity / 8;
+                        d.noLight = true;
+                        d.noGravity = true;
+
+                    }
+                    else
+                    {
+                        Dust.NewDust(player.Center, 0, 0, DustID.Clentaminator_Purple, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 0.8f);
+                    }
+                }
+                else
+                {
+                    Item.useTime = 45;
+                    Item.useAnimation = 45;
+
+                    if (player.GetModPlayer<WeaponPlayer>().bowCharge >= 98)//If the weapon is fully charged...
+                    {
+
+                        player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                        player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+                        //Reset the charge gauge.
+                        if(player.HasBuff(BuffType<DreadmotherOrbitalBuff>()))
+                        {
+                            player.ClearBuff(BuffType<DreadmotherOrbitalBuff>());
+                        }
+                        SoundEngine.PlaySound(SoundID.Item125, player.position);
+
+                        player.AddBuff(BuffType<DreadmotherOrbitalBuff>(), 6 * 60);
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicOrbitals>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 5f, 0);
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicOrbitals>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 5f, 180);
+                    }
+                    else
+                    {
+                        if (player.GetModPlayer<WeaponPlayer>().bowCharge > 0 && player.GetModPlayer<WeaponPlayer>().bowCharge <= 30)
+                        {//Uncharged attack (lower than the threshold.)
+                            SoundEngine.PlaySound(SoundID.Item125, player.position);
+
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheresCenter>(), 0, 0, player.whoAmI, 0f);
+
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item)/4, 0, player.whoAmI, 5f, 0);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) / 4, 0, player.whoAmI, 5f , 90);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) / 4, 0, player.whoAmI, 5f, 180);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) / 4, 0, player.whoAmI, 5f, 270);
+
+
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherStaff>(), 0, 3, player.whoAmI, 0f);
+
+                        }
+                        else
+                        {
+                            player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
+                            player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
+                        }
+                    }
+                }
+            }
 			if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
 			{
-				Item.useStyle = 5;
-				Item.useTime = 12;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-				Item.useAnimation = 12;
+                Item.channel = false;
+                Item.useStyle = 5;
+				Item.useTime = 32;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+				Item.useAnimation = 32;
 				Item.UseSound = SoundID.Item125;
 			}
 			if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
 			{
-				Item.useStyle = ItemUseStyleID.HiddenAnimation;
+                Item.channel = false;
+                Item.useStyle = ItemUseStyleID.HiddenAnimation;
 				Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 				Item.useAnimation = 35;
 				Item.UseSound = SoundID.Item15;
@@ -147,13 +259,20 @@ namespace StarsAbove.Items.Weapons.Other
 		{
 			if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
             {
+                Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 55f;
+                if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+                {
+                    position += muzzleOffset;
+                }
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<DreadmotherGun>(), 0, knockback, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X/8, velocity.Y/8, ProjectileType<DreadmotherEnergyBall>(), damage/3, 3, player.whoAmI, 0f);
 
-				
 
-			}
-			else if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+
+            }
+            else if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
 			{
-
+                /*
 				float numberProjectiles = 6;
 				float rotation = MathHelper.ToRadians(15);
 				position += Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 15f;
@@ -162,8 +281,8 @@ namespace StarsAbove.Items.Weapons.Other
 					Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileID.LunarFlare, damage/3 , knockback, player.whoAmI);
 				}
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y, ProjectileType<Projectiles.Other.ArchitectLuminance.ArchitectShoot>(), 0, 3, player.whoAmI, 0f);
-
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y, ProjectileType<DreadmotherStaff>(), 0, 3, player.whoAmI, 0f);
+                */
 
 			}
             else if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
@@ -206,8 +325,31 @@ namespace StarsAbove.Items.Weapons.Other
             }
             else if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
             {
+                int dustEffect = DustID.Shadowflame;
+                for (int d = 0; d < 20; d++)
+                {
+                    Dust.NewDust(Main.MouseWorld, 0, 0, dustEffect, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1f);
+                }
+                float dustAmount = 120f;
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+                    int dust = Dust.NewDust(Main.MouseWorld, 0, 0, dustEffect);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Main.MouseWorld + spinningpoint5;
+                    Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+                }
+                player.AddBuff(BuffType<DreadmotherMinionBuff>(), 2);
+                if (player.ownedProjectileCounts[ProjectileType<DreadmotherFlyingMinion>()] <= 0)
+                {
+                    player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<DreadmotherFlyingMinion>(), damage, knockback);
 
-               
+                    player.SpawnMinionOnCursor(source, player.whoAmI, ProjectileType<DreadmotherMeleeSummon>(), damage, knockback);
+                }
+
             }
             return false;
 		}

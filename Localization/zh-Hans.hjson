@@ -5332,9 +5332,9 @@ Mods: {
 				FireflyTypeIV: {
 					// AbilityName: Firefly Type-IV
 					// AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
-					// AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle with myriad attacks. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster. Duration in seconds is proportional to Energy Cost divided by 8. (No Nova Energy while active)
+					// AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster, but crit damage is lower. Duration in seconds is proportional to Energy Cost divided by 8. (No Nova Energy while active)
 					// AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
-					// UmbralBonus: Triggering Complete Combustion increases the duration of the Chrysalid Pyronexus by 10 seconds (Can not exceed 40 seconds.)
+					// UmbralBonus: Triggering Complete Combustion also inflicts Rout, increasing all damage inflicted on the target by 20% for 5 seconds
 				}
 
 				BaseDamage: 基础伤害
@@ -11795,14 +11795,16 @@ Mods: {
 					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged] 
-					Uncharged attacks quickly fires a formation of rapid energy
-					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
-					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration
-					Attacks fire homing energy blasts that arc lightning to nearby foes
+					Uncharged attacks quickly fires a formation of rapid piercing energy
+					Charged attacks conjure two orbiting bolts for 6 seconds that inflict [Darkrend] for 12 seconds on hit; [Darkrend] increases the damage foes take from this weapon by 30%
+					Orbiting bolts additionally gain 100% armor penetration
+					[c/4DFF5B:Ranged]: The weapon transforms into a gun, firing mid-ranged energy blasts
+					Attacks rapidly arc lightning to nearby foes (Lightning arcs have 20% armor penetration)
 					Gain [Alacrity] for 8 seconds when defeating foes, increasing attack and movement speed
 					[c/00CDFF:Summon]: Summons [Dark Dread] and [Flying Dread], consuming 1 minion slot (Only one group of summons can be active at a time)
-					[Dark Dread] leaps at foes, slashing in a wide arc; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds on hit
-					After striking foes 20 times, grant [Dark Confession] for 20 seconds, negating the next instance of damage
+					Damage scales with unused minion slots; additionally, gain defense based on unused minion slots
+					[Dark Dread] shadowsteps to foes and claws them with rapid strikes; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds on hit
+					After either minion strikes foes 20 times, gain [Shadow Wall] for 20 seconds, negating the next instance of damage
 					'It will agree with you'
 					''' */
 				// DisplayName: Dreadmother's Dark Idol
@@ -12841,8 +12843,17 @@ Mods: {
 			// EridaniFFEnd.DisplayName: Eridani F F End
 			// FireflySlash.DisplayName: Firefly Slash
 			// FireflySlashFollowUp.DisplayName: Firefly Slash Follow Up
+			// DreadmotherEnergyBall.DisplayName: Dreadmother Energy Ball
+			// DreadmotherGun.DisplayName: Dreadmother Gun
+			// DreadmotherLightning.DisplayName: Dreadmother Lightning
 			// FireflyKick.DisplayName: Firefly Kick
 			// FireflyKickExplosion.DisplayName: Firefly Kick Explosion
+			// DreadmotherStaff.DisplayName: Dreadmother Staff
+			// DreadmotherMagicOrbitals.DisplayName: Dreadmother Magic Orbitals
+			// DreadmotherMagicSpheres.DisplayName: Dreadmother Magic Spheres
+			// DreadmotherMagicSpheresCenter.DisplayName: Dreadmother Magic Spheres Center
+			// DreadmotherFlyingMinion.DisplayName: Dreadmother Flying Minion
+			// DreadmotherMeleeSummon.DisplayName: Dreadmother Melee Summon
 		}
 
 		Buffs: {
@@ -15614,6 +15625,16 @@ Mods: {
 			FireflyActive: {
 				// DisplayName: Firefly Type-IV
 				// Description: Your Starfarer has donned the Crysalid Pyronexus, assisting you in combat
+			}
+
+			DreadmotherOrbitalBuff: {
+				// DisplayName: Dreadmother Orbital Buff
+				// Description: Mods.StarsAbove.Buffs.DreadmotherOrbitalBuff.Description
+			}
+
+			DreadmotherMinionBuff: {
+				// DisplayName: Dreadmother Minion Buff
+				// Description: Mods.StarsAbove.Buffs.DreadmotherMinionBuff.Description
 			}
 		}
 

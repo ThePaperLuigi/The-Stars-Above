@@ -5302,7 +5302,7 @@ Mods: {
 					AbilitySubName: "[c/00FF93:The Moment a Planet Is Born]"
 					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
 					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
-					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.
+					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.a
 				}
 
 				UnlimitedBladeWorks: {
@@ -11811,14 +11811,16 @@ Mods: {
 					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, dealing damage to all nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged] 
-					Uncharged attacks quickly fires a formation of rapid energy
-					Charged attacks conjure two orbiting bolts that inflict [Darkrend] on hit for 12 seconds; [Darkrend] increases the damage foes take from this weapon by 20%					
-					[c/4DFF5B:Ranged]: The weapon transforms into a gun, and gains 20 armor penetration
-					Attacks fire homing energy blasts that arc lightning to nearby foes
+					Uncharged attacks quickly fires a formation of rapid piercing energy
+					Charged attacks conjure two orbiting bolts for 6 seconds that inflict [Darkrend] for 12 seconds on hit; [Darkrend] increases the damage foes take from this weapon by 30%
+					Orbiting bolts additionally gain 100% armor penetration
+					[c/4DFF5B:Ranged]: The weapon transforms into a gun, firing mid-ranged energy blasts
+					Attacks rapidly arc lightning to nearby foes (Lightning arcs have 20% armor penetration)
 					Gain [Alacrity] for 8 seconds when defeating foes, increasing attack and movement speed
 					[c/00CDFF:Summon]: Summons [Dark Dread] and [Flying Dread], consuming 1 minion slot (Only one group of summons can be active at a time)
-					[Dark Dread] leaps at foes, slashing in a wide arc; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds on hit
-					After striking foes 20 times, grant [Dark Confession] for 20 seconds, negating the next instance of damage
+					Damage scales with unused minion slots; additionally, gain defense based on unused minion slots
+					[Dark Dread] shadowsteps to foes and claws them with rapid strikes; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds on hit
+					After either minion strikes foes 20 times, gain [Shadow Wall] for 20 seconds, negating the next instance of damage
 					'It will agree with you'
 					'''
 				DisplayName: Dreadmother's Dark Idol
@@ -12857,6 +12859,17 @@ Mods: {
 			EridaniFFEnd.DisplayName: Eridani F F End
 			FireflySlash.DisplayName: Firefly Slash
 			FireflySlashFollowUp.DisplayName: Firefly Slash Follow Up
+			DreadmotherEnergyBall.DisplayName: Dreadmother Energy Ball
+			DreadmotherGun.DisplayName: Dreadmother Gun
+			DreadmotherLightning.DisplayName: Dreadmother Lightning
+			FireflyKick.DisplayName: Firefly Kick
+			FireflyKickExplosion.DisplayName: Firefly Kick Explosion
+			DreadmotherStaff.DisplayName: Dreadmother Staff
+			DreadmotherMagicOrbitals.DisplayName: Dreadmother Magic Orbitals
+			DreadmotherMagicSpheres.DisplayName: Dreadmother Magic Spheres
+			DreadmotherMagicSpheresCenter.DisplayName: Dreadmother Magic Spheres Center
+			DreadmotherFlyingMinion.DisplayName: Dreadmother Flying Minion
+			DreadmotherMeleeSummon.DisplayName: Dreadmother Melee Summon
 		}
 
 		Buffs: {
@@ -15636,6 +15649,16 @@ Mods: {
 			FireflyActive: {
 				DisplayName: Firefly Type-IV
 				Description: Your Starfarer has donned the Crysalid Pyronexus, assisting you in combat
+			}
+
+			DreadmotherOrbitalBuff: {
+				DisplayName: Dreadmother Orbital Buff
+				Description: Mods.StarsAbove.Buffs.DreadmotherOrbitalBuff.Description
+			}
+
+			DreadmotherMinionBuff: {
+				DisplayName: Dreadmother Minion Buff
+				Description: Mods.StarsAbove.Buffs.DreadmotherMinionBuff.Description
 			}
 		}
 
