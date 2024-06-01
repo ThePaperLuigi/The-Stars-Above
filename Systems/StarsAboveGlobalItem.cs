@@ -740,8 +740,15 @@ namespace StarsAbove.Systems
 
 
         }
+
+        public DamageClass getOldDamageClass()
+        {
+            return oldDamageClass;
+        }
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
+            oldDamageClass = item.GetGlobalItem<StarsAboveGlobalItem>().getOldDamageClass();
             //damage += 0.2f;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
@@ -753,7 +760,7 @@ namespace StarsAbove.Systems
 
 
             }
-
+            //If the weapon is from stars above or aprismatism is active, and the weapon deals damage...
             if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
             { //
                 if (item.DamageType != GetInstance<CelestialDamageClass>())
@@ -846,12 +853,19 @@ namespace StarsAbove.Systems
                         }
 
                     }
+
+                    //if the player is melee aspected
                     else if(player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                     {
+
+                        
+                        //if the old damage class is not melee
                         if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
                         {
+                            //damage is the total damage of melee? might need changing to fix scaling.
                             damage = player.GetTotalDamage(DamageClass.Melee);
 
+                            //reduce damage if aspect penalty is false.
                             if (!disableAspectPenalty)
                             {
                                 damage -= 0.15f;
@@ -1049,7 +1063,7 @@ namespace StarsAbove.Systems
 
 
             }
-
+            
 
             base.HoldItem(item, player);
         }
