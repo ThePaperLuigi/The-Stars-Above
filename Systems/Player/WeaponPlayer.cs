@@ -2946,17 +2946,17 @@ namespace StarsAbove.Systems
             }
             if (Player.HasBuff(BuffType<ShadowWallBuff>()) && Player.whoAmI == Main.myPlayer)
             {
-                float dustAmount = 2f;
+                float dustAmount = 15f;
                 for (int i = 0; (float)i < dustAmount; i++)
                 {
                     Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 4f);
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                     spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
                     int dust = Dust.NewDust(Player.Center, 0, 0, DustID.Shadowflame);
-                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].scale = 0.9f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = Player.Center + spinningpoint5;
-                    Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+                    Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
                 }
 
             }
@@ -4402,7 +4402,7 @@ namespace StarsAbove.Systems
                 for (int i = 0; (float)i < dustAmount; i++)
                 {
                     Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 4f);
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                     spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
                     int dust = Dust.NewDust(Player.Center, 0, 0, DustID.Shadowflame);
                     Main.dust[dust].scale = 2f;

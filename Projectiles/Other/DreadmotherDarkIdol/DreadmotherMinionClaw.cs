@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Systems;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 {
@@ -83,7 +85,19 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
             Player projOwner = Main.player[Projectile.owner];
             projOwner.GetModPlayer<WeaponPlayer>().gaugeChangeAlpha = 1f;
             projOwner.GetModPlayer<WeaponPlayer>().dreadmotherShieldStacks++;
-            
+            int unifiedRandom = Main.rand.Next(0, 360);
+            float dustAmount = 45f;
+            for (int i = 0; (float)i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(54f, 1f);
+                spinningpoint5 = spinningpoint5.RotatedBy(MathHelper.ToRadians(unifiedRandom));
+                int dust = Dust.NewDust(target.Center, 0, 0, DustID.Shadowflame);
+                Main.dust[dust].scale = 2f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = target.Center + spinningpoint5;
+                Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+            }
             for (int d = 0; d < 8; d++)
             {
                 Dust.NewDust(target.Center, 0, 0, DustID.Clentaminator_Purple, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default, 0.4f);

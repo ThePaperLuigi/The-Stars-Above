@@ -7,6 +7,7 @@ using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.ModLoader;
 using StarsAbove.Systems;
+using Terraria.Audio;
 
 namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 {
@@ -86,7 +87,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
                 {
                     Projectile.ai[0] = 0;
                     int type = ProjectileType<DreadmotherMinionBomb>();
-
+                    SoundEngine.PlaySound(SoundID.Item125, Projectile.Center);
 
                     Vector2 position = Projectile.Center;
                     float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse

@@ -11804,24 +11804,23 @@ Mods: {
 			DreadmotherDarkIdol: {
 				Tooltip:
 					'''
-					WORK IN PROGRESS!
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty]
 					The current [c/F592BF:Aspected Damage Type] influences the weapon's attacks (Weapon can not be used without [c/F592BF:Aspected Damage Type])
 					This weapon deals 20% more damage to foes afflicted by Shadowflame
 					[c/FFAB4D:Melee]: The weapon transforms into a clawed gauntlet, allowing for a close-ranged combo
-					Attacks will charge [Dread]; at max [Dread], the next combo finisher will cause a shockwave to detonate, striking nearby foes
+					Attacks will charge [c/D1AADF:Dread]; at max [c/D1AADF:Dread], the next combo finisher will cause a shockwave to detonate, striking nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
-					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [Charged]
+					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [c/F7D76A:Charged]
 					Uncharged attacks quickly fires a formation of rapid piercing energy
 					Charged attacks conjure two orbiting bolts for 6 seconds that inflict Shadowflame for 12 seconds on hit
 					Orbiting bolts additionally gain 100% armor penetration
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, firing mid-ranged energy blasts
 					Attacks rapidly arc lightning to nearby foes (Lightning arcs have 20% armor penetration)
-					Gain [Alacrity] for 8 seconds when defeating foes, increasing attack and movement speed
-					[c/00CDFF:Summon]: Summons [Dark Dread] and [Flying Dread], consuming 1 minion slot (Only one group of summons can be active at a time)
+					Gain Alacrity for 8 seconds when defeating foes, increasing attack and movement speed
+					[c/00CDFF:Summon]: Summons [c/B66FD0:Dark Dread] and [c/B040D9:Flying Dread], consuming 1 minion slot (Only one group of summons can be active at a time)
 					Damage scales with unused minion slots; additionally, gain defense based on unused minion slots
-					[Dark Dread] shadowsteps to foes and claws them with rapid strikes; [Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds
-					After either minion strikes foes 20 times, gain [Shadow Wall] for 20 seconds, negating the next instance of damage
+					[c/B66FD0:Dark Dread] shadowsteps to foes and claws them with rapid strikes; [c/B040D9:Flying Dread] fires exploding projectiles, inflicting Shadowflame for 4 seconds
+					After either minion strikes foes 20 times, gain [c/F2CDFF:Shadow Wall] for 20 seconds, negating the next instance of damage
 					'It will agree with you'
 					'''
 				DisplayName: Dreadmother's Dark Idol
