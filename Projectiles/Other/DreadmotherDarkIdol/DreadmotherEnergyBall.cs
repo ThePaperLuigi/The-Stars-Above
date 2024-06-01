@@ -118,6 +118,9 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 
                 }
             }
+            Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Electric, null, 240, default, 1f);
+            dust.noGravity = true;
+            dust.velocity = Vector2.Zero;
 
             if (++Projectile.frameCounter >= 6)
             {

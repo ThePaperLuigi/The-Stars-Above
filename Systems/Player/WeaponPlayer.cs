@@ -36,6 +36,7 @@ using StarsAbove.Buffs.Melee.Umbra;
 using StarsAbove.Buffs.Melee.Unforgotten;
 using StarsAbove.Buffs.Misc;
 using StarsAbove.Buffs.Other.ArchitectsLuminance;
+using StarsAbove.Buffs.Other.DreadmotherDarkIdol;
 using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Buffs.Other.LegendaryShield;
 using StarsAbove.Buffs.Other.Nanomachina;
@@ -167,6 +168,7 @@ namespace StarsAbove.Systems
 
         public bool dreadmotherHeld;
         public bool dreadmotherMinion;
+        public int dreadmotherShieldStacks;
         public float dreadmotherGauge;
         public Vector2 dreadmotherMagicCenter;
 
@@ -2942,6 +2944,22 @@ namespace StarsAbove.Systems
                 }
 
             }
+            if (Player.HasBuff(BuffType<ShadowWallBuff>()) && Player.whoAmI == Main.myPlayer)
+            {
+                float dustAmount = 2f;
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
+                    int dust = Dust.NewDust(Player.Center, 0, 0, DustID.Shadowflame);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Player.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+                }
+
+            }
 
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<EyeOfEuthymiaBuff>())
@@ -3624,6 +3642,21 @@ namespace StarsAbove.Systems
             if (M4A1Held)
             {
                 return false;
+            }
+            if (Player.HasBuff(BuffType<ShadowWallBuff>()))
+            {
+                for (int d = 0; d < 16; d++)
+                {
+                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.Shadowflame, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1.5f);
+                }
+                Player.immune = true;
+                Player.immuneTime = 30;
+                int index = Player.FindBuffIndex(BuffType<ShadowWallBuff>());
+                if (index > -1)
+                {
+                    Player.DelBuff(index);
+                }
+                return true;
             }
             if (Player.HasBuff(BuffType<GuntriggerParry>()))
             {
@@ -4359,6 +4392,25 @@ namespace StarsAbove.Systems
             DraggedBelow();
             ParadiseLost();
 
+            if(dreadmotherShieldStacks >= 20)
+            {
+                dreadmotherShieldStacks = 0;
+                Player.AddBuff(BuffType<ShadowWallBuff>(), 20 * 60);
+
+                SoundEngine.PlaySound(SoundID.Item15, Player.Center);
+                float dustAmount = 60f;
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Player.velocity.ToRotation());
+                    int dust = Dust.NewDust(Player.Center, 0, 0, DustID.Shadowflame);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Player.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+                }
+            }
             if (M4A1Held)
             {
                 M4A1deg += 0 + MathHelper.Lerp(0.5f, 1.5f, EaseHelper.InOutQuad((float)(M4A1UseTimer / 100f)));

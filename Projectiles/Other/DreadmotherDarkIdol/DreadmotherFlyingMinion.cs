@@ -15,7 +15,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[Projectile.type] = 4;
+            Main.projFrames[Projectile.type] = 6;
             Main.projPet[Projectile.type] = true;
             ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
             //ProjectileID.Sets.Homing[Projectile.type] = true;
@@ -79,13 +79,13 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
                 }
 
             }
-            if (Projectile.ai[0] > 60)
+            if (Projectile.ai[0] > 180)
             {
 
                 if (foundTarget)
                 {
                     Projectile.ai[0] = 0;
-                    int type = ProjectileType<DreadmotherEnergyBall>();
+                    int type = ProjectileType<DreadmotherMinionBomb>();
 
 
                     Vector2 position = Projectile.Center;
@@ -95,7 +95,12 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
                     Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
                     Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
                     Vector2 velocity = direction * launchSpeed;
+                    for (int d = 0; d < 25; d++)
+                    {
+                        Dust.NewDust(Projectile.Center, 0, 0, DustID.Shadowflame, velocity.X, velocity.Y, 150, default, 1f);
 
+                    }
+                    Projectile.velocity -= velocity / 2;
                     int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
 
                     Main.projectile[index].originalDamage = Projectile.damage;

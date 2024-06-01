@@ -213,6 +213,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            target.AddBuff(BuffID.ShadowFlame, 12 * 60);
             for (int d = 0; d < 5; d++)
             {
                 Dust.NewDust(Projectile.Center, 0, 0, DustID.Shadowflame, Main.rand.NextFloat(-5, 5), Main.rand.NextFloat(-5, 5), 150, default, 0.7f);

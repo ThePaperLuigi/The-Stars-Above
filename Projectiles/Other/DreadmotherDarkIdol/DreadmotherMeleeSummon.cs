@@ -171,18 +171,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
                     }
                     Projectile.localAI[2] = 10;
                     Projectile.ai[2] = 0;
-                    int type = ModContent.ProjectileType<DreadmotherClawAttack>();
-
-                    if (targetCenter.X > Projectile.Center.X)
-                    {
-                        type = ModContent.ProjectileType<DreadmotherClawAttackAlt>();
-
-                    }
-                    else
-                    {
-                        type = ModContent.ProjectileType<DreadmotherClawAttackAlt>();
-                    }
-
+                    int type = ModContent.ProjectileType<DreadmotherMinionClaw>();
 
 
 

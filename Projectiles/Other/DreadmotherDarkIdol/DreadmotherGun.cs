@@ -24,13 +24,13 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         //The dust that fires from the barrel after shooting.
         public override int FlashDustID => Terraria.ID.DustID.GemSapphire;
         //The distance the gun's muzzle is relative to the player. Remember this also is influenced by base distance.
-        public override int MuzzleDistance => 42;
+        public override int MuzzleDistance => 62;
         //The distance the gun is relative to the player.
         public override float BaseDistance => 15;
         public override int StartingState => 0;
         public override bool KillOnIdle => true;
         public override int ScreenShakeTime => 100; //100 is disabled
-        public override float ScaleModifier => 1f;
+        public override float ScaleModifier => 1.2f;
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 1;
@@ -47,8 +47,8 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         {
             Projectile.scale = 1f;
             Player player = Main.player[Projectile.owner];
-            DrawOriginOffsetY = 6;
-            DrawOffsetX = -30;
+            DrawOriginOffsetY = 0;
+            DrawOffsetX = 0;
             return true;
         }
         //For posterity, the draw code of this gun is going to have each part of the upgraded gun seperate and they will draw in with a white flash.

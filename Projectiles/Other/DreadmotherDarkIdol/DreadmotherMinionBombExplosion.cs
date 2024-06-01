@@ -12,7 +12,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 {
-    public class DreadmotherClawExplosion : ModProjectile
+    public class DreadmotherMinionBombExplosion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
 			
@@ -47,23 +47,24 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 		}
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            Player projOwner = Main.player[Projectile.owner];
+            projOwner.GetModPlayer<WeaponPlayer>().dreadmotherShieldStacks++;
+            target.AddBuff(BuffID.ShadowFlame, 60 * 4);
             base.OnHitNPC(target, hit, damageDone);
         }
         public override void OnKill(int timeLeft)
 		{
 			Player projOwner = Main.player[Projectile.owner];
-			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
+			projOwner.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -95;
+			
 			//Boom
-			SoundEngine.PlaySound(StarsAboveAudio.SFX_ScytheImpact, Projectile.Center);	
+			SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);	
 			
 			for (int d = 0; d < 50; d++)
 			{
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-5, 5), 150, default(Color), 1.5f);
 			}
-			for (int d = 0; d < 54; d++)
-			{
-				Dust.NewDust(Projectile.Center, 0, 0, DustID.FireworkFountain_Pink, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);
-			}
+			
 			for (int d = 0; d < 54; d++)
 			{
 				Dust.NewDust(Projectile.Center, 0, 0, DustID.Shadowflame, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 2.5f);

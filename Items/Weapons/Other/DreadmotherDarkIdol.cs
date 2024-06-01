@@ -37,7 +37,7 @@ namespace StarsAbove.Items.Weapons.Other
 
 		public override void SetDefaults()
 		{
-			Item.damage = 112;           //The damage of your weapon
+			Item.damage = 182;           //The damage of your weapon
 			Item.DamageType = DamageClass.Melee;          //Is your weapon a melee weapon?
 			Item.width = 158;            //Weapon's texture's width
 			Item.height = 158;           //Weapon's texture's height
@@ -192,8 +192,19 @@ namespace StarsAbove.Items.Weapons.Other
                         {
                             player.ClearBuff(BuffType<DreadmotherOrbitalBuff>());
                         }
-                        SoundEngine.PlaySound(SoundID.Item125, player.position);
-
+                        SoundEngine.PlaySound(SoundID.Item15, player.position);
+                        float dustAmount = 60f;
+                        for (int i = 0; (float)i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(24f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(player.velocity.ToRotation());
+                            int dust = Dust.NewDust(player.Center, 0, 0, DustID.Shadowflame);
+                            Main.dust[dust].scale = 2f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = player.Center + spinningpoint5;
+                            Main.dust[dust].velocity = player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 20f;
+                        }
                         player.AddBuff(BuffType<DreadmotherOrbitalBuff>(), 6 * 60);
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicOrbitals>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 5f, 0);
                         Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicOrbitals>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 5f, 180);
