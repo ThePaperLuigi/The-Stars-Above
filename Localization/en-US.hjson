@@ -11830,6 +11830,75 @@ Mods: {
 				DisplayName: Dreadmother Claw
 				Tooltip: ""
 			}
+
+			LunaYSol: {
+				Tooltip:
+					'''
+					Placeholder text
+					'Placeholder'
+					'''
+				DisplayName: Luna y Sol
+			}
+
+			Wolvesbane: {
+				Tooltip:
+					'''
+					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 20% for 3 seconds after a critical strike)
+					Attacks charge [Wolf Pulse] when striking foes
+					After 3 shots, the next shot is empowered and deals damage in a small blast
+					Once [Wolf Pulse] is at maximum, right click to unsheathe the [Wolvesbane]
+					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave
+					Additionally, gain Wrath until combat ends after [Wolvesbane] is unleashed
+					'''
+				DisplayName: Wolvesbane
+			}
+			WolvesbaneRearmed: {
+				Tooltip:
+					'''
+					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
+					Attacks charge [Wolf Pulse] when striking foes
+					After 3 shots, the next shot is empowered and deals damage in a small blast
+					Once [Wolf Pulse] is at maximum, right click to unsheathe the [Wolvesbane], gaining Invincibility for 4 seconds
+					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave
+					Gain Wrath while this weapon is held
+					'''
+				DisplayName: Wolvesbane Rearmed
+			}
+			WolvesbaneAwakened: {
+				Tooltip:
+					'''
+					Attacks with this weapon swing in a wide arc (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
+					Attacks charge [Wolf Pulse] when striking foes
+					After 3 swings, the next attack is guaranteed to be a critical strike and explodes in a small blast
+					Once [Wolf Pulse] is at maximum, press the Weapon Action Key to dash forward, activating [Wolvesbane's Legacy] and gaining Invincibility for 4 seconds
+					[Wolvesbane's Legacy] unleashes powerful slashes and finishes with an explosive projectile that is a guaranteed critical strike
+					Gain Wrath while this weapon is held 
+					'''
+				DisplayName: Wolvesbane Awakened
+			}
+
+			Phasmasaber: {
+				Tooltip:
+					'''
+					Placeholder text
+					'Placeholder'
+					'''
+				DisplayName: Phasmasaber
+			}
+
+			QuisUtDeus: {
+				Tooltip:
+					'''
+					Attacks with this weapon fire rapid spatial bullets, dealing bonus damage based on target Max HP (Max 300% base damage)
+					After every 5 hits, the next attack summons a falling star to strike the foe, dealing bonus damage
+					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
+					While under the effect of [Benedictio], all attacks become guaranteed critical strikes
+					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
+					During this time, critical strikes deal 120% bonus damage to foes above 50% HP
+					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
+					'''
+				DisplayName: Quis Ut Deus
+			}
 		}
 
 		UIElements: {
