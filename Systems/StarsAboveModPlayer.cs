@@ -2432,7 +2432,7 @@ namespace StarsAbove
         {
             if (arborealEchoes == 2)
             {
-                if (target.life == target.lifeMax && target.CanBeChasedBy())
+                if (target.life == target.lifeMax && target.CanBeChasedBy() && !target.boss)
                 {
                     modifiers.FinalDamage += 0.3f;
                     Player.Heal(10);
@@ -3590,9 +3590,11 @@ namespace StarsAbove
         {
             if (swiftstrikeTheory == 2)
             {
+                
                 if (Player.immune && Player.immuneTime > 0)
                 {
-                    Player.GetAttackSpeed(DamageClass.Generic) += 0.8f;
+                    Player.AddBuff(BuffType<SwiftstrikeBuff>(), 2);
+
                 }
             }
         }
@@ -9496,6 +9498,11 @@ namespace StarsAbove
             }
             if (starfarerOutfit == 4) // Aegis of Hope's Legacy
             {
+                if (Player.immune && Player.immuneTime > 0)
+                {
+                    Player.GetDamage(DamageClass.Generic) -= 0.7f;
+
+                }
                 Player.aggro += 5;
                 Player.AddBuff(BuffType<HopesBrillianceBuff>(), 2);
                 if (hopesBrilliance > hopesBrillianceMax)
