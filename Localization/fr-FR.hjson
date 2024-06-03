@@ -5741,6 +5741,7 @@ Mods: {
 			OfflineMountedSignageTile.MapEntry: Tuile de signalisation montée hors ligne
 			RadialMountedSignageTile.MapEntry: Tuile de signalisation à montage radial
 			SmallOfflineMountedSignageTile.MapEntry: Petite tuile de signalisation montée hors ligne
+			// HologramPlinthBigTreeTile.MapEntry: Hologram Plinth Big Tree Tile
 		}
 
 		Items: {
@@ -11897,6 +11898,11 @@ Mods: {
 					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
 					''' */
 				// DisplayName: Quis Ut Deus
+			}
+
+			HologramPlinthBigTree: {
+				// DisplayName: Hologram Plinth Big Tree
+				// Tooltip: ""
 			}
 		}
 
