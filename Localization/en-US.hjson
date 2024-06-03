@@ -6032,6 +6032,7 @@ Mods: {
 					Additionally, gain the buff Nascent Aria for 3 seconds, increasing defense by 20 and boosting health regeneration
 					[c/F94135:Proof of a Hero]
 					Attacks will deal 40% less damage to foes not targetting you
+					Additionally, attacks deal 70% less damage during immunity frames
 					[c/8BB9F8:The Echo of Hope]
 					Tier 3 Stellar Array Abilities gain bonus effects
 					Beyond Infinity: All weapons below Cyan tier are treated as if they were one rarity lower when calculating damage bonus
