@@ -11,6 +11,8 @@ using ReLogic.Content;
 using Terraria.Localization;
 using StarsAbove.Utilities;
 using StarsAbove.Items.Placeable.CyberWorld;
+using Terraria.GameContent.Drawing;
+using Steamworks;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
@@ -118,10 +120,37 @@ namespace StarsAbove.Tiles.CyberWorld
 			{
 				Main.instance.TilesRenderer.AddSpecialLegacyPoint(i, j);
 			}
+            if (Main.gamePaused || !Main.instance.IsActive || Lighting.UpdateEveryFrame && !Main.rand.NextBool(4))
+            {
+                return;
+            }
 
-			
+            Tile tile = Main.tile[i, j];
 
-		}
+            if (!TileDrawing.IsVisible(tile))
+            {
+                return;
+            }
+
+			if(Main.rand.NextBool(60))
+			{
+                int dustType = DustID.GemTopaz;
+
+				var gore = Gore.NewGorePerfect(Main.LocalPlayer.GetSource_Misc(""),
+					new Vector2(i * 16 - 220 + Main.rand.Next(0, 400), j * 16 - 302 + Main.rand.Next(0, 100)),
+					new Vector2(-0.1f - Main.rand.NextFloat(0, 4f), 0.2f + Main.rand.NextFloat(0, 4f)),
+                   GoreID.TreeLeaf_VanityTreeSakura
+                    , 1f);
+				gore.light = 1f;
+				
+            }
+
+            for (int k = 0; k < 2; k++)
+            {
+                
+            }
+
+        }
 
 		public override void SpecialDraw(int i, int j, SpriteBatch spriteBatch)
 		{
@@ -157,7 +186,7 @@ namespace StarsAbove.Tiles.CyberWorld
 			// Some math magic to make it smoothly move up and down over time
 			const float TwoPi = (float)Math.PI * 2f;
 			float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
-			Vector2 drawPos = worldPos + offScreen - Main.screenPosition + new Vector2(0f, -285f) + new Vector2(0f, offset * 4f);
+			Vector2 drawPos = worldPos + offScreen - Main.screenPosition + new Vector2(4f, -275f) + new Vector2(0f, offset * 4f);
 
 			// Draw the main texture
 			spriteBatch.Draw(texture, drawPos, frame, color, 0f, origin, 1f, effects, 0f);
