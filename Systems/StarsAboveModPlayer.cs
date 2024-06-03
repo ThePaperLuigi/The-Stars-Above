@@ -5372,7 +5372,7 @@ namespace StarsAbove
                 }
                 for (int i = 0; i < ActiveDialogues.Count; i++)
                 {
-                    if (ActiveDialogues.Values.ElementAt(i) == 2)
+                    if (ActiveDialogues.Values.ElementAt(i) == 1)
                     {
                         activeDialougeCount++;
                     }
