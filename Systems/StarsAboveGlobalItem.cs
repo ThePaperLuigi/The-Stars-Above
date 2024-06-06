@@ -1073,7 +1073,11 @@ namespace StarsAbove.Systems
             {
 
             }
-            item.DamageType = oldDamageClass;
+            if(oldDamageClass != null)
+            {
+                item.DamageType = oldDamageClass;
+
+            }
         }
 
 

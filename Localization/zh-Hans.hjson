@@ -5348,6 +5348,36 @@ Mods: {
 				HealStrength: 治疗强度
 				CritHealStrength: 暴击治疗强度
 			}
+
+			StellarPrisms: {
+				// Acquired: Stellar Prism acquired!
+				// Info: Affix to the Stellar Nova to gain the following:
+				// Damage: ✦ {0}% Damage
+				// CritRate: ✦ {0}% Crit Rate
+				// CritDamage: ✦ {0}% Crit Damage
+				// EnergyCost: ✦ -{0} Energy Cost
+
+				Deadbloom: {
+					// Name: Deadbloom's Perfusion
+					// SetBonus1: Increases damage dealt to enemies with debuffs by 12%
+					/* SetBonus2:
+						'''
+						Increases crit rate by 8%
+						Crit damage against debuffed foes is increased by 30%
+						''' */
+					// FlavorTooltip: Deadblooms fester on fallen corpses only in the Great Causeway, an enigma as vexing as it is curious
+				}
+
+				CrescentMeteor: {
+					// SetBonus1: Energy cost reduction from Prisms is reversed, turning into increased cost
+					/* SetBonus2:
+						'''
+						Gain 1% bonus damage and crit damage for every point of energy above the original energy cost of the Stellar Nova
+						Increases Nova Energy generation by 15%
+						''' */
+					// FlavorTooltip: A crescent meteor is surely a sign of good tidings to come in the Moirae Galaxy
+				}
+			}
 		}
 
 		Common: {
@@ -11796,7 +11826,7 @@ Mods: {
 					Attacks will charge [c/D1AADF:Dread]; at max [c/D1AADF:Dread], the next combo finisher will cause a shockwave to detonate, striking nearby foes
 					Gain brief Invincibility and restore 2% Max HP when defeating foes
 					[c/EF4DFF:Magic]: The weapon transforms into a staff, and can now be [c/F7D76A:Charged]
-					Uncharged attacks quickly fires a formation of rapid piercing energy
+					Uncharged attacks quickly fires a formation of rapid homing energy
 					Charged attacks conjure two orbiting bolts for 6 seconds that inflict Shadowflame for 12 seconds on hit
 					Orbiting bolts additionally gain 100% armor penetration
 					[c/4DFF5B:Ranged]: The weapon transforms into a gun, firing mid-ranged energy blasts
@@ -11889,6 +11919,11 @@ Mods: {
 
 			HologramPlinthBigTree: {
 				// DisplayName: Hologram Plinth Big Tree
+				// Tooltip: ""
+			}
+
+			DeadbloomPrism: {
+				// DisplayName: Deadbloom Prism
 				// Tooltip: ""
 			}
 		}

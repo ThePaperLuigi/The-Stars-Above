@@ -262,9 +262,9 @@ namespace StarsAbove.UI.StellarNova
 				MaxWidth = { Pixels = 70 },
 				MaxHeight = { Pixels = 70 },
 				ValidItemFunc = item => item.IsAir || !item.IsAir,
-				IgnoresMouseInteraction = true
+				IgnoresMouseInteraction = false
 
-			};
+            };
 			
 			_affixSlot2 = new VanillaItemSlotWrapper(ItemSlot.Context.BankItem, 0.85f)
 			{
@@ -274,9 +274,9 @@ namespace StarsAbove.UI.StellarNova
 				MaxHeight = { Pixels = 70 },
 				
 				ValidItemFunc = item => item.IsAir || !item.IsAir,
-				IgnoresMouseInteraction = true
-			};
-			
+				IgnoresMouseInteraction = false
+            };
+
 			_affixSlot3 = new VanillaItemSlotWrapper(ItemSlot.Context.BankItem, 0.85f)
 			{
 				Left = { Pixels = 364 },
@@ -287,7 +287,7 @@ namespace StarsAbove.UI.StellarNova
 				MaxHeight = { Pixels = 70 },
 
 				ValidItemFunc = item => item.IsAir || !item.IsAir,
-				IgnoresMouseInteraction = true
+				IgnoresMouseInteraction = false
 			};
 			_affixSlot3.OnMouseOver += AffixHover3;
 			_affixSlot3.OnMouseOut += HoverOff;
@@ -301,13 +301,11 @@ namespace StarsAbove.UI.StellarNova
 				MaxHeight = { Pixels = 70 },
 
 				ValidItemFunc = item => item.IsAir || !item.IsAir,
-				IgnoresMouseInteraction = true
-			};
+				IgnoresMouseInteraction = false
+            };
 			_affixSlotSpecial.OnMouseOver += SpecialAffixHover;
 			_affixSlotSpecial.OnMouseOut += HoverOff;
-			area.Append(_affixSlot1);
-			area.Append(_affixSlot2);
-			area.Append(_affixSlot3);
+			
 			//area.Append(_affixSlotSpecial);
 
 			area.Append(starfarerPicture);
@@ -326,7 +324,10 @@ namespace StarsAbove.UI.StellarNova
 			area.Append(baseStats);
 			area.Append(confirm);
 			area.Append(reset);
-			Append(area);
+			area.Append(_affixSlot1);
+            area.Append(_affixSlot2);
+            area.Append(_affixSlot3);
+            Append(area);
 			Append(hoverText);
 
 		}
@@ -1225,7 +1226,10 @@ namespace StarsAbove.UI.StellarNova
 				}
 			}
 			
-
+			if(_affixSlot1.IsMouseHovering)
+			{
+				Main.NewText("test!");
+			}
 			if(_affixSlot1.Item != null)
             {
 				if (!_affixSlot1.Item.IsAir)
