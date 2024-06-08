@@ -95,18 +95,92 @@ namespace StarsAbove.Items.Prisms
             Damage,
             CritDamage,
             CritRate,
-            EnergyCost
+            EnergyCost,
+            EffectDuration
         }
         int mainStat = 0;
         int rarityValue = 0;
         public override void UpdateInventory(Player player)
         {
             Item.value = Item.buyPrice(gold: Item.rare);
+
             base.UpdateInventory(player);
+        }
+        Color rarityColor = Color.White;
+        //In the inventory, the item has a unique colored square based on its tier
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Vector2 spriteSize = frame.Size() * scale;
+
+            Color useColor = rarityColor;
+            if(Item.rare != ModContent.RarityType<StellarRarity>())
+            {
+                switch (Item.rare)
+                {
+                    case 1:
+                        useColor = new Color(150, 150, 255);
+                        break;
+                    case 2:
+                        useColor = new Color(150, 255, 150);
+                        break;
+                    case 3:
+                        useColor = new Color(255, 200, 150);
+                        break;
+                    case 4:
+                        useColor = new Color(255, 150, 150);
+                        break;
+                    case 5:
+                        useColor = new Color(255, 150, 255);
+                        break;
+                    case 6:
+                        useColor = new Color(210, 160, 255);
+                        break;
+                    case 7:
+                        useColor = new Color(150, 255, 10);
+                        break;
+                    case 8:
+                        useColor = new Color(255, 255, 10);
+                        break;
+                    case 9:
+                        useColor = new Color(5, 200, 255);
+                        break;
+                    case 10:
+                        useColor = new Color(255, 40, 100);
+                        break;
+                    case 11:
+                        useColor = new Color(180, 40, 255);
+                        break;
+                    case 12:
+                        useColor = new Color(0, 0, 0);
+                        break;
+
+                }
+            }
+            else
+            {
+                useColor = new Color (Main.masterColor + 0.5f, -Main.masterColor, 0.8f);
+            }
+
+            Texture2D rarityIconTexture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/UI/StellarNova/RarityIcon");
+
+            spriteBatch.End();
+            spriteBatch.Begin();
+            spriteBatch.Draw(rarityIconTexture,
+                position: new Vector2(position.X - spriteSize.Y * 0.9f, position.Y + spriteSize.Y/2 * 0.9f),
+                //position: new Vector2(position.X, position.Y),
+
+                sourceRectangle: new Rectangle(0, 0, 11,11),
+                useColor,
+                rotation: 0f,
+                origin: Vector2.Zero,
+                scale: new Vector2(1f, 1f),
+                SpriteEffects.None,
+                layerDepth: 0f);
+
         }
         public override void SetDefaults()
 		{
-            List<Stat> availableStats = new List<Stat> { Stat.Damage, Stat.CritDamage, Stat.CritRate, Stat.EnergyCost };
+            List<Stat> availableStats = new List<Stat> { Stat.Damage, Stat.CritDamage, Stat.CritRate, Stat.EnergyCost, Stat.EffectDuration };
 
             bool slimeKing = NPC.downedSlimeKing;
             bool eye = NPC.downedBoss1;
@@ -134,7 +208,9 @@ namespace StarsAbove.Items.Prisms
                 (golem ? 1 : 0) +//10
                 (cultist ? 1 : 0) +//11
                 (moonLord ? 1 : 0);//12 Stellar rarity.
+
             rarityValue = rarity;
+
             if (rarity <= 11)
             {
                 if (Main.rand.Next(11) <= 7) //70% chance for a good roll
@@ -158,14 +234,15 @@ namespace StarsAbove.Items.Prisms
                     Item.rare = rarityValue = Main.rand.Next(1, 12);//Bad roll
                 }
             }
-            
 
             
+
 
             Damage = 0;
             CritDamage = 0;
             CritRate = 0;
             EnergyCost = 0;
+            EffectDuration = 0;
 
             for (int i = 0; i < 3; i++)
             {
@@ -224,11 +301,75 @@ namespace StarsAbove.Items.Prisms
                         }
 
                         break;
+                    case Stat.EffectDuration:
+                        EffectDuration = Math.Max(1, baseline / 6 + Main.rand.NextFloat(0, 1));
+                        if (i == 0)
+                        {
+                            //Make this the first one, have a special color, and make it stronger
+                            EffectDuration += Main.rand.NextFloat(baseline / 6, baseline / 6 + 2);
+                            mainStat = (int)MainStatValue.EffectDuration;
+
+                        }
+                        EffectDuration = (float)Math.Round(EffectDuration, 1);
+                        break;
                 }
 
                 // Remove the selected stat from the list of available stats
                 availableStats.RemoveAt(randomIndex);
             }
+
+            //Not implemented.
+            if(false)
+            {
+                //Add a secondary set bonus
+                ExtraSetBonus = Main.rand.Next(0, 8);//hardcoded!!
+                switch(ExtraSetBonus)
+                {
+                    case (int)ItemPrismSystem.MinorSetBonuses.Alchemic:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Alchemic.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Alchemic.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Castellic:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Castellic.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Castellic.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Everflame:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Everflame.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Everflame.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Lucent:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Lucent.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Lucent.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Phylactic:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Phylactic.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Phylactic.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Radiant:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Radiant.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Radiant.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Refulgent:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Refulgent.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Refulgent.Bonus");
+                        break;
+                    case (int)ItemPrismSystem.MinorSetBonuses.Verdant:
+                        ExtraSetBonusName = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Verdant.Name");
+                        ExtraSetBonusDescription = LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus.Verdant.Bonus");
+                        break;
+                }
+            }
+            var globalItem = Item.GetGlobalItem<ItemPrismSystem>();
+
+            globalItem.isPrism = true;
+
+            globalItem.Damage = Damage;
+            globalItem.CritDamage = CritDamage;
+            globalItem.CritRate = CritRate;
+            globalItem.EnergyCost = EnergyCost;
+            globalItem.EffectDuration = EffectDuration;
+            globalItem.MajorSetBonus = SetBonus;
+
         }
         public enum Stat
         {
@@ -236,16 +377,22 @@ namespace StarsAbove.Items.Prisms
             CritDamage,
             CritRate,
             EnergyCost,
-			SetBonus
+            EffectDuration
         }
-		public  float Damage { get; set; }
-        public  float CritDamage { get; set; }
-        public  float CritRate { get; set; }
-        public  int EnergyCost { get; set; }
-		public abstract string SetBonus { get; set; }
+		public float Damage { get; set; }
+        public float CritDamage { get; set; }
+        public float CritRate { get; set; }
+        public int EnergyCost { get; set; }
+        public float EffectDuration { get; set; }
+        public abstract int SetBonus { get; set; }
         public abstract string SetBonusName { get; set; }
+        public abstract string SetBonusSimpleName { get; set; }
         public virtual string SetBonusDescription1 { get; set; }
         public virtual string SetBonusDescription2 { get; set; }
+        public virtual string SetBonusDescription3 { get; set; }
+        public virtual int ExtraSetBonus { get; set; } = 0;
+        public virtual string ExtraSetBonusName { get; set; } = "";
+        public virtual string ExtraSetBonusDescription { get; set; } = "";
         public virtual string FlavorTooltip { get; set; }
         public virtual bool IsSpecial { get; set; }
 
@@ -286,6 +433,13 @@ namespace StarsAbove.Items.Prisms
                     { OverrideColor = Color.Gold };
                     tooltips.Add(tooltip);
                     break;
+                case (int)MainStatValue.EffectDuration:
+                    TooltipLine tooltipED = new TooltipLine(Mod,
+                    "StarsAbove: EffectDuration",
+                    LangHelper.GetTextValue("StellarNova.StellarPrisms.EffectDuration", EffectDuration))
+                    { OverrideColor = Color.Gold };
+                    tooltips.Add(tooltipED);
+                    break;
             }
             if(Damage != 0 && mainStat != (int)MainStatValue.Damage)
             {
@@ -315,27 +469,48 @@ namespace StarsAbove.Items.Prisms
                     LangHelper.GetTextValue("StellarNova.StellarPrisms.EnergyCost", EnergyCost)) { OverrideColor = Color.LightGreen };
                 tooltips.Add(tooltip);
             }
-            if(IsSpecial)
+            if (EffectDuration != 0 && mainStat != (int)MainStatValue.EffectDuration)
+            {
+                TooltipLine tooltip = new TooltipLine(Mod,
+                    "StarsAbove: EffectDuration",
+                    LangHelper.GetTextValue("StellarNova.StellarPrisms.EffectDuration", EffectDuration))
+                { OverrideColor = Color.LightGreen };
+                tooltips.Add(tooltip);
+            }
+            if (IsSpecial)
             {
                 //These have no set bonuses and instead have unique effects
 
             }
             else
             {
-                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: SetBonus1", SetBonusName + $" (1/2)") { OverrideColor = Color.Gray };
+                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: SetBonus1", SetBonusName + $" (1)") { OverrideColor = Color.PeachPuff };
                 tooltips.Add(tooltip);
 
-                TooltipLine tooltipDesc = new TooltipLine(Mod, "StarsAbove: SetBonus1Info", LangHelper.GetTextValue("StellarNova.StellarPrisms." + SetBonus + ".SetBonus1")) { OverrideColor = Color.Gray };
+                TooltipLine tooltipDesc = new TooltipLine(Mod, "StarsAbove: SetBonus1Info", LangHelper.GetTextValue("StellarNova.StellarPrisms." + SetBonusSimpleName + ".SetBonus1")) { OverrideColor = Color.LightGray };
                 tooltips.Add(tooltipDesc);
 
-                TooltipLine tooltip2 = new TooltipLine(Mod, "StarsAbove: SetBonus2", SetBonusName + $" (1/3)") { OverrideColor = Color.Gray };
+                TooltipLine tooltip2 = new TooltipLine(Mod, "StarsAbove: SetBonus2", SetBonusName + $" (2)") { OverrideColor = Color.PeachPuff };
                 tooltips.Add(tooltip2);
 
-                TooltipLine tooltipDesc2 = new TooltipLine(Mod, "StarsAbove: SetBonus1Info", LangHelper.GetTextValue("StellarNova.StellarPrisms." + SetBonus + ".SetBonus2")) { OverrideColor = Color.Gray };
+                TooltipLine tooltipDesc2 = new TooltipLine(Mod, "StarsAbove: SetBonus2Info", LangHelper.GetTextValue("StellarNova.StellarPrisms." + SetBonusSimpleName + ".SetBonus2")) { OverrideColor = Color.LightGray };
                 tooltips.Add(tooltipDesc2);
-            }
 
-            TooltipLine flavor = new TooltipLine(Mod, "StarsAbove: SetBonus1Info", "'" + FlavorTooltip + "'") { OverrideColor = Color.White };
+                TooltipLine tooltip3 = new TooltipLine(Mod, "StarsAbove: SetBonus3", SetBonusName + $" (3)") { OverrideColor = Color.PeachPuff };
+                tooltips.Add(tooltip3);
+
+                TooltipLine tooltipDesc3 = new TooltipLine(Mod, "StarsAbove: SetBonus3Info", LangHelper.GetTextValue("StellarNova.StellarPrisms." + SetBonusSimpleName + ".SetBonus3")) { OverrideColor = Color.LightGray };
+                tooltips.Add(tooltipDesc3);
+            }
+            if (ExtraSetBonus != 0)
+            {
+                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: SetBonusExtra", ExtraSetBonusName + $" (2)") { OverrideColor = Color.PeachPuff };
+                tooltips.Add(tooltip);
+
+                TooltipLine tooltipDesc = new TooltipLine(Mod, "StarsAbove: SetBonusExtraInfo", LangHelper.GetTextValue("StellarNova.StellarPrisms.ExtraSetBonus." + ExtraSetBonusName + ".Bonus")) { OverrideColor = Color.LightGray };
+                tooltips.Add(tooltipDesc);
+            }
+            TooltipLine flavor = new TooltipLine(Mod, "StarsAbove: FlavorTooltip", "'" + FlavorTooltip + "'") { OverrideColor = Color.White };
             tooltips.Add(flavor);
         }
         public override void SaveData(TagCompound tag)
@@ -356,9 +531,24 @@ namespace StarsAbove.Items.Prisms
             {
                 tag["energycost"] = EnergyCost;
             }
+            if (EffectDuration != 0)
+            {
+                tag["effectduration"] = EffectDuration;
+            }
             if (mainStat != 0)
             {
                 tag["mainStat"] = mainStat;
+            }
+            if (SetBonus != 0)
+            {
+                tag["SetBonus"] = SetBonus;
+            }
+            if (ExtraSetBonus != 0)
+            {
+                tag["ExtraSetBonus"] = ExtraSetBonus;
+                tag["ExtraSetBonusName"] = ExtraSetBonusName;
+                tag["ExtraSetBonusDescription"] = ExtraSetBonusDescription;
+
             }
             tag["rarity"] = Item.rare;
         }
@@ -368,6 +558,13 @@ namespace StarsAbove.Items.Prisms
             CritDamage = tag.GetFloat("critdamage");
             CritRate = tag.GetFloat("critrate");
             EnergyCost = tag.GetInt("energycost");
+            EffectDuration = tag.GetFloat("effectduration");
+
+            SetBonus = tag.GetInt("SetBonus");
+            ExtraSetBonus = tag.GetInt("ExtraSetBonus");
+            ExtraSetBonusName = tag.GetString("ExtraSetBonusName");
+            ExtraSetBonusDescription = tag.GetString("ExtraSetBonusDescription");
+
             mainStat = tag.GetInt("mainStat");
             Item.rare = tag.GetInt("rarity");
         }

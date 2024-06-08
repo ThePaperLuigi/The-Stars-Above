@@ -20,7 +20,10 @@ using StarsAbove.Buffs.Summon.Kifrosse;
 using StarsAbove.Dialogue;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Consumables;
+using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Summon;
 using StarsAbove.NPCs;
 using StarsAbove.NPCs.Arbitration;
 using StarsAbove.NPCs.Nalhaun;
@@ -37,6 +40,7 @@ using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
+using StarsAbove.Systems.Items;
 using StarsAbove.Systems.StellarNovas;
 using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.StellarNova;
@@ -667,12 +671,16 @@ namespace StarsAbove
         public int baseNovaDamageAdd = 1;
         public int novaDamage = 300;
         public int novaCritDamage = 450;
-        public int novaCritChance = 10;
+        public float novaCritChance = 10;
+        public float novaEffectDuration = 5;
 
         public double novaDamageMod;
-        public int novaCritChanceMod;
+        public float novaCritChanceMod;
         public double novaCritDamageMod;
         public int novaChargeMod;
+
+        //New stats
+        public float novaEffectDurationMod;
 
         public int trueNovaGaugeMax;
 
@@ -698,8 +706,8 @@ namespace StarsAbove
         public string abilityDescription;
         public string starfarerBonus;
         public string baseStats;
-
-        
+        public string modStats;
+        public string setBonusInfo;
 
         public string affix1; //Name of the affix.
         public string affix2;
@@ -5701,252 +5709,184 @@ namespace StarsAbove
             novaCritChanceMod = 0;
             novaCritDamageMod = 0;
             novaChargeMod = 0;
-            if (affixItem1 != null && affixItem2 != null && affixItem3 != null)
+            novaEffectDurationMod = 0;
+            setBonusInfo = LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone");
+
+            Dictionary<int, int> SetBonus = new Dictionary<int, int>() {
+                {(int)ItemPrismSystem.MajorSetBonuses.Deadbloom, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical, 0},
+            };
+
+            /*
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Alchemic, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Castellic, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Everflame, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Lucent, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Phylactic, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Radiant, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Refulgent, 0);
+            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Verdant, 0);
+            */
+
+            if (affixItem1 != null)
             {
-                //TODO: replace with a better system.
-                //Just in case the idea of "different slots provide different bonuses" becomes true.
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RefulgentPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RefulgentPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RefulgentPrism>())
+                if(!affixItem1.IsAir)
                 {
-                    novaDamageMod += 0.2;//20%
-                    novaCritChanceMod -= 14;
-                    novaCritDamageMod -= 0.1;
-                    novaChargeMod += 5;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EverflamePrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EverflamePrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EverflamePrism>())
-                {
-                    novaDamageMod += 0.1;
-                    novaCritChanceMod += 7;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod -= 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CrystallinePrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CrystallinePrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CrystallinePrism>())
-                {
-                    novaDamageMod -= 0.2;
-                    novaCritChanceMod -= 7;
-                    novaCritDamageMod += 0.3;
-                    //novaChargeMod -= 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VerdantPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VerdantPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VerdantPrism>())
-                {
-                    //novaDamageMod += 50;
-                    novaCritChanceMod += 21;
-                    //novaCritDamageMod += 225;
-                    novaChargeMod -= 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RadiantPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RadiantPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RadiantPrism>())
-                {
-                    novaDamageMod -= 0.1;
-                    novaCritChanceMod -= 7;
-                    novaCritDamageMod -= 0.1;
-                    novaChargeMod += 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<ApocryphicPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<ApocryphicPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<ApocryphicPrism>())
-                {
-                    novaDamageMod += 0.2;
-                    novaCritChanceMod -= 14;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod -= 5;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<AlchemicPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<AlchemicPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<AlchemicPrism>())
-                {
-                    novaDamageMod -= 0.1;
-                    novaCritChanceMod += 14;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod -= 10;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CastellicPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CastellicPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CastellicPrism>())
-                {
-                    novaDamageMod += 0.3;
-                    novaCritChanceMod -= 7;
-                    novaCritDamageMod -= 0.2;
-                    //novaChargeMod -= 10;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LucentPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LucentPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LucentPrism>())
-                {
-                    novaDamageMod -= 0.3;
-                    //novaCritChanceMod -= 7;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod += 10;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PhylacticPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PhylacticPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PhylacticPrism>())
-                {
-                    novaDamageMod -= 0.1;
-                    novaCritChanceMod += 21;
-                    //novaCritDamageMod += 75;
-                    novaChargeMod -= 10;
-                }
+                    if (affixItem1.GetGlobalItem<ItemPrismSystem>().isPrism)
+                    {
+                        var item = affixItem1.GetGlobalItem<ItemPrismSystem>();
+                        
+                        novaDamageMod += item.Damage;
+                        novaCritChanceMod += item.CritRate;
+                        novaCritDamageMod += item.CritDamage;
+                        novaChargeMod += item.EnergyCost;
+                        novaEffectDurationMod += item.EffectDuration;
+                        SetBonus[item.MajorSetBonus]++;
 
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LightswornPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LightswornPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LightswornPrism>())
+                    }
+                }               
+            }
+            if (affixItem2 != null)
+            {
+                if (!affixItem2.IsAir)
                 {
-                    lightswornPrism = true;
-                }
-                else
-                {
-                    lightswornPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<BurnishedPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<BurnishedPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<BurnishedPrism>())
-                {
-                    burnishedPrism = true;
-                }
-                else
-                {
-                    burnishedPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<GeminiPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<GeminiPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<GeminiPrism>())
-                {
-                    geminiPrism = true;
-                }
-                else
-                {
-                    geminiPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<SpatialPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<SpatialPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<SpatialPrism>())
-                {
-                    spatialPrism = true;
-                }
-                else
-                {
-                    spatialPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PaintedPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PaintedPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PaintedPrism>())
-                {
-                    paintedPrism = true;
-                }
-                else
-                {
-                    paintedPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VoidsentPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VoidsentPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VoidsentPrism>())
-                {
-                    voidsentPrism = true;
-                }
-                //1.1.6 prisms
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RoyalSlimePrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RoyalSlimePrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RoyalSlimePrism>())
-                {
-                    royalSlimePrism = true;
-                }
-                else
-                {
-                    royalSlimePrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<MechanicalPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<MechanicalPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<MechanicalPrism>())
-                {
-                    mechanicalPrism = true;
-                }
-                else
-                {
-                    mechanicalPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<OvergrownPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<OvergrownPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<OvergrownPrism>())
-                {
-                    overgrownPrism = true;
-                }
-                else
-                {
-                    overgrownPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LihzahrdPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LihzahrdPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LihzahrdPrism>())
-                {
-                    lihzahrdPrism = true;
-                }
-                else
-                {
-                    lihzahrdPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<TyphoonPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<TyphoonPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<TyphoonPrism>())
-                {
-                    typhoonPrism = true;
-                }
-                else
-                {
-                    typhoonPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EmpressPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EmpressPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EmpressPrism>())
-                {
-                    empressPrism = true;
-                }
-                else
-                {
-                    empressPrism = false;
-                }
-                if (affixItem1 != null && !affixItem1.IsAir && affixItem1.type == ItemType<LuminitePrism>() ||
-                    affixItem2 != null && !affixItem2.IsAir && affixItem2.type == ItemType<LuminitePrism>() ||
-                    affixItem3 != null && !affixItem3.IsAir && affixItem3.type == ItemType<LuminitePrism>())
-                {
-                    luminitePrism = true;
-                }
-                else
-                {
-                    luminitePrism = false;
-                }
-                //Tier 3 Prisms
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheRuinedKing>())
-                {
-                    ruinedKingPrism = true;
+                    if (affixItem2.GetGlobalItem<ItemPrismSystem>().isPrism)
+                    {
+                        var item = affixItem2.GetGlobalItem<ItemPrismSystem>();
 
-                }
-                else
-                {
-                    ruinedKingPrism = false;
-
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
-                {
-                    cosmicPhoenixPrism = true;
-
-                }
-                else
-                {
-                    cosmicPhoenixPrism = false;
-
+                        novaDamageMod += item.Damage;
+                        novaCritChanceMod += item.CritRate;
+                        novaCritDamageMod += item.CritDamage;
+                        novaChargeMod += item.EnergyCost;
+                        novaEffectDurationMod += item.EffectDuration;
+                        SetBonus[item.MajorSetBonus]++;
+                    }
                 }
             }
+            if (affixItem3 != null)
+            {
+                if (!affixItem3.IsAir)
+                {
+                    if (affixItem3.GetGlobalItem<ItemPrismSystem>().isPrism)
+                    {
+                        var item = affixItem3.GetGlobalItem<ItemPrismSystem>();
 
+                        novaDamageMod += item.Damage;
+                        novaCritChanceMod += item.CritRate;
+                        novaCritDamageMod += item.CritDamage;
+                        novaChargeMod += item.EnergyCost;
+                        novaEffectDurationMod += item.EffectDuration;
+                        SetBonus[item.MajorSetBonus]++;
+                    }
+                }
+            }
+            bool multipleEntries = SetBonus.Count(entry => entry.Value > 0) > 1;
 
+            foreach (var entry in SetBonus)
+            {
+                if (entry.Value >= 1)
+                {
+                    if (setBonusInfo == LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone"))
+                    {
+                        setBonusInfo = "";
+                    }
+
+                    string name = Enum.GetName(typeof(ItemPrismSystem.MajorSetBonuses), entry.Key);
+                    string baseTag = "[c/";
+                    string[] colorTags = { "ADADAD", "FCC167", "FFE3B9" };
+
+                    int maxTier = multipleEntries ? entry.Value : 3;
+
+                    for (int i = 1; i <= maxTier; i++)
+                    {
+                        string colortag = entry.Value >= i ? colorTags[1] : colorTags[0];
+                        setBonusInfo += $"{baseTag}{colortag}:{LangHelper.GetTextValue($"StellarNova.StellarPrisms.{name}.Name")} ({entry.Value}/{i})]\n";
+                        colortag = entry.Value >= i ? colorTags[2] : colorTags[0];
+                        setBonusInfo += $"{baseTag}{colortag}:{LangHelper.GetTextValue($"StellarNova.StellarPrisms.{name}.SetBonus{i}")}]\n";
+                    }
+                }
+            }
+            /*
+            foreach (var entry in SetBonus)
+            {
+                if (entry.Value >= 1)
+                {
+                    if(setBonusInfo == LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone"))
+                    {
+                        setBonusInfo = "";
+                    }
+                    switch (entry.Key)
+                    {
+                        case (int)ItemPrismSystem.MajorSetBonuses.Deadbloom:
+                            string name = "Deadbloom";
+                            string colortag = "[c/D66AAB:";
+                            
+                            //First bonus info
+                            if (entry.Value >= 1)
+                            {
+                                colortag = "[c/FCC167:";
+                            }
+                            else
+                            {
+                                colortag = "[c/ADADAD:";
+                            }
+                            setBonusInfo += colortag + LangHelper.GetTextValue("StellarNova.StellarPrisms." + name + ".Name") + " (" + entry.Value + "/1)" + "]" + "\n";
+                            if (entry.Value >= 1)
+                            {
+                                colortag = "[c/FFE3B9:";
+                            }
+                            else
+                            {
+                                colortag = "[c/ADADAD:";
+                            }
+                            setBonusInfo += colortag + LangHelper.GetTextValue("StellarNova.StellarPrisms." + name + ".SetBonus1") + "]" + "\n";
+
+                            //Second bonus info
+                            if (entry.Value >= 2)
+                            {
+                                colortag = "[c/FCC167:";
+                            }
+                            else
+                            {
+                                colortag = "[c/ADADAD:";
+                            }
+                            setBonusInfo += colortag + LangHelper.GetTextValue("StellarNova.StellarPrisms." + name + ".Name") + " (" + entry.Value + "/2)" + "]" + "\n";
+                            if(entry.Value >= 2)
+                            {
+                                colortag = "[c/FFE3B9:";
+                            }
+                            else
+                            {
+                                colortag = "[c/ADADAD:";
+                            }
+                            setBonusInfo += colortag + LangHelper.GetTextValue("StellarNova.StellarPrisms." + name + ".SetBonus2", colortag) + "]" + "\n";
+
+                            //Third bonus info
+                            if (entry.Value >= 3)
+                            {
+                                colortag = "[c/FCC167:";
+                            }
+                            else
+                            {
+                                colortag = "[c/ADADAD:";
+                            }
+                            setBonusInfo += colortag + LangHelper.GetTextValue("StellarNova.StellarPrisms." + name + ".Name") + " (" + entry.Value + "/3)" + "]" + "\n";
+                            if (entry.Value >= 3)
+                            {
+                                colortag = "[c/FFE3B9:";
+                            }
+                            else
+                            {
+                                colortag = "[c/ADADAD:";
+                            }
+                            setBonusInfo += colortag + LangHelper.GetTextValue("StellarNova.StellarPrisms." + name + ".SetBonus3", colortag) + "]" + "\n";
+                            break;
+                    }
+                }
+            }
+            */
             //Starfarer stuff here.
             if (starfarerArmorEquipped != null)
             {
@@ -6014,12 +5954,12 @@ namespace StarsAbove
             if (chosenStellarNova == 0)//No Nova selected
             {
                 abilityName = "";
-                abilitySubName = "No Stellar Nova has been selected.";
+                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.NoNova");
                 abilityDescription = "";
                 starfarerBonus = "";
                 baseStats = "";
-
-
+                modStats = "";
+                setBonusInfo = LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone");
             }
 
             SetupStellarNovas NovaSetup = new SetupStellarNovas();
@@ -6030,9 +5970,11 @@ namespace StarsAbove
                 novaGaugeMax = NovaSetup.GetNovaCost(chosenStellarNova);
                 novaCritChance = NovaSetup.GetNovaCritChance(chosenStellarNova);
                 novaCritDamage = NovaSetup.GetNovaCritDamageMod(chosenStellarNova, baseNovaDamageAdd);
+                novaEffectDuration = NovaSetup.GetNovaEffectDuration(chosenStellarNova);
 
                 abilityName = NovaSetup.GetInfo(chosenStellarNova, "AbilityName", baseNovaDamageAdd);
                 abilitySubName = NovaSetup.GetInfo(chosenStellarNova, "AbilitySubName", baseNovaDamageAdd);
+
                 if (chosenStellarNova == 7)//Guardian's Light
                 {
                     if (MeleeAspect == 2)
@@ -6077,22 +6019,26 @@ namespace StarsAbove
                 {
                     baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost");
+
+                    modStats = "" +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod/100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
+                    $"\n{(float)Math.Round(novaCritChance + novaCritChanceMod), 2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                    $"\n{novaEffectDuration + novaEffectDurationMod}s " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EffectDuration") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
                 }
                 else
                 {
                     baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseHealStrength") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost");
+
+                    modStats = "" +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod / 100)), 0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
+                    $"\n{Math.Round(novaCritChance + novaCritChanceMod),2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100)), 0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                    $"\n{novaEffectDuration + novaEffectDurationMod}s " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EffectDuration") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
                 }
 

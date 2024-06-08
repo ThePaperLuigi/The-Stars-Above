@@ -5172,6 +5172,11 @@ Mods: {
 					}
 				}
 
+				Prisms: {
+					Asphodene: You can insert Stellar Prisms here, changing the Nova's effects. Set bonuses are also important!
+					Eridani: Insert Stellar Prisms here to change the Nova's effects. Don't forget their set bonuses, too.
+				}
+
 				PrototokiaAster: {
 					Unlocked: {
 						Asphodene: This is Prototokia Aster, a general use Stellar Nova that applies a powerful debuff.
@@ -5268,7 +5273,7 @@ Mods: {
 				PrototokiaAster: {
 					AbilityName: Prototokia Aster
 					AbilitySubName: "[c/C2BDFF:Limitless Starry Blade]"
-					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Prototokia Aster for 10 seconds at no additional cost. Striking foes with Prototokia Aster will inflict Void Atrophy, dealing powerful damage over time. The second cast of Prototokia Aster will double the potency of Void Atrophy, if applicable. This debuff lasts for 30 seconds. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
+					AbilityDescription: Conjure a colossal blade to cleave foes in twain. After casting, you will be able to re-cast Prototokia Aster for 10 seconds at no additional cost. Striking foes with Prototokia Aster will inflict Void Atrophy, dealing powerful damage over time. The second cast of Prototokia Aster will double the potency of Void Atrophy, if applicable. Debuff time is based on Effect Duration. If the attack crits, refund a portion of consumed Stellar Nova Energy. Each cast does 50% of Stellar Nova damage.
 					AstralBonus: You may re-cast Prototokia Aster again to a total of 3 times, dealing 25% damage. This cast does not inflict Void Atrophy, nor does it strengthen it.
 					UmbralBonus: The second hit of Prototokia Aster does not strengthen Void Atrophy, but increases self damage output by 400% for 5 seconds.
 				}
@@ -5276,7 +5281,7 @@ Mods: {
 				ArsLaevateinn: {
 					AbilityName: Ars Laevateinn
 					AbilitySubName: "[c/F19559:Shine True, O Burning Bright Star]"
-					AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will Burn foes for 8 seconds. If Burned foes are struck by Ars Laevateinn, they will take 5% extra damage.
+					AbilityDescription: Wield a blazing greatsword to return foes to ashes. Casting Ars Laevataeinn will mark a colossal region around you with infernal flames. Ars Laevateinn will pulse damage five times in the specified region, dealing 1/5th of the total damage with each hit. During this time, you will be granted 'Surtr's Twilight.' While this buff is active, all attacks will inflict Hellfire based on Effect Duration. If Burned foes are struck by Ars Laevateinn, they will take 5% extra damage.
 					AstralBonus: Burning foes take 5% extra damage. If the attack was a critical strike, burning foes 5% more damage.
 					UmbralBonus: Surtr's Twilight will additionally grant a 10% attack buff. Gain Mana Regeneration while Surtr's Twilight is active.
 				}
@@ -5284,7 +5289,7 @@ Mods: {
 				KiwamiRyuken: {
 					AbilityName: Kiwami Ryuken
 					AbilitySubName: "[c/36BDEC:Unbridled Essence of the Dragon's Fist]"
-					AbilityDescription: Upon activation of Kiwami Ryuken, you will have a one-second window to take damage from a foe, becoming invincible in the process. If hit, a counterattack will trigger, dealing incredible damage in close proximity, aimed at your cursor. You will be unable to execute the counterattack if the foe is further than melee range, but damage will still be negated. You will be refunded 50% of the Stellar Nova energy cost if you are not hit during Kiwami Ryuken.
+					AbilityDescription: Upon activation of Kiwami Ryuken, you will have a small window based on Effect Duration to take damage from a foe, becoming invincible in the process. If hit, a counterattack will trigger, dealing incredible damage in close proximity, aimed at your cursor. You will be unable to execute the counterattack if the foe is further than melee range, but damage will still be negated. You will be refunded 50% of the Stellar Nova energy cost if you are not hit during Kiwami Ryuken.
 					AstralBonus: The counterattack will always deal critical damage below half health. Restore 5 Stellar Nova Energy upon triggering the counterattack.
 					UmbralBonus: Heal 40 health and mana upon triggering the counterattack. 10 extra Stellar Nova energy will be refunded on failure.
 				}
@@ -5292,7 +5297,7 @@ Mods: {
 				GardenOfAvalon: {
 					AbilityName: Garden of Avalon
 					AbilitySubName: "[c/ECB3FC:The Forever-Sealed Utopia]"
-					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically for 8 seconds, scaling with Stellar Nova Damage. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff Solemn Aegis for 15 seconds, which negates one hit of damage independently of Invincibility.
+					AbilityDescription: Call forth the Garden of Avalon, infusing the world with radiant energy. Grant powerful Health and Mana regeneration periodically scaling with Stellar Nova Damage and based on Effect Duration. Gain Invincibility for 2 seconds. If the cast would be critical, gain Health, modified by Stellar Nova crit modifiers. Additionally, upon a critical cast, gain the buff Solemn Aegis for 15 seconds, which negates one hit of damage independently of Invincibility.
 					AstralBonus: Invincibility lasts for 4 seconds instead of 2. Instantly heal 100 HP upon casting Garden of Avalon.
 					UmbralBonus: Gain an extra buff on cast: Dreamlike Charisma. (Can not stack.) Dreamlike Charisma increases damage by 16%, doubled above 100 Mana.
 				}
@@ -5300,7 +5305,7 @@ Mods: {
 				EdinGenesisQuasar: {
 					AbilityName: Edin Genesis Quasar
 					AbilitySubName: "[c/00FF93:The Moment a Planet Is Born]"
-					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' for 25 seconds. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
+					AbilityDescription: Upon cast, become immobile and invincible temporarily. Gain 'Astarte Driver' based on Effect Duration. Astarte Driver grants infinite flight and three Cosmic Charges. ALL attacks while Astarte Driver is active will inherit the stats of the Stellar Nova. Pressing the Starfarer Action Key with a Cosmic Charge available will launch a barrage of spatial projectiles (2 second use cooldown.) After activating Astarte Driver's stat-changing effect, the target will be immune for a very short period.
 					AstralBonus: Critical hits do an additional {0} damage in Astarte Driver. You will gain a Cosmic Charge after defeating a foe with a critical hit. (Max 5 charges.)
 					UmbralBonus: Astarte Driver attacks will execute any foe below {0} HP. Gain 1 second of Invincibility when a Cosmic Charge is expended.a
 				}
@@ -5308,7 +5313,7 @@ Mods: {
 				UnlimitedBladeWorks: {
 					AbilityName: Unlimited Blade Works
 					AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
-					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment for 20 seconds. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additionally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment based on Effect Duration. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additionally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
 					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additionally, Bladeforged perists for 10 seconds after the Nova ends.
 					UmbralBonus: Bladeforged no longer increases damage, but attacking with projectiles trigger follow-up attacks (3 second cooldown.) Foes within the field take 10% more damage.
 				}
@@ -5318,11 +5323,11 @@ Mods: {
 					AbilitySubName: "[c/C0EEFF:Lucidity of the Traveler's Will]"
 
 					AbilityDescription: {
-						Melee: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Thundercrash: After activation, gain Bearer of Light for 10 seconds and fly towards your cursor, dealing incredibly powerful damage to the first foe struck. Gain Invincibility for 3 seconds upon activation, independent of the attack's duration.
-						Ranged: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Golden Gun: After activation, gain Bearer of Light for 10 seconds while unleashing a bolt of piercing light. You can press the Stellar Nova key 2 more times to repeat the attack while Bearer of Light is active, dealing 1/3 damage. Critical strikes explode, dealing 50% base damage.
-						Magic: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Nova Bomb: After activation, gain Bearer of Light for 10 seconds while unleashing a powerful void projectile that tracks foes. After 2 seconds or after striking a foe, the attack will detonate in a large explosion. Inflicts Shadowflame for 10 seconds on foes struck by the blast.
-						Summon: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Needlestorm: After activation, gain Bearer of Darkness for 10 seconds and unleash 5 Woven Needles. After striking a foe or a surface, the needles weave into Threadlings and attack nearby foes (treated as minions.) Damage is split between Woven Needles and Threadlings.
-						Other: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Silence and Squall: After activation, gain Bearer of Darkness for 10 seconds while unleashing Silence, inflicting Frostburn for 8 seconds. Instantly follow up with Squall, dealing damage while creating a frost field on impact that deals damage over time for 8 seconds.
+						Melee: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Thundercrash: After activation, gain Bearer of Light based on Effect Duration and fly towards your cursor, dealing incredibly powerful damage to the first foe struck. Gain Invincibility for 3 seconds upon activation, independent of the attack's duration.
+						Ranged: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Golden Gun: After activation, gain Bearer of Light based on Effect Duration while unleashing a bolt of piercing light. You can press the Stellar Nova key 2 more times to repeat the attack while Bearer of Light is active, dealing 1/3 damage. Critical strikes explode, dealing 50% base damage.
+						Magic: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Nova Bomb: After activation, gain Bearer of Light based on Effect Duration while unleashing a powerful void projectile that tracks foes. After 2 seconds or after striking a foe, the attack will detonate in a large explosion. Inflicts Shadowflame for 10 seconds on foes struck by the blast.
+						Summon: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Needlestorm: After activation, gain Bearer of Darkness based on Effect Duration and unleash 5 Woven Needles. After striking a foe or a surface, the needles weave into Threadlings and attack nearby foes (treated as minions.) Damage is split between Woven Needles and Threadlings.
+						Other: Wield paracausal energy through myriad abilities depending on Aspected Damage Type: Thundercrash if Melee, Golden Gun if Ranged, Nova Bomb if Magic, Needlestorm if Summoner, and Silence and Squall otherwise. Silence and Squall: After activation, gain Bearer of Darkness based on Effect Duration while unleashing Silence, inflicting Frostburn for 8 seconds. Instantly follow up with Squall, dealing damage while creating a frost field on impact that deals damage over time for 8 seconds.
 					}
 
 					AstralBonus: Bearer of Light increases health regeneration. Bearer of Darkness reduces damage taken by 10%. Taking lethal damage consumes either buff and restores 30 HP.
@@ -5332,21 +5337,23 @@ Mods: {
 				FireflyTypeIV: {
 					AbilityName: Firefly Type-IV
 					AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
-					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster, but crit damage is lower. Duration in seconds is proportional to Energy Cost divided by 8. (No Nova Energy while active)
+					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster, but crit damage is lower. Time active is based on Effect Duration.
 					AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
-					UmbralBonus: Triggering Complete Combustion also inflicts Rout, increasing all damage inflicted on the target by 20% for 5 seconds
+					UmbralBonus: Triggering Complete Combustion also inflicts Fleeting Embers, increasing all damage inflicted on the target by 20% for 5 seconds
 				}
 
 				BaseDamage: Base Damage
 				BaseEnergyCost: Base Energy Cost
 				Damage: Damage
 				AttackDamage: Attack Damage
-				CritChance: Crit Chance
+				CritChance: Crit Rate
 				CritDamage: Crit Damage
 				EnergyCost: Energy Cost
 				BaseHealStrength: Base Heal Strength
 				HealStrength: Heal Strength
 				CritHealStrength: Crit Heal Strength
+				EffectDuration: Effect Duration
+				NoNova: No Stellar Nova has been selected.
 			}
 
 			StellarPrisms: {
@@ -5356,26 +5363,81 @@ Mods: {
 				CritRate: ✦ {0}% Crit Rate
 				CritDamage: ✦ {0}% Crit Damage
 				EnergyCost: ✦ -{0} Energy Cost
+				EffectDuration: ✦ {0}s Effect Duration
+				SetBonusNone: No set bonus active.
+
+				ExtraSetBonus: {
+					Alchemic: {
+						Name: Alchemic
+						Bonus: Inflict most negative debuffs to foes struck with the Stellar Nova (Debuffs last for 12 seconds)
+					}
+
+					Castellic: {
+						Name: Castellic
+						Bonus: The first enemy struck with the Stellar Nova is stunned for 2 seconds, and 10% of damage dealt is spread to adjacent foes
+					}
+
+					Everflame: {
+						Name: Everflame
+						Bonus: The Stellar Nova deals 40% increased damage to non-boss enemies, but can no longer deal critical strikes to bosses
+					}
+
+					Lucent: {
+						Name: Lucent
+						Bonus: After damage calculation, all Stellar Nova hits become critical, but damage is reduced by 70%
+					}
+
+					Phylactic: {
+						Name: Phylactic
+						Bonus: Upon use of the Stellar Nova, gain 50% of the Stellar Nova Gauge back after 5 seconds (4 minute cooldown)
+					}
+
+					Radiant: {
+						Name: Radiant
+						Bonus: Critical strikes with the Stellar Nova deal an additional 5% of the foe's Max HP (Max 40,000 damage; 4 second cooldown)
+					}
+
+					Refulgent: {
+						Name: Refulgent
+						Bonus: Upon cast of the Stellar Nova, gain 'Lightblessed', increasing defenses by 30
+					}
+
+					Verdant: {
+						Name: Verdant
+						Bonus: Upon cast of the Stellar Nova, gain 100 HP and Wrath for 20 seconds, but become Vulnerable for the same duration
+					}
+				}
 
 				Deadbloom: {
 					Name: Deadbloom's Perfusion
 					SetBonus1: Increases damage dealt to enemies with debuffs by 12%
-					SetBonus2:
-						'''
-						Increases crit rate by 8%
-						Crit damage against debuffed foes is increased by 30%
-						'''
+					SetBonus2: Crit damage against debuffed foes is increased by 30%
+					SetBonus3: 20% of Crit Rate is added to Effect Duration
 					FlavorTooltip: Deadblooms fester on fallen corpses only in the Great Causeway, an enigma as vexing as it is curious
 				}
 
 				CrescentMeteor: {
-					SetBonus1: Energy cost reduction from Prisms is reversed, turning into increased cost
-					SetBonus2:
-						'''
-						Gain 1% bonus damage and crit damage for every point of energy above the original energy cost of the Stellar Nova
-						Increases Nova Energy generation by 15%
-						'''
+					Name: Crescent Meteor
+					SetBonus1: Energy cost reduction from Prisms is reversed, increasing cost
+					SetBonus2: Refund 20 Energy after casting the Stellar Nova
+					SetBonus3: Increases Nova Energy generation by 25%
 					FlavorTooltip: A crescent meteor is surely a sign of good tidings to come in the Moirae Galaxy
+				}
+
+				LuminousHallow: {
+					Name: Bygone Fairytales
+					SetBonus1: Damage is increased by 15% for each unused Array point
+					SetBonus2: Crit damage is increased by 25% for each unused Array point
+					SetBonus3: If the Array has no active points, Crit damage is increased by 300%
+					FlavorTooltip: A myth made real, the Hallowed is known but never charted
+				}
+
+				DreadMechanical: {
+					Name: Mechanical Rhythmn
+					SetBonus1: Become Invincible for 2 seconds on cast of the Stellar Nova
+					SetBonus2: Invincibility is extended to 4 seconds
+					SetBonus3: Invincibility is extended to 10 seconds (+30 Energy Cost)
+					FlavorTooltip: A heart of iron is nothing to write home about in the Moirae Galaxy
 				}
 			}
 		}
@@ -11941,6 +12003,21 @@ Mods: {
 
 			DeadbloomPrism: {
 				DisplayName: Deadbloom Prism
+				Tooltip: ""
+			}
+
+			CrescentMeteorPrism: {
+				DisplayName: Crescent Meteor Prism
+				Tooltip: ""
+			}
+
+			DreadMechanicalPrism: {
+				DisplayName: Dread Mechanical Prism
+				Tooltip: ""
+			}
+
+			LuminousHallowPrism: {
+				DisplayName: Luminous Hallow Prism
 				Tooltip: ""
 			}
 		}

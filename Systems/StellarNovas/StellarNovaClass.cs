@@ -71,26 +71,51 @@ namespace StarsAbove.Systems.StellarNovas
             }
             return 100;
         }
+        public float GetNovaEffectDuration(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    return 12.5f;
+                case 2:
+                    return 6.5f;
+                case 3:
+                    return 2;
+                case 4:
+                    return 8;
+                case 5:
+                    return 20;
+                case 6:
+                    return 18.5f;
+                case 7:
+                    return 10;
+                case 8:
+                    return 15;
+                default:
+                    break;
+            }
+            return 10f;
+        }
         public int GetNovaCost(int id)
         {
             switch (id)
             {
                 case 1:
-                    return 90;
+                    return 100;
                 case 2:
                     return 110;
                 case 3:
-                    return 50;
+                    return 70;
                 case 4:
-                    return 150;
+                    return 170;
                 case 5:
-                    return 180;
+                    return 200;
                 case 6:
-                    return 140;
+                    return 160;
                 case 7:
-                    return 65;
+                    return 85;
                 case 8:
-                    return 130;
+                    return 155;
                 default:
                     break;
             }

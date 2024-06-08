@@ -1052,7 +1052,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.Spazmatism || npc.type == NPCID.Retinazer || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<MechanicalPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<MechanicalPrism>(), 4));
             }
             if (npc.type == NPCID.EyeofCthulhu)
             {
@@ -1109,7 +1109,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.HallowBoss)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<EmpressPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<EmpressPrism>(), 4));
             }
             if (npc.type == NPCID.DukeFishron)
             {
@@ -1122,7 +1122,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.MoonLordCore)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
 
             }
             if (npc.type == NPCID.MoonLordCore || npc.type == NPCID.CultistBoss)
