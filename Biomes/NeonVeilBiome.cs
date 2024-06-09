@@ -38,7 +38,7 @@ namespace StarsAbove.Biomes
 		public override CaptureBiome.TileColorStyle TileColorStyle => CaptureBiome.TileColorStyle.Normal;
 
 		// Select Music
-		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/MareLamentorum");
+		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Biomes/NeonVeilTheme");
 
 		// Populate the Bestiary Filter
 		public override string BestiaryIcon => "StarsAbove/Biomes/SeaOfStarsBestiaryIcon";

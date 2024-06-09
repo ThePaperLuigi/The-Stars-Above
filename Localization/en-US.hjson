@@ -11990,7 +11990,7 @@ Mods: {
 					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
 					While under the effect of [Benedictio], all attacks become guaranteed critical strikes
 					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
-					During this time, critical strikes deal 120% bonus damage to foes above 50% HP
+					During this time, critical strikes deal 70% increased damage
 					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
 					'''
 				DisplayName: Quis Ut Deus

@@ -13,6 +13,7 @@ using StarsAbove.Utilities;
 using StarsAbove.Items.Placeable.CyberWorld;
 using Terraria.GameContent.Drawing;
 using Steamworks;
+using StarsAbove.Gores;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
@@ -139,11 +140,9 @@ namespace StarsAbove.Tiles.CyberWorld
 				var gore = Gore.NewGorePerfect(Main.LocalPlayer.GetSource_Misc(""),
 					new Vector2(i * 16 - 220 + Main.rand.Next(0, 400), j * 16 - 302 + Main.rand.Next(0, 100)),
 					new Vector2(-0.1f - Main.rand.NextFloat(0, 4f), 0.2f + Main.rand.NextFloat(0, 4f)),
-                   GoreID.TreeLeaf_VanityTreeSakura
-                    , 1f);
-				gore.light = 1f;
-				
-            }
+                   ModContent.GoreType<NeonVeilLeaves>()
+                    , 0.6f);
+			}
 
             for (int k = 0; k < 2; k++)
             {

@@ -5418,17 +5418,17 @@ Mods: {
 
 				CrescentMeteor: {
 					// Name: Crescent Meteor
-					// SetBonus1: Energy cost reduction from Prisms is reversed, turning into increased cost
-					// SetBonus2: Energy cost is increased by 20, but the Stellar Nova refunds 20 Energy after casting
+					// SetBonus1: Energy cost reduction from Prisms is reversed, increasing cost
+					// SetBonus2: Refund 20 Energy after casting the Stellar Nova
 					// SetBonus3: Increases Nova Energy generation by 25%
 					// FlavorTooltip: A crescent meteor is surely a sign of good tidings to come in the Moirae Galaxy
 				}
 
 				LuminousHallow: {
 					// Name: Bygone Fairytales
-					// SetBonus1: Damage is increased by 15% for each unused Stellar Array point
-					// SetBonus2: Crit damage is increased by 25% for each unused Stellar Array point
-					// SetBonus3: If the Stellar Array has no points distributed, Stellar Nova crit is increased by 300%
+					// SetBonus1: Damage is increased by 15% for each unused Array point
+					// SetBonus2: Crit damage is increased by 25% for each unused Array point
+					// SetBonus3: If the Array has no active points, Crit damage is increased by 300%
 					// FlavorTooltip: A myth made real, the Hallowed is known but never charted
 				}
 
@@ -5436,7 +5436,7 @@ Mods: {
 					// Name: Mechanical Rhythmn
 					// SetBonus1: Become Invincible for 2 seconds on cast of the Stellar Nova
 					// SetBonus2: Invincibility is extended to 4 seconds
-					// SetBonus3: Invincibility is extended to 10 seconds, but Energy Cost is increased by 30
+					// SetBonus3: Invincibility is extended to 10 seconds (+30 Energy Cost)
 					// FlavorTooltip: A heart of iron is nothing to write home about in the Moirae Galaxy
 				}
 			}
