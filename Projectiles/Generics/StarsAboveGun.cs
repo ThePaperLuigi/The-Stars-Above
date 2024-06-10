@@ -33,6 +33,7 @@ namespace StarsAbove.Projectiles.Generics
         public abstract bool KillOnIdle { get; }
         public abstract int ScreenShakeTime { get; }
         public virtual float ScaleModifier { get; } = 1f;
+        public virtual float RecoilStrength { get; } = 30f;
 
         Vector2 MuzzlePosition;
 
@@ -177,7 +178,7 @@ namespace StarsAbove.Projectiles.Generics
                 }
                 else
                 {
-                    recoilRotationStart = 30f;
+                    recoilRotationStart = RecoilStrength;
                 }
 
 

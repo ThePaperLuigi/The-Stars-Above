@@ -172,6 +172,9 @@ namespace StarsAbove.Systems
         public float dreadmotherGauge;
         public Vector2 dreadmotherMagicCenter;
 
+        public bool wolvesbaneHeld;
+        public float wolvesbaneGauge;
+
         //Naganadel
         public bool naganadelWeapon1Summoned;
         public bool naganadelWeapon2Summoned;
@@ -3979,6 +3982,7 @@ namespace StarsAbove.Systems
                 ];
 
             }
+            wolvesbaneHeld = false;
             dreadmotherMinion = false;
             dreadmotherHeld = false;
             CloakOfAnArbiterHeld = false;

@@ -11937,12 +11937,14 @@ Mods: {
 			Wolvesbane: {
 				Tooltip:
 					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 20% for 3 seconds after a critical strike)
+					Right click to fire [Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 50% on explosion) (8 second cooldown)
 					Attacks charge [Wolf Pulse] when striking foes
-					After 3 shots, the next shot is empowered and deals damage in a small blast
-					Once [Wolf Pulse] is at maximum, right click to unsheathe the [Wolvesbane]
-					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave
-					Additionally, gain Wrath until combat ends after [Wolvesbane] is unleashed
+					Once [Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [Wolvesbane], consuming 50% [Wolf Pulse]
+					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
+					Damage is halved after every pierce
+					Additionally, gain Wrath for 8 seconds after [Wolvesbane] is unleashed
 					'''
 				DisplayName: Wolvesbane
 			}
@@ -11950,11 +11952,12 @@ Mods: {
 			WolvesbaneRearmed: {
 				Tooltip:
 					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
+					Right click to fire [Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 50% on explosion) (8 second cooldown)
 					Attacks charge [Wolf Pulse] when striking foes
-					After 3 shots, the next shot is empowered and deals damage in a small blast
-					Once [Wolf Pulse] is at maximum, right click to unsheathe the [Wolvesbane], gaining Invincibility for 4 seconds
-					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave
+					Once [Wolf Pulse] is at 50%, press the Weapon Action Key to unsheathe the [Wolvesbane], consuming 50% [Wolf Pulse] and gaining Invincibility for 2 seconds
+					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
 					Gain Wrath while this weapon is held
 					'''
 				DisplayName: Wolvesbane Rearmed
@@ -11963,10 +11966,11 @@ Mods: {
 			WolvesbaneAwakened: {
 				Tooltip:
 					'''
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon swing in a wide arc (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
-					Attacks charge [Wolf Pulse] when striking foes
 					After 3 swings, the next attack is guaranteed to be a critical strike and explodes in a small blast
-					Once [Wolf Pulse] is at maximum, press the Weapon Action Key to dash forward, activating [Wolvesbane's Legacy] and gaining Invincibility for 4 seconds
+					Attacks charge [Wolf Pulse] when striking foes (Critical strikes charge [Wolf Pulse] faster)
+					Once [Wolf Pulse] is at 50%, press the Weapon Action Key to dash forward, activating [Wolvesbane's Legacy], consuming 50% [Wolf Pulse] and gaining Invincibility for 4 seconds
 					[Wolvesbane's Legacy] unleashes powerful slashes and finishes with an explosive projectile that is a guaranteed critical strike
 					Gain Wrath while this weapon is held 
 					'''
@@ -11990,7 +11994,8 @@ Mods: {
 					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
 					While under the effect of [Benedictio], all attacks become guaranteed critical strikes
 					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
-					During this time, critical strikes deal 70% increased damage
+					During this time, critical strikes deal 70% increased damage and attacks gain 20% Armor Penetration
+					Additionally, the next instance of damage is negated (Buff is lost upon triggering this effect)
 					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
 					'''
 				DisplayName: Quis Ut Deus
@@ -13063,6 +13068,14 @@ Mods: {
 			DreadmotherMinionBomb.DisplayName: Dreadmother Minion Bomb
 			DreadmotherMinionBombExplosion.DisplayName: Dreadmother Minion Bomb Explosion
 			DreadmotherMinionClaw.DisplayName: Dreadmother Minion Claw
+			WolvesbaneGun.DisplayName: Wolvesbane Gun
+			WolvesbaneRound.DisplayName: Wolvesbane Round
+			WolvesbaneGunEmpowered.DisplayName: Wolvesbane Gun Empowered
+			WolvesbaneBlastExplosion.DisplayName: Wolvesbane Blast Explosion
+			WolvesbaneBlastRound.DisplayName: Wolvesbane Blast Round
+			WolvesbaneShockwave.DisplayName: Wolvesbane Shockwave
+			WolvesbaneSlash.DisplayName: Wolvesbane Slash
+			WolvesbaneSword.DisplayName: Wolvesbane Sword
 		}
 
 		Buffs: {
@@ -15862,6 +15875,11 @@ Mods: {
 			SwiftstrikeBuff: {
 				DisplayName: Swiftstrike Buff
 				Description: Mods.StarsAbove.Buffs.SwiftstrikeBuff.Description
+			}
+
+			WolvesbaneBlastCooldown: {
+				DisplayName: Wolvesbane Blast Cooldown
+				Description: Mods.StarsAbove.Buffs.WolvesbaneBlastCooldown.Description
 			}
 		}
 

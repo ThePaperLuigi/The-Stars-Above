@@ -54,6 +54,9 @@ namespace StarsAbove.Systems
         private UserInterface _DreadmotherGaugeUserInterface;
         internal DreadmotherGauge DreadmotherGauge;
 
+        private UserInterface _WolvesbaneGaugeUserInterface;
+        internal WolvesbaneGauge WolvesbaneGauge;
+
         private UserInterface _DragonshiftGaugeUserInterface;
         internal DragonshiftGauge DragonshiftGauge;
 
@@ -256,6 +259,10 @@ namespace StarsAbove.Systems
                 DreadmotherGauge = new DreadmotherGauge();
                 _DreadmotherGaugeUserInterface = new UserInterface();
                 _DreadmotherGaugeUserInterface.SetState(DreadmotherGauge);
+
+                WolvesbaneGauge = new WolvesbaneGauge();
+                _WolvesbaneGaugeUserInterface = new UserInterface();
+                _WolvesbaneGaugeUserInterface.SetState(WolvesbaneGauge);
 
                 DreamersInkwellUI = new DreamersInkwellGauge();
                 _DreamersInkwellUIUserInterface = new UserInterface();
@@ -494,6 +501,7 @@ namespace StarsAbove.Systems
             _DragonshiftGaugeUserInterface?.Update(gameTime);
             _DraggedBelowBarUserInterface?.Update(gameTime);
             _DreadmotherGaugeUserInterface?.Update(gameTime);
+            _WolvesbaneGaugeUserInterface?.Update(gameTime);
 
             _DreamersInkwellUIUserInterface?.Update(gameTime);
 
@@ -688,6 +696,15 @@ namespace StarsAbove.Systems
                     delegate
                     {
                         _DreadmotherGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Wolvesbane Gauge",
+                    delegate
+                    {
+                        _WolvesbaneGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)
