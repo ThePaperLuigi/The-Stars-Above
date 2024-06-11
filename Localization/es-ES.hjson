@@ -11788,11 +11788,12 @@ Mods: {
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 20% for 3 seconds after a critical strike)
-					Right click to fire a stronger blast and deal 200% damage in a small explosion (Charges [Wolf Pulse] by 10% on use) (8 second cooldown)
+					Right click to fire [Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 50% on explosion) (4 second cooldown)
 					Attacks charge [Wolf Pulse] when striking foes
-					Once [Wolf Pulse] is at maximum, press the Weapon Action Key to unsheathe the [Wolvesbane]
+					Once [Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [Wolvesbane], consuming 50% [Wolf Pulse]
 					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
-					Additionally, gain Wrath for 8 seconds after [Wolvesbane] is unleashed
+					Damage is halved after every pierce
+					Additionally, gain Wrath for 4 seconds after [Wolvesbane] is unleashed
 					''' */
 				// DisplayName: Wolvesbane
 			}
@@ -11802,11 +11803,12 @@ Mods: {
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
-					Right click to fire a stronger blast and deal 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 10% on use) (8 second cooldown)
+					Right click to fire [Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 50% on explosion) (4 second cooldown)
 					Attacks charge [Wolf Pulse] when striking foes
-					Once [Wolf Pulse] is at maximum, press the Weapon Action Key to unsheathe the [Wolvesbane], gaining Invincibility for 4 seconds
-					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave
-					Gain Wrath while this weapon is held
+					Once [Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [Wolvesbane], consuming 50% [Wolf Pulse] and gaining Invincibility for 2 seconds
+					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
+					Damage is halved after every pierce
+					Additionally, gain Wrath while this weapon is held
 					''' */
 				// DisplayName: Wolvesbane Rearmed
 			}
@@ -11815,12 +11817,12 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
-					Attacks with this weapon swing in a wide arc (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
-					After 3 swings, the next attack is guaranteed to be a critical strike and explodes in a small blast
+					Attacks with this weapon swing in a wide arc, strike multiple times, and critical strike damage is increased by 50%
+					Right click to stab with the blade, exploding in a close ranged attack and dealing a guaranteed critical strike
 					Attacks charge [Wolf Pulse] when striking foes (Critical strikes charge [Wolf Pulse] faster)
-					Once [Wolf Pulse] is at maximum, press the Weapon Action Key to dash forward, activating [Wolvesbane's Legacy] and gaining Invincibility for 4 seconds
-					[Wolvesbane's Legacy] unleashes powerful slashes and finishes with an explosive projectile that is a guaranteed critical strike
-					Gain Wrath while this weapon is held 
+					Once [Wolf Pulse] is at 100%, press the Weapon Action Key to dash forward, activating [Wolvesbane's Legacy], consuming all [Wolf Pulse] and gaining Invincibility for 4 seconds
+					[Wolvesbane's Legacy] unleashes powerful slashes and finishes with an explosive projectile that bursts into a huge explosion, dealing 400% guaranteed critical strike damage
+					Additionally, gain Wrath while this weapon is held
 					''' */
 				// DisplayName: Wolvesbane Awakened
 			}
@@ -11842,7 +11844,8 @@ Mods: {
 					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
 					While under the effect of [Benedictio], all attacks become guaranteed critical strikes
 					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
-					During this time, critical strikes deal 70% increased damage
+					During this time, critical strikes deal 70% increased damage and attacks gain 20% Armor Penetration
+					Additionally, the next instance of damage is negated (Buff is lost upon triggering this effect)
 					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
 					''' */
 				// DisplayName: Quis Ut Deus
@@ -12923,6 +12926,20 @@ Mods: {
 			// WolvesbaneShockwave.DisplayName: Wolvesbane Shockwave
 			// WolvesbaneSlash.DisplayName: Wolvesbane Slash
 			// WolvesbaneSword.DisplayName: Wolvesbane Sword
+			// WolvesbaneRearmedGun.DisplayName: Wolvesbane Rearmed Gun
+			// WolvesbaneRearmedShockwave.DisplayName: Wolvesbane Rearmed Shockwave
+			// WolvesbaneRearmedSlash.DisplayName: Wolvesbane Rearmed Slash
+			// WolvesbaneRearmedSword.DisplayName: Wolvesbane Rearmed Sword
+			// WolvesbaneAwakenedBlastExplosion.DisplayName: Wolvesbane Awakened Blast Explosion
+			// WolvesbaneAwakenedBlastRound.DisplayName: Wolvesbane Awakened Blast Round
+			// WolvesbaneAwakenedFinisher.DisplayName: Wolvesbane Awakened Finisher
+			// WolvesbaneAwakenedStab.DisplayName: Wolvesbane Awakened Stab
+			// WolvesbaneAwakenedSword.DisplayName: Wolvesbane Awakened Sword
+			// WolvesbaneAwakenedSwordSpin.DisplayName: Wolvesbane Awakened Sword Spin
+			// WolvesbaneRearmedBlastExplosion.DisplayName: Wolvesbane Rearmed Blast Explosion
+			// WolvesbaneRearmedBlastRound.DisplayName: Wolvesbane Rearmed Blast Round
+			// WolvesbaneAwakenedShockwave.DisplayName: Wolvesbane Awakened Shockwave
+			// WolvesbaneAwakenedSlash.DisplayName: Wolvesbane Awakened Slash
 		}
 
 		Buffs: {

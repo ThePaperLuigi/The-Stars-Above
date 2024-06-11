@@ -17,10 +17,11 @@ using StarsAbove.Buffs.Other.Wolvesbane;
 using Mono.Cecil;
 using StarsAbove.Projectiles.Melee.RebellionBloodArthur;
 using StarsAbove.Projectiles.Ranged.KissOfDeath;
+using StarsAbove.Buffs;
 
 namespace StarsAbove.Items.Weapons.Other
 {
-    public class Wolvesbane : ModItem
+    public class WolvesbaneRearmed : ModItem
 	{
 		public override void SetStaticDefaults() {
 			
@@ -30,7 +31,7 @@ namespace StarsAbove.Items.Weapons.Other
 		}
 
 		public override void SetDefaults() {
-			Item.damage = 27;
+			Item.damage = 77;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 58;
 			Item.height = 36;
@@ -40,7 +41,7 @@ namespace StarsAbove.Items.Weapons.Other
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 4;
 			Item.value = 10000;
-			Item.rare = ItemRarityID.Pink;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Lime;              //The rarity of the weapon, from -1 to 13
 			Item.autoReuse = true;
 			Item.shootSpeed = 36f;
 			Item.crit = 10;
@@ -86,6 +87,7 @@ namespace StarsAbove.Items.Weapons.Other
         }
 		public override void HoldItem(Player player)
         {
+            player.AddBuff(BuffID.Wrath, 2);
 
             player.GetModPlayer<WeaponPlayer>().wolvesbaneGauge = MathHelper.Clamp(player.GetModPlayer<WeaponPlayer>().wolvesbaneGauge, 0, 100);
             if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.Current && player.itemTime <= 0)
@@ -110,16 +112,16 @@ namespace StarsAbove.Items.Weapons.Other
 					Vector2 Velocity2 = direction2 * 20;
                     player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -90;
 
-                    player.AddBuff(BuffID.Wrath, 4 * 60);
 
-                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<WolvesbaneSword>(), 0, 0, player.whoAmI, 0, 0, player.direction);
-                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Velocity, ProjectileType<WolvesbaneShockwave>(), player.GetWeaponDamage(Item)*3, 0, player.whoAmI, 0, 0, player.direction);
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<WolvesbaneRearmedSword>(), 0, 0, player.whoAmI, 0, 0, player.direction);
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Velocity, ProjectileType<WolvesbaneRearmedShockwave>(), player.GetWeaponDamage(Item)*3, 0, player.whoAmI, 0, 0, player.direction);
 					//Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, direction, ProjectileType<WolvesbaneSlash>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0, 0, player.direction);
-                    
+                    player.AddBuff(BuffType<Invincibility>(), 10);
+
                     for (int d = 0; d < 20; d++)
                     {
-                        Dust.NewDust(player.Center, 0, 0, DustID.Electric, Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-5, 5), 150, default, 0.7f);
-                        Dust.NewDust(player.Center, 0, 0, DustID.GemSapphire, Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-5, 5), 150, default, 0.7f);
+                        Dust.NewDust(player.Center, 0, 0, DustID.LifeDrain, Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-5, 5), 150, default, 0.7f);
+                        Dust.NewDust(player.Center, 0, 0, DustID.GemRuby, Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-5, 5), 150, default, 0.7f);
 
                     }
                 }
@@ -217,7 +219,7 @@ namespace StarsAbove.Items.Weapons.Other
                 {
                     position += muzzleOffset;
                 }
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<WolvesbaneGun>(), 0, knockback, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<WolvesbaneRearmedGun>(), 0, knockback, player.whoAmI);
 
                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, velocity.X, velocity.Y, ProjectileType<WolvesbaneRound>(), damage, knockback, player.whoAmI, 1f);
                 SoundEngine.PlaySound(SoundID.Item11, player.Center);
