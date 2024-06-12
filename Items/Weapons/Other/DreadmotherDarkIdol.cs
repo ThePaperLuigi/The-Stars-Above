@@ -94,13 +94,7 @@ namespace StarsAbove.Items.Weapons.Other
 		{
 			player.GetModPlayer<WeaponPlayer>().dreadmotherHeld = true;
 			Item.scale = 2f;
-			//player.AddBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArchitectLuminanceBuff>(), 2);
-			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>()] < 1)
-			{
-				//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
-
-
-			}
+			
 			if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
 			{
                 attackComboCooldown--;
@@ -217,12 +211,11 @@ namespace StarsAbove.Items.Weapons.Other
 
                             player.GetModPlayer<WeaponPlayer>().bowChargeActive = false;
                             player.GetModPlayer<WeaponPlayer>().bowCharge = 0;
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheresCenter>(), 0, 0, player.whoAmI, 0f);
 
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item)/4, 0, player.whoAmI, 5f, 0);
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) / 4, 0, player.whoAmI, 5f , 90);
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) / 4, 0, player.whoAmI, 5f, 180);
-                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) / 4, 0, player.whoAmI, 5f, 270);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X - 70, player.MountedCenter.Y, -5, 0, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 5f, 0);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X + 70, player.MountedCenter.Y, 5, 0, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) , 0, player.whoAmI, 5f , 90);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y + 70, 0, 5, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) , 0, player.whoAmI, 5f, 180);
+                            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y - 70, 0, -5, ProjectileType<DreadmotherMagicSpheres>(), player.GetWeaponDamage(Item) , 0, player.whoAmI, 5f, 270);
 
 
                             Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity.X, arrowVelocity.Y, ProjectileType<DreadmotherStaff>(), 0, 3, player.whoAmI, 0f);

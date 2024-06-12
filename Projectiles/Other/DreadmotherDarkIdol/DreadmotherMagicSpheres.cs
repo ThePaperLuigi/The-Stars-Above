@@ -25,14 +25,14 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         public override void SetDefaults()
         {
             Projectile.minionSlots = 0f;
-            Projectile.width = 50;               //The width of projectile hitbox
-            Projectile.height = 50;              //The height of projectile hitbox
+            Projectile.width = 38;               //The width of projectile hitbox
+            Projectile.height = 44;              //The height of projectile hitbox
             Projectile.aiStyle = 0;             //The ai style of the projectile, please reference the source code of Terraria
             Projectile.friendly = true;         //Can the projectile deal damage to enemies?
             Projectile.hostile = false;         //Can the projectile deal damage to the player?
             Projectile.DamageType = DamageClass.Magic;
             Projectile.minion = false;
-            Projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
+            Projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
             Projectile.timeLeft = 120;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
             Projectile.alpha = 0;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
             Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
@@ -56,7 +56,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
             Player player = Main.player[Projectile.owner];
             WeaponPlayer modPlayer = player.GetModPlayer<WeaponPlayer>();
 
-            Projectile.velocity *= 0.99f;
+            Projectile.velocity *= 0.93f;
             Projectile.alpha = 100;
             Projectile.scale = 0.6f;
             if (player.dead && !player.active)
@@ -66,20 +66,10 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
             Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.Shadowflame, null, 240, default, 1.5f);
             dust.noGravity = true;
             dust.velocity = Vector2.Zero;
-            Projectile.ai[0] -= 0.02f;
+            Projectile.ai[0] += 1f;
             Player p = Main.player[Projectile.owner];
 
-            //Factors for calculations
-            double deg = Projectile.ai[1]; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
-            double rad = deg * (Math.PI / 180); //Convert degrees to radians
-            double dist = 50; //Distance away from the player
-            Vector2 adjustedPosition = modPlayer.dreadmotherMagicCenter;
-
-            /*Position the player based on where the player is, the Sin/Cos of the angle times the /
-            /distance for the desired distance away from the player minus the projectile's width   /
-            /and height divided by two so the center of the projectile is at the right place.     */
-            Projectile.position.X = adjustedPosition.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-            Projectile.position.Y = adjustedPosition.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2;
+           
             if (firstSpawn)
             {
                 for (int d = 0; d < 15; d++)
@@ -90,30 +80,26 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 
                 firstSpawn = false;
             }
-            //Increase the counter/angle in degrees by 1 point, you can change the rate here too, but the orbit may look choppy depending on the value
-            Projectile.ai[1] += Projectile.ai[0];
-            Projectile.ai[0] = Math.Clamp(Projectile.ai[0], 0f, 5f);
 
-            float rotationsPerSecond = rotationSpeed;
-            rotationSpeed -= 0.4f;
-            bool rotateClockwise = true;
+            float maxDetectRadius = 800f; // The maximum radius at which a projectile can detect a target
+            float projSpeed = 20f; // The speed at which the projectile moves towards the target
 
-            NPC closest = null;
-            float closestDistance = 9999999;
-            for (int i = 0; i < Main.maxNPCs; i++)
+            // Trying to find NPC closest to the projectile
+            NPC closestNPC = FindClosestNPC(maxDetectRadius);
+            if (closestNPC == null)
+                return;
+
+            // If found, change the velocity of the projectile and turn it in the direction of the target
+            // Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
+
+            if (Projectile.ai[0] > 40)
             {
-                NPC npc = Main.npc[i];
-                float distance = Vector2.Distance(npc.Center, Projectile.Center);
-
-                if (npc.active && npc.Distance(Projectile.position) < closestDistance)
-                {
-                    closest = npc;
-                    closestDistance = npc.Distance(Projectile.position);
-                }
-
+                Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
+                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
             }
-
             
+
+
 
             if (++Projectile.frameCounter >= 6)
             {
@@ -124,67 +110,41 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
                     Projectile.frame = 0;
 
                 }
-
-
             }
-            //projectile.rotation = Vector2.Normalize(Main.player[projectile.owner].Center - projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
-
-
         }
-        private void SearchForTargets(Player owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter)
+        public NPC FindClosestNPC(float maxDetectDistance)
         {
-            // Starting search distance
-            distanceFromTarget = 700f;
-            targetCenter = Projectile.position;
-            foundTarget = false;
+            NPC closestNPC = null;
 
-            // This code is required if your minion weapon has the targeting feature
-            if (owner.HasMinionAttackTargetNPC)
+            // Using squared values in distance checks will let us skip square root calculations, drastically improving this method's speed.
+            float sqrMaxDetectDistance = maxDetectDistance * maxDetectDistance;
+
+            // Loop through all NPCs(max always 200)
+            for (int k = 0; k < Main.maxNPCs; k++)
             {
-                NPC npc = Main.npc[owner.MinionAttackTargetNPC];
-                float between = Vector2.Distance(npc.Center, Projectile.Center);
-
-                // Reasonable distance away so it doesn't target across multiple screens
-                if (between < 2000f)
+                NPC target = Main.npc[k];
+                // Check if NPC able to be targeted. It means that NPC is
+                // 1. active (alive)
+                // 2. chaseable (e.g. not a cultist archer)
+                // 3. max life bigger than 5 (e.g. not a critter)
+                // 4. can take damage (e.g. moonlord core after all it's parts are downed)
+                // 5. hostile (!friendly)
+                // 6. not immortal (e.g. not a target dummy)
+                if (target.CanBeChasedBy())
                 {
-                    distanceFromTarget = between;
-                    targetCenter = npc.Center;
-                    foundTarget = true;
-                }
-            }
+                    // The DistanceSquared function returns a squared distance between 2 points, skipping relatively expensive square root calculations
+                    float sqrDistanceToTarget = Vector2.DistanceSquared(target.Center, Projectile.Center);
 
-            if (!foundTarget)
-            {
-                // This code is required either way, used for finding a target
-                for (int i = 0; i < Main.maxNPCs; i++)
-                {
-                    NPC npc = Main.npc[i];
-
-                    if (npc.CanBeChasedBy())
+                    // Check if it is within the radius
+                    if (sqrDistanceToTarget < sqrMaxDetectDistance)
                     {
-                        float between = Vector2.Distance(npc.Center, Projectile.Center);
-                        bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
-                        bool inRange = between < distanceFromTarget;
-                        bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
-                        // Additional check for this specific minion behavior, otherwise it will stop attacking once it dashed through an enemy while flying though tiles afterwards
-                        // The number depends on various parameters seen in the movement code below. Test different ones out until it works alright
-                        bool closeThroughWall = between < 100f;
-
-                        if ((closest && inRange || !foundTarget) && (lineOfSight || closeThroughWall))
-                        {
-                            distanceFromTarget = between;
-                            targetCenter = npc.Center;
-                            foundTarget = true;
-                        }
+                        sqrMaxDetectDistance = sqrDistanceToTarget;
+                        closestNPC = target;
                     }
                 }
             }
 
-            // friendly needs to be set to true so the minion can deal contact damage
-            // friendly needs to be set to false so it doesn't damage things like target dummies while idling
-            // Both things depend on if it has a target or not, so it's just one assignment here
-            // You don't need this assignment if your minion is shooting things instead of dealing contact damage
-            //Projectile.friendly = foundTarget;
+            return closestNPC;
         }
         public override bool? CanCutTiles()
         {

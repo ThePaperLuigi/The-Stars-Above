@@ -26,8 +26,8 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         public override void SetDefaults()
         {
             Projectile.minionSlots = 0f;
-            Projectile.width = 50;               //The width of projectile hitbox
-            Projectile.height = 50;              //The height of projectile hitbox
+            Projectile.width = 38;               //The width of projectile hitbox
+            Projectile.height = 44;           //The height of projectile hitbox
             Projectile.aiStyle = 0;             //The ai style of the projectile, please reference the source code of Terraria
             Projectile.friendly = true;         //Can the projectile deal damage to enemies?
             Projectile.hostile = false;         //Can the projectile deal damage to the player?

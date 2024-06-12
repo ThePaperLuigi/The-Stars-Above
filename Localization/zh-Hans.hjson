@@ -11922,12 +11922,12 @@ Mods: {
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 20% for 3 seconds after a critical strike)
-					Right click to fire [Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 50% on explosion) (4 second cooldown)
-					Attacks charge [Wolf Pulse] when striking foes
-					Once [Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [Wolvesbane], consuming 50% [Wolf Pulse]
-					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
+					Right click to fire [c/74EEFF:Pulse Impact], dealing 200% guaranteed critical strike damage in a small explosion (Charges [c/F58668:Wolf Pulse] by 50% on explosion) (4 second cooldown)
+					Attacks charge [c/F58668:Wolf Pulse] when striking foes
+					Once [c/F58668:Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [c/D70300:Wolvesbane], consuming 50% [c/F58668:Wolf Pulse]
+					The [c/D70300:Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
 					Damage is halved after every pierce
-					Additionally, gain Wrath for 4 seconds after [Wolvesbane] is unleashed
+					Additionally, gain Wrath for 4 seconds after [c/D70300:Wolvesbane] is unleashed
 					''' */
 				// DisplayName: Wolvesbane
 			}
@@ -11937,10 +11937,10 @@ Mods: {
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon fire quick blasts (Critical strike damage is increased by 50% for 6 seconds after a critical strike)
-					Right click to fire [Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [Wolf Pulse] by 50% on explosion) (4 second cooldown)
-					Attacks charge [Wolf Pulse] when striking foes
-					Once [Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [Wolvesbane], consuming 50% [Wolf Pulse] and gaining Invincibility for 2 seconds
-					The [Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
+					Right click to fire [c/74EEFF:Pulse Impact], dealing 200% guaranteed critical damage in a small explosion (Charges [c/F58668:Wolf Pulse] by 50% on explosion) (4 second cooldown)
+					Attacks charge [c/F58668:Wolf Pulse] when striking foes
+					Once [c/F58668:Wolf Pulse] is above 50%, press the Weapon Action Key to unsheathe the [c/D70300:Wolvesbane], consuming 50% [c/F58668:Wolf Pulse] and gaining Invincibility for a short duration
+					The [c/D70300:Wolvesbane] will strike at nearby foes and unleash a powerful shockwave, dealing 300% damage as a guaranteed critical strike
 					Damage is halved after every pierce
 					Additionally, gain Wrath while this weapon is held
 					''' */
@@ -11952,10 +11952,11 @@ Mods: {
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
 					Attacks with this weapon swing in a wide arc, strike multiple times, and critical strike damage is increased by 50%
-					Right click to stab with the blade, exploding in a close ranged attack and dealing a guaranteed critical strike
-					Attacks charge [Wolf Pulse] when striking foes (Critical strikes charge [Wolf Pulse] faster)
-					Once [Wolf Pulse] is at 100%, press the Weapon Action Key to dash forward, activating [Wolvesbane's Legacy], consuming all [Wolf Pulse] and gaining Invincibility for 4 seconds
-					[Wolvesbane's Legacy] unleashes powerful slashes and finishes with an explosive projectile that bursts into a huge explosion, dealing 400% guaranteed critical strike damage
+					Right click to dash forward and stab with the blade, exploding and dealing a guaranteed critical strike while gaining Invincibility for a short duration (8 second cooldown)
+					This attack charges [c/F58668:Wolf Pulse] by 50% on hit
+					Attacks charge [c/F58668:Wolf Pulse] when striking foes (Critical strikes charge [c/F58668:Wolf Pulse] faster)
+					Once [c/F58668:Wolf Pulse] is at 100%, press the Weapon Action Key to dash forward, activating [c/B00200:Wolvesbane's Legacy], consuming all [c/F58668:Wolf Pulse] and gaining Invincibility for 2 seconds
+					[c/B00200:Wolvesbane's Legacy] unleashes powerful slashes and finishes with an explosive projectile that bursts into a huge explosion, dealing 400% guaranteed critical strike damage
 					Additionally, gain Wrath while this weapon is held
 					''' */
 				// DisplayName: Wolvesbane Awakened
@@ -11964,8 +11965,20 @@ Mods: {
 			Phasmasaber: {
 				/* Tooltip:
 					'''
-					Placeholder text
-					'Placeholder'
+					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
+					The current [Aspected Damage Type] influences this weapon's attacks (Can not be used if not Aspected to Ranged or Melee)
+					Critical strikes from this weapon inflict Shadowflame for 3 seconds
+					Right click to activate [Spectral Illusion], activating a unique effect based on the current [Aspected Damage Type] (60 second cooldown)
+					During [Spectral Illusion], this weapon's damage type is changed to Chionic, inheriting bonuses from both Ranged and Melee damage at 120% efficiency
+					Additionally, striking foes inflicted with Shadowflame will enhance the debuff into [Spiritflame], which inherits twice the remaining duration of [Spectral Illusion]
+					[c/FFAB4D:Melee]: The weapon can be channeled, orbiting and striking nearby foes at close range
+					While [Spectral Illusion] is active, the weapon will follow your cursor, spinning and emitting sweeping shadowflame beams
+					[c/4DFF5B:Ranged]: Attacks swing the weapon in an arc, spreading piercing crystals
+					While [Spectral Illusion] is active, the weapon will orbit the cursor, firing crystals towards it
+					Right clicking while [Spectral Illusion] is active will remove the buff and execute [Spectral Phantasm], a special attack based on the current [Aspected Damage Type]
+					[c/FFAB4D:Melee]: The weapon violently explodes on your cursor, dealing 400% guaranteed critical strike damage to all nearby foes while inflicting [Spiritflame] for 10 seconds
+					[c/4DFF5B:Ranged]: The weapon horizontally slashes across the screen based on cursor position, dealing 800% guaranteed critical strike damage to all foes in its wake
+					'Rainbows are visions, but only illusions'
 					''' */
 				// DisplayName: Phasmasaber
 			}
