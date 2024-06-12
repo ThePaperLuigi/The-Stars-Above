@@ -9,6 +9,7 @@ using StarsAbove.Buffs.Magic.VenerationOfButterflies;
 using StarsAbove.Buffs.Melee.PenthesileaMuse;
 using StarsAbove.Buffs.Melee.Umbra;
 using StarsAbove.Buffs.Memories;
+using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Buffs.StarfarerAttire;
 using StarsAbove.Buffs.StellarArray;
 using StarsAbove.Buffs.StellarNovas;
@@ -3038,7 +3039,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)); //This Nova doesn't have crit scaling, only on the final attack
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -3050,6 +3051,16 @@ namespace StarsAbove
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
+
+            }
+            //Complete Combustion
+            if (proj.type == ProjectileType<FireflySlash>())
+            {
+                modifiers.SetCrit();
+                modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                ModifyHitEnemyWithNova(target, ref modifiers);
+                ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
             }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
@@ -3245,7 +3256,38 @@ namespace StarsAbove
             base.UpdateEquips();
         }
 
-        
+        public override void ModifyLuck(ref float luck)
+        {
+            if (Player.HasBuff(BuffType<OffSeersJourney>()))
+            {
+                Player.luckMaximumCap += 5f;
+
+                if (chosenStarfarer == 2)
+                {
+                    luck += 1f;
+                }
+                luck += 2f;
+            }
+            if (Player.HasBuff(BuffType<OffSeersPurpose>()))
+            {
+                Player.luckMaximumCap += 5f;
+
+                if (chosenStarfarer == 1)
+                {
+                    luck += 1f;
+                }
+
+                luck += 2f;
+            }
+            if (Player.HasBuff(BuffType<FarewellOfFlames>()))
+            {
+
+                luck += 1f;
+            }
+
+            base.ModifyLuck(ref luck);
+        }
+
         public override void PreUpdate()
         {
             GlobalRotation++;

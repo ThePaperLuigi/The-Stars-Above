@@ -165,7 +165,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 7:
                     return (int)(baseDamage * 0.4f);
                 case 8:
-                    return (int)(baseDamage / 15 * 1.5);
+                    return (int)(baseDamage * 1.5);
                 default:
                     break;
             }

@@ -17,17 +17,8 @@ namespace StarsAbove.Buffs.Other.Farewells
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.luckMaximumCap += 5f;
-            player.luck += 2f;
-            if (player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)//Eridani as this is the Astral one
-            {
-                player.luck += 1f;
-            }
-            if (player.HasBuff(BuffType<FarewellOfFlames>()))
-            {
-
-            }
-
+           
+            
 
         }
     }
