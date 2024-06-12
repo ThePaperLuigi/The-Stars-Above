@@ -12,11 +12,15 @@ namespace StarsAbove.Tiles.CyberWorld
 			Main.tileLighted[Type] = false;
             AddMapEntry(new Color(151, 141, 138));
         }
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return false;
+            return base.CanKillTile(i, j, ref blockDamaged);
+        }
 
-		
 
-		
 
-		
-	}
+
+
+    }
 }

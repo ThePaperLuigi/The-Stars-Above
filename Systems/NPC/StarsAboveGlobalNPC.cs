@@ -32,6 +32,9 @@ using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Systems;
 using StarsAbove.Buffs.Magic.ParadiseLost;
 using Terraria.GameContent;
+using StarsAbove.NPCs.OffworldNPCs.Caelum;
+using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.NPCs.NeonVeil;
 
 namespace StarsAbove.Systems
 {
@@ -59,6 +62,8 @@ namespace StarsAbove.Systems
         public int spectralNailStacks = 0;
         public int elementalSurgeStacks = 0;
 
+        public int completeCombustionStacks = 0;
+
         int dustTimer = 0;
         public override void TownNPCAttackStrength(NPC npc, ref int damage, ref float knockback)
         {
@@ -70,12 +75,27 @@ namespace StarsAbove.Systems
         }
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
+            if (spawnInfo.Player.InModBiome<NeonVeilBiome>())
+            {
+                pool.Clear();
+                pool.Add(NPCType<NPCs.PrismLoot>(), 0.0001f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 0.02f);
+                pool.Add(NPCID.BlackSlime, 0.3f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 0.02f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.001f);
+
+                pool.Add(NPCType<SemaphoreEnemy>(), 1f);
 
 
-            base.EditSpawnPool(pool, spawnInfo);
+                if (!NPC.AnyNPCs(NPCType<NPCs.TownNPCs.Garridine>()))
+                {
+                    pool.Add(NPCType<NPCs.TownNPCs.Garridine>(), 0.1f);
 
+                }
 
-
+            }
+            
+           
         }
 
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)

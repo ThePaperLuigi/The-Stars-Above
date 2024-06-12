@@ -41,8 +41,8 @@ namespace StarsAbove.Biomes
 		public override int Music => MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Biomes/NeonVeilTheme");
 
 		// Populate the Bestiary Filter
-		public override string BestiaryIcon => "StarsAbove/Biomes/SeaOfStarsBestiaryIcon";
-		public override string BackgroundPath => "StarsAbove/Biomes/SeaOfStarsBiomeMapBackground";
+		public override string BestiaryIcon => "StarsAbove/Biomes/NeonVeilBestiaryIcon";
+		public override string BackgroundPath => "StarsAbove/Biomes/NeonVeilBiome";
 		public override Color? BackgroundColor => Color.White;
 
 		

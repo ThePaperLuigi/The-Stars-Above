@@ -71,7 +71,6 @@ namespace StarsAbove.NPCs.TownNPCs
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = 0.5f;
 			
-			
 			AnimationType = NPCID.Steampunker;
 		}
 
@@ -171,6 +170,7 @@ namespace StarsAbove.NPCs.TownNPCs
 		}
         public override void AI()
         {
+			NPC.dontTakeDamage = true;
 			//Lighting.AddLight(NPC.Center, TorchID.Ice);
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
@@ -230,8 +230,8 @@ namespace StarsAbove.NPCs.TownNPCs
 		}
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-			projType = ModContent.ProjectileType<SkyStrikerRailgunRound>();
-			attackDelay = 1;
+			projType = ProjectileID.None;
+			attackDelay = 60;
         }
     }
 }

@@ -66,6 +66,8 @@ namespace StarsAbove.Tiles.CyberWorld
 
 			LocalizedText pylonName = CreateMapEntryName(); //Name is in the localization file
 			AddMapEntry(Color.White, pylonName);
+
+			
 		}
 
 		public override NPCShop.Entry GetNPCShopEntry() {
@@ -81,10 +83,18 @@ namespace StarsAbove.Tiles.CyberWorld
 			// Condition.NotInEvilBiome
 		}
 
-		public override void MouseOver(int i, int j) {
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+			return false;
+
+        }
+        public override void MouseOver(int i, int j) {
 			// Show a little pylon icon on the mouse indicating we are hovering over it.
-			Main.LocalPlayer.cursorItemIconEnabled = true;
-			Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<NeonVeilPylonItem>();
+			if (Main.hardMode)
+			{
+				Main.LocalPlayer.cursorItemIconEnabled = true;
+				Main.LocalPlayer.cursorItemIconID = ModContent.ItemType<NeonVeilPylonItem>();
+			}
 		}
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY) {
@@ -93,9 +103,18 @@ namespace StarsAbove.Tiles.CyberWorld
 		}
 
 		public override bool ValidTeleportCheck_NPCCount(TeleportPylonInfo pylonInfo, int defaultNecessaryNPCCount) {
-			// Let's say for fun sake that no NPCs need to be nearby in order for this pylon to function. If you want your pylon to function just like vanilla,
-			// you don't need to override this method at all.
-			return true;
+            // Let's say for fun sake that no NPCs need to be nearby in order for this pylon to function. If you want your pylon to function just like vanilla,
+            // you don't need to override this method at all.
+            if (Main.hardMode)
+            {
+                return true;
+			
+
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		public override bool ValidTeleportCheck_BiomeRequirements(TeleportPylonInfo pylonInfo, SceneMetrics sceneData) {
@@ -117,13 +136,23 @@ namespace StarsAbove.Tiles.CyberWorld
 			// We want to draw the pylon crystal the exact same way vanilla does, so we can use this built in method in ModPylon for default crystal drawing:
 			// For the sake of example, lets make our pylon create a bit more dust by decreasing the dustConsequent value down to 1. If you want your dust spawning to be identical to vanilla, set dustConsequent to 4.
 			// We also multiply the pylonShadowColor in order to decrease its opacity, so it actually looks like a "shadow"
-			DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, Color.White, 1, CrystalVerticalFrameCount);
+
+			if (Main.hardMode)
+			{
+				DefaultDrawPylonCrystal(spriteBatch, i, j, crystalTexture, crystalHighlightTexture, new Vector2(0f, -12f), Color.White * 0.1f, Color.White, 1, CrystalVerticalFrameCount);
+			}
 		}
 
 		public override void DrawMapIcon(ref MapOverlayDrawContext context, ref string mouseOverText, TeleportPylonInfo pylonInfo, bool isNearPylon, Color drawColor, float deselectedScale, float selectedScale) {
-			// Just like in SpecialDraw, we want things to be handled the EXACT same way vanilla would handle it, which ModPylon also has built in methods for:
-			bool mouseOver = DefaultDrawMapIcon(ref context, mapIcon, pylonInfo.PositionInTiles.ToVector2() + new Vector2(1.5f, 2f), drawColor, deselectedScale, selectedScale);
-			DefaultMapClickHandle(mouseOver, pylonInfo, ModContent.GetInstance<NeonVeilPylonItem>().DisplayName.Key, ref mouseOverText);
+
+			if(Main.hardMode)
+			{
+                // Just like in SpecialDraw, we want things to be handled the EXACT same way vanilla would handle it, which ModPylon also has built in methods for:
+                bool mouseOver = DefaultDrawMapIcon(ref context, mapIcon, pylonInfo.PositionInTiles.ToVector2() + new Vector2(1.5f, 2f), drawColor, deselectedScale, selectedScale);
+                DefaultMapClickHandle(mouseOver, pylonInfo, ModContent.GetInstance<NeonVeilPylonItem>().DisplayName.Key, ref mouseOverText);
+            }
+
+			
 		}
 	}
 }
