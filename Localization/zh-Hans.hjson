@@ -5337,9 +5337,9 @@ Mods: {
 				FireflyTypeIV: {
 					// AbilityName: Firefly Type-IV
 					// AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
-					// AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster, but crit damage is lower. Time active is based on Effect Duration.
+					// AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, taking the Nova's crit damage (Calculated as a crit.) Critical Nova strikes inflict Complete Combustion much faster, but crits do not deal increased damage. Duration is proportional to Effect Duration plus 30% of Energy Cost.
 					// AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
-					// UmbralBonus: Triggering Complete Combustion also inflicts Fleeting Embers, increasing all damage inflicted on the target by 20% for 5 seconds
+					// UmbralBonus: While the Chrysalid Pyronexus is active, your critical strikes count towards Complete Combustion progress
 				}
 
 				BaseDamage: 基础伤害
@@ -5635,6 +5635,7 @@ Mods: {
 			ParacausalEntity.DisplayName: 超因果看守者
 			ParacausalEnigma.DisplayName: 超因果谜团
 			StarfarerBossWallsNPC.DisplayName: 星海旅者墙 N P C
+			// SemaphoreEnemy.DisplayName: Semaphore Enemy
 		}
 
 		BossAttacks: {
@@ -12022,6 +12023,20 @@ Mods: {
 				// DisplayName: Luminous Hallow Prism
 				// Tooltip: ""
 			}
+
+			NeonTelemetry: {
+				// DisplayName: Neon Telemetry
+				/* Tooltip:
+					'''
+					Raw condensed data obtained from various sources in the Neon Veil
+					Can be utilized in various ways, such as crafting
+					''' */
+			}
+
+			QuitUsDeus: {
+				// DisplayName: Quit Us Deus
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13087,6 +13102,7 @@ Mods: {
 			// WolvesbaneRearmedBlastRound.DisplayName: Wolvesbane Rearmed Blast Round
 			// WolvesbaneAwakenedShockwave.DisplayName: Wolvesbane Awakened Shockwave
 			// WolvesbaneAwakenedSlash.DisplayName: Wolvesbane Awakened Slash
+			// SemaphoreBolt.DisplayName: Semaphore Bolt
 		}
 
 		Buffs: {

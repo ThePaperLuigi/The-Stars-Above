@@ -5313,7 +5313,7 @@ Mods: {
 				UnlimitedBladeWorks: {
 					AbilityName: Unlimited Blade Works
 					AbilitySubName: "[c/FC643B:Projected Reality of Wrought Iron]"
-					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment based on Effect Duration. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additionally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration in seconds is proportional to Energy Cost divided by 10.
+					AbilityDescription: Summon a portal to a world of blades, creating a field of empowerment. After activation, rain down a barrage of blades, reducing enemy damage dealt by 10% for 20 seconds on hit. Additionally, all allies within the radius will gain Bladeforged, which increases damage, knockback, critical strike chance, and armor penetration by 2% up to 10% depending on current HP (capped at 500 HP.) Duration is proportional to Effect Duration plus 15% of Energy Cost.
 					AstralBonus: Bladeforged's cap is raised to 15% and now increases defense based on percentage values up to 8. Additionally, Bladeforged perists for 10 seconds after the Nova ends.
 					UmbralBonus: Bladeforged no longer increases damage, but attacking with projectiles trigger follow-up attacks (3 second cooldown.) Foes within the field take 10% more damage.
 				}
@@ -5337,9 +5337,9 @@ Mods: {
 				FireflyTypeIV: {
 					AbilityName: Firefly Type-IV
 					AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
-					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, dealing 15% of the foe's Max HP as bonus damage, up to 2500% Stellar Nova damage. Critical Nova strikes inflict Complete Combustion much faster, but crit damage is lower. Time active is based on Effect Duration.
+					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, taking the Nova's crit damage (Calculated as a crit.) Critical Nova strikes inflict Complete Combustion much faster, but crits do not deal increased damage. Duration is proportional to Effect Duration plus 30% of Energy Cost.
 					AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
-					UmbralBonus: Triggering Complete Combustion also inflicts Fleeting Embers, increasing all damage inflicted on the target by 20% for 5 seconds
+					UmbralBonus: While the Chrysalid Pyronexus is active, your critical strikes count towards Complete Combustion progress
 				}
 
 				BaseDamage: Base Damage
@@ -5638,6 +5638,7 @@ Mods: {
 			ParacausalEntity.DisplayName: Paracausal Watcher
 			ParacausalEnigma.DisplayName: Paracausal Enigma
 			StarfarerBossWallsNPC.DisplayName: Starfarer Boss Walls N P C
+			SemaphoreEnemy.DisplayName: Semaphore Enemy
 		}
 
 		BossAttacks: {
@@ -12039,6 +12040,20 @@ Mods: {
 				DisplayName: Luminous Hallow Prism
 				Tooltip: ""
 			}
+
+			NeonTelemetry: {
+				DisplayName: Neon Telemetry
+				Tooltip:
+					'''
+					Raw condensed data obtained from various sources in the Neon Veil
+					Can be utilized in various ways, such as crafting
+					'''
+			}
+
+			QuitUsDeus: {
+				DisplayName: Quit Us Deus
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13104,6 +13119,7 @@ Mods: {
 			WolvesbaneRearmedBlastRound.DisplayName: Wolvesbane Rearmed Blast Round
 			WolvesbaneAwakenedShockwave.DisplayName: Wolvesbane Awakened Shockwave
 			WolvesbaneAwakenedSlash.DisplayName: Wolvesbane Awakened Slash
+			SemaphoreBolt.DisplayName: Semaphore Bolt
 		}
 
 		Buffs: {
