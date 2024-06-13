@@ -78,13 +78,14 @@ namespace StarsAbove.Systems
             if (spawnInfo.Player.InModBiome<NeonVeilBiome>())
             {
                 pool.Clear();
-                pool.Add(NPCType<NPCs.PrismLoot>(), 0.0001f);
+                pool.Add(NPCType<NPCs.PrismLoot>(), 0.01f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 0.02f);
-                pool.Add(NPCID.BlackSlime, 0.3f);
+                pool.Add(NPCID.BlackSlime, 0.5f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 0.02f);
-                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.001f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.01f);
 
-                pool.Add(NPCType<SemaphoreEnemy>(), 1f);
+                pool.Add(NPCType<SemaphoreEnemy>(), 0.7f);
+                pool.Add(NPCType<LogicVirusEnemy>(), 0.7f);
 
 
                 if (!NPC.AnyNPCs(NPCType<NPCs.TownNPCs.Garridine>()))
@@ -112,7 +113,7 @@ namespace StarsAbove.Systems
             }
             if (player.HasBuff(BuffType<Conversationalist>()))
             {
-                spawnRate = (int)(spawnRate * 1.2);
+                spawnRate = (int)(spawnRate * 3);
             }
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -295,7 +296,14 @@ namespace StarsAbove.Systems
             }
 
         }
-
+        public override void PostAI(NPC npc)
+        {
+            if((npc.position.Y/16 + npc.height) > (Main.maxTilesY - 86))
+            {
+                npc.velocity.Y -= 10f;
+            }
+            base.PostAI(npc);
+        }
         public override void ResetEffects(NPC npc)
         {
             OceanCulling = false;

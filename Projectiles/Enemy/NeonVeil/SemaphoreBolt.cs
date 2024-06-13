@@ -21,7 +21,7 @@ namespace StarsAbove.Projectiles.Enemy.NeonVeil
 			Projectile.hostile = true;         //Can the projectile deal damage to the player?
 			//projectile.minion = true;           //Is the projectile shoot by a ranged weapon?
 			Projectile.penetrate = 99;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			Projectile.timeLeft = 900;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			Projectile.timeLeft = 240;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			Projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in) Make sure to delete this if you aren't using an aiStyle that fades in. You'll wonder why your projectile is invisible.
 			Projectile.light = 0.5f;            //How much light emit around the projectile
 			Projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
@@ -49,8 +49,10 @@ namespace StarsAbove.Projectiles.Enemy.NeonVeil
 
 		public override void AI()
 		{
+			Projectile.scale = 0.5f;
 			DrawOffsetX = -14;
 			DrawOriginOffsetY = -12;
+			Projectile.velocity *= 1.01f;
 		}
 
 		public override void OnKill(int timeLeft)

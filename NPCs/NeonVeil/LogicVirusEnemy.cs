@@ -38,7 +38,7 @@ namespace StarsAbove.NPCs.NeonVeil
 			
 			NPC.damage = 20;
 			NPC.defense = 5;
-			NPC.lifeMax = 400;
+			NPC.lifeMax = 200;
 
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
@@ -51,16 +51,29 @@ namespace StarsAbove.NPCs.NeonVeil
 			
 			NPC.aiStyle = NPCAIStyleID.Fighter;
 			AnimationType = NPCID.GigaZapper;
-			AIType = NPCID.GigaZapper;
+			AIType = NPCID.CorruptBunny;
 
 			NPC.noTileCollide = false;
-			
-		}
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
+            SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.NeonVeilBiome>().Type };
+
+        }
+        public override void AI()
+        {
+            Lighting.AddLight(NPC.Center, TorchID.Orange);
+
+            int dustType = DustID.LifeDrain;
+            int dustIndex = Dust.NewDust(NPC.position, NPC.width, NPC.height, dustType);
+            Dust dust = Main.dust[dustIndex];
+            dust.noGravity = true;
+            dust.velocity.X = dust.velocity.X + Main.rand.Next(-50, 51) * 0.01f;
+            dust.velocity.Y = dust.velocity.Y + Main.rand.Next(-50, 51) * 0.01f;
+            dust.scale *= 0.5f + Main.rand.Next(-30, 31) * 0.01f;
+        }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 
 			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandedTenebrium>(), 4, 1, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NeonTelemetry>(), 12, 1, 2));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NeonTelemetry>(), 5, 1, 2));
 
         }
         public override void OnKill()

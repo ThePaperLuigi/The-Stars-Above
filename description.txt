@@ -4,11 +4,13 @@ Thank you everyone for over 1 million downloads!
 [c/BC84FF:Please check the Discord for the latest info + wiki!]
 [c/ECAD1B:Click the homepage link below!]
 This mod includes:
-- Two fully furnished deuteroganists with over 1000+ 
-   lines of dialogue and custom UI to support it
+- Two fully furnished & voiced deuteroganists with over 
+   1000+ lines of dialogue and custom UI to support it
 - Modular, upgradable ultimate abilities that scale
    with boss progression
 - Upgrade weapons with interesting and varied collectables
+- Visit the Neon Veil, a huge new unique biome in the
+  Underworld with unique loot and foes
 - Explore many unique premade locations throughout
    the galaxy with help from Subworld Library
 - 24 custom unlockable passive abilities present in a

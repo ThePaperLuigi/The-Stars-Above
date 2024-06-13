@@ -5635,7 +5635,9 @@ Mods: {
 			ParacausalEntity.DisplayName: 超因果看守者
 			ParacausalEnigma.DisplayName: 超因果谜团
 			StarfarerBossWallsNPC.DisplayName: 星海旅者墙 N P C
-			// SemaphoreEnemy.DisplayName: Semaphore Enemy
+			// SemaphoreEnemy.DisplayName: Semaphore
+			// LogicBombEnemy.DisplayName: Logic Bomb
+			// LogicVirusEnemy.DisplayName: Logic Virus
 		}
 
 		BossAttacks: {
@@ -15899,6 +15901,11 @@ Mods: {
 			WolvesbaneBlastCooldown: {
 				// DisplayName: Wolvesbane Blast Cooldown
 				// Description: Mods.StarsAbove.Buffs.WolvesbaneBlastCooldown.Description
+			}
+
+			NeonVeilBuff: {
+				// DisplayName: Veilstruck
+				// Description: Pickaxe speed is reduced and certain blocks can not be destroyed
 			}
 		}
 

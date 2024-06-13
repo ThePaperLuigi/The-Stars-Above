@@ -9,10 +9,11 @@ using Terraria.ModLoader;
 using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.Utilities;
 using Terraria.DataStructures;
-using System.Numerics;
 using StarsAbove.Buffs.Boss;
 using System;
 using StarsAbove.Projectiles.Enemy.NeonVeil;
+using StarsAbove.Systems;
+using Terraria.Audio;
 
 namespace StarsAbove.NPCs.NeonVeil
 {
@@ -39,11 +40,10 @@ namespace StarsAbove.NPCs.NeonVeil
 			
 			NPC.damage = 20;
 			NPC.defense = 0;
-			NPC.lifeMax = 400;
+			NPC.lifeMax = 200;
 
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
-
 			//NPC.Opacity = 255f;
 			//NPC.timeLeft = 640;
 			NPC.value = Item.buyPrice(0, 0, 5, 45);
@@ -51,24 +51,28 @@ namespace StarsAbove.NPCs.NeonVeil
 			NPC.knockBackResist = 0.5f;
 			
 			NPC.aiStyle = NPCAIStyleID.Vulture;
-			AnimationType = NPCID.Vulture;
-			AIType = NPCID.Vulture;
+			AnimationType = NPCID.Raven;
+			AIType = NPCID.Raven;
 
 			NPC.noTileCollide = false;
-			
-		}
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
+            SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.NeonVeilBiome>().Type };
+
+        }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 
 			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BandedTenebrium>(), 4, 1, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NeonTelemetry>(), 12, 1, 2));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NeonTelemetry>(), 5, 1, 2));
 
         }
         public override void AI()
-		{
-			NPC.ai[0]++;
+        {
+            NPC.noTileCollide = true;
+
+            NPC.ai[0]++;
 			if (NPC.ai[0] >= 240)
-			{
+            {
+
                 for (int i = 0; i < Main.maxPlayers; i++)
                 {
                     Player p = Main.player[i];
@@ -76,12 +80,23 @@ namespace StarsAbove.NPCs.NeonVeil
                     {
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), p.Center.X, p.Center.Y - 200, 0, 0, ModContent.ProjectileType<SemaphoreBolt>(), NPC.damage, 0f, Main.myPlayer);
+                            for (int i3 = 0; i3 < 50; i3++)
+                            {
+                                SoundEngine.PlaySound(SoundID.DD2_DarkMageAttack, NPC.Center);
+
+                                Vector2 position = Vector2.Lerp(new Vector2(p.Center.X, p.Center.Y - 700), NPC.Center, (float)i3 / 50);
+                                Dust d = Dust.NewDustPerfect(position, DustID.LifeDrain, null, 240, default, 2f);
+                                d.fadeIn = 0.3f;
+                                d.noLight = true;
+                                d.noGravity = true;
+                            }
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), p.Center.X, p.Center.Y - 700, 0, 3, ModContent.ProjectileType<SemaphoreBolt>(), NPC.damage, 0f, Main.myPlayer);
                         }
                     }
                 }
+				NPC.ai[0] = 0;
             }
-			Lighting.AddLight(NPC.Center, TorchID.White);
+			Lighting.AddLight(NPC.Center, TorchID.Orange);
 			NPC.velocity *= 0.90f;
 			/*
             */

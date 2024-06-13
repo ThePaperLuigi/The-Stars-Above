@@ -9466,6 +9466,10 @@ namespace StarsAbove
                 Player.GetDamage(DamageClass.Generic) -= 0.5f;
                 Player.statDefense *= 0.5f;
             }
+            if(Player.InModBiome<NeonVeilBiome>())
+            {
+                Player.AddBuff(BuffType<NeonVeilBuff>(), 2);
+            }
         }
         public override bool CanUseItem(Item item)
         {
