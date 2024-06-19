@@ -631,15 +631,12 @@ namespace StarsAbove.Systems
 
             base.PostUpdateBuffs();
         }
-        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
+        public override void UpdateDead()
         {
-            if (SubworldSystem.Current != null) //Within subworlds...
+            if (Player.whoAmI == Main.myPlayer && Player.respawnTimer <= 60 && SubworldSystem.AnyActive<StarsAbove>())
             {
                 SubworldSystem.Exit();
-
             }
-
-            base.Kill(damage, hitDirection, pvp, damageSource);
         }
 
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)

@@ -3086,8 +3086,18 @@ Mods: {
 				}
 
 				NormalIdleDialogue2: {
-					Asphodene.1: It's fine to relax, but you can't forget our end goal, now.
-					Eridani.1: Rest is important.. Take as much time as you need.
+					Asphodene: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
+						1: Rest is quite important. Don't neglect breaks, or else!
+
+					}
+
+					Eridani: {
+						Name: Idle dialogue (Pre-hardmode)
+						Description: ""
+						1: It's important to take breaks from time to time. You've probably heard this a lot already, but it's still relevant!
+					}
 				}
 
 				NormalIdleDialogue3: {
@@ -5925,9 +5935,8 @@ Mods: {
 			ToMurder: {
 				Tooltip:
 					'''
-					Activates only when Defense is below 40
-					Gain 5% damage, increased to 15% below 10 Defense
 					Enemies are drastically more likely to target you
+					When Defense is below 40, gain 5% damage, increased to 15% below 10 Defense	
 					'Can you get away with it?'
 					'''
 				DisplayName: "'To Murder'"
