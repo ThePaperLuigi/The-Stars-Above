@@ -33,8 +33,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             Projectile.light = 1f;            //How much light emit around the projectile
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            DrawOriginOffsetY = -200;
-            DrawOffsetX = 48;
+            
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
@@ -57,7 +56,8 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 		}*/
         public override void AI()
         {
-
+            DrawOriginOffsetY = -200;
+            DrawOffsetX = 48;
 
             Projectile.ai[0] += 1f;
 
@@ -80,14 +80,14 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 
                 float rotationValue = MathHelper.ToRadians(Main.rand.Next(0, 364));
                 Projectile.rotation += rotationValue - MathHelper.ToRadians(90);
-                for (int d = 0; d < 2; d++)
+                for (int d = 0; d < 12; d++)
                 {
                     float Speed2 = Main.rand.NextFloat(-18, -38);  //projectile speed
                     Vector2 perturbedSpeed = new Vector2((float)(Math.Cos(rotationValue) * Speed2 * -1), (float)(Math.Sin(rotationValue) * Speed2 * -1)).RotatedByRandom(MathHelper.ToRadians(5)); // 30 degree spread.
                     int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemEmerald, perturbedSpeed.X, perturbedSpeed.Y, 150, default, 1f); ;
                     Main.dust[dustIndex].noGravity = true;
                 }
-                for (int d = 0; d < 3; d++)
+                for (int d = 0; d < 13; d++)
                 {
                     float Speed3 = Main.rand.NextFloat(-20, -44);  //projectile speed
                     Vector2 perturbedSpeed = new Vector2((float)(Math.Cos(rotationValue) * Speed3 * -1), (float)(Math.Sin(rotationValue) * Speed3 * -1)).RotatedByRandom(MathHelper.ToRadians(10)); // 30 degree spread.

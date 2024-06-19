@@ -47,7 +47,11 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 
         public override void AI() {
 			Player projOwner = Main.player[Projectile.owner];
-			Projectile.ai[0]++;
+            if (Projectile.ai[0] == 0)
+            {
+
+            }
+            Projectile.ai[0]++;
             Projectile.ai[2] += 0.03f;
 
             if (Projectile.ai[0] >= 40)

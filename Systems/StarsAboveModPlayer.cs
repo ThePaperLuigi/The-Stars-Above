@@ -2520,7 +2520,7 @@ namespace StarsAbove
                     //If the attack was a crit
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat = (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2533,7 +2533,7 @@ namespace StarsAbove
                 {
                     //If the attack was not a crit
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat = (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2582,7 +2582,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.016f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.016f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2590,7 +2590,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.016f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.016f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2605,7 +2605,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2614,7 +2614,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2630,7 +2630,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.33f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.33f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2638,7 +2638,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.33f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.33f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2653,7 +2653,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2661,7 +2661,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2676,7 +2676,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2684,7 +2684,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2699,7 +2699,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 8f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 8f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2707,7 +2707,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 8f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 8f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2722,7 +2722,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2730,7 +2730,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2745,7 +2745,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2754,7 +2754,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2770,7 +2770,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2778,7 +2778,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2793,7 +2793,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2802,7 +2802,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2818,7 +2818,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2827,7 +2827,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2848,11 +2848,11 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2863,11 +2863,11 @@ namespace StarsAbove
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2892,11 +2892,11 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     }
 
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2908,11 +2908,11 @@ namespace StarsAbove
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2934,11 +2934,11 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.08f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.08f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.25f;
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2949,11 +2949,11 @@ namespace StarsAbove
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.08f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.08f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.25f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2970,12 +2970,12 @@ namespace StarsAbove
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (target.HasBuff(BuffID.OnFire))
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 4;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 4;
 
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 5;
 
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2985,7 +2985,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 5;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 5;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
 
@@ -3014,7 +3014,7 @@ namespace StarsAbove
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -3022,7 +3022,7 @@ namespace StarsAbove
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -3034,35 +3034,118 @@ namespace StarsAbove
 
                 //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
 
-                int uniqueCrit = Main.rand.Next(100);
-                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                //Complete Combustion
+                if (target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks >= 100)
                 {
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks -= 100;
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)); //This Nova doesn't have crit scaling, only on the final attack
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
+                    float dustAmount = 40f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X - 10, target.Center.Y) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X + 10, target.Center.Y) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 10) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X , target.Center.Y + 10) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
+                    CombatText.NewText(textPos, new Color(255, 12, 12, 110), $"{Math.Round((float)(novaCritDamage * (1 + novaCritDamageMod/100)))}", true, false);
+                    modifiers.HideCombatText();
+                    return;
+                }
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    float dustAmount = 40f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = target.Center + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = target.Center + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+                    }
+
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 12;
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)); //This Nova doesn't have crit scaling, only on the final attack
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 10 - Main.rand.Next(0, 20), target.width, target.height);
+                    CombatText.NewText(textPos, new Color(155, 12, 12, 110), $"{Math.Round((float)(novaDamage * (1 + novaDamageMod/100)))}", false, false);
+                    modifiers.HideCombatText();
                 }
                 else
                 {
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 4;
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
 
             }
-            //Complete Combustion
-            if (proj.type == ProjectileType<FireflySlash>())
-            {
-                modifiers.SetCrit();
-                modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
-                ModifyHitEnemyWithNova(target, ref modifiers);
-                ModifyHitEnemyWithNovaCrit(target, ref modifiers);
-
-            }
+            
             if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
@@ -3075,7 +3158,7 @@ namespace StarsAbove
                     //If the attack was a crit
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     if (chosenStarfarer == 1)
                     {
                         modifiers.FinalDamage.Flat += baseNovaDamageAdd / 10;
@@ -3088,7 +3171,7 @@ namespace StarsAbove
                 {
                     //If the attack was not a crit
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -8218,8 +8301,8 @@ namespace StarsAbove
                                 CombatText.NewText(textPos2, new Color(255, 132, 2, 240), $"Critical cast!", false, false);
 
                                 Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 40, Player.width, Player.height); //Heal
-                                CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(novaCritDamage * (1 + novaCritDamageMod))}", false, false);
-                                Player.statLife += (int)(novaCritDamage * (1 + novaCritDamageMod));
+                                CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(novaCritDamage * (1 + novaCritDamageMod/100))}", false, false);
+                                Player.statLife += (int)(novaCritDamage * (1 + novaCritDamageMod/100));
                                 Player.AddBuff(BuffType<SolemnAegis>(), 15 * 60);
                             }
                             else

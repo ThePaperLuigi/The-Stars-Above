@@ -47,7 +47,11 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 
         public override void AI() {
 			Player projOwner = Main.player[Projectile.owner];
-			Projectile.ai[0]++;
+            if (Projectile.ai[0] == 0)
+            {
+
+            }
+            Projectile.ai[0]++;
             Projectile.ai[2] += 0.03f;
 
             if (Projectile.ai[0] >= 60)
@@ -59,7 +63,6 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
         public override void OnKill(int timeLeft)
         {
 
-            Projectile.NewProjectile(Projectile.GetSource_FromAI(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, ModContent.ProjectileType<TsukiWormhole>(), 0, 0f, Main.myPlayer);
 
 
             for (int g = 0; g < 4; g++)
