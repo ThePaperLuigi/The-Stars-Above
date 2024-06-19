@@ -116,7 +116,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                     
                     Projectile.alpha = 255;
 
-                    if(Main.rand.NextBool())
+                    if(Main.rand.NextBool(3))
                     {
                         int type = ProjectileType<FireflyKick>();
                         Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
@@ -146,7 +146,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                             int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y - 40, type, Projectile.damage, 0f, owner.whoAmI);
 
                         }
-
+                        Projectile.ai[0] = 0;
                     }
                     else
                     {
@@ -178,11 +178,11 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                             int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
 
                         }
-                        
-                        
+
+                        Projectile.ai[0] = 30;
                     }
                     
-                    Projectile.ai[0] = 0;
+                   
                 }
             }
             if(foundTarget)

@@ -3044,7 +3044,7 @@ namespace StarsAbove
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
-                    float dustAmount = 40f;
+                    float dustAmount = 60f;
                     float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
                     for (int i = 0; i < dustAmount; i++)
                     {
@@ -3054,7 +3054,7 @@ namespace StarsAbove
                         int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
                         Main.dust[dust].scale = 1.5f;
                         Main.dust[dust].noGravity = true;
-                        Main.dust[dust].position = new Vector2(target.Center.X - 10, target.Center.Y) + spinningpoint5;
+                        Main.dust[dust].position = new Vector2(target.Center.X - 50, target.Center.Y) + spinningpoint5;
                         Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
                     }
                     for (int i = 0; i < dustAmount; i++)
@@ -3065,7 +3065,7 @@ namespace StarsAbove
                         int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
                         Main.dust[dust].scale = 1.5f;
                         Main.dust[dust].noGravity = true;
-                        Main.dust[dust].position = new Vector2(target.Center.X + 10, target.Center.Y) + spinningpoint5;
+                        Main.dust[dust].position = new Vector2(target.Center.X + 50, target.Center.Y) + spinningpoint5;
                         Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
                     }
                     for (int i = 0; i < dustAmount; i++)
@@ -3076,7 +3076,7 @@ namespace StarsAbove
                         int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
                         Main.dust[dust].scale = 1.5f;
                         Main.dust[dust].noGravity = true;
-                        Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 10) + spinningpoint5;
+                        Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 50) + spinningpoint5;
                         Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
                     }
                     for (int i = 0; i < dustAmount; i++)
@@ -3087,8 +3087,31 @@ namespace StarsAbove
                         int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
                         Main.dust[dust].scale = 1.5f;
                         Main.dust[dust].noGravity = true;
-                        Main.dust[dust].position = new Vector2(target.Center.X , target.Center.Y + 10) + spinningpoint5;
+                        Main.dust[dust].position = new Vector2(target.Center.X , target.Center.Y + 50) + spinningpoint5;
                         Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = target.Center + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant + MathHelper.ToRadians(90));
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = target.Center + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
                     }
 
                     Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
@@ -3100,30 +3123,38 @@ namespace StarsAbove
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
                 {
-                    float dustAmount = 40f;
+                    float dustAmount = 44f;
                     float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
-                    for (int i = 0; i < dustAmount; i++)
+                    if(Main.rand.NextBool())
                     {
-                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
-                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
-                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
-                        Main.dust[dust].scale = 1.5f;
-                        Main.dust[dust].noGravity = true;
-                        Main.dust[dust].position = target.Center + spinningpoint5;
-                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
                     }
-                    for (int i = 0; i < dustAmount; i++)
+                    else
                     {
-                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
-                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
-                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
-                        Main.dust[dust].scale = 1.5f;
-                        Main.dust[dust].noGravity = true;
-                        Main.dust[dust].position = target.Center + spinningpoint5;
-                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
                     }
+                    
+                    
 
                     target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 12;
                     modifiers.SetCrit();
