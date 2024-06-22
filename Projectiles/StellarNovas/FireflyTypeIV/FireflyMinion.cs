@@ -70,13 +70,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 return;
             }
             Visuals(owner);
-            if(owner.HasBuff(BuffType<FireflyActive>()))
-            {
-                if (owner.buffTime[owner.FindBuffIndex(BuffType<FireflyActive>())] > 60)
-                {
-                    Projectile.ai[0]++;
-                }
-            }
+            
             
             
             if (firstSpawn)
@@ -101,16 +95,14 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 {
                     firstSpawn = false;
                 }
-                return;
             }
 
             GeneralBehavior(owner, out Vector2 vectorToIdlePosition, out float distanceToIdlePosition);
             SearchForTargets(owner, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
             Movement(foundTarget, distanceFromTarget, targetCenter, distanceToIdlePosition, vectorToIdlePosition);
             
-            if (Projectile.ai[0] > 70)
+            if (Projectile.ai[0] > 70 && !firstSpawn)
             {
-
                 if (foundTarget)
                 {
                     
@@ -147,6 +139,8 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 
                         }
                         Projectile.ai[0] = 0;
+                        Projectile.ai[2] = 60;
+
                     }
                     else
                     {
@@ -157,11 +151,11 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 
                         if (targetCenter.X > Projectile.Center.X)
                         {
-                            position = new Vector2(targetCenter.X - 600, targetCenter.Y);
+                            position = new Vector2(targetCenter.X - 600, targetCenter.Y + Main.rand.Next(-100, 100));
                         }
                         else if (targetCenter.X < Projectile.Center.X)
                         {
-                            position = new Vector2(targetCenter.X + 600, targetCenter.Y);
+                            position = new Vector2(targetCenter.X + 600, targetCenter.Y + Main.rand.Next(-100, 100));
                         }
 
 
@@ -178,6 +172,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                             int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
 
                         }
+                        Projectile.ai[2] = 40;
 
                         Projectile.ai[0] = 30;
                     }
@@ -201,7 +196,48 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 Projectile.spriteDirection = owner.direction;
 
             }
-            
+            if (owner.HasBuff(BuffType<FireflyActive>()))
+            {
+                if (owner.buffTime[owner.FindBuffIndex(BuffType<FireflyActive>())] > 180)
+                {
+                    Projectile.ai[0]++;
+                }
+                else
+                {
+                    Projectile.ai[2]--;
+                    if (Projectile.ai[2] == 0)
+                    {
+                        int type = ProjectileType<FireflySkill>();
+                        Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
+
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, Projectile.Center);
+
+                        if (targetCenter.X > Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X - 800, targetCenter.Y);
+                        }
+                        else if (targetCenter.X < Projectile.Center.X)
+                        {
+                            position = new Vector2(targetCenter.X + 800, targetCenter.Y);
+                        }
+
+
+                        float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
+
+                        float launchSpeed = 66f;
+                        Vector2 mousePosition = owner.GetModPlayer<StarsAbovePlayer>().playerMousePos;
+                        Vector2 direction = Vector2.Normalize(targetCenter - position);
+                        Vector2 velocity = direction * launchSpeed;
+                        Vector2 adjustedVelocity = velocity * 0.04f;
+
+                        if (Main.myPlayer == owner.whoAmI)
+                        {
+                            int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, owner.whoAmI);
+
+                        }
+                    }
+                }
+            }
         }
 
         public override void OnKill(int timeLeft)
@@ -393,7 +429,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
         private void Visuals(Player owner)
         {
             Projectile.alpha = Math.Clamp(Projectile.alpha, 0, 255);
-            if (owner.ownedProjectileCounts[ProjectileType<FireflySlash>()] > 0 || owner.ownedProjectileCounts[ProjectileType<FireflyKick>()] > 0)
+            if (owner.ownedProjectileCounts[ProjectileType<FireflySlash>()] > 0 || owner.ownedProjectileCounts[ProjectileType<FireflyKick>()] > 0 || owner.ownedProjectileCounts[ProjectileType<FireflySkill>()] > 0)
             {
                 activeAttack = true;
                 Projectile.alpha = 255;
@@ -401,7 +437,7 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 {
                     Projectile projTarget = Main.projectile[i];
 
-                    if (projTarget.active && (projTarget.type == ProjectileType<FireflySlash>() || projTarget.type == ProjectileType<FireflyKick>()) && projTarget.owner == owner.whoAmI)
+                    if (projTarget.active && (projTarget.type == ProjectileType<FireflySlash>() || projTarget.type == ProjectileType<FireflyKick>() || projTarget.type == ProjectileType<FireflySkill>()) && projTarget.owner == owner.whoAmI)
                     {
                         Projectile.Center = new Vector2(projTarget.Center.X, projTarget.Center.Y);
                         Projectile.velocity = projTarget.velocity;

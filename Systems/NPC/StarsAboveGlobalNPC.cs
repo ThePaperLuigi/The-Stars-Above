@@ -1074,7 +1074,6 @@ namespace StarsAbove.Systems
         {
             if (npc.type == NPCID.QueenSlimeBoss)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<RoyalSlimePrism>(), 4));
                 npcLoot.Add(ItemDropRule.Common(ItemType<YoumuHilt>(), 4));
 
             }
@@ -1141,7 +1140,6 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.DukeFishron)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<TyphoonPrism>(), 4));
             }
             if (npc.type == NPCID.CultistBoss)
             {

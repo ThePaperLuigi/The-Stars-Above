@@ -663,10 +663,6 @@ namespace StarsAbove.Systems
             if (!DisableDamageModifier)
             {
                 bossReductionMod = 0;
-                if (npc.type == NPCType<DummyEnemy>())
-                {
-                    bossReductionMod = 500;
-                }
                 if (npc.type == NPCType<VagrantBoss>())
                 {
                     bossReductionMod = 700;

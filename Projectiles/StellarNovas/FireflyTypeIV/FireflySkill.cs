@@ -1,8 +1,9 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
- 
+using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.NPCs.Tsukiyomi;
+using StarsAbove.Projectiles.Melee.ShadowlessCerulean;
 using StarsAbove.Projectiles.Melee.Umbra;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
@@ -16,47 +17,61 @@ using static Terraria.ModLoader.ModContent;
 
 namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 {
-	public class FireflySlash : ModProjectile
-	{
-		public override void SetStaticDefaults() {
-			Main.projFrames[Projectile.type] = 4;
-			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 45;    //The length of old position to be recorded
-			ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
-		}
+    public class FireflySkill : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 2;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;    //The length of old position to be recorded
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;        //The recording mode
+        }
 
-		public override void SetDefaults() {
-			Projectile.width = 200;
-			Projectile.height = 200;
-			Projectile.aiStyle = -1;
-			Projectile.penetrate = -1;
-			Projectile.scale = 1f;
-			Projectile.alpha = 255;
-			Projectile.timeLeft = 280;
-			Projectile.hide = false;
-			Projectile.ownerHitCheck = false;
-			Projectile.tileCollide = false;
-			Projectile.friendly = true;
-			Projectile.hostile = false;
+        public override void SetDefaults()
+        {
+            Projectile.width = 200;
+            Projectile.height = 200;
+            Projectile.aiStyle = -1;
+            Projectile.penetrate = -1;
+            Projectile.scale = 1f;
+            Projectile.alpha = 255;
+            Projectile.timeLeft = 100;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = false;
+            Projectile.tileCollide = false;
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.light = 1f;
 
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
         }
-		bool targetWasHit = false;
+        bool targetWasHit = false;
+        Vector2 targetPosition = Vector2.Zero;
+        Vector2 savedVelocity = Vector2.Zero;
         public override bool PreDraw(ref Color lightColor)
         {
+            if(Projectile.alpha < 100)
             default(Effects.FireflyVFX).Draw(Projectile);
 
             return true;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+
             Player player = Main.player[Projectile.owner];
+            savedVelocity = Projectile.velocity;
+            targetWasHit = true;
+            targetPosition = target.Center;
+            Projectile.friendly = false;
+            Projectile.alpha = 255;
             if (Main.myPlayer == player.whoAmI)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromAI(), new Vector2(target.Center.X, target.Center.Y), Vector2.Zero, ModContent.ProjectileType<FireflySlashFollowUp>(), Projectile.damage, 0f, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.GetSource_FromAI(), targetPosition, Vector2.Zero, ModContent.ProjectileType<FireflySkillCombo>(), Projectile.damage, 0f, Main.myPlayer);
 
             }
-
+            
+            Projectile.velocity = Vector2.Zero;
+            Projectile.ai[2] = 1;
             for (int d = 0; d < 20; d++)//Visual effects
             {
                 Vector2 perturbedSpeed = new Vector2(Projectile.velocity.X, Projectile.velocity.Y).RotatedByRandom(MathHelper.ToRadians(1));
@@ -95,10 +110,19 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
             }
 
         }
-        public override void AI() {
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+        {
+            hitbox.Width /= 2;
+           
+            base.ModifyDamageHitbox(ref hitbox);
+        }
+        public override void AI()
+        {
+            Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X > 0).ToDirectionInt();
+            Projectile.rotation = (float)(Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : Math.PI));
             int drawOffset = 0;
-			if(Projectile.velocity.X < 0)
-			{
+            if (Projectile.velocity.X < 0)
+            {
                 Projectile.spriteDirection = -1;
                 DrawOffsetX = -80;
                 drawOffset = -160;
@@ -108,47 +132,94 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 DrawOffsetX = -120;
                 drawOffset = 160;
             }
-            //DrawOriginOffsetY = -90;
-            Projectile.alpha -= 20;
-			Projectile.ai[0]++;
-			DrawOriginOffsetY = -110;
+            
+            Projectile.ai[0]++;
+            if (Projectile.ai[2] != 0)
+            {
+                Projectile.ai[1]++;
 
-            Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X > 0).ToDirectionInt();
-            Projectile.rotation = (float)(Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : Math.PI));
+            }
+            else
+            {
+                Projectile.alpha -= 20;
+            }
 
-            if (Projectile.ai[0] > 4)
+            DrawOriginOffsetY = -110;
+
+            if (Projectile.ai[1] >= 60 && !Projectile.friendly)
             {
 
-                Projectile.velocity *= 0.92f;
-                int frameSpeed = 5;
-
-                Projectile.frameCounter++;
-                if (Projectile.frameCounter >= frameSpeed)
+                //Attack finished. Resume velocity and go offscreen
+                if(Projectile.frame == 0)
                 {
-                    Projectile.frameCounter = 0;
                     Projectile.frame++;
-					if(Projectile.frame == 2)
-					{
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_YunlaiSwing0, Projectile.Center);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceDurandalHit, Projectile.Center);
+                    Projectile.velocity = savedVelocity;
 
-                    }
-                    if (Projectile.frame >= Main.projFrames[Projectile.type])
-                    {
-                        Projectile.frame = Main.projFrames[Projectile.type] - 1;
-                    }
                 }
-				
+                Projectile.alpha = 0;
+
+                if (Main.player[Projectile.owner].HasBuff(BuffType<FireflyActive>()))
+                {
+                    Projectile.velocity *= 0.92f;
+
+                }
+
+            }
+            if (Projectile.ai[0] == 7)
+            {
+                int dustAmount = 40;
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 32f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 8f;
+                }
+            }
+            if (Projectile.ai[0] == 9)
+            {
+                int dustAmount = 40;
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 32f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 7f;
+                }
+            }
+            if (Projectile.ai[0] == 10)
+            {
+                int dustAmount = 40;
+
+                for (int i = 0; (float)i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy((float)i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 32f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation());
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+                }
             }
             if (Projectile.ai[0] == 1)
             {
                 for (int g = 0; g < 4; g++)
                 {
-                    int goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f + drawOffset, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), Projectile.velocity/20, Main.rand.Next(61, 64), 1f);
+                    int goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f + drawOffset, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), Projectile.velocity / 20, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-                    goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f + drawOffset, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), Projectile.velocity/20, Main.rand.Next(61, 64), 1f);
+                    goreIndex = Gore.NewGore(null, new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f + drawOffset, Projectile.position.Y + (float)(Projectile.height / 2) + 24f), Projectile.velocity / 20, Main.rand.Next(61, 64), 1f);
                     Main.gore[goreIndex].scale = 1.5f;
                     Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
                     Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
@@ -198,19 +269,10 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
 
                 }
             }
+
             
-            if (Projectile.ai[0] > 35)
-            {
-                Projectile.Kill();
-                Projectile.alpha += 80;
 
-            }
-            if (Projectile.alpha > 260)
-			{
-				
-			}
+        }
 
-		}
-		
-	}
+    }
 }

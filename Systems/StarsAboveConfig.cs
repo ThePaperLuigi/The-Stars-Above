@@ -17,6 +17,11 @@ namespace StarsAbove.Systems
         public bool DisableStellarNovaCutIns;
 
         public bool DisableStarfarerVoices;
+        [Increment(1)]
+        [Range(3, 20)]
+        [DefaultValue(5)]
+        [Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
+        public int StarfarerVoiceCooldown;
 
         public bool DisableStellarNovaDialogue;
 
@@ -105,6 +110,8 @@ namespace StarsAbove.Systems
             //StarsAbovePlayer.noLockedCamera = DisableLockedCamera;
             StarsAbovePlayer.disablePrompts = DisableStarfarerCommentary;
             StarsAbovePlayer.starfarerPromptCooldownMax = StarfarerPromptCooldown;
+            StarsAbovePlayer.globalVoiceDelayMax = StarfarerVoiceCooldown;
+
             StarsAbovePlayer.instantText = InstantText;
             StarsAbovePlayer.disablePromptsBuffs = DisableStarfarerCommentaryBuffs;
             StarsAbovePlayer.disablePromptsCombat = DisableStarfarerCommentaryCombat;

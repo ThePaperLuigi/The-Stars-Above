@@ -78,6 +78,9 @@ namespace StarsAbove
         public bool SyncWorldProgress = false;
         public bool AlwaysSyncWorldProgress = false;
 
+        //This timer is set to a static value to prevent voiced dialogue from overlapping.
+        public float globalVoiceDelayTimer = 0;
+        public static float globalVoiceDelayMax = 5 * 60; //Minimum 5 seconds between voiced dialogue.
 
         public static bool BossEnemySpawnModDisabled = false;
 
@@ -3028,7 +3031,7 @@ namespace StarsAbove
                 }
 
             }
-            if (proj.type == ProjectileType<FireflySlash>() || proj.type == ProjectileType<FireflySlashFollowUp>() || proj.type == ProjectileType<FireflyKick>() || proj.type == ProjectileType<FireflyKickExplosion>())
+            if (proj.type == ProjectileType<FireflySlash>() || proj.type == ProjectileType<FireflySlashFollowUp>() || proj.type == ProjectileType<FireflyKick>() || proj.type == ProjectileType<FireflySkill>() || proj.type == ProjectileType<FireflyKickExplosion>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
@@ -3037,6 +3040,8 @@ namespace StarsAbove
                 //Complete Combustion
                 if (target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks >= 100)
                 {
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+
                     target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks -= 100;
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
@@ -3156,7 +3161,7 @@ namespace StarsAbove
                     
                     
 
-                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 12;
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 8;
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)); //This Nova doesn't have crit scaling, only on the final attack
@@ -3168,7 +3173,7 @@ namespace StarsAbove
                 }
                 else
                 {
-                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 4;
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 2;
                     modifiers.DisableCrit();
                     modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
@@ -3176,7 +3181,159 @@ namespace StarsAbove
                 }
 
             }
-            
+            if (proj.type == ProjectileType<FireflySkillCombo>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+
+                
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    float dustAmount = 44f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    if (Main.rand.NextBool())
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
+                    }
+
+
+
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 8;
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod / 100)); //This Nova doesn't have crit scaling, only on the final attack
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 10 - Main.rand.Next(0, 20), target.width, target.height);
+                    CombatText.NewText(textPos, new Color(155, 12, 12, 110), $"{Math.Round((float)(novaDamage * (1 + novaDamageMod / 100)))}", false, false);
+                    modifiers.HideCombatText();
+                }
+                else
+                {
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 2;
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod / 100));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<FireflyComboFinisher>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+
+                target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks = 0;
+                modifiers.SetCrit();
+                modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod / 100));
+                ModifyHitEnemyWithNova(target, ref modifiers);
+                ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                float dustAmount = 60f;
+                float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X - 50, target.Center.Y) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X + 50, target.Center.Y) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 50) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y + 50) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                }
+
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant + MathHelper.ToRadians(90));
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                }
+
+                Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
+                CombatText.NewText(textPos, new Color(255, 12, 12, 110), $"{Math.Round((float)(novaCritDamage * (1 + novaCritDamageMod / 100)))}", true, false);
+                modifiers.HideCombatText();
+                return;
+
+            }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
@@ -5996,6 +6153,10 @@ namespace StarsAbove
                 {
                     starfarerOutfit = 6;
                 }
+                if (starfarerArmorEquipped.type == ItemType<RenegadeTechnomancerSynthweave>())
+                {
+                    starfarerOutfit = 7;
+                }
             }
             if (starfarerVanityEquipped != null)
             {
@@ -6022,6 +6183,10 @@ namespace StarsAbove
                 if (starfarerVanityEquipped.type == ItemType<GarmentsOfWinterRainAttire>())
                 {
                     starfarerOutfitVanity = 6;
+                }
+                if (starfarerVanityEquipped.type == ItemType<RenegadeTechnomancerSynthweave>())
+                {
+                    starfarerOutfitVanity = 7;
                 }
                 if (starfarerVanityEquipped.type == ItemType<FamiliarLookingAttire>())
                 {
@@ -8239,8 +8404,54 @@ namespace StarsAbove
                 }
                 else
                 //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
-                if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
+                if (StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
+                    //If nova is not full prevent nova use
+                    if(novaGauge < trueNovaGaugeMax)
+                    {
+                        //If certain abilities allow the player to use the Nova early...
+                        if(chosenStarfarer == 1 && chosenStellarNova == 8 && !Player.HasBuff(BuffType<FireflyActive>()))
+                        {
+                            Player.AddBuff(BuffType<AsphodeneFireflyCooldown>(), (60 * 90));
+                            int type = ProjectileType<FireflySkill>();
+                            Vector2 position = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
+                            Vector2 npcCenter = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                            {
+                                NPC npc = Main.npc[i];
+                                if (npc.active && npc.Distance(Player.Center) < 1000 && npc.CanBeChasedBy())
+                                {
+                                    position = npc.Center;
+                                    npcCenter = npc.Center;
+                                }
+                            }
+                            if (Main.rand.NextBool())
+                            {
+                                position = new Vector2(position.X - 900, position.Y + Main.rand.Next(-300,300));
+                            }
+                            else
+                            {
+                                position = new Vector2(position.X + 900, position.Y + Main.rand.Next(-300, 300));
+                            }
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, position);
+
+
+                            float launchSpeed = 66f;
+                            Vector2 direction = Vector2.Normalize(npcCenter - position);
+                            Vector2 velocity = direction * launchSpeed;
+
+                            if (Main.myPlayer == Player.whoAmI)
+                            {
+                                int index = Projectile.NewProjectile(Player.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, 1, 0f, Player.whoAmI);
+
+                            }
+                            return;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
                     if(chosenStellarNova != 8)
                     StellarNovaCutIn();
                     StellarNovaVoice();
@@ -8474,7 +8685,8 @@ namespace StarsAbove
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation, Player.Center);
 
-                            Player.AddBuff(BuffType<FireflyActive>(), trueNovaGaugeMax / 8 * 60 + 120);
+
+                            Player.AddBuff(BuffType<FireflyActive>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60) + (int)((trueNovaGaugeMax * 0.05f) * 60) + 120);
                             //DEBUG
                             //Player.AddBuff(BuffType<FireflyActive>(), 18000);
 

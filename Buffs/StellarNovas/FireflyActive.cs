@@ -17,7 +17,11 @@ namespace StarsAbove.Buffs.StellarNovas
         float modifier;
         public override void Update(Player player, ref int buffIndex)
         {
-            
+         
+            if(player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer != 2)
+            {
+                player.GetModPlayer<StarsAbovePlayer>().novaGauge = 0;
+            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)

@@ -3090,7 +3090,6 @@ Mods: {
 						Name: Idle dialogue (Pre-hardmode)
 						Description: ""
 						1: Rest is quite important. Don't neglect breaks, or else!
-
 					}
 
 					Eridani: {
@@ -5347,9 +5346,9 @@ Mods: {
 				FireflyTypeIV: {
 					AbilityName: Firefly Type-IV
 					AbilitySubName: "[c/9EF78A:In Finalized Morrow, I Full Bloom]"
-					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. After foes take a certain amount of Nova damage, they will trigger Complete Combustion, taking the Nova's crit damage (Calculated as a crit.) Critical Nova strikes inflict Complete Combustion much faster, but crits do not deal increased damage. Duration is proportional to Effect Duration plus 30% of Energy Cost.
-					AstralBonus: Heal 5% of the damage dealt by Complete Combustion if it is triggered on a boss (Max 100 HP per application.)
-					UmbralBonus: While the Chrysalid Pyronexus is active, your critical strikes count towards Complete Combustion progress
+					AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. Repeated strikes build Complete Combustion, dealing the Nova's crit damage (Calculated as a crit.) once resolved. Critical Nova strikes inflict Complete Combustion much faster, but crits do not deal increased damage. 5% of Energy Cost is added to Nova duration. One instance of Complete Combustion is guaranteed in the finishing strike.
+					AstralBonus: Pressing the Stellar Nova key while the Nova is not at full charge or active will allow you to immediately unleash the finishing strike on a nearby foe (90s cooldown)
+					UmbralBonus: You can continue to gain Stellar Nova Energy while Firefly-Type IV is active.
 				}
 
 				BaseDamage: Base Damage
@@ -5444,11 +5443,31 @@ Mods: {
 
 				DreadMechanical: {
 					Name: Mechanical Rhythmn
-					SetBonus1: Become Invincible for 2 seconds on cast of the Stellar Nova
-					SetBonus2: Invincibility is extended to 4 seconds
-					SetBonus3: Invincibility is extended to 10 seconds (+30 Energy Cost)
+					SetBonus1: Become Invincible for 1 second on cast of the Stellar Nova
+					SetBonus2: Invincibility is extended to 2 seconds
+					SetBonus3: Invincibility is extended to 5 seconds (+30 Energy Cost)
 					FlavorTooltip: A heart of iron is nothing to write home about in the Moirae Galaxy
 				}
+
+				PaleHeart: {
+					Name: Parcausal Harmony
+					SetBonus1: If the Nova is Guardian's Light, modify the Aspect bonus
+					SetBonus2: No effect
+					SetBonus3: No effect
+					FlavorTooltip: Wield Dark and Light in tandem
+				}
+
+				PaleHeartAspectBonus: Instead of Bearer of Light/Darkness, gain Prismatic Pulse which grants both effects as well as activate a random other Guardian's Light Nova on cast. Not yet implemented
+
+				Pyrogenic: {
+					Name: Seas Ablaze
+					SetBonus1: If the Nova is Firefly Type-IV, modify the Aspect bonus
+					SetBonus2: No effect
+					SetBonus3: No effect
+					FlavorTooltip: Fight to live, live to fight
+				}
+
+				PyrogenicAspectBonus: The Stellar Nova's duration and cost are halved. Complete Combustion stacks faster. Not yet implemented
 			}
 		}
 
@@ -6147,6 +6166,52 @@ Mods: {
 					'Stand tall- my friend / May all of the dark deep inside you / Find Light again' 
 					'''
 				DisplayName: Aegis of Hope's Legacy
+			}
+
+			RenegadeTechnomancerSynthweave: {
+				Tooltip: {
+					Asphodene:
+						'''
+						One of the storied garbs from legends past
+						Equip to your Starfarer to gain the following:
+						[c/FFA700:Archetype Alignment]
+						This attire has variant abilities based on chosen Aspect
+						[c/FF3B91:The Rebel Path]
+						Stellar Novas can be cast at 50% charge instead of 100% charge
+						This effect can only be activated once before the Stellar Nova must be cast again naturally
+						[c/9DFCFF:Fully Chromed]
+						The damage, crit chance, and crit damage of equipped Stellar Prisms are additionally applied to your held weapon
+						This bonus caps at 15% of the Stellar Prism's stats
+						[c/B195AC:Overclocked]
+						Taking damage charges the Stellar Nova by 10%, but also inflicts stacks of [c/E57CD3:Circuit Surge], up to 4
+						At 4 stacks of [c/E57CD3:Circuit Surge], become inflicted with [c/AA2192:Cyberpsychosis], reducing defense by 40%
+						Furthermore, Mana and Health will drain slowly and the effectiveness of health potions are reduced by 70%
+						[c/AA2192:Cyberpsychosis] can only be cleansed by defeating an enemy or activating the Stellar Nova
+						'Never fade away'
+						'''
+					Eridani:
+						'''
+						One of the storied garbs from legends past
+						Equip to your Starfarer to gain the following:
+						[c/FFA700:Archetype Alignment]
+						This attire has variant abilities based on chosen Aspect
+						[c/8EEF69:Edgerunner]
+						Your Stellar Nova no longer charges over time; instead, dealing and taking damage will grant Stellar Nova Energy
+						Effects are increased below 50% HP
+						[c/BB83FF:Hadron Engine]
+						After activation of the Stellar Nova, gain [c/F3EF67:Quark Drive] for 5 seconds
+						[c/F3EF67:Quark Drive] negates ammo costs and Mana Sickness while active
+						Additionally, taking damage while [c/F3EF67:Quark Drive] is active will negate that instance of damage, removing [c/F3EF67:Quark Drive]
+						Duration of [c/F3EF67:Quark Drive] increases based on 5% of the Stellar Nova's Energy Cost
+						[c/83A3DB:Charge Cycle]
+						Stellar Nova Energy slowly drains over time while in combat
+						Health regeneration is disabled in combat
+						[c/F3EF67:Quark Drive] reverses this effect while active, providing bonus health regeneration
+						'Never fade away'
+						'''
+				}
+
+				DisplayName: Renegade Technomancer's Synthweave
 			}
 
 			CelestialPrincessGenesis: {
@@ -12065,6 +12130,21 @@ Mods: {
 				DisplayName: Quit Us Deus
 				Tooltip: ""
 			}
+
+			RenegadeTechnomancerSynthweavePrecursor: {
+				DisplayName: Renegade Technomancer Synthweave Precursor
+				Tooltip: ""
+			}
+
+			PaleHeartPrism: {
+				DisplayName: Pale Heart Prism
+				Tooltip: ""
+			}
+
+			PyrogenicPrism: {
+				DisplayName: Pyrogenic Prism
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13131,6 +13211,11 @@ Mods: {
 			WolvesbaneAwakenedShockwave.DisplayName: Wolvesbane Awakened Shockwave
 			WolvesbaneAwakenedSlash.DisplayName: Wolvesbane Awakened Slash
 			SemaphoreBolt.DisplayName: Semaphore Bolt
+			AsphodeneBurst7.DisplayName: Asphodene Burst7
+			EridaniBurst7.DisplayName: Eridani Burst7
+			FireflyComboFinisher.DisplayName: Firefly Combo Finisher
+			FireflySkill.DisplayName: Firefly Skill
+			FireflySkillCombo.DisplayName: Firefly Skill Combo
 		}
 
 		Buffs: {
@@ -15909,7 +15994,7 @@ Mods: {
 
 			FireflyActive: {
 				DisplayName: Firefly Type-IV
-				Description: Your Starfarer has donned the Crysalid Pyronexus, assisting you in combat
+				Description: Your Starfarer has donned the Crysalid Pyronexus, assisting you in combat (Nova energy can not be gained while active)
 			}
 
 			DreadmotherOrbitalBuff: {
@@ -15940,6 +16025,11 @@ Mods: {
 			NeonVeilBuff: {
 				DisplayName: Veilstruck
 				Description: Pickaxe speed is reduced and certain blocks can not be destroyed
+			}
+
+			AsphodeneFireflyCooldown: {
+				DisplayName: Asphodene Firefly Cooldown
+				Description: Mods.StarsAbove.Buffs.AsphodeneFireflyCooldown.Description
 			}
 		}
 
@@ -16193,6 +16283,11 @@ Mods: {
 				DisableScreenShake: {
 					Label: Disable Screen Shake
 					Tooltip: Disables screen shake effects from all sources.
+				}
+
+				StarfarerVoiceCooldown: {
+					Label: Starfarer Voice Cooldown
+					Tooltip: ""
 				}
 			}
 

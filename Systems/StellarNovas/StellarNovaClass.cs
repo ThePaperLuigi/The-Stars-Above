@@ -20,7 +20,7 @@ namespace StarsAbove.Systems.StellarNovas
 
         string starfarerBonusAsphodene;
         string starfarerBonusEridani;
-
+        
         public string GetInfo(int id, string grab, int baseDamage)
         {
             switch (id)
@@ -65,7 +65,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 7:
                     return baseDamage / 3;
                 case 8:
-                    return baseDamage / 18;
+                    return baseDamage / 48;
                 default:
                     break;
             }
@@ -90,7 +90,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 7:
                     return 10;
                 case 8:
-                    return 15;
+                    return 5;
                 default:
                     break;
             }
@@ -165,7 +165,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 7:
                     return (int)(baseDamage * 0.4f);
                 case 8:
-                    return (int)(baseDamage * 1.5);
+                    return (int)(baseDamage * 0.9);
                 default:
                     break;
             }
