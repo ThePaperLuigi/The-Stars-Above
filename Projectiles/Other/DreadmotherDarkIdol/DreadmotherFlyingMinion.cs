@@ -118,12 +118,12 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
         {
             if (owner.dead || !owner.active)
             {
-                owner.ClearBuff(BuffType<Buffs.Summon.KeyOfTheSinner.Satanael>());
+                owner.ClearBuff(BuffType<Buffs.Other.DreadmotherDarkIdol.DreadmotherMinionBuff>());
 
                 return false;
             }
 
-            if (owner.HasBuff(BuffType<Buffs.Summon.KeyOfTheSinner.Satanael>()))
+            if (owner.HasBuff(BuffType<Buffs.Other.DreadmotherDarkIdol.DreadmotherMinionBuff>()))
             {
                 Projectile.timeLeft = 2;
             }
