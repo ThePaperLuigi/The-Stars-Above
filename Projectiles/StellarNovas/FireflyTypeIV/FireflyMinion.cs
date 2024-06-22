@@ -252,7 +252,14 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 dustIndex = Dust.NewDust(Projectile.Center, 0, 0, 220, Main.rand.NextFloat(-20, 20), Main.rand.NextFloat(-20, 20), 100, default, 2f);
                 Main.dust[dustIndex].velocity *= 3f;
             }
+            for (int i = 0; i < 40; i++)
+            {
+                int dustIndex = Dust.NewDust(Projectile.Center, 0, 0, DustID.Flare, Main.rand.NextFloat(-15, 15), Main.rand.NextFloat(-15, 15), 100, default, 2f);
+                Main.dust[dustIndex].noGravity = true;
 
+                int dustIndex2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.Flare, Main.rand.NextFloat(-2, 2), Main.rand.NextFloat(-33, 33), 100, default, 2f);
+                Main.dust[dustIndex2].velocity *= 3f;
+            }
             if (owner.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1 && Main.myPlayer == owner.whoAmI)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), new Vector2(Projectile.Center.X, Projectile.Center.Y), Vector2.Zero, ModContent.ProjectileType<AsphodeneFFEnd>(), 0, 0f, Main.myPlayer);

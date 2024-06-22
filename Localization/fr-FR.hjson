@@ -16011,12 +16011,12 @@ Mods: {
 
 			SwiftstrikeBuff: {
 				// DisplayName: Swiftstrike Buff
-				// Description: Mods.StarsAbove.Buffs.SwiftstrikeBuff.Description
+				// Description: ""
 			}
 
 			WolvesbaneBlastCooldown: {
 				// DisplayName: Wolvesbane Blast Cooldown
-				// Description: Mods.StarsAbove.Buffs.WolvesbaneBlastCooldown.Description
+				// Description: ""
 			}
 
 			NeonVeilBuff: {
@@ -16025,8 +16025,8 @@ Mods: {
 			}
 
 			AsphodeneFireflyCooldown: {
-				// DisplayName: Asphodene Firefly Cooldown
-				// Description: Mods.StarsAbove.Buffs.AsphodeneFireflyCooldown.Description
+				// DisplayName: Firefly Type-IV Aspect Ability Cooldown
+				// Description: ""
 			}
 		}
 

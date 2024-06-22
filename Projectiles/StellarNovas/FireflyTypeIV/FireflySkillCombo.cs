@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using StarsAbove.Projectiles.Celestial.BuryTheLight;
 using StarsAbove.Projectiles.StellarNovas.FireflyTypeIV;
 using StarsAbove.Systems;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -57,6 +58,36 @@ namespace StarsAbove.Projectiles.StellarNovas.FireflyTypeIV
                 Projectile.frameCounter = 0;
                 if (Projectile.frame < 9)
                 {
+                    float dustAmount = 44f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    if (Main.rand.NextBool())
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemTopaz);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                            Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 23f;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemEmerald);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                            Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 23f;
+                        }
+                    }
                     for (int i = 0; i < 3; i++)
                     {
                         // Random upward vector.

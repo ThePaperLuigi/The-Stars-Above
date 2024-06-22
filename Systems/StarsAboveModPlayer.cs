@@ -3269,7 +3269,7 @@ namespace StarsAbove
                     Main.dust[dust].scale = 1.5f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = new Vector2(target.Center.X - 50, target.Center.Y) + spinningpoint5;
-                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
                 }
                 for (int i = 0; i < dustAmount; i++)
                 {
@@ -3280,7 +3280,7 @@ namespace StarsAbove
                     Main.dust[dust].scale = 1.5f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = new Vector2(target.Center.X + 50, target.Center.Y) + spinningpoint5;
-                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
                 }
                 for (int i = 0; i < dustAmount; i++)
                 {
@@ -3291,7 +3291,7 @@ namespace StarsAbove
                     Main.dust[dust].scale = 1.5f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 50) + spinningpoint5;
-                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
                 }
                 for (int i = 0; i < dustAmount; i++)
                 {
@@ -3302,7 +3302,7 @@ namespace StarsAbove
                     Main.dust[dust].scale = 1.5f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y + 50) + spinningpoint5;
-                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
                 }
 
                 for (int i = 0; i < dustAmount; i++)
@@ -3314,7 +3314,7 @@ namespace StarsAbove
                     Main.dust[dust].scale = 1.5f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = target.Center + spinningpoint5;
-                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 33f;
                 }
                 for (int i = 0; i < dustAmount; i++)
                 {
@@ -3325,7 +3325,7 @@ namespace StarsAbove
                     Main.dust[dust].scale = 1.5f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = target.Center + spinningpoint5;
-                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 33f;
                 }
 
                 Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
