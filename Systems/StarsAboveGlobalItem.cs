@@ -55,6 +55,7 @@ namespace StarsAbove.Systems
         public static List<int> Outfits = new List<int>();
         public static List<int> GlowingItems = new List<int>();
         public static List<int> Essences = new List<int>();
+        public static List<int> WeaponsUnaffectedByAspectedDamagePenalty = new List<int>();
         public override void SetStaticDefaults()
         {
             AstralWeapons = new List<int>() {
@@ -319,15 +320,19 @@ namespace StarsAbove.Systems
                 ItemType<PhylacticPrism>(),
                 ItemType<RadiantPrism>(),
                 ItemType<RefulgentPrism>(),
-                ItemType<RoyalSlimePrism>(),
                 ItemType<SpatialPrism>(),
-                ItemType<TyphoonPrism>(),
                 ItemType<VerdantPrism>(),
                 ItemType<VoidsentPrism>(),
                 ItemType<PrismOfTheCosmicPhoenix>(),
                 ItemType<PrismOfTheRuinedKing>(),
 
 
+            };
+            WeaponsUnaffectedByAspectedDamagePenalty = new List<int>() {
+                ItemType<ArchitectLuminance>(),
+                ItemType<SkyStrikerArms>(),
+                ItemType<SunsetOfTheSunGod>(),
+                ItemType<DreadmotherDarkIdol>(),
             };
             Outfits = new List<int>() {
                 ItemType<FaerieVoyagerAttire>(),
@@ -337,7 +342,7 @@ namespace StarsAbove.Systems
                 ItemType<FamiliarLookingAttire>(),
                 ItemType<SeventhSigilAutumnAttire>(),
                 ItemType<GarmentsOfWinterRainAttire>(),
-
+                ItemType<RenegadeTechnomancerSynthweave>(),
             };
             GlowingItems = new List<int>() {
                 ItemType<TotemOfLightEmpowered>(),
@@ -948,18 +953,11 @@ namespace StarsAbove.Systems
             //TODO: create a list with weapons unaffected by penalty
             if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
             {
-                if (item.ModItem is ArchitectLuminance && !disableAspectPenalty) //Melee weapons
+                if(WeaponsUnaffectedByAspectedDamagePenalty.Contains(item.type) && !disableAspectPenalty)
                 {
                     damage += 0.1f;
                 }
-                if (item.ModItem is SkyStrikerArms && !disableAspectPenalty)
-                {
-                    damage += 0.1f;
-                }
-                if (item.ModItem is SunsetOfTheSunGod && !disableAspectPenalty)
-                {
-                    damage += 0.1f;
-                }
+                
             }
             if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
             {
