@@ -29,13 +29,12 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.createTile = TileType<Tiles.CyberWorld.Veilstone>(); Item.ResearchUnlockCount = 0;
 
 		}
-
 		public override void AddRecipes() {
-            CreateRecipe(1)
+            /*CreateRecipe(1)
                 .AddIngredient(ItemID.StoneBlock, 1)
                 .AddIngredient(ItemType<DeepAsphalt>())
                 .AddTile(TileID.Anvils)
-                .Register();
+                .Register();*/
 
         }
 

@@ -4458,11 +4458,11 @@ Mods: {
 							0: I see- this far from the Heart people are no stranger to a lack of courtesy- barging into one's home like so. Am I correct?
 							1: Sorry... We would have knocked, but to be honest, we thought this place was... uh... abandoned.
 							2: Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.
-							3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
-							4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits. In fact, I would petition your aid for a certain matter...
-							5: Yep, done deal- right, {0}? I hesitate to say it, but she's really cute... we simply HAVE to help her out.
-							6: Did you say something? No? In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
-							7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
+							3: Ahem. I do believe we've met in the Neon Veil... Do you have any recollection of this?
+							4: I would certainly hope so...
+							5: Of course we remember! Well, I remember- I don't know about you, {0}, but don't embarass me in front of her.
+							6: Well, that's heartening. Now that you've arrived, I'd like to petition your aid for a few things.
+							7: I haven't had occassion to learn about your technology, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
 							8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
 							9: Bit of a strange ask, but it shouldn't be too difficult- getting some Stellar Foci without having to make them ourselves would be very helpful.
 							10: Wonderful. Let us hope this relationship is a fruitful one.
@@ -4479,11 +4479,11 @@ Mods: {
 							0: I see- this far from the Heart people are no stranger to a lack of courtesy- barging into one's home like so. Am I correct?
 							1: I'm so sorry... We thought, you know, because everything else is abandoned around here, this place would be too... Sorry.
 							2: Truly? No matter- I am nothing if not the forgiving sort... I think. Wait, forget that last bit.
-							3: Ahem. Friendly faces scant wander this far, so offering hospitality is the least I can do- to a Starfarer, as well. My name is Garridine.
-							4: In truth, automatons prove not the most capable of conversationalists. I would not be opposed to your visits.
-							5: That sounds great to me. Finding a friendly face so far from civilization is a great help to us as well.
-							6: In that case... I would appreciate it if you would allow me to analyze your equipment and weapons you have created.
-							7: I haven't had occassion to learn about recent advancements, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
+							3: Ahem. I do believe we've met in the Neon Veil... Do you have any recollection of this?
+							4: I would certainly hope so...
+							5: Why, yes we did. Right, {0}? Don't tell me you've already forgotten. Well, she is speaking more... uniquely... here.
+							6: Well, that's heartening. Now that you've arrived, I'd like to petition your aid for a few things.
+							7: I haven't had occassion to learn about your technology, owing in no small part to the Ardor- if I were to get a glimpse, it would be quite the boon.
 							8: To make this worth your time, I'll craft some Stellar Foci for you after a visit.
 							9: Hmm... that would prove useful- especially avoiding having to craft them ourselves.
 							10: Wonderful. Let us hope this relationship is a fruitful one.
@@ -4501,7 +4501,7 @@ Mods: {
 							1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
 							2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
 							3: Isn't that just so funny...! What's this called, dramatic irony? ...but it's true. We'd lose quite rapidly in an even match.
-							4: Just use this item when you're ready. Find a nice open space, too.
+							4: For the best results, let's head to that area in the Neon Veil... You know the one.
 						}
 
 						Choices: {
@@ -5869,6 +5869,8 @@ Mods: {
 			RadialMountedSignageTile.MapEntry: Radial Mounted Signage Tile
 			SmallOfflineMountedSignageTile.MapEntry: Small Offline Mounted Signage Tile
 			HologramPlinthBigTreeTile.MapEntry: Hologram Plinth Big Tree Tile
+			AndyerNPCTile.MapEntry: Andyer
+			GarridineNPCTile.MapEntry: Garridine
 		}
 
 		Items: {
@@ -8589,7 +8591,7 @@ Mods: {
 					8 summon tag damage
 					This weapon inflicts Frostburn for 2 seconds
 					Right click to summon the [c/67B6D3:Phantom Dagger] with 100 Mana available; this will not consume Mana
-					When the [c/67B6D3:Phantom Dagger] is present in the world, your Mana will drain and will not regenerate
+					When the [c/67B6D3:Phantom Dagger] is present in the world, your Mana will drain and will not regenerate (The [c/67B6D3:Phantom Dagger] vanishes if Mana reaches 0)
 					Right click with the [c/67B6D3:Phantom Dagger] present to swap positions with your [c/67B6D3:Phantom Dagger] (1/2 second cooldown)
 					When you swap with your [c/67B6D3:Phantom Dagger], activate [c/AC5454:Bloodstained Crescent]
 					[c/AC5454:Bloodstained Crescent] sweeps in a small AoE at both your position and the position of the [c/67B6D3:Phantom Dagger]
@@ -12143,6 +12145,16 @@ Mods: {
 
 			PyrogenicPrism: {
 				DisplayName: Pyrogenic Prism
+				Tooltip: ""
+			}
+
+			DebugAndyerTile: {
+				DisplayName: Debug Andyer Tile
+				Tooltip: ""
+			}
+
+			DebugGarridineTile: {
+				DisplayName: Debug Garridine Tile
 				Tooltip: ""
 			}
 		}

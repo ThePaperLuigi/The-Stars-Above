@@ -5866,6 +5866,8 @@ Mods: {
 			RadialMountedSignageTile.MapEntry: 中心安装标识
 			SmallOfflineMountedSignageTile.MapEntry: 小型离线安装标识
 			// HologramPlinthBigTreeTile.MapEntry: Hologram Plinth Big Tree Tile
+			// AndyerNPCTile.MapEntry: Andyer
+			// GarridineNPCTile.MapEntry: Garridine
 		}
 
 		Items: {
@@ -12127,6 +12129,16 @@ Mods: {
 
 			PyrogenicPrism: {
 				// DisplayName: Pyrogenic Prism
+				// Tooltip: ""
+			}
+
+			DebugAndyerTile: {
+				// DisplayName: Debug Andyer Tile
+				// Tooltip: ""
+			}
+
+			DebugGarridineTile: {
+				// DisplayName: Debug Garridine Tile
 				// Tooltip: ""
 			}
 		}

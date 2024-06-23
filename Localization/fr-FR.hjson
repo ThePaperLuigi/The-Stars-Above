@@ -5866,6 +5866,8 @@ Mods: {
 			RadialMountedSignageTile.MapEntry: Tuile de signalisation à montage radial
 			SmallOfflineMountedSignageTile.MapEntry: Petite tuile de signalisation montée hors ligne
 			// HologramPlinthBigTreeTile.MapEntry: Hologram Plinth Big Tree Tile
+			// AndyerNPCTile.MapEntry: Andyer
+			// GarridineNPCTile.MapEntry: Garridine
 		}
 
 		Items: {
@@ -12140,6 +12142,16 @@ Mods: {
 
 			PyrogenicPrism: {
 				// DisplayName: Pyrogenic Prism
+				// Tooltip: ""
+			}
+
+			DebugAndyerTile: {
+				// DisplayName: Debug Andyer Tile
+				// Tooltip: ""
+			}
+
+			DebugGarridineTile: {
+				// DisplayName: Debug Garridine Tile
 				// Tooltip: ""
 			}
 		}
