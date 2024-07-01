@@ -68,7 +68,7 @@ namespace StarsAbove.Items.Weapons.Magic
         }
         public override void UpdateInventory(Player player)
         {
-            Item.TurnToAir();
+            
             base.UpdateInventory(player);
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)

@@ -430,6 +430,7 @@ namespace StarsAbove
         public int observatoryIntroDialogue;
         public int yojimboIntroDialogue;
         public int garridineIntroDialogue;
+        public int andyerIntroDialogue;
 
         public int MnemonicDialogue1;
         public int MnemonicDialogue2;
@@ -1126,6 +1127,7 @@ namespace StarsAbove
             tag["observatoryIntroDialogue"] = observatoryIntroDialogue;
             tag["yojimboIntroDialogue"] = yojimboIntroDialogue;
             tag["garridineIntroDialogue"] = garridineIntroDialogue;
+            tag["andyerIntroDialogue"] = andyerIntroDialogue;
 
             tag["MnemonicDialogue1"] = MnemonicDialogue1;
             tag["MnemonicDialogue2"] = MnemonicDialogue2;
@@ -1466,6 +1468,7 @@ namespace StarsAbove
             observatoryIntroDialogue = tag.GetInt("observatoryIntroDialogue");
             yojimboIntroDialogue = tag.GetInt("yojimboIntroDialogue");
             garridineIntroDialogue = tag.GetInt("garridineIntroDialogue");
+            andyerIntroDialogue = tag.GetInt("andyerIntroDialogue");
 
             MnemonicDialogue1 = tag.GetInt("MnemonicDialogue1");
             MnemonicDialogue2 = tag.GetInt("MnemonicDialogue2");
@@ -2127,7 +2130,7 @@ namespace StarsAbove
                 if (flashfreeze == 2 && flashFreezeCooldown < 0)
                 {
                     //damage += target.lifeMax;
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                     flashFreezeCooldown = 480;
 
@@ -2218,7 +2221,7 @@ namespace StarsAbove
                         {
                             if (Main.rand.NextBool(3))
                             {
-                                SoundEngine.PlaySound(SoundID.Item37, Player.Center);
+                                SoundEngine.PlaySound(SoundID.Item37);
                                 for (int ix = 0; ix < 30; ix++)
                                 {
                                     Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
@@ -2251,7 +2254,7 @@ namespace StarsAbove
             if (hit.Crit && flashfreeze == 2 && flashFreezeCooldown < 0)
             {
                 //damage += target.lifeMax;
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack);
 
                 Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                 flashFreezeCooldown = 240;
@@ -2347,7 +2350,7 @@ namespace StarsAbove
                     }
 
                 }
-                if (!target.active && target.lifeMax >= 15000)
+                if (!target.active && target.boss)
                 {
 
                     starfarerPromptActive("onKillBossEnemy");
@@ -2841,7 +2844,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -2885,7 +2888,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -2927,7 +2930,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -3009,7 +3012,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
                 screenShakeTimerGlobal = -80;
                 novaGauge += 5;
                 int uniqueCrit = Main.rand.Next(100);
@@ -3035,12 +3038,12 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
 
                 //Complete Combustion
                 if (target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks >= 100)
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
 
                     target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks -= 100;
                     modifiers.SetCrit();
@@ -3185,7 +3188,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
 
                 
 
@@ -3249,7 +3252,7 @@ namespace StarsAbove
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
 
                 target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks = 0;
                 modifiers.SetCrit();
@@ -3793,7 +3796,7 @@ namespace StarsAbove
                 {
                     activateShockwaveEffect = true;
 
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_StarfarerChosen, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_StarfarerChosen);
                     Dust dust;
                     for (int d = 0; d < 50; d++)
                     {
@@ -4031,7 +4034,8 @@ namespace StarsAbove
                 }
                 if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
                 {
-                    float intensity = MathHelper.Lerp(1f, 3f, MathHelper.Clamp(Math.Abs(Player.Center.Y - ((Main.maxTilesY - 110) * 16)) / 70 - 1.98f, 0f, 1f));
+                    //float intensity = MathHelper.Lerp(1f, 0.7f, MathHelper.Clamp(Math.Abs(Player.Center.Y - ((Main.maxTilesY - 110) * 16)) / 70 - 1.98f, 0f, 1f));
+                    float intensity = 0.1f;
                     Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 110) * 16));
                 }
             }
@@ -4451,7 +4455,9 @@ namespace StarsAbove
                 }
                 if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
                 {
+                    //Do a prompt
                     onEverlastingLightText = true;
+                    starfarerPromptActive("onEverlastingLight");
                     if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
                 }
                 if (DownedBossSystem.downedWarrior)
@@ -6012,7 +6018,7 @@ namespace StarsAbove
             if (damageTakenInUndertale == true)
             {
                 damageTakenInUndertale = false;
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_TakingDamage, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_TakingDamage);
 
             }
         }
@@ -6657,7 +6663,7 @@ namespace StarsAbove
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6666,11 +6672,11 @@ namespace StarsAbove
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
 
                     }
@@ -6696,7 +6702,7 @@ namespace StarsAbove
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6705,11 +6711,11 @@ namespace StarsAbove
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
 
                     }
@@ -6736,7 +6742,7 @@ namespace StarsAbove
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6745,11 +6751,11 @@ namespace StarsAbove
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
 
                     }
@@ -6774,7 +6780,7 @@ namespace StarsAbove
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6783,11 +6789,11 @@ namespace StarsAbove
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
                     }
                 }
@@ -6807,7 +6813,10 @@ namespace StarsAbove
             if (starfarerMenuActive && chosenStarfarer != 0)
             {
                 novaGauge = 0;
-                animatedStarfarerMenuDialogue = starfarerMenuDialogue.Substring(0, starfarerMenuDialogueScrollNumber);//Prompt dialogue increment magic
+                int validScrollNumber = Math.Max(0, Math.Min(starfarerMenuDialogueScrollNumber, starfarerMenuDialogue.Length));
+
+                // Extract the substring up to the valid scroll number
+                animatedStarfarerMenuDialogue = starfarerMenuDialogue.Substring(0, validScrollNumber);
                 animatedStarfarerMenuDialogue = LangHelper.Wrap(animatedStarfarerMenuDialogue, 46);
             }
         }
@@ -6966,7 +6975,7 @@ namespace StarsAbove
 
 
             //Weather
-            if (Player.ZoneRain && !seenRain)
+            if (Player.ZoneRain && !Player.ZoneSnow && !seenRain)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -8263,13 +8272,10 @@ namespace StarsAbove
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && novaDrain <= 0)
             {
-                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                if (NPC.AnyNPCs(ModContent.NPCType<StarfarerBoss>()) && StarsAbove.novaKey.JustPressed)
                 {
-                    if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type) && StarsAbove.novaKey.JustPressed)
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
-                        return;
-                    }
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
+                    return;
                 }
 
                 if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
@@ -8282,7 +8288,7 @@ namespace StarsAbove
                 {
                     squallReady = false;
                     //Silence and Squall
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2);
                     Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
                     Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall2>(), novaDamage, 0, Player.whoAmI);
 
@@ -8326,7 +8332,7 @@ namespace StarsAbove
                         {
                             Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia3>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                                                                                                                                                                                                            //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
@@ -8355,7 +8361,7 @@ namespace StarsAbove
                         {
                             Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia2>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                                                                                                                                                                                                            //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
@@ -8375,7 +8381,7 @@ namespace StarsAbove
                         if (chosenStellarNova == 3)//Kiwami Ryuken
                         {
                             novaGauge = 0;
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive);
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
@@ -8464,7 +8470,7 @@ namespace StarsAbove
                         //Activate the Stellar Novas here.
                         if (chosenStellarNova == 1)//Prototokia Aster
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
                             Player.AddBuff(BuffType<PrototokiaDualcast>(), 600);
                             for (int d = 0; d < 105; d++)
                             {
@@ -8483,7 +8489,7 @@ namespace StarsAbove
                         }
                         else if(chosenStellarNova == 2)//Ars Laevateinn
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
@@ -8513,7 +8519,7 @@ namespace StarsAbove
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("GardenOfAvalon").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
                             onActivateStellarNova();
                             //player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), (novaDamage / 100));                                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated);
                             //activateGardenBuff();
 
 
@@ -8570,7 +8576,7 @@ namespace StarsAbove
 
 
                             onActivateStellarNova();
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning);
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, trueNovaGaugeMax / 10 * 60);
 
                         }
@@ -8582,7 +8588,7 @@ namespace StarsAbove
                             {
                                 //Thundercrash
                                 Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashStart, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashStart);
 
                                 //Give player velocity towards their cursor, give Invincibility, give a active hitbox that detonates on the first foe struck (pierce 1)
                                 Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
@@ -8610,7 +8616,7 @@ namespace StarsAbove
                                 //Nova Bomb
 
 
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_NovaBomb, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_NovaBomb);
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
                                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<NovaBomb>(), novaDamage, 0, Player.whoAmI);
 
@@ -8628,7 +8634,7 @@ namespace StarsAbove
                             else if (SummonAspect == 2)
                             {
                                 Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm);
 
                                 //Needlestorm
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
@@ -8656,7 +8662,7 @@ namespace StarsAbove
                             {
 
                                 //Silence and Squall
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2);
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
 
                                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall1>(), novaDamage, 0, Player.whoAmI);
@@ -8683,7 +8689,7 @@ namespace StarsAbove
                         }
                         else if (chosenStellarNova == 8)//Firefly Type IV
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation);
 
 
                             Player.AddBuff(BuffType<FireflyActive>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60) + (int)((trueNovaGaugeMax * 0.05f) * 60) + 120);
@@ -8711,7 +8717,7 @@ namespace StarsAbove
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<GoldenGunHeld>(), 0, 0, Player.whoAmI);
 
 
-            SoundEngine.PlaySound(StarsAboveAudio.SFX_FireGoldenGun, Player.Center);
+            SoundEngine.PlaySound(StarsAboveAudio.SFX_FireGoldenGun);
             Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 40f;
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<GoldenGunBullet>(), novaDamage, 0, Player.whoAmI);
 
@@ -8751,66 +8757,66 @@ namespace StarsAbove
                         case 1:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1);
 
                             }
                             break;
                         case 2:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2);
 
                             }
                             break;
                         case 3:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3);
 
                             }
                             break;
                         case 4:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4);
 
                             }
                             break;
                         case 5:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5);
 
                             }
                             break;
                         case 6:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial6, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial6);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial6, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial6);
 
                             }
                             break;
@@ -8828,12 +8834,12 @@ namespace StarsAbove
                         //1 in 20 chance for a rare line to play.
                         if (chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(audio.ASJoke, Player.Center);
+                            SoundEngine.PlaySound(audio.ASJoke);
 
                         }
                         else if (chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(audio.ERJoke, Player.Center);
+                            SoundEngine.PlaySound(audio.ERJoke);
 
                         }
                         return;
@@ -8852,74 +8858,74 @@ namespace StarsAbove
                         switch (randomNovaDialogue)
                         {
                             case 0:
-                                SoundEngine.PlaySound(audio.AS1, Player.Center);
+                                SoundEngine.PlaySound(audio.AS1);
                                 break;
                             case 1:
-                                SoundEngine.PlaySound(audio.AS2, Player.Center);
+                                SoundEngine.PlaySound(audio.AS2);
 
                                 break;
                             case 2:
-                                SoundEngine.PlaySound(audio.AS3, Player.Center);
+                                SoundEngine.PlaySound(audio.AS3);
 
                                 break;
                             case 3:
-                                SoundEngine.PlaySound(audio.AS4, Player.Center);
+                                SoundEngine.PlaySound(audio.AS4);
 
                                 break;
                             case 4:
-                                SoundEngine.PlaySound(audio.AS5, Player.Center);
+                                SoundEngine.PlaySound(audio.AS5);
 
                                 break;
                             case 5:
-                                SoundEngine.PlaySound(audio.AS6, Player.Center);
+                                SoundEngine.PlaySound(audio.AS6);
 
                                 break;
                             case 6:
-                                SoundEngine.PlaySound(audio.AS7, Player.Center);
+                                SoundEngine.PlaySound(audio.AS7);
 
                                 break;
                             case 7:
-                                SoundEngine.PlaySound(audio.AS8, Player.Center);
+                                SoundEngine.PlaySound(audio.AS8);
 
                                 break;
                             case 8:
-                                SoundEngine.PlaySound(audio.AS9, Player.Center);
+                                SoundEngine.PlaySound(audio.AS9);
 
                                 break;
                             case 9:
-                                SoundEngine.PlaySound(audio.AS10, Player.Center);
+                                SoundEngine.PlaySound(audio.AS10);
 
                                 break;
                             case 10:
-                                SoundEngine.PlaySound(audio.AS11, Player.Center);
+                                SoundEngine.PlaySound(audio.AS11);
 
                                 break;
                             case 11:
-                                SoundEngine.PlaySound(audio.AS12, Player.Center);
+                                SoundEngine.PlaySound(audio.AS12);
 
                                 break;
                             case 12:
-                                SoundEngine.PlaySound(audio.AS13, Player.Center);
+                                SoundEngine.PlaySound(audio.AS13);
 
                                 break;
                             case 13:
-                                SoundEngine.PlaySound(audio.AS14, Player.Center);
+                                SoundEngine.PlaySound(audio.AS14);
 
                                 break;
                             case 14:
-                                SoundEngine.PlaySound(audio.AS15, Player.Center);
+                                SoundEngine.PlaySound(audio.AS15);
 
                                 break;
                             case 15:
-                                SoundEngine.PlaySound(audio.AS16, Player.Center);
+                                SoundEngine.PlaySound(audio.AS16);
 
                                 break;
                             case 16:
-                                SoundEngine.PlaySound(audio.AS17, Player.Center);
+                                SoundEngine.PlaySound(audio.AS17);
 
                                 break;
                             case 17:
-                                SoundEngine.PlaySound(audio.AS18, Player.Center);
+                                SoundEngine.PlaySound(audio.AS18);
 
                                 break;
                             
@@ -8932,74 +8938,74 @@ namespace StarsAbove
                         switch (randomNovaDialogue)
                         {
                             case 0:
-                                SoundEngine.PlaySound(audio.ER1, Player.Center);
+                                SoundEngine.PlaySound(audio.ER1);
                                 break;
                             case 1:
-                                SoundEngine.PlaySound(audio.ER2, Player.Center);
+                                SoundEngine.PlaySound(audio.ER2);
 
                                 break;
                             case 2:
-                                SoundEngine.PlaySound(audio.ER3, Player.Center);
+                                SoundEngine.PlaySound(audio.ER3);
 
                                 break;
                             case 3:
-                                SoundEngine.PlaySound(audio.ER4, Player.Center);
+                                SoundEngine.PlaySound(audio.ER4);
 
                                 break;
                             case 4:
-                                SoundEngine.PlaySound(audio.ER5, Player.Center);
+                                SoundEngine.PlaySound(audio.ER5);
 
                                 break;
                             case 5:
-                                SoundEngine.PlaySound(audio.ER6, Player.Center);
+                                SoundEngine.PlaySound(audio.ER6);
 
                                 break;
                             case 6:
-                                SoundEngine.PlaySound(audio.ER7, Player.Center);
+                                SoundEngine.PlaySound(audio.ER7);
 
                                 break;
                             case 7:
-                                SoundEngine.PlaySound(audio.ER8, Player.Center);
+                                SoundEngine.PlaySound(audio.ER8);
 
                                 break;
                             case 8:
-                                SoundEngine.PlaySound(audio.ER9, Player.Center);
+                                SoundEngine.PlaySound(audio.ER9);
 
                                 break;
                             case 9:
-                                SoundEngine.PlaySound(audio.ER10, Player.Center);
+                                SoundEngine.PlaySound(audio.ER10);
 
                                 break;
                             case 10:
-                                SoundEngine.PlaySound(audio.ER11, Player.Center);
+                                SoundEngine.PlaySound(audio.ER11);
 
                                 break;
                             case 11:
-                                SoundEngine.PlaySound(audio.ER12, Player.Center);
+                                SoundEngine.PlaySound(audio.ER12);
 
                                 break;
                             case 12:
-                                SoundEngine.PlaySound(audio.ER13, Player.Center);
+                                SoundEngine.PlaySound(audio.ER13);
 
                                 break;
                             case 13:
-                                SoundEngine.PlaySound(audio.ER14, Player.Center);
+                                SoundEngine.PlaySound(audio.ER14);
 
                                 break;
                             case 14:
-                                SoundEngine.PlaySound(audio.ER15, Player.Center);
+                                SoundEngine.PlaySound(audio.ER15);
 
                                 break;
                             case 15:
-                                SoundEngine.PlaySound(audio.ER16, Player.Center);
+                                SoundEngine.PlaySound(audio.ER16);
 
                                 break;
                             case 16:
-                                SoundEngine.PlaySound(audio.ER17, Player.Center);
+                                SoundEngine.PlaySound(audio.ER17);
 
                                 break;
                             case 17:
-                                SoundEngine.PlaySound(audio.ER18, Player.Center);
+                                SoundEngine.PlaySound(audio.ER18);
 
                                 break;
                             
@@ -9059,7 +9065,7 @@ namespace StarsAbove
                     {
                         Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                     }
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive);
                     Vector2 mousePosition = Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                     for (int i = 0; i < 10; i++)
                     {
@@ -9620,7 +9626,7 @@ namespace StarsAbove
 
                         astarteDriverAttacks = 3;
                         Player.AddBuff(BuffType<AstarteDriver>(), 1500);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning);
 
                     }
 
@@ -10081,7 +10087,7 @@ namespace StarsAbove
                         starfarerPromptCooldown = 0;
                     }
                     starfarerPromptActive("onKeyOfChronology");
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect);
                     for (int d = 0; d < 12; d++)
                     {
                         Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default, 1.5f);
@@ -10134,7 +10140,7 @@ namespace StarsAbove
                 Vector2 direction = Vector2.Normalize(mousePosition - Player.Center);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenstun").Type, 1, 0, Player.whoAmI, 0, 1);
                 onActivateStellarNova();
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact);
                 return false;
             }
             return false;
@@ -10298,11 +10304,7 @@ namespace StarsAbove
                 SoundEngine.PlaySound(SoundID.MenuOpen, Player.position); //Menu sound here
                 promptIsActive = true;
                 starfarerPromptActiveTimer = 210;
-                if (eventPrompt == "Tsukiyomi1")
-                {
-                    starfarerPromptActiveTimer = 350;
-
-                }
+                
                 promptMoveIn = 15f;
                 int randomDialogue;
 
@@ -10398,6 +10400,8 @@ namespace StarsAbove
                     //During combat..
                     if (eventPrompt == "onKillCritter")
                     {
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAccident0);
+
                         starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
                         randomDialogue = Main.rand.Next(0, 3);
                         promptExpression = 2;
@@ -10413,6 +10417,16 @@ namespace StarsAbove
                         {
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.17", Player.name); //Oops.
                         }
+                    }
+                    if (eventPrompt == "onEverlastingLight")
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.ALight0);
+
+                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.217", Player.name);
+
+
                     }
                     if (eventPrompt == "onKillEnemy")
                     {
@@ -10547,19 +10561,19 @@ namespace StarsAbove
 
                         if (randomDialogue == 0)
                         {
-                            promptExpression = 4;
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory0);
+
+                            promptExpression = 0;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.41", Player.name); //Finally. You got it!
                         }
                         if (randomDialogue == 1)
                         {
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory1);
+
                             promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.42", Player.name); //And that takes care of that one.
                         }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.43", Player.name); //That was a strong one.
-                        }
+                        
                     }
                     if (eventPrompt == "onCrit")
                     {
@@ -10691,6 +10705,8 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onEyeOfCthulhu")
                     {
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry3);
+
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
                         seenEyeOfCthulhu = true;
@@ -11291,72 +11307,360 @@ namespace StarsAbove
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.137", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
                         seenDesertBiome = true;
                     }
                     if (eventPrompt == "onEnterJungle")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.138", Player.name); //So this is the Jungle. Take care when exploring. Ah, but make sure to explore everything!
                         seenJungleBiome = true;
                     }
                     if (eventPrompt == "onEnterBeach")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.139", Player.name); //Well, it's the ocean. ...Did you want me to say something else? It's an ocean.
                         seenBeachBiome = true;
                     }
                     if (eventPrompt == "onEnterSpace")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.140", Player.name); //Isn't it nice up here?  
                         seenSpaceBiome = true;
                     }
                     if (eventPrompt == "onEnterUnderworld")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.141", Player.name); //The Underworld, huh? Interesting. This goes without saying, but it's incredibly dangerous here.
                         seenUnderworldBiome = true;
                     }
                     if (eventPrompt == "onEnterCorruption")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.142", Player.name); //The world is being corrupted away here. Let's not tarry.
                         seenCorruptionBiome = true;
                     }
                     if (eventPrompt == "onEnterCrimson")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.143", Player.name); //The ground here feels like flesh. I feel like we shouldn't stay long- but that's obvious..
                         seenCrimsonBiome = true;
                     }
                     if (eventPrompt == "onEnterSnow")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.144", Player.name); //It's snow! I've been always fond of snow. The water-based kind, of course.
                         seenSnowBiome = true;
                     }
                     if (eventPrompt == "onEnterHallow")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.145", Player.name); //It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
                         seenHallowBiome = true;
                     }
                     if (eventPrompt == "onEnterMushroom")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.146", Player.name); //Whoa! This place is funky. You don't see these mushrooms every day.
                         seenGlowingMushroomBiome = true;
                     }
                     if (eventPrompt == "onEnterDungeon")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.147", Player.name); //There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
                         seenDungeonBiome = true;
                     }
                     if (eventPrompt == "onEnterMeteorite")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
                         seenMeteoriteBiome = true;
@@ -11365,6 +11669,30 @@ namespace StarsAbove
                     //Verdant
                     if (eventPrompt == "onEnterVerdant")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.180", Player.name);
                         seenVerdantBiome = true;
@@ -11373,30 +11701,150 @@ namespace StarsAbove
                     //Calamity Biomes
                     if (eventPrompt == "onEnterCrag")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.149", Player.name); //This is.. the Brimstone Crag. Something dreadful happened here.
                         seenCragBiome = true;
                     }
                     if (eventPrompt == "onEnterAstral")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.150", Player.name); //So this is the Astral Infection. I've read about it, but actually seeing it...
                         seenAstralBiome = true;
                     }
                     if (eventPrompt == "onEnterSunkenSea")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.151", Player.name); //Wow.. This place is quite unique. I can't quite explain.
                         seenSunkenSeaBiome = true;
                     }
                     if (eventPrompt == "onEnterSulphurSea")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.152", Player.name); //Whatever was done to this place is irreversible. This ocean has been stained red with blood.
                         seenSulphurSeaBiome = true;
                     }
                     if (eventPrompt == "onEnterAbyss")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.153", Player.name); //You're entering the true depths of the ocean. I hope you realize how dangerous this is!
                         seenAbyssBiome = true;
@@ -11405,18 +11853,90 @@ namespace StarsAbove
                     //Thorium Biomes
                     if (eventPrompt == "onEnterGranite")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.154", Player.name); //This cavern seems to be made of hard granite.. Curious.
                         seenGraniteBiome = true;
                     }
                     if (eventPrompt == "onEnterMarble")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.155", Player.name); //This cave exhudes royalty. Perhaps it has to do with the abundance of marble.
                         seenMarbleBiome = true;
                     }
                     if (eventPrompt == "onEnterAquaticDepths")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.156", Player.name); //This is a deep part of the ocean. Take care you don't drown...
                         seenAquaticDepthsBiome = true;
@@ -11426,6 +11946,19 @@ namespace StarsAbove
                     //Upon certain weather conditions..
                     if (eventPrompt == "onRain")
                     {
+                        int randomVoice = Main.rand.Next(0, 2);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.ARain0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.ARain1);
+
+                                break;
+
+                        }
                         promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.157", Player.name); //Looks like it started raining. Hopefully this doesn't put a damper on things.. heh.
                         seenRain = true;
@@ -11678,6 +12211,16 @@ namespace StarsAbove
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.17", Player.name); //Sorry, little one.
                         }
                     }
+                    if (eventPrompt == "onEverlastingLight")
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.ELight0);
+
+                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.217", Player.name);
+
+
+                    }
                     if (eventPrompt == "onKillEnemy")
                     {
                         randomDialogue = Main.rand.Next(0, 20);
@@ -11811,19 +12354,19 @@ namespace StarsAbove
                         starfarerPromptActiveTimer = 150;
                         if (randomDialogue == 0)
                         {
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory0);
+
                             promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.41", Player.name); //Finally. It's defeated.
                         }
                         if (randomDialogue == 1)
                         {
-                            promptExpression = 4;
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory1);
+
+                            promptExpression = 5;
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.42", Player.name); //You bested it, finally. Good job.
                         }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.43", Player.name); //What a powerful foe...
-                        }
+                        
                     }
                     if (eventPrompt == "onCrit")
                     {
@@ -12550,72 +13093,361 @@ namespace StarsAbove
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
+
                         promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.135", Player.name); //It's a desert. Seriously.. I'm no fan of heat- and it's hot.
                         seenDesertBiome = true;
                     }
                     if (eventPrompt == "onEnterJungle")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.136", Player.name); //This verdant environment must be the Jungle. This place is dangerous, but also rewarding.
                         seenJungleBiome = true;
                     }
                     if (eventPrompt == "onEnterSpace")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.137", Player.name); //You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
                         seenSpaceBiome = true;
                     }
                     if (eventPrompt == "onEnterUnderworld")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.138", Player.name); //So this is the place where the dead rest. Let's see what we can find.
                         seenUnderworldBiome = true;
                     }
                     if (eventPrompt == "onEnterBeach")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.139", Player.name); //It's the ocean... We can't cross it, so best leave it be.
                         seenBeachBiome = true;
                     }
                     if (eventPrompt == "onEnterCorruption")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.140", Player.name); //I can feel the evil aura radiating from this place. I wouldn't mind leaving as soon as possible.
                         seenCorruptionBiome = true;
                     }
                     if (eventPrompt == "onEnterCrimson")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.141", Player.name); //This place is.. disgusting. Let's not stay longer than we have to.
                         seenCrimsonBiome = true;
                     }
                     if (eventPrompt == "onEnterSnow")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.142", Player.name); //It's a typical boreal forest. Not that I dislike snowy places.
                         seenSnowBiome = true;
                     }
                     if (eventPrompt == "onEnterHallow")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.143", Player.name); //We've stepped straight into fairytale land. It would be prettier if everything here wasn't hostile.
                         seenHallowBiome = true;
                     }
                     if (eventPrompt == "onEnterMushroom")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 5;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.144", Player.name); //Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
                         seenGlowingMushroomBiome = true;
                     }
                     if (eventPrompt == "onEnterDungeon")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.145", Player.name); //I can feel traps everywhere. Strong weapons are buried here as well. Stay ready.
                         seenDungeonBiome = true;
                     }
                     if (eventPrompt == "onEnterMeteorite")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.146", Player.name); //So this is the meteor impact we heard. Wonder what you can make out of it..?
                         seenMeteoriteBiome = true;
@@ -12624,6 +13456,30 @@ namespace StarsAbove
                     //Verdant
                     if (eventPrompt == "onEnterVerdant")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.180", Player.name);
                         seenVerdantBiome = true;
@@ -12633,30 +13489,150 @@ namespace StarsAbove
                     //Calamity Biomes
                     if (eventPrompt == "onEnterCrag")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.147", Player.name); //The Brimstone Crag.. I can feel the horrors of the past..
                         seenCragBiome = true;
                     }
                     if (eventPrompt == "onEnterAstral")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.148", Player.name); //This is the Astral Infection. A subject I'm all too familiar with...
                         seenAstralBiome = true;
                     }
                     if (eventPrompt == "onEnterSunkenSea")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.149", Player.name); //This place is quite beautiful. Who knew it would be under the desert..?
                         seenSunkenSeaBiome = true;
                     }
                     if (eventPrompt == "onEnterSulphurSea")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.150", Player.name); //This was once a pleasant coastline. What happened here..?
                         seenSulphurSeaBiome = true;
                     }
                     if (eventPrompt == "onEnterAbyss")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.151", Player.name); //You've decided to breach the ocean's depths. Please consider how dangerous this really is..
                         seenAbyssBiome = true;
@@ -12665,18 +13641,90 @@ namespace StarsAbove
                     //Thorium Biomes
                     if (eventPrompt == "onEnterGranite")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.152", Player.name); //This cavern seems to be all granite. Some rouge spirits have made their home here.
                         seenGraniteBiome = true;
                     }
                     if (eventPrompt == "onEnterMarble")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.153", Player.name); //So this is a Marble Cavern. Perhaps we can use the material to build?
                         seenMarbleBiome = true;
                     }
                     if (eventPrompt == "onEnterAquaticDepths")
                     {
+                        int randomVoice = Main.rand.Next(0, 5);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                                break;
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.154", Player.name); //We're very deep in the ocean. These waters are trouble, I can tell that much.
                         seenAquaticDepthsBiome = true;
@@ -12685,6 +13733,19 @@ namespace StarsAbove
                     //Upon certain weather conditions..
                     if (eventPrompt == "onRain")
                     {
+                        int randomVoice = Main.rand.Next(0, 2);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.ERain0);
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.ERain1);
+
+                                break;
+                            
+                        }
                         promptExpression = 0;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.155", Player.name); //It's raining. Hopefully nothing important gets too wet.
                         seenRain = true;
@@ -12901,7 +13962,7 @@ namespace StarsAbove
                 {
                     gaugeChargeAnimation = true;
                     novaReadyInfo = false;
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX);
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.StellarNovaReady"), false, false);
                     if (Main.rand.Next(0, 5) == 0)
@@ -12965,6 +14026,59 @@ namespace StarsAbove
             {
                 costumeChangeOpacity = 1f;
                 //Add dialogue here for changing outfits.
+                int randomVoice = Main.rand.Next(0, 3);
+
+                if(starfarerOutfitVisible != 0)
+                {
+                    starfarerMenuDialogueScrollNumber = 0;
+                    starfarerMenuDialogueScrollTimer = 0;
+                    if (chosenStarfarer == 1)
+                    {
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
+                                
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.1");
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.2");
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.3");
+                                break;
+
+
+                        }
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.1");
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.2");
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.3");
+
+                                break;
+
+
+                        }
+                    }
+                }
+                
+                
                 starfarerOutfitSaved = starfarerOutfitVisible;
             }
             //Change actual stats here.
