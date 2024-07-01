@@ -145,7 +145,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 		}
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			Projectile.damage /= 2;
+			Projectile.friendly = false;
 			
 			 
 
