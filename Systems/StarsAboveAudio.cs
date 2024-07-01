@@ -13,14 +13,291 @@ namespace StarsAbove.Systems
 
         #endregion
 
-        //Prompt Voice Lines
-        #region Prompt Voice Lines
-        public static readonly SoundStyle AsphodeneTestGoodLuck = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/PromptVoiceLines/Testing/goodluck")
+        //Combat Voice Lines
+        #region Combat Voice Lines
+        public static readonly SoundStyle AsphodeneAccident0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneAccident0")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneBossAngry0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossAngry0")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossAngry1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossAngry1")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossAngry2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossAngry2")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossAngry3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossAngry3")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneBossLowHP0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossLowHP0")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossLowHP1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossLowHP1")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneBossNeutral0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossNeutral0")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossNeutral1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossNeutral1")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossNeutral2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossNeutral2")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneBossPerfect = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossPerfect")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneBossSuprised0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossSuprised0")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossSuprised1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossSuprised1")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneBossWorried0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossWorried0")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossWorried1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossWorried1")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossWorried2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossWorried2")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneBossWorried3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneBossWorried3")
+        {
+
+        };
+
+        public static readonly SoundStyle AsphodeneVictory0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneVictory0")
+        {
+
+        };
+        public static readonly SoundStyle AsphodeneVictory1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/AsphodeneVictory1")
+        {
+
+        };
+        public static readonly SoundStyle EridaniAccident0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniAccident0")
+        {
+
+        };
+
+        public static readonly SoundStyle EridaniBossAngry0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossAngry0")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossAngry1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossAngry1")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossAngry2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossAngry2")
+        {
+
+        };
+        
+        public static readonly SoundStyle EridaniBossLowHP0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossLowHP0")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossLowHP1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossLowHP1")
+        {
+
+        };
+
+        public static readonly SoundStyle EridaniBossNeutral0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossNeutral0")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossNeutral1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossNeutral1")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossNeutral2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossNeutral2")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossNeutral3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossNeutral3")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossNeutral4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossNeutral4")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossNeutral5 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossNeutral5")
+        {
+
+        };
+
+        public static readonly SoundStyle EridaniBossPerfect = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossPerfect")
+        {
+
+        };
+
+        public static readonly SoundStyle EridaniBossSuprised0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossSuprised0")
+        {
+
+        };
+
+        public static readonly SoundStyle EridaniBossWorried0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossWorried0")
+        {
+
+        };
+        public static readonly SoundStyle EridaniBossWorried1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniBossWorried1")
+        {
+
+        };
+
+        public static readonly SoundStyle EridaniVictory0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniVictory0")
+        {
+
+        };
+        public static readonly SoundStyle EridaniVictory1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/CombatVoiceLines/EridaniVictory1")
         {
 
         };
         #endregion
 
+        //Dialogue Voice Lines
+        #region Dialogue Voice Lines
+        public static readonly SoundStyle AExplore0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneExplore0")
+        {
+
+        };
+        public static readonly SoundStyle AExplore1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneExplore1")
+        {
+
+        };
+        public static readonly SoundStyle AExplore2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneExplore2")
+        {
+
+        };
+        public static readonly SoundStyle AExplore3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneExplore3")
+        {
+
+        };
+        public static readonly SoundStyle AExplore4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneExplore4")
+        {
+
+        };
+
+        public static readonly SoundStyle AExploreRare0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneExploreRare0")
+        {
+
+        };
+
+        public static readonly SoundStyle ALaugh0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneLaugh0")
+        {
+
+        };
+
+        public static readonly SoundStyle ALight0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneLight0")
+        {
+
+        };
+
+        public static readonly SoundStyle ARain0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneRain0")
+        {
+
+        };
+        public static readonly SoundStyle ARain1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/AsphodeneRain1")
+        {
+
+        };
+
+        public static readonly SoundStyle EExplore0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniExplore0")
+        {
+
+        };
+        public static readonly SoundStyle EExplore1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniExplore1")
+        {
+
+        };
+        public static readonly SoundStyle EExplore2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniExplore2")
+        {
+
+        };
+        public static readonly SoundStyle EExplore3 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniExplore3")
+        {
+
+        };
+        public static readonly SoundStyle EExplore4 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniExplore4")
+        {
+
+        };
+
+        public static readonly SoundStyle EExploreRare0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniExploreRare0")
+        {
+
+        };
+
+        public static readonly SoundStyle ELaugh0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniLaugh0")
+        {
+
+        };
+
+        public static readonly SoundStyle ELight0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniLight0")
+        {
+
+        };
+
+        public static readonly SoundStyle ERain0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniRain0")
+        {
+
+        };
+        public static readonly SoundStyle ERain1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/DialogueVoiceLines/EridaniRain1")
+        {
+
+        };
+        #endregion
+        //Other Voice Lines
+        #region Other Voice Lines
+        public static readonly SoundStyle AOutfit0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/OtherVoiceLines/AsphodeneOutfit0")
+        {
+
+        };
+        public static readonly SoundStyle AOutfit1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/OtherVoiceLines/AsphodeneOutfit1")
+        {
+
+        };
+        public static readonly SoundStyle AOutfit2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/OtherVoiceLines/AsphodeneOutfit2")
+        {
+
+        };
+        public static readonly SoundStyle EOutfit0 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/OtherVoiceLines/EridaniOutfit0")
+        {
+
+        };
+        public static readonly SoundStyle EOutfit1 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/OtherVoiceLines/EridaniOutfit1")
+        {
+
+        };
+        public static readonly SoundStyle EOutfit2 = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/OtherVoiceLines/EridaniOutfit2")
+        {
+
+        };
+        #endregion
         //Stellar Nova Lines
         #region Asphodene Voice Lines
         /*public static readonly SoundStyle AsphodeneNovaLines = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/StellarNovaLines/AN0")

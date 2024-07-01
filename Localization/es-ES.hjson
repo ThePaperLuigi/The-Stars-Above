@@ -1,5 +1,7 @@
 Mods: {
 	StarsAbove: {
+		// Subworlds.Observatory.DisplayName: Observatory Hyperborea
+
 		DeathReason: {
 			// SanguineDespair: " drained themselves of all life."
 			// SupremeAuthority: " returned to the void."
@@ -3900,6 +3902,17 @@ Mods: {
 					// 207: Well, let's show 'em what we can do.
 					// 208: You've attracted that squid! So... what now? Beat it up, I guess?
 					// 209: So this is that sentinel, huh? Looks pretty tough!
+					// 210: I wonder what we'll find?
+					// 211: This place certainly is interesting!
+					// 212: Looks like a new locale to explore!
+					// 213: Something new on the horizon.
+					// 214: Seems to me we've stumbled across something new.
+					// 215: What is this place?
+					// 216: (Laugh)
+					// 217: The sky's so bright... This can't be good!
+					// 218: Rain again, huh?
+					// 219: Looks like it's starting to rain.
+					// 220: That was amazing! You didn't even get hit at all!
 				}
 
 				Eridani: {
@@ -4113,6 +4126,17 @@ Mods: {
 					// 209: Let's show this Glassweaver we mean business.
 					// 210: Looks like it took the bait. Time to get to work!
 					// 211: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
+					// 212: A new vista to explore!
+					// 213: What a curious place...
+					// 214: The exploration continues.
+					// 215: Seems like this world still has its secrets.
+					// 216: Looks like a new area?
+					// 217: What is this place?
+					// 218: (Laugh)
+					// 219: So this is the Everlasting Light... how dreadful.
+					// 220: Seems to be raining again.
+					// 221: Looks like it's beginning to rain.
+					// 222: An exceptional result! Looks like you didn't even get scratched!
 				}
 			}
 
@@ -4521,6 +4545,129 @@ Mods: {
 							// 6: Maybe there's something else we're overlooking. We could be cursed! I'd ask Perseus directly, but you know how he is. Jerk.
 							// 7: Anyways, thanks again for our little sparring match. If you want another go, just give us the signal.
 							// 8: Right... it's like she likes getting blown up or something.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					25: {
+						Dialogue: {
+							// 0: Can you drop this silly act? You couldn't fake it if you tried... I would know.
+							// 1: You could have worded that better, but I shan't let it disturb me so. Why are you even at a bar? You're way too young to drink.
+							// 2: Did we... come at a bad time? Actually, who are you guys, anyways? You didn't stab us on arrival, so that's a start.
+							// 3: Well, I'm Andyer. I've been trying to coerce this lupine girl to tell me HER name, but she's a terrible conversationalist.
+							// 4: I shall pretend like I missed that one. If you would just ask politely, I would have no issues giving you my name.
+							// 5: Well?
+							// 6: Well? Well what?
+							// 7: Your name... We were just talking about it.
+							// 8: Ah. It's Garridine.
+							// 9: Thank you. Must this be so difficult?
+							// 10: Okay, okay. Before you two squabble again, I'm curious what you're doing here, because it doesn't look like either of you are locals.
+							// 11: I see no harm in sharing, so presently... I was led here during my investigation of this life-filled planet. It isn't a truly riveting tale- my apologies.
+							// 12: This place is certainly enigmatic; it bears little resemblance to other locales in this stretch of galaxy.
+							// 13: Well, we at least agree on something. As for me... Well, perhaps we can be of use to each other.
+							// 14: I hope these aren't silly little fetch errands...
+							// 15: Well, there's only so many ways an item of interest can end up in my possession. Fret not, I have rewards in return. Let me know if you're interested.
+							// 16: In truth, there truly isn't much I can offer here; you'll have to visit me on my spacefaring vessel. Well...
+							// 17: I concede it is beneficial to us to have friendly allies in this strange landscape, so I'll try to engender some tasks you can help me with for rewards.
+							// 18: What's so bad about just free rewards, instead?
+							// 19: Why, that would take all the fun out of things. You're a Starfarer- are you not? I recall them being fond of positive reinforcement.
+							// 20: Anyways, I shall linger here a while yet. Perhaps by our next interaction I will have an objective for you.
+							// 21: What a strange and suspicious fun fact to bring up all of a sudden... Hmm. She's cute, so I don't think she's evil, but we should inquire further.
+							// 22: As for that Andyer fellow, he has the aura of someone unique. For one, he's way to young to be adventuring alone, so I've got him pegged under 'more than meets the eye.'
+							// 23: Let's keep in touch with these two. More allies will always be of use.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					26: {
+						Dialogue: {
+							// 0: Can you drop this silly act? You couldn't fake it if you tried... I would know.
+							// 1: You could have worded that better, but I shan't let it disturb me so. Why are you even at a bar? You're way too young to drink."
+							// 2: Looks like we dropped in on a sort of squabble... Anyway, you didn't attack us on sight, so that's great. Would you be so kind as to let me know your names?
+							// 3: Well, I'm Andyer. I've been trying to coerce this lupine girl to tell me HER name, but she's a terrible conversationalist.
+							// 4: I shall pretend like I missed that one. If you would just ask politely, I would have no issues giving you my name.
+							// 5: Well?
+							// 6: Well? Well what?
+							// 7: Your name... We were just talking about it.
+							// 8: Ah. It's Garridine.
+							// 9: Thank you. Must this be so difficult?
+							// 10: Hold on. Before you keep fighting, I'd like to know your purpose for visiting here.
+							// 11: I see no harm in sharing, so presently... I was led here during my investigation of this life-filled planet. It isn't a truly riveting tale- my apologies.
+							// 12: This place is certainly enigmatic; it bears little resemblance to other locales in this stretch of galaxy.
+							// 13: Well, we at least agree on something. As for me... Well, perhaps we can be of use to each other.
+							// 14: Let me guess, you'll ask us to find some items of interest for you?
+							// 15: Well, there's only so many ways an 'item of interest' can end up in my possession. Fret not, I have rewards in return. Let me know if you're interested.
+							// 16: In truth, there truly isn't much I can offer here; you'll have to visit me on my spacefaring vessel. Well...
+							// 17: I concede it is beneficial to us to have friendly allies in this strange landscape, so I'll try to engender some tasks you can help me with for rewards.
+							// 18: Must you come up with tasks? Couldn't you just help us for something like payment?
+							// 19: Why, that would take all the fun out of things. You're a Starfarer- are you not? I recall them being fond of positive reinforcement.
+							// 20: Anyways, I shall linger here a while yet. Perhaps by our next interaction I will have an objective for you.
+							// 21: Well, that was quite sudden- how does she know what Starfarers are? My suspicious of her has grown, but I still can't sense any malicious intent.
+							// 22: As for Andyer, he strikes me in a strange way. For someone so young, he has the aura of an experienced voyager. Hopefully we can probe him for more info.
+							// 23: We should keep these people in mind going forward. Allies will surely be of benefit here.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					27: {
+						// Dialogue.0: Sorry, I don't have any tasks for your perusal. How about you disturb that other fellow, if you're yet inclined to be productive?
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					28: {
+						Dialogue: {
+							// 0: So, about that 'too young to drink' thing. How old are you, really?
+							// 1: That doesn't really matter. It's also a misdirection tactic- keep the conversation away from things that really matter.
+							// 2: I haven't really had any time to put social tact into effect here, though. The only denizens here just attack indiscriminately. Speaking of...
+							// 3: I've set up a temporary cloaking field around me and that lupine girl, so we won't be bothered here.
+							// 4: So you aren't heartless. That's nice of you, Andy!
+							// 5: Did you seriously comparmentalize me like so after our brief exchange earlier? Now I'm partially glad I can't extend the cloak to you. And don't call me Andy.
+							// 6: Okay, sorry. Guess I deserve that one.
+							// 7: Let's keep the conversation going. You look like you've defeated a few powerful foes, right? I'm talking to you, not your spacey friend.
+							// 8: There's a special place in the Neon Veil called the Lighthouse... Strangely, when I fight there, it's as if something's trying to take shape.
+							// 9: I have a hypothesis that something powerful enough dying there will trigger something unique. Strangely, however, it only appears to manifest if I remember defeating the foe prior.
+							// 10: If you are able, I'd like you to try defeating a powerful enemy you've already defeated once beforehand. Whatever clues you can find after that?
+							// 11: I'd like to take a closer look. You are free to keep the spoils of war.
+							// 12: That's all for now. Good luck.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					29: {
+						Dialogue: {
+							// 0: Garridine was right- you do look a little young. Should you even be here?
+							// 1: That doesn't really matter. It's also a misdirection tactic- keep the conversation away from things that really matter.
+							// 2: I haven't really had any time to put social tact into effect here, though. The only denizens here just attack indiscriminately. Speaking of...
+							// 3: I've set up a temporary cloaking field around me and that lupine girl, so we won't be bothered here.
+							// 4: That's quite nice of you. Think you can extend the same boon to us?
+							// 5: Sorry, but you'd have to sit here for a long time. I doubt either of you would be up to that.
+							// 6: Well, you're probably on the mark...
+							// 7: Let's keep the conversation going. You look like you've defeated a few powerful foes, right? I'm talking to you, not your spacey friend.
+							// 8: There's a special place in the Neon Veil called the Lighthouse... Strangely, when I fight there, it's as if something's trying to take shape.
+							// 9: I have a hypothesis that something powerful enough dying there will trigger something unique. Strangely, however, it only appears to manifest if I remember defeating the foe prior.
+							// 10: If you are able, I'd like you to try defeating a powerful enemy you've already defeated once beforehand. Whatever clues you can find after that?
+							// 11: I'd like to take a closer look. You are free to keep the spoils of war.
+							// 12: That's all for now. Good luck.
 						}
 
 						Choices: {
@@ -5106,6 +5253,20 @@ Mods: {
 					// Asphodene: I'll wear the Starfarer Attire here over the Armor Slot. It's called a vanity slot, or so I'm told.
 					// Eridani: This is the vanity slot for Starfarer Attire. Anything placed here will be worn above the armor set.
 				}
+
+				StarfarerOutfitChanged: {
+					Asphodene: {
+						// 1: Huh. You know what? I like it!
+						// 2: This suits me, don't you think?
+						// 3: I could get used to this!
+					}
+
+					Eridani: {
+						// 1: Hmm. It does agree with me!
+						// 2: It's pretty comfortable! No complaints.
+						// 3: Wow, it does suit me quite well! At least, I think so.
+					}
+				}
 			}
 		}
 
@@ -5485,8 +5646,10 @@ Mods: {
 			// SpeedUpLight: The everlasting light is catalyzed, preventing night from falling...
 			// TsukiyomiBossChecklist: The Boss Checklist updates to reveal a hidden foe!
 			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
-			// BlockedNova: A powerful foe prevents use of the Stellar Nova!
+			// BlockedNova: You can't use the Stellar Nova right now!
+			// LockedChest: The chest is held shut by a mysterious power...
 			// CreditsHover: "[View the credits for the mod!]"
+			// Wiki: "[Check out the official wiki!]"
 			/* Credits:
 				'''
 				Credits
@@ -5495,6 +5658,7 @@ Mods: {
 				[c/FFF6CD:Sunset, Stardust: PaperLuigi]
 				[c/FFF6CD:Legends Yet Unspun: ShadyCicada]
 				[c/FFF6CD:Chart the Cosmos / Even Stars Must Fall: EchoLane]
+				[c/FFF6CD:Analog Memory: Yuda Prasetia N]
 				[c/F19559:- Voice Actors -]
 				[c/FFF6CD:Asphodene and Eridani: Kiera Rhodes]
 				[c/F19559:- Special Thanks -]
@@ -5502,11 +5666,12 @@ Mods: {
 				[c/DADADA:External Music/Audio: Studio EIM, Kairiki Bear, Masayoshi Soken, REVO, Daiki Ishikawa, Nobuo Uematsu, Michael Salvatori]
 				[c/DADADA:Subworld Contest Builders: Tatriskel, hakomari, Izanagi The wanderer of stars, UnkownSToast, Hockerzocker]
 				[c/DADADA:Discord Moderators: the_alu, ifune, loligeddon, polluxe, not02]
+				[c/DADADA:Wiki maintainers!]
 				[c/DADADA:ES Translators: Tofu and Zeldris]
 				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
 				[c/DADADA:FR Translators: Maksou and Ariaclipse]
 				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
-				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario, Lion8cake]
+				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario, Lion8cake, Rhoenicx]
 
 
 
@@ -5871,6 +6036,11 @@ Mods: {
 			// HologramPlinthBigTreeTile.MapEntry: Hologram Plinth Big Tree Tile
 			// AndyerNPCTile.MapEntry: Andyer
 			// GarridineNPCTile.MapEntry: Garridine
+
+			NeonVeilChest: {
+				// MapEntry0: Neon Veilbank
+				// MapEntry1: Neon Veilbank (Locked)
+			}
 		}
 
 		Items: {
@@ -12007,6 +12177,21 @@ Mods: {
 				// DisplayName: Debug Garridine Tile
 				// Tooltip: ""
 			}
+
+			DebugPromptTester: {
+				// DisplayName: Debug Prompt Tester
+				// Tooltip: ""
+			}
+
+			NeonVeilChestItem: {
+				// DisplayName: Neon Veil Chest Item
+				// Tooltip: ""
+			}
+
+			NeonVeilChestKey: {
+				// DisplayName: Neon Veil Chest Key
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -16008,6 +16193,8 @@ Mods: {
 			// StarsAboveTip7: Don't stay for too long on Anomaly planets- an incredibly dangerous foe will appear! Defeating it may offer great rewards, however...
 			// StarsAboveTip8: Weapon Memories may be the ticket to success, but remember only Aspected Weapons can equip them!
 			// StarsAboveTip9: Weapon Memories don't stack on the same weapon! Mix and match!
+			// StarsAboveTip10: Deep in the Underworld lies a strange anomaly worth investigating...
+			// StarsAboveTip11: Stellar Novas can be amplified with Stellar Prisms- set bonuses do matter!
 		}
 
 		DamageClasses: {
