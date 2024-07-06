@@ -12235,18 +12235,8 @@ Mods: {
 			}
 
 			QuisUtDeus: {
-				/* Tooltip:
-					'''
-					Attacks with this weapon fire rapid spatial bullets, dealing bonus damage based on target Max HP (Max 300% base damage)
-					After every 5 hits, the next attack summons a falling star to strike the foe, dealing bonus damage
-					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
-					While under the effect of [Benedictio], all attacks become guaranteed critical strikes
-					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
-					During this time, critical strikes deal 70% increased damage and attacks gain 20% Armor Penetration
-					Additionally, the next instance of damage is negated (Buff is lost upon triggering this effect)
-					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
-					''' */
-				// DisplayName: Quis Ut Deus
+				// DisplayName: Quis Us Deus
+				// Tooltip: ""
 			}
 
 			HologramPlinthBigTree: {
@@ -12281,11 +12271,6 @@ Mods: {
 					Raw condensed data obtained from various sources in the Neon Veil
 					Can be utilized in various ways, such as crafting
 					''' */
-			}
-
-			QuitUsDeus: {
-				// DisplayName: Quit Us Deus
-				// Tooltip: ""
 			}
 
 			RenegadeTechnomancerSynthweavePrecursor: {
@@ -13446,6 +13431,10 @@ Mods: {
 			// ArtificalEvokerPet.DisplayName: Artifical Evoker Pet
 			// OakCakeRollPet.DisplayName: Oak Cake Roll Pet
 			// ProgrammerTurtlePet.DisplayName: Programmer Turtle Pet
+			// QuitUsDeusGun.DisplayName: Quit Us Deus Gun
+			// QuitUsDeusRound.DisplayName: Quit Us Deus Round
+			// QuisUtDeusGun.DisplayName: Quis Us Deus Gun
+			// QuisUtDeusRound.DisplayName: Quis Us Deus Round
 		}
 
 		Buffs: {
