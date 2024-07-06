@@ -4570,8 +4570,8 @@ Mods: {
 							// 12: This place is certainly enigmatic; it bears little resemblance to other locales in this stretch of galaxy.
 							// 13: Well, we at least agree on something. As for me... Well, perhaps we can be of use to each other.
 							// 14: I hope these aren't silly little fetch errands...
-							// 15: Well, there's only so many ways an item of interest can end up in my possession. Fret not, I have rewards in return. Let me know if you're interested.
-							// 16: In truth, there truly isn't much I can offer here; you'll have to visit me on my spacefaring vessel. Well...
+							// 15: Well, there's only so many ways an item of interest can end up in my possession. Fret not, I have more tasks than that. Let me know if you're interested.
+							// 16: In truth, there truly isn't much I can offer here; you'll have to visit me on my spacefaring vessel- I can send you the coordinates. Well...
 							// 17: I concede it is beneficial to us to have friendly allies in this strange landscape, so I'll try to engender some tasks you can help me with for rewards.
 							// 18: What's so bad about just free rewards, instead?
 							// 19: Why, that would take all the fun out of things. You're a Starfarer- are you not? I recall them being fond of positive reinforcement.
@@ -4604,8 +4604,8 @@ Mods: {
 							// 12: This place is certainly enigmatic; it bears little resemblance to other locales in this stretch of galaxy.
 							// 13: Well, we at least agree on something. As for me... Well, perhaps we can be of use to each other.
 							// 14: Let me guess, you'll ask us to find some items of interest for you?
-							// 15: Well, there's only so many ways an 'item of interest' can end up in my possession. Fret not, I have rewards in return. Let me know if you're interested.
-							// 16: In truth, there truly isn't much I can offer here; you'll have to visit me on my spacefaring vessel. Well...
+							// 15: Well, there's only so many ways an 'item of interest' can end up in my possession. Fret not, I have more tasks than that. Let me know if you're interested.
+							// 16: In truth, there truly isn't much I can offer here; you'll have to visit me on my spacefaring vessel- I can send you the coordinates. Well...
 							// 17: I concede it is beneficial to us to have friendly allies in this strange landscape, so I'll try to engender some tasks you can help me with for rewards.
 							// 18: Must you come up with tasks? Couldn't you just help us for something like payment?
 							// 19: Why, that would take all the fun out of things. You're a Starfarer- are you not? I recall them being fond of positive reinforcement.
@@ -4635,12 +4635,12 @@ Mods: {
 							// 0: So, about that 'too young to drink' thing. How old are you, really?
 							// 1: That doesn't really matter. It's also a misdirection tactic- keep the conversation away from things that really matter.
 							// 2: I haven't really had any time to put social tact into effect here, though. The only denizens here just attack indiscriminately. Speaking of...
-							// 3: I've set up a temporary cloaking field around me and that lupine girl, so we won't be bothered here.
+							// 3: I've set up a temporary cloaking field around me and that lupine girl's holograms, so we won't be bothered here.
 							// 4: So you aren't heartless. That's nice of you, Andy!
 							// 5: Did you seriously comparmentalize me like so after our brief exchange earlier? Now I'm partially glad I can't extend the cloak to you. And don't call me Andy.
 							// 6: Okay, sorry. Guess I deserve that one.
 							// 7: Let's keep the conversation going. You look like you've defeated a few powerful foes, right? I'm talking to you, not your spacey friend.
-							// 8: There's a special place in the Neon Veil called the Lighthouse... Strangely, when I fight there, it's as if something's trying to take shape.
+							// 8: There's a special place in the Neon Veil called the Lighthouse... There's a strange sort of energy there that I'd like to inquire about further.
 							// 9: I have a hypothesis that something powerful enough dying there will trigger something unique. Strangely, however, it only appears to manifest if I remember defeating the foe prior.
 							// 10: If you are able, I'd like you to try defeating a powerful enemy you've already defeated once beforehand. Whatever clues you can find after that?
 							// 11: I'd like to take a closer look. You are free to keep the spoils of war.
@@ -4658,16 +4658,17 @@ Mods: {
 							// 0: Garridine was right- you do look a little young. Should you even be here?
 							// 1: That doesn't really matter. It's also a misdirection tactic- keep the conversation away from things that really matter.
 							// 2: I haven't really had any time to put social tact into effect here, though. The only denizens here just attack indiscriminately. Speaking of...
-							// 3: I've set up a temporary cloaking field around me and that lupine girl, so we won't be bothered here.
+							// 3: I've set up a temporary cloaking field around me and that lupine girl's holograms, so we won't be bothered here.
 							// 4: That's quite nice of you. Think you can extend the same boon to us?
 							// 5: Sorry, but you'd have to sit here for a long time. I doubt either of you would be up to that.
 							// 6: Well, you're probably on the mark...
 							// 7: Let's keep the conversation going. You look like you've defeated a few powerful foes, right? I'm talking to you, not your spacey friend.
-							// 8: There's a special place in the Neon Veil called the Lighthouse... Strangely, when I fight there, it's as if something's trying to take shape.
+							// 8: There's a special place in the Neon Veil called the Lighthouse... There's a strange sort of energy there that I'd like to inquire about further.
 							// 9: I have a hypothesis that something powerful enough dying there will trigger something unique. Strangely, however, it only appears to manifest if I remember defeating the foe prior.
 							// 10: If you are able, I'd like you to try defeating a powerful enemy you've already defeated once beforehand. Whatever clues you can find after that?
 							// 11: I'd like to take a closer look. You are free to keep the spoils of war.
 							// 12: That's all for now. Good luck.
+							// 13: Well, that's our objective. Let's try something simple- perhaps that eye monster?
 						}
 
 						Choices: {
@@ -6036,6 +6037,8 @@ Mods: {
 				// MapEntry0: Neon Veilbank
 				// MapEntry1: Neon Veilbank (Locked)
 			}
+
+			// ResonantFigment.MapEntry: Resonant Figment
 		}
 
 		Items: {
@@ -12286,8 +12289,13 @@ Mods: {
 			}
 
 			RenegadeTechnomancerSynthweavePrecursor: {
-				// DisplayName: Renegade Technomancer Synthweave Precursor
-				// Tooltip: ""
+				// DisplayName: Inactive Technomancer's Synthweave
+				/* Tooltip:
+					'''
+					[c/956BE3:Starfarer Attire Precursor]
+					The tattered remains of storied garb from legends past
+					Utilized to craft 'Renegade Technomancer's Synthweave'
+					''' */
 			}
 
 			PaleHeartPrism: {
@@ -12316,12 +12324,52 @@ Mods: {
 			}
 
 			NeonVeilChestItem: {
-				// DisplayName: Neon Veil Chest Item
+				// DisplayName: Neon Veilbank
 				// Tooltip: ""
 			}
 
 			NeonVeilChestKey: {
-				// DisplayName: Neon Veil Chest Key
+				// DisplayName: Veilbank Key
+				// Tooltip: Hotwired data able to jumpstart a Neon Veilbank, allowing for the contents to be looted
+			}
+
+			ResonantFigmentItem: {
+				// DisplayName: Resonant Figment Item
+				// Tooltip: ""
+			}
+
+			Aeonseal: {
+				// DisplayName: Aeonseal
+				/* Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					Grants a unique Path when Imprinted based on your current stats, providing bonus effects
+					''' */
+				// TooltipAttached: You are guided by {0}, providing bonus effects
+			}
+
+			ArtificialEvoker: {
+				// DisplayName: Artificial Evoker
+				// Tooltip: Summons a robotic persona
+			}
+
+			OakCakeRoll: {
+				// DisplayName: Oak Cake Roll
+				// Tooltip: Summons a fleeting flame
+			}
+
+			ProgrammerTurtle: {
+				// DisplayName: Programmer Turtle
+				// Tooltip: Summons a virtual intelligence
+			}
+
+			ToadHead: {
+				// DisplayName: Toad Head
+				// Tooltip: ""
+			}
+
+			NeonVeilMusicBox: {
+				// DisplayName: Neon Veil Music Box
 				// Tooltip: ""
 			}
 		}
@@ -13395,6 +13443,9 @@ Mods: {
 			// FireflyComboFinisher.DisplayName: Firefly Combo Finisher
 			// FireflySkill.DisplayName: Firefly Skill
 			// FireflySkillCombo.DisplayName: Firefly Skill Combo
+			// ArtificalEvokerPet.DisplayName: Artifical Evoker Pet
+			// OakCakeRollPet.DisplayName: Oak Cake Roll Pet
+			// ProgrammerTurtlePet.DisplayName: Programmer Turtle Pet
 		}
 
 		Buffs: {
@@ -16202,6 +16253,21 @@ Mods: {
 				// DisplayName: Firefly Type-IV Aspect Ability Cooldown
 				// Description: ""
 			}
+
+			AigisPetBuff: {
+				// DisplayName: Robotic Persona
+				// Description: Activate Orgia mode!
+			}
+
+			FireflyPetBuff: {
+				// DisplayName: Fleeting Flame
+				// Description: Set the seas ablaze!
+			}
+
+			NeuroPetBuff: {
+				// DisplayName: Virtual Intelligence
+				// Description: heart\\
+			}
 		}
 
 		Bestiary: {
@@ -16226,6 +16292,9 @@ Mods: {
 			Tsukiyomi2: ？？？
 			ThespianBoss: 他是一位传说中的炼金术士，肉身早已死去，但是被一位可怕的混沌代理人复活。对于一个向他一样远去的人来说，你必须按照他的要求行事，否则你就会遇到并不合时宜的结局……
 			StarfarerBoss: 是的，就是我们。
+			// LogicBombEnemy: The payload of a Logic Virus, this bundle of energy tries to dive bomb living creatures to hopefully transform them into more Logic Viruses. However, this works only on robots, so it'll just feel like a ton of hot plasma smacking you in the face, which could be considered worse.
+			// LogicVirusEnemy: A strange miniscule soldier, the Logic Viruses are characterized by their dastardly payloads and their ability to multiply, causing quite a nuisiance. Too bad they seem to have poor locomotive capabilities in walled environs.
+			// SemaphoreEnemy: A strange winged device, the Semaphores will dislodge raw data from the Neon Veil's sky and cause it to plummet (hopefully on your beautiful head.)
 		}
 
 		Prefix: {

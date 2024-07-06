@@ -18,7 +18,8 @@ namespace StarsAbove.Biomes
 
         public override void TileCountsAvailable(ReadOnlySpan<int> tileCounts)
         {
-            tileCount = tileCounts[ModContent.TileType<DeepAsphalt>()];
+            tileCount = tileCounts[ModContent.TileType<Veilstone>()];
+			tileCount += tileCounts[ModContent.TileType<DeepAsphalt>()];
         }
     }
 
@@ -51,7 +52,7 @@ namespace StarsAbove.Biomes
             bool b1 = ModContent.GetInstance<NeonVeilTileCount>().tileCount >= 40;
 
             bool b2 = player.ZoneUnderworldHeight;
-            return b1;
+            return b1 && b2;
         }
         public override SceneEffectPriority Priority => SceneEffectPriority.Environment;
 

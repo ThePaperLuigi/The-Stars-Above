@@ -623,51 +623,44 @@ namespace StarsAbove
                     break;
                 case 6:
                     {
-                        int num13 = (int)(Main.GlobalTimeWrappedHourly * 8f) % 4;
-                        value2 = new(num13 % 2 * (value.Width >> 1), (num13 >> 1) * (value.Height >> 1), value.Width >> 1, value.Height >> 1);
+                        int num15 = (int)(Main.GlobalTimeWrappedHourly * 8f) % 4;
+
+                        value2 = new((num15 >> 1) * (value.Width >> 1), num15 % 2 * (value.Height >> 1), value.Width >> 1, value.Height >> 1);
                         vec *= 0.5f;
-                        zero.Y += num9;
-                        zero.Y += -60f;
+                        zero.Y += 175f;
                         break;
                     }
                 case 7:
                     {
-                        int num12 = (int)(Main.GlobalTimeWrappedHourly * 8f) % 4;
-                        value2 = new(num12 % 2 * (value.Width >> 1), (num12 >> 1) * (value.Height >> 1), value.Width >> 1, value.Height >> 1);
-                        vec *= 0.5f;
-                        zero.Y += num9;
-                        zero.X -= 400f;
-                        zero.Y += 90f;
+                        zero.Y += 100f;
                         break;
                     }
                 case 8:
                     {
-                        int num11 = (int)(Main.GlobalTimeWrappedHourly * 8f) % 4;
-                        value2 = new(num11 % 2 * (value.Width >> 1), (num11 >> 1) * (value.Height >> 1), value.Width >> 1, value.Height >> 1);
-                        vec *= 0.5f;
-                        zero.Y += num9;
-                        zero.Y += 90f;
+                        zero.Y += 75f;
                         break;
                     }
                 case 9:
-                    zero.Y += num9;
-                    zero.Y -= 30f;
+                    num8 = 0.5f;
+                    zero.Y -= 0f;
                     break;
                 case 10:
-                    zero.Y += 250f * num7;
+                    zero.Y += num9;
                     break;
                 case 11:
-                    zero.Y += 100f * num7;
+                    int num16 = (int)(Main.GlobalTimeWrappedHourly * 8f) % 4;
+
+                    value2 = new((num16 >> 1) * (value.Width >> 1), num16 % 2 * (value.Height >> 1), value.Width >> 1, value.Height >> 1);
+                    vec *= 0.5f;
+                    zero.Y += 175f;
                     break;
                 case 12:
-                    zero.Y += 20f * num7;
+                    zero.Y += 100f;
                     break;
                 case 13:
                     {
-                        zero.Y += 20f * num7;
-                        int num10 = (int)(Main.GlobalTimeWrappedHourly * 8f) % 4;
-                        value2 = new(num10 % 2 * (value.Width >> 1), (num10 >> 1) * (value.Height >> 1), value.Width >> 1, value.Height >> 1);
-                        vec *= 0.5f;
+                        num8 = 0.5f;
+                        zero.Y -= 0f;
                         break;
                     }
             }
@@ -742,15 +735,16 @@ namespace StarsAbove
             Vector3 neutralLight = new Vector3(0f, 0.2f, 0.2f);
             if (ModContent.GetInstance<NeonVeilTileCount>().tileCount >= 40)
             {
+                //lightColor = neutralLight;
+
                 if ((!tile.HasTile || !Main.tileNoSunLight[tile.TileType] || ((tile.Slope != 0 || tile.IsHalfBlock) && Main.tile[x, y - 1].LiquidAmount == 0 && Main.tile[x, y + 1].LiquidAmount == 0 && Main.tile[x - 1, y].LiquidAmount == 0 && Main.tile[x + 1, y].LiquidAmount == 0)) && (Main.wallLight[tile.WallType] || tile.WallType == 73 || tile.WallType == 227) && tile.LiquidAmount < 200 && (!tile.IsHalfBlock || Main.tile[x, y - 1].LiquidAmount < 200))
                 {
-                    lightColor = neutralLight;
+                    //lightColor = neutralLight;
                 }
                 if ((!tile.HasTile || tile.IsHalfBlock || !Main.tileNoSunLight[tile.TileType]) && tile.LiquidAmount < byte.MaxValue)
                 {
                     lightColor = neutralLight;
                 }
-                lightColor = neutralLight;
             }
         }
         private void HeatRemoval(ILContext il)

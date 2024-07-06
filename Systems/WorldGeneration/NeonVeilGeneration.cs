@@ -43,7 +43,7 @@ namespace StarsAbove.Systems.WorldGeneration
             if (Index != -1)
             {
                 //Commented out
-                //tasks.Insert(Index + 1, new NeonVeilSurfacePass("Neon Veil (Surface)", 100f));
+                tasks.Insert(Index + 1, new NeonVeilSurfacePass("Neon Veil", 100f));
             }
         }
 
@@ -84,7 +84,14 @@ namespace StarsAbove.Systems.WorldGeneration
             List<string> neonVeilStructures = new List<string>() {
                 "NeonVeilBuilding1",
                 "NeonVeilBuilding2",
-                "NeonVeilDecor1",
+                "NeonVeilBuilding3",
+                "NeonVeilBuilding4",
+                "NeonVeilBuilding5",
+                "NeonVeilBuilding6",
+                "NeonVeilBuilding7",
+                "NeonVeilSub1",
+                "NeonVeilSub2",
+                "NeonVeilSub3",
             };
             //When a structure is generated, it'll be removed from this list (neonVeilBlueprint). If the list is empty and more things need to be generated, the list will be refilled from "UsedStructures"
             List<string> neonVeilBlueprint = new List<string>();
@@ -93,17 +100,17 @@ namespace StarsAbove.Systems.WorldGeneration
             if (Main.maxTilesX >= 8400)
             {
                 //Large (or bigger) world generation
-                neonVeilSize = 20;
+                neonVeilSize = 36;
             }
             else if (Main.maxTilesX >= 6400)
             {
                 //Medium world generation
-                neonVeilSize = 12;
+                neonVeilSize = 20;
             }
             else
             {
                 //Small world generation
-                neonVeilSize = 6;
+                neonVeilSize = 10;
             }
             for (int i = 0; i <= neonVeilSize; i++)
             {
@@ -111,11 +118,23 @@ namespace StarsAbove.Systems.WorldGeneration
 
                 if(i == 0)
                 {
-                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilEntranceLeft");
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilEntranceL");
                 }
                 else if (i == neonVeilSize)//Replace with EntranceRight
                 {
-                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilEntranceLeft");
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilEntranceR");
+                }
+                else if (i == neonVeilSize/2)//
+                {
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilLighthouse");
+                }
+                else if (i == neonVeilSize * 0.25)//
+                {
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilGarden");
+                }
+                else if (i == neonVeilSize*0.75)//
+                {
+                    CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilBar");
                 }
                 else
                 {   
@@ -134,11 +153,12 @@ namespace StarsAbove.Systems.WorldGeneration
                 }
             }
 
+
         }
 
         private static void CreateNeonVeilStructure(ref Point16 offsetDims, ref int offsetX, List<string> neonVeilBlueprint, string currentStructure)
         {
-            StructureHelper.Generator.GenerateStructure("Structures/NeonVeil/" + currentStructure, new Terraria.DataStructures.Point16((Main.maxTilesX / 2) + offsetX, (Main.maxTilesY) - 200), StarsAbove.Instance);
+            StructureHelper.Generator.GenerateStructure("Structures/NeonVeil/" + currentStructure, new Terraria.DataStructures.Point16((Main.maxTilesX / 2) + offsetX, (Main.maxTilesY) - 190), StarsAbove.Instance);
             StructureHelper.Generator.GetDimensions("Structures/NeonVeil/" + currentStructure, StarsAbove.Instance, ref offsetDims);
             offsetX += offsetDims.X;
             if(neonVeilBlueprint.Contains(currentStructure))

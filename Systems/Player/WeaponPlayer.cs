@@ -632,6 +632,10 @@ namespace StarsAbove.Systems
         public bool SanaPet;
         public bool MumeiPet;
         public bool GrahaPet;
+
+        public bool FireflyPet;
+        public bool NeuroPet;
+        public bool AigisPet;
         #endregion
 
         public override void SetStaticDefaults()
@@ -4052,6 +4056,9 @@ namespace StarsAbove.Systems
             SanaPet = false;
             MumeiPet = false;
             GrahaPet = false;
+            AigisPet = false;
+            NeuroPet = false;
+            FireflyPet = false;
             LukaPet = false;
             CrimsonDragonetPet = false;
             HanakoPet = false;

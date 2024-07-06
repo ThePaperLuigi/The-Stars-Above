@@ -4027,6 +4027,7 @@ namespace StarsAbove
         {
             if(Player.InModBiome<NeonVeilBiome>())
             {
+                Player.ZoneUnderworldHeight = false;
                 if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
                 {
                     Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
@@ -4034,9 +4035,13 @@ namespace StarsAbove
                 }
                 if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
                 {
-                    //float intensity = MathHelper.Lerp(1f, 0.7f, MathHelper.Clamp(Math.Abs(Player.Center.Y - ((Main.maxTilesY - 110) * 16)) / 70 - 1.98f, 0f, 1f));
-                    float intensity = 0.1f;
-                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 110) * 16));
+                    float intensity = MathHelper.Lerp(1f, 0.7f, MathHelper.Clamp(Math.Abs(Player.Center.Y - ((Main.maxTilesY - 110) * 16)) / 70 - 1.98f, 0f, 1f));
+                    if(Player.Center.Y < ((Main.maxTilesY - 100) * 16))
+                    {
+                        //intensity = 0f;
+                    }
+                    //float intensity = 0.1f;
+                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 100) * 16));
                 }
             }
             else
