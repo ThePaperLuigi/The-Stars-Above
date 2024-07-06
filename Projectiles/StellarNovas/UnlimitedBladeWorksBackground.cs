@@ -292,29 +292,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 				Main.dust[dust].position = Projectile.Center + spinningpoint5;
 				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 9f;
 			}
-			Point Az = Projectile.Center.ToTileCoordinates();
-			int Aradius = 34;
-			for (int Ax = -Aradius; Ax <= Aradius; Ax++)
-			{
-				for (int Ay = -Aradius; Ay <= Aradius; Ay++)
-				{
-					if (Ax * Ax + Ay * Ay <= Aradius * Aradius)
-					{
-						int tileX = Az.X + Ax;
-						int tileY = Az.Y + Ay;
-
-						Tile tile = Main.tile[tileX, tileY];
-						Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-
-						if (tile.HasTile)
-						{
-                            tile.IsTileFullbright = false;
-
-
-                        }
-                    }
-				}
-			}
+			
 		}
         public static Texture2D texture;
 
