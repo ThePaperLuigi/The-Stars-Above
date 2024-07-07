@@ -12234,18 +12234,18 @@ Mods: {
 				Tooltip:
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
-					The current [Aspected Damage Type] influences this weapon's attacks (Can not be used if not Aspected to Ranged or Melee)
+					The current [c/F592BF:Aspected Damage Type] influences this weapon's attacks (Can not be used if not Aspected to Ranged or Melee)
 					Critical strikes from this weapon inflict Shadowflame for 3 seconds
-					Right click to activate [Spectral Illusion], activating a unique effect based on the current [Aspected Damage Type] (60 second cooldown)
-					During [Spectral Illusion], this weapon's damage type is changed to Chionic, inheriting bonuses from both Ranged and Melee damage at 120% efficiency
-					Additionally, striking foes inflicted with Shadowflame will enhance the debuff into [Spiritflame], which inherits twice the remaining duration of [Spectral Illusion]
-					[c/FFAB4D:Melee]: The weapon can be channeled, orbiting and striking nearby foes at close range
-					While [Spectral Illusion] is active, the weapon will follow your cursor, spinning and emitting sweeping shadowflame beams
-					[c/4DFF5B:Ranged]: Attacks swing the weapon in an arc, spreading piercing crystals
-					While [Spectral Illusion] is active, the weapon will orbit the cursor, firing crystals towards it
-					Right clicking while [Spectral Illusion] is active will remove the buff and execute [Spectral Phantasm], a special attack based on the current [Aspected Damage Type]
-					[c/FFAB4D:Melee]: The weapon violently explodes on your cursor, dealing 400% guaranteed critical strike damage to all nearby foes while inflicting [Spiritflame] for 10 seconds
-					[c/4DFF5B:Ranged]: The weapon horizontally slashes across the screen based on cursor position, dealing 800% guaranteed critical strike damage to all foes in its wake
+					Right click to activate [c/AAD7EE:Spectral Illusion] for 12 seconds, activating a unique effect based on the current [c/F592BF:Aspected Damage Type] (60 second cooldown)
+					During [c/AAD7EE:Spectral Illusion], this weapon's damage type is changed to Chionic, inheriting bonuses from both Ranged and Melee damage at 120% efficiency
+					Additionally, striking foes inflicted with Shadowflame will enhance the debuff into [c/6A6EFF:Spiritflame], which inherits the remaining duration of [c/AAD7EE:Spectral Illusion]
+					[c/FFAB4D:Melee]: The weapon can be channeled, orbiting and striking nearby foes at close range for 300% damage (Range can be adjusted with mouse cursor)
+					While [c/AAD7EE:Spectral Illusion] is active, the weapon will follow your cursor when channeled, spinning and emitting sweeping shadowflame beams
+					[c/4DFF5B:Ranged]: Attacks swing the weapon in an arc, spreading damaging crystals
+					While [c/AAD7EE:Spectral Illusion] is active, the weapon will orbit the cursor when channeled, firing crystals towards it
+					Pressing the Weapon Action Key while [c/AAD7EE:Spectral Illusion] is active will remove the buff and execute [c/3076EA:Spectral Phantasm], a special attack based on the current [c/F592BF:Aspected Damage Type]
+					[c/FFAB4D:Melee]: [c/3076EA:Spectral Phantasm] causes the weapon to violently explode on your cursor, dealing 400% guaranteed critical strike damage to all nearby foes while inflicting [c/6A6EFF:Spiritflame] for 10 seconds
+					[c/4DFF5B:Ranged]: [c/3076EA:Spectral Phantasm] horizontally slashes across the screen based on cursor position, dealing 800% guaranteed critical strike damage to all foes in its wake
 					'Rainbows are visions, but only illusions'
 					'''
 				DisplayName: Phasmasaber
@@ -13466,6 +13466,13 @@ Mods: {
 			CallOfTheStarsBackground.DisplayName: Call Of The Stars Background
 			CallOfTheStarsBorder.DisplayName: Call Of The Stars Border
 			CallOfTheStarsVFX.DisplayName: Call Of The Stars V F X
+			PhasmasaberMeleeOrbital.DisplayName: Phasmasaber Melee Orbital
+			PhasmasaberRangedSlash.DisplayName: Phasmasaber Ranged Slash
+			PhasmasaberRangedCrystal.DisplayName: Phasmasaber Ranged Crystal
+			PhasmasaberMeleeLaser.DisplayName: Phasmasaber Melee Laser
+			PhasmasaberRangedOrbital.DisplayName: Phasmasaber Ranged Orbital
+			PhasmasaberMeleeExplosion.DisplayName: Phasmasaber Melee Explosion
+			PhasmasaberHorizontalSlash.DisplayName: Phasmasaber Horizontal Slash
 		}
 
 		Buffs: {
@@ -16311,6 +16318,21 @@ Mods: {
 				DisplayName: Call Of The Stars Cooldown
 				Description: ""
 			}
+
+			SpectralIllusionBuff: {
+				DisplayName: Spectral Illusion Buff
+				Description: Mods.StarsAbove.Buffs.SpectralIllusionBuff.Description
+			}
+
+			SpectralIllusionCooldown: {
+				DisplayName: Spectral Illusion Cooldown
+				Description: Mods.StarsAbove.Buffs.SpectralIllusionCooldown.Description
+			}
+
+			SpiritflameDebuff: {
+				DisplayName: Spiritflame Debuff
+				Description: Mods.StarsAbove.Buffs.SpiritflameDebuff.Description
+			}
 		}
 
 		Bestiary: {
@@ -16453,6 +16475,7 @@ Mods: {
 			IncarnationDamageClass.DisplayName: incarnated damage
 			PsychomentDamageClass.DisplayName: psychoment damage
 			ArkheDamageClass.DisplayName: arkhe damage
+			ChionicDamageClass.DisplayName: Chionic Damage Class
 		}
 
 		Keybinds: {

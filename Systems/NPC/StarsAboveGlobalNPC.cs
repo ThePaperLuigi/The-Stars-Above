@@ -37,6 +37,7 @@ using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.NPCs.NeonVeil;
 using StarsAbove.Projectiles.Melee.Umbra;
 using StarsAbove.Projectiles.Ranged.QuisUtDeus;
+using StarsAbove.Buffs.Other.Phasmasaber;
 
 namespace StarsAbove.Systems
 {
@@ -232,6 +233,18 @@ namespace StarsAbove.Systems
                 }
             }
             if (Hyperburn)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 30;
+
+                damage = 30;
+
+            }
+
+            if (npc.HasBuff(BuffType<SpiritflameDebuff>()))
             {
                 if (npc.lifeRegen > 0)
                 {
@@ -574,6 +587,28 @@ namespace StarsAbove.Systems
                 Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
             }
             if (Hyperburn)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.FireworkFountain_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust2].noGravity = true;
+
+                }
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Firework_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
+            if (npc.HasBuff(BuffType<SpiritflameDebuff>()))
             {
                 if (Main.rand.Next(4) < 3)
                 {

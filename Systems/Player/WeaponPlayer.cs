@@ -40,6 +40,7 @@ using StarsAbove.Buffs.Other.DreadmotherDarkIdol;
 using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Buffs.Other.LegendaryShield;
 using StarsAbove.Buffs.Other.Nanomachina;
+using StarsAbove.Buffs.Other.Phasmasaber;
 using StarsAbove.Buffs.Other.Suistrume;
 using StarsAbove.Buffs.Ranged.CosmicDestroyer;
 using StarsAbove.Buffs.Ranged.CrimsonOutbreak;
@@ -304,6 +305,8 @@ namespace StarsAbove.Systems
         public bool rebellionState3;
         public float rebellionGaugeMaxBuff;//After reaching max Rebellion, this empowers the next Clarent Blood Arthur cast.
         public Vector2 rebellionTarget;
+
+        public bool phasmasaberHeld;
 
         //Starphoenix Funnel
         public int alignmentStacks;
@@ -830,6 +833,27 @@ namespace StarsAbove.Systems
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the proj, consider using OnHitNPC instead */
         {
             var player = Player.GetModPlayer<StarsAbovePlayer>();
+            if (phasmasaberHeld)
+            {
+                if (hit.Crit && !target.HasBuff(BuffType<SpiritflameDebuff>()))
+                {
+                    target.AddBuff(BuffID.ShadowFlame, 60 * 3);
+
+                }
+                if (Player.HasBuff(BuffType<SpectralIllusionBuff>()))
+                {
+                    if (target.HasBuff(BuffID.ShadowFlame))
+                    {
+                        target.AddBuff(BuffType<SpiritflameDebuff>(), Player.buffTime[Player.FindBuffIndex(BuffType<SpectralIllusionBuff>())] + 60);
+                        target.DelBuff(target.FindBuffIndex(BuffID.ShadowFlame));
+                    }
+
+                }
+                else
+                {
+
+                }
+            }
             if (Player.HasBuff(BuffType<BoilingBloodBuff>()))
             {
                 boilingBloodDamage += damageDone / 4;
@@ -1625,6 +1649,8 @@ namespace StarsAbove.Systems
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
+            
+
             if (target.HasBuff(BuffType<IrysGaze>()))
             {
                 modifiers.FlatBonusDamage += 50;
@@ -4013,6 +4039,7 @@ namespace StarsAbove.Systems
                 ];
 
             }
+            phasmasaberHeld = false;
             wolvesbaneHeld = false;
             dreadmotherMinion = false;
             dreadmotherHeld = false;

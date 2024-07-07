@@ -12230,18 +12230,18 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/F592BF:This weapon is unaffected by Aspected Damage Type penalty when aspected to Ranged or Melee damage]
-					The current [Aspected Damage Type] influences this weapon's attacks (Can not be used if not Aspected to Ranged or Melee)
+					The current [c/F592BF:Aspected Damage Type] influences this weapon's attacks (Can not be used if not Aspected to Ranged or Melee)
 					Critical strikes from this weapon inflict Shadowflame for 3 seconds
-					Right click to activate [Spectral Illusion], activating a unique effect based on the current [Aspected Damage Type] (60 second cooldown)
+					Right click to activate [Spectral Illusion] for 12 seconds, activating a unique effect based on the current [Aspected Damage Type] (60 second cooldown)
 					During [Spectral Illusion], this weapon's damage type is changed to Chionic, inheriting bonuses from both Ranged and Melee damage at 120% efficiency
-					Additionally, striking foes inflicted with Shadowflame will enhance the debuff into [Spiritflame], which inherits twice the remaining duration of [Spectral Illusion]
-					[c/FFAB4D:Melee]: The weapon can be channeled, orbiting and striking nearby foes at close range
-					While [Spectral Illusion] is active, the weapon will follow your cursor, spinning and emitting sweeping shadowflame beams
-					[c/4DFF5B:Ranged]: Attacks swing the weapon in an arc, spreading piercing crystals
-					While [Spectral Illusion] is active, the weapon will orbit the cursor, firing crystals towards it
-					Right clicking while [Spectral Illusion] is active will remove the buff and execute [Spectral Phantasm], a special attack based on the current [Aspected Damage Type]
-					[c/FFAB4D:Melee]: The weapon violently explodes on your cursor, dealing 400% guaranteed critical strike damage to all nearby foes while inflicting [Spiritflame] for 10 seconds
-					[c/4DFF5B:Ranged]: The weapon horizontally slashes across the screen based on cursor position, dealing 800% guaranteed critical strike damage to all foes in its wake
+					Additionally, striking foes inflicted with Shadowflame will enhance the debuff into [Spiritflame], which inherits the remaining duration of [Spectral Illusion]
+					[c/FFAB4D:Melee]: The weapon can be channeled, orbiting and striking nearby foes at close range for 300% damage (Range can be adjusted with mouse cursor)
+					While [Spectral Illusion] is active, the weapon will follow your cursor when channeled, spinning and emitting sweeping shadowflame beams
+					[c/4DFF5B:Ranged]: Attacks swing the weapon in an arc, spreading damaging crystals
+					While [Spectral Illusion] is active, the weapon will orbit the cursor when channeled, firing crystals towards it
+					Pressing the Weapon Action Key while [Spectral Illusion] is active will remove the buff and execute [Spectral Phantasm], a special attack based on the current [Aspected Damage Type]
+					[c/FFAB4D:Melee]: [Spectral Phantasm] causes the weapon to violently explode on your cursor, dealing 400% guaranteed critical strike damage to all nearby foes while inflicting [Spiritflame] for 10 seconds
+					[c/4DFF5B:Ranged]: [Spectral Phantasm] horizontally slashes across the screen based on cursor position, dealing 800% guaranteed critical strike damage to all foes in its wake
 					'Rainbows are visions, but only illusions'
 					''' */
 				// DisplayName: Phasmasaber
@@ -12254,12 +12254,12 @@ Mods: {
 					Attacks with this weapon fire rapid spatial bullets, dealing bonus damage based on target Max HP (Max 130% base damage)
 					Spatial bullets can not naturally deal critical strikes
 					After every 5 hits, the next attack summons a falling star to strike the foe, dealing bonus damage
-					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
-					While under the effect of [Benedictio], spatial bullets become guaranteed critical strikes
-					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
-					During this time, critical strikes deal 30% increased damage and attacks gain 20% Armor Penetration
+					When in combat, gain [c/FCD4FF:Benedictio] (Buff is lost for 10 seconds upon taking damage)
+					While under the effect of [c/FCD4FF:Benedictio], spatial bullets become guaranteed critical strikes
+					Right click to activate [c/FF65BB:Call of the Stars] for 8 seconds (3 minute cooldown)
+					During this time, attack speed is increased by 20%, critical strikes deal 30% increased damage, and attacks gain 20% Armor Penetration
 					Additionally, the next instance of damage is negated (Buff is lost upon triggering this effect)
-					Critical strikes with spatial bullets reduce the cooldown of [Call of the Stars] by 1 second on hit
+					Critical strikes with spatial bullets reduce the cooldown of [c/FF65BB:Call of the Stars] by 1 second on hit
 					''' */
 			}
 
@@ -13462,6 +13462,13 @@ Mods: {
 			// CallOfTheStarsBackground.DisplayName: Call Of The Stars Background
 			// CallOfTheStarsBorder.DisplayName: Call Of The Stars Border
 			// CallOfTheStarsVFX.DisplayName: Call Of The Stars V F X
+			// PhasmasaberMeleeOrbital.DisplayName: Phasmasaber Melee Orbital
+			// PhasmasaberRangedSlash.DisplayName: Phasmasaber Ranged Slash
+			// PhasmasaberRangedCrystal.DisplayName: Phasmasaber Ranged Crystal
+			// PhasmasaberMeleeLaser.DisplayName: Phasmasaber Melee Laser
+			// PhasmasaberRangedOrbital.DisplayName: Phasmasaber Ranged Orbital
+			// PhasmasaberMeleeExplosion.DisplayName: Phasmasaber Melee Explosion
+			// PhasmasaberHorizontalSlash.DisplayName: Phasmasaber Horizontal Slash
 		}
 
 		Buffs: {
@@ -16305,7 +16312,22 @@ Mods: {
 
 			CallOfTheStarsCooldown: {
 				// DisplayName: Call Of The Stars Cooldown
-				// Description: Mods.StarsAbove.Buffs.CallOfTheStarsCooldown.Description
+				// Description: ""
+			}
+
+			SpectralIllusionBuff: {
+				// DisplayName: Spectral Illusion Buff
+				// Description: Mods.StarsAbove.Buffs.SpectralIllusionBuff.Description
+			}
+
+			SpectralIllusionCooldown: {
+				// DisplayName: Spectral Illusion Cooldown
+				// Description: Mods.StarsAbove.Buffs.SpectralIllusionCooldown.Description
+			}
+
+			SpiritflameDebuff: {
+				// DisplayName: Spiritflame Debuff
+				// Description: Mods.StarsAbove.Buffs.SpiritflameDebuff.Description
 			}
 		}
 
@@ -16449,6 +16471,7 @@ Mods: {
 			IncarnationDamageClass.DisplayName: Dégats d'incarnation
 			PsychomentDamageClass.DisplayName: Dégats Psychique
 			ArkheDamageClass.DisplayName: Dégats Arkhés
+			// ChionicDamageClass.DisplayName: Chionic Damage Class
 		}
 
 		Keybinds: {
