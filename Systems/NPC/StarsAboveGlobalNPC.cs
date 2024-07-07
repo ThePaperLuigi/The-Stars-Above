@@ -35,6 +35,8 @@ using Terraria.GameContent;
 using StarsAbove.NPCs.OffworldNPCs.Caelum;
 using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.NPCs.NeonVeil;
+using StarsAbove.Projectiles.Melee.Umbra;
+using StarsAbove.Projectiles.Ranged.QuisUtDeus;
 
 namespace StarsAbove.Systems
 {
@@ -61,6 +63,7 @@ namespace StarsAbove.Systems
         public int JudgementStacks = 0;
         public int spectralNailStacks = 0;
         public int elementalSurgeStacks = 0;
+        public int quisUtDeusStacks = 0;
 
         public int completeCombustionStacks = 0;
 
@@ -996,6 +999,31 @@ namespace StarsAbove.Systems
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
+            if (projectile.type == ProjectileType<QuisUtDeusRound>())
+            {
+                quisUtDeusStacks++;
+                if (quisUtDeusStacks > 5)
+                {
+
+                    quisUtDeusStacks = 0;
+
+                    Vector2 position = npc.Center + new Vector2(Main.rand.Next(-200, 201), Main.rand.Next(-100, 101));
+                    position.Y -= 500;
+                    Vector2 heading = npc.Center - position;
+                    heading.Normalize();
+                    heading *= 16f;
+
+                    Vector2 velocity = new Vector2(0, 0);
+                    velocity.X = heading.X;
+                    velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
+                    if (projectile.owner == Main.LocalPlayer.whoAmI)
+                    {
+                        Projectile.NewProjectile(Main.LocalPlayer.GetSource_OnHit(npc), position.X, position.Y, velocity.X, velocity.Y, ProjectileID.StarWrath, damageDone, 0, Main.LocalPlayer.whoAmI, 0f);
+
+                    }
+                }
+
+            }
             if (projectile.type == ProjectileType<StarphoenixRound>())
             {
                 elementalSurgeStacks++;

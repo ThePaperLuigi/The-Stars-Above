@@ -45,6 +45,7 @@ using StarsAbove.Buffs.Ranged.CosmicDestroyer;
 using StarsAbove.Buffs.Ranged.CrimsonOutbreak;
 using StarsAbove.Buffs.Ranged.Genocide;
 using StarsAbove.Buffs.Ranged.InheritedCaseM4A1;
+using StarsAbove.Buffs.Ranged.QuisUtDeus;
 using StarsAbove.Buffs.Ranged.TwoCrownBow;
 using StarsAbove.Buffs.StellarArray;
 using StarsAbove.Buffs.StellarNovas;
@@ -2744,6 +2745,16 @@ namespace StarsAbove.Systems
                     }
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
+                if (Player.buffType[i] == BuffType<CallOfTheStarsBuff>())
+                {
+                    if (Player.buffTime[i] == 1)
+                    {
+                        Player.AddBuff(BuffType<CallOfTheStarsCooldown>(), 60 * 180);
+
+
+                    }
+                }
+            for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<DeifiedBuff>())
                 {
                     if (Player.buffTime[i] == 1)
@@ -3663,6 +3674,22 @@ namespace StarsAbove.Systems
                 {
                     Player.DelBuff(index);
                 }
+                return true;
+            }
+            if (Player.HasBuff(BuffType<CallOfTheStarsBuff>()))
+            {
+                for (int d = 0; d < 16; d++)
+                {
+                    Dust.NewDust(Player.position, Player.width, Player.height, DustID.GemAmethyst, 0f + Main.rand.Next(-5, 5), 0f + Main.rand.Next(-5, 5), 150, default, 1.5f);
+                }
+                Player.immune = true;
+                Player.immuneTime = 30;
+                int index = Player.FindBuffIndex(BuffType<CallOfTheStarsBuff>());
+                if (index > -1)
+                {
+                    Player.DelBuff(index);
+                }
+                Player.AddBuff(BuffType<CallOfTheStarsCooldown>(), 60 * 180);
                 return true;
             }
             if (Player.HasBuff(BuffType<GuntriggerParry>()))

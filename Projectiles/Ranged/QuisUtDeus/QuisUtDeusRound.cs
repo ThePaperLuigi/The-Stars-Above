@@ -6,6 +6,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
+using Terraria.GameContent.Drawing;
+using StarsAbove.Buffs.Ranged.QuisUtDeus;
+using Terraria.WorldBuilding;
+using StarsAbove.Buffs.Magic.HunterSymphony;
 
 namespace StarsAbove.Projectiles.Ranged.QuisUtDeus
 {
@@ -39,6 +43,28 @@ namespace StarsAbove.Projectiles.Ranged.QuisUtDeus
 
             base.AI();
         }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            modifiers.FinalDamage += MathHelper.Lerp(0f, 0.3f, target.lifeMax / 100000);
+            if (Main.player[Projectile.owner].HasBuff(ModContent.BuffType<BenedictioBuff>()))
+            {
+                if (Main.player[Projectile.owner].HasBuff(ModContent.BuffType<CallOfTheStarsCooldown>()))
+                {
+                    Main.player[Projectile.owner].buffTime[Main.player[Projectile.owner].FindBuffIndex(ModContent.BuffType<CallOfTheStarsCooldown>())] -= 60;
+                }
+                if (Main.player[Projectile.owner].HasBuff(ModContent.BuffType<CallOfTheStarsBuff>()))
+                {
+                    modifiers.CritDamage += 0.3f;
+                    modifiers.ScalingArmorPenetration += 0.2f;
+                }
+                modifiers.SetCrit();
+            }
+            else
+            {
+                modifiers.DisableCrit();
+            }
+            base.ModifyHitNPC(target, ref modifiers);
+        }
         public override bool PreDraw(ref Color lightColor)
         {
             default(Effects.SmallPinkTrail).Draw(Projectile);
@@ -48,19 +74,28 @@ namespace StarsAbove.Projectiles.Ranged.QuisUtDeus
 
         public override void OnKill(int timeLeft)
         {
-            float dustAmount = 25f;
-            float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
-            for (int i = 0; i < dustAmount; i++)
+            ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.TrueExcalibur,
+                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(Projectile.Hitbox) },
+                Projectile.owner);
+
+            if (Main.player[Projectile.owner].HasBuff(ModContent.BuffType<BenedictioBuff>()))
             {
-                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
-                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
-                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
-                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst);
-                Main.dust[dust].scale = 1f;
-                Main.dust[dust].noGravity = true;
-                Main.dust[dust].position = Projectile.Center + spinningpoint5;
-                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 2f;
+                float dustAmount = 25f;
+                float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.GemAmethyst);
+                    Main.dust[dust].scale = 1f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                    Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+                }
             }
+
+            
 
         }
     }
