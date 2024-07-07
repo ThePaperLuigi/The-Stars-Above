@@ -12252,17 +12252,18 @@ Mods: {
 			}
 
 			QuisUtDeus: {
-				DisplayName: Quis Us Deus
-				Tooltip: 
+				DisplayName: Quis Ut Deus
+				Tooltip:
 					'''
-					Attacks with this weapon fire rapid spatial bullets, dealing bonus damage based on target Max HP (Max 300% base damage)
+					Attacks with this weapon fire rapid spatial bullets, dealing bonus damage based on target Max HP (Max 130% base damage)
+					Spatial bullets can not naturally deal critical strikes
 					After every 5 hits, the next attack summons a falling star to strike the foe, dealing bonus damage
-					When in combat, gain [Benedictio] (Buff is lost for 10 seconds upon taking damage)
-					While under the effect of [Benedictio], all attacks become guaranteed critical strikes
-					Right click to activate [Call of the Stars] for 8 seconds (2 minute cooldown)
-					During this time, critical strikes deal 70% increased damage and attacks gain 20% Armor Penetration
+					When in combat, gain [c/FCD4FF:Benedictio] (Buff is lost for 10 seconds upon taking damage)
+					While under the effect of [c/FCD4FF:Benedictio], spatial bullets become guaranteed critical strikes
+					Right click to activate [c/FF65BB:Call of the Stars] for 8 seconds (3 minute cooldown)
+					During this time, attack speed is increased by 20%, critical strikes deal 30% increased damage, and attacks gain 20% Armor Penetration
 					Additionally, the next instance of damage is negated (Buff is lost upon triggering this effect)
-					Critical strikes reduce the cooldown of [Call of the Stars] by 1 second on hit
+					Critical strikes with spatial bullets reduce the cooldown of [c/FF65BB:Call of the Stars] by 1 second on hit
 					'''
 			}
 
@@ -13462,6 +13463,9 @@ Mods: {
 			QuitUsDeusRound.DisplayName: Quit Us Deus Round
 			QuisUtDeusGun.DisplayName: Quis Us Deus Gun
 			QuisUtDeusRound.DisplayName: Quis Us Deus Round
+			CallOfTheStarsBackground.DisplayName: Call Of The Stars Background
+			CallOfTheStarsBorder.DisplayName: Call Of The Stars Border
+			CallOfTheStarsVFX.DisplayName: Call Of The Stars V F X
 		}
 
 		Buffs: {
@@ -16291,6 +16295,21 @@ Mods: {
 			NeuroPetBuff: {
 				DisplayName: Virtual Intelligence
 				Description: heart\\
+			}
+
+			BenedictioBuff: {
+				DisplayName: Benedictio
+				Description: Engendering aid from the stars, spatial bullets are guaranteed to critically strike
+			}
+
+			CallOfTheStarsBuff: {
+				DisplayName: Call Of The Stars
+				Description: Borrowing strength from the stars, critical strike damage and armor penetration with spatial bullets is increased
+			}
+
+			CallOfTheStarsCooldown: {
+				DisplayName: Call Of The Stars Cooldown
+				Description: ""
 			}
 		}
 
