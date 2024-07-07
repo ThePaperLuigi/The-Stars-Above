@@ -634,7 +634,7 @@ namespace StarsAbove
 
         public int oldHP;
 
-        int timeAfterGettingHit;
+        public int timeAfterGettingHit;
 
         int umbralEntropyCooldown;
 
@@ -4025,9 +4025,26 @@ namespace StarsAbove
         }
         private void NeonVeilShaderEffect()
         {
-            if(Player.InModBiome<NeonVeilBiome>())
+            if (Player.InModBiome<NeonVeilBiome>())
             {
-                Player.ZoneUnderworldHeight = false;
+                if (Main.rand.NextBool(3))
+                {
+                    // Initial random position vector
+                    Vector2 vector = new Vector2(
+                        Main.rand.Next(-1548, 1548) * (0.003f * 200) - 10,
+                        Main.rand.Next(-1548, 1548) * (0.003f * 200) - 10);
+
+                    // Create the dust particle
+                    Dust d = Main.dust[Dust.NewDust(
+                        Player.Center + vector, 1, 1,
+                        DustID.GemAmethyst, 0, 0, 255,
+                        new Color(1f, 1f, 1f), 0.8f)];
+
+                    // Apply player velocity influence
+                    d.noGravity = true;
+                }
+                
+
                 if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
                 {
                     Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
