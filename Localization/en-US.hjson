@@ -3586,7 +3586,7 @@ Mods: {
 						}
 
 						2: {
-							$parentVal: Perseus told us to use the 'Progenitor's Wish.' Perhaps it holds the key?
+							$parentVal: There has to be some way to solve it. Let's prepare for now.
 							E: Worried
 						}
 					}
@@ -3601,7 +3601,7 @@ Mods: {
 						}
 
 						2: {
-							$parentVal: Perseus gave us the 'Progenitor's Wish.' I feel that it may hold the key to solving this mystery.
+							$parentVal: What could we do? For now, let us prepare.
 							E: Angry
 						}
 					}
@@ -3686,11 +3686,6 @@ Mods: {
 					onConfusion: {
 						1: "[You can't make out the words- looks like you've been confused.] "
 						2: Something hit you on the head? You're looking a little loopy. Okay, more than a little loopy.
-					}
-
-					onKillCritter: {
-						1: wip
-						2: wip
 					}
 
 					1: Looks like you've been poisoned. I'll send you a get well card.
@@ -5651,6 +5646,7 @@ Mods: {
 			LockedChest: The chest is held shut by a mysterious power...
 			CreditsHover: "[View the credits for the mod!]"
 			Wiki: "[Check out the official wiki!]"
+			Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
 			Credits:
 				'''
 				Credits
