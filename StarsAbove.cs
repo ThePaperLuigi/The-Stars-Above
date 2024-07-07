@@ -732,10 +732,10 @@ namespace StarsAbove
             {
                 lightColor.Z = finalB;
             }
-            Vector3 neutralLight = new Vector3(0f, 0.2f, 0.2f);
+            Vector3 neutralLight = new Vector3(0f, 0f, 0f);
             if (ModContent.GetInstance<NeonVeilTileCount>().tileCount >= 40)
             {
-                //lightColor = neutralLight;
+                lightColor = neutralLight;
 
                 if ((!tile.HasTile || !Main.tileNoSunLight[tile.TileType] || ((tile.Slope != 0 || tile.IsHalfBlock) && Main.tile[x, y - 1].LiquidAmount == 0 && Main.tile[x, y + 1].LiquidAmount == 0 && Main.tile[x - 1, y].LiquidAmount == 0 && Main.tile[x + 1, y].LiquidAmount == 0)) && (Main.wallLight[tile.WallType] || tile.WallType == 73 || tile.WallType == 227) && tile.LiquidAmount < 200 && (!tile.IsHalfBlock || Main.tile[x, y - 1].LiquidAmount < 200))
                 {
