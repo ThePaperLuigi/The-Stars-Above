@@ -254,7 +254,6 @@ namespace StarsAbove.Systems
                 
 
             }
-            Main.NewText(perfectBossTimer);
             if (perfectBossTimer > 60 * 1 && !isAnyBossActive)
             {
                 if (!hitDuringBoss && Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)

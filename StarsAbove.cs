@@ -80,7 +80,7 @@ namespace StarsAbove
 			if(wikithis != null && !Main.dedServ)
             {
 				
-				wikithis.Call("AddModURL", this, "https://terrariamods.wiki.gg/wiki/The_Stars_Above/{}");
+				wikithis.Call("AddModURL", this, "https://starsabovemod.wiki.gg/wiki/{}");
 
 			}
 

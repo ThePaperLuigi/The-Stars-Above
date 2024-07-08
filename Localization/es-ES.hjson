@@ -3908,9 +3908,89 @@ Mods: {
 					// 218: Rain again, huh?
 					// 219: Looks like it's starting to rain.
 					// 220: That was amazing! You didn't even get hit at all!
+					// 221: That was close! At least we won in the end.
+					// 222: Phew! In the end, victory is all that matters.
 				}
 
 				Eridani: {
+					onPoison: {
+						// 1: Uhh.. you're looking a little sick.
+						// 2: I detect some poison in your system- try to walk it off?
+						// 3: Keep healing on hand- you've been poisoned.
+						// 4: You're poisoned- try not to engage foes at the moment.
+					}
+
+					onIchor: {
+						// 1: The Ichor is dampening your defenses. Watch out.
+						// 2: Your defenses are lowered- take extra caution.
+						// 3: Ichor is weakening your armor. Focus on dodging for now.
+					}
+
+					onSilence: {
+						// 1: You've been silenced.. No magic for now.
+						// 2: A magical silence, huh? You'll have to make do without mystics for now.
+						// 3: You've been magically silenced- try a hands-on approach until it resolves.
+					}
+
+					onCurse: {
+						// 1: That looks to me like a curse.. You can't use anything right now.
+						// 2: A curse that prevents item use? Let's disengage and think of a new plan.
+						// 3: Items have been sealed. Let's avoid getting into a dangerous situation right now.
+					}
+
+					onFrozen: {
+						// 1: That doesn't look good. You're frozen solid.
+						// 2: Frozen completely solid? This isn't good- make sure you're ready when you're free.
+					}
+
+					onFrostburn: {
+						// 1: You've been inflicted with Frostburn! That's.. confusing.
+						// 2: You're burning and freezing! Sorry, but you'll have to endure it!
+						// 3: Frostburn! Try to prep some healing!
+					}
+
+					onWebbed: {
+						// 1: Yuck- you've been rendered immobile by webs.
+						// 2: Covered in spiderwebs? That's disgusting... but I guess it isn't really your fault.
+					}
+
+					onStoned: {
+						// 1: You've been petrified... That's novel.
+						// 2: Uhh, I swear you were standing right there. Wait, don't tell me that stone statue is YOU.
+					}
+
+					onBurning: {
+						// 1: You should probably not stand on that.
+						// 2: You should probably move...
+					}
+
+					onSuffocation: {
+						// 1: You're dying fast. Find a way out of there.
+						// 2: Buried alive?! Get out of there!
+					}
+
+					onFire: {
+						// 1: Ouch. That's probably not good.
+						// 2: So, your body temperature is around 300 degrees above normal. You're probably aware, though...
+						// 3: I guess you don't need me to tell you you're melting.
+						// 4: Um, your skin is burning. Just wanted to give a heads-up.
+					}
+
+					onDrowning: {
+						// 1: You need some air, quick.
+						// 2: Whatever you're swimming for, it can wait.
+					}
+
+					onBleeding: {
+						// 1: That's a lot of blood.. You aren't regenerating health now, that's for sure.
+						// 2: You're bleeding everywhere- no health regen right now.
+					}
+
+					onConfusion: {
+						// 1: "[You can't make out the words- looks like you've been confused.] "
+						// 2: Uhh, are you OK? Do you need to sit down? ...Can you even walk in a straight line?
+					}
+
 					1: ehm.... te ves un poco enfermo.
 					2: El Icor está reduciendo tus defensas. Ten cuidado.
 					3: Estás silenciado... Sin magia por ahora.
@@ -4097,41 +4177,42 @@ Mods: {
 					184: Hey, la temperatura en tu entorno está bajando dramáticamente. Estoy segura que puedes ver la fuente de esta anomalía- encárgate de él, rápido.
 					185: lo que sea que es esto, es duro hasta de ver. Ten cuidado, es poderoso y letal.
 					186: Creo que lo que hayas hecho debe haber traído unas serias consecuencias- una entidad extraña ha aparecido, y se está acercando.
-					// 188: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
-					// 189: Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.
-					// 190: What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.
-					// 191: Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.
-					// 192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
-					// 193: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
-					// 194: Seems this place has been completely overturned by the Ardor... What a horrible fate.
-					// 195: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
-					// 196: You've got to be kidding me. It's a horrid, scuttling bug- in armor, no less. Avoid its disgusting minions or else!
-					// 197: The Moon Jellies have combined into a sort of figure? It looks like it wants a fight, so prepare yourself!
-					// 198: Hey, heads up- that thing you just used has awoken a sort of nature entity, and it's headed your way.
-					// 199: I think you've angered this prehistoric bird thing- I hope you've got a plan to take it out of the sky.
-					// 200: A low-orbit entity is rapidly approaching your position- get ready for a fight.
-					// 201: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
-					// 202: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
-					// 203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
-					// 204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
-					// 205: I trust you're ready for this?
-					// 206: What is this void... thing? It's nothing short of terrifying.
-					// 207: It's even stronger now?! Any other things I should know about?
-					// 208: You're kidding me.
-					// 209: Let's show this Glassweaver we mean business.
-					// 210: Looks like it took the bait. Time to get to work!
-					// 211: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
-					// 212: A new vista to explore!
-					// 213: What a curious place...
-					// 214: The exploration continues.
-					// 215: Seems like this world still has its secrets.
-					// 216: Looks like a new area?
-					// 217: What is this place?
-					// 218: (Laugh)
-					// 219: So this is the Everlasting Light... how dreadful.
-					// 220: Seems to be raining again.
-					// 221: Looks like it's beginning to rain.
-					// 222: An exceptional result! Looks like you didn't even get scratched!
+					// 187: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
+					// 188: Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.
+					// 189: What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.
+					// 190: Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.
+					// 191: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
+					// 192: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
+					// 193: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
+					// 194: You've got to be kidding me. It's a horrid, scuttling bug- in armor, no less. Avoid its disgusting minions or else!
+					// 195: The Moon Jellies have combined into a sort of figure? It looks like it wants a fight, so prepare yourself!
+					// 196: Hey, heads up- that thing you just used has awoken a sort of nature entity, and it's headed your way.
+					// 197: I think you've angered this prehistoric bird thing- I hope you've got a plan to take it out of the sky.
+					// 198: A low-orbit entity is rapidly approaching your position- get ready for a fight.
+					// 199: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
+					// 200: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
+					// 201: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
+					// 202: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
+					// 203: I trust you're ready for this?
+					// 204: What is this void... thing? It's nothing short of terrifying.
+					// 205: It's even stronger now?! Any other things I should know about?
+					// 206: You're kidding me.
+					// 207: Let's show this Glassweaver we mean business.
+					// 208: Looks like it took the bait. Time to get to work!
+					// 209: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
+					// 210: A new vista to explore!
+					// 211: What a curious place...
+					// 212: The exploration continues.
+					// 213: Seems like this world still has its secrets.
+					// 214: Looks like a new area?
+					// 215: What is this place?
+					// 216: (Laugh)
+					// 217: So this is the Everlasting Light... how dreadful.
+					// 218: Seems to be raining again.
+					// 219: Looks like it's beginning to rain.
+					// 220: An exceptional result! Looks like you didn't even get scratched!
+					// 221: A little too close for comfort... but it worked out in the end.
+					// 222: That could've gone worse, I suppose...!
 				}
 			}
 

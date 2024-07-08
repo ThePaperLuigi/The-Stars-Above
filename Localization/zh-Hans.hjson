@@ -3908,9 +3908,89 @@ Mods: {
 					// 218: Rain again, huh?
 					// 219: Looks like it's starting to rain.
 					// 220: That was amazing! You didn't even get hit at all!
+					// 221: That was close! At least we won in the end.
+					// 222: Phew! In the end, victory is all that matters.
 				}
 
 				Eridani: {
+					onPoison: {
+						// 1: Uhh.. you're looking a little sick.
+						// 2: I detect some poison in your system- try to walk it off?
+						// 3: Keep healing on hand- you've been poisoned.
+						// 4: You're poisoned- try not to engage foes at the moment.
+					}
+
+					onIchor: {
+						// 1: The Ichor is dampening your defenses. Watch out.
+						// 2: Your defenses are lowered- take extra caution.
+						// 3: Ichor is weakening your armor. Focus on dodging for now.
+					}
+
+					onSilence: {
+						// 1: You've been silenced.. No magic for now.
+						// 2: A magical silence, huh? You'll have to make do without mystics for now.
+						// 3: You've been magically silenced- try a hands-on approach until it resolves.
+					}
+
+					onCurse: {
+						// 1: That looks to me like a curse.. You can't use anything right now.
+						// 2: A curse that prevents item use? Let's disengage and think of a new plan.
+						// 3: Items have been sealed. Let's avoid getting into a dangerous situation right now.
+					}
+
+					onFrozen: {
+						// 1: That doesn't look good. You're frozen solid.
+						// 2: Frozen completely solid? This isn't good- make sure you're ready when you're free.
+					}
+
+					onFrostburn: {
+						// 1: You've been inflicted with Frostburn! That's.. confusing.
+						// 2: You're burning and freezing! Sorry, but you'll have to endure it!
+						// 3: Frostburn! Try to prep some healing!
+					}
+
+					onWebbed: {
+						// 1: Yuck- you've been rendered immobile by webs.
+						// 2: Covered in spiderwebs? That's disgusting... but I guess it isn't really your fault.
+					}
+
+					onStoned: {
+						// 1: You've been petrified... That's novel.
+						// 2: Uhh, I swear you were standing right there. Wait, don't tell me that stone statue is YOU.
+					}
+
+					onBurning: {
+						// 1: You should probably not stand on that.
+						// 2: You should probably move...
+					}
+
+					onSuffocation: {
+						// 1: You're dying fast. Find a way out of there.
+						// 2: Buried alive?! Get out of there!
+					}
+
+					onFire: {
+						// 1: Ouch. That's probably not good.
+						// 2: So, your body temperature is around 300 degrees above normal. You're probably aware, though...
+						// 3: I guess you don't need me to tell you you're melting.
+						// 4: Um, your skin is burning. Just wanted to give a heads-up.
+					}
+
+					onDrowning: {
+						// 1: You need some air, quick.
+						// 2: Whatever you're swimming for, it can wait.
+					}
+
+					onBleeding: {
+						// 1: That's a lot of blood.. You aren't regenerating health now, that's for sure.
+						// 2: You're bleeding everywhere- no health regen right now.
+					}
+
+					onConfusion: {
+						// 1: "[You can't make out the words- looks like you've been confused.] "
+						// 2: Uhh, are you OK? Do you need to sit down? ...Can you even walk in a straight line?
+					}
+
 					1: 呃……你看上去不太舒服……
 					2: 你的防御被灵液降低了。当心。
 					3: 你被沉默了……暂时放不出魔法了。
@@ -4097,6 +4177,7 @@ Mods: {
 					184: 嘿，你周围的温度正在急剧降低。我觉得你已经看到这种异常现象的始作俑者了——干掉它，快点。
 					185: 无论这家伙是什么，都简直不堪入目。当心，它极其强大且致命！
 					186: 我想无论是你做了什么，都引发了挺严重的后果——一个奇怪的家伙出现了，它正朝你这边过来。
+					// 187: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
 					188: 唔，这似乎是一片无人居住的小行星。这里肯定有生命存在，但起码是几千年前的事了。
 					189: 看上去是座古老的采矿基地。从外观上看来，它在亚铎扎根于此前就被遗弃了。遗憾的是，没有任何剩下的矿石。
 					190: 真是个奇怪的世界——周围的魔力似乎完全干涸了，只剩下一片苍白——多么独特的现象。
@@ -4121,17 +4202,17 @@ Mods: {
 					209: 告诉织璃者我们是认真的。
 					210: 看起来它上钩了。是时候干点正事了！
 					211: 我猜这就是织璃者所说的存在了。别大意。
-					// 212: A new vista to explore!
-					// 213: What a curious place...
-					// 214: The exploration continues.
-					// 215: Seems like this world still has its secrets.
-					// 216: Looks like a new area?
-					// 217: What is this place?
-					// 218: (Laugh)
-					// 219: So this is the Everlasting Light... how dreadful.
-					// 220: Seems to be raining again.
-					// 221: Looks like it's beginning to rain.
-					// 222: An exceptional result! Looks like you didn't even get scratched!
+					// 212: The exploration continues.
+					// 213: Seems like this world still has its secrets.
+					// 214: Looks like a new area?
+					// 215: What is this place?
+					// 216: (Laugh)
+					// 217: So this is the Everlasting Light... how dreadful.
+					// 218: Seems to be raining again.
+					// 219: Looks like it's beginning to rain.
+					// 220: An exceptional result! Looks like you didn't even get scratched!
+					// 221: A little too close for comfort... but it worked out in the end.
+					// 222: That could've gone worse, I suppose...!
 				}
 			}
 

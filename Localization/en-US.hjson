@@ -3783,7 +3783,7 @@ Mods: {
 					93: Hey, it's the Desert Scourge- but not so dried up! We've seen one before, how bad could this one be?
 					94: It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
 					95: The flames have brought forth a demonic spirit! Take care to watch your footing, lest you succumb to lava!
-					96: This thing... it's a herald of destruction.. You know what devestation it can bring. Don't lose..!
+					96: This thing... it's a herald of destruction.. I'm sure you know what kind of trouble it can bring. Don't lose!
 					97: ...It's Anahita again. Are you going to challenge the Leviathan?
 					98: ...Do you hear that? Whatever it is.. it sounds really dangerous.
 					99: That demon of the sea is fighting back! I hope you're ready for this...
@@ -3913,6 +3913,84 @@ Mods: {
 				}
 
 				Eridani: {
+					onPoison: {
+						1: Uhh.. you're looking a little sick.
+						2: I detect some poison in your system- try to walk it off?
+						3: Keep healing on hand- you've been poisoned.
+						4: You're poisoned- try not to engage foes at the moment.
+					}
+
+					onIchor: {
+						1: The Ichor is dampening your defenses. Watch out.
+						2: Your defenses are lowered- take extra caution.
+						3: Ichor is weakening your armor. Focus on dodging for now.
+					}
+
+					onSilence: {
+						1: You've been silenced.. No magic for now.
+						2: A magical silence, huh? You'll have to make do without mystics for now.
+						3: You've been magically silenced- try a hands-on approach until it resolves.
+					}
+
+					onCurse: {
+						1: That looks to me like a curse.. You can't use anything right now.
+						2: A curse that prevents item use? Let's disengage and think of a new plan.
+						3: Items have been sealed. Let's avoid getting into a dangerous situation right now.
+					}
+
+					onFrozen: {
+						1: That doesn't look good. You're frozen solid.
+						2: Frozen completely solid? This isn't good- make sure you're ready when you're free.
+					}
+
+					onFrostburn: {
+						1: You've been inflicted with Frostburn! That's.. confusing.
+						2: You're burning and freezing! Sorry, but you'll have to endure it!
+						3: Frostburn! Try to prep some healing!
+					}
+
+					onWebbed: {
+						1: Yuck- you've been rendered immobile by webs.
+						2: Covered in spiderwebs? That's disgusting... but I guess it isn't really your fault.
+					}
+
+					onStoned: {
+						1: You've been petrified... That's novel.
+						2: Uhh, I swear you were standing right there. Wait, don't tell me that stone statue is YOU.
+					}
+
+					onBurning: {
+						1: You should probably not stand on that.
+						2: You should probably move...
+					}
+
+					onSuffocation: {
+						1: You're dying fast. Find a way out of there.
+						2: Buried alive?! Get out of there!
+					}
+
+					onFire: {
+						1: Ouch. That's probably not good.
+						2: So, your body temperature is around 300 degrees above normal. You're probably aware, though...
+						3: I guess you don't need me to tell you you're melting.
+						4: Um, your skin is burning. Just wanted to give a heads-up.
+					}
+
+					onDrowning: {
+						1: You need some air, quick.
+						2: Whatever you're swimming for, it can wait.
+					}
+
+					onBleeding: {
+						1: That's a lot of blood.. You aren't regenerating health now, that's for sure.
+						2: You're bleeding everywhere- no health regen right now.
+					}
+
+					onConfusion: {
+						1: "[You can't make out the words- looks like you've been confused.] "
+						2: Uhh, are you OK? Do you need to sit down? ...Can you even walk in a straight line?
+					}
+
 					1: Uhh.. you're looking a little sick.
 					2: The Ichor is dampening your defenses. Watch out.
 					3: You've been silenced.. No magic for now.
@@ -3920,13 +3998,13 @@ Mods: {
 					5: That doesn't look good. You're frozen solid.
 					6: You've been inflicted with Frostburn! That's.. confusing.
 					7: Yuck- you've been rendered immobile by webs.
-					8: You've been petrified..
+					8: You've been petrified... That's new.
 					9: You're taking damage from a hot surface!
 					10: You're dying fast. Find a way out of there.
 					11: Ouch. That's probably not good.
 					12: You need some air, quick.
 					13: That's a lot of blood.. You aren't regenerating health now, that's for sure.
-					14: "[You can't make out the words- seems you've been confused] "
+					14: "[You can't make out the words- seems you've been confused]"
 					15: Whoops.
 					16: Did you mean to do that?
 					17: Sorry, little one.
@@ -4003,95 +4081,95 @@ Mods: {
 					88: A mycelium beast, huh? It's spewing mushrooms everywhere...
 					89: The corruption has spewed out a new beast. Look out for its barrage of minions.
 					90: Flesh beasts draw near..! Focus your attention on the Hive!
-					91: This foe radiates mystic ice. Stay away from it- those icy spikes are not for show.
-					92: The Desert Scourge makes a return... I knew it- This was what it once was.
-					93: A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
-					94: That Charred Idol has summoned a flaming spirit.. It can teleport everywhere- don't lose track of it.
-					95: Calamitas.. With a name like that, it begs respect. We've seen what it can do. You musn't lose this fight.
-					96: It's Anahita singing again. Do you want to fight her once more?
-					97: Can you hear that, {0}? Something's singing in the ocean?
-					98: Ah.. It looks like you've angered her. I hope you're prepared for a fight..
-					99: What in the world.. It's massive! Take caution; the playing field has changed!
-					100: It's a mechanical beast, but it's been corrupted by the Astral Infection. Stay cautious.
-					101: Ugh. It's a disgusting bug, but now it has artillery. When it gets wounded, those missiles will likely detonate.
-					102: Yuck. It's a huge pile of flesh and bones. From what I can tell, getting too close will end you fast.
-					103: This is a descendant of a cosmic god! We can't lose to something like this!
-					104: The Profaned Shard has summoned something! Prepare for a fight!
-					105: Hey, those pheromones.. Looks like it attracted a feral beast.
-					106: A deity of light and darkness approaches!. We musn't lose this..!
-					107: Something just entered the upper atmosphere! Brace for impact!
-					108: Wait. I sense something from the Dungeon's depths. Prepare yourself for a fight!
-					109: A demon is approaching..! Watch out! Whatever it wants, it'll kill you for it!
-					110: The ghosts of the dungeon.. They're fusing together! Prepare yourself!
-					111: Something descends from the acid rain! It's looking for a fight!
-					112: The Devourer of Gods has appeared! You must give this battle your all!
-					113: The Jungle Dragon roars. Let's throw a wrench in Yharim's plans.
-					114: Where's it going? Were we.. not strong enough?
-					115: No way.. Its power is ineffable. {0}.. We have to win this!
-					116: Draedon is here... Be mindful of his tactics. His knowledge spans the world over.
-					117: Stay sharp. Multiple foes detected. Draedon's inventions are on the move.
-					118: Quick- find higher ground! A colossal mechanical serpent draws near!
-					119: ...Never mind the absurdity of the giant mechanical squirrel. Focus on attacking its head and arms to stop its most dangerous attacks.
-					120: Huh? She looks weak, but she's actually kind of powerful... If you get hit, you'll be slammed with debuffs; keep your healing ready.
-					121: Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
-					122: Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
-					123: Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
-					124: The Storm Flare has called something down! Hmm? It looks to be lightning-aspected.
-					125: Some sort of jellyfish monster is approaching. It looks like there's someone trapped inside..?
-					126: It's a giant vampire bat! Mind yourself...
-					127: The cavern's energy has congealed into a monster! What in the world..?
-					128: A knight has arisen from the marble cave! Look out- it's prepared to fight!
-					129: It's an alien spaceship! It looks like it'll be stronger on low HP!
-					130: Do you see that..? It looks like a giant snow spider! Let's kill it quickly..
-					131: A Beholder..? Don't get reckless.. These foes are incredibly fearsome!
-					132: I can sense an undead beast approaching! Get ready for a fight!
-					133: The Abyssal Shadows are converging..! This sea monster holds dominion over dark magic!
-					134: Primordial energy is forming all around you.. The elements themselves are on the attack!
-					135: It's gotten quite hot here- this must be the Desert. I have an inkling we'll be here often- like it or not.
-					136: This verdant environment must be the Jungle. I'd make sure we're well equipped before braving its depths.
-					137: You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
-					138: So this is the place where the dead rest. Let's see what we can find.
-					139: It's the ocean... We can't cross it, so best leave it be.
-					140: I can feel the evil aura radiating from this place. I wouldn't mind leaving as soon as possible.
-					141: This place is.. disgusting. Let's not stay longer than we have to.
-					142: How curious, a veritable snowscape. Take care to avoid hypothermia- but you should be fine.
-					143: We've stepped straight into fairytale land... It would be much prettier if everything here wasn't hostile.
-					144: A cavern of giant glowing mushrooms- It feels rather... welcoming? We should take some back home, just in case.
-					145: I can feel traps everywhere- Strong weapons are buried here as well. Stay ready.
-					146: So this is the meteor impact we heard...
-					147: The Brimstone Crag... I can feel the horrors of the past.
-					148: This is the Astral Infection. A subject I'm all too familiar with...
-					149: This place is quite beautiful. Who knew it would be under the desert..?
-					150: From what I can see, this was once a pleasant coastline. What happened here..?
-					151: You've decided to breach the ocean's depths. Please consider how dangerous this really is..
-					152: This cavern seems to be pure granite. Some rogue spirits have made their home here.
-					153: So this is a Marble Cavern. Perhaps we can use the material to build?
-					154: We're very deep in the ocean. These waters are trouble, I can tell that much.
-					155: It's raining. Hopefully nothing important gets too wet.
-					156: Looks like it's a blizzard. 'Cold' doesn't begin to cover it.
-					157: A sandstorm has kicked up. Mind your eyes.
-					158: Time and space bend to my will!
-					159: Let's try that again, shall we?
-					160: Chronal reversal complete..!
-					161: March forth, and keep fighting!
-					162: We're not about to stop here!
-					163: Embrace the abyss! Set yourself free!
-					164: They'll all fall before us.
-					165: Like lambs to slaughter!
-					166: We'll finish them all off!
-					167: I'm ready when you are.
-					168: The Stellar Nova is ready!
-					169: I'm ready. Are you?
-					170: Let's do this.
-					171: Just tell me when.
-					172: Let's find an opening.
-					173: Celestial coordinates established. Welcome to the Observatory Hyperborea.
-					174: We've made it. These are asteroids of interest. Let's look around.
-					175: This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-					176: Where is this place? It looks very familiar...
-					177: It looks like we can't explore this yet... Maybe next time.
-					178: A being of the apocalypse has appeared. It wields destruction in all its appendages!
-					179: This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
+					91: Another foe born from slime. Let's return it to where it belongs- in the ground!
+					92: This foe radiates mystic ice. Stay away from it- those icy spikes are not for show.
+					93: The Desert Scourge makes a return... I knew it- This was what it once was.
+					94: A colossal serpent makes its way towards us... Don't get reckless, this thing is seriously dangerous.
+					95: That Charred Idol has summoned a flaming spirit.. It can teleport everywhere- don't lose track of it.
+					96: Calamitas.. With a name like that, it begs respect. We've seen what it can do. You musn't lose this fight.
+					97: It's Anahita singing again. Do you want to fight her once more?
+					98: Can you hear that? Is... something singing in the ocean?
+					99: Ah.. It looks like you've angered her. I hope you're prepared for a fight..
+					100: What in the world.. It's massive! Take caution; the playing field has changed!
+					101: It's a mechanical beast, but it's been corrupted by the Astral Infection. Stay cautious.
+					102: Ugh. It's a disgusting bug, but now it has artillery. When it gets wounded, those missiles will likely detonate.
+					103: Yuck. It's a huge pile of flesh and bones. From what I can tell, getting too close will end you fast.
+					104: This is a descendant of a cosmic god! We can't lose to something like this!
+					105: The Profaned Shard has summoned something! Prepare for a fight!
+					106: Hey, those pheromones.. Looks like it attracted a feral beast. Let's dispose of it.
+					107: A deity of light and darkness approaches!. We musn't lose this..!
+					108: Something just entered the upper atmosphere! Brace for impact!
+					109: Wait. I sense something from the Dungeon's depths. Prepare yourself for a fight!
+					110: A demon is approaching..! Watch out! Whatever it wants, it'll kill you for it!
+					111: The ghosts of the dungeon.. They're fusing together! Prepare yourself!
+					112: Something descends from the acid rain! It's looking for a fight!
+					113: The Devourer of Gods has appeared! You must give this battle your all!
+					114: The Jungle Dragon roars. Let's throw a wrench in Yharim's plans.
+					115: Huh? Where's it going? We were in the middle of something!
+					116: No way.. Its power is ineffable. {0}.. We have to win this!
+					117: Draedon is here... Be mindful of his tactics. His knowledge spans the world over.
+					118: Stay sharp. Multiple foes detected- Draedon's inventions are on the move.
+					119: Quick- find higher ground! A colossal mechanical serpent draws near!
+					120: The battlefield is changing- be mindful of your foes, but stay calm and focus.
+					121: ...Never mind the absurdity of the giant mechanical squirrel. Focus on attacking its head and arms to stop its most dangerous attacks.
+					122: Huh? She looks weak, but she's actually kind of powerful... If you get hit, you'll be slammed with debuffs; keep your healing ready.
+					123: Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
+					124: Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
+					125: Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
+					126: The Storm Flare has called something down! Hmm? It looks to be lightning-aspected.
+					127: Some sort of jellyfish monster is approaching. It looks like there's someone trapped inside..?
+					128: It's a giant vampire bat! Mind yourself...
+					129: The cavern's energy has congealed into a monster! What in the world..?
+					130: A knight has arisen from the marble cave! Look out- it's prepared to fight!
+					131: It's an alien spaceship! It looks like it'll be stronger on low HP!
+					132: Do you see that..? It looks like a giant snow spider! Let's kill it quickly..
+					133: A Beholder..? Don't get reckless.. These foes are incredibly fearsome!
+					134: I can sense an undead beast approaching! Get ready for a fight!
+					135: The Abyssal Shadows are converging..! This sea monster holds dominion over dark magic!
+					136: Primordial energy is forming all around you.. The elements themselves are on the attack!
+					137: It's gotten quite hot here- this must be the Desert. I have an inkling we'll be here often- like it or not.
+					138: This verdant environment must be the Jungle. I'd make sure we're well equipped before braving its depths.
+					139: You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
+					140: So this is the place where the dead rest. Let's see what we can find.
+					141: It's the ocean... We can't cross it, so best leave it be.
+					142: I can feel the evil aura radiating from this place. I wouldn't mind leaving as soon as possible.
+					143: This place is.. disgusting. Let's not stay longer than we have to.
+					144: How curious, a veritable snowscape. Take care to avoid hypothermia- but you should be fine.
+					145: We've stepped straight into fairytale land... It would be much prettier if everything here wasn't hostile.
+					146: A cavern of giant glowing mushrooms- It feels rather... welcoming? We should take some back home, just in case.
+					147: I can feel traps everywhere- Strong weapons are buried here as well. Stay ready.
+					148: So this is the meteor impact we heard...
+					149: The Brimstone Crag... I can feel the horrors of the past.
+					150: This is the Astral Infection. A subject I'm all too familiar with...
+					151: This place is quite beautiful. Who knew it would be under the desert..?
+					152: From what I can see, this was once a pleasant coastline. What happened here..?
+					153: You've decided to breach the ocean's depths. Please consider how dangerous this really is..
+					154: This cavern seems to be pure granite. Some rogue spirits have made their home here.
+					155: So this is a Marble Cavern. Perhaps we can use the material to build?
+					156: We're very deep in the ocean. These waters are trouble, I can tell that much.
+					157: It's raining. Hopefully nothing important gets too wet.
+					158: Looks like it's a blizzard. 'Cold' doesn't begin to cover it.
+					159: A sandstorm has kicked up. Mind your eyes.
+					160: Time and space bend to my will!
+					161: Let's try that again, shall we?
+					162: Chronal reversal complete..!
+					163: March forth, and keep fighting!
+					164: We're not about to stop here!
+					165: Embrace the abyss! Set yourself free!
+					166: They'll all fall before us.
+					167: Like lambs to slaughter!
+					168: We'll finish them all off!
+					169: I'm ready when you are.
+					170: The Stellar Nova is ready!
+					171: I shall give it my all.
+					172: Let's do this.
+					173: Ready and willing!
+					174: Let's find an opening.
+					175: Celestial coordinates established. Welcome to the Observatory Hyperborea.
+					176: We've made it. These are asteroids of interest. Let's look around.
+					177: This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
+					178: Where is this place? It looks very familiar...
+					179: It looks like we can't explore this yet... Maybe next time.
 					180: Looks like this biome's governed mostly by foliage- a bit more tasteful than the Jungle, I'd say. Let's look around.
 					181: Seems like you've bothered that slime enough- it seems to have drastically altered its fighting style.
 					182: A Pharaoh in the depths of a pyramid? That sounds about right- but looks like you'll have to deal with what comes next.
@@ -4099,43 +4177,42 @@ Mods: {
 					184: Hey, the temperature of your surroundings is dropping dramatically. I'm sure you can see the source of this anomaly- deal with it, fast.
 					185: Whatever this thing is, it's hard to even look at. Be careful, it's powerful and lethal.
 					186: I think whatever you've done must have had some serious repercussions- a strange entity has emerged, and is heading your way.
-					188: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
-					189: Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.
-					190: What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.
-					191: Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.
-					192: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
-					193: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
-					194: Seems this place has been completely overturned by the Ardor... What a horrible fate.
-					195: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
-					196: You've got to be kidding me. It's a horrid, scuttling bug- in armor, no less. Avoid its disgusting minions or else!
-					197: The Moon Jellies have combined into a sort of figure? It looks like it wants a fight, so prepare yourself!
-					198: Hey, heads up- that thing you just used has awoken a sort of nature entity, and it's headed your way.
-					199: I think you've angered this prehistoric bird thing- I hope you've got a plan to take it out of the sky.
-					200: A low-orbit entity is rapidly approaching your position- get ready for a fight.
-					201: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
-					202: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
-					203: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
-					204: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
-					205: I trust you're ready for this?
-					206: What is this void... thing? It's nothing short of terrifying.
-					207: It's even stronger now?! Any other things I should know about?
-					208: You're kidding me.
-					209: Let's show this Glassweaver we mean business.
-					210: Looks like it took the bait. Time to get to work!
-					211: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
-					212: A new vista to explore!
-					213: What a curious place...
-					214: The exploration continues.
-					215: Seems like this world still has its secrets.
-					216: Looks like a new area?
-					217: What is this place?
-					218: (Laugh)
-					219: So this is the Everlasting Light... how dreadful.
-					220: Seems to be raining again.
-					221: Looks like it's beginning to rain.
-					222: An exceptional result! Looks like you didn't even get scratched!
-					223: A little too close for comfort... but it worked out in the end.
-					224: That could've gone worse, I suppose...!
+					187: Hmm, it seems to be a cluster of uninhabited asteroids. There was definitely life here, but it must have been thousands of years ago.
+					188: Looks to be an old mining station. From the looks of it, it was abandoned before the Ardor took root. There won't be any ore left, sadly.
+					189: What a strange world- it seems its ambient mana has been entirely drained, leaving the place looking pale white- a unique phenomenon.
+					190: Looks like you arrived underground- if you can make it to the surface, it'll look more like home. The creatures here are familiar, which is pretty strange.
+					191: The Corruption is a known entity in the universe, but this place is different- it feels as if something larger was Corrupted into this object. Stay alert.
+					192: A Crimson-infused moon... After you've gathered what you need, we should excuse ourselves quickly.
+					193: Never would I ever have thought I'd see a wooden space-station, of all things... Hold on a moment- is someone still living here?
+					194: You've got to be kidding me. It's a horrid, scuttling bug- in armor, no less. Avoid its disgusting minions or else!
+					195: The Moon Jellies have combined into a sort of figure? It looks like it wants a fight, so prepare yourself!
+					196: Hey, heads up- that thing you just used has awoken a sort of nature entity, and it's headed your way.
+					197: I think you've angered this prehistoric bird thing- I hope you've got a plan to take it out of the sky.
+					198: A low-orbit entity is rapidly approaching your position- get ready for a fight.
+					199: I hate to say this, but you seem to have caught the attention of a fearsome demon- time to prepare for combat.
+					200: That crown you just used seems to have summoned a demonic skull... these things aren't usually friendly!
+					201: A colossal earthen entity is approaching- and it's hostile, no doubt. A fight it is.
+					202: That potion the Astrologian gave you definitely was 'strange' for a reason. Prepare yourself!
+					203: I trust you're ready for this?
+					204: What is this void... thing? It's nothing short of terrifying.
+					205: It's even stronger now?! Any other things I should know about?
+					206: You're kidding me.
+					207: Let's show this Glassweaver we mean business.
+					208: Looks like it took the bait. Time to get to work!
+					209: I'm going to wager a guess and say this is whom the Glassweaver spoke of. Don't get careless.
+					210: A new vista to explore!
+					211: What a curious place...
+					212: The exploration continues.
+					213: Seems like this world still has its secrets.
+					214: Looks like a new area?
+					215: What is this place?
+					216: (Laugh)
+					217: So this is the Everlasting Light... how dreadful.
+					218: Seems to be raining again.
+					219: Looks like it's beginning to rain.
+					220: An exceptional result! Looks like you didn't even get scratched!
+					221: A little too close for comfort... but it worked out in the end.
+					222: That could've gone worse, I suppose...!
 				}
 			}
 
