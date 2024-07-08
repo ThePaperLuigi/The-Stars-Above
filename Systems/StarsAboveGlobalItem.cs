@@ -240,6 +240,20 @@ namespace StarsAbove.Systems
                 
                 //Stars Above v2.1
                 ItemType<LegendaryShield>(),
+                ItemType<Wolvesbane>(),
+                ItemType<WolvesbaneRearmed>(),
+                ItemType<WolvesbaneAwakened>(),
+                ItemType<CandiedSugarball>(),
+                ItemType<OrbitalExpresswayPlush>(),
+                ItemType<StringOfCurses>(),
+                ItemType<Phasmasaber>(),
+                ItemType<StarphoenixFunnel>(),
+                ItemType<CloakOfAnArbiter>(),
+                ItemType<TwoCrownBow>(),
+                ItemType<InheritedCaseM4A1>(),
+                ItemType<DreadmotherDarkIdol>(),
+                ItemType<QuisUtDeus>(),
+                ItemType<ParadiseLost>(),
 
                 ItemType<EssenceOfAdagium>(),
                 ItemType<EssenceOfBloodshed>(),
@@ -351,6 +365,8 @@ namespace StarsAbove.Systems
                 ItemType<Chronoclock>(),
                 ItemType<BrilliantSpectrum>(),
                 ItemType<ProgenitorWish>(),
+                ItemType<Phasmasaber>(),
+                ItemType<ElectrumScissors>(),
             };
             Essences = new List<int>() {
                 ItemType<EssenceOfLifethirsting>(),

@@ -82,7 +82,8 @@ namespace StarsAbove.Items
 			{
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().guardianslight = 1;
 			}
-			return true;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().cyberpunkHairstyleUnlocked = true;
+            return true;
 		}
 		
 	}

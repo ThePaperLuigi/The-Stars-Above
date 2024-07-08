@@ -103,6 +103,8 @@ namespace StarsAbove.Systems
 
         bool speedrunEasterEgg;
         int bossTimer;
+        int perfectBossTimer;
+        bool hitDuringBoss = false;
 
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -121,7 +123,10 @@ namespace StarsAbove.Systems
 
 
             }
-
+            if(perfectBossTimer > 0)
+            {
+                hitDuringBoss = true;
+            }
             base.OnHurt(info);
         }
         public override void PreUpdate()
@@ -235,6 +240,51 @@ namespace StarsAbove.Systems
                     }
                 }
                 bossTimer = 0;
+            }
+            bool isAnyBossActive = false;
+
+            for (int k = 0; k < 200; k++)
+            {
+                NPC npc = Main.npc[k];
+                if(npc.boss && npc.active)
+                {
+                    isAnyBossActive = true;
+                    perfectBossTimer++;
+                }
+                
+
+            }
+            Main.NewText(perfectBossTimer);
+            if (perfectBossTimer > 60 * 1 && !isAnyBossActive)
+            {
+                if (!hitDuringBoss && Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                {
+                    Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
+                    Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyPerfect");
+                }
+                else
+                {
+                    Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
+
+
+                    if(Player.statLife < (Player.statLifeMax2 * 0.2))
+                    {
+                        
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyLowHP");
+
+                    }
+                    else
+                    {
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemy");
+
+                    }
+
+
+                }
+                perfectBossTimer = 0;
+
+                hitDuringBoss = false;
+
             }
             for (int k = 0; k < 200; k++)
             {

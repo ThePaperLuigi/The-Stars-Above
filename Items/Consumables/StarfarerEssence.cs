@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Biomes;
 using StarsAbove.NPCs.Starfarers;
 using SubworldLibrary;
 using Terraria;
@@ -33,7 +34,7 @@ namespace StarsAbove.Items.Consumables
         public override bool CanUseItem(Player player)
         {
 
-            return !NPC.AnyNPCs(ModContent.NPCType<StarfarerBoss>()) && SubworldSystem.Current == null;
+            return !NPC.AnyNPCs(ModContent.NPCType<StarfarerBoss>()) && SubworldSystem.Current == null && player.InModBiome<NeonVeilBiome>();
         }
 
         public override bool? UseItem(Player player)

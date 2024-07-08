@@ -220,13 +220,32 @@ namespace StarsAbove.UI.Starfarers
             {
                 if (modPlayer.chosenStarfarer == 1)
                 {
+					
                     if (modPlayer.vagrantDialogue == 2)
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
                     }
                     else
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
 
                     }
                     spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As1" + modPlayer.expression), faceHitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
@@ -249,11 +268,29 @@ namespace StarsAbove.UI.Starfarers
                 {
                     if (modPlayer.vagrantDialogue == 2)
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
                     }
                     else
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
 
                     }
                     spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0" + modPlayer.expression), faceHitboxAlt, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));

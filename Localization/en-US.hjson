@@ -3752,15 +3752,15 @@ Mods: {
 					62: Right. No more games. A powerful foe is approaching.
 					63: Looks like danger's on the horizon, {0}. I've been itching for a fight!
 					64: Looks like trouble. Watch yourself- it's a big one- and I don't think it'll go down without a fight!
-					65: It's the lord of the slimes! I think it has a teleportation-like ability..
-					66: A colossal worm! Watch where it emerges; it'll try and hit your blind spots!
+					65: It's the lord of the slimes! I think it has a teleportation-like ability, so don't get trapped where you can't dodge.
+					66: A colossal worm! Watch where it emerges; it'll try and hit your blind spots, but we can take advantage of its length for piercing attacks!
 					67: This thing is trying to attack your mind directly..! Don't be fooled by the mirages!
-					68: Watch out.. the Queen Bee is awake! Make sure to dodge the horizontal charges!
-					69: Don't underestimate this monster! Stay away from his skull and arms!
-					70: That thing is massive! If you can, try and build a path to fight it on.
-					71: There's two giant eyeballs coming your way! Let's see... The red one will shoot at you, and the green one charges.
+					68: Watch out.. the Queen Bee is awake! Make sure to stay clear of its charges!
+					69: Don't underestimate this monster! Stay away from his skull and arms- I'm sure it has a weakness somewhere...!
+					70: That thing is massive! Whatever you do, don't leave the Underworld, and look where you're going as well!
+					71: There's two giant eyeballs coming your way! Let's see... The red one will shoot at you, and the green one charges, I think- don't get tunnel vision!
 					72: What in the world is that thing? A deer? It's only got one eye... aim for it!
-					73: It's another colossal slime! It looks like it's going to summon some minions!
+					73: It's another colossal slime! It looks like it's going to split into more slimes- don't get caught off guard!
 					74: A Hallow-aspected foe has appeared! Maybe leave the butterfly alone next time...?
 					75: A giant mechanical worm.. What can we do..? How about trying to attack multiple parts of it at once?
 					76: It's a more advanced version of Skeletron.. Try going for the arms first, instead of the head.
@@ -3908,6 +3908,8 @@ Mods: {
 					218: Rain again, huh?
 					219: Looks like it's starting to rain.
 					220: That was amazing! You didn't even get hit at all!
+					221: That was close! At least we won in the end.
+					222: Phew! In the end, victory is all that matters.
 				}
 
 				Eridani: {
@@ -3975,12 +3977,12 @@ Mods: {
 					62: Stay alert, {0}. Something powerful is on its way.
 					63: Danger approaches. We will show no mercy.
 					64: Here it comes. Whatever it is, it's dangerous. Take extra care when it's weak; it'll be forced into a frenzy.
-					65: That's a.. giant slime. It seems to be able to move really quickly. Watch for that.
-					66: This must be the Eater of Worlds. It'll try and suprise you from below.
+					65: That's quite a large slime! It looks to be especially mobile, so don't get stuck where you can't dodge!
+					66: This must be the Eater of Worlds. It'll try and suprise you from below- let's try to take advantage of its length.
 					67: Watch out. It's trying to attack your mind itself. Pay close attention to the mirages.
-					68: That giant bee is attacking! Don't get caught in the honey!
+					68: That giant bee is attacking! Don't get caught in the honey- and heed its horizontal charges!
 					69: The Clothier has turned into.. this.. Stay away from its skull and arms.
-					70: This thing is incredibly strong.. Whatever you do, keep running..!
+					70: This thing is incredibly strong, and quite disgusting to boot. Whatever you do, keep running but don't leave the Underworld!
 					71: The Eye of Cthulhu is back? Wait, there's two of them..! Try and focus one at a time!
 					72: It's a cyclops... wait.. It has antlers... Is it a deer? Is it both..?
 					73: Looks to be another type of gigantic slime. I have a feeling it'll use minions to do its bidding.
@@ -4132,6 +4134,8 @@ Mods: {
 					220: Seems to be raining again.
 					221: Looks like it's beginning to rain.
 					222: An exceptional result! Looks like you didn't even get scratched!
+					223: A little too close for comfort... but it worked out in the end.
+					224: That could've gone worse, I suppose...!
 				}
 			}
 
@@ -4520,7 +4524,7 @@ Mods: {
 							1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
 							2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
 							3: Isn't that just so funny...! What's this called, dramatic irony? ...but it's true. We'd lose quite rapidly in an even match.
-							4: For the best results, let's head to that area in the Neon Veil... You know the one.
+							4: For the best results, let's head to that area in the Neon Veil. You know the one- it just screams boss arena.
 						}
 
 						Choices: {
@@ -5215,6 +5219,11 @@ Mods: {
 					}
 				}
 
+				HairstyleHover: {
+					Asphodene: Changing my hairstyle, huh?
+					Eridani: A new hairstyle? I don't mind.
+				}
+
 				VoyageHover: {
 					Asphodene: This is where we can access Celestial Cartography: a magical map of the immediate galaxy with the help of the Astrolabe. Keep in mind you'll still need the Stellaglyph nearby to go anywhere except the Observatory.
 					Eridani: This is where the Astrolabe comes in handy: with its strength, you can access Celestial Cartography, a map of the galaxy. You'll need the Stellaglyph nearby if you want to go further than the Observatory, though.
@@ -5644,6 +5653,7 @@ Mods: {
 			CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			BlockedNova: You can't use the Stellar Nova right now!
 			LockedChest: The chest is held shut by a mysterious power...
+			UnlockedHairstyle: A new hairstyle has been unlocked!
 			CreditsHover: "[View the credits for the mod!]"
 			Wiki: "[Check out the official wiki!]"
 			Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
@@ -6341,6 +6351,7 @@ Mods: {
 
 			RenegadeTechnomancerSynthweave: {
 				Tooltip: {
+					$parentVal: ""
 					Asphodene:
 						'''
 						One of the storied garbs from legends past
@@ -7881,7 +7892,7 @@ Mods: {
 				Tooltip:
 					'''
 					This Memory is indeed quite familiar to you
-					[c/F1AF42:Petitions the Starfarers for a test]
+					[c/F1AF42:Petitions the Starfarers for a test- you must be in the Neon Veil to use this item]
 					[c/FA5D5D:Once the final boss from The Stars Above have been defeated, this fight is drastically upgraded!]
 					No extra rewards will be given for this special difficulty
 					Warning: not recommended for casual playthroughs!
@@ -12380,6 +12391,11 @@ Mods: {
 			NeonVeilMusicBox: {
 				DisplayName: Neon Veil Music Box
 				Tooltip: ""
+			}
+
+			ElectrumScissors: {
+				DisplayName: Electrum Scissors
+				Tooltip: Grants a new hairstyle for your Starfarer once consumed
 			}
 		}
 

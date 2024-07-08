@@ -252,6 +252,11 @@ namespace StarsAbove
         public int starfarerOutfitVanity = 0;//Vanity Outfit
         public int starfarerOutfitVisible = 0;//The visible outfit
 
+        public int starfarerHairstyle = 0;//0 is default
+
+        //Could probably be solved with a list or something, but there's going to be so few it doesn't really matter
+        public bool cyberpunkHairstyleUnlocked = false;
+
         //Starfarer outfit buff variables
         public int hopesBrilliance = 0;
         public int hopesBrillianceMax = 100;
@@ -843,6 +848,8 @@ namespace StarsAbove
         public bool seenSpaceBiome;
         public bool seenUnderworldBiome;
 
+        public bool seenNeonVeilBiome;
+
         //Calamity Biomes
         public bool seenCragBiome;
         public bool seenAstralBiome;
@@ -1358,6 +1365,7 @@ namespace StarsAbove
             tag["seenDungeon"] = seenDungeonBiome;
             tag["seenSpace"] = seenSpaceBiome;
             tag["seenUnderworld"] = seenUnderworldBiome;
+            tag["seenNeonVeilBiome"] = seenNeonVeilBiome;
 
             tag["seenCrag"] = seenCragBiome;
             tag["seenAstral"] = seenAstralBiome;
@@ -1380,6 +1388,11 @@ namespace StarsAbove
             tag["starfarerVanityItem"] = StarfarerMenu._starfarerVanitySlot.Item;
 
             tag["starfarerVisibleOutfit"] = starfarerOutfitVisible;
+
+            tag["starfarerHairstyle"] = starfarerHairstyle;
+            tag["cyberpunkHairstyleUnlocked"] = cyberpunkHairstyleUnlocked;
+
+
             tag["starfarerSavedOutfit"] = starfarerOutfitSaved;
             tag["seenBossesList"] = seenBossesList;
 
@@ -1399,6 +1412,10 @@ namespace StarsAbove
             firstJoinedWorld = tag.GetInt("firstJoinedWorld");
             firstJoinedWorldName = tag.GetString("firstJoinedWorldName");
             AlwaysSyncWorldProgress = tag.GetBool("AlwaysSync");
+
+            starfarerHairstyle = tag.GetInt("starfarerHairstyle");
+
+            cyberpunkHairstyleUnlocked = tag.GetBool("cyberpunkHairstyleUnlocked");
 
             chosenStarfarer = tag.GetInt("chosenStarfarer");
 
@@ -1748,6 +1765,7 @@ namespace StarsAbove
             seenDungeonBiome = tag.GetBool("seenDungeon");
             seenSpaceBiome = tag.GetBool("seenSpace");
             seenUnderworldBiome = tag.GetBool("seenUnderworld");
+            seenNeonVeilBiome = tag.GetBool("seenNeonVeilBiome");
 
             seenCragBiome = tag.GetBool("seenCrag");
             seenAstralBiome = tag.GetBool("seenAstral");
@@ -2353,7 +2371,6 @@ namespace StarsAbove
                 if (!target.active && target.boss)
                 {
 
-                    starfarerPromptActive("onKillBossEnemy");
 
 
                 }
@@ -7093,6 +7110,14 @@ namespace StarsAbove
                 }
                 starfarerPromptActive("onEnterDesert");
             }
+            if (Player.InModBiome<NeonVeilBiome>() && !seenNeonVeilBiome)
+            {
+                if (starfarerPromptCooldown > 0)
+                {
+                    starfarerPromptCooldown = 0;
+                }
+                starfarerPromptActive("onEnterNeonVeil");
+            }
             if (Player.ZoneJungle && !seenJungleBiome)
             {
                 if (starfarerPromptCooldown > 0)
@@ -10576,26 +10601,57 @@ namespace StarsAbove
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.40", Player.name); //Thank goodness we killed it in time.
                         }
                     }
+                    if (eventPrompt == "onKillBossEnemyPerfect")
+                    {
+                        starfarerPromptActiveTimer = 150;
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossPerfect);
+
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.220", Player.name);
+
+
+                    }
                     if (eventPrompt == "onKillBossEnemy")
                     {
                         starfarerPromptActiveTimer = 150;
-                        randomDialogue = Main.rand.Next(0, 3);
+                        randomDialogue = Main.rand.Next(0, 2);
 
                         if (randomDialogue == 0)
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory0);
 
                             promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.41", Player.name); //Finally. You got it!
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.41", Player.name);
                         }
                         if (randomDialogue == 1)
                         {
                             SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory1);
 
                             promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.42", Player.name); //And that takes care of that one.
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.42", Player.name); 
                         }
                         
+                    }
+                    if (eventPrompt == "onKillBossEnemyLowHP")
+                    {
+                        starfarerPromptActiveTimer = 150;
+                        randomDialogue = Main.rand.Next(0, 2);
+
+                        if (randomDialogue == 0)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP0);
+
+                            promptExpression = 0;
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.221", Player.name);
+                        }
+                        if (randomDialogue == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP1);
+
+                            promptExpression = 0;
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.222", Player.name);
+                        }
+
                     }
                     if (eventPrompt == "onCrit")
                     {
@@ -11325,7 +11381,14 @@ namespace StarsAbove
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                         seenSubspaceSerpent = true;
                     }
+                    if (eventPrompt == "onEnterNeonVeil")
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.AExploreRare0);
 
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.215", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
+                        seenNeonVeilBiome = true;
+                    }
                     //Upon entering a biome for the first time..
                     if (eventPrompt == "onEnterDesert")
                     {
@@ -12210,6 +12273,21 @@ namespace StarsAbove
                     }
                     if (eventPrompt == "onConfusion")
                     {
+                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                        randomDialogue = Main.rand.Next(0, 3);
+                        promptExpression = 2;
+                        if (randomDialogue == 0)
+                        {
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.15", Player.name); //Whoops.
+                        }
+                        if (randomDialogue == 1)
+                        {
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.16", Player.name); //Did you mean to do that?
+                        }
+                        if (randomDialogue == 2)
+                        {
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.17", Player.name); //Sorry, little one.
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.14", Player.name); //[You can't make out the words.] 
                     }
@@ -12370,9 +12448,19 @@ namespace StarsAbove
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.40", Player.name); //That was close.
                         }
                     }
+                    if (eventPrompt == "onKillBossEnemyPerfect")
+                    {
+                        starfarerPromptActiveTimer = 150;
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossPerfect);
+
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.222", Player.name);
+
+
+                    }
                     if (eventPrompt == "onKillBossEnemy")
                     {
-                        randomDialogue = Main.rand.Next(0, 3);
+                        randomDialogue = Main.rand.Next(0, 2);
                         starfarerPromptActiveTimer = 150;
                         if (randomDialogue == 0)
                         {
@@ -12389,6 +12477,27 @@ namespace StarsAbove
                             promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.42", Player.name); //You bested it, finally. Good job.
                         }
                         
+                    }
+                    if (eventPrompt == "onKillBossEnemyLowHP")
+                    {
+                        starfarerPromptActiveTimer = 150;
+                        randomDialogue = Main.rand.Next(0, 2);
+
+                        if (randomDialogue == 0)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP0);
+
+                            promptExpression = 0;
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.223", Player.name);
+                        }
+                        if (randomDialogue == 1)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP1);
+
+                            promptExpression = 0;
+                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.224", Player.name);
+                        }
+
                     }
                     if (eventPrompt == "onCrit")
                     {
@@ -13113,6 +13222,14 @@ namespace StarsAbove
                     }
 
                     //Upon entering a biome for the first time..
+                    if (eventPrompt == "onEnterNeonVeil")
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.EExploreRare0);
+
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.217", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
+                        seenNeonVeilBiome = true;
+                    }
                     if (eventPrompt == "onEnterDesert")
                     {
                         int randomVoice = Main.rand.Next(0, 5);
@@ -14024,6 +14141,14 @@ namespace StarsAbove
 
         private void SetupStarfarerOutfit()
         {
+            if(starfarerHairstyle == 1)
+            {
+
+            }
+            else//Change later if more hairstyles are added
+            {
+
+            }
 
 
             if (starfarerOutfitVanity != 0)//Is there a vanity outfit equipped? This will change drawing.

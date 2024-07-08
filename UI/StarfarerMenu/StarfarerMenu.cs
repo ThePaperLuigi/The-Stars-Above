@@ -7,6 +7,7 @@ using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
@@ -76,6 +77,9 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIImageButton credits;
         private UIImageButton wiki;
         private UIImageButton discord;
+
+        private UIImageButton hairstyle;
+
 
         public bool dragging = false;
 
@@ -163,6 +167,15 @@ namespace StarsAbove.UI.StarfarerMenu
             wiki.Top.Set(370, 0f);
             wiki.OnMouseOver += WikiHover;
             wiki.OnMouseOut += HoverOff;
+
+            hairstyle = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/HairstyleButton"));
+            hairstyle.OnLeftClick += HairstyleConfirm;
+            hairstyle.Width.Set(40, 0f);
+            hairstyle.Height.Set(52, 0f);
+            hairstyle.Left.Set(0, 0f);
+            hairstyle.Top.Set(0, 0f);
+            hairstyle.OnMouseOver += HairstyleHover;
+            hairstyle.OnMouseOut += HoverOff;
 
             discord = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Discord"));
             discord.OnLeftClick += DiscordConfirm;
@@ -472,6 +485,72 @@ namespace StarsAbove.UI.StarfarerMenu
             //Open the discord link
             //https://starsabovemod.wiki.gg/
             Utils.OpenToURL("https://discord.gg/starsabove");
+        }
+        private void HairstyleConfirm(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+            int randomVoice = Main.rand.Next(0, 3);
+            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+
+            //Hardcoded because I dont think there'll be a new hairstyle for a long time
+            if (modPlayer.starfarerHairstyle == 0)
+            {
+                modPlayer.starfarerHairstyle = 1;
+            }
+            else
+            {
+                modPlayer.starfarerHairstyle = 0;
+            }
+
+            modPlayer.starfarerMenuDialogueScrollNumber = 0;
+            modPlayer.starfarerMenuDialogueScrollTimer = 0;
+            if (modPlayer.chosenStarfarer == 1)
+            {
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
+
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.1");
+                        break;
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.2");
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.3");
+                        break;
+
+
+                }
+            }
+            else if (modPlayer.chosenStarfarer == 2)
+            {
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.1");
+
+                        break;
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.2");
+
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.3");
+
+                        break;
+
+
+                }
+            }
+           
+
         }
         private void IdleDialogueConfirm(UIMouseEvent evt, UIElement listeningElement)
 		{
@@ -815,7 +894,29 @@ namespace StarsAbove.UI.StarfarerMenu
             Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
             // We can do stuff in here!
         }
+        private void HairstyleHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
+                return;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)                                                     //|
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.HairstyleHover.Asphodene");
 
+            }
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+            {
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.HairstyleHover.Eridani");
+
+            }
+
+
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+
+
+            // We can do stuff in here!
+        }
         private void ArchiveHover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive || Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
@@ -1612,6 +1713,24 @@ namespace StarsAbove.UI.StarfarerMenu
             AsphodeneHairBehindHead = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHairBehindHead");
             AsphodeneHeadBaseH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadBaseH");
             AsphodeneHairBehindHeadH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHairBehindHeadH");
+            AsphodeneTailRight = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailRight");
+            AsphodeneTailLeft = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailLeft");
+            AsphodeneTailRightH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailRightH");
+            AsphodeneTailLeftH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailLeftH");
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerHairstyle == 1)
+            {
+                AsphodeneHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadAlt1");
+                AsphodeneHairBehindHead = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHairBehindHeadAlt");
+                AsphodeneHeadBaseH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadAlt1H");
+                AsphodeneHairBehindHeadH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHairBehindHeadAlt");
+
+                AsphodeneTailRight = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+                AsphodeneTailLeft = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+                AsphodeneTailRightH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+                AsphodeneTailLeftH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+            }
+            
+            
             AsphodeneNeck = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ANeck");
             AsphodeneGrab = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AGrab");
             AsphodeneHandOpen = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHandOpen");
@@ -1625,10 +1744,7 @@ namespace StarsAbove.UI.StarfarerMenu
             Texture2D AsphodeneExpression0 = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/AHeadExpression0");
 
 
-            AsphodeneTailRight = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailRight");
-            AsphodeneTailLeft = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailLeft");
-            AsphodeneTailRightH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailRightH");
-            AsphodeneTailLeftH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ATailLeftH");
+            
             AsphodeneRightArmLower = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ARightArmLower0");
             AsphodeneRightArmUpper = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ARightArmUpper0");
 
@@ -1677,9 +1793,16 @@ namespace StarsAbove.UI.StarfarerMenu
             EridaniHeadBaseH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHeadBaseH");
             EridaniHairBehindHeadH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHairBehindHeadH");
             EridaniPonytailH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EPonytailH");
-
-
             EridaniHairBehindHead = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHairBehindHead");
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerHairstyle == 1)
+            {
+                EridaniHeadBase = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHeadAlt1");
+                EridaniHeadBaseH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EHeadAlt1H");
+                EridaniHairBehindHeadH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+                EridaniPonytailH = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+                EridaniHairBehindHead = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/EmptyTexture");
+            }
+
             EridaniNeck = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ENeck");
             EridaniRightLeg = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ERightLeg");
             EridaniLeftLeg = (Texture2D)Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Animation/ELeftLeg");
@@ -1801,7 +1924,7 @@ namespace StarsAbove.UI.StarfarerMenu
                                 new Rectangle(0, 0, AsphodeneHeadBase.Width, AsphodeneHeadBase.Height), //The source rectangle.
                                 Color.White * (modPlayer.starfarerMenuUIOpacity), //The color of the texture.
                                 0f, // The rotation of the texture.
-                                AsphodeneTailLeft.Size() * 0.5f, //The centerpoint of the texture.
+                                AsphodeneHeadBase.Size() * 0.5f, //The centerpoint of the texture.
                                 1f, //The scale of the texture.
                                 SpriteEffects.None,
                                 0f);
@@ -2089,6 +2212,16 @@ namespace StarsAbove.UI.StarfarerMenu
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
 
+            if(modPlayer.cyberpunkHairstyleUnlocked)
+            {
+                area.Append(hairstyle);
+                hairstyle.Left.Set(325, 0f);
+                hairstyle.Top.Set(210, 0f);
+            }
+            else
+            {
+                hairstyle.Remove();
+            }
 
 			if (!Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive)
 			{

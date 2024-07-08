@@ -3688,11 +3688,6 @@ Mods: {
 						// 2: Something hit you on the head? You're looking a little loopy. Okay, more than a little loopy.
 					}
 
-					onKillCritter: {
-						// 1: wip
-						// 2: wip
-					}
-
 					1: Parece que te han envenenado. Te enviaré una tarjeta de mejorate pronto.
 					2: ¡Parece que tus defensas han sido reducidas! Ten cuidado.
 					3: ¡Te han silenciado! La magia está fuera de tu alcance.
@@ -4525,7 +4520,7 @@ Mods: {
 							// 1: Wait, wait wait- this was an Eri-original idea. While I concede that I am curious, well...
 							// 2: It'll be fine. Anyway, we're going to do some friendly sparring to try out a hypothesis of mine. On one condition- We need to borrow a bit of your power.
 							// 3: Isn't that just so funny...! What's this called, dramatic irony? ...but it's true. We'd lose quite rapidly in an even match.
-							// 4: For the best results, let's head to that area in the Neon Veil... You know the one.
+							// 4: For the best results, let's head to that area in the Neon Veil. You know the one- it just screams boss arena.
 						}
 
 						Choices: {
@@ -5220,6 +5215,11 @@ Mods: {
 					}
 				}
 
+				HairstyleHover: {
+					// Asphodene: Changing my hairstyle, huh?
+					// Eridani: A new hairstyle? I don't mind.
+				}
+
 				VoyageHover: {
 					// Asphodene: This is where we can access Celestial Cartography: a magical map of the immediate galaxy with the help of the Astrolabe. Keep in mind you'll still need the Stellaglyph nearby to go anywhere except the Observatory.
 					// Eridani: This is where the Astrolabe comes in handy: with its strength, you can access Celestial Cartography, a map of the galaxy. You'll need the Stellaglyph nearby if you want to go further than the Observatory, though.
@@ -5649,6 +5649,7 @@ Mods: {
 			// CanBeShimmeredSpoils: Can be Shimmered, converting into Stellar Remnants
 			// BlockedNova: You can't use the Stellar Nova right now!
 			// LockedChest: The chest is held shut by a mysterious power...
+			// UnlockedHairstyle: A new hairstyle has been unlocked!
 			// CreditsHover: "[View the credits for the mod!]"
 			// Wiki: "[Check out the official wiki!]"
 			// Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
@@ -6342,6 +6343,7 @@ Mods: {
 
 			RenegadeTechnomancerSynthweave: {
 				Tooltip: {
+					// $parentVal: ""
 					/* Asphodene:
 						'''
 						One of the storied garbs from legends past
@@ -12236,6 +12238,11 @@ Mods: {
 			NeonVeilMusicBox: {
 				// DisplayName: Neon Veil Music Box
 				// Tooltip: ""
+			}
+
+			ElectrumScissors: {
+				// DisplayName: Electrum Scissors
+				// Tooltip: Grants a new hairstyle for your Starfarer once consumed
 			}
 		}
 

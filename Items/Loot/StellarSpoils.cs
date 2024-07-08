@@ -25,6 +25,7 @@ using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Memories;
 using StarsAbove.Tiles.StellarSpoils;
 using StarsAbove.Items.Placeable.StellarSpoils;
+using StarsAbove.Items.Consumables;
 
 namespace StarsAbove.Items.Loot
 {
@@ -124,7 +125,8 @@ namespace StarsAbove.Items.Loot
                 ItemType<EmberFlask>(),
                 ItemType<ShepherdSunstone>(),
                 ItemType<Poltergrasp5000>(),
-                ItemType<MiningPaintingItem>()
+                ItemType<MiningPaintingItem>(),
+                ItemType<ElectrumScissors>()
                 ));
 
             IItemDropRule StarArmorRule = ItemDropRule.Common(ItemType<StarArmorHead>(), 1);
@@ -224,7 +226,9 @@ namespace StarsAbove.Items.Loot
                 ItemType<RuinedCrown>(),
                 ItemType<Trumpet>(),
                 ItemType<ShepherdSunstone>(),
-                ItemType<Poltergrasp5000>()
+                ItemType<Poltergrasp5000>(),
+                ItemType<MiningPaintingItem>(),
+                ItemType<ElectrumScissors>()
                 ))
             );
 

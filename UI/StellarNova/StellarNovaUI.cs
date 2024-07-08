@@ -1084,8 +1084,16 @@ namespace StarsAbove.UI.StellarNova
             if (modPlayer.chosenStarfarer == 1)
             {
 
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairBH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+                if (modPlayer.starfarerHairstyle == 1)
+                {
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairBAlt1"), starfarer, Color.White * (modPlayer.novaUIOpacity));
 
+                }
+                else
+                {
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairBH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+                }
                 //Draw the head, accounting for pose.
                 spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0Head"), starfarer, Color.White * (modPlayer.novaUIOpacity));//TODO: MAKE A BOX (HITBOX SHOULD BE OG SIZE, SOURCERECTANGLE SHOULD BE NEW SIZE)
 
@@ -1093,8 +1101,16 @@ namespace StarsAbove.UI.StellarNova
                 spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0Body" + modPlayer.starfarerOutfitVisible), starfarerBody, trim, Color.White * (modPlayer.novaUIOpacity));
 
                 //Draw the hair on top of the head. Same deal with color change.
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+                if (modPlayer.starfarerHairstyle == 1)
+                {
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairAlt1H"), starfarer, Color.White * (modPlayer.novaUIOpacity));
 
+                }
+                else
+                {
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As0HairH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+                }
                 //Draw the expression, accounting for pose.
                 spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As00"), starfarer, Color.White * (modPlayer.novaUIOpacity));//Base character's expression
 
@@ -1102,20 +1118,37 @@ namespace StarsAbove.UI.StellarNova
             }
             if (modPlayer.chosenStarfarer == 2)
             {
+				if(modPlayer.starfarerHairstyle == 1)
+				{
 
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1HairBH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+				}
+				else
+				{
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0HairBH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+                }
+
+
 
                 //Draw the head, accounting for pose.
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1Head"), starfarer, Color.White * (modPlayer.novaUIOpacity));//TODO: MAKE A BOX (HITBOX SHOULD BE OG SIZE, SOURCERECTANGLE SHOULD BE NEW SIZE)
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0Head"), starfarer, Color.White * (modPlayer.novaUIOpacity));//TODO: MAKE A BOX (HITBOX SHOULD BE OG SIZE, SOURCERECTANGLE SHOULD BE NEW SIZE)
 
                 //Draw the body, accounting for outfits and pose.
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1Body" + modPlayer.starfarerOutfitVisible), starfarerBody, trim, Color.White * (modPlayer.novaUIOpacity));
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0Body" + modPlayer.starfarerOutfitVisible), starfarerBody, trim, Color.White * (modPlayer.novaUIOpacity));
 
                 //Draw the hair on top of the head. Same deal with color change.
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1HairH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+                if (modPlayer.starfarerHairstyle == 1)
+                {
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0HairAlt1H"), starfarer, Color.White * (modPlayer.novaUIOpacity));
 
+                }
+                else
+                {
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0HairH"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+
+                }
                 //Draw the expression, accounting for pose.
-                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er10"), starfarer, Color.White * (modPlayer.novaUIOpacity));//Base character's expression
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er00"), starfarer, Color.White * (modPlayer.novaUIOpacity));//Base character's expression
 
 
             }
@@ -1217,7 +1250,7 @@ namespace StarsAbove.UI.StellarNova
                 }
                 if (modPlayer.chosenStarfarer == 2)
                 {
-                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er1b"), starfarer, Color.White * (modPlayer.novaUIOpacity));
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0b"), starfarer, Color.White * (modPlayer.novaUIOpacity));
 
                 }
 

@@ -3688,11 +3688,6 @@ Mods: {
 						2: 有什么东西砸了你的头？你看起来有点晕乎乎的。好吧，不只是有点糊涂了。
 					}
 
-					onKillCritter: {
-						1: wip
-						2: wip
-					}
-
 					1: 看起来你好像中毒了？我会给你寄一张慰问卡的。
 					2: 看上去你的防御降低了！当心！
 					3: 你被沉默了，暂时没法释放魔法了。
@@ -5220,6 +5215,11 @@ Mods: {
 					}
 				}
 
+				HairstyleHover: {
+					// Asphodene: Changing my hairstyle, huh?
+					// Eridani: A new hairstyle? I don't mind.
+				}
+
 				VoyageHover: {
 					Asphodene: 我们可以在此访问天体星图：一张借助天体制图仪之力即时投射星空的魔法地图。注意，你仍需处在旅星符台附近才能前往极北天文台之外的区域。
 					Eridani: 这里就是天体制图仪起作用的地方：借助它的力量，你可以访问天体星图，一张星空地图。你仍需处在旅星符台附近才能前往极北天文台之外的区域。
@@ -5649,6 +5649,7 @@ Mods: {
 			CanBeShimmeredSpoils: 可以被微光转化为星体残片
 			BlockedNova: 一位强大的敌人阻止你使用天体新星！
 			// LockedChest: The chest is held shut by a mysterious power...
+			// UnlockedHairstyle: A new hairstyle has been unlocked!
 			CreditsHover: "[查看该Mod的制作者们！]"
 			// Wiki: "[Check out the official wiki!]"
 			// Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
@@ -6342,6 +6343,7 @@ Mods: {
 
 			RenegadeTechnomancerSynthweave: {
 				Tooltip: {
+					// $parentVal: ""
 					/* Asphodene:
 						'''
 						One of the storied garbs from legends past
@@ -12368,6 +12370,11 @@ Mods: {
 			NeonVeilMusicBox: {
 				// DisplayName: Neon Veil Music Box
 				// Tooltip: ""
+			}
+
+			ElectrumScissors: {
+				// DisplayName: Electrum Scissors
+				// Tooltip: Grants a new hairstyle for your Starfarer once consumed
 			}
 		}
 
