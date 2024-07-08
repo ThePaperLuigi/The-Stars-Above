@@ -188,15 +188,15 @@ namespace StarsAbove.Items.Weapons.Ranged
 
         public override void AddRecipes()
 		{
-			/*CreateRecipe(1)
-					.AddIngredient(ItemID.LaserRifle)
-					.AddIngredient(ItemID.Minishark)
-					.AddIngredient(ItemID.MeteoriteBar, 4)
-					.AddIngredient(ItemID.HallowedBar, 5)
-					.AddIngredient(ItemType<EssenceOfTheRenegade>())
-					.AddTile(TileID.Anvils)
-					.Register();*/
-		}
+            CreateRecipe(1)
+                .AddIngredient(ItemID.LunarBar, 12)
+                .AddIngredient(ItemID.FallenStar, 8)
+                .AddIngredient(ItemID.SoulofSight, 4)
+                 .AddIngredient(ItemID.FragmentVortex, 4)
+                 .AddIngredient(ItemType<EssenceOfTheHuntress>())
+                 .AddTile(TileID.Anvils)
+                 .Register();
+        }
 	}
 
 }

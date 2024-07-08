@@ -347,7 +347,12 @@ namespace StarsAbove.Items.Weapons.Other
 		}*/
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                .AddIngredient(ItemID.Nanites, 20)
+                .AddIngredient(ItemType<NeonTelemetry>(), 5)
+                .AddIngredient(ItemType<Wolvesbane>())
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
 	}
 }

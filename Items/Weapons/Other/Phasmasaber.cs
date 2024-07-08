@@ -201,7 +201,17 @@ namespace StarsAbove.Items.Weapons.Other
 
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.HallowedBar, 8)
+                                    .AddIngredient(ItemID.GlowingMushroom,12)
+
+                                                      .AddIngredient(ItemID.SoulofNight, 2)
+
+                                                                        .AddIngredient(ItemID.CrystalShard, 12)
+
+                  .AddIngredient(ItemType<EssenceOfChionicEnergy>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
+        }
 	}
 }

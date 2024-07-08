@@ -534,6 +534,20 @@ namespace StarsAbove
         public int ClarentWeaponDialogue = 0;
         public int ThespianWeaponDialogue = 0;
 
+        public int TwoCrownWeaponDialogue = 0;
+        public int ExpresswayWeaponDialogue = 0;
+        public int StarphoenixWeaponDialogue = 0;
+        public int SugarballWeaponDialogue = 0;
+        public int NecrosisWeaponDialogue = 0;
+        public int ArbiterWeaponDialogue = 0;
+        public int M4A1WeaponDialogue = 0;
+        public int ShieldWeaponDialogue = 0;
+        public int ParadiseLostWeaponDialogue = 0;
+        public int DreadmotherWeaponDialogue = 0;
+        public int WolvesbaneWeaponDialogue = 0;
+        public int QuisUtDeusWeaponDialogue = 0;
+        public int PhasmasaberWeaponDialogue = 0;
+
         //Subworld dialogues
         public int observatoryDialogue = 0;
         public int cosmicVoyageDialogue = 0;
@@ -1230,6 +1244,19 @@ namespace StarsAbove
             tag["ClarentWeaponDialogue"] = ClarentWeaponDialogue;
             tag["ThespianWeaponDialogue"] = ThespianWeaponDialogue;
 
+            tag["TwoCrownWeaponDialogue"] = TwoCrownWeaponDialogue;
+            tag["ExpresswayWeaponDialogue"] = ExpresswayWeaponDialogue;
+            tag["StarphoenixWeaponDialogue"] = StarphoenixWeaponDialogue;
+            tag["SugarballWeaponDialogue"] = SugarballWeaponDialogue;
+            tag["NecrosisWeaponDialogue"] = NecrosisWeaponDialogue;
+            tag["ArbiterWeaponDialogue"] = ArbiterWeaponDialogue;
+            tag["M4A1WeaponDialogue"] = M4A1WeaponDialogue;
+            tag["ShieldWeaponDialogue"] = ShieldWeaponDialogue;
+            tag["ParadiseLostWeaponDialogue"] = ParadiseLostWeaponDialogue;
+            tag["DreadmotherWeaponDialogue"] = DreadmotherWeaponDialogue;
+            tag["WolvesbaneWeaponDialogue"] = WolvesbaneWeaponDialogue;
+            tag["QuisUtDeusWeaponDialogue"] = QuisUtDeusWeaponDialogue;
+            tag["PhasmasaberWeaponDialogue"] = PhasmasaberWeaponDialogue;
 
             tag["observatoryDialogue"] = observatoryDialogue;
             tag["cosmicVoyageDialogue"] = cosmicVoyageDialogue;
@@ -1579,6 +1606,19 @@ namespace StarsAbove
             ClarentWeaponDialogue = tag.GetInt("ClarentWeaponDialogue");
             ThespianWeaponDialogue = tag.GetInt("ThespianWeaponDialogue");
 
+            TwoCrownWeaponDialogue = tag.GetInt("TwoCrownWeaponDialogue");
+            ExpresswayWeaponDialogue = tag.GetInt("ExpresswayWeaponDialogue");
+            StarphoenixWeaponDialogue = tag.GetInt("StarphoenixWeaponDialogue");
+            SugarballWeaponDialogue = tag.GetInt("SugarballWeaponDialogue");
+            NecrosisWeaponDialogue = tag.GetInt("NecrosisWeaponDialogue");
+            ArbiterWeaponDialogue = tag.GetInt("ArbiterWeaponDialogue");
+            M4A1WeaponDialogue = tag.GetInt("M4A1WeaponDialogue");
+            ShieldWeaponDialogue = tag.GetInt("ShieldWeaponDialogue");
+            ParadiseLostWeaponDialogue = tag.GetInt("ParadiseLostWeaponDialogue");
+            DreadmotherWeaponDialogue = tag.GetInt("DreadmotherWeaponDialogue");
+            WolvesbaneWeaponDialogue = tag.GetInt("WolvesbaneWeaponDialogue");
+            QuisUtDeusWeaponDialogue = tag.GetInt("QuisUtDeusWeaponDialogue");
+            PhasmasaberWeaponDialogue = tag.GetInt("PhasmasaberWeaponDialogue");
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
             cosmicVoyageDialogue = tag.GetInt("cosmicVoyageDialogue");
@@ -4788,6 +4828,123 @@ namespace StarsAbove
                               false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                               false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                     
+                }
+                if (NPC.downedBoss2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              181, //The ID of the dialogue.
+                              ref WolvesbaneWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedThespian)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              182, //The ID of the dialogue.
+                              ref SugarballWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBossAny)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              183, //The ID of the dialogue.
+                              ref ExpresswayWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBoss1)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              184, //The ID of the dialogue.
+                              ref NecrosisWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBoss3)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              185, //The ID of the dialogue.
+                              ref PhasmasaberWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              186, //The ID of the dialogue.
+                              ref StarphoenixWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              187, //The ID of the dialogue.
+                              ref ShieldWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              188, //The ID of the dialogue.
+                              ref ArbiterWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              189, //The ID of the dialogue.
+                              ref TwoCrownWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              190, //The ID of the dialogue.
+                              ref M4A1WeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedNalhaun)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              191, //The ID of the dialogue.
+                              ref DreadmotherWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedWarrior)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              192, //The ID of the dialogue.
+                              ref QuisUtDeusWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedTsuki)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              193, //The ID of the dialogue.
+                              ref ParadiseLostWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
                 }
                 if (PlanteraWeaponDialogue == 2)
                 {

@@ -229,23 +229,23 @@ namespace StarsAbove.Items.Weapons.Other
 
 		}
 
-		/*
+        /*
 		 * Feel free to uncomment any of the examples below to see what they do
 		 */
 
-		// What if I wanted this gun to have a 38% chance not to consume ammo?
-		/*public override void OnConsumeAmmo(Player player)
+        // What if I wanted this gun to have a 38% chance not to consume ammo?
+        /*public override void OnConsumeAmmo(Player player)
 		{
 			return Main.rand.NextFloat() >= .38f;
 		}*/
 
-		// What if I wanted it to work like Uzi, replacing regular bullets with High Velocity Bullets?
-		// Uzi/Molten Fury style: Replace normal Bullets with Highvelocity
+        // What if I wanted it to work like Uzi, replacing regular bullets with High Velocity Bullets?
+        // Uzi/Molten Fury style: Replace normal Bullets with Highvelocity
 
 
-		// What if I wanted it to shoot like a shotgun?
-		// Shotgun style: Multiple Projectiles, Random spread 
-		/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // What if I wanted it to shoot like a shotgun?
+        // Shotgun style: Multiple Projectiles, Random spread 
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			int numberProjectiles = 4 + Main.rand.Next(2); // 4 or 5 shots
 			for (int i = 0; i < numberProjectiles; i++)
@@ -259,9 +259,9 @@ namespace StarsAbove.Items.Weapons.Other
 			return false; // return false because we don't want tmodloader to shoot projectile
 		}*/
 
-		// What if I wanted an inaccurate gun? (Chain Gun)
-		// Inaccurate Gun style: Single Projectile, Random spread 
-		/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // What if I wanted an inaccurate gun? (Chain Gun)
+        // Inaccurate Gun style: Single Projectile, Random spread 
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(30));
 			velocity.X = perturbedSpeed.X;
@@ -269,9 +269,9 @@ namespace StarsAbove.Items.Weapons.Other
 			return true;
 		}*/
 
-		// What if I wanted multiple projectiles in a even spread? (Vampire Knives) 
-		// Even Arc style: Multiple Projectile, Even Spread 
-		/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // What if I wanted multiple projectiles in a even spread? (Vampire Knives) 
+        // Even Arc style: Multiple Projectile, Even Spread 
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			float numberProjectiles = 3 + Main.rand.Next(3); // 3, 4, or 5 shots
 			float rotation = MathHelper.ToRadians(45);
@@ -284,15 +284,15 @@ namespace StarsAbove.Items.Weapons.Other
 			return false;
 		}*/
 
-		// Help, my gun isn't being held at the handle! Adjust these 2 numbers until it looks right.
-		//public override Vector2? HoldoutOffset()
-		//{
-		//	return new Vector2(-15, 5);
-		//}
+        // Help, my gun isn't being held at the handle! Adjust these 2 numbers until it looks right.
+        //public override Vector2? HoldoutOffset()
+        //{
+        //	return new Vector2(-15, 5);
+        //}
 
-		// How can I make the shots appear out of the muzzle exactly?
-		// Also, when I do this, how do I prevent shooting through tiles?
-		/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // How can I make the shots appear out of the muzzle exactly?
+        // Also, when I do this, how do I prevent shooting through tiles?
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 25f;
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
@@ -314,9 +314,9 @@ namespace StarsAbove.Items.Weapons.Other
 			return true;
 		}*/
 
-		// How can I get a "Clockwork Assault Rifle" effect?
-		// 3 round burst, only consume 1 ammo for burst. Delay between bursts, use reuseDelay
-		/*	The following changes to SetDefaults()
+        // How can I get a "Clockwork Assault Rifle" effect?
+        // 3 round burst, only consume 1 ammo for burst. Delay between bursts, use reuseDelay
+        /*	The following changes to SetDefaults()
 		 	item.useAnimation = 12;
 			item.useTime = 4;
 			item.reuseDelay = 14;
@@ -327,8 +327,8 @@ namespace StarsAbove.Items.Weapons.Other
 			return !(player.itemAnimation < item.useAnimation - 2);
 		}*/
 
-		// How can I shoot 2 different projectiles at the same time?
-		/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // How can I shoot 2 different projectiles at the same time?
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			// Here we manually spawn the 2nd projectile, manually specifying the projectile type that we wish to shoot.
 			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),position.X, position.Y, velocity.X, velocity.Y,ProjectileID.GrenadeI, damage, knockback, player.whoAmI);
@@ -336,16 +336,26 @@ namespace StarsAbove.Items.Weapons.Other
 			return true;
 		}*/
 
-		// How can I choose between several projectiles randomly?
-		/*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        // How can I choose between several projectiles randomly?
+        /*public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			// Here we randomly set type to either the original (as defined by the ammo), a vanilla projectile, or a mod projectile.
 			type = Main.rand.Next(new int[] { type, ProjectileID.GoldenBullet, ProjectileType<Projectiles.ExampleBullet>() });
 			return true;
 		}*/
-		public override void AddRecipes()
-		{
-			
-		}
-	}
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ItemID.ShadowScale, 12)
+                .AddIngredient(ItemType<EssenceOfWolves>())
+                .AddTile(TileID.Anvils)
+                .Register();
+
+            CreateRecipe(1)
+                .AddIngredient(ItemID.TissueSample, 12)
+                .AddIngredient(ItemType<EssenceOfWolves>())
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
+    }
 }

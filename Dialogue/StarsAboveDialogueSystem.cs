@@ -2281,7 +2281,202 @@ namespace StarsAbove.Dialogue
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }
- 
+            if (chosenDialogue == 181)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWolf").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "Wolvesbane" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 182)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSugar").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "Sugarball" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 183)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfCookies").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "OrbitalExpresswayPlush" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 184)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNecrosis").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "StringOfCurses" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 185)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfChionicEnergy").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "Phasmasaber" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 186)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePhoenix").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "StarphoenixFunnel" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 187)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheShield").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "LegendaryShield" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 188)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfASingularity").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "CloakOfAnArbiter" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 189)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHuntress").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "TwoCrownBow" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 190)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheRifle").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "InheritedCaseM4A1" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 191)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDarkMaker").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "DreadmotherDarkIdol" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 192)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheStars").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "QuisUtDeus" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+            if (chosenDialogue == 193)
+            {
+                if (dialoguePrep)
+                {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWhiteNight").Type);
+
+                }
+
+                string category = "WeaponDialogue";
+                string key = category + "." + "ParadiseLost" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
+
+            }
+
             #endregion
             //Boss item dialogues.
             if (chosenDialogue == 301) //Nalhaun item

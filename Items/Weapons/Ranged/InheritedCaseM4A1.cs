@@ -498,7 +498,11 @@ namespace StarsAbove.Items.Weapons.Ranged
 
         public override void AddRecipes()
         {
-            
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.FragmentVortex, 30)
+                  .AddIngredient(ItemType<EssenceOfTheRifle>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
 
         }
     }

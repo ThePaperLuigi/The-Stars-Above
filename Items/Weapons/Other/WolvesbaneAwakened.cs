@@ -510,7 +510,13 @@ namespace StarsAbove.Items.Weapons.Other
 		}*/
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                .AddIngredient(ItemID.FragmentSolar, 12)
+                .AddIngredient(ItemID.FragmentVortex, 12)
+                .AddIngredient(ItemID.HallowedBar, 8)
+                .AddIngredient(ItemType<WolvesbaneRearmed>())
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
 	}
 }

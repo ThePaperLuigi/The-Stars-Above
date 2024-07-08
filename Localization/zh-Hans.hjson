@@ -11792,14 +11792,14 @@ Mods: {
 					'''
 			}
 
-			EssenceOfMew: {
-				DisplayName: 怪奇之精华
-				Tooltip:
+			EssenceOfCookies: {
+				// DisplayName: Essence Of Mew
+				/* Tooltip:
 					'''
-					击败 史莱姆王后 后获得
-					你的星海旅者给予的礼物
-					用于创造“轨道高速玩偶”（近战/远程/魔法/召唤）
-					'''
+					Obtained after defeating Queen Slime
+					A gift from your Starfarer
+					Utilized in the creation of 'Orbital Expressway Plush' (Melee/Magic/Summon/Ranged)
+					''' */
 			}
 
 			CandiedSugarball: {
@@ -11877,14 +11877,14 @@ Mods: {
 					'''
 			}
 
-			EssenceOfTheShieldHero: {
-				DisplayName: 盾之勇者之精华
-				Tooltip:
+			EssenceOfTheShield: {
+				// DisplayName: Essence Of The Shield
+				/* Tooltip:
 					'''
-					击败 ？？？ 后获得
-					你的星海旅者给予的礼物
-					用于创造“传说之盾”（其他）
-					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'Legendary Shield' (Other)
+					''' */
 			}
 
 			StringOfCurses: {
@@ -11902,14 +11902,14 @@ Mods: {
 					'''
 			}
 
-			EssenceOfCurses: {
-				DisplayName: 诅咒之精华
-				Tooltip:
+			EssenceOfNecrosis: {
+				// DisplayName: Essence Of Necrosis
+				/* Tooltip:
 					'''
-					击败 ？？？ 后获得
-					你的星海旅者给予的礼物
-					用于创造“邪恶符咒”（远程）
-					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'String of Curses' (Ranged)
+					''' */
 			}
 
 			CloakOfAnArbiter: {
@@ -12456,6 +12456,36 @@ Mods: {
 			ElectrumScissors: {
 				// DisplayName: Electrum Scissors
 				// Tooltip: Grants a new hairstyle for your Starfarer once consumed
+			}
+
+			EssenceOfChionicEnergy: {
+				// DisplayName: Essence Of Chionic Energy
+				// Tooltip: ""
+			}
+
+			EssenceOfTheDarkMaker: {
+				// DisplayName: Essence Of The Dark Maker
+				// Tooltip: ""
+			}
+
+			EssenceOfTheRifle: {
+				// DisplayName: Essence Of The Rifle
+				// Tooltip: ""
+			}
+
+			EssenceOfTheStars: {
+				// DisplayName: Essence Of The Stars
+				// Tooltip: ""
+			}
+
+			EssenceOfTheWhiteNight: {
+				// DisplayName: Essence Of The White Night
+				// Tooltip: ""
+			}
+
+			EssenceOfWolves: {
+				// DisplayName: Essence Of Wolves
+				// Tooltip: ""
 			}
 		}
 
@@ -16659,7 +16689,7 @@ Mods: {
 
 				StarfarerVoiceCooldown: {
 					// Label: Starfarer Voice Cooldown
-					// Tooltip: ""
+					// Tooltip: The delay in seconds between voiced dialogue. Note that low values may cause dialogue to overlap, and voice dialogue only has a chance to play.
 				}
 			}
 

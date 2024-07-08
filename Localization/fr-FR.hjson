@@ -11814,14 +11814,14 @@ Mods: {
 					'''
 			}
 
-			EssenceOfMew: {
-				DisplayName: Essence de Mew
-				Tooltip:
+			EssenceOfCookies: {
+				// DisplayName: Essence Of Mew
+				/* Tooltip:
 					'''
-					Obtenu après avoir vaincu la reine Slime
-					Un cadeau de votre Starfarer
-					Utilisé dans la création de « Orbital Expressway Plush » (mêlée/magie/invocation/à distance)
-					'''
+					Obtained after defeating Queen Slime
+					A gift from your Starfarer
+					Utilized in the creation of 'Orbital Expressway Plush' (Melee/Magic/Summon/Ranged)
+					''' */
 			}
 
 			CandiedSugarball: {
@@ -11897,14 +11897,14 @@ Mods: {
 					'''
 			}
 
-			EssenceOfTheShieldHero: {
-				DisplayName: Essence du héros du bouclier
-				Tooltip:
+			EssenceOfTheShield: {
+				// DisplayName: Essence Of The Shield
+				/* Tooltip:
 					'''
-					Obtenu après avoir vaincu ???
-					Un cadeau de votre Starfarer
-					Utilisé dans la création du « Bouclier Légendaire » (Autre)
-					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'Legendary Shield' (Other)
+					''' */
 			}
 
 			StringOfCurses: {
@@ -11921,14 +11921,14 @@ Mods: {
 					'''
 			}
 
-			EssenceOfCurses: {
-				DisplayName: Essence des malédictions
-				Tooltip:
+			EssenceOfNecrosis: {
+				// DisplayName: Essence Of Necrosis
+				/* Tooltip:
 					'''
-					Obtenu après avoir vaincu ???
-					Un cadeau de votre Starfarer
-					Utilisé dans la création de "String of Curses" (à distance)
-					'''
+					Obtained after defeating ???
+					A gift from your Starfarer
+					Utilized in the creation of 'String of Curses' (Ranged)
+					''' */
 			}
 
 			CloakOfAnArbiter: {
@@ -12469,6 +12469,36 @@ Mods: {
 			ElectrumScissors: {
 				// DisplayName: Electrum Scissors
 				// Tooltip: Grants a new hairstyle for your Starfarer once consumed
+			}
+
+			EssenceOfChionicEnergy: {
+				// DisplayName: Essence Of Chionic Energy
+				// Tooltip: ""
+			}
+
+			EssenceOfTheDarkMaker: {
+				// DisplayName: Essence Of The Dark Maker
+				// Tooltip: ""
+			}
+
+			EssenceOfTheRifle: {
+				// DisplayName: Essence Of The Rifle
+				// Tooltip: ""
+			}
+
+			EssenceOfTheStars: {
+				// DisplayName: Essence Of The Stars
+				// Tooltip: ""
+			}
+
+			EssenceOfTheWhiteNight: {
+				// DisplayName: Essence Of The White Night
+				// Tooltip: ""
+			}
+
+			EssenceOfWolves: {
+				// DisplayName: Essence Of Wolves
+				// Tooltip: ""
 			}
 		}
 
@@ -16680,7 +16710,7 @@ Mods: {
 
 				StarfarerVoiceCooldown: {
 					// Label: Starfarer Voice Cooldown
-					// Tooltip: ""
+					// Tooltip: The delay in seconds between voiced dialogue. Note that low values may cause dialogue to overlap, and voice dialogue only has a chance to play.
 				}
 			}
 

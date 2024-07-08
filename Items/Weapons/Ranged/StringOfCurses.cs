@@ -93,8 +93,12 @@ namespace StarsAbove.Items.Weapons.Ranged
 		
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.SoulofSight, 14)
+                  .AddIngredient(ItemType<EssenceOfNecrosis>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
+        }
 	}
 
 }

@@ -5,6 +5,7 @@ using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Buffs.Other.LegendaryShield;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Materials;
+using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Other.LegendaryShield;
 using StarsAbove.Projectiles.Summon.KeyOfTheKingsLaw;
 using StarsAbove.Projectiles.Summon.Wavedancer;
@@ -156,9 +157,14 @@ namespace StarsAbove.Items.Weapons.Other
 		}
 		public override void AddRecipes()
 		{
-			
-			
-		}
+
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.HeroShield, 1)
+
+                  .AddIngredient(ItemType<EssenceOfTheShield>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
+        }
 	}
 
     public class LegendaryShieldDashPlayer : ModPlayer

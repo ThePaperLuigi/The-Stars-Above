@@ -11668,7 +11668,7 @@ Mods: {
 					''' */
 			}
 
-			EssenceOfMew: {
+			EssenceOfCookies: {
 				// DisplayName: Essence Of Mew
 				/* Tooltip:
 					'''
@@ -11701,7 +11701,7 @@ Mods: {
 				// DisplayName: Essence Of Sugar
 				/* Tooltip:
 					'''
-					Obtained after defeating Queen Slime
+					Obtained after defeating Thespian, the Act of Alchemy
 					A gift from your Starfarer
 					Utilized in the creation of 'Candied Sugar Ball' (Summon)
 					''' */
@@ -11751,8 +11751,8 @@ Mods: {
 					''' */
 			}
 
-			EssenceOfTheShieldHero: {
-				// DisplayName: Essence Of The Shield Hero
+			EssenceOfTheShield: {
+				// DisplayName: Essence Of The Shield
 				/* Tooltip:
 					'''
 					Obtained after defeating ???
@@ -11775,8 +11775,8 @@ Mods: {
 					''' */
 			}
 
-			EssenceOfCurses: {
-				// DisplayName: Essence Of Curses
+			EssenceOfNecrosis: {
+				// DisplayName: Essence Of Necrosis
 				/* Tooltip:
 					'''
 					Obtained after defeating ???
@@ -12324,6 +12324,36 @@ Mods: {
 			ElectrumScissors: {
 				// DisplayName: Electrum Scissors
 				// Tooltip: Grants a new hairstyle for your Starfarer once consumed
+			}
+
+			EssenceOfChionicEnergy: {
+				// DisplayName: Essence Of Chionic Energy
+				// Tooltip: ""
+			}
+
+			EssenceOfTheDarkMaker: {
+				// DisplayName: Essence Of The Dark Maker
+				// Tooltip: ""
+			}
+
+			EssenceOfTheRifle: {
+				// DisplayName: Essence Of The Rifle
+				// Tooltip: ""
+			}
+
+			EssenceOfTheStars: {
+				// DisplayName: Essence Of The Stars
+				// Tooltip: ""
+			}
+
+			EssenceOfTheWhiteNight: {
+				// DisplayName: Essence Of The White Night
+				// Tooltip: ""
+			}
+
+			EssenceOfWolves: {
+				// DisplayName: Essence Of Wolves
+				// Tooltip: ""
 			}
 		}
 
@@ -16437,7 +16467,7 @@ Mods: {
 
 				DisableStarfarerVoices: {
 					// Label: Disable Starfarer voice lines
-					// Tooltip: Disables the Starfarer's voice lines. (CV: Kiera Rhodes)
+					// Tooltip: Disables most of the Starfarer's voice lines. Some lines will still play. (CV: Kiera Rhodes)
 				}
 
 				DisableStellarNovaDialogue: {
@@ -16522,7 +16552,7 @@ Mods: {
 
 				StarfarerVoiceCooldown: {
 					// Label: Starfarer Voice Cooldown
-					// Tooltip: ""
+					// Tooltip: The delay in seconds between voiced dialogue. Note that low values may cause dialogue to overlap, and voice dialogue only has a chance to play.
 				}
 			}
 

@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework;
 using Mono.Cecil;
 using StarsAbove.Buffs.Summon.CandiedSugarball;
 using StarsAbove.Items.Essences;
+using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Items.Weapons.Other;
 using StarsAbove.Projectiles.Summon.CandiedSugarball;
 using StarsAbove.Projectiles.Summon.Chronoclock;
 using StarsAbove.Projectiles.Summon.Kifrosse;
@@ -171,7 +173,12 @@ namespace StarsAbove.Items.Weapons.Summon
         }
         public override void AddRecipes()
         {
-          
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.Marshmallow, 12)
+                  .AddIngredient(ItemID.FallenStar, 1)
+                  .AddIngredient(ItemType<EssenceOfSugar>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
         }
 
     }

@@ -14,6 +14,7 @@ using StarsAbove.Utilities;
 using Terraria.Audio;
 using StarsAbove.Buffs.Summon.StarphoenixFunnel;
 using StarsAbove.Systems;
+using StarsAbove.Items.Prisms;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -187,7 +188,13 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.FallenStar, 12)
+                  .AddIngredient(ItemType<PrismaticCore>(), 2)
+
+                  .AddIngredient(ItemType<EssenceOfThePhoenix>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
+        }
 	}
 }

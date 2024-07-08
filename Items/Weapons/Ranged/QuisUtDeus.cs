@@ -161,7 +161,14 @@ namespace StarsAbove.Items.Weapons.Ranged
 
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.LunarBar, 12)
+                  .AddIngredient(ItemID.SoulofLight, 8)
+                  .AddIngredient(ItemID.FallenStar, 8)
+                  .AddIngredient(ItemID.StarWrath, 1)
+                  .AddIngredient(ItemType<EssenceOfTheStars>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
+        }
 	}
 }

@@ -313,6 +313,20 @@ namespace StarsAbove.Systems
                 ItemType<EssenceOfFirepower>(),
                 ItemType<EssenceOfTheDragon>(),
                 ItemType<EssenceOfDancingSeas>(),
+
+                ItemType<EssenceOfTheShield>(),
+                ItemType<EssenceOfWolves>(),
+                ItemType<EssenceOfSugar>(),
+                ItemType<EssenceOfCookies>(),
+                ItemType<EssenceOfNecrosis>(),
+                ItemType<EssenceOfChionicEnergy>(),
+                ItemType<EssenceOfThePhoenix>(),
+                ItemType<EssenceOfASingularity>(),
+                ItemType<EssenceOfTheHuntress>(),
+                ItemType<EssenceOfTheRifle>(),
+                ItemType<EssenceOfTheDarkMaker>(),
+                ItemType<EssenceOfTheStars>(),
+                ItemType<EssenceOfTheWhiteNight>(),
             };
             Prisms = new List<int>() {
 
@@ -477,6 +491,20 @@ namespace StarsAbove.Systems
                 ItemType<EssenceOfDancingSeas>(),
                 ItemType<EssenceOfEnergy>(),
                 ItemType<EssenceOfTheDragon>(),
+
+                ItemType<EssenceOfTheShield>(),
+                ItemType<EssenceOfWolves>(),
+                ItemType<EssenceOfSugar>(),
+                ItemType<EssenceOfCookies>(),
+                ItemType<EssenceOfNecrosis>(),
+                ItemType<EssenceOfChionicEnergy>(),
+                ItemType<EssenceOfThePhoenix>(),
+                ItemType<EssenceOfASingularity>(),
+                ItemType<EssenceOfTheHuntress>(),
+                ItemType<EssenceOfTheRifle>(),
+                ItemType<EssenceOfTheDarkMaker>(),
+                ItemType<EssenceOfTheStars>(),
+                ItemType<EssenceOfTheWhiteNight>(),
 
             };
             base.SetStaticDefaults();

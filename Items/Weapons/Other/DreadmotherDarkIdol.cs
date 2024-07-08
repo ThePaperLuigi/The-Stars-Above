@@ -368,7 +368,12 @@ namespace StarsAbove.Items.Weapons.Other
 
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.SoulofFright, 12)
+                  .AddIngredient(ItemID.SpookyWood, 40)
+                  .AddIngredient(ItemType<EssenceOfTheDarkMaker>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
+        }
 	}
 }

@@ -367,7 +367,15 @@ namespace StarsAbove.Items.Weapons.Magic
 		}
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                 .AddIngredient(ItemID.Teacup, 1)
+                 .AddIngredient(ItemID.TeaKettle, 1)
+                 .AddIngredient(ItemID.SoulofMight, 4)
+                 .AddIngredient(ItemID.FragmentNebula, 12)
+                 .AddIngredient(ItemID.MysteriousCape, 1)
+                 .AddIngredient(ItemType<EssenceOfTheRifle>())
+                 .AddTile(TileID.Anvils)
+                 .Register();
+        }
 	}
 }

@@ -252,7 +252,14 @@ namespace StarsAbove.Items.Weapons.Magic
         }
         public override void AddRecipes()
         {
-            
+            CreateRecipe(1)
+                  .AddIngredient(ItemID.LunarBar, 20)
+                  .AddIngredient(ItemID.SoulofLight, 40)
+                  .AddIngredient(ItemID.HallowedBar, 12)
+                  .AddIngredient(ItemID.AngelStatue, 1)
+                  .AddIngredient(ItemType<EssenceOfTheWhiteNight>())
+                  .AddTile(TileID.Anvils)
+                  .Register();
         }
     }
 
