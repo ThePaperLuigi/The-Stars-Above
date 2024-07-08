@@ -80,7 +80,7 @@ namespace StarsAbove
 
         //This timer is set to a static value to prevent voiced dialogue from overlapping.
         public float globalVoiceDelayTimer = 0;
-        public static float globalVoiceDelayMax = 5 * 60; //Minimum 5 seconds between voiced dialogue.
+        public static float globalVoiceDelayMax = 4 * 60; //Minimum 5 seconds between voiced dialogue.
 
         public static bool BossEnemySpawnModDisabled = false;
 
@@ -273,7 +273,9 @@ namespace StarsAbove
         public int chosenDialogue = 0;//This determines which dialogue option you get.
         public int dialogueLeft = 1;//This is the number of pages a dialogue option has. If it reaches 0, the box will close. It depends on chosenDialogue.
         public int expression = 0;//This is the expression relating to both the current chosenDialogue and the current dialogueLeft.
-                                  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+
+        public int nextExpression = 0;//used for voice
+
         public bool dialoguePrep;// This will be flipped to 'false' once dialogueLeft has been established.
         public string dialogue = ""; //Depending on the chosen Starfarer, this will be the string of dialogue pushed to the Text GUI.
                                      //Keep account of dialogueLeft and tie it to that + chosenDialogue
@@ -3581,6 +3583,11 @@ namespace StarsAbove
 
         public override void PreUpdate()
         {
+            globalVoiceDelayTimer--;
+            if(voicesDisabled)
+            {
+                globalVoiceDelayTimer = 10;
+            }
             GlobalRotation++;
             if (GlobalRotation >= 360)
             {
@@ -10804,7 +10811,16 @@ namespace StarsAbove
                 if (eventPrompt == "onDeath")
                 {
                     randomDialogue = Main.rand.Next(0, 3);
+                    if(chosenStarfarer == 1)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor0);
 
+                    }
+                    else if(chosenStarfarer == 2)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor0);
+
+                    }
                     if (randomDialogue == 0)
                     {
                         promptExpression = 1;
@@ -10830,45 +10846,45 @@ namespace StarsAbove
 
                     if (randomDialogue == 0)
                     {
+                        BossVoiceNeutral();
+
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".59", Player.name); //A powerful foe approaches! We aren't going to lose this.
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".59", Player.name);
                     }
                     if (randomDialogue == 1)
                     {
+                        BossVoiceAngry();
+
                         promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".60", Player.name); //An incredibly strong foe draws near! Let's give them a fight to remember!
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".60", Player.name);
                     }
                     if (randomDialogue == 2)
                     {
+                        BossVoiceNeutral();
+
                         promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".61", Player.name); //A strong foe draws near. It's time to fight.
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".61", Player.name);
                     }
                     if (randomDialogue == 3)
                     {
+                        BossVoiceNeutral();
+
                         promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".62", Player.name); //Right. No more games. A powerful foe is approaching.
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".62", Player.name);
                     }
                     if (randomDialogue == 4)
                     {
+                        BossVoiceNeutral();
+
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".63", Player.name);//Looks like danger's on the horizon, {0}. I've been itching for a fight!
-                                                                                                                       //promptDialogue = $"{Player.name}, danger approaches!" +
-                                                                                                                       //                " I've been itching for a fight!";
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".63", Player.name);
                     }
 
                 }
                 if (eventPrompt == "onEyeOfCthulhu")
                 {
-                    if (chosenStarfarer == 1)
-                    {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry3);
+                    BossVoiceNeutral();
 
-                    }
-                    else if (chosenStarfarer == 2)
-                    {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry1);
-
-                    }
 
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
@@ -10876,138 +10892,182 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onKingSlime")
                 {
+                    BossVoiceNeutral();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".65", Player.name); //It's the lord of the slimes! I think it has a teleportation-like ability..
                     seenKingSlime = true;
                 }
                 if (eventPrompt == "onEaterOfWorlds")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".66", Player.name); //A colossal worm! Watch where it emerges; it'll try and hit your blind spots!
                     seenEaterOfWorlds = true;
                 }
                 if (eventPrompt == "onBrainOfCthulhu")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".67", Player.name); //This thing is trying to attack your mind directly..! Don't be fooled by the mirages!
                     seenBrainOfCthulhu = true;
                 }
                 if (eventPrompt == "onQueenBee")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".68", Player.name); //Watch out.. the Queen Bee is awake! Make sure to dodge the horizontal charges!
                     seenQueenBee = true;
                 }
                 if (eventPrompt == "onSkeletron")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".69", Player.name); //Don't underestimate this monster! Stay away from his skull and arms!
                     seenSkeletron = true;
                 }
                 if (eventPrompt == "onWallOfFlesh")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".70", Player.name); //That thing is massive! If you can, try and build a path to fight it on.
                     seenWallOfFlesh = true;
                 }
                 if (eventPrompt == "onTwins")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".71", Player.name); //There's two giant eyeballs coming your way! Let's see... The red one will shoot at you, and the green one charges.
                     seenTwins = true;
                 }
                 if (eventPrompt == "onDeerclops")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".72", Player.name); //What in the world is that thing? A deer? It's only got one eye... aim for it!
                     seenDeerclops = true;
                 }
                 if (eventPrompt == "onQueenSlime")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".73", Player.name); //It's another colossal slime! It looks like it's going to summon some minions!
                     seenQueenSlime = true;
                 }
                 if (eventPrompt == "onEmpress")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".74", Player.name); //A Hallow-aspected foe has appeared! Maybe leave the butterfly alone next time...?
                     seenEmpress = true;
                 }
                 if (eventPrompt == "onDestroyer")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".75", Player.name); //A giant mechanical worm.. What can we do..? How about trying to attack multiple parts of it at once?
                     seenDestroyer = true;
                 }
                 if (eventPrompt == "onSkeletronPrime")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".76", Player.name); //It's a more advanced version of Skeletron.. Try going for the arms first, instead of the head.
                     seenSkeletronPrime = true;
                 }
                 if (eventPrompt == "onPlantera")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".77", Player.name); //Plantera is awake! Be mindful of its vines. It would be great to have a huge arena to fight it in.
                     seenPlantera = true;
                 }
                 if (eventPrompt == "onGolem")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".78", Player.name); //An ancient mechanical monster.. Watch out for the traps in the temple while fighting it.
                     seenGolem = true;
                 }
                 if (eventPrompt == "onDukeFishron")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".79", Player.name); //You reeled in something crazy! Something tells me you should stay near the sea!
                     seenDukeFishron = true;
                 }
                 if (eventPrompt == "onLunaticCultist")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".80", Player.name); //It's one of those Lunatic Cultists.. Stop them before they unleash a calamity..!
                     seenCultist = true;
                 }
                 if (eventPrompt == "onMoonLord")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".81", Player.name); //I can't believe it.. it's the Moon Lord! This is the final battle! We have to win this!
                     seenMoonLord = true;
                 }
                 if (eventPrompt == "onWarriorOfLight")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".82", Player.name); //The Warrior of Light approaches.. When he breaks his limits, prepare yourself!
                     seenWarriorOfLight = true;
                 }
                 if (eventPrompt == "onVagrant")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".83", Player.name); //Something about this foe seems familiar... Attacks won't work; just survive for as long as you can!
                     seenVagrant = true;
                 }
                 if (eventPrompt == "onNalhaun")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".84", Player.name); //Don't underestimate this foe..! Keep grabbing the stolen lifeforce he's taking from you!
                     seenNalhaun = true;
                 }
                 if (eventPrompt == "onPenth")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".85", Player.name); //This witch attacks with paint! Mind what color you're doused in!
                     seenPenth = true;
                 }
                 if (eventPrompt == "onArbiter")
                 {
+                    BossVoiceSuprise();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".86", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
                     seenArbiter = true;
                 }
                 if (eventPrompt == "onThespian")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".202", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
                     seenThespian = true;
@@ -11021,30 +11081,40 @@ namespace StarsAbove
                 //Calamity mod bosses!
                 if (eventPrompt == "onDesertScourge")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".87", Player.name); //There's something coming from below, and fast! Prepare yourself.. this is one strong worm!
                     seenDesertScourge = true;
                 }
                 if (eventPrompt == "onCrabulon")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".88", Player.name); //It's a massive moving mass of mycelium.. Let's take out the trash!
                     seenCrabulon = true;
                 }
                 if (eventPrompt == "onHiveMind")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".89", Player.name); //A corrupted beast draws near! Kill its minions quickly, lest it overwhelm you!
                     seenHiveMind = true;
                 }
                 if (eventPrompt == "onPerforators")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".90", Player.name); //What in the world is that thing? Aim for that disgusting Hive before it's too late!
                     seenPerforators = true;
                 }
                 if (eventPrompt == "onSlimeGod")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".91", Player.name); //So this is the source of all the world's slimes. Don't get hasty; I'm certain those slimes will split when hurt!
                     seenSlimeGod = true;
@@ -11052,12 +11122,15 @@ namespace StarsAbove
                 //Hardmode Calamity Bosses
                 if (eventPrompt == "onCryogen")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".92", Player.name); //Something is strange about this thing, but I don't know what. Don't get frozen... but you could probably already tell.
                     seenCryogen = true;
                 }
                 if (eventPrompt == "onAquaticScourge")
                 {
+                    BossVoiceNeutral();
 
                     if (seenDesertScourge)
                     {
@@ -11074,18 +11147,24 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onBrimstoneElemental")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".95", Player.name); //The flames have brought forth a demonic spirit! Take care to watch your footing, lest you succumb to lava!
                     seenBrimstoneElemental = true;
                 }
                 if (eventPrompt == "onCalamitas")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".96", Player.name); //This thing... it's a herald of destruction.. You know what devestation it can bring. Don't lose..!
                     seenCalamitas = true;
                 }
                 if (eventPrompt == "onSiren")
                 {
+                    BossVoiceNeutral();
+
                     if (leviathanDialogue == 2)
                     {
                         promptExpression = 0;
@@ -11101,36 +11180,48 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onAnahita")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".99", Player.name); //That demon of the sea is fighting back! I hope you're ready for this...
                     seenAnahita = true;
                 }
                 if (eventPrompt == "onLeviathan")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".100", Player.name); //Whoa. This thing is enormous!! Who knew she had this up her sleeve..?
                     seenLeviathan = true;
                 }
                 if (eventPrompt == "onAstrumAureus")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".101", Player.name); //The Astral Infection has corrupted whatever this was. Don't underestimate it. The Infection can do anything...
                     seenAstrumAureus = true;
                 }
                 if (eventPrompt == "onPlaguebringer")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".102", Player.name); //Oh, great.. a giant robotic bug. It kind of looks like the Queen Bee, so try and remember her attacks!
                     seenPlaguebringer = true;
                 }
                 if (eventPrompt == "onRavager")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".103", Player.name); //This is.. an amalgamation of flesh and machinery.. Above everything, try and stay away from it!
                     seenRavager = true;
                 }
                 if (eventPrompt == "onAstrumDeus")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".104", Player.name); //This is.. a descendant of a cosmic god! {Player.name}, don't get reckless!
                     seenAstrumDeus = true;
@@ -11138,96 +11229,125 @@ namespace StarsAbove
                 //Post Moon Lord Calamity Bosses
                 if (eventPrompt == "onProfanedGuardian")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".105", Player.name); //Something's reacting to the Profaned Shard! Prepare for a fight!
                     seenProfanedGuardian = true;
                 }
                 if (eventPrompt == "onDragonfolly")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".106", Player.name); //You've summoned a draconic monster..! It looks to be incredibly quick!
                     seenDragonfolly = true;
                 }
                 if (eventPrompt == "onProvidence")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".107", Player.name); //The fiery god of both light and dark descends.. No way we're losing to this thing!
                     seenProvidence = true;
                 }
                 if (eventPrompt == "onStormWeaver")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".108", Player.name); //A spatial worm is approaching! Don't get careless.
                     seenStormWeaver = true;
                 }
                 if (eventPrompt == "onCeaselessVoid")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".109", Player.name); //That rune has summoned some sort of.. void entity..?
                     seenCeaselessVoid = true;
                 }
                 if (eventPrompt == "onSignus")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".110", Player.name); //Someone.. or something.. is approaching. It can shapeshift at will! Get ready!
                     seenSignus = true;
                 }
                 if (eventPrompt == "onPolterghast")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".111", Player.name); //Something's awake. The Dungeon's volatile spirits have coalesed...
                     seenPolterghast = true;
                 }
                 if (eventPrompt == "onOldDuke")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".112", Player.name); //The acid ocean has spat out a monster! Wait until it gets tired to strike!
                     seenOldDuke = true;
                 }
                 if (eventPrompt == "onDog")
                 {
+                    BossVoiceSuprise();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".113", Player.name); //The Devourer of Gods has arrived! Fight! Fight with all your strength!
                     seenDog = true;
                 }
                 if (eventPrompt == "onYharon")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".114", Player.name); //Yharim's loyal beast, in the flesh..! Let's send this tyrant down a peg!
                     seenYharon = true;
                 }
                 if (eventPrompt == "onYharonDespawn")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 3;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".115", Player.name); //Huh? Where's it going? We were in the middle of something!
                     seenYharonDespawn = true;
                 }
                 if (eventPrompt == "onSupremeCalamitas")
                 {
+                    BossVoiceSuprise();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".116", Player.name); //We bow to no one! Let's bring this witch down!
                     seenSupremeCalamitas = true;
                 }
                 if (eventPrompt == "onDraedon")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".117", Player.name); //This is Yharim's loyal scientist. His knowledge is nigh-infinite.. Stay cautious.
                     seenDraedon = true;
                 }
                 if (eventPrompt == "onArtemis")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".118", Player.name); //Twin mechanical eyes- incredibly powerful. Don't get overwhelmed..!
                     seenArtemis = true;
                 }
                 if (eventPrompt == "onThanatos")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".119", Player.name); //The very earth trembles before this foe. Draedon's toys have become stronger...
                     seenThanatos = true;
                 }
                 if (eventPrompt == "onAres")
                 {
+                    BossVoiceAngry();
 
                     promptExpression = 1;
                     //promptDialogue = $"Heads up, {Player.name}!" +
@@ -11238,12 +11358,16 @@ namespace StarsAbove
                 //Fargos Souls Bosses
                 if (eventPrompt == "onTrojanSquirrel")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
                     seenTrojanSquirrel = true;
                 }
                 if (eventPrompt == "onDeviantt")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".122", Player.name);
                     //promptDialogue = $"Aww, this pint-sized witch wants a fight? Alright then!" +
@@ -11252,6 +11376,8 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onEridanus")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".123", Player.name);
                     //promptDialogue = $"Hah? Just look at this muppet... thinking he's better than us or something!" +
@@ -11260,6 +11386,8 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onAbominationn")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".124", Player.name);
                     //promptDialogue = $"Let's get this show started!" +
@@ -11268,6 +11396,8 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onMutant")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".125", Player.name);
                     //promptDialogue = $"If I had a nickel for times you've thrown voodoo dolls into lava... Never mind." +
@@ -11276,48 +11406,64 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onScarabeus")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".194", Player.name);
                     seenScarabeus = true;
                 }
                 if (eventPrompt == "onMoonJellyWizard")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".195", Player.name);
                     seenMoonJellyWizard = true;
                 }
                 if (eventPrompt == "onVinewrathBane")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".196", Player.name);
                     seenVinewrathBane = true;
                 }
                 if (eventPrompt == "onAncientAvian")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".197", Player.name);
                     seenAncientAvian = true;
                 }
                 if (eventPrompt == "onStarplateVoyager")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".198", Player.name);
                     seenStarplateVoyager = true;
                 }
                 if (eventPrompt == "onInfernon")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".199", Player.name);
                     seenInfernon = true;
                 }
                 if (eventPrompt == "onDusking")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".200", Player.name);
                     seenDusking = true;
                 }
                 if (eventPrompt == "onAtlas")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".201", Player.name);
                     seenAtlas = true;
@@ -11325,18 +11471,23 @@ namespace StarsAbove
                 //Wrath of the Gods
                 if (eventPrompt == "onNoxusEgg")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".204", Player.name);
                     seenNoxusEgg = true;
                 }
                 if (eventPrompt == "onEntropicGod")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".205", Player.name);
                     seenEntropicGod = true;
                 }
                 if (eventPrompt == "onNamelessDeity")
                 {
+                    BossVoiceSuprise();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".206", Player.name);
                     seenNamelessDeity = true;
@@ -11344,18 +11495,24 @@ namespace StarsAbove
                 //Starlight River
                 if (eventPrompt == "onGlassweaver")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".207", Player.name);
                     seenGlassweaver = true;
                 }
                 if (eventPrompt == "onAuroracle")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".208", Player.name);
                     seenAuroracle = true;
                 }
                 if (eventPrompt == "onCeiros")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".209", Player.name);
                     seenCeiros = true;
@@ -11363,36 +11520,48 @@ namespace StarsAbove
                 //Thorium bosses.
                 if (eventPrompt == "onGrandThunderBird")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".126", Player.name); //A lightning bird is approaching! It's not too powerful, but don't get careless.
                     seenGrandThunderBird = true;
                 }
                 if (eventPrompt == "onQueenJellyfish")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".127", Player.name); //Hey. Doesn't that jellyfish look a little too big? Whatever its issue is, it's coming this way!
                     seenQueenJellyfish = true;
                 }
                 if (eventPrompt == "onViscount")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".128", Player.name); //Ugh, what is that thing? A vampire? Quick, find some silver! Or is that werewolves..?
                     seenViscount = true;
                 }
                 if (eventPrompt == "onGraniteEnergyStorm")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".129", Player.name); //Looks like the granite has woken up..? Time to bury it where it belongs.
                     seenGraniteEnergyStorm = true;
                 }
                 if (eventPrompt == "onBuriedChampion")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".130", Player.name); //This gladiator looks stronger than the others. Let's give it a fight to remember!
                     seenBuriedChampion = true;
                 }
                 if (eventPrompt == "onStarScouter")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".131", Player.name); //It's an alien spaceship! It looks like it'll be stronger on low HP!
                     seenStarScouter = true;
@@ -11400,30 +11569,40 @@ namespace StarsAbove
                 //Thorium Hardmode
                 if (eventPrompt == "onBoreanStrider")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".132", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
                     seenBoreanStrider = true;
                 }
                 if (eventPrompt == "onCoznix")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".133", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
                     seenCoznix = true;
                 }
                 if (eventPrompt == "onLich")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".134", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
                     seenLich = true;
                 }
                 if (eventPrompt == "onAbyssion")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".135", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
                     seenAbyssion = true;
                 }
                 if (eventPrompt == "onPrimordials")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 5;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".136", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                     seenPrimordials = true;
@@ -11432,43 +11611,64 @@ namespace StarsAbove
                 //Secrets of the Shadows
                 if (eventPrompt == "onPutridPinky")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
                     seenPutridPinky = true;
                 }
                 if (eventPrompt == "onPharaoh")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
                     seenPharaoh = true;
                 }
                 if (eventPrompt == "onAdvisor")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
                     seenAdvisor = true;
                 }
                 if (eventPrompt == "onPolaris")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
                     seenPolaris = true;
                 }
                 if (eventPrompt == "onLux")
                 {
+                    BossVoiceAngry();
+
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                     seenLux = true;
                 }
                 if (eventPrompt == "onSubspaceSerpent")
                 {
+                    BossVoiceNeutral();
+
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
                     seenSubspaceSerpent = true;
                 }
                 if (eventPrompt == "onEnterNeonVeil")
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.AExploreRare0);
+                    if(chosenStarfarer == 1)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.AExploreRare0);
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.EExploreRare0);
+
+                    }
 
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".215", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
@@ -11477,360 +11677,84 @@ namespace StarsAbove
                 //Upon entering a biome for the first time..
                 if (eventPrompt == "onEnterDesert")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 2;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".137", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
                     seenDesertBiome = true;
                 }
                 if (eventPrompt == "onEnterJungle")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".138", Player.name); //So this is the Jungle. Take care when exploring. Ah, but make sure to explore everything!
                     seenJungleBiome = true;
                 }
                 if (eventPrompt == "onEnterBeach")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".139", Player.name); //Well, it's the ocean. ...Did you want me to say something else? It's an ocean.
                     seenBeachBiome = true;
                 }
                 if (eventPrompt == "onEnterSpace")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 5;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".140", Player.name); //Isn't it nice up here?  
                     seenSpaceBiome = true;
                 }
                 if (eventPrompt == "onEnterUnderworld")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".141", Player.name); //The Underworld, huh? Interesting. This goes without saying, but it's incredibly dangerous here.
                     seenUnderworldBiome = true;
                 }
                 if (eventPrompt == "onEnterCorruption")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".142", Player.name); //The world is being corrupted away here. Let's not tarry.
                     seenCorruptionBiome = true;
                 }
                 if (eventPrompt == "onEnterCrimson")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 2;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".143", Player.name); //The ground here feels like flesh. I feel like we shouldn't stay long- but that's obvious..
                     seenCrimsonBiome = true;
                 }
                 if (eventPrompt == "onEnterSnow")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".144", Player.name); //It's snow! I've been always fond of snow. The water-based kind, of course.
                     seenSnowBiome = true;
                 }
                 if (eventPrompt == "onEnterHallow")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".145", Player.name); //It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
                     seenHallowBiome = true;
                 }
                 if (eventPrompt == "onEnterMushroom")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 5;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".146", Player.name); //Whoa! This place is funky. You don't see these mushrooms every day.
                     seenGlowingMushroomBiome = true;
                 }
                 if (eventPrompt == "onEnterDungeon")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".147", Player.name); //There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
                     seenDungeonBiome = true;
                 }
                 if (eventPrompt == "onEnterMeteorite")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 5;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
                     seenMeteoriteBiome = true;
@@ -11839,30 +11763,7 @@ namespace StarsAbove
                 //Verdant
                 if (eventPrompt == "onEnterVerdant")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".180", Player.name);
                     seenVerdantBiome = true;
@@ -11871,150 +11772,35 @@ namespace StarsAbove
                 //Calamity Biomes
                 if (eventPrompt == "onEnterCrag")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".149", Player.name); //This is.. the Brimstone Crag. Something dreadful happened here.
                     seenCragBiome = true;
                 }
                 if (eventPrompt == "onEnterAstral")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".150", Player.name); //So this is the Astral Infection. I've read about it, but actually seeing it...
                     seenAstralBiome = true;
                 }
                 if (eventPrompt == "onEnterSunkenSea")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".151", Player.name); //Wow.. This place is quite unique. I can't quite explain.
                     seenSunkenSeaBiome = true;
                 }
                 if (eventPrompt == "onEnterSulphurSea")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".152", Player.name); //Whatever was done to this place is irreversible. This ocean has been stained red with blood.
                     seenSulphurSeaBiome = true;
                 }
                 if (eventPrompt == "onEnterAbyss")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".153", Player.name); //You're entering the true depths of the ocean. I hope you realize how dangerous this is!
                     seenAbyssBiome = true;
@@ -12023,90 +11809,21 @@ namespace StarsAbove
                 //Thorium Biomes
                 if (eventPrompt == "onEnterGranite")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".154", Player.name); //This cavern seems to be made of hard granite.. Curious.
                     seenGraniteBiome = true;
                 }
                 if (eventPrompt == "onEnterMarble")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 0;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".155", Player.name); //This cave exhudes royalty. Perhaps it has to do with the abundance of marble.
                     seenMarbleBiome = true;
                 }
                 if (eventPrompt == "onEnterAquaticDepths")
                 {
-                    int randomVoice = Main.rand.Next(0, 5);
-                    switch (randomVoice)
-                    {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
-
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
-
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
-
-                            break;
-                        case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
-
-                            break;
-                        case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
-
-                            break;
-                    }
+                    VoiceExplore();
                     promptExpression = 1;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".156", Player.name); //This is a deep part of the ocean. Take care you don't drown...
                     seenAquaticDepthsBiome = true;
@@ -12210,6 +11927,16 @@ namespace StarsAbove
 
                 if (eventPrompt == "onStellarNovaCharged")
                 {
+                    if(chosenStarfarer == 1)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneReady0);
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniReady0);
+
+                    }
                     randomDialogue = Main.rand.Next(0, 6);
 
                     if (randomDialogue == 0)
@@ -12280,6 +12007,237 @@ namespace StarsAbove
             promptDialogue = LangHelper.Wrap(promptDialogue, 78);
         
         }
+
+        private void VoiceExplore()
+        {
+            int randomVoice = Main.rand.Next(0, 5);
+            
+            if (chosenStarfarer == 1)
+            {
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                        break;
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                        break;
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                        break;
+                    case 4:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                        break;
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                        break;
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                        break;
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                        break;
+                    case 4:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                        break;
+                }
+            }
+        }
+
+        private void BossVoiceSuprise()
+        {
+            int randomVoice;
+
+            if (chosenStarfarer == 1)
+            {
+                randomVoice = Main.rand.Next(0, 2);
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised0);
+
+                        break;
+
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised1);
+
+                        break;
+
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);
+                randomVoice = Main.rand.Next(0, 2);
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossSuprised0);
+
+                        break;
+
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossWorried1);
+
+                        break;
+
+                }
+            }
+        }
+        private void BossVoiceNeutral()
+        {
+            int randomVoice;
+
+            if (chosenStarfarer == 1)
+            {
+                randomVoice = Main.rand.Next(0, 4);
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral0);
+
+                        break;
+
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral1);
+
+                        break;
+
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral2);
+
+                        break;
+
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossWorried3);
+
+                        break;
+
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                randomVoice = Main.rand.Next(0, 6);
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);
+
+                        break;
+
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral1);
+
+                        break;
+
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral2);
+
+                        break;
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral3);
+
+                        break;
+
+                    case 4:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral4);
+
+                        break;
+
+                    case 5:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral5);
+
+                        break;
+
+                }
+            }
+        }
+
+        private void BossVoiceAngry()
+        {
+            int randomVoice;
+            
+            if (chosenStarfarer == 1)
+            {
+                randomVoice = Main.rand.Next(0, 4);
+                switch(randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry0);
+
+                        break;
+
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry1);
+
+                        break;
+
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry2);
+
+                        break;
+
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry3);
+
+                        break;
+
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                randomVoice = Main.rand.Next(0, 3);
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry0);
+
+                        break;
+
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry1);
+
+                        break;
+
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry2);
+
+                        break;
+
+                }
+            }
+        }
+
         public void StellarNovaEnergy()
         {
             novaGaugeChangeAlpha -= 0.1f;

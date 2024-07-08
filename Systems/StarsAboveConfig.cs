@@ -35,7 +35,7 @@ namespace StarsAbove.Systems
 
         [Increment(1)]
         [Range(1, 60)]
-        [DefaultValue(8)]
+        [DefaultValue(4)]
         [Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
         public int StarfarerPromptCooldown;
 

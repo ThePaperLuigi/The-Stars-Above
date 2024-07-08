@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.UI;
@@ -52,6 +53,10 @@ namespace StarsAbove.Dialogue
             
             if (chosenDialogue == 3) // Passive Dialogue 1
             {
+                if (dialoguePrep)
+                {
+                     
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue1" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -61,6 +66,11 @@ namespace StarsAbove.Dialogue
             }//1
             if (chosenDialogue == 4) // Passive Dialogue 2
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue2" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -70,6 +80,11 @@ namespace StarsAbove.Dialogue
             }//2
             if (chosenDialogue == 5) // Passive Dialogue 2
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue3" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -78,6 +93,11 @@ namespace StarsAbove.Dialogue
             }//3
             if (chosenDialogue == 6) // Passive Dialogue 3
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue4" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -86,6 +106,11 @@ namespace StarsAbove.Dialogue
             }//4
             if (chosenDialogue == 7) // Passive Dialogue 4
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue5" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -94,6 +119,11 @@ namespace StarsAbove.Dialogue
             }//5
             if (chosenDialogue == 8) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue6" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -102,6 +132,11 @@ namespace StarsAbove.Dialogue
             }//6
             if (chosenDialogue == 9) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue7" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -110,6 +145,11 @@ namespace StarsAbove.Dialogue
             }//7
             if (chosenDialogue == 10) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue8" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -118,6 +158,11 @@ namespace StarsAbove.Dialogue
             }//8
             if (chosenDialogue == 11) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "NormalIdleDialogue9" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -127,6 +172,11 @@ namespace StarsAbove.Dialogue
              //Post Hardmode Dialogue
             if (chosenDialogue == 12) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue1" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -136,6 +186,11 @@ namespace StarsAbove.Dialogue
             }//1
             if (chosenDialogue == 13) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue2" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -144,6 +199,11 @@ namespace StarsAbove.Dialogue
             }//2
             if (chosenDialogue == 14) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue3" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -152,6 +212,11 @@ namespace StarsAbove.Dialogue
             }//3
             if (chosenDialogue == 15) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue4" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -160,6 +225,11 @@ namespace StarsAbove.Dialogue
             }//4
             if (chosenDialogue == 16) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue5" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -169,6 +239,11 @@ namespace StarsAbove.Dialogue
             }//5
             if (chosenDialogue == 17) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue6" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -178,6 +253,11 @@ namespace StarsAbove.Dialogue
             }//6
             if (chosenDialogue == 18) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue7" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -187,6 +267,11 @@ namespace StarsAbove.Dialogue
             }//7
             if (chosenDialogue == 19) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue8" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -197,6 +282,11 @@ namespace StarsAbove.Dialogue
             }//8
             if (chosenDialogue == 20) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue9" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -206,6 +296,11 @@ namespace StarsAbove.Dialogue
             }//9
             if (chosenDialogue == 21) // A world shrouded in Light
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "LightIdleDialogue" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -217,6 +312,12 @@ namespace StarsAbove.Dialogue
 
             if (chosenDialogue == 400) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue10" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -225,6 +326,12 @@ namespace StarsAbove.Dialogue
             }
             if (chosenDialogue == 401) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue11" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -233,6 +340,12 @@ namespace StarsAbove.Dialogue
             }
             if (chosenDialogue == 402) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue12" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -241,6 +354,12 @@ namespace StarsAbove.Dialogue
             }
             if (chosenDialogue == 403) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue13" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -250,6 +369,11 @@ namespace StarsAbove.Dialogue
             }
             if (chosenDialogue == 404) // Passive Dialogue
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "RegularIdleDialogue";
                 string key = category + "." + "HardIdleDialogue14" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -262,6 +386,11 @@ namespace StarsAbove.Dialogue
             //Boss dialogue
             if (chosenDialogue == 51) // Boss dialogue - Slime King
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "KingSlime" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -269,12 +398,22 @@ namespace StarsAbove.Dialogue
             }//Slime King 1
             if (chosenDialogue == 52) // Boss dialogue - Eye of Cthulu
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "CthulhuEye" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Eye of Cthulhu 2
             if (chosenDialogue == 53) // Boss dialogue - Eater of Worlds or Brain of Cthulhu
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "CorruptionBoss" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -282,6 +421,11 @@ namespace StarsAbove.Dialogue
             }//Brain of Cthulhu / Eater of Worlds 3
             if (chosenDialogue == 54) // Boss dialogue - Queen Bee
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "QueenBee" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -290,6 +434,11 @@ namespace StarsAbove.Dialogue
             }//Queen Bee 4 
             if (chosenDialogue == 55) // Boss dialogue - Skeletron
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Skeletron" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -298,6 +447,12 @@ namespace StarsAbove.Dialogue
             }//Skeletron 5 
             if (chosenDialogue == 56) // Boss dialogue - Wall of Flesh
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "WallOfFlesh" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -305,6 +460,11 @@ namespace StarsAbove.Dialogue
             }//Wall of Flesh 6
             if (chosenDialogue == 58) // Boss dialogue - The Twins
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Twins" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -312,6 +472,11 @@ namespace StarsAbove.Dialogue
             }//The Twins 7
             if (chosenDialogue == 57) // Boss dialogue - The Destroyer
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Destroyer" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -319,6 +484,11 @@ namespace StarsAbove.Dialogue
             }//Destroyer 8
             if (chosenDialogue == 59) // Boss dialogue - Skeletron Prime
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "SkeletronPrime" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -326,36 +496,66 @@ namespace StarsAbove.Dialogue
             }//Skeletron Prime 9
             if (chosenDialogue == 60) // Boss dialogue - All Mechanical Bosses Defeated
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "AllMechs" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//All Mechanical Bosses defeated 10
             if (chosenDialogue == 61) // Boss dialogue - Plantera
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Plantera" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Plantera 11
             if (chosenDialogue == 62) // Boss dialogue - Golem
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Golem" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Golem 12
             if (chosenDialogue == 63) // Boss dialogue - Duke Fishron
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "DukeFishron" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Duke Fishron 13
             if (chosenDialogue == 64) // Boss dialogue - Lunatic Cultist
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Cultist" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Lunatic Cultist 14
             if (chosenDialogue == 65) // Boss dialogue - Moon Lord
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "MoonLord" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -364,6 +564,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace").Type);
                 }
                 string category = "BossDialogue";
@@ -375,6 +577,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheCosmos").Type);
                 }
                 string category = "BossDialogue";
@@ -385,6 +589,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBeginningAndEnd").Type);
                 }
                 string category = "BossDialogue";
@@ -395,6 +601,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace4").Type);
                 }
                 string category = "BossDialogue";
@@ -405,6 +613,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace2").Type);
                 }
                 string category = "BossDialogue";
@@ -415,6 +625,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("MnemonicTrace3").Type);
                 }
                 string category = "BossDialogue";
@@ -424,6 +636,11 @@ namespace StarsAbove.Dialogue
             }//Penthesilea 21
             if (chosenDialogue == 72) // Boss dialogue - Arbitration
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Arbitration" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -432,6 +649,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("SpatialMemoriam").Type);
                 }
                 string category = "BossDialogue";
@@ -440,18 +659,34 @@ namespace StarsAbove.Dialogue
             }//Tsukiyomi 23
             if (chosenDialogue == 74) // Boss dialogue - Queen Slime
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "QueenSlime" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Queen Slime 24
             if (chosenDialogue == 75) // Boss dialogue - Empress of Light
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "EmpressOfLight" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Empress of Light 25
             if (chosenDialogue == 76) // Boss dialogue - Deerclops
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Deerclops" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -460,6 +695,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ShatteredDisk").Type);
                 }
 
@@ -470,6 +707,11 @@ namespace StarsAbove.Dialogue
             //Thespian
             if (chosenDialogue == 78)
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "BossDialogue";
                 string key = category + "." + "Thespian" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -480,6 +722,11 @@ namespace StarsAbove.Dialogue
 
             if (chosenDialogue == 201) // Boss dialogue - Desert Scourge
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "DesertScourge" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -487,24 +734,45 @@ namespace StarsAbove.Dialogue
             }//Desert Scourge 24
             if (chosenDialogue == 202) // Boss dialogue - Crabulon
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Crabulon" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Crabulon 25 
             if (chosenDialogue == 203) // Boss dialogue - Hive Mind
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "HiveMind" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Hive Mind 26
             if (chosenDialogue == 204) // Boss dialogue - Perforators
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Perforators" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Perforators 27
             if (chosenDialogue == 205) // Boss dialogue - The Slime God
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "SlimeGod" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -512,54 +780,100 @@ namespace StarsAbove.Dialogue
              //Calamity boss dialogue (Hardmode)
             if (chosenDialogue == 206) // Boss dialogue - Cryogen
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Cryogen" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Cryogen 29
             if (chosenDialogue == 207) // Boss dialogue - Aquatic Scourge
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AquaticScourge" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Aquatic Scourge 30
             if (chosenDialogue == 208) // Boss dialogue - Brimstone Elemental
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "BrimstoneElemental" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Brimstone Elemental 31
             if (chosenDialogue == 209) // Boss dialogue - Calamitas
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Calamitas" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Calamitas 32
             if (chosenDialogue == 210) // Boss dialogue - Leviathan
             {
+                if (dialoguePrep)
+                {
+                     
+
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Leviathan" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Leviathan 33
             if (chosenDialogue == 211) // Boss dialogue - Astrum Aureus
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AstrumAureus" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Astrum Aureus 34
             if (chosenDialogue == 212) // Boss dialogue - Plaguebringer Goliath
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "PlaguebringerGoliath" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Plaguebringer Goliath 35
             if (chosenDialogue == 213) // Boss dialogue - Ravager
             {
+                if (dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "Ravager" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
             }//Ravager 36
             if (chosenDialogue == 214) // Boss dialogue - Astrum Deus
             {
+                if(dialoguePrep)
+                {
+                     
+
+                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AstrumDeus" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
@@ -572,6 +886,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFreeshooter").Type);
@@ -592,6 +908,8 @@ namespace StarsAbove.Dialogue
             {
                 if(dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHallownest").Type);
@@ -613,6 +931,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBitterfrost").Type);
@@ -636,6 +956,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAegis").Type);
@@ -657,6 +979,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilverAsh").Type);
@@ -679,6 +1003,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfButterflies").Type);
@@ -701,6 +1027,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBull").Type);
@@ -722,6 +1050,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSwarm").Type);
@@ -743,6 +1073,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheMoonlitAdepti").Type);
@@ -764,6 +1096,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheUnyieldingEarth").Type);
@@ -786,6 +1120,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfStarsong").Type);
@@ -807,6 +1143,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTreasury").Type);
@@ -830,6 +1168,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfIzanagi").Type);
@@ -852,6 +1192,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSin").Type);
@@ -873,6 +1215,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfThePhantom").Type);
@@ -894,6 +1238,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEuthymia").Type);
@@ -916,6 +1262,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLiberation").Type);
@@ -938,6 +1286,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMisery").Type);
 
                 }
@@ -952,6 +1302,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheGunlance").Type);
 
                 }
@@ -965,6 +1317,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheChimera").Type);
 
                 }
@@ -978,6 +1332,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOcean").Type);
 
                 }
@@ -992,6 +1348,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheObservatory").Type);
 
                 }
@@ -1006,6 +1364,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBionis").Type);
 
                 }
@@ -1020,6 +1380,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDuality").Type);
@@ -1041,6 +1403,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfRadiance").Type);
 
                 }
@@ -1055,6 +1419,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfInk").Type);
 
                 }
@@ -1070,6 +1436,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFoxfire").Type);
 
                 }
@@ -1084,6 +1452,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLuminance").Type);
 
                 }
@@ -1098,6 +1468,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlasting").Type);
 
                 }
@@ -1113,6 +1485,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfExplosions").Type);
 
                 }
@@ -1127,6 +1501,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfOuterGods").Type);
 
                 }
@@ -1140,6 +1516,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTwinStars").Type);
 
                 }
@@ -1154,6 +1532,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAerialAce").Type);
 
                 }
@@ -1167,6 +1547,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDarkMoon").Type);
@@ -1189,6 +1571,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAnomaly").Type);
@@ -1213,6 +1597,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheFuture").Type);
 
                 }
@@ -1232,6 +1618,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTechnology").Type);
 
                 }
@@ -1247,6 +1635,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBlood").Type);
 
                 }
@@ -1260,6 +1650,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSakura").Type);
 
                 }
@@ -1274,6 +1666,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEternity").Type);
 
                 }
@@ -1287,6 +1681,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAdagium").Type);
 
                 }
@@ -1300,6 +1696,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAscendant").Type);
 
                 }
@@ -1313,6 +1711,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfChemtech").Type);
 
                 }
@@ -1326,6 +1726,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLifethirsting").Type);
 
                 }
@@ -1341,6 +1743,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfVampirism").Type);
 
                 }
@@ -1355,6 +1759,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheHunt").Type);
@@ -1376,6 +1782,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDestiny").Type);
 
                 }
@@ -1390,6 +1798,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfBalance").Type);
 
                 }
@@ -1404,6 +1814,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheOverwhelmingBlaze").Type);
 
                 }
@@ -1418,6 +1830,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAbyss").Type);
 
                 }
@@ -1431,6 +1845,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheRenegade").Type);
 
                 }
@@ -1445,6 +1861,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfQuantum").Type);
 
                 }
@@ -1458,6 +1876,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSilence").Type);
 
                 }
@@ -1471,6 +1891,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSouls").Type);
 
                 }
@@ -1484,6 +1906,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfGold").Type);
 
                 }
@@ -1497,6 +1921,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFarewells").Type);
@@ -1519,6 +1945,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheAutomaton").Type);
@@ -1540,6 +1968,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheTimeless").Type);
 
                 }
@@ -1553,6 +1983,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfPiracy").Type);
 
                 }
@@ -1566,6 +1998,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAbsoluteChaos").Type);
 
                 }
@@ -1579,6 +2013,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWatch").Type);
 
                 }
@@ -1593,6 +2029,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheBehemothTyphoon").Type);
 
                 }
@@ -1607,6 +2045,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfLightning").Type);
 
                 }
@@ -1620,6 +2060,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfNanomachines").Type);
 
                 }
@@ -1633,6 +2075,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDespair").Type);
 
                 }
@@ -1646,6 +2090,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSurya").Type);
 
                 }
@@ -1659,6 +2105,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfMania").Type);
 
                 }
@@ -1672,6 +2120,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfAuthority").Type);
 
                 }
@@ -1685,6 +2135,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKinetics").Type);
 
                 }
@@ -1698,6 +2150,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheSoldier").Type);
 
                 }
@@ -1711,6 +2165,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDreams").Type);
 
                 }
@@ -1725,6 +2181,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfSpinning").Type);
 
                 }
@@ -1739,6 +2197,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheDragon").Type);
 
                 }
@@ -1753,6 +2213,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfFirepower").Type);
 
                 }
@@ -1767,6 +2229,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfDancingSeas").Type);
 
                 }
@@ -1782,6 +2246,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfKingslaying").Type);
 
                 }
@@ -1796,6 +2262,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep)
                 {
+                    DialogueStartVoiceReward(chosenStarfarer, expression);
+
                     if (chosenStarfarer == 1)
                     {
                         Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfEnergy").Type);
@@ -1821,6 +2289,8 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("AncientShard").Type);
                 }
                 string category = "BossItemDialogue";
@@ -1835,6 +2305,8 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("UnsulliedCanvas").Type);
                 }
                 string category = "BossItemDialogue";
@@ -1847,6 +2319,8 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("DemonicCrux").Type);
                 }
                 string category = "BossItemDialogue";
@@ -1860,6 +2334,8 @@ namespace StarsAbove.Dialogue
             {
                 if (dialoguePrep == true)                                     // |
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("ProgenitorWish").Type);
                 }
                 string category = "BossItemDialogue";
@@ -1874,6 +2350,8 @@ namespace StarsAbove.Dialogue
 
                 if (dialoguePrep == true)                                     // |
                 {
+                     
+
                     Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("TwincruxPendant").Type);
                 }
 
@@ -1892,6 +2370,342 @@ namespace StarsAbove.Dialogue
             }
         }
 
+        private static void DialogueStartVoice(int chosenStarfarer, int expression)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer > 0)
+            {
+                return;
+            }
+            //Voice system. This has a chance to play when dialogue starts and when its progressed (through clicking the dialogue UI)
+            if (chosenStarfarer == 1)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 65)
+                {
+                    //65% chance nothing plays.
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
+
+                    //50% chance the generic dialogue start line plays, 50% chance a line based on the current emotion plays. When clicking dialogue this will just be the emotion line.
+                    int randomVoiceLine = Main.rand.Next(0, 2);
+                    switch (randomVoiceLine)
+                    {
+                        case 0:
+                            int randomVoice = Main.rand.Next(0, 2);
+                            switch (randomVoice)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueStart0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueStart1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 1:
+                            int randomA = Main.rand.Next(0, 2);
+                            int randomB = Main.rand.Next(0, 3);
+
+                            switch (expression)
+                            {
+                                case 0:
+
+                                    break;
+                                case 1:
+                                    switch (randomA)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry1);
+
+                                            break;
+                                    }
+                                    break;
+                                case 2:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneWorried0);
+
+                                    break;
+
+                                case 3:
+                                    switch (randomB)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);
+
+                                            break;
+                                        case 2:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);
+
+                                            break;
+                                    }
+                                    break;
+
+                                case 4:
+                                    switch (randomA)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug1);
+
+                                            break;
+                                    }
+                                    break;
+
+                                case 5:
+                                    switch (randomA)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy1);
+
+                                            break;
+                                    }
+                                    break;
+
+                                case 6:
+
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDeadInside0);
+
+                                    break;
+
+                            }
+
+                            break;
+                    }
+                }
+            }
+            else if (chosenStarfarer == 2)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 65)
+                {
+                    //65% chance nothing plays.
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
+
+                    //50% chance the generic dialogue start line plays, 50% chance a line based on the current emotion plays. When clicking dialogue this will just be the emotion line.
+                    int randomVoiceLine = Main.rand.Next(0, 2);
+                    switch (randomVoiceLine)
+                    {
+                        case 0:
+                            int randomVoice = Main.rand.Next(0, 2);
+                            switch (randomVoice)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueStart0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueStart1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 1:
+                            int randomA = Main.rand.Next(0, 2);
+                            int randomB = Main.rand.Next(0, 3);
+
+                            switch (expression)
+                            {
+                                case 0:
+
+                                    break;
+                                case 1:
+                                    switch (randomA)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry1);
+
+                                            break;
+                                    }
+                                    break;
+                                case 2:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniWorried0);
+
+                                    break;
+
+                                case 3:
+                                    switch (randomB)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);
+
+                                            break;
+                                        case 2:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);
+
+                                            break;
+                                    }
+                                    break;
+
+                                case 4:
+                                    switch (randomA)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug1);
+
+                                            break;
+                                    }
+                                    break;
+
+                                case 5:
+                                    switch (randomA)
+                                    {
+                                        case 0:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy0);
+
+                                            break;
+
+                                        case 1:
+                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy1);
+
+                                            break;
+                                    }
+                                    break;
+
+                                case 6:
+
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDeadInside0);
+
+                                    break;
+
+                            }
+
+                            break;
+                    }
+                }
+            }
+        }
+        private static void DialogueStartVoiceReward(int chosenStarfarer, int expression)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer > 0)
+            {
+                return;
+            }
+
+            //Voice system. This has a chance to play when dialogue starts and when its progressed (through clicking the dialogue UI)
+            if (chosenStarfarer == 1)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 35)
+                {
+                    //35% chance nothing plays.
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
+
+                    int randomVoiceLine = Main.rand.Next(0, 5);
+                    switch (randomVoiceLine)
+                    {
+                        case 0:
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock0);
+
+                            break;
+                        case 1:
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock1);
+
+                            break;
+                        case 2:
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock2);
+
+                            break;
+                        case 3:
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock3);
+
+                            break;
+                        case 4:
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock4);
+
+                            break;
+
+
+                    }
+                }
+            }
+            else if (chosenStarfarer == 2)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 35)
+                {
+                    //35% chance nothing plays.
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
+
+
+                    int randomVoiceLine = Main.rand.Next(0, 5);
+                    switch (randomVoiceLine)
+                    {
+                        case 0:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock0);
+
+                            break;
+                        case 1:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock1);
+
+                            break;
+                        case 2:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock2);
+
+                            break;
+                        case 3:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock3);
+
+                            break;
+                        case 4:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock4);
+
+                            break;
+
+
+                    }
+                }
+            }
+        }
         private static void WriteDialogue(bool writeToArchive, string category, int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, ref bool dialogueFinished, string baseKey, string key)
         {  
             if (writeToArchive)
@@ -1974,9 +2788,13 @@ namespace StarsAbove.Dialogue
             }
             else
             {
+                dialogue = LangHelper.GetTextValue("Dialogue." + key + dialogueLeft, Main.LocalPlayer.name);
+                expression = SetupExpression(LangHelper.GetTextValue("Dialogue." + key + dialogueLeft + ".E"));
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().nextExpression = SetupExpression(LangHelper.GetTextValue("Dialogue." + key + (dialogueLeft + 1) + ".E"));
                 if (dialoguePrep == true)
                 {
                     dialogueLeft = 1;
+                    DialogueStartVoice(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer, expression);
                     dialoguePrep = false;
                 }
                 if (LangHelper.GetTextValue("Dialogue." + key + (dialogueLeft + 1), Main.LocalPlayer.name) == baseKey + key + (dialogueLeft + 1))//If the next dialogue is going to be the end
@@ -1987,8 +2805,7 @@ namespace StarsAbove.Dialogue
                 {
 
                 }
-                dialogue = LangHelper.GetTextValue("Dialogue." + key + dialogueLeft, Main.LocalPlayer.name);
-                expression = SetupExpression(LangHelper.GetTextValue("Dialogue." + key + dialogueLeft + ".E"));
+                
 
             }
         }

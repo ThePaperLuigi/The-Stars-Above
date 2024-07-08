@@ -6,6 +6,7 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
@@ -138,20 +139,62 @@ namespace StarsAbove.UI.Starfarers
 			}
 			else
             {
-				modPlayer.dialogueLeft++;
+
+                modPlayer.dialogueLeft++;
 
 				modPlayer.dialogueScrollTimer = 0;
 				modPlayer.dialogueScrollNumber = 0;
 
 				if (modPlayer.dialogueFinished) //If the dialogue ends, the next click will end the dialogue.
 				{
+                    if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer < 0 && modPlayer.expression < 8)
+                    {
+                        if (Main.rand.NextBool())
+                        {
+                            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
+
+                            if (modPlayer.chosenStarfarer == 1)
+                            {
+                                if (Main.rand.NextBool())
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueEnd0);
+
+                                }
+                                else
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueEnd1);
+
+                                }
+                            }
+                            else if (modPlayer.chosenStarfarer == 2)
+                            {
+                                if (Main.rand.NextBool())
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueEnd0);
+
+                                }
+                                else
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueEnd1);
+
+                                }
+                            }
+                        }
+                    }
+                    
+
 					modPlayer.starfarerDialogue = false;
 					modPlayer.chosenDialogue = 0;
 					modPlayer.dialogue = "";
 					modPlayer.dialogueFinished = false;
 
 				}
-			}
+                else
+                {
+                    DialogueVoice(modPlayer.chosenStarfarer, modPlayer.expression);
+
+                }
+            }
 			
 
 
@@ -159,9 +202,211 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
+        private static void DialogueVoice(int chosenStarfarer, int expression)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer > 0)
+            {
+                return;
+            }
 
+            //Voice system. This has a chance to play when dialogue starts and when its progressed (through clicking the dialogue UI)
+            if (chosenStarfarer == 1)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 65)
+                {
+                    //65% chance nothing plays.
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
 
-		public override void Draw(SpriteBatch spriteBatch) {
+                    int randomA = Main.rand.Next(0, 2);
+                    int randomB = Main.rand.Next(0, 3);
+
+                    switch (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().nextExpression)
+                    {
+                        case 0:
+
+                            break;
+                        case 1:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry1);
+
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneWorried0);
+
+                            break;
+
+                        case 3:
+                            switch (randomB)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);
+
+                                    break;
+                                case 2:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 4:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 5:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 6:
+
+                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDeadInside0);
+
+                            break;
+
+                    }
+
+                    
+                
+                }
+            }
+            else if (chosenStarfarer == 2)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 65)
+                {
+                    //65% chance nothing plays.
+                }
+                else
+                {
+                    int randomA = Main.rand.Next(0, 2);
+                    int randomB = Main.rand.Next(0, 3);
+
+                    switch (expression)
+                    {
+                        case 0:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNeutral0);
+
+                            break;
+                        case 1:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry1);
+
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniWorried0);
+
+                            break;
+
+                        case 3:
+                            switch (randomB)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);
+
+                                    break;
+                                case 2:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 4:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 5:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy0);
+
+                                    break;
+
+                                case 1:
+                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy1);
+
+                                    break;
+                            }
+                            break;
+
+                        case 6:
+
+                            SoundEngine.PlaySound(StarsAboveAudio.EridaniDeadInside0);
+
+                            break;
+
+                    }
+                }
+            }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0))
 				return;

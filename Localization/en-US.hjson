@@ -5125,8 +5125,8 @@ Mods: {
 
 				Eridani: {
 					1: Do you need something?
-					2: You need my help, right? Of course- anything you need.
-					3: Do you need my help? I just assumed, you know, because... Never mind.
+					2: You need my help, right? Of course.
+					3: Okay! Let's get to it.
 					4: Did something come up?
 					5: "{0}.. I'm assuming you need my help?"
 					6: Okay, what do you need?
@@ -16599,7 +16599,7 @@ Mods: {
 
 				DisableStarfarerVoices: {
 					Label: Disable Starfarer voice lines
-					Tooltip: Disables the Starfarer's voice lines. (CV: Kiera Rhodes)
+					Tooltip: Disables most of the Starfarer's voice lines. Some lines will still play. (CV: Kiera Rhodes)
 				}
 
 				DisableStellarNovaDialogue: {
@@ -16684,7 +16684,7 @@ Mods: {
 
 				StarfarerVoiceCooldown: {
 					Label: Starfarer Voice Cooldown
-					Tooltip: ""
+					Tooltip: "The delay in seconds between voiced dialogue. Note that low values may cause dialogue to overlap, and voice dialogue only has a chance to play."
 				}
 			}
 
