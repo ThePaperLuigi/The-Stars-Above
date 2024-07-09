@@ -373,7 +373,7 @@ namespace StarsAbove.Items.Weapons.Magic
                  .AddIngredient(ItemID.SoulofMight, 4)
                  .AddIngredient(ItemID.FragmentNebula, 12)
                  .AddIngredient(ItemID.MysteriousCape, 1)
-                 .AddIngredient(ItemType<EssenceOfTheRifle>())
+                 .AddIngredient(ItemType<EssenceOfASingularity>())
                  .AddTile(TileID.Anvils)
                  .Register();
         }

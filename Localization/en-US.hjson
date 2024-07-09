@@ -12781,7 +12781,12 @@ Mods: {
 
 			EssenceOfWolves: {
 				DisplayName: Essence Of Wolves
-				Tooltip: ""
+				Tooltip:
+					'''
+					Obtained after defeating the World Evil boss
+					A gift from your Starfarer
+					Utilized in the creation of 'Wolvesbane' (Melee/Ranged)
+					'''
 			}
 
 			NeopursuantLeggings: {

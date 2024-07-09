@@ -2287,7 +2287,7 @@ namespace StarsAbove.Dialogue
                 {
                     DialogueStartVoiceReward(chosenStarfarer, expression);
 
-                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfTheWolf").Type);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), Mod.Find<ModItem>("EssenceOfWolves").Type);
 
                 }
 
