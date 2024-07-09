@@ -11,6 +11,9 @@ using ReLogic.Content;
 using Terraria.Localization;
 using StarsAbove.Utilities;
 using StarsAbove.Items.Placeable.CyberWorld;
+using StarsAbove.Items.Consumables;
+using StarsAbove.Items.Materials;
+using StarsAbove.Items.Consumables.CyberWorld;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
@@ -81,33 +84,94 @@ namespace StarsAbove.Tiles.CyberWorld
         }
         public override bool RightClick(int i, int j)
         {
-            InteractWithHologramNPCs();
+            InteractWithHologramNPCs("Garridine");
             return true;
         }
 
-        public static void InteractWithHologramNPCs()
+        public static void InteractWithHologramNPCs(string NPCName)
         {
             var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-            if (player.andyerIntroDialogue == 0)
+            if (player.andyerQuestProgress == 0)
             {
-                if (player.chosenStarfarer == 1)
+                if (player.andyerIntroDialogue == 0)
                 {
-                    player.sceneID = 25;
-                    player.dialogueScrollTimer = 0;
-                    player.dialogueScrollNumber = 0;
-                    player.sceneProgression = 0;
-                    player.VNDialogueActive = true;
-                }
-                else if (player.chosenStarfarer == 2)
-                {
-                    player.sceneID = 26;
-                    player.dialogueScrollTimer = 0;
-                    player.dialogueScrollNumber = 0;
-                    player.sceneProgression = 0;
-                    player.VNDialogueActive = true;
-                }
+                    player.andyerIntroDialogue = 1;
+                    player.andyerQuestProgress = 1;
+                    if (player.chosenStarfarer == 1)
+                    {
+                        player.sceneID = 25;
+                        StartVNDialogue(player);
 
+                    }
+                    else if (player.chosenStarfarer == 2)
+                    {
+                        player.sceneID = 26;
+                        StartVNDialogue(player);
+
+                    }
+
+                }
             }
+            else
+            {
+                if(NPCName == "Andyer")
+                {
+                    if (player.andyerQuestProgress == 1)
+                    {
+                        //Andyer gives you the monitor and tells you to use it.
+                        Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<HardlightMonitor>());
+                        if (player.chosenStarfarer == 1)
+                        {
+                            player.sceneID = 28;
+                            StartVNDialogue(player);
+
+                        }
+                        else if (player.chosenStarfarer == 2)
+                        {
+                            player.sceneID = 29;
+                            StartVNDialogue(player);
+
+                        }
+                        player.andyerQuestProgress++;
+                    }
+                    else if (player.andyerQuestProgress == 2)
+                    {
+                        //This is where he reminds you to use the monitor. In the confluxes, if progress is 2, its set to 3
+                        player.sceneID = 31;
+                        StartVNDialogue(player);
+                    }
+                    else if (player.andyerQuestProgress == 3)
+                    {
+                        //Quest finishes. He gives you the attire for you to craft
+                        player.sceneID = 30;
+                        Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<RenegadeTechnomancerSynthweavePrecursor>());
+                        player.andyerQuestProgress++;
+                        StartVNDialogue(player);
+                    }
+                    else
+                    {
+                        //End of questline idle dialogue.
+                        player.sceneID = 32;
+                        StartVNDialogue(player);
+
+                    }
+                }
+                else
+                {
+                    player.sceneID = 27;
+                    StartVNDialogue(player);
+                }
+                
+            }
+            
+        }
+
+        private static void StartVNDialogue(StarsAbovePlayer player)
+        {
+            player.dialogueScrollTimer = 0;
+            player.dialogueScrollNumber = 0;
+            player.sceneProgression = 0;
+            player.VNDialogueActive = true;
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

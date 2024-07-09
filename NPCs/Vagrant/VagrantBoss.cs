@@ -585,7 +585,6 @@ namespace StarsAbove.NPCs.Vagrant
 
 			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-			notExpertRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.SpatialPrism>(), 4)));
 
 			// This part is not required for a boss and is just showcasing some advanced stuff you can do with drop rules to control how items spawn
 			// We make 12-15 ExampleItems spawn randomly in all directions, like the lunar pillar fragments. Hereby we need the DropOneByOne rule,

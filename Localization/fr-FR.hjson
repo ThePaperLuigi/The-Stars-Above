@@ -1763,6 +1763,188 @@ Mods: {
 						// 1: It seems this Summon essence creates powerful allies of water to give you the upper hand in combat. How brilliant!
 					}
 				}
+
+				TwoCrownBow: {
+					Asphodene: {
+						// Name: Two-Crown Bow Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged bow looks to spec into debuffs- must suck to be on the wrong end of this one!
+					}
+
+					Eridani: {
+						// Name: Two-Crown Bow Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged bow seems to pummel foes with a barrage of debuffs- they'd probably be left wondering how they even got there.
+					}
+				}
+
+				OrbitalExpresswayPlush: {
+					Asphodene: {
+						// Name: Orbital Expressway Plush Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This unique Essence conjures a magic... train... to smash into your foes at high velocity. Now I'm REALLY curious!
+					}
+
+					Eridani: {
+						// Name: Orbital Expressway Plush Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Okay- looks like this Essence summons a train from the sky to smash foes with. Now that's quite novel.
+					}
+				}
+
+				StarphoenixFunnel: {
+					Asphodene: {
+						// Name: Starphoenix Funnel Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon-type weapon seems to build its strength when striking foes multiple times- guess it'd be best not to miss.
+					}
+
+					Eridani: {
+						// Name: Starphoenix Funnel Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon-type gun lets you conjure allies as well as fire at foes directly to shred them apart. Quite effective.
+					}
+				}
+
+				Sugarball: {
+					Asphodene: {
+						// Name: Candied Sugarball Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon weapon conjures forth a trio of cute little monsters- you can focus on one to empower it!
+					}
+
+					Eridani: {
+						// Name: Candied Sugarball Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Summon weapon creates a trio of pocket-sized monsters to attack your foes. Perhaps you could leverage your focus on one specifically to make it stronger?
+					}
+				}
+
+				StringOfCurses: {
+					Asphodene: {
+						// Name: String of Curses Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged-type gun looks to somehow grant Stellar Nova energy... We can totally use this.
+					}
+
+					Eridani: {
+						// Name: String of Curses Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged gun channels energy into the Stellar Nova somehow. Whatever the reason, it's definitely a useful tool in our arsenal.
+					}
+				}
+
+				CloakOfAnArbiter: {
+					Asphodene: {
+						// Name: Cloak of An Arbiter Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence is crazy powerful- it turns into a powerful Magic weapon that gets even stronger in dire circumstances!
+					}
+
+					Eridani: {
+						// Name: Cloak of An Arbiter Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Magic Essence has some powerful utility tools- but in the heat of battle, it seems to be able to evolve into a super powerful damage tool.
+					}
+				}
+
+				InheritedCaseM4A1: {
+					Asphodene: {
+						// Name: Inherited Case, M4A1 Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Ranged gun- seems to house an entire arsenal of more guns to spray your foes with endless bulletfire. Now that's more like it!
+					}
+
+					Eridani: {
+						// Name: Inherited Case, M4A1 Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A Ranged-type gun, huh? Looks like it can conjure more guns to follow up its attacks with a veritable storm of bullets.
+					}
+				}
+
+				LegendaryShield: {
+					Asphodene: {
+						// Name: Legendary Shield Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Huh, this Essence is pretty unique- it's a powerful shield that can transmit its properties to other weapons.
+					}
+
+					Eridani: {
+						// Name: Legendary Shield Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence has the capability of granting the power of Weapon Memories to weapons that can't hold them- this sounds very useful.
+					}
+				}
+
+				ParadiseLost: {
+					Asphodene: {
+						// Name: Paradise Lost Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This weapon... I can't quite describe it. You'll have to craft it yourself to see what it can do...
+					}
+
+					Eridani: {
+						// Name: Paradise Lost Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: I can't quite grasp the true nature of this Essence... you'll have to make it yourself to see.
+					}
+				}
+
+				DreadmotherDarkIdol: {
+					Asphodene: {
+						// Name: Dreadmother's Dark Idol Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: A powerful Essence, indeed! This Essence morphs based on your Aspected Damage Type to accomodate your strengths.
+					}
+
+					Eridani: {
+						// Name: Dreadmother's Dark Idol Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Essence seems to adapt to your strengths and change how it attacks in turn. I do believe it'll be quite useful.
+					}
+				}
+
+				Wolvesbane: {
+					Asphodene: {
+						// Name: Wolvesbane Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This unique Weapon seems to have properties of both Ranged and Melee weapons- best to give it a go yourself.
+					}
+
+					Eridani: {
+						// Name: Wolvesbane Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: An Essence with both Melee and Ranged properties, huh? You'll have to craft it yourself to see its potential.
+					}
+				}
+
+				QuisUtDeus: {
+					Asphodene: {
+						// Name: Quis Ut Deus Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged gun seems to directly channel spatial energy in its attacks- quite suitable for someone like me!
+					}
+
+					Eridani: {
+						// Name: Quis Ut Deus Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This Ranged gun calls upon the energy of the stars in its attacks. I feel some aptitude with that!
+					}
+				}
+
+				Phasmasaber: {
+					Asphodene: {
+						// Name: Phasmasaber Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: This weapon exudes properties of both Melee and Ranged attacks- it all depends in how you swing it, I suppose.
+					}
+
+					Eridani: {
+						// Name: Phasmasaber Weapon Dialogue
+						// Description: Grants an Essence
+						// 1: Depending on your Aspected Damage Type, this weapon can be either Melee or Ranged, but it can also ascend into something called Chionic damage. Not bad!
+					}
+				}
 			}
 
 			BossDialogue: {
@@ -4652,7 +4834,7 @@ Mods: {
 							// 18: What's so bad about just free rewards, instead?
 							// 19: Why, that would take all the fun out of things. You're a Starfarer- are you not? I recall them being fond of positive reinforcement.
 							// 20: Anyways, I shall linger here a while yet. Perhaps by our next interaction I will have an objective for you.
-							// 21: What a strange and suspicious fun fact to bring up all of a sudden... Hmm. She's cute, so I don't think she's evil, but we should inquire further.
+							// 21: What a strange and suspicious fun fact to bring up all of a sudden... Hmm. She's cute, so I don't think she's got bad motives, but we should inquire further.
 							// 22: As for that Andyer fellow, he has the aura of someone unique. For one, he's way to young to be adventuring alone, so I've got him pegged under 'more than meets the eye.'
 							// 23: Let's keep in touch with these two. More allies will always be of use.
 						}
@@ -4698,7 +4880,7 @@ Mods: {
 					}
 
 					27: {
-						// Dialogue.0: Sorry, I don't have any tasks for your perusal. How about you disturb that other fellow, if you're yet inclined to be productive?
+						// Dialogue.0: Sorry, I don't have any tasks for your perusal. How about you disturb that other fellow, if you're yet inclined to be productive? Perhaps visit me on my space station and help there?
 
 						Choices: {
 							// 1: X
@@ -4708,7 +4890,7 @@ Mods: {
 
 					28: {
 						Dialogue: {
-							// 0: So, about that 'too young to drink' thing. How old are you, really?
+							// 0: So, about that 'too young to drink' thing. How old are you, really? And- what did you give this to us for?
 							// 1: That doesn't really matter. It's also a misdirection tactic- keep the conversation away from things that really matter.
 							// 2: I haven't really had any time to put social tact into effect here, though. The only denizens here just attack indiscriminately. Speaking of...
 							// 3: I've set up a temporary cloaking field around me and that lupine girl's holograms, so we won't be bothered here.
@@ -4716,11 +4898,9 @@ Mods: {
 							// 5: Did you seriously comparmentalize me like so after our brief exchange earlier? Now I'm partially glad I can't extend the cloak to you. And don't call me Andy.
 							// 6: Okay, sorry. Guess I deserve that one.
 							// 7: Let's keep the conversation going. You look like you've defeated a few powerful foes, right? I'm talking to you, not your spacey friend.
-							// 8: There's a special place in the Neon Veil called the Lighthouse... There's a strange sort of energy there that I'd like to inquire about further.
-							// 9: I have a hypothesis that something powerful enough dying there will trigger something unique. Strangely, however, it only appears to manifest if I remember defeating the foe prior.
-							// 10: If you are able, I'd like you to try defeating a powerful enemy you've already defeated once beforehand. Whatever clues you can find after that?
-							// 11: I'd like to take a closer look. You are free to keep the spoils of war.
-							// 12: That's all for now. Good luck.
+							// 8: There's these strange structures I'll call Confluxes scattered around the Veil. After defeating foes, I'm able to draw energy into these confluxes.
+							// 9: I can't fully express it, but I know for a fact that you have more of this type of energy than I. I gave you the 'Hardlight Monitor' earlier: this is what it's for.
+							// 10: Once you have enough Hardlight, you should be able to interact with a Conflux- simple enough. Let me know if you acquire something.
 						}
 
 						Choices: {
@@ -4731,7 +4911,7 @@ Mods: {
 
 					29: {
 						Dialogue: {
-							// 0: Garridine was right- you do look a little young. Should you even be here?
+							// 0: Garridine was right- you do look a little young. Should you even be here? Also, what's this for?
 							// 1: That doesn't really matter. It's also a misdirection tactic- keep the conversation away from things that really matter.
 							// 2: I haven't really had any time to put social tact into effect here, though. The only denizens here just attack indiscriminately. Speaking of...
 							// 3: I've set up a temporary cloaking field around me and that lupine girl's holograms, so we won't be bothered here.
@@ -4739,13 +4919,41 @@ Mods: {
 							// 5: Sorry, but you'd have to sit here for a long time. I doubt either of you would be up to that.
 							// 6: Well, you're probably on the mark...
 							// 7: Let's keep the conversation going. You look like you've defeated a few powerful foes, right? I'm talking to you, not your spacey friend.
-							// 8: There's a special place in the Neon Veil called the Lighthouse... There's a strange sort of energy there that I'd like to inquire about further.
-							// 9: I have a hypothesis that something powerful enough dying there will trigger something unique. Strangely, however, it only appears to manifest if I remember defeating the foe prior.
-							// 10: If you are able, I'd like you to try defeating a powerful enemy you've already defeated once beforehand. Whatever clues you can find after that?
-							// 11: I'd like to take a closer look. You are free to keep the spoils of war.
-							// 12: That's all for now. Good luck.
-							// 13: Well, that's our objective. Let's try something simple- perhaps that eye monster?
+							// 8: There's these strange structures I'll call Confluxes scattered around the Veil. After defeating foes, I'm able to draw energy into these confluxes.
+							// 9: I can't fully express it, but I know for a fact that you have more of this type of energy than I. I gave you the 'Hardlight Monitor' earlier: this is what it's for.
+							// 10: Once you have enough Hardlight, you should be able to interact with a Conflux- simple enough. Let me know if you acquire something.
 						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					30: {
+						Dialogue: {
+							// 0: So you found this Prism thing, huh? Now that's interesting, but I'm not sure why yet.
+							// 1: I'll have to do more research on it... Also, while I was exploring, I came across this- you most likely have more use for it than I.
+							// 2: Well, I must begin my investigation on these Prisms. If anything comes up, I'll let you know.
+						}
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					31: {
+						// Dialogue.0: Did you gather enough Hardlight? Remember- kill foes, gain Hardlight, and bank them at a Confluence, and hope something happens.
+
+						Choices: {
+							// 1: X
+							// 2: X
+						}
+					}
+
+					32: {
+						// Dialogue.0: Well, I must begin my investigation on these Prisms. If anything comes up, I'll let you know.
 
 						Choices: {
 							// 1: X
@@ -5664,23 +5872,31 @@ Mods: {
 					// Name: Deadbloom's Perfusion
 					// SetBonus1: Increases damage dealt to enemies with debuffs by 12%
 					// SetBonus2: Crit damage against debuffed foes is increased by 30%
-					// SetBonus3: 20% of Crit Rate is added to Effect Duration
+					// SetBonus3: 10% of Crit Rate is added to Effect Duration
 					// FlavorTooltip: Deadblooms fester on fallen corpses only in the Great Causeway, an enigma as vexing as it is curious
 				}
 
 				CrescentMeteor: {
-					// Name: Crescent Meteor
+					// Name: Comet Mirage
 					// SetBonus1: Energy cost reduction from Prisms is reversed, increasing cost
 					// SetBonus2: Refund 20 Energy after casting the Stellar Nova
 					// SetBonus3: Increases Nova Energy generation by 25%
 					// FlavorTooltip: A crescent meteor is surely a sign of good tidings to come in the Moirae Galaxy
 				}
 
+				AuricExalt: {
+					// Name: Exalted Resonance
+					// SetBonus1: After using the Nova, gain Exalted. Exalted buffs subsequent Nova uses by 4% in all stats but is lost out of combat. Cap is 3.
+					// SetBonus2: Exalted stacks reduce Energy Cost at 2:1 ratio.
+					// SetBonus3: Exalted cap becomes 6.
+					// FlavorTooltip: The vaunted Exalted were the empire's bravest soldiers
+				}
+
 				LuminousHallow: {
 					// Name: Bygone Fairytales
-					// SetBonus1: Damage is increased by 15% for each unused Array point
-					// SetBonus2: Crit damage is increased by 25% for each unused Array point
-					// SetBonus3: If the Array has no active points, Crit damage is increased by 300%
+					// SetBonus1: The Nova now automatically activates when ready; Cost reduced by 2% of Effect Duration
+					// SetBonus2: Cost is reduced by 2% of Crit Rate
+					// SetBonus3: Cost is reduced by 6% of both Crit Rate and Effect Duration instead
 					// FlavorTooltip: A myth made real, the Hallowed is known but never charted
 				}
 
@@ -5690,6 +5906,30 @@ Mods: {
 					// SetBonus2: Invincibility is extended to 2 seconds
 					// SetBonus3: Invincibility is extended to 5 seconds (+30 Energy Cost)
 					// FlavorTooltip: A heart of iron is nothing to write home about in the Moirae Galaxy
+				}
+
+				BloodyBanquet: {
+					// Name: Feast and Famine
+					// SetBonus1: The Stellar Nova charges by 1% for every foe killed by the Stellar Nova
+					// SetBonus2: Killing foes with the Stellar Nova increase the duration of Nova buffs by 2 seconds
+					// SetBonus3: Killing foes with the Stellar Nova heals 2 HP
+					// FlavorTooltip: Blood for blood, a creed shared by the rimworlds in the third region
+				}
+
+				RoyalSunrise: {
+					// Name: Welcoming Dawn
+					// SetBonus1: Nova damage, Crit damage, and Crit rate is increased by 15% if you are above or at 500 HP
+					// SetBonus2: Bonus is increased to 30%
+					// SetBonus3: Bonus is now active above 250 HP
+					// FlavorTooltip: A star's orbit is a miracle in itself
+				}
+
+				LucidDreamer: {
+					// Name: Dreamwalker
+					// SetBonus1: Nova Energy is infinite, but the Nova has a cooldown based on cost
+					// SetBonus2: The cooldown is reduced by 5 seconds when picking up Starlight
+					// SetBonus3: The cooldown now resets upon death
+					// FlavorTooltip: Dreams made manifest is a common wish shared by the many
 				}
 
 				PaleHeart: {
@@ -5755,6 +5995,15 @@ Mods: {
 
 
 				'''
+			// NeopursuantSetBonusFullMetalArcanist: "[c/F19559:Full Metal Arcanist]: Restore all Mana and cleanse Mana Sickness when activating the Stellar Nova"
+			// NeopursuantSetBonusBackupBattery: "[c/F19559:Backup Battery]: When Mana is drained, restore all mana but become frozen for 2 seconds"
+			// NeopursuantSetBonusCataphractArms: "[c/F19559:Cataphract Arms]: Gain bonus Defense based on 0.5% of Stellar Nova Energy Cost"
+			// NeopursuantSetBonusInfiltrator: "[c/F19559:Infiltrator]: Gain 12% bonus damage during immunity frames"
+			// NeopursuantSetBonusViralUpload: "[c/F19559:Viral Upload]: Activating the Stellar Nova deals damage to all nearby foes based on your defense"
+			// NeopursuantSetBonusEnviroSavant: "[c/F19559:Enviro-Savant]: Gain permanent Hunter and Dangersense buffs and heal 2 HP when defeating foes"
+			// HardlightMonitor: "[c/F19559:Current Hardlight:] [c/DAEFDA:{0}/25000] [c/F19559:- 100 needed per exchange]"
+			// HardlightAcquired: +{0} Hardlight
+			// HardlightNotEnough: The conflux fails to respond- you need {0} more Hardlight to exchange
 		}
 
 		DamageClass.CelestialDamageClass: celestial damage
@@ -6122,6 +6371,14 @@ Mods: {
 			}
 
 			// ResonantFigment.MapEntry: Resonant Figment
+			// ConfluxCrescentMeteor.MapEntry: Conflux Crescent Meteor
+			// ConfluxAuricExalt.MapEntry: Conflux Auric Exalt
+			// ConfluxBloodyBanquet.MapEntry: Conflux Bloody Banquet
+			// ConfluxDeadbloom.MapEntry: Conflux Deadbloom
+			// ConfluxDreadMechanical.MapEntry: Conflux Dread Mechanical
+			// ConfluxLucidDreamer.MapEntry: Conflux Lucid Dreamer
+			// ConfluxLuminousHallow.MapEntry: Conflux Luminous Hallow
+			// ConfluxRoyalSunrise.MapEntry: Conflux Royal Sunrise
 		}
 
 		Items: {
@@ -6431,16 +6688,15 @@ Mods: {
 						[c/FFA700:Archetype Alignment]
 						This attire has variant abilities based on chosen Aspect
 						[c/FF3B91:The Rebel Path]
-						Stellar Novas can be cast at 50% charge instead of 100% charge
-						This effect can only be activated once before the Stellar Nova must be cast again naturally
+						Stellar Novas can be cast at any charge instead of 100% charge
+						This effect can only be activated once before the Stellar Nova must be cast again naturally or after 8 minutes
 						[c/9DFCFF:Fully Chromed]
-						The damage, crit chance, and crit damage of equipped Stellar Prisms are additionally applied to your held weapon
-						This bonus caps at 15% of the Stellar Prism's stats
+						5% of the damage bonus of equipped Stellar Prisms are additionally applied to you
 						[c/B195AC:Overclocked]
 						Taking damage charges the Stellar Nova by 10%, but also inflicts stacks of [c/E57CD3:Circuit Surge], up to 4
-						At 4 stacks of [c/E57CD3:Circuit Surge], become inflicted with [c/AA2192:Cyberpsychosis], reducing defense by 40%
-						Furthermore, Mana and Health will drain slowly and the effectiveness of health potions are reduced by 70%
-						[c/AA2192:Cyberpsychosis] can only be cleansed by defeating an enemy or activating the Stellar Nova
+						At 4 stacks of [c/E57CD3:Circuit Surge], the next hit will inflict [c/AA2192:Cyberpsychosis], reducing defense by 40%
+						Furthermore, the effectiveness of health potions are reduced by 90%
+						[c/AA2192:Cyberpsychosis] can only be cleansed by activating the Stellar Nova
 						'Never fade away'
 						''' */
 					/* Eridani:
@@ -6451,16 +6707,14 @@ Mods: {
 						This attire has variant abilities based on chosen Aspect
 						[c/8EEF69:Edgerunner]
 						Your Stellar Nova no longer charges over time; instead, dealing and taking damage will grant Stellar Nova Energy
-						Effects are increased below 50% HP
 						[c/BB83FF:Hadron Engine]
 						After activation of the Stellar Nova, gain [c/F3EF67:Quark Drive] for 5 seconds
 						[c/F3EF67:Quark Drive] negates ammo costs and Mana Sickness while active
-						Additionally, taking damage while [c/F3EF67:Quark Drive] is active will negate that instance of damage, removing [c/F3EF67:Quark Drive]
 						Duration of [c/F3EF67:Quark Drive] increases based on 5% of the Stellar Nova's Energy Cost
 						[c/83A3DB:Charge Cycle]
-						Stellar Nova Energy slowly drains over time while in combat
+						Stellar Nova Energy charge is reversed, draining over time in combat
 						Health regeneration is disabled in combat
-						[c/F3EF67:Quark Drive] reverses this effect while active, providing bonus health regeneration
+						[c/F3EF67:Quark Drive] negates these effect while active and provides bonus health regeneration
 						'Never fade away'
 						''' */
 				}
@@ -11818,7 +12072,7 @@ Mods: {
 				// DisplayName: Essence Of Mew
 				/* Tooltip:
 					'''
-					Obtained after defeating Queen Slime
+					Obtained after defeating a mechanical boss
 					A gift from your Starfarer
 					Utilized in the creation of 'Orbital Expressway Plush' (Melee/Magic/Summon/Ranged)
 					''' */
@@ -11901,7 +12155,7 @@ Mods: {
 				// DisplayName: Essence Of The Shield
 				/* Tooltip:
 					'''
-					Obtained after defeating ???
+					Obtained after defeating Plantera
 					A gift from your Starfarer
 					Utilized in the creation of 'Legendary Shield' (Other)
 					''' */
@@ -11925,7 +12179,7 @@ Mods: {
 				// DisplayName: Essence Of Necrosis
 				/* Tooltip:
 					'''
-					Obtained after defeating ???
+					Obtained after defeating The Twins
 					A gift from your Starfarer
 					Utilized in the creation of 'String of Curses' (Ranged)
 					''' */
@@ -12436,9 +12690,9 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					Grants a unique Path when Imprinted based on your current stats, providing bonus effects
+					Grants a unique Path when Imprinted, providing bonus effects
 					''' */
-				// TooltipAttached: You are guided by {0}, providing bonus effects
+				// TooltipAttached: You are guided by an Aeon, providing bonus effects(?)
 			}
 
 			ArtificialEvoker: {
@@ -12473,31 +12727,204 @@ Mods: {
 
 			EssenceOfChionicEnergy: {
 				// DisplayName: Essence Of Chionic Energy
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Obtained after defeating Skeletron Prime
+					A gift from your Starfarer
+					Utilized in the creation of 'Phasmasaber' (Melee/Ranged)
+					''' */
 			}
 
 			EssenceOfTheDarkMaker: {
 				// DisplayName: Essence Of The Dark Maker
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Obtained after defeating Nalhaun, the Burnished King
+					A gift from your Starfarer
+					Utilized in the creation of 'Dreadmother's Dark Idol' (Melee/Magic/Ranged/Summon)
+					''' */
 			}
 
 			EssenceOfTheRifle: {
 				// DisplayName: Essence Of The Rifle
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Obtained after defeating Lunatic Cultist
+					A gift from your Starfarer
+					Utilized in the creation of 'Inherited Case, M4A1' (Ranged)
+					''' */
 			}
 
 			EssenceOfTheStars: {
 				// DisplayName: Essence Of The Stars
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Obtained after defeating the Warrior of Light
+					A gift from your Starfarer
+					Utilized in the creation of 'Quis Ut Deus' (Ranged)
+					''' */
 			}
 
 			EssenceOfTheWhiteNight: {
 				// DisplayName: Essence Of The White Night
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					Obtained after defeating the Warrior of Light
+					A gift from your Starfarer
+					Utilized in the creation of 'Paradise Lost' (Special)
+					''' */
 			}
 
 			EssenceOfWolves: {
 				// DisplayName: Essence Of Wolves
+				// Tooltip: ""
+			}
+
+			NeopursuantLeggings: {
+				// DisplayName: Neopursuant Leggings
+				/* Tooltip:
+					'''
+					20% increased movement speed
+					10% increased attack speed
+					'So comfortable you could sleep in it'
+					''' */
+			}
+
+			NeopursuantPlasteel: {
+				// DisplayName: Neopursuant Plasteel
+				/* Tooltip:
+					'''
+					8% increased damage
+					8% increased critical strike damage
+					5% increased critical strike chance
+					'Protects against stray lasers'
+					''' */
+			}
+
+			NeopursuantPlasteelCape: {
+				// DisplayName: Neopursuant Plasteel Cape
+				// Tooltip: ""
+			}
+
+			NeopursuantDualShield: {
+				// DisplayName: Neopursuant Dual Shield
+				/* Tooltip:
+					'''
+					8% increased damage
+					10% reduced mana cost
+					'Protects both your eyes'
+					''' */
+			}
+
+			NeopursuantHeadbooster: {
+				// DisplayName: Neopursuant Headbooster
+				/* Tooltip:
+					'''
+					8% increased damage
+					10% reduced mana cost
+					'Comes with air conditioning'
+					''' */
+			}
+
+			NeopursuantHiGuard: {
+				// DisplayName: Neopursuant Hi-Guard
+				/* Tooltip:
+					'''
+					8% increased damage
+					10% reduced mana cost
+					'Doesn't let air in or out'
+					''' */
+			}
+
+			NeopursuantRoguegarb: {
+				// DisplayName: Neopursuant Roguegarb
+				/* Tooltip:
+					'''
+					12% increased damage
+					8% increased critical strike chance
+					Increases maximum mana by 40
+					'For the discerning netrunner'
+					''' */
+			}
+
+			NeopursuantRoguegarbCape: {
+				// DisplayName: Neopursuant Roguegarb Cape
+				// Tooltip: ""
+			}
+
+			HardlightMonitor: {
+				// DisplayName: Hardlight Monitor
+				/* Tooltip:
+					'''
+					A piece of Neon Telemetry rewired and heavily modified
+					When used, displays the amount of Hardlight acquired
+					Hardlight can be dropped from foes anywhere
+					Hardlight is also passively gained from defeating foes (Passive gain is increased in the Neon Veil)
+					''' */
+			}
+
+			Hardlight: {
+				// DisplayName: Hardlight
+				// Tooltip: ""
+			}
+
+			DebugCrescentMeteorConflux: {
+				// DisplayName: Debug Crescent Meteor Conflux
+				// Tooltip: ""
+			}
+
+			AuricExaltPrism: {
+				// DisplayName: Auric Exalt Prism
+				// Tooltip: ""
+			}
+
+			BloodyBanquetPrism: {
+				// DisplayName: Bloody Banquet Prism
+				// Tooltip: ""
+			}
+
+			LucidDreamerPrism: {
+				// DisplayName: Lucid Dreamer Prism
+				// Tooltip: ""
+			}
+
+			RoyalSunrisePrism: {
+				// DisplayName: Royal Sunrise Prism
+				// Tooltip: ""
+			}
+
+			DebugAuricExaltConflux: {
+				// DisplayName: Debug Auric Exalt Conflux
+				// Tooltip: ""
+			}
+
+			DebugBloodyBanquetConflux: {
+				// DisplayName: Debug Bloody Banquet Conflux
+				// Tooltip: ""
+			}
+
+			DebugDeadbloomConflux: {
+				// DisplayName: Debug Deadbloom Conflux
+				// Tooltip: ""
+			}
+
+			DebugDreadMechanicalConflux: {
+				// DisplayName: Debug Dread Mechanical Conflux
+				// Tooltip: ""
+			}
+
+			DebugLucidDreamerConflux: {
+				// DisplayName: Debug Lucid Dreamer Conflux
+				// Tooltip: ""
+			}
+
+			DebugLuminousHallowConflux: {
+				// DisplayName: Debug Luminous Hallow Conflux
+				// Tooltip: ""
+			}
+
+			DebugRoyalSunriseConflux: {
+				// DisplayName: Debug Royal Sunrise Conflux
 				// Tooltip: ""
 			}
 		}
@@ -16447,6 +16874,26 @@ Mods: {
 			SpiritflameDebuff: {
 				// DisplayName: Spiritflame Debuff
 				// Description: Mods.StarsAbove.Buffs.SpiritflameDebuff.Description
+			}
+
+			CyberpsychosisDebuff: {
+				// DisplayName: Cyberpsychosis Debuff
+				// Description: Mods.StarsAbove.Buffs.CyberpsychosisDebuff.Description
+			}
+
+			QuarkDriveBuff: {
+				// DisplayName: Quark Drive Buff
+				// Description: Mods.StarsAbove.Buffs.QuarkDriveBuff.Description
+			}
+
+			RebelPathCooldown: {
+				// DisplayName: Rebel Path Cooldown
+				// Description: Mods.StarsAbove.Buffs.RebelPathCooldown.Description
+			}
+
+			LucidDreamerNovaCooldown: {
+				// DisplayName: Lucid Dreamer Nova Cooldown
+				// Description: Mods.StarsAbove.Buffs.LucidDreamerNovaCooldown.Description
 			}
 		}
 

@@ -13,6 +13,7 @@ using Terraria.GameContent;
 using StarsAbove.Utilities;
 using static StarsAbove.Items.Prisms.StellarPrism;
 using System.Collections.Generic;
+using StarsAbove.Items.Materials;
 
 namespace StarsAbove.Items.Armor.StarfarerArmor
 {
@@ -80,7 +81,18 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 
 		public override void AddRecipes()
 		{
-			
-		}
+            CreateRecipe(1)
+                .AddIngredient(ItemType<RenegadeTechnomancerSynthweavePrecursor>(), 1)
+                .AddIngredient(ItemType<NeonTelemetry>(), 150)
+                .AddIngredient(ItemID.FallenStar, 20)
+                .AddIngredient(ItemID.MechanicsRod, 1)
+                .AddIngredient(ItemID.BlueCounterweight, 1)
+                .AddIngredient(ItemID.RedCounterweight, 1)
+                .AddIngredient(ItemID.PurpleCounterweight, 1)
+                .AddIngredient(ItemID.GreenCounterweight, 1)
+                .AddIngredient(ItemType<PrismaticCore>(), 30)
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
 	}
 }

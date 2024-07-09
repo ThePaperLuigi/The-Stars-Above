@@ -63,8 +63,10 @@ namespace StarsAbove.Systems.Items
             CrescentMeteor,
             LuminousHallow,
             DreadMechanical,
-            SeventhSigil,
-            Luminite,
+            AuricExalt,
+            BloodyBanquet,
+            RoyalSunrise,
+            LucidDreamer,
         }
         public int MinorSetBonusesNumber = 8; //+1 because this starts at 0
         public enum MinorSetBonuses

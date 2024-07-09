@@ -42,6 +42,7 @@ using Terraria.WorldBuilding;
 using StarsAbove.Projectiles.Summon.ArachnidNeedlepoint;
 using static Humanizer.In;
 using StarsAbove.Systems;
+using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Systems.Items
 {
@@ -118,6 +119,8 @@ namespace StarsAbove.Systems.Items
         public bool SummonSigil;//304
 
         //Aeonseals
+        public bool Aeonseal;
+
         public bool AeonsealDestruction;//401
         public bool AeonsealHunt;//402
         public bool AeonsealErudition;//403
@@ -448,6 +451,7 @@ namespace StarsAbove.Systems.Items
             modPlayer.SummonSigil = SummonSigil;//304
 
             //Aeonseals
+            modPlayer.Aeonseal = Aeonseal;
             modPlayer.AeonsealDestruction = AeonsealDestruction;//401
             modPlayer.AeonsealHunt = AeonsealHunt;//402
             modPlayer.AeonsealErudition = AeonsealErudition;//403
@@ -792,6 +796,7 @@ namespace StarsAbove.Systems.Items
             SummonSigil = false;//304
 
             //Aeonseals
+            Aeonseal = false;
             AeonsealDestruction = false;//401
             AeonsealHunt = false;//402
             AeonsealErudition = false;//403
@@ -882,10 +887,14 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 40, "LonelyBand", ref LonelyBand, item, player);
             SetMemory(slot, 41, "StrangeScrap", ref StrangeScrap, item, player);
 
+            SetMemory(slot, 42, "Aeonseal", ref Aeonseal, item, player);
+
+
             SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
             SetMemory(slot, 302, "MagicSigil", ref MagicSigil, item, player);
             SetMemory(slot, 303, "MeleeSigil", ref MeleeSigil, item, player);
             SetMemory(slot, 304, "SummonSigil", ref SummonSigil, item, player);
+
             check = 100;//TarotCard
             if (slot == check)
             {
@@ -1107,6 +1116,8 @@ namespace StarsAbove.Systems.Items
         public bool SummonSigil;//304
 
         //Aeonseals
+        public bool Aeonseal;
+
         public bool AeonsealDestruction;//401
         public bool AeonsealHunt;//402
         public bool AeonsealErudition;//403
@@ -1342,7 +1353,20 @@ namespace StarsAbove.Systems.Items
             {
                 OnKillNPC(target);
             }
-            if(JackalMask)
+            if (BlackLightbulb && !target.boss && hit.Crit)
+            {
+                if (Main.rand.Next(0, 101) < 14)
+                {
+                    for (int d = 0; d < 8; d++)//Visual effects
+                    {
+                        ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.BlackLightningSmall,
+                        new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+                        Player.whoAmI);
+                    }
+                    target.SimpleStrikeNPC(target.life, 0, true, 0);
+                }
+            }
+            if (JackalMask)
             {
                 Player.MinionAttackTargetNPC = target.whoAmI;
                 
@@ -1505,6 +1529,7 @@ namespace StarsAbove.Systems.Items
             {
                 modifiers.FinalDamage += 0.15f;
             }
+            
             base.ModifyHitNPC(target, ref modifiers);
         }
         public override void PostUpdate()
@@ -1607,6 +1632,7 @@ namespace StarsAbove.Systems.Items
             SummonSigil = false;//304
 
             //Aeonseals
+            Aeonseal = false;
             AeonsealDestruction = false;//401
             AeonsealHunt = false;//402
             AeonsealErudition = false;//403

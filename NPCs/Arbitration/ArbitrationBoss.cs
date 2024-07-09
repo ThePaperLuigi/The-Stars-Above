@@ -487,7 +487,6 @@ namespace StarsAbove.NPCs.Arbitration
 
             StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.VoidsentPrism>(), 4));
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AnomalyByte>(), 4));
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfBloodshed>(), 2)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfMimicry>(), 2));

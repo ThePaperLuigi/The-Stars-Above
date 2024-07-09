@@ -65,6 +65,7 @@ using StarsAbove.Items.Armor.DraggedBelow;
 using StarsAbove.Items.Armor.DreadmotherClaw;
 using StarsAbove.Items.Armor.LegendaryShield;
 using StarsAbove.Items.Armor.Manifestation;
+using StarsAbove.Items.Armor.NeopursuantArmor;
 using StarsAbove.Items.Weapons.Celestial;
 using StarsAbove.Items.Weapons.Magic;
 using StarsAbove.Items.Weapons.Melee;
@@ -307,6 +308,11 @@ namespace StarsAbove.Systems
         public Vector2 rebellionTarget;
 
         public bool phasmasaberHeld;
+
+        public bool roguegarbEquipped;
+        public bool plasteelEquipped;
+        public bool enviroSavantActive;
+
 
         //Starphoenix Funnel
         public int alignmentStacks;
@@ -648,6 +654,7 @@ namespace StarsAbove.Systems
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            
             if (Glitterglue)
             {
                 if (Main.rand.Next(0, 100) > 95)
@@ -744,6 +751,10 @@ namespace StarsAbove.Systems
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if (plasteelEquipped)
+            {
+                modifiers.CritDamage += 0.08f;
+            }
             if (target.HasBuff(BuffType<Glitterglued>()) || Player.HasBuff(BuffType<TimelessPotential>()))
             {
                 if (Main.rand.Next(0, 100) > 70)
@@ -4039,6 +4050,9 @@ namespace StarsAbove.Systems
                 ];
 
             }
+            enviroSavantActive = false;
+            plasteelEquipped = false;
+            roguegarbEquipped = false;
             phasmasaberHeld = false;
             wolvesbaneHeld = false;
             dreadmotherMinion = false;
@@ -4301,6 +4315,7 @@ namespace StarsAbove.Systems
                     Player.UpdateVisibleAccessories(new Item(ItemType<LegendaryShieldAccessory>()), false);
 
                 }
+                
             }
         }
         public override void HideDrawLayers(PlayerDrawSet drawInfo)
@@ -4366,6 +4381,10 @@ namespace StarsAbove.Systems
         }
         private void OnKillEnemy(NPC npc)
         {
+            if (enviroSavantActive)
+            {
+                Player.Heal(2);
+            }
             if(dreadmotherHeld && Player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
             {
                 Player.AddBuff(BuffType<Invincibility>(), 10);

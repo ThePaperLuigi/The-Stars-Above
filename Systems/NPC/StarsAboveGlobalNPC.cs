@@ -88,8 +88,10 @@ namespace StarsAbove.Systems
                 pool.Add(NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 0.02f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.01f);
 
-                pool.Add(NPCType<SemaphoreEnemy>(), 0.7f);
-                pool.Add(NPCType<LogicVirusEnemy>(), 0.7f);
+                pool.Add(NPCType<SemaphoreEnemy>(), 1f);
+                pool.Add(NPCType<LogicVirusEnemy>(), 1f);
+
+                pool.Add(NPCID.FireImp, 0.4f);
 
 
                 if (!NPC.AnyNPCs(NPCType<NPCs.TownNPCs.Garridine>()))
@@ -1170,7 +1172,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.Plantera)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<OvergrownPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<OvergrownPrism>(), 4));
                 npcLoot.Add(ItemDropRule.Common(ItemType<DekuNut>(), 4));
 
             }
@@ -1191,7 +1193,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.Golem)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<LihzahrdPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<LihzahrdPrism>(), 4));
             }
             if (npc.type == NPCID.SkeletronPrime)
             {
@@ -1257,7 +1259,10 @@ namespace StarsAbove.Systems
 			conditionalRule.OnSuccess(rule1);
 			globalLoot.Add(conditionalRule1);
 
-			
+            IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
+            IItemDropRule rule2 = ItemDropRule.Common(ModContent.ItemType<Hardlight>(), chanceDenominator: 20);
+            conditionalRule.OnSuccess(rule2);
+            globalLoot.Add(conditionalRule2);
 
         }
 

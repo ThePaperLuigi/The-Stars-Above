@@ -1025,7 +1025,7 @@ namespace StarsAbove.UI.CelestialCartography
 
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
-				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().andyerIntroDialogue > 0)
 				{
 					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
 					{
@@ -1037,19 +1037,9 @@ namespace StarsAbove.UI.CelestialCartography
 						}
 						
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/Pyxis");
+                    SubworldSystem.Enter<Pyxis>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("Pyxis"); // message
-						packet.Send();
-					}
-					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+                    Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 				}
 				else
 				{

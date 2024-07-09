@@ -78,7 +78,7 @@ namespace StarsAbove.Tiles.CyberWorld
         }
         public override bool RightClick(int i, int j)
         {
-            GarridineNPCTile.InteractWithHologramNPCs();
+            GarridineNPCTile.InteractWithHologramNPCs("Andyer");
             return true;
         }
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

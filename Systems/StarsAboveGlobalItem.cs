@@ -332,29 +332,15 @@ namespace StarsAbove.Systems
 
                 ItemType<PrismaticCore>(),
 
-                ItemType<AlchemicPrism>(),
-                ItemType<ApocryphicPrism>(),
-                ItemType<CastellicPrism>(),
-                ItemType<CrystallinePrism>(),
-                //ItemType<EmpressPrism>(),
-                ItemType<EverflamePrism>(),
-                ItemType<LightswornPrism>(),
-                ItemType<LihzahrdPrism>(),
-                ItemType<LucentPrism>(),
-                //ItemType<LuminitePrism>(),
-                //ItemType<MechanicalPrism>(),
-                ItemType<OvergrownPrism>(),
-                ItemType<PaintedPrism>(),
-                ItemType<PhylacticPrism>(),
-                ItemType<RadiantPrism>(),
-                ItemType<RefulgentPrism>(),
-                ItemType<SpatialPrism>(),
-                ItemType<VerdantPrism>(),
-                ItemType<VoidsentPrism>(),
-                ItemType<PrismOfTheCosmicPhoenix>(),
-                ItemType<PrismOfTheRuinedKing>(),
-
-
+                ItemType<AuricExaltPrism>(),
+                ItemType<BloodyBanquetPrism>(),
+                ItemType<CrescentMeteorPrism>(),
+                ItemType<DeadbloomPrism>(),
+                ItemType<DreadMechanicalPrism>(),
+                ItemType<LucidDreamerPrism>(),
+                ItemType<LuminousHallowPrism>(),
+                ItemType<RoyalSunrisePrism>(),
+                
             };
             WeaponsUnaffectedByAspectedDamagePenalty = new List<int>() {
                 ItemType<ArchitectLuminance>(),

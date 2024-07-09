@@ -1,4 +1,5 @@
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using StarsAbove.Biomes;
 using StarsAbove.Buffs;
@@ -438,6 +439,7 @@ namespace StarsAbove
         public int yojimboIntroDialogue;
         public int garridineIntroDialogue;
         public int andyerIntroDialogue;
+        public int andyerQuestProgress;
 
         public int MnemonicDialogue1;
         public int MnemonicDialogue2;
@@ -1006,11 +1008,10 @@ namespace StarsAbove
         public float costumeChangeOpacity;
         int starfarerOutfitSaved = 0;
 
+        public bool fullMetalArcanistActive;
+        public bool viralUploadActive;
 
-
-        //Lore list?
-        //
-
+        public int hardlight;
 
         public bool seenMusicWarning;
 
@@ -1032,7 +1033,7 @@ namespace StarsAbove
         //player.GetModPlayer<StarsAbovePlayer>().VARIABLENAME = VALUE;
         public override void SaveData(TagCompound tag)
         {
-
+            tag["Hardlight"] = hardlight;
             tag["chosenStarfarer"] = chosenStarfarer;
 
             tag["starfarerOutfit"] = starfarerOutfit;
@@ -1151,6 +1152,7 @@ namespace StarsAbove
             tag["yojimboIntroDialogue"] = yojimboIntroDialogue;
             tag["garridineIntroDialogue"] = garridineIntroDialogue;
             tag["andyerIntroDialogue"] = andyerIntroDialogue;
+            tag["andyerQuestProgress"] = andyerQuestProgress;
 
             tag["MnemonicDialogue1"] = MnemonicDialogue1;
             tag["MnemonicDialogue2"] = MnemonicDialogue2;
@@ -1436,6 +1438,8 @@ namespace StarsAbove
 
         public override void LoadData(TagCompound tag)
         {
+            hardlight = tag.GetInt("Hardlight");
+
             seenIntroCutscene = tag.GetBool("seenIntroCutscene");
 
             firstJoinedWorld = tag.GetInt("firstJoinedWorld");
@@ -1515,6 +1519,7 @@ namespace StarsAbove
             yojimboIntroDialogue = tag.GetInt("yojimboIntroDialogue");
             garridineIntroDialogue = tag.GetInt("garridineIntroDialogue");
             andyerIntroDialogue = tag.GetInt("andyerIntroDialogue");
+            andyerQuestProgress = tag.GetInt("andyerQuestProgress");
 
             MnemonicDialogue1 = tag.GetInt("MnemonicDialogue1");
             MnemonicDialogue2 = tag.GetInt("MnemonicDialogue2");
@@ -2135,8 +2140,11 @@ namespace StarsAbove
             {
                 inCombat = inCombatMax;
             }
-           
-            if(kiTwinburst == 2)
+            if (starfarerOutfit == 7 && chosenStarfarer == 2) // Eridani's Synthweave
+            {
+                novaGauge += (int)Math.Min(6f, damageDone / 500f);
+            }
+            if (kiTwinburst == 2)
             {
                 target.SimpleStrikeNPC(damageDone,hit.HitDirection,hit.Crit,hit.Knockback,hit.DamageType);
                 
@@ -2382,6 +2390,7 @@ namespace StarsAbove
 
         }
 
+        
         private void OnHitStarfarerDialogue(NPC target)
         {
             if (!disablePromptsCombat)
@@ -4121,7 +4130,7 @@ namespace StarsAbove
                     {
                         //intensity = 0f;
                     }
-                    //float intensity = 0.1f;
+                    //intensity = 0.1f;
                     Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 100) * 16));
                 }
             }
@@ -6239,27 +6248,20 @@ namespace StarsAbove
                 {(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor, 0},
                 {(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow, 0},
                 {(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.AuricExalt, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.BloodyBanquet, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.RoyalSunrise, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.LucidDreamer, 0},
             };
-
-            /*
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Alchemic, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Castellic, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Everflame, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Lucent, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Phylactic, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Radiant, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Refulgent, 0);
-            SetBonus.TryAdd((int)ItemPrismSystem.MinorSetBonuses.Verdant, 0);
-            */
 
             if (affixItem1 != null)
             {
-                if(!affixItem1.IsAir)
+                if (!affixItem1.IsAir)
                 {
                     if (affixItem1.GetGlobalItem<ItemPrismSystem>().isPrism)
                     {
                         var item = affixItem1.GetGlobalItem<ItemPrismSystem>();
-                        
+
                         novaDamageMod += item.Damage;
                         novaCritChanceMod += item.CritRate;
                         novaCritDamageMod += item.CritDamage;
@@ -6268,7 +6270,7 @@ namespace StarsAbove
                         SetBonus[item.MajorSetBonus]++;
 
                     }
-                }               
+                }
             }
             if (affixItem2 != null)
             {
@@ -6330,7 +6332,9 @@ namespace StarsAbove
                     }
                 }
             }
-            
+
+            NovaSetBonuses(SetBonus);
+
             //Starfarer stuff here.
             if (starfarerArmorEquipped != null)
             {
@@ -6474,8 +6478,8 @@ namespace StarsAbove
                     $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost");
 
                     modStats = "" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod/100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
-                    $"\n{(float)Math.Round(novaCritChance + novaCritChanceMod), 2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod / 100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
+                    $"\n{(float)Math.Round(novaCritChance + novaCritChanceMod),2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
                     $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
                     $"\n{novaEffectDuration + novaEffectDurationMod}s " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EffectDuration") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
@@ -6487,9 +6491,9 @@ namespace StarsAbove
                     $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost");
 
                     modStats = "" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod / 100)), 0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod / 100)),0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
                     $"\n{Math.Round(novaCritChance + novaCritChanceMod),2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100)), 0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100)),0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
                     $"\n{novaEffectDuration + novaEffectDurationMod}s " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EffectDuration") +
                     $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
                 }
@@ -6501,6 +6505,192 @@ namespace StarsAbove
             abilityDescription = LangHelper.Wrap(abilityDescription, 85);
             starfarerBonus = LangHelper.Wrap(starfarerBonus, 85);
         }
+        int exaltedStacks;
+
+        public int deadbloomLevel = 0;
+        public int crescentMeteorLevel = 0;
+        public int auricExaltLevel = 0;
+        public int luminousHallowLevel = 0;
+        public int dreadMechanicalLevel = 0;
+        public int bloodyBanquetLevel = 0;
+        public int royalSunriseLevel = 0;
+        public int lucidDreamerLevel = 0;
+
+        private void NovaSetBonuses(Dictionary<int, int> SetBonus)
+        {
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.Deadbloom] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.Deadbloom];
+                deadbloomLevel = amount;
+                if (amount == 1)
+                {
+                }
+                if (amount == 2)
+                {
+                }
+                if (amount >= 3)
+                {
+                    novaEffectDurationMod += novaCritChance + novaCritChanceMod;
+                    //Done
+                }
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor];
+                crescentMeteorLevel = amount;
+                if (amount == 1)
+                {
+                    novaChargeMod = -novaChargeMod;
+                }
+                if (amount == 2)
+                {
+
+                }
+                if (amount >= 3)
+                {
+                    //Done
+                }
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow];
+                luminousHallowLevel = amount;
+                if (amount == 1)
+                {
+                    novaChargeMod += (int)(novaEffectDuration + novaEffectDurationMod * 0.02f);
+                }
+                if(amount == 2)
+                {
+                    novaChargeMod += (int)(novaCritChance + novaCritChanceMod * 0.02f);
+                }
+                if (amount >= 3)
+                {
+                    novaChargeMod += (int)(novaCritChance + novaCritChanceMod * 0.04f);
+                    novaChargeMod += (int)(novaEffectDuration + novaEffectDurationMod * 0.04f);
+                }//Done
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical];
+                dreadMechanicalLevel = amount;
+                if (amount == 1)
+                {
+
+                }
+                if (amount == 2)
+                {
+
+                }
+                if (amount >= 3)
+                {
+                    novaChargeMod -= 30;
+
+                }
+                
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.AuricExalt] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.AuricExalt];
+                auricExaltLevel = amount;
+                if (amount == 1)
+                {
+                    novaDamageMod += exaltedStacks * 4;
+                    novaCritChanceMod += exaltedStacks * 4;
+                    novaCritDamageMod += exaltedStacks * 4;
+                    novaEffectDurationMod += exaltedStacks * 4;
+                }
+                if (amount == 2)
+                {
+                    novaChargeMod += exaltedStacks*2;
+                }
+                if (amount >= 3)
+                {
+                    if (exaltedStacks > 6)
+                    {
+                        exaltedStacks = 6;
+                    }
+                }
+                else
+                {
+                    if (exaltedStacks > 3)
+                    {
+                        exaltedStacks = 3;
+                    }
+                }//Done
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.BloodyBanquet] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.BloodyBanquet];
+                bloodyBanquetLevel = amount;
+                switch (amount)
+                {
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                }
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.RoyalSunrise] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.RoyalSunrise];
+                royalSunriseLevel = amount;
+                if (amount == 1)
+                {
+                    if (Player.statLife >= 500)
+                    {
+                        novaDamageMod += 15;
+                        novaCritChanceMod += 15;
+                        novaCritDamageMod += 15;
+                    }
+                }
+                if (amount == 2)
+                {
+                    if (Player.statLife >= 500)
+                    {
+                        novaDamageMod += 15;
+                        novaCritChanceMod += 15;
+                        novaCritDamageMod += 15;
+                    }
+                }
+                if (amount >= 3)
+                {
+                    if (Player.statLife >= 250 && Player.statLife < 500)
+                    {
+                        novaDamageMod += 30;
+                        novaCritChanceMod += 30;
+                        novaCritDamageMod += 30;
+                    }
+                    //Done
+                }
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LucidDreamer] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LucidDreamer];
+                lucidDreamerLevel = amount;
+                if (amount == 1)
+                {
+                    novaGauge = trueNovaGaugeMax;
+                }
+                if (amount == 2)
+                {
+                    
+                }
+                if (amount >= 3)
+                {
+                    
+                }
+            }
+        }
+
         private void AspectedDamageModification()
         {
             if (chosenStarfarer != 0)
@@ -7075,6 +7265,10 @@ namespace StarsAbove
                         }
                     }
                 }
+            }
+            if(hardlight > 25000)
+            {
+                hardlight = 25000;
             }
             oldHP = Player.statLife;
             //These trigger Starfarer prompts
@@ -8381,9 +8575,27 @@ namespace StarsAbove
                 seenUnknownBossTimer = 300;
             }
         }
+        public override bool CanConsumeAmmo(Item weapon, Item ammo)
+        {
+            if(Player.HasBuff(BuffType<QuarkDriveBuff>()))
+            {
+                return false;
+            }
+            return base.CanConsumeAmmo(weapon, ammo);
+        }
 
         private void OnKillEnemy(NPC npc)
         {
+            if(Player.InModBiome<NeonVeilBiome>())
+            {
+                hardlight += Main.rand.Next(2, 5);
+            }
+            else
+            {
+                hardlight += Main.rand.Next(1, 3);
+
+            }
+
             if (aquaaffinity == 2)//Cyclic Hunter
             {
 
@@ -8623,11 +8835,19 @@ namespace StarsAbove
                 //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
                 if (StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
-                    //If nova is not full prevent nova use
-                    if(novaGauge < trueNovaGaugeMax)
+                    if (novaGauge >= trueNovaGaugeMax && Player.HasBuff(BuffType<RebelPathCooldown>()))
                     {
+                        Player.ClearBuff(BuffType<RebelPathCooldown>());
+                    }
+                    if(Player.HasBuff(BuffType<LucidDreamerNovaCooldown>()))
+                    {
+                        return;
+                    }
+                    //If nova is not full prevent nova use
+                    if (novaGauge < trueNovaGaugeMax)
+                    {                      
                         //If certain abilities allow the player to use the Nova early...
-                        if(chosenStarfarer == 1 && chosenStellarNova == 8 && !Player.HasBuff(BuffType<FireflyActive>()))
+                        if (chosenStarfarer == 1 && chosenStellarNova == 8 && !Player.HasBuff(BuffType<FireflyActive>()))
                         {
                             Player.AddBuff(BuffType<AsphodeneFireflyCooldown>(), (60 * 90));
                             int type = ProjectileType<FireflySkill>();
@@ -8663,6 +8883,10 @@ namespace StarsAbove
 
                             }
                             return;
+                        }
+                        else if(chosenStarfarer == 1 && starfarerOutfit == 7 && !Player.HasBuff(BuffType<RebelPathCooldown>()))
+                        {
+                            Player.AddBuff(BuffType<RebelPathCooldown>(), 8*60*60);
                         }
                         else
                         {
@@ -10082,6 +10306,11 @@ namespace StarsAbove
         }
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
         {
+            if(Player.HasBuff(BuffType<CyberpsychosisDebuff>()))
+            {
+                healValue = (int)(healValue * 0.1);
+            }
+
             if(arborealEchoes == 2)
             {
                 healValue = (int)(healValue * 1.3);
@@ -10115,8 +10344,16 @@ namespace StarsAbove
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
             }
+            if(lucidDreamerLevel >= 3)
+            {
+                if(Player.HasBuff(BuffType<LucidDreamerNovaCooldown>()))
+                {
+                    Player.ClearBuff(BuffType<LucidDreamerNovaCooldown>());
+                }
+            }
             base.Kill(damage, hitDirection, pvp, damageSource);
         }
+        int circutSurge;
         public override void OnHurt(Player.HurtInfo info)
         {
             if (!Main.dedServ)
@@ -10132,8 +10369,24 @@ namespace StarsAbove
                 Player.AddBuff(BuffID.Regeneration, 480);
                 Player.AddBuff(BuffID.Endurance, 480);
             }
-            
-            if(lavenderRefrain == 2)
+            if (starfarerOutfit == 7 && chosenStarfarer == 2) // Eridani's Synthweave
+            {
+                novaGauge += Math.Min(6, info.Damage / 50);
+            }
+            if (starfarerOutfit == 7 && chosenStarfarer == 1) // Asphodene's Synthweave
+            {
+                if(circutSurge >= 4)
+                {
+                    circutSurge = 0;
+                    Player.AddBuff(BuffType<CyberpsychosisDebuff>(), 60);
+                }
+                else
+                {
+                    circutSurge++;
+                    novaGauge += (int)(trueNovaGaugeMax * 0.1f);
+                }
+            }
+            if (lavenderRefrain == 2)
             {
                 inCombat = 1200;
                 timeAfterGettingHit = 0;
@@ -12416,16 +12669,29 @@ namespace StarsAbove
                     //Every x ticks, the gauge charges by 1.
                     if (novaGaugeChargeTimer >= 60)
                     {
-                        //Natural charge rate.
-                        novaGauge++;
-                        //Special visuals on the gauge
-                        novaGaugeChangeAlpha = 1f;
-                        novaGaugeChangeAlphaSlow = 1f;
+                        if (starfarerOutfit == 7 && chosenStarfarer == 2 && !Player.HasBuff(BuffType<QuarkDriveBuff>()))
+                        {
+                            //Natural charge rate.
+                            novaGauge--;
+                            //Special visuals on the gauge
+                            novaGaugeChangeAlpha = 1f;
+                            novaGaugeChangeAlphaSlow = 1f;
 
-                        //Reset the timer.
-                        novaGaugeChargeTimer = 0;
-                        //If any effect speeds up the Nova gauge charging, add it here.
-                        NovaChargeModifiers();
+                        }
+                        else
+                        {
+                            //Natural charge rate.
+                            novaGauge++;
+                            //Special visuals on the gauge
+                            novaGaugeChangeAlpha = 1f;
+                            novaGaugeChangeAlphaSlow = 1f;
+
+                            //Reset the timer.
+                            novaGaugeChargeTimer = 0;
+                            //If any effect speeds up the Nova gauge charging, add it here.
+                            NovaChargeModifiers();
+                        }
+                        
 
                     }
                 }
@@ -12494,6 +12760,10 @@ namespace StarsAbove
             {
                 //Decrease the time spent charging
                 novaGaugeChargeTimer += 5;
+            }
+            if(crescentMeteorLevel >= 3)
+            {
+                novaGaugeChargeTimer += 15;
             }
         }
 
@@ -12616,9 +12886,100 @@ namespace StarsAbove
                     Player.GetDamage(DamageClass.Generic) += 0.15f;
                 }
             }
+            if(starfarerOutfit == 7)
+            {
+                if(chosenStarfarer == 1)
+                {
+                    Player.GetDamage(DamageClass.Generic) += (float)((novaDamageMod/100) * 0.05f);
+                }
+                else if(chosenStarfarer == 2)
+                {
+                    if(Player.HasBuff(BuffType<QuarkDriveBuff>()))
+                    {
+                        if(Player.HasBuff(BuffID.ManaSickness))
+                        {
+                            Player.ClearBuff(BuffID.ManaSickness);
+                        }
+                    }
+                    if(inCombat > 0)
+                    {
+                        if(Player.HasBuff(BuffType<QuarkDriveBuff>()))
+                        {
+                            Player.lifeRegen += 10;
+                        }
+                        else
+                        {
+                            Player.lifeRegenTime = 10;
+
+                        }
+                    }
+                }
+            }
         }
         public void onActivateStellarNova()
         {
+            if (starfarerOutfit == 7)
+            {
+                if (chosenStarfarer == 1)
+                {
+                    if (Player.HasBuff(BuffType<CyberpsychosisDebuff>()))
+                    {
+                        Player.ClearBuff(BuffType<CyberpsychosisDebuff>());
+                    }
+                    Player.GetDamage(DamageClass.Generic) += (float)((novaDamageMod / 100) * 0.05f);
+                }
+                else if (chosenStarfarer == 2)
+                {
+                    Player.AddBuff(BuffType<QuarkDriveBuff>(), (int)(5 * 60 + (trueNovaGaugeMax * 0.05f)));
+                   
+                }
+            }
+            if(dreadMechanicalLevel >= 1)
+            {
+                if(dreadMechanicalLevel >= 3)
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60 * 5);
+                }
+                else if (dreadMechanicalLevel >= 2)
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60 * 2);
+
+                }
+                else
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60 * 1);
+
+                }
+            }
+            if(crescentMeteorLevel >= 2)
+            {
+                novaGauge += 20;
+            }
+            if (fullMetalArcanistActive)
+            {
+                Player.statMana = Player.statManaMax2;
+                if(Player.HasBuff(BuffID.ManaSickness))
+                {
+                    Player.ClearBuff(BuffID.ManaSickness);
+                }
+            }
+            if(viralUploadActive)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && npc.Distance(Player.Center) < 1000)
+                    {
+                        npc.SimpleStrikeNPC(Player.statDefense, 0, false, 0, DamageClass.Generic, false, 0);
+                    }
+                }
+
+                for (int i = 0; i < 100; i++)
+                {
+                    int dustIndex = Dust.NewDust(new Vector2(Player.Center.X, Player.Center.Y), 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 100, default, 1f);
+                    Main.dust[dustIndex].velocity *= 1.4f;
+                }
+            }
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
 
@@ -12719,6 +13080,28 @@ namespace StarsAbove
         }
         private void ModifyHitEnemyWithNova(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if(deadbloomLevel >= 1)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                    {
+                        modifiers.FinalDamage += 0.12f;
+                        continue;
+                    }
+                }
+                if (deadbloomLevel >= 2)
+                {
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                        {
+                            modifiers.CritDamage += 0.3f;
+                            continue;
+                        }
+                    }
+                }
+            }
             if (empressPrism)
             {
                 modifiers.SetCrit();
@@ -12754,6 +13137,52 @@ namespace StarsAbove
         }
         private void OnEnemyHitWithNova(NPC target, int nova, ref int damage, ref bool crit)
         {
+            if(!target.active)
+            {
+                if(bloodyBanquetLevel >= 1)
+                {
+                    novaGauge += (int)(trueNovaGaugeMax * 0.01f);
+                    if (bloodyBanquetLevel >= 2)
+                    {
+                        if (bloodyBanquetLevel >= 3)
+                        {
+                            Player.Heal(2);
+                        }
+                        if (Player.HasBuff(BuffType<BearerOfLight>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<BearerOfLight>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<BearerOfDarkness>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<BearerOfDarkness>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<Buffs.StellarNovas.GardenOfAvalon>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<Buffs.StellarNovas.GardenOfAvalon>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<DreamlikeCharisma>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<DreamlikeCharisma>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<AstarteDriver>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<AstarteDriver>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<VoidStrength>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<VoidStrength>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<Bladeforged>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<Bladeforged>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<FireflyActive>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<FireflyActive>())] += 120;
+                        }
+                    }
+                }
+            }
             if (paintedPrism)
             {
                 target.AddBuff(BuffID.Ichor, 720);
@@ -12783,9 +13212,14 @@ namespace StarsAbove
 
         public override void ResetEffects()
         {
-
-
-
+            deadbloomLevel = 0;
+            crescentMeteorLevel = 0;
+            auricExaltLevel = 0;
+            luminousHallowLevel = 0;
+            dreadMechanicalLevel = 0;
+            bloodyBanquetLevel = 0;
+            royalSunriseLevel = 0;
+            lucidDreamerLevel = 0;
 
             Observatory = false;
             SeaOfStars = false;
@@ -12814,7 +13248,8 @@ namespace StarsAbove
             TsukiyomiActive = false;
             TsukiyomiBarActive = false;
 
-
+            fullMetalArcanistActive = false;
+            viralUploadActive = false;
         }
 
 

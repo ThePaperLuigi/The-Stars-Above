@@ -1,3 +1,5 @@
+using StarsAbove.Items.Materials;
+using StarsAbove.Items.Prisms;
 using StarsAbove.Tiles.CyberWorld;
 using Terraria;
 using Terraria.ID;
@@ -30,5 +32,12 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 		public override void SetDefaults() {
 			Item.CloneDefaults(ItemID.GoldenKey);
 		}
-	}
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ModContent.ItemType<NeonTelemetry>(), 20)
+                .AddTile(TileID.WorkBenches)
+                .Register();
+        }
+    }
 }

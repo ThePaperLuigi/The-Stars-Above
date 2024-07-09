@@ -496,7 +496,6 @@ namespace StarsAbove.NPCs.Dioskouroi
 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
-			leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.GeminiPrism>(), 4)));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
 			//leadingConditionRule.OnSuccess(npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<DioskouroiBossBag>())));

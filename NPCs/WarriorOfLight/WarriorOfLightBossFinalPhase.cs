@@ -919,7 +919,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			// Boss masks are spawned with 1/7 chance
 			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
 
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.LightswornPrism>(), 4));
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.DullTotemOfLight>(), 1));
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.AegisOfHopesLegacyPrecursor>(), 8));
 

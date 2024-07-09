@@ -518,7 +518,6 @@ namespace StarsAbove.NPCs.Penthesilea
 
             StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.PaintedPrism>(), 4));
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.FaerieVoyagerAttirePrecursor>(), 8));
 
