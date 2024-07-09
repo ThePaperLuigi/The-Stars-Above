@@ -4125,10 +4125,31 @@ namespace StarsAbove
                 }
                 if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
                 {
-                    float intensity = MathHelper.Lerp(1f, 0.7f, MathHelper.Clamp(Math.Abs(Player.Center.Y - ((Main.maxTilesY - 110) * 16)) / 70 - 1.98f, 0f, 1f));
-                    if(Player.Center.Y < ((Main.maxTilesY - 100) * 16))
+                    // Calculate the player's Y coordinate in tile coordinates
+                    int playerTileY = Player.Center.ToTileCoordinates().Y;
+
+                    // Define the threshold value
+                    int thresholdY = Main.maxTilesY - 100;
+                    float intensity = 1f;
+                    // Check if the player is above the threshold
+                    if (playerTileY > thresholdY)
                     {
-                        //intensity = 0f;
+                        // Calculate how far the player is above the threshold
+                        float distanceAboveThreshold = playerTileY - thresholdY;
+
+                        // Calculate the maximum distance for full interpolation (20 tiles)
+                        float maxDistance = 10f;
+
+                        // Interpolate the intensity from 1f to 0f based on the distance above the threshold
+                        intensity = MathHelper.Lerp(1f, 0f, distanceAboveThreshold / maxDistance);
+
+                        // Clamp the intensity to the range [0f, 1f]
+                        intensity = MathHelper.Clamp(intensity, 0f, 1f);
+                    }
+                    else
+                    {
+                        // If the player is not above the threshold, set intensity to 1f
+                        intensity = 1f;
                     }
                     //intensity = 0.1f;
                     Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 100) * 16));
@@ -7196,6 +7217,7 @@ namespace StarsAbove
             {
 
                 animatedPromptDialogue = promptDialogue.Substring(0, promptDialogueScrollNumber);//Prompt dialogue increment magic
+                animatedPromptDialogue = LangHelper.Wrap(animatedPromptDialogue, 78);
             }
             if (novaUIActive && chosenStarfarer != 0)
             {
@@ -10762,13 +10784,24 @@ namespace StarsAbove
         }
         public void starfarerPromptActive(string eventPrompt)
         {
-            if (starfarerPromptCooldown <= 0 && !promptIsActive && !disablePrompts && chosenStarfarer != 0)
+            if (starfarerPromptCooldown <= 0 && !promptIsActive && !disablePrompts && chosenStarfarer != 0 && starfarerPromptActiveTimer <= 0)
             {
                 //If the check was successful...
                 SoundEngine.PlaySound(SoundID.MenuOpen, Player.position); //Menu sound here
-                promptIsActive = true;
-                starfarerPromptActiveTimer = 210;
-                
+                if(!promptIsActive)
+                {
+                    promptExpression = 0;
+                    promptDialogue = "";
+                    promptDialogueScrollNumber = 0;
+                    promptDialogueScrollTimer = 0;
+                    animatedPromptDialogue = "";
+                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+
+                    promptIsActive = true;
+
+                }
+                 
+
                 promptMoveIn = 15f;
                 int randomDialogue;
 
@@ -10785,7 +10818,7 @@ namespace StarsAbove
                 //When the player is debuffed..
                 if (eventPrompt == "onPoison")
                 {
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     randomDialogue = Main.rand.Next(0, 4);
                     promptExpression = 1;
 
@@ -10898,7 +10931,7 @@ namespace StarsAbove
 
                     }
 
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     randomDialogue = Main.rand.Next(0, 3);
                     promptExpression = 2;
                     if (randomDialogue == 0)
@@ -10918,7 +10951,7 @@ namespace StarsAbove
                 {
                     SoundEngine.PlaySound(StarsAboveAudio.ALight0);
 
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     promptExpression = 2;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".217", Player.name);
 
@@ -10927,7 +10960,7 @@ namespace StarsAbove
                 if (eventPrompt == "onKillEnemy")
                 {
                     randomDialogue = Main.rand.Next(0, 20);
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     if (randomDialogue == 0)
                     {
                         promptExpression = 0;
@@ -11031,7 +11064,7 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onKillEnemyDanger")
                 {
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     randomDialogue = Main.rand.Next(0, 3);
 
                     if (randomDialogue == 0)
@@ -11052,7 +11085,7 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onKillBossEnemyPerfect")
                 {
-                    starfarerPromptActiveTimer = 150;
+
                     if(chosenStarfarer == 1)
                     {
                         SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossPerfect);
@@ -11071,7 +11104,7 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onKillBossEnemy")
                 {
-                    starfarerPromptActiveTimer = 150;
+
                     randomDialogue = Main.rand.Next(0, 2);
 
                     if (randomDialogue == 0)
@@ -11110,7 +11143,7 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onKillBossEnemyLowHP")
                 {
-                    starfarerPromptActiveTimer = 150;
+
                     randomDialogue = Main.rand.Next(0, 2);
 
                     if (randomDialogue == 0)
@@ -11148,7 +11181,7 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onCrit")
                 {
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     randomDialogue = Main.rand.Next(0, 6);
 
                     if (randomDialogue == 0)
@@ -11184,7 +11217,7 @@ namespace StarsAbove
                 }
                 if (eventPrompt == "onTakeHeavyDamage")
                 {
-                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+                     
                     randomDialogue = Main.rand.Next(0, 6);
 
                     if (randomDialogue == 0)
@@ -12414,7 +12447,7 @@ namespace StarsAbove
                 }
             }
 
-            promptDialogue = LangHelper.Wrap(promptDialogue, 78);
+            //promptDialogue = LangHelper.Wrap(promptDialogue, 78);
         
         }
 

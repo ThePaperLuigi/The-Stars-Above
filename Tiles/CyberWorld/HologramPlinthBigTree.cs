@@ -14,6 +14,8 @@ using StarsAbove.Items.Placeable.CyberWorld;
 using Terraria.GameContent.Drawing;
 using Steamworks;
 using StarsAbove.Gores;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Subworlds;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
@@ -50,8 +52,14 @@ namespace StarsAbove.Tiles.CyberWorld
 			// Unload the extra texture displayed on the pedestal
 			RelicTexture = null;
 		}
+        public override void NearbyEffects(int i, int j, bool closer)
+        {
+			Main.LocalPlayer.AddBuff(ModContent.BuffType<NeonVeilLuckBuff>(), 10);
 
-		public override void SetStaticDefaults()
+
+            base.NearbyEffects(i, j, closer);
+        }
+        public override void SetStaticDefaults()
 		{
 			//Main.tileShine[Type] = 400; // Responsible for golden particles
 			Main.tileFrameImportant[Type] = true; // Any multitile requires this

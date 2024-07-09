@@ -16846,38 +16846,43 @@ Mods: {
 			}
 
 			SpectralIllusionBuff: {
-				// DisplayName: Spectral Illusion Buff
-				// Description: Mods.StarsAbove.Buffs.SpectralIllusionBuff.Description
+				// DisplayName: Spectral Illusion
+				// Description: ""
 			}
 
 			SpectralIllusionCooldown: {
 				// DisplayName: Spectral Illusion Cooldown
-				// Description: Mods.StarsAbove.Buffs.SpectralIllusionCooldown.Description
+				// Description: ""
 			}
 
 			SpiritflameDebuff: {
-				// DisplayName: Spiritflame Debuff
-				// Description: Mods.StarsAbove.Buffs.SpiritflameDebuff.Description
+				// DisplayName: Spiritflame
+				// Description: ""
 			}
 
 			CyberpsychosisDebuff: {
-				// DisplayName: Cyberpsychosis Debuff
-				// Description: Mods.StarsAbove.Buffs.CyberpsychosisDebuff.Description
+				// DisplayName: Cyberpsychosis
+				// Description: Rotting cyberkinetic energy is corrupting defenses and healing
 			}
 
 			QuarkDriveBuff: {
-				// DisplayName: Quark Drive Buff
-				// Description: Mods.StarsAbove.Buffs.QuarkDriveBuff.Description
+				// DisplayName: Quark Drive
+				// Description: Infused with copious amounts of electricity
 			}
 
 			RebelPathCooldown: {
 				// DisplayName: Rebel Path Cooldown
-				// Description: Mods.StarsAbove.Buffs.RebelPathCooldown.Description
+				// Description: ""
 			}
 
 			LucidDreamerNovaCooldown: {
 				// DisplayName: Lucid Dreamer Nova Cooldown
-				// Description: Mods.StarsAbove.Buffs.LucidDreamerNovaCooldown.Description
+				// Description: ""
+			}
+
+			NeonVeilLuckBuff: {
+				// DisplayName: Tree Radiance
+				// Description: The lights of the Neon Veil dance around you, increasing foe spawn rates
 			}
 		}
 

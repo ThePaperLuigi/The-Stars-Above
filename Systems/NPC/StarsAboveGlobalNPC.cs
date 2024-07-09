@@ -38,6 +38,7 @@ using StarsAbove.NPCs.NeonVeil;
 using StarsAbove.Projectiles.Melee.Umbra;
 using StarsAbove.Projectiles.Ranged.QuisUtDeus;
 using StarsAbove.Buffs.Other.Phasmasaber;
+using StarsAbove.Buffs.Subworlds;
 
 namespace StarsAbove.Systems
 {
@@ -90,7 +91,7 @@ namespace StarsAbove.Systems
 
                 pool.Add(NPCType<SemaphoreEnemy>(), 1f);
                 pool.Add(NPCType<LogicVirusEnemy>(), 1f);
-
+                pool.Add(NPCID.GoldenSlime, 0.1f);
                 pool.Add(NPCID.FireImp, 0.4f);
 
 
@@ -120,6 +121,11 @@ namespace StarsAbove.Systems
             if (player.HasBuff(BuffType<Conversationalist>()))
             {
                 spawnRate = (int)(spawnRate * 3);
+            }
+            if (player.HasBuff(BuffType<NeonVeilLuckBuff>()))
+            {
+                spawnRate = (int)(spawnRate * 0.6);
+                maxSpawns = (int)(maxSpawns * 2.5f);
             }
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -316,10 +322,13 @@ namespace StarsAbove.Systems
         }
         public override void PostAI(NPC npc)
         {
-            if((npc.position.Y/16 + npc.height) > (Main.maxTilesY - 86))
+            if (npc.Center.ToTileCoordinates().Y > Main.maxTilesY - 100)
             {
+
                 npc.velocity.Y -= 10f;
+
             }
+            
             base.PostAI(npc);
         }
         public override void ResetEffects(NPC npc)
