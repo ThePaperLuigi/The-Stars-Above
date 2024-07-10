@@ -397,6 +397,7 @@ namespace StarsAbove.UI.Cosmoturgy
             {ItemType<OutbackWrangler>(), 39 },
             {ItemType<LonelyBand>(), 40 },
             {ItemType<StrangeScrap>(), 41 },
+            {ItemType<Aeonseal>(), 42 },
 
             {ItemType<TarotCard>(), 100 },
 

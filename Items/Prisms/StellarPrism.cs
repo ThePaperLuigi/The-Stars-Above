@@ -151,7 +151,9 @@ namespace StarsAbove.Items.Prisms
                         useColor = new Color(180, 40, 255);
                         break;
                     case 12:
-                        useColor = new Color(0, 0, 0);
+                        Item.rare = ModContent.RarityType<StellarRarity>();
+                        useColor = new Color(Main.masterColor + 0.5f, -Main.masterColor, 0.8f);
+                        //useColor = new Color(255,255, 255);
                         break;
 
                 }
@@ -163,8 +165,6 @@ namespace StarsAbove.Items.Prisms
 
             Texture2D rarityIconTexture = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/UI/StellarNova/RarityIcon");
 
-            spriteBatch.End();
-            spriteBatch.Begin();
             spriteBatch.Draw(rarityIconTexture,
                 position: new Vector2(position.X - spriteSize.Y * 0.9f, position.Y + spriteSize.Y/2 * 0.9f),
                 //position: new Vector2(position.X, position.Y),

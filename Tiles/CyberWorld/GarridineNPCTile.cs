@@ -87,7 +87,14 @@ namespace StarsAbove.Tiles.CyberWorld
             InteractWithHologramNPCs("Garridine");
             return true;
         }
-
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+        public override bool CanReplace(int i, int j, int tileTypeBeingPlaced)
+        {
+            return false;
+        }
         public static void InteractWithHologramNPCs(string NPCName)
         {
             var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();

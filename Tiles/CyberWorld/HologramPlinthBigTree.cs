@@ -37,8 +37,15 @@ namespace StarsAbove.Tiles.CyberWorld
 
 		// All relics use the same pedestal texture, this one is copied from vanilla
 		public override string Texture => "StarsAbove/Tiles/CyberWorld/HologramPlinth";
-
-		public override void Load()
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+        public override bool CanReplace(int i, int j, int tileTypeBeingPlaced)
+        {
+            return false;
+        }
+        public override void Load()
 		{
 			if (!Main.dedServ)
 			{

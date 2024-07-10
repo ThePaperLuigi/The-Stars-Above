@@ -45,8 +45,15 @@ namespace StarsAbove.Tiles.CyberWorld.Confluxes
 				RelicTexture = ModContent.Request<Texture2D>(RelicTextureName);
 			}
 		}
-
-		public override void Unload()
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+        public override bool CanReplace(int i, int j, int tileTypeBeingPlaced)
+        {
+            return false;
+        }
+        public override void Unload()
 		{
 			// Unload the extra texture displayed on the pedestal
 			RelicTexture = null;

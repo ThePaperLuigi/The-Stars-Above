@@ -5886,17 +5886,17 @@ Mods: {
 
 				AuricExalt: {
 					// Name: Exalted Resonance
-					// SetBonus1: After using the Nova, gain Exalted. Exalted buffs subsequent Nova uses by 4% in all stats but is lost out of combat. Cap is 3.
-					// SetBonus2: Exalted stacks reduce Energy Cost at 2:1 ratio.
-					// SetBonus3: Exalted cap becomes 6.
+					// SetBonus1: After using the Nova, gain Exalted, buffing stats by 4%; Cap is 3
+					// SetBonus2: Exalted stacks reduce Energy Cost at  a 2:1 ratio
+					// SetBonus3: Exalted cap becomes 6
 					// FlavorTooltip: The vaunted Exalted were the empire's bravest soldiers
 				}
 
 				LuminousHallow: {
 					// Name: Bygone Fairytales
-					// SetBonus1: The Nova now automatically activates when ready; Cost reduced by 2% of Effect Duration
+					// SetBonus1: Nova automatically activates; cost reduced by 2% of duration
 					// SetBonus2: Cost is reduced by 2% of Crit Rate
-					// SetBonus3: Cost is reduced by 6% of both Crit Rate and Effect Duration instead
+					// SetBonus3: Cost is reduced by 6% of both Crit Rate and Effect Duration
 					// FlavorTooltip: A myth made real, the Hallowed is known but never charted
 				}
 
@@ -5910,15 +5910,15 @@ Mods: {
 
 				BloodyBanquet: {
 					// Name: Feast and Famine
-					// SetBonus1: The Stellar Nova charges by 1% for every foe killed by the Stellar Nova
-					// SetBonus2: Killing foes with the Stellar Nova increase the duration of Nova buffs by 2 seconds
-					// SetBonus3: Killing foes with the Stellar Nova heals 2 HP
+					// SetBonus1: The Nova charges by 1% for every foe killed by the Nova
+					// SetBonus2: Killing foes with the Nova increase the duration of Nova buffs by 2 seconds
+					// SetBonus3: Killing foes with the Nova heals 2 HP
 					// FlavorTooltip: Blood for blood, a creed shared by the rimworlds in the third region
 				}
 
 				RoyalSunrise: {
 					// Name: Welcoming Dawn
-					// SetBonus1: Nova damage, Crit damage, and Crit rate is increased by 15% if you are above or at 500 HP
+					// SetBonus1: Nova damage stats are increased by 15% above or at 500 HP
 					// SetBonus2: Bonus is increased to 30%
 					// SetBonus3: Bonus is now active above 250 HP
 					// FlavorTooltip: A star's orbit is a miracle in itself
@@ -12545,9 +12545,34 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
-					Grants a unique Path when Imprinted, providing bonus effects
+					Grants a unique Path when Imprinted, providing bonus on-hit effects
+					(Path is assigned upon character creation and can not be changed)
 					''' */
-				// TooltipAttached: You are guided by an Aeon, providing bonus effects(?)
+
+				TooltipAttached: {
+					//0
+					// Destruction: You are guided by the Path of Destruction: Deal 12% more critical strike damage
+					//1
+					// Hunt: You are guided by the Path of the Hunt: Deal 12% more damage to bosses
+					//2
+					// Erudition: You are guided by the Path of Erudition: Deal 12% more damage to non-boss enemies
+					//3
+					// Harmony: You are guided by the Path of Harmony: Deal 0.5% more damage for each active buff
+					//4
+					// Nihility: You are guided by the Path of Nihility: Deal 12% more damage to debuffed foes
+					//5
+					// Preservation: You are guided by the Path of Preservation: 8% of weapon damage is added as defense
+					//6
+					// Abundance: You are guided by the Path of Abundance: Heal 2 HP when defeating foes
+					//7
+					// Elation: You are guided by the Path of Elation: Randomly deal up to 12% bonus damage
+					//8
+					// Propagation: You are guided by the Path of Propagation: Deal 2% more damage per active minion
+					//9
+					// Rememberance: You are guided by the Path of Rememberance: Deal 12% more damage to stunned foes
+					//10
+					// Trailblaze: You are guided by the Path of the Trailblaze: Other players deal 12% more damage to foes you attack
+				}
 			}
 
 			ArtificialEvoker: {
@@ -16746,6 +16771,11 @@ Mods: {
 			NeonVeilLuckBuff: {
 				// DisplayName: Tree Radiance
 				// Description: The lights of the Neon Veil dance around you, increasing foe spawn rates
+			}
+
+			TrailblazeBuff: {
+				// DisplayName: Trailblaze Buff
+				// Description: Mods.StarsAbove.Buffs.TrailblazeBuff.Description
 			}
 		}
 

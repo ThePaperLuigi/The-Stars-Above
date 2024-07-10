@@ -4118,7 +4118,7 @@ namespace StarsAbove
                 }
                 
 
-                if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
+                if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server && Main.screenWidth <= 1920)
                 {
                     Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
 
@@ -4151,19 +4151,27 @@ namespace StarsAbove
                         // If the player is not above the threshold, set intensity to 1f
                         intensity = 1f;
                     }
-                    //intensity = 0.1f;
+
+                    if (Main.UIScale != 1)
+                    {
+                        //intensity = 0f;
+                    }
                     Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 100) * 16));
                 }
             }
             else
             {
-                if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
+                if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server))
                 {
                     Filters.Scene.Deactivate("NeonVeilReflectionEffect");
 
                 }
             }
+            if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server) && Main.screenWidth > 1920)
+            {
+                Filters.Scene.Deactivate("NeonVeilReflectionEffect");
 
+            }
         }
 
         private void EmberFlask()
@@ -8855,8 +8863,9 @@ namespace StarsAbove
                 }
                 else
                 //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
-                if (StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
+                if ((StarsAbove.novaKey.JustPressed || (luminousHallowLevel >= 1 && novaGauge >= trueNovaGaugeMax))&& !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
+                    
                     if (novaGauge >= trueNovaGaugeMax && Player.HasBuff(BuffType<RebelPathCooldown>()))
                     {
                         Player.ClearBuff(BuffType<RebelPathCooldown>());
@@ -8915,10 +8924,19 @@ namespace StarsAbove
                             return;
                         }
                     }
-                    if(chosenStellarNova != 8)
+
+                    if (luminousHallowLevel >= 1)
+                    {
+                        novaGauge = 0;
+                    }
+
+                    if (chosenStellarNova != 8)
                     StellarNovaCutIn();
                     StellarNovaVoice();
-
+                    if(lucidDreamerLevel >= 1)
+                    {
+                        Player.AddBuff(BuffType<LucidDreamerNovaCooldown>(), trueNovaGaugeMax * 60);
+                    }
                     //Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
 
 
@@ -12752,7 +12770,7 @@ namespace StarsAbove
                 }
             }
 
-            if (novaGauge == trueNovaGaugeMax)
+            if (novaGauge == trueNovaGaugeMax && lucidDreamerLevel < 1)
             {
                 if (novaReadyInfo)
                 {
@@ -13120,7 +13138,7 @@ namespace StarsAbove
                     if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
                     {
                         modifiers.FinalDamage += 0.12f;
-                        continue;
+                        break;
                     }
                 }
                 if (deadbloomLevel >= 2)
@@ -13130,7 +13148,7 @@ namespace StarsAbove
                         if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
                         {
                             modifiers.CritDamage += 0.3f;
-                            continue;
+                            break;
                         }
                     }
                 }

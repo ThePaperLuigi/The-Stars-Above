@@ -15,10 +15,16 @@ namespace StarsAbove.Tiles.CyberWorld
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
             return false;
-            return base.CanKillTile(i, j, ref blockDamaged);
         }
 
-
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+        public override bool CanReplace(int i, int j, int tileTypeBeingPlaced)
+        {
+            return false;
+        }
 
 
 

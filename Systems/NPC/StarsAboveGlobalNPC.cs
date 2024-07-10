@@ -92,14 +92,12 @@ namespace StarsAbove.Systems
                 pool.Add(NPCType<SemaphoreEnemy>(), 1f);
                 pool.Add(NPCType<LogicVirusEnemy>(), 1f);
                 pool.Add(NPCID.GoldenSlime, 0.1f);
+                pool.Add(NPCID.GoldDragonfly, 0.1f);
+
                 pool.Add(NPCID.FireImp, 0.4f);
 
 
-                if (!NPC.AnyNPCs(NPCType<NPCs.TownNPCs.Garridine>()))
-                {
-                    pool.Add(NPCType<NPCs.TownNPCs.Garridine>(), 0.1f);
-
-                }
+                
 
             }
             

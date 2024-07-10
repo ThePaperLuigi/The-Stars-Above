@@ -76,6 +76,14 @@ namespace StarsAbove.Tiles.CyberWorld
 
             AddMapEntry(new Color(233, 207, 94), CreateMapEntryName());
         }
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+        public override bool CanReplace(int i, int j, int tileTypeBeingPlaced)
+        {
+            return false;
+        }
         public override bool RightClick(int i, int j)
         {
             GarridineNPCTile.InteractWithHologramNPCs("Andyer");

@@ -51,8 +51,15 @@ namespace StarsAbove.Tiles.CyberWorld.Confluxes
 			// Unload the extra texture displayed on the pedestal
 			RelicTexture = null;
 		}
-
-		public override void SetStaticDefaults()
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+        public override bool CanReplace(int i, int j, int tileTypeBeingPlaced)
+        {
+            return false;
+        }
+        public override void SetStaticDefaults()
 		{
 			//Main.tileShine[Type] = 400; // Responsible for golden particles
 			Main.tileFrameImportant[Type] = true; // Any multitile requires this

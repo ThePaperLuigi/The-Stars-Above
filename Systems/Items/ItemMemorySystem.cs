@@ -43,6 +43,7 @@ using StarsAbove.Projectiles.Summon.ArachnidNeedlepoint;
 using static Humanizer.In;
 using StarsAbove.Systems;
 using Terraria.GameContent.Drawing;
+using Terraria.GameContent.UI.Elements;
 
 namespace StarsAbove.Systems.Items
 {
@@ -121,15 +122,6 @@ namespace StarsAbove.Systems.Items
         //Aeonseals
         public bool Aeonseal;
 
-        public bool AeonsealDestruction;//401
-        public bool AeonsealHunt;//402
-        public bool AeonsealErudition;//403
-        public bool AeonsealHarmony;//404
-        public bool AeonsealNihility;//405
-        public bool AeonsealPreservation;//406
-        public bool AeonsealAbundance;//407
-
-        public bool AeonsealTrailblazer;//408
 
         public int OldHP;
         public int HeldWeaponTypeChoice;
@@ -452,15 +444,7 @@ namespace StarsAbove.Systems.Items
 
             //Aeonseals
             modPlayer.Aeonseal = Aeonseal;
-            modPlayer.AeonsealDestruction = AeonsealDestruction;//401
-            modPlayer.AeonsealHunt = AeonsealHunt;//402
-            modPlayer.AeonsealErudition = AeonsealErudition;//403
-            modPlayer.AeonsealHarmony = AeonsealHarmony;//404
-            modPlayer.AeonsealNihility = AeonsealNihility;//405
-            modPlayer.AeonsealPreservation = AeonsealPreservation;//406
-            modPlayer.AeonsealAbundance = AeonsealAbundance;//407
 
-            modPlayer.AeonsealTrailblazer = AeonsealTrailblazer;//408
         }
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
@@ -797,15 +781,7 @@ namespace StarsAbove.Systems.Items
 
             //Aeonseals
             Aeonseal = false;
-            AeonsealDestruction = false;//401
-            AeonsealHunt = false;//402
-            AeonsealErudition = false;//403
-            AeonsealHarmony = false;//404
-            AeonsealNihility = false;//405
-            AeonsealPreservation = false;//406
-            AeonsealAbundance = false;//407
-
-            AeonsealTrailblazer = false;//408
+           
         }
 
         //Memories which provide buffs to other memories are calculated first.
@@ -826,6 +802,10 @@ namespace StarsAbove.Systems.Items
             if(NookMiles)
             {
                 damageModAdditive += 0.08f;
+            }
+            if (Aeonseal && player.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath == 5)
+            {
+                player.statDefense += (int)(item.damage * 0.08);
             }
             player.GetModPlayer<ItemMemorySystemPlayer>().cooldownMod = cooldownReductionMod;
         }
@@ -887,7 +867,7 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 40, "LonelyBand", ref LonelyBand, item, player);
             SetMemory(slot, 41, "StrangeScrap", ref StrangeScrap, item, player);
 
-            SetMemory(slot, 42, "Aeonseal", ref Aeonseal, item, player);
+            //SetMemory(slot, 42, "Aeonseal", ref Aeonseal, item, player);
 
 
             SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
@@ -982,6 +962,67 @@ namespace StarsAbove.Systems.Items
                 }
                 memoryCount++;
             }
+
+            check = 42;//Aeonseal
+            if (slot == check)
+            {
+                Aeonseal = true;
+                if (player.HeldItem == item)
+                    player.GetModPlayer<ItemMemorySystemPlayer>().Aeonseal = true;
+                string itemIcon = $"[i:{ItemType<Aeonseal>()}]";
+                string itemName = "Aeonseal";
+                string cardName = "";
+                //1 fool, 2 magician, 3 priestess, 4 empress, 5 emperor, 6 heirophant, 7 lovers, 8 chariot, 9 justice,
+                //10 hermit, 11 fortune, 12 strength, 13 hanged man, 14 death, 15 temperance, 16 devil, 17 tower, 18 star, 19 moon, 20 sun
+                switch (player.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath)
+                {
+                    case 0:
+                        cardName = "Destruction";
+                        break;
+                    case 1:
+                        cardName = "Hunt";
+                        break;
+                    case 2:
+                        cardName = "Erudition";
+                        break;
+                    case 3:
+                        cardName = "Harmony";
+                        break;
+                    case 4:
+                        cardName = "Nihility";
+                        break;
+                    case 5:
+                        cardName = "Preservation";
+                        break;
+                    case 6:
+                        cardName = "Abundance";
+                        break;
+                    case 7:
+                        cardName = "Elation";
+                        break;
+                    case 8:
+                        cardName = "Propagation";
+                        break;
+                    case 9:
+                        cardName = "Rememberance";
+                        break;
+                    case 10:
+                        cardName = "Trailblaze";
+                        break;
+                }
+                memoryTooltip += itemIcon;
+                if (memoryTooltipInfo == "")
+                {
+                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached." + cardName);
+
+                }
+                else
+                {
+                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached." + cardName);
+
+                }
+                memoryCount++;
+            }
         }
         private void SetMemory(int slot, int check, string itemName, ref bool itemFlag, Item item, Player player)
         {
@@ -1055,6 +1096,50 @@ namespace StarsAbove.Systems.Items
                 TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AspectIdentifier", tooltipAddition) { OverrideColor = Color.White };
                 tooltips.Add(tooltip);
             }
+
+            if(item.type == ModContent.ItemType<Aeonseal>())
+            {
+                string pathName = "";
+                switch (Main.LocalPlayer.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath)
+                {
+                    case 0:
+                        pathName = "Destruction";
+                        break;
+                    case 1:
+                        pathName = "Hunt";
+                        break;
+                    case 2:
+                        pathName = "Erudition";
+                        break;
+                    case 3:
+                        pathName = "Harmony";
+                        break;
+                    case 4:
+                        pathName = "Nihility";
+                        break;
+                    case 5:
+                        pathName = "Preservation";
+                        break;
+                    case 6:
+                        pathName = "Abundance";
+                        break;
+                    case 7:
+                        pathName = "Elation";
+                        break;
+                    case 8:
+                        pathName = "Propagation";
+                        break;
+                    case 9:
+                        pathName = "Rememberance";
+                        break;
+                    case 10:
+                        pathName = "Trailblaze";
+                        break;
+                }
+                
+                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AeonsealPath", LangHelper.GetTextValue($"Items." + $"Aeonseal" + ".TooltipAttached." + pathName)) { OverrideColor = Color.White };
+                tooltips.Add(tooltip);
+            }
         }
     }
 
@@ -1118,15 +1203,6 @@ namespace StarsAbove.Systems.Items
         //Aeonseals
         public bool Aeonseal;
 
-        public bool AeonsealDestruction;//401
-        public bool AeonsealHunt;//402
-        public bool AeonsealErudition;//403
-        public bool AeonsealHarmony;//404
-        public bool AeonsealNihility;//405
-        public bool AeonsealPreservation;//406
-        public bool AeonsealAbundance;//407
-
-        public bool AeonsealTrailblazer;//408
 
         public float cooldownMod;
 
@@ -1137,6 +1213,19 @@ namespace StarsAbove.Systems.Items
         public int crystalshot;
         public int strangeScrapPriceCopper;
         public int wranglerCrits;
+        public int aeonsealPath = -1;
+
+        public override void SaveData(TagCompound tag)
+        {
+            tag["aeonsealPath"] = aeonsealPath;
+        }
+       
+        public override void LoadData(TagCompound tag)
+        {
+            aeonsealPath = tag.GetInt("aeonsealPath");
+
+        }
+        
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -1310,6 +1399,10 @@ namespace StarsAbove.Systems.Items
         }
         public override void PreUpdate()
         {
+            if(aeonsealPath == -1)
+            {
+                aeonsealPath = Main.rand.Next(0, 11);
+            }
             if (Rageblade)
             {
                 if (Player.GetModPlayer<StarsAbovePlayer>().inCombat <= 0)
@@ -1322,6 +1415,7 @@ namespace StarsAbove.Systems.Items
                 ragebladeStacks = 0;
 
             }
+            
             if(NetheriteBar)
             {
                 Player.statDefense += 4;
@@ -1353,6 +1447,7 @@ namespace StarsAbove.Systems.Items
             {
                 OnKillNPC(target);
             }
+            
             if (BlackLightbulb && !target.boss && hit.Crit)
             {
                 if (Main.rand.Next(0, 101) < 14)
@@ -1468,6 +1563,7 @@ namespace StarsAbove.Systems.Items
                     target.AddBuff(BuffType<OnyxJackalTagDamage>(), 240);
                 }
             }
+            
             base.OnHitNPCWithProj(proj, target, hit, damageDone);
         }
         public void OnKillNPC(NPC target)
@@ -1475,6 +1571,10 @@ namespace StarsAbove.Systems.Items
             if(MatterManipulator)
             {
                 Player.AddBuff(BuffID.Mining, 60 * 30);
+            }
+            if(Aeonseal && aeonsealPath == 6)
+            {
+                Player.Heal(2);
             }
             if(Pawn)
             {
@@ -1501,7 +1601,66 @@ namespace StarsAbove.Systems.Items
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if(BottledChaos)
+            if (Aeonseal && aeonsealPath == 0)
+            {
+                modifiers.CritDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 1 && target.boss)
+            {
+                modifiers.FinalDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 2 && !target.boss)
+            {
+                modifiers.FinalDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 3)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (Player.buffType[i] > 0 && !Main.debuff[Player.buffType[i]])
+                    {
+                        modifiers.FinalDamage += 0.005f;
+                        continue;
+                    }
+                }
+
+            }
+            if (Aeonseal && aeonsealPath == 4)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                    {
+                        modifiers.FinalDamage += 0.12f;
+                        break;
+                    }
+                }
+
+            }
+            if (Aeonseal && aeonsealPath == 7)
+            {
+                modifiers.FinalDamage += Main.rand.NextFloat(0f, 0.12f);
+
+            }
+            if (Aeonseal && aeonsealPath == 8)
+            {
+                modifiers.FinalDamage += Player.numMinions * 0.02f;
+
+            }
+            if (Aeonseal && aeonsealPath == 9 && target.HasBuff(BuffType<Stun>()))
+            {
+                modifiers.FinalDamage += 0.12f;
+
+            }
+            if (target.HasBuff(BuffType<TrailblazeBuff>()) && aeonsealPath != 10)
+            {
+                modifiers.FinalDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 10)
+            {
+                target.AddBuff(BuffType<TrailblazeBuff>(), 240);
+            }
+            if (BottledChaos)
             {
                 modifiers.DamageVariationScale *= 3f;
             }
@@ -1633,15 +1792,7 @@ namespace StarsAbove.Systems.Items
 
             //Aeonseals
             Aeonseal = false;
-            AeonsealDestruction = false;//401
-            AeonsealHunt = false;//402
-            AeonsealErudition = false;//403
-            AeonsealHarmony = false;//404
-            AeonsealNihility = false;//405
-            AeonsealPreservation = false;//406
-            AeonsealAbundance = false;//407
-
-            AeonsealTrailblazer = false;//408
+            
             base.ResetEffects();
         }
     }

@@ -57,6 +57,18 @@ namespace StarsAbove.NPCs.Dioskouroi
 				NPC.active = false;
 				NPC.netUpdate = true;
 			}
+			else
+			{
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && npc.type == ModContent.NPCType<CastorBoss>())
+                    {
+						NPC.position.X = npc.position.X + 500;
+
+                    }
+                }
+            }
 			if (!Main.dedServ)
 			{
 				portalFrame++;
