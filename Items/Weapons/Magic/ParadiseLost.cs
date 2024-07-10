@@ -90,7 +90,7 @@ namespace StarsAbove.Items.Weapons.Magic
 
             if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
             {
-                if (!player.HasBuff(BuffType<ParadiseLostBuff>()))
+                if (!player.HasBuff(BuffType<ParadiseLostBuff>()) && !player.HasBuff(BuffType<Vulnerable>()))
                 {
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, player.Center);
 

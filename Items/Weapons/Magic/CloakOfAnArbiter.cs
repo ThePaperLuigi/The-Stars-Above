@@ -270,7 +270,7 @@ namespace StarsAbove.Items.Weapons.Magic
                         for (int i = 0; i < Main.maxNPCs; i++)
                         {
                             NPC npc = Main.npc[i];
-                            if (npc.active && !npc.boss && npc.Distance(player.Center) < 900)
+                            if (npc.active && !npc.boss && npc.Distance(player.Center) < 900 && !npc.friendly)
                             {
                                 for (int ix = 0; ix < 30; ix++)
                                 {

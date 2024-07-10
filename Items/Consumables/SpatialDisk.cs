@@ -144,10 +144,28 @@ namespace StarsAbove.Items.Consumables
 
 			if (player.altFunctionUse == 2 && !modPlayer.starfarerIntro)
 			{
-				modPlayer.starfarerMenuDialogueScrollNumber = 0;
+                modPlayer.starfarerMenuActive = true;
+                modPlayer.starfarerMenuUIOpacity = 0f;
+                modPlayer.starfarerMenuDialogueScrollNumber = 0;
 				modPlayer.starfarerMenuDialogueScrollTimer = 0;
 				int randomDialogue = Main.rand.Next(0, 6);
-				if (randomDialogue == 0)
+                if (modPlayer.inCombat > 0)
+                {
+                    if (modPlayer.chosenStarfarer == 1)
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenuCombat0);
+
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.8", player.name);
+                    }
+                    if (modPlayer.chosenStarfarer == 2)//Eridani
+                    {
+                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenuCombat0);
+
+                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.8", player.name);
+                    }
+                    return true;
+                }
+                if (randomDialogue == 0)
 				{
 					if (modPlayer.chosenStarfarer == 1)
                     {
@@ -243,24 +261,8 @@ namespace StarsAbove.Items.Consumables
                     }
                 }
 
-                if (modPlayer.inCombat > 0)
-				{
-					if (modPlayer.chosenStarfarer == 1)
-                    {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenuCombat0);
-
-                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.8", player.name);
-					}
-					if (modPlayer.chosenStarfarer == 2)//Eridani
-                    {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenuCombat0);
-
-                        modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.8", player.name);
-					}
-
-				}
-				modPlayer.starfarerMenuActive = true;
-				modPlayer.starfarerMenuUIOpacity = 0f;
+                
+				
 				//modPlayer.stellarArray = true;
 				//modPlayer.stellarArrayMoveIn = 15f;
 				return true;

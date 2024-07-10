@@ -101,7 +101,7 @@ namespace StarsAbove.Systems.WorldGeneration
             else
             {
                 //Small world generation (same as medium)
-                neonVeilSize = 28;
+                neonVeilSize = 20;
             }
             for (int i = 0; i <= neonVeilSize; i++)
             {
@@ -250,49 +250,49 @@ namespace StarsAbove.Systems.WorldGeneration
                 else//Small world
                 {
                     //Important Structures
-                    if (i == 5)//
+                    if (i == 7)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilLighthouse");
                     }
-                    else if (i == 14)//
+                    else if (i == 10)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilGarden");
                     }
-                    else if (i == 22)//
+                    else if (i == 17)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "NeonVeilBar");
                     }
 
                     //Confluxes
-                    else if (i == 3)//
+                    else if (i == 2)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxAuricExalt");
                     }
-                    else if (i == 6)//
+                    else if (i == 4)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxBloodyBanquet");
                     }
-                    else if (i == 9)//
+                    else if (i == 6)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxCrescentMeteor");
                     }
-                    else if (i == 12)//
+                    else if (i == 8)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxDeadbloom");
                     }
-                    else if (i == 15)//
+                    else if (i == 12)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxDreadMechanical");
                     }
-                    else if (i == 18)//
+                    else if (i == 14)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxLucidDreamer");
                     }
-                    else if (i == 21)//
+                    else if (i == 16)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxLuminousHallow");
                     }
-                    else if (i == 24)//
+                    else if (i == 18)//
                     {
                         CreateNeonVeilStructure(ref offsetDims, ref offsetX, neonVeilBlueprint, "ConfluxRoyalSunrise");
                     }

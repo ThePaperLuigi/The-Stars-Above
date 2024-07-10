@@ -13,7 +13,8 @@ namespace StarsAbove.Buffs.Magic.ParadiseLost
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
+            player.immuneTime = 10;
+            player.immune = true;
         }
     }
 }

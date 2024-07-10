@@ -4156,7 +4156,7 @@ namespace StarsAbove
                     {
                         //intensity = 0f;
                     }
-                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 100) * 16));
+                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X + MathHelper.Lerp(0,Main.screenWidth/4,Math.Min(1f,Main.GameZoomTarget - 1)), (Main.maxTilesY - 100) * 16));
                 }
             }
             else
@@ -12728,6 +12728,9 @@ namespace StarsAbove
                             novaGaugeChangeAlpha = 1f;
                             novaGaugeChangeAlphaSlow = 1f;
 
+                            novaGaugeChargeTimer = 0;
+                            NovaChargeModifiers();
+
                         }
                         else
                         {
@@ -12981,8 +12984,8 @@ namespace StarsAbove
                 }
                 else if (chosenStarfarer == 2)
                 {
-                    Player.AddBuff(BuffType<QuarkDriveBuff>(), (int)(5 * 60 + (trueNovaGaugeMax * 0.05f)));
-                   
+                    Player.AddBuff(BuffType<QuarkDriveBuff>(), (int)(5 * 60 + (trueNovaGaugeMax * 0.05f) * 60));
+                    Main.NewText((int)(5 * 60 + ((trueNovaGaugeMax * 0.05f) * 60)));
                 }
             }
             if(dreadMechanicalLevel >= 1)

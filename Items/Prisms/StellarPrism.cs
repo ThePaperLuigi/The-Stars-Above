@@ -180,6 +180,11 @@ namespace StarsAbove.Items.Prisms
         }
         public override void SetDefaults()
 		{
+            if(isGenerated)
+            {
+                //Prevent Prism stats from rerolling when taking them in and out of Magic Storage.
+                return;
+            }
             List<Stat> availableStats = new List<Stat> { Stat.Damage, Stat.CritDamage, Stat.CritRate, Stat.EnergyCost, Stat.EffectDuration };
 
             bool slimeKing = NPC.downedSlimeKing;
@@ -513,6 +518,7 @@ namespace StarsAbove.Items.Prisms
             TooltipLine flavor = new TooltipLine(Mod, "StarsAbove: FlavorTooltip", "'" + FlavorTooltip + "'") { OverrideColor = Color.White };
             tooltips.Add(flavor);
         }
+        public bool isGenerated;
         public override void SaveData(TagCompound tag)
         {
             if (Damage != 0)
@@ -551,6 +557,8 @@ namespace StarsAbove.Items.Prisms
 
             }
             tag["rarity"] = Item.rare;
+            tag["isGenerated"] = isGenerated;
+
         }
         public override void LoadData(TagCompound tag)
         {
@@ -567,6 +575,8 @@ namespace StarsAbove.Items.Prisms
 
             mainStat = tag.GetInt("mainStat");
             Item.rare = tag.GetInt("rarity");
+            isGenerated = tag.GetBool("isGenerated");
+
         }
         public override Color? GetAlpha(Color lightColor)
         {

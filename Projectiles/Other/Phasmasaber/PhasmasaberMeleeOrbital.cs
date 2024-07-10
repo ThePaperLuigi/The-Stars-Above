@@ -146,7 +146,7 @@ namespace StarsAbove.Projectiles.Other.Phasmasaber
                 //Factors for calculations
                 double deg = Projectile.ai[1]; //The degrees, you can multiply projectile.ai[1] to make it orbit faster, may be choppy depending on the value
                 double rad = deg * (Math.PI / 180); //Convert degrees to radians
-                double dist = Math.Min(220, player.Center.Distance(Main.MouseWorld)) - Projectile.alpha; //Distance away from the player
+                double dist = Math.Max(40,Math.Min(220, player.Center.Distance(Main.MouseWorld)) - Projectile.alpha); //Distance away from the player
                 Vector2 adjustedPosition = new Vector2(player.Center.X, player.Center.Y);
 
                 /*Position the player based on where the player is, the Sin/Cos of the angle times the /
