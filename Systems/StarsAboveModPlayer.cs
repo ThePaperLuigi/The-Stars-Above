@@ -3635,6 +3635,7 @@ namespace StarsAbove
             base.ModifyLuck(ref luck);
         }
 
+        public static bool shockwaveEffectDisabled;
         public override void PreUpdate()
         {
             globalVoiceDelayTimer--;
@@ -3872,6 +3873,12 @@ namespace StarsAbove
                 }
                 if (chosenStarfarerEffect == true)
                 {
+                    if(shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     activateShockwaveEffect = true;
 
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_StarfarerChosen);
@@ -3886,6 +3893,12 @@ namespace StarsAbove
 
                 if (activateShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     rippleCount = 4;
                     rippleSpeed = 60;
                     rippleSize = 35;
@@ -3898,6 +3911,12 @@ namespace StarsAbove
                 }
                 if (activateAuthorityShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     rippleCount = 2;
                     rippleSpeed = 35;
                     rippleSize = 30;
@@ -3910,6 +3929,12 @@ namespace StarsAbove
                 }
                 if (activateArbiterShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     if (Main.netMode != NetmodeID.Server && Filters.Scene["Shockwave"].IsActive())
                     {
                         Filters.Scene.Deactivate("Shockwave");
@@ -3928,6 +3953,12 @@ namespace StarsAbove
                 }
                 if (activateBlackHoleShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     rippleCount = 8;
                     rippleSpeed = 10;
                     rippleSize = 65;
@@ -10960,12 +10991,12 @@ namespace StarsAbove
                 {
                     if(chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAccident0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAccident0);}
 
                     }
                     else if (chosenStarfarer == 2)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniAccident0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniAccident0);}
 
                     }
 
@@ -11126,12 +11157,12 @@ namespace StarsAbove
 
                     if(chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossPerfect);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossPerfect);}
 
                     }
                     else if(chosenStarfarer == 2)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossPerfect);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossPerfect);}
 
                     }
 
@@ -11149,12 +11180,13 @@ namespace StarsAbove
                     {
                         if (chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory0);
+
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory0);}
 
                         }
                         else if (chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory0);}
 
                         }
 
@@ -11165,12 +11197,12 @@ namespace StarsAbove
                     {
                         if (chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory1);}
 
                         }
                         else if (chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory1);}
 
                         }
 
@@ -11188,12 +11220,12 @@ namespace StarsAbove
                     {
                         if (chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP0);}
 
                         }
                         else if (chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP0);}
 
                         }
 
@@ -11204,12 +11236,12 @@ namespace StarsAbove
                     {
                         if (chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP1);}
 
                         }
                         else if (chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP1);}
 
                         }
                         promptExpression = 0;
@@ -11294,12 +11326,12 @@ namespace StarsAbove
                     randomDialogue = Main.rand.Next(0, 3);
                     if(chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor0);}
 
                     }
                     else if(chosenStarfarer == 2)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor0);}
 
                     }
                     if (randomDialogue == 0)
@@ -12410,12 +12442,12 @@ namespace StarsAbove
                 {
                     if(chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneReady0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneReady0);}
 
                     }
                     else if (chosenStarfarer == 2)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniReady0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniReady0);}
 
                     }
                     randomDialogue = Main.rand.Next(0, 6);
@@ -12559,12 +12591,12 @@ namespace StarsAbove
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised0);}
 
                         break;
 
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised1);}
 
                         break;
 
@@ -12574,17 +12606,17 @@ namespace StarsAbove
             }
             else if (chosenStarfarer == 2)
             {
-                SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);
+                if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);}
                 randomVoice = Main.rand.Next(0, 2);
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossSuprised0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossSuprised0);}
 
                         break;
 
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossWorried1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossWorried1);}
 
                         break;
 
@@ -12601,22 +12633,22 @@ namespace StarsAbove
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral0);}
 
                         break;
 
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral1);}
 
                         break;
 
                     case 2:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral2);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral2);}
 
                         break;
 
                     case 3:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossWorried3);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossWorried3);}
 
                         break;
 
@@ -12630,31 +12662,31 @@ namespace StarsAbove
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);}
 
                         break;
 
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral1);}
 
                         break;
 
                     case 2:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral2);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral2);}
 
                         break;
                     case 3:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral3);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral3);}
 
                         break;
 
                     case 4:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral4);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral4);}
 
                         break;
 
                     case 5:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral5);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral5);}
 
                         break;
 
@@ -12672,22 +12704,22 @@ namespace StarsAbove
                 switch(randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry0);}
 
                         break;
 
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry1);}
 
                         break;
 
                     case 2:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry2);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry2);}
 
                         break;
 
                     case 3:
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry3);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry3);}
 
                         break;
 
@@ -12701,17 +12733,17 @@ namespace StarsAbove
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry0);}
 
                         break;
 
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry1);}
 
                         break;
 
                     case 2:
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry2);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry2);}
 
                         break;
 

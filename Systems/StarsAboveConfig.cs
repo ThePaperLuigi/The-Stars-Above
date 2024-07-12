@@ -1,4 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Dialogue;
+using StarsAbove.Items.Consumables;
+using StarsAbove.UI.Starfarers;
 using System;
 using System.ComponentModel;
 using Terraria.ModLoader;
@@ -17,6 +20,7 @@ namespace StarsAbove.Systems
         public bool DisableStellarNovaCutIns;
 
         public bool DisableStarfarerVoices;
+
         [Increment(1)]
         [Range(3, 20)]
         [DefaultValue(5)]
@@ -79,6 +83,7 @@ namespace StarsAbove.Systems
         [Header("$Mods.StarsAbove.Configs.MiscHeader")]
         public bool EnableMusicOverride;
         public bool DisableBlur;
+        public bool DisableShockwaveEffect;
         public bool DisableScreenShake;
         //[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
         //[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
@@ -118,11 +123,18 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.disablePromptsBuffs = DisableStarfarerCommentaryBuffs;
             StarsAbovePlayer.disablePromptsCombat = DisableStarfarerCommentaryCombat;
             StarsAbovePlayer.starfarerPromptActiveTimerSetting = CommentaryTimer;
+
             StarsAbovePlayer.voicesDisabled = DisableStarfarerVoices;
+            SpatialDisk.voicesDisabled = DisableStarfarerVoices;
+            StarsAboveDialogueSystem.voicesDisabled = DisableStarfarerVoices;
+            StarfarerText.voicesDisabled = DisableStarfarerVoices;
+
+            StarsAbovePlayer.shockwaveEffectDisabled = DisableShockwaveEffect;
             StarsAbovePlayer.disableScreenShake = DisableScreenShake;
             StarsAbovePlayer.dialogueScrollTimerMax = DialogueScrollValue;
             StarsAbovePlayer.dialogueAudio = DialogueAudio;
             StarsAbovePlayer.disableBlur = DisableBlur;
+
 
             if (EnableMusicOverride)
             {

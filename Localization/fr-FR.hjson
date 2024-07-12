@@ -17259,6 +17259,16 @@ Mods: {
 					// Label: Starfarer Voice Cooldown
 					// Tooltip: The delay in seconds between voiced dialogue. Note that low values may cause dialogue to overlap, and voice dialogue only has a chance to play.
 				}
+
+				StarfarerDialogueVoiceVolume: {
+					// Label: Starfarer Dialogue Voice Volume
+					// Tooltip: ""
+				}
+
+				DisableShockwaveEffect: {
+					// Label: Disable Shockwave Effect
+					// Tooltip: ""
+				}
 			}
 
 			StarsAboveServersideConfig: {

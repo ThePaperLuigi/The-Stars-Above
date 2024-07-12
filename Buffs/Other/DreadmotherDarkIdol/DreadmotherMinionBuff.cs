@@ -21,6 +21,8 @@ namespace StarsAbove.Buffs.Other.DreadmotherDarkIdol
             if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.DreadmotherDarkIdol.DreadmotherFlyingMinion>()] > 0)
             {
                 modPlayer.dreadmotherMinion = true;
+                player.statDefense += (int)(player.maxMinions - player.slotsMinions);
+                player.GetDamage(DamageClass.Generic) += (int)(player.maxMinions - player.slotsMinions)/100;
             }
             if (!modPlayer.dreadmotherMinion)
             {

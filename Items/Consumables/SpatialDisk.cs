@@ -43,7 +43,9 @@ namespace StarsAbove.Items.Consumables
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
 			ItemID.Sets.SortingPriorityBossSpawns[Item.type] = 13; // This helps sort inventory know this is a boss summoning item.
 		}
-		int pingCooldown;
+        public static bool voicesDisabled;
+
+        int pingCooldown;
 		public override void SetDefaults()
 		{
 			Item.width = 20;
@@ -153,13 +155,13 @@ namespace StarsAbove.Items.Consumables
                 {
                     if (modPlayer.chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenuCombat0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenuCombat0);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.8", player.name);
                     }
                     if (modPlayer.chosenStarfarer == 2)//Eridani
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenuCombat0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenuCombat0);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.8", player.name);
                     }
@@ -169,13 +171,13 @@ namespace StarsAbove.Items.Consumables
 				{
 					if (modPlayer.chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu0);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.1");//1
 					}
 					if (modPlayer.chosenStarfarer == 2)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu0);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu0);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.1", player.name);
 					}
@@ -185,13 +187,13 @@ namespace StarsAbove.Items.Consumables
 				{
 					if (modPlayer.chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu1);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.2");
 					}
 					if (modPlayer.chosenStarfarer == 2)//Eridani
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu1);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu1);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.2", player.name);
 
@@ -202,13 +204,13 @@ namespace StarsAbove.Items.Consumables
 				{
 					if (modPlayer.chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu2);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu2);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.3");
 					}
 					if (modPlayer.chosenStarfarer == 2)//Eridani
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu3);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu3);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.4", player.name);
 					}
@@ -217,13 +219,13 @@ namespace StarsAbove.Items.Consumables
 				{
 					if (modPlayer.chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu3);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu3);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.4", player.name);
 					}
 					if (modPlayer.chosenStarfarer == 2)//Eridani
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu4);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu4);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.5", player.name);
 					}
@@ -232,14 +234,14 @@ namespace StarsAbove.Items.Consumables
 				{
 					if (modPlayer.chosenStarfarer == 1)
 					{
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu5);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu5);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.5", player.name);
 
                     }
 					if (modPlayer.chosenStarfarer == 2)//Eridani
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu5);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu5);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.6", player.name);
 					}
@@ -248,14 +250,14 @@ namespace StarsAbove.Items.Consumables
                 {
                     if (modPlayer.chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu4);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneMenu4);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Asphodene.6", player.name);
 
                     }
                     if (modPlayer.chosenStarfarer == 2)//Eridani
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu2);
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniMenu2);}
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.EnterStarfarerMenu.Eridani.3", player.name);
                     }
@@ -496,12 +498,12 @@ namespace StarsAbove.Items.Consumables
                     {
                         if (modPlayer.chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneIdle1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneIdle1);}
 
                         }
                         else if (modPlayer.chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniIdle0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniIdle0);}
 
                         }
                     }
@@ -509,12 +511,12 @@ namespace StarsAbove.Items.Consumables
                     {
                         if (modPlayer.chosenStarfarer == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneIdle0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneIdle0);}
 
                         }
                         else if (modPlayer.chosenStarfarer == 2)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniIdle1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniIdle1);}
 
                         }
                     }

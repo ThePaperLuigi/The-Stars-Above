@@ -17014,7 +17014,7 @@ Mods: {
 
 				DisableStarfarerVoices: {
 					// Label: Disable Starfarer voice lines
-					// Tooltip: Disables most of the Starfarer's voice lines. Some lines will still play. (CV: Kiera Rhodes)
+					// Tooltip: Disables the Starfarer's voice lines. (CV: Kiera Rhodes)
 				}
 
 				DisableStellarNovaDialogue: {
@@ -17100,6 +17100,16 @@ Mods: {
 				StarfarerVoiceCooldown: {
 					// Label: Starfarer Voice Cooldown
 					// Tooltip: The delay in seconds between voiced dialogue. Note that low values may cause dialogue to overlap, and voice dialogue only has a chance to play.
+				}
+
+				StarfarerDialogueVoiceVolume: {
+					// Label: Starfarer Dialogue Voice Volume
+					// Tooltip: ""
+				}
+
+				DisableShockwaveEffect: {
+					// Label: Disable Shockwave Effect
+					// Tooltip: ""
 				}
 			}
 

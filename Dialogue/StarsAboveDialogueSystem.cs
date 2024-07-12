@@ -15,6 +15,8 @@ namespace StarsAbove.Dialogue
 {
     public class StarsAboveDialogueSystem : ModSystem
     {
+        public static bool voicesDisabled;
+
         //Old dialogue system.
         public static void SetupDialogueSystem(bool writeToArchive, int chosenStarfarer, ref int chosenDialogue, ref bool dialoguePrep, ref int dialogueLeft, ref int expression, ref string dialogue, ref bool dialogueFinished, Player Player, Mod Mod)
         {
@@ -2592,12 +2594,12 @@ namespace StarsAbove.Dialogue
                             switch (randomVoice)
                             {
                                 case 0:
-                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueStart0);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueStart0);}
 
                                     break;
 
                                 case 1:
-                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueStart1);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueStart1);}
 
                                     break;
                             }
@@ -2616,18 +2618,18 @@ namespace StarsAbove.Dialogue
                                     switch (randomA)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry1);}
 
                                             break;
                                     }
                                     break;
                                 case 2:
-                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneWorried0);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneWorried0);}
 
                                     break;
 
@@ -2635,16 +2637,16 @@ namespace StarsAbove.Dialogue
                                     switch (randomB)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);}
 
                                             break;
                                         case 2:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);}
 
                                             break;
                                     }
@@ -2654,12 +2656,12 @@ namespace StarsAbove.Dialogue
                                     switch (randomA)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug1);}
 
                                             break;
                                     }
@@ -2669,12 +2671,12 @@ namespace StarsAbove.Dialogue
                                     switch (randomA)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy1);}
 
                                             break;
                                     }
@@ -2682,7 +2684,7 @@ namespace StarsAbove.Dialogue
 
                                 case 6:
 
-                                    SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDeadInside0);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDeadInside0);}
 
                                     break;
 
@@ -2712,12 +2714,12 @@ namespace StarsAbove.Dialogue
                             switch (randomVoice)
                             {
                                 case 0:
-                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueStart0);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueStart0);}
 
                                     break;
 
                                 case 1:
-                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueStart1);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueStart1);}
 
                                     break;
                             }
@@ -2736,18 +2738,18 @@ namespace StarsAbove.Dialogue
                                     switch (randomA)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry1);}
 
                                             break;
                                     }
                                     break;
                                 case 2:
-                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniWorried0);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniWorried0);}
 
                                     break;
 
@@ -2755,16 +2757,16 @@ namespace StarsAbove.Dialogue
                                     switch (randomB)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);}
 
                                             break;
                                         case 2:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);}
 
                                             break;
                                     }
@@ -2774,12 +2776,12 @@ namespace StarsAbove.Dialogue
                                     switch (randomA)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug1);}
 
                                             break;
                                     }
@@ -2789,12 +2791,12 @@ namespace StarsAbove.Dialogue
                                     switch (randomA)
                                     {
                                         case 0:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy0);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy0);}
 
                                             break;
 
                                         case 1:
-                                            SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy1);
+                                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy1);}
 
                                             break;
                                     }
@@ -2802,7 +2804,7 @@ namespace StarsAbove.Dialogue
 
                                 case 6:
 
-                                    SoundEngine.PlaySound(StarsAboveAudio.EridaniDeadInside0);
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniDeadInside0);}
 
                                     break;
 
@@ -2836,23 +2838,23 @@ namespace StarsAbove.Dialogue
                     switch (randomVoiceLine)
                     {
                         case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock0);}
 
                             break;
                         case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock1);}
 
                             break;
                         case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock2);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock2);}
 
                             break;
                         case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock3);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock3);}
 
                             break;
                         case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock4);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneNewUnlock4);}
 
                             break;
 
@@ -2876,23 +2878,23 @@ namespace StarsAbove.Dialogue
                     switch (randomVoiceLine)
                     {
                         case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock0);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock0);}
 
                             break;
                         case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock1);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock1);}
 
                             break;
                         case 2:
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock2);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock2);}
 
                             break;
                         case 3:
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock3);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock3);}
 
                             break;
                         case 4:
-                            SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock4);
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniNewUnlock4);}
 
                             break;
 
