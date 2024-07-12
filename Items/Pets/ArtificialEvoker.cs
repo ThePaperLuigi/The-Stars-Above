@@ -30,16 +30,15 @@ namespace StarsAbove.Items.Pets
 			Item.value = Item.sellPrice(0, 0, 10, 0);
 			Item.buffType = BuffType<Buffs.Pets.AigisPetBuff>();
 		}
-		public override void AddRecipes()
-		{
-			CreateRecipe(1)
-				.AddIngredient(ItemType<Materials.NeonTelemetry>(), 100)
-				.AddIngredient(ItemType<Materials.StellarRemnant>(), 3)
+        public override void AddRecipes()
+        {
+            CreateRecipe(1)
+                .AddIngredient(ItemType<Materials.NeonTelemetry>(), 50)
                 .AddCustomShimmerResult(ItemType<Materials.NeonTelemetry>(), 3)
                 .AddTile(TileID.Anvils)
-				.Register();
-		}
-		public override void UseStyle(Player player, Rectangle heldItemFrame) {
+                .Register();
+        }
+        public override void UseStyle(Player player, Rectangle heldItemFrame) {
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0) {
 				player.AddBuff(Item.buffType, 3600, true);
 			}

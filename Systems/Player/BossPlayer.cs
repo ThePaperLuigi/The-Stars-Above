@@ -200,6 +200,11 @@ namespace StarsAbove.Systems
                     if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].target == Main.myPlayer)
                     {
                         hasBossAggro = 10;
+                        if (Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
+
+                        }
                     }
 
                 }
@@ -208,11 +213,7 @@ namespace StarsAbove.Systems
 
             hasBossAggro--;
             hasBossAggro = Math.Clamp(hasBossAggro, 0, 10);
-            if (hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
-            {
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
-
-            }
+            
 
             if (NPC.AnyNPCs(NPCType<VagrantBoss>())
                 || NPC.AnyNPCs(NPCType<PolluxBoss>())
@@ -256,30 +257,34 @@ namespace StarsAbove.Systems
             }
             if (perfectBossTimer > 60 * 1 && !isAnyBossActive)
             {
-                if (!hitDuringBoss && Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                if(Player.active && !Player.dead)
                 {
-                    Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
-                    Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyPerfect");
-                }
-                else
-                {
-                    Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
-
-
-                    if(Player.statLife < (Player.statLifeMax2 * 0.2))
+                    if (!hitDuringBoss && Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                     {
-                        
-                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyLowHP");
-
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyPerfect");
                     }
                     else
                     {
-                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemy");
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
+
+
+                        if (Player.statLife < (Player.statLifeMax2 * 0.2))
+                        {
+
+                            Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyLowHP");
+
+                        }
+                        else
+                        {
+                            Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemy");
+
+                        }
+
 
                     }
-
-
                 }
+                
                 perfectBossTimer = 0;
 
                 hitDuringBoss = false;

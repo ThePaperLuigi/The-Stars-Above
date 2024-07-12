@@ -35,8 +35,9 @@ namespace StarsAbove.UI.Starfarers
 		private Vector2 offset;
 		public bool dragging = false;
 		public static bool Draggable;
+        static public float AdjustmentFactor = 1.5f;
 
-		private UIElement face;
+        private UIElement face;
 		public override void OnInitialize() {
 			
 
@@ -569,7 +570,7 @@ namespace StarsAbove.UI.Starfarers
 
             // The factor which determines the speed of rectangle movement relative to player velocity.
             // This can be adjusted based on how responsive you want the movement to be.
-            float factor = 1.5f;
+            float factor = AdjustmentFactor;
 
             // Modify the position based on the player's X and Y velocity
             float newX = startX - playerVelocityX * factor;

@@ -71,6 +71,11 @@ namespace StarsAbove.Systems.WorldGeneration
             var offsetDims = Point16.Zero;
             int neonVeilSize = 0;
             int offsetX = 0;
+
+            if (Main.specialSeedWorld)
+            {
+                offsetX = (Main.maxTilesX / 10);
+            }
             //Create a list of all the structures that can be added. This doesn't include the entrance and exits. This list does not change at any time.
             List<string> neonVeilStructures = new List<string>() {
                 "NeonVeilBuilding1",

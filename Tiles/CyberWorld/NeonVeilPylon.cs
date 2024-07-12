@@ -70,18 +70,7 @@ namespace StarsAbove.Tiles.CyberWorld
 			
 		}
 
-		public override NPCShop.Entry GetNPCShopEntry() {
-			// return a new NPCShop.Entry with the desired conditions for sale.
-
-			// As an example, if we want to sell the pylon if we're in the example surface, or example underground, when there is another NPC nearby.
-			// Lets assume we don't care about happiness or crimson or corruption, so we won't include those conditions
-			// This does not affect the teleport conditions, only the sale conditions
-			return new NPCShop.Entry(ModContent.ItemType<NeonVeilPylonItem>(), Condition.AnotherTownNPCNearby, Condition.HappyEnoughToSellPylons, ModConditions.InNeonVeil);
-
-			// Other standard pylon conditions are:
-			// Condition.HappyEnoughToSellPylons
-			// Condition.NotInEvilBiome
-		}
+		
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {

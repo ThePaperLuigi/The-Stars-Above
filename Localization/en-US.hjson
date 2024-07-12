@@ -4799,7 +4799,7 @@ Mods: {
 							2: You know, you'd think with the Essences and all, we'd have a better track record!
 							3: ...
 							4: Hey, wouldn't it be crazy if-
-							5: No, that doesn't make sense. We can use the Array and Novas, right?
+							5: No, that doesn't make sense. We can use the Array and Novas, right? We even got a cool new one from the Veil's energy!
 							6: Maybe there's something else we're overlooking. We could be cursed! I'd ask Perseus directly, but you know how he is. Jerk.
 							7: Anyways, thanks again for our little sparring match. If you want another go, just give us the signal.
 							8: Right... it's like she likes getting blown up or something.
@@ -4953,7 +4953,47 @@ Mods: {
 					}
 
 					32: {
-						Dialogue.0: Well, I must begin my investigation on these Prisms. If anything comes up, I'll let you know.
+						Dialogue.0: Well, I must begin my investigation on these Prisms. If anything comes up, I'll let you know. Why not ask that lupine girl if she has something she requires?
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					33: {
+						Dialogue: {
+							0: Here you go. I do realize this is sudden, however I'd have you try out one of my inventions. It's a 'gift' in the sense that I ask naught in return... so my past point was moot.
+							1: If you do require more, I shall take around 1,000 hardlight in return. I've been made aware that you're looking into it from Andyer, and it may also prove useful to me yet.
+							2: What was that? "This is just a gun?" No, no, no- I assure you, it requires a main-hand weapon to function. That in itself does put it into another category.
+						}
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					34: {
+						Dialogue.0: Would you like another one of my gadgets? Remember, it shall cost you 1,000 hardlight.
+
+						Choices: {
+							1: Yes, please.
+							2: No, thanks.
+						}
+					}
+
+					35: {
+						Dialogue.0: Here you are. Do be careful with it, it'll be 3 minutes of delicate and difficult handicraft for another.
+
+						Choices: {
+							1: X
+							2: X
+						}
+					}
+
+					36: {
+						Dialogue.0: No worries, I shall remain here at present.
 
 						Choices: {
 							1: X
@@ -5809,6 +5849,7 @@ Mods: {
 				CritChance: Crit Rate
 				CritDamage: Crit Damage
 				EnergyCost: Energy Cost
+				EnergyCostMin: Energy Cost (Maxed)
 				BaseHealStrength: Base Heal Strength
 				HealStrength: Heal Strength
 				CritHealStrength: Crit Heal Strength
@@ -5887,7 +5928,7 @@ Mods: {
 				AuricExalt: {
 					Name: Exalted Resonance
 					SetBonus1: After using the Nova, gain Exalted, buffing stats by 4%; Cap is 3
-					SetBonus2: Exalted stacks reduce Energy Cost at  a 2:1 ratio
+					SetBonus2: Exalted stacks reduce Energy Cost at a 2:1 ratio
 					SetBonus3: Exalted cap becomes 6
 					FlavorTooltip: The vaunted Exalted were the empire's bravest soldiers
 				}
@@ -5911,7 +5952,7 @@ Mods: {
 				BloodyBanquet: {
 					Name: Feast and Famine
 					SetBonus1: The Nova charges by 1% for every foe killed by the Nova
-					SetBonus2: Killing foes with the Nova increase the duration of Nova buffs by 2 seconds
+					SetBonus2: Killing foes with the Nova increase Nova buff durations by 2 seconds
 					SetBonus3: Killing foes with the Nova heals 2 HP
 					FlavorTooltip: Blood for blood, a creed shared by the rimworlds in the third region
 				}
@@ -6009,6 +6050,7 @@ Mods: {
 			HardlightMonitor: "[c/F19559:Current Hardlight:] [c/DAEFDA:{0}/25000] [c/F19559:- 100 needed per exchange]"
 			HardlightAcquired: +{0} Hardlight
 			HardlightNotEnough: The conflux fails to respond- you need {0} more Hardlight to exchange
+			HardlightNotEnoughGarridine: You don't have enough Hardlight for Garridine's gadget, so she didn't bring it up...
 		}
 
 		DamageClass.CelestialDamageClass: celestial damage
@@ -6711,15 +6753,15 @@ Mods: {
 						[c/FFA700:Archetype Alignment]
 						This attire has variant abilities based on chosen Aspect
 						[c/8EEF69:Edgerunner]
-						Your Stellar Nova no longer charges over time; instead, dealing and taking damage will grant Stellar Nova Energy
+						Your Stellar Nova no longer charges over time; instead, dealing and taking damage will grant Stellar Nova Energy (Short cooldown per charge)
+						Can not gain Nova energy outside of combat
 						[c/BB83FF:Hadron Engine]
 						After activation of the Stellar Nova, gain [c/F3EF67:Quark Drive] for 5 seconds
 						[c/F3EF67:Quark Drive] negates ammo costs and Mana Sickness while active
 						Duration of [c/F3EF67:Quark Drive] increases based on 5% of the Stellar Nova's Energy Cost
 						[c/83A3DB:Charge Cycle]
-						Stellar Nova Energy charge is reversed, draining over time in combat
 						Health regeneration is disabled in combat
-						[c/F3EF67:Quark Drive] negates these effect while active and provides bonus health regeneration
+						[c/F3EF67:Quark Drive] negates this effect while active and provides bonus health regeneration
 						'Never fade away'
 						'''
 				}
@@ -12173,7 +12215,7 @@ Mods: {
 					Foes inflicted with [c/62C29B:Necrosis] have their attack and defense reduced by 15%
 					Starlight has a 10% increased chance to drop when defeating foes, which can be picked up to restore 5 Stellar Nova Energy
 					Gain Swiftness, Ironskin, and Heartreach when the Stellar Nova Gauge is filled
-					Defeating foes with this weapon charges the Stellar Nova by 2 energy and grants [c/8662C2:Cursewrought] for 7 seconds					
+					Defeating foes with this weapon charges the Stellar Nova by 2 energy and grants [c/8662C2:Cursewrought] for 7 seconds
 					[c/8662C2:Cursewrought] increases attack speed by 20%, critical strike chance by 20%, and damage dealt against foes with [c/62C29B:Necrosis] by 20%
 					Defeating foes while under the effect of [c/8662C2:Cursewrought] refreshes the buff, heals 10 HP, and charges the Stellar Nova by an additional 2 energy
 					'''
@@ -12961,6 +13003,17 @@ Mods: {
 			DebugRoyalSunriseConflux: {
 				DisplayName: Debug Royal Sunrise Conflux
 				Tooltip: ""
+			}
+
+			GarridineGadget: {
+				DisplayName: Garridine's Prototype Handcannon
+				Tooltip:
+					'''
+					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
+					Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
+					'''
+				TooltipAttached: Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
 			}
 		}
 
@@ -14050,6 +14103,8 @@ Mods: {
 			PhasmasaberRangedOrbital.DisplayName: Phasmasaber Ranged Orbital
 			PhasmasaberMeleeExplosion.DisplayName: Phasmasaber Melee Explosion
 			PhasmasaberHorizontalSlash.DisplayName: Phasmasaber Horizontal Slash
+			GarridineGadgetGun.DisplayName: Garridine Gadget Gun
+			GarridineGadgetRound.DisplayName: Garridine Gadget Round
 		}
 
 		Buffs: {
@@ -14235,13 +14290,7 @@ Mods: {
 
 			PowerStrikeBuff: {
 				DisplayName: Power Strike
-				Description:
-					'''
-					{0}/5 stacks
-					Damage increased by {1}%
-					Defense increased by {2}
-					'Do you hear the roar of this chainsaw?'
-					'''
+				Description: ""
 			}
 
 			BloodOfTheDragon: {
@@ -16940,6 +16989,11 @@ Mods: {
 				DisplayName: Trailblaze Buff
 				Description: Mods.StarsAbove.Buffs.TrailblazeBuff.Description
 			}
+
+			GarridineGadgetCooldown: {
+				DisplayName: Garridine Gadget Cooldown
+				Description: Mods.StarsAbove.Buffs.GarridineGadgetCooldown.Description
+			}
 		}
 
 		Bestiary: {
@@ -17082,7 +17136,7 @@ Mods: {
 			IncarnationDamageClass.DisplayName: incarnated damage
 			PsychomentDamageClass.DisplayName: psychoment damage
 			ArkheDamageClass.DisplayName: arkhe damage
-			ChionicDamageClass.DisplayName: Chionic Damage Class
+			ChionicDamageClass.DisplayName: chionic damage
 		}
 
 		Keybinds: {

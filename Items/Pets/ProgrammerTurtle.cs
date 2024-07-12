@@ -35,8 +35,7 @@ namespace StarsAbove.Items.Pets
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ItemType<Materials.NeonTelemetry>(), 100)
-                .AddIngredient(ItemType<Materials.StellarRemnant>(), 3)
+                .AddIngredient(ItemType<Materials.NeonTelemetry>(), 50)
                 .AddCustomShimmerResult(ItemType<Materials.NeonTelemetry>(), 3)
                 .AddTile(TileID.Anvils)
                 .Register();

@@ -26,7 +26,8 @@ A brief overview of the mod's features:
     [*]Ability to explore unique premade locations throughout the galaxy with help from Subworld Library
     [*]24 custom unlockable passive abilities present in a unique weight-based system
     [*]80+ special unique weapons that have malleable damage types, alternate abilities, charged attacks, etc.
-    [*]9 unique bosses each with their own special cast-centric AI (some with pre-rendered cutscenes)
+    [*]Unique pre-rendered cutscenes for certain events and abilities
+    [*]9 unique bosses each with their own special cast-centric AI
     [*]Plenty of pets, accessories, and utility items
     [*]Settings to tailor the mod's content to your liking
     [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods (sometimes with unique dialogue)
@@ -41,6 +42,7 @@ A brief overview of the mod's features:
 
 The Stars Above's flagship feature: Meet Asphodene and Eridani, masters of Astral and Umbral respectively.
 Empowered by their strength and led by their guidance, you will be able to challenge any foe Terraria has to offer. These charismatic deuteragonists boast tons of unique dialogue for bosses, biomes, and more. (However, if you don't care for it, most dialogue can be disabled in the Mod Settings!)
+As of v2.1, enjoy over 100+ voice lines by Kiera Rhodes, giving life to the Starfarer's conversations!
 
 [img]https://i.imgur.com/X17qv7R.png[/img]
 
@@ -80,6 +82,14 @@ Face off against the Vagrant of Space and Time, Penthesilea, the Witch of Ink, t
 A new system added in The Stars Above v2.0, Weapon Memories are unique items obtained throughout game progression that can be slotted into Aspected Weapons. Give weapons Summon Tag Damage, gain buffs when killing foes, cause lightning to strike from your attacks, gain active abilities to change the tide of battle, and much more!
 
 [img]https://i.imgur.com/BEnNDqm.png[/img]
+
+[img]https://i.imgur.com/Z8XXAsH.png[/img]
+
+[h1]THE NEON VEIL[/h1]
+
+Explore a brand new biome in the Underworld complete with new unique loot, armor, and foes. The shining towers of the Neon Veil provide an incredibly unique new environment to explore- and a way to upgrade your Stellar Novas with unique set bonuses for even more buildcraft potential.
+
+[img]https://i.imgur.com/X17qv7R.png[/img]
 
 [img]https://i.imgur.com/r4JTPlO.png[/img]
 

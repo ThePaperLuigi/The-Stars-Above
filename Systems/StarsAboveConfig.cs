@@ -107,6 +107,8 @@ namespace StarsAbove.Systems
             UI.StellarNova.StellarNovaCutIn.Visible = DisableStellarNovaCutIns;
             UI.StellarNova.StellarNovaCutIn.disableDialogue = DisableStellarNovaDialogue;
             UI.StarfarerMenu.StarfarerMenu.AdjustmentFactor = MovingDialogueAmount;
+            UI.Starfarers.StarfarerText.AdjustmentFactor = MovingDialogueAmount;
+
             //StarsAbovePlayer.noLockedCamera = DisableLockedCamera;
             StarsAbovePlayer.disablePrompts = DisableStarfarerCommentary;
             StarsAbovePlayer.starfarerPromptCooldownMax = StarfarerPromptCooldown;

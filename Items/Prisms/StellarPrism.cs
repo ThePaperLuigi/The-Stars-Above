@@ -111,9 +111,19 @@ namespace StarsAbove.Items.Prisms
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Vector2 spriteSize = frame.Size() * scale;
-
+            
             Color useColor = rarityColor;
-            if(Item.rare != ModContent.RarityType<StellarRarity>())
+            if (rarityValue <= 11)
+            {
+                Item.rare = rarityValue;
+
+            }
+            else
+            {
+                Item.rare = ModContent.GetInstance<StellarRarity>().Type;
+
+            }
+            if (Item.rare != ModContent.RarityType<StellarRarity>())
             {
                 switch (Item.rare)
                 {
@@ -374,6 +384,7 @@ namespace StarsAbove.Items.Prisms
             globalItem.EnergyCost = EnergyCost;
             globalItem.EffectDuration = EffectDuration;
             globalItem.MajorSetBonus = SetBonus;
+            isGenerated = true;
 
         }
         public enum Stat
@@ -556,7 +567,7 @@ namespace StarsAbove.Items.Prisms
                 tag["ExtraSetBonusDescription"] = ExtraSetBonusDescription;
 
             }
-            tag["rarity"] = Item.rare;
+            tag["rarity"] = rarityValue;
             tag["isGenerated"] = isGenerated;
 
         }
@@ -574,7 +585,12 @@ namespace StarsAbove.Items.Prisms
             ExtraSetBonusDescription = tag.GetString("ExtraSetBonusDescription");
 
             mainStat = tag.GetInt("mainStat");
-            Item.rare = tag.GetInt("rarity");
+
+            rarityValue = tag.GetInt("rarity");
+            if (rarityValue == 0)
+            {
+                rarityValue = Item.rare;
+            }
             isGenerated = tag.GetBool("isGenerated");
 
         }

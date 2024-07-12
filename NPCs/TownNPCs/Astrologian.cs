@@ -218,6 +218,9 @@ namespace StarsAbove.NPCs.TownNPCs
                     player.HasItemInAnyInventory(ModContent.ItemType<RuinedCrown>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<Trumpet>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<Pawn>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<BlackLightbulb>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<Aeonseal>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<GarridineGadget>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<MonsterTooth>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<NetheriteBar>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<MercenaryAuracite>()) ||

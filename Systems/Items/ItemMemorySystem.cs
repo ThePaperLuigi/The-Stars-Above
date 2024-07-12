@@ -44,6 +44,7 @@ using static Humanizer.In;
 using StarsAbove.Systems;
 using Terraria.GameContent.Drawing;
 using Terraria.GameContent.UI.Elements;
+using StarsAbove.Projectiles.Ranged.Huckleberry;
 
 namespace StarsAbove.Systems.Items
 {
@@ -59,7 +60,12 @@ namespace StarsAbove.Systems.Items
         public int itemMemorySlot2;
         public int itemMemorySlot3;
 
-        public List<int> legendaryShieldMemories;
+        
+
+        public List<int> legendaryShieldMemories = new List<int>()
+        {
+            
+        };
 
         public bool isMemory = false;
 
@@ -109,9 +115,7 @@ namespace StarsAbove.Systems.Items
         public int tarotCardType = -1;
 
         //Garridine's Protocores
-        public bool ProtocoreMonoclaw;//201
-        public bool ProtocoreManacoil;//202
-        public bool ProtocoreShockrod;//203
+        public bool GarridineGadget;//201
 
         //Sigils
         public bool RangedSigil;//301
@@ -342,11 +346,19 @@ namespace StarsAbove.Systems.Items
             //Special code for the Legendary Shield's ability to eat all memories
             if(item.type == ModContent.ItemType<LegendaryShield>())
             {
-                for(int i = 0; i < legendaryShieldMemories.Count; i++)
+                if(legendaryShieldMemories == null)
                 {
-                    CheckMemories(item, legendaryShieldMemories[i], player);
 
                 }
+                else
+                {
+                    for (int i = 0; i < legendaryShieldMemories.Count; i++)
+                    {
+                        CheckMemories(item, legendaryShieldMemories[i], player);
+
+                    }
+                }
+                
             }
             //All effects are processed at the end just in case some weapons have 'buff other effect' effects
             BuffMemories(player, item);
@@ -428,13 +440,14 @@ namespace StarsAbove.Systems.Items
             modPlayer.OutbackWrangler = OutbackWrangler;
             modPlayer.LonelyBand = LonelyBand;
             modPlayer.StrangeScrap = StrangeScrap;
+
+            modPlayer.BlackLightbulb = BlackLightbulb;//30
+
             //Each weapon has a random tarot card effect assigned.
             modPlayer.TarotCard = TarotCard;//100
 
             //Garridine's Protocores
-            modPlayer.ProtocoreMonoclaw = ProtocoreMonoclaw;//201
-            modPlayer.ProtocoreManacoil = ProtocoreManacoil;//202
-            modPlayer.ProtocoreShockrod = ProtocoreShockrod;//203
+            modPlayer.GarridineGadget = GarridineGadget;//201
 
             //Sigils
             modPlayer.RangedSigil = RangedSigil;//301
@@ -765,13 +778,14 @@ namespace StarsAbove.Systems.Items
             LonelyBand = false;
             StrangeScrap = false;
 
+            BlackLightbulb = false;//30
+
+
             //Each weapon has a random tarot card effect assigned.
             TarotCard = false;//100
 
             //Garridine's Protocores
-            ProtocoreMonoclaw = false;//201
-            ProtocoreManacoil = false;//202
-            ProtocoreShockrod = false;//203
+            GarridineGadget = false;//201
 
             //Sigils
             RangedSigil = false;//301
@@ -868,6 +882,7 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 41, "StrangeScrap", ref StrangeScrap, item, player);
 
             //SetMemory(slot, 42, "Aeonseal", ref Aeonseal, item, player);
+            SetMemory(slot, 43, "GarridineGadget", ref GarridineGadget, item, player);
 
 
             SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
@@ -1185,14 +1200,14 @@ namespace StarsAbove.Systems.Items
         public bool LonelyBand;//
         public bool StrangeScrap;//
 
+        public bool GarridineGadget;//30
+
+
         //Each weapon has a random tarot card effect assigned.
         public bool TarotCard;//100
         public int tarotCardType = 0;
 
         //Garridine's Protocores
-        public bool ProtocoreMonoclaw;//201
-        public bool ProtocoreManacoil;//202
-        public bool ProtocoreShockrod;//203
 
         //Sigils
         public bool RangedSigil;//301
@@ -1229,7 +1244,7 @@ namespace StarsAbove.Systems.Items
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
+            if (Player.active && !Player.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
             {
                 if (SimulacraShifter && !Player.HasBuff(BuffType<SimulacraShifterCooldown>()))
                 {
@@ -1393,7 +1408,15 @@ namespace StarsAbove.Systems.Items
                         Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
                     }
                 }
+                if (GarridineGadget && !Player.HasBuff(BuffType<GarridineGadgetCooldown>()))
+                {
+                    Player.AddBuff(BuffType<GarridineGadgetCooldown>(), 120);
+                    Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<GarridineGadgetGun>(), 0, 0, Player.whoAmI);
+                    SoundEngine.PlaySound(SoundID.Item11);
+                    Vector2 target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+                    Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center.X, Player.Center.Y, target.X, target.Y, ProjectileType<GarridineGadgetRound>(), Player.GetWeaponDamage(Player.HeldItem), 0, Player.whoAmI);
 
+                }
             }
             base.ProcessTriggers(triggersSet);
         }
@@ -1779,10 +1802,9 @@ namespace StarsAbove.Systems.Items
             //Each weapon has a random tarot card effect assigned.
             TarotCard = false;//100
 
-            //Garridine's Protocores
-            ProtocoreMonoclaw = false;//201
-            ProtocoreManacoil = false;//202
-            ProtocoreShockrod = false;//203
+            //Garridine
+            GarridineGadget = false;
+
 
             //Sigils
             RangedSigil = false;//301

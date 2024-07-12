@@ -23,7 +23,10 @@ namespace StarsAbove.Buffs.StellarNovas
                 player.GetModPlayer<StarsAbovePlayer>().novaGauge = 0;
             }
         }
-
+        public override bool RightClick(int buffIndex)
+        {
+            return false;
+        }
         public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
         {
 

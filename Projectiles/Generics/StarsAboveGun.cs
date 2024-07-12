@@ -34,6 +34,7 @@ namespace StarsAbove.Projectiles.Generics
         public abstract int ScreenShakeTime { get; }
         public virtual float ScaleModifier { get; } = 1f;
         public virtual float RecoilStrength { get; } = 30f;
+        public virtual bool UseOffHand { get; } = false;
 
         Vector2 MuzzlePosition;
 
@@ -344,10 +345,13 @@ namespace StarsAbove.Projectiles.Generics
         }
         private void RotateArms(Player projOwner)
         {
-            projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
+            if (!UseOffHand)
+            {
+                projOwner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
                             new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))
                             ).ToRotation() + MathHelper.PiOver2);
-            Projectile.alpha -= 90;
+                Projectile.alpha -= 90;
+            }
 
             projOwner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, (projOwner.Center -
                 new Vector2(Projectile.Center.X + (projOwner.velocity.X * 0.05f), Projectile.Center.Y + (projOwner.velocity.Y * 0.05f))

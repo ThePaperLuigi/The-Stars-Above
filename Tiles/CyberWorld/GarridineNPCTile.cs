@@ -14,6 +14,8 @@ using StarsAbove.Items.Placeable.CyberWorld;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Items.Materials;
 using StarsAbove.Items.Consumables.CyberWorld;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
+using StarsAbove.Items.Memories;
 
 namespace StarsAbove.Tiles.CyberWorld
 {
@@ -165,8 +167,34 @@ namespace StarsAbove.Tiles.CyberWorld
                 }
                 else
                 {
-                    player.sceneID = 27;
-                    StartVNDialogue(player);
+                    if(player.andyerQuestProgress == 4)
+                    {
+                        player.sceneID = 33;
+                        Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<GarridineGadget>());
+
+                        StartVNDialogue(player);
+                        player.andyerQuestProgress++;
+                        return;
+
+                    }
+                    else if(player.andyerQuestProgress >= 5)
+                    {
+                        if(player.hardlight >= 1000)
+                        {
+                            player.sceneID = 34;
+                            StartVNDialogue(player);
+                            return;
+                        }
+                        else
+                        {
+                            Main.NewText(LangHelper.GetTextValue("Common.HardlightNotEnoughGarridine"));
+                            player.sceneID = 27;
+                            StartVNDialogue(player);
+                        }
+                       
+
+                    }
+                    
                 }
                 
             }

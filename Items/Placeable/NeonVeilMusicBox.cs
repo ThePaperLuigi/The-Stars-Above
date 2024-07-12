@@ -37,7 +37,7 @@ namespace StarsAbove.Items.Placeable
 		{
 			CreateRecipe(1)
 				.AddIngredient(ModContent.ItemType<Materials.NeonTelemetry>(), 20)
-				.AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+				.AddCustomShimmerResult(ModContent.ItemType<Materials.NeonTelemetry>(), 3)
 				.AddTile(Terraria.ID.TileID.Anvils)
 				.Register();
 		}

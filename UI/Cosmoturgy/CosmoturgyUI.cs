@@ -137,7 +137,7 @@ namespace StarsAbove.UI.Cosmoturgy
 				MaxWidth = { Pixels = 70 },
 				MaxHeight = { Pixels = 70 },
 
-				ValidItemFunc = item => (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0) || item.IsAir, //Only weapons from this mod in this slot
+				ValidItemFunc = item => (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && (item.damage > 0 || item.type == ItemType<LegendaryShield>())) || item.IsAir, //Only weapons from this mod in this slot
 				IgnoresMouseInteraction = false
 			};
 			_weaponSlot.OnMouseOver += SpecialAffixHover;
@@ -398,6 +398,7 @@ namespace StarsAbove.UI.Cosmoturgy
             {ItemType<LonelyBand>(), 40 },
             {ItemType<StrangeScrap>(), 41 },
             {ItemType<Aeonseal>(), 42 },
+            {ItemType<GarridineGadget>(), 43 },
 
             {ItemType<TarotCard>(), 100 },
 
