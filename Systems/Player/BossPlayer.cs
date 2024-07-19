@@ -106,6 +106,7 @@ namespace StarsAbove.Systems
         int perfectBossTimer;
         bool hitDuringBoss = false;
 
+        bool inCombatWithBossLowHP;
         public override void OnHurt(Player.HurtInfo info)
         {
             for (int k = 0; k < Main.maxNPCs; k++)
@@ -131,6 +132,7 @@ namespace StarsAbove.Systems
         }
         public override void PreUpdate()
         {
+            inCombatWithBoss--;
             if (QTEActive)
             {
                 if (StarsAbove.novaKey.JustPressed)
@@ -257,7 +259,7 @@ namespace StarsAbove.Systems
             }
             if (perfectBossTimer > 60 * 1 && !isAnyBossActive)
             {
-                if(Player.active && !Player.dead)
+                if(Player.active && !Player.dead && inCombatWithBoss > 0 && inCombatWithBossLowHP)
                 {
                     if (!hitDuringBoss && Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
                     {
@@ -439,6 +441,7 @@ namespace StarsAbove.Systems
 
         public override void ResetEffects()
         {
+            inCombatWithBossLowHP = false;
             QTEActive = false;
 
             CastTime = 0;
@@ -769,6 +772,7 @@ namespace StarsAbove.Systems
 
             }
         }
+        public int inCombatWithBoss;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (bossReductionMod > 0)
@@ -783,6 +787,14 @@ namespace StarsAbove.Systems
                 stress *= decayRate;
                 damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
 
+            }
+            if(target.boss)
+            {
+                inCombatWithBoss = 120;
+                if(target.life < (int)(target.lifeMax * 0.1))
+                {
+                    inCombatWithBossLowHP = true;
+                }
             }
         }
         private void WarriorTeleport(NPC npc)

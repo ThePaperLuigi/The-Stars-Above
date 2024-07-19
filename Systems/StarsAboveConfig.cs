@@ -81,10 +81,13 @@ namespace StarsAbove.Systems
 
 
         [Header("$Mods.StarsAbove.Configs.MiscHeader")]
+        public bool ForceNeonVeilShader;
+
         public bool EnableMusicOverride;
         public bool DisableBlur;
         public bool DisableShockwaveEffect;
         public bool DisableScreenShake;
+
         //[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
         //[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
         //public bool EnablePlayerWorldLock;
@@ -128,6 +131,9 @@ namespace StarsAbove.Systems
             SpatialDisk.voicesDisabled = DisableStarfarerVoices;
             StarsAboveDialogueSystem.voicesDisabled = DisableStarfarerVoices;
             StarfarerText.voicesDisabled = DisableStarfarerVoices;
+            UI.StarfarerMenu.StarfarerMenu.voicesDisabled = DisableStarfarerVoices;
+
+            StarsAbovePlayer.ForceNeonVeilShader = ForceNeonVeilShader;
 
             StarsAbovePlayer.shockwaveEffectDisabled = DisableShockwaveEffect;
             StarsAbovePlayer.disableScreenShake = DisableScreenShake;

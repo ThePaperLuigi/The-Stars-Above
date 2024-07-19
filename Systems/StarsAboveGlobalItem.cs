@@ -991,7 +991,7 @@ namespace StarsAbove.Systems
             }
             if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
             {
-                if ((item.ModItem is Phasmasaber) && !disableAspectPenalty) //Ranged weapons
+                if ((item.ModItem is Phasmasaber || item.ModItem is Wolvesbane || item.ModItem is WolvesbaneAwakened || item.ModItem is WolvesbaneRearmed) && !disableAspectPenalty) //Ranged weapons
                 {
                     damage += 0.1f;
                 }

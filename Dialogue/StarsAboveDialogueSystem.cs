@@ -1326,7 +1326,7 @@ namespace StarsAbove.Dialogue
                 }
 
                 string category = "WeaponDialogue";
-                string key = category + "." + "Hullwrought" + "." + starfarerName + ".";
+                string key = category + "." + "ShadowlessCerulean" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
 
             }//Shadowless Cerulean 20

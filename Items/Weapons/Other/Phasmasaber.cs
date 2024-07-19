@@ -140,7 +140,7 @@ namespace StarsAbove.Items.Weapons.Other
 
                     }
                     player.AddBuff(BuffType<SpectralIllusionBuff>(), 60 * 12);
-                    //player.AddBuff(BuffType<SpectralIllusionCooldown>(), 60 * 60);
+                    player.AddBuff(BuffType<SpectralIllusionCooldown>(), 60 * 60);
 
                 }
             }

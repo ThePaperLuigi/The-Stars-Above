@@ -91,7 +91,7 @@ namespace StarsAbove.Items.Weapons.Other
             //player.AddBuff(BuffType<FarewellCooldown>(), 28800);
 
             //Toss the plush into the air, and it disappears in a sparkle. Mark your cursor location with a pulsing orb and draw a line from the sky projectile (where the train will come from) to that location
-            if (Main.netMode != NetmodeID.MultiplayerClient)
+            if (player.whoAmI == Main.myPlayer)
             {
                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, -5, ProjectileType<ExpresswayPlushActive>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<ExpresswayTarget>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);

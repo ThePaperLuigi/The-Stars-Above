@@ -216,7 +216,7 @@ namespace StarsAbove.Systems.Items
         }
         public override bool? UseItem(Item item, Player player)
         {
-            if(ChoiceGlasses && !player.HasBuff(BuffType<ChoiceGlassesLock>()))
+            if(ChoiceGlasses && !player.HasBuff(BuffType<ChoiceGlassesLock>()) && player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
             {
                 player.AddBuff(BuffType<ChoiceGlassesLock>(), 60 * 60);
                 HeldWeaponTypeChoice = item.type;

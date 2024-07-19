@@ -12644,7 +12644,7 @@ Mods: {
 			}
 
 			HologramPlinthBigTree: {
-				// DisplayName: Hologram Plinth Big Tree
+				// DisplayName: Hologram Plinth (Big Tree)
 				// Tooltip: ""
 			}
 
@@ -12733,7 +12733,7 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					Grants a unique Path when Imprinted, providing bonus on-hit effects
-					(Path is assigned upon character creation and can not be changed)
+					Path is assigned upon character creation and can not be changed
 					''' */
 
 				TooltipAttached: {
@@ -13009,6 +13009,11 @@ Mods: {
 					Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
 					''' */
 				// TooltipAttached: Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
+			}
+
+			ThespianTrophyItem: {
+				// DisplayName: Thespian Trophy Item
+				// Tooltip: ""
 			}
 		}
 
@@ -17267,6 +17272,11 @@ Mods: {
 
 				DisableShockwaveEffect: {
 					// Label: Disable Shockwave Effect
+					// Tooltip: ""
+				}
+
+				ForceNeonVeilShader: {
+					// Label: Force Neon Veil Shader
 					// Tooltip: ""
 				}
 			}

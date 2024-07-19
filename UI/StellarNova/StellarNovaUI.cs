@@ -1287,7 +1287,7 @@ namespace StarsAbove.UI.StellarNova
 			{
 				topStatic -= topAdjustment;
 
-				area.Append(laevateinn);
+				area.Append(prototokia);
 				prototokia.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
 				availableNovas++;
 			}
@@ -1354,7 +1354,7 @@ namespace StarsAbove.UI.StellarNova
             }
             else
             {
-                gardenofavalon.Remove();
+                fireflytypeiv.Remove();
             }
             if (modPlayer.laevateinn > 0)
 			{

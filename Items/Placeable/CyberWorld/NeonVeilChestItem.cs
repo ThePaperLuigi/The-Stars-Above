@@ -35,8 +35,7 @@ namespace StarsAbove.Items.Placeable.CyberWorld
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient(ModContent.ItemType<NeonTelemetry>(), 20)
-                .AddTile(TileID.WorkBenches)
+                .AddIngredient(ModContent.ItemType<NeonTelemetry>(), 10)
                 .Register();
         }
     }

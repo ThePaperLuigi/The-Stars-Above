@@ -83,21 +83,16 @@ namespace StarsAbove.Systems
             if (spawnInfo.Player.InModBiome<NeonVeilBiome>())
             {
                 pool.Clear();
-                pool.Add(NPCType<NPCs.PrismLoot>(), 0.01f);
+                pool.Add(NPCType<NPCs.PrismLoot>(), 0.1f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 0.02f);
-                pool.Add(NPCID.BlackSlime, 0.5f);
+                pool.Add(NPCID.BlackSlime, 0.8f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 0.02f);
                 pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.01f);
 
                 pool.Add(NPCType<SemaphoreEnemy>(), 1f);
                 pool.Add(NPCType<LogicVirusEnemy>(), 1f);
-                pool.Add(NPCID.GoldenSlime, 0.1f);
-                pool.Add(NPCID.GoldDragonfly, 0.1f);
-
-                pool.Add(NPCID.FireImp, 0.4f);
-
-
-                
+                pool.Add(NPCID.GoldenSlime, 0.05f);
+                pool.Add(NPCID.GoldDragonfly, 0.1f);      
 
             }
             

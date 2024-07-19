@@ -12,7 +12,7 @@ Mods: {
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
-		// TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! Please note that as of now, disabling Multiplayer Compatibility Mode is not recommended. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
+		// TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! You may have problems with Subworld transit- if so, please select "Disable Multiplayer Compatibility Mode" (On by default) in the Serverside Settings. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
 
 		CombatText: {
 			// StellarNovaReady: Stellar Nova ready!
@@ -137,7 +137,7 @@ Mods: {
 				// NoPortal: No nearby portal detected!
 				// WeakStellaglyph: Your Stellaglyph is not powerful enough to attempt transit!
 				// AnomalyCooldown: Anomaly voyages are currently on cooldown.
-				// LunarEvents: Celestial energy prevents the Astrolabe from functioning...
+				// LunarEvents: Celestial energy prevents the Astrolabe from functioning... Defeat the Lunar Pillars before visiting to other worlds!
 				// MultiplayerCompatibility: Multiplayer compatibility mode enabled; spawning relevant items instead of attempting transit.
 				// MultiplayerNoLoot: Multiplayer compatibility mode enabled; transit disabled at this time.
 				// LootCooldown: Loot still on cooldown!
@@ -3884,9 +3884,9 @@ Mods: {
 					12: Odio arruinarte esto, pero te estás ahogando.
 					13: Estás perdiendo MUCHA sangre. Diablos. Ni siquiera puedes regenerar tu vida.
 					14: No puedes entender sus palabras- Parece que estás confuso.]
-					// 15: Whoops..
+					// 15: ...Did you mean to do that?
 					16: Lo siento, pequeñito.
-					// 17: Oops.
+					// 17: You meant for that to happen, right?
 					18: Eso es uno menos.
 					19: ¡Otro mas vencido!
 					20: Y ese era el último.
@@ -4187,7 +4187,7 @@ Mods: {
 					12: Necesitas aire, rápido.
 					13: Esa es mucha sangre.. No estás regenerando vida ahora, eso es seguro.
 					14: No puedes distinguir sus palabras - debe ser por la confusión
-					// 15: Whoops.
+					// 15: Was that truly necessary?
 					16: ¿Lo hiciste a propósito?
 					17: Lo lamento, pequeñín.
 					18: Buen trabajo.
@@ -4197,7 +4197,7 @@ Mods: {
 					22: Esto se te da bien.
 					23: Buen trabajo.
 					24: Nunca nos vencerán.
-					// 25: You've defeated it.
+					// 25: Looks like that's the lot of them.
 					26: Eso les enseñará.
 					27: Una buena pelea.
 					28: Fácil.
@@ -12243,7 +12243,7 @@ Mods: {
 			}
 
 			HologramPlinthTree: {
-				// DisplayName: Hologram Plinth Tree
+				// DisplayName: Hologram Plinth (Tree)
 				// Tooltip: ""
 			}
 
@@ -12348,7 +12348,7 @@ Mods: {
 			}
 
 			HologramPlinthDrink: {
-				// DisplayName: Hologram Plinth Drink
+				// DisplayName: Hologram Plinth (Drink)
 				// Tooltip: ""
 			}
 
@@ -12499,7 +12499,7 @@ Mods: {
 			}
 
 			HologramPlinthBigTree: {
-				// DisplayName: Hologram Plinth Big Tree
+				// DisplayName: Hologram Plinth (Big Tree)
 				// Tooltip: ""
 			}
 
@@ -12588,7 +12588,7 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					Grants a unique Path when Imprinted, providing bonus on-hit effects
-					(Path is assigned upon character creation and can not be changed)
+					Path is assigned upon character creation and can not be changed
 					''' */
 
 				TooltipAttached: {
@@ -12864,6 +12864,11 @@ Mods: {
 					Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
 					''' */
 				// TooltipAttached: Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
+			}
+
+			ThespianTrophyItem: {
+				// DisplayName: Thespian Trophy Item
+				// Tooltip: ""
 			}
 		}
 
@@ -17109,6 +17114,11 @@ Mods: {
 
 				DisableShockwaveEffect: {
 					// Label: Disable Shockwave Effect
+					// Tooltip: ""
+				}
+
+				ForceNeonVeilShader: {
+					// Label: Force Neon Veil Shader
 					// Tooltip: ""
 				}
 			}

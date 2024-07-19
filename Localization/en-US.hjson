@@ -12,7 +12,7 @@ Mods: {
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
-		TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! Please note that as of now, disabling Multiplayer Compatibility Mode is not recommended. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
+		TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! You may have problems with Subworld transit- if so, please select "Disable Multiplayer Compatibility Mode" (On by default) in the Serverside Settings. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
 
 		CombatText: {
 			StellarNovaReady: Stellar Nova ready!
@@ -137,7 +137,7 @@ Mods: {
 				NoPortal: No nearby portal detected!
 				WeakStellaglyph: Your Stellaglyph is not powerful enough to attempt transit!
 				AnomalyCooldown: Anomaly voyages are currently on cooldown.
-				LunarEvents: Celestial energy prevents the Astrolabe from functioning...
+				LunarEvents: Celestial energy prevents the Astrolabe from functioning... Defeat the Lunar Pillars before visiting to other worlds!
 				MultiplayerCompatibility: Multiplayer compatibility mode enabled; spawning relevant items instead of attempting transit.
 				MultiplayerNoLoot: Multiplayer compatibility mode enabled; transit disabled at this time.
 				LootCooldown: Loot still on cooldown!
@@ -3884,23 +3884,23 @@ Mods: {
 					12: I hate to break this to you, but you're about to drown.
 					13: You're losing a LOT of blood. Yikes. You can't regenerate health any more.
 					14: "[You can't make out the words- looks like you've been confused.] "
-					15: Whoops..
-					16: Sorry, little guy.
-					17: Oops.
-					18: That's one down.
+					15: ...Did you mean to do that?
+					16: Didn't see that one coming...
+					17: You meant for that to happen, right?
+					18: Looks like you took care of this bunch.
 					19: One more defeated!
 					20: That takes care of that.
 					21: Another one down.
 					22: You're great at this!
-					23: Nice work. That's one down.
+					23: Nice work. That should be all of them.
 					24: There it goes!
-					25: That'll teach em!
+					25: That'll teach 'em!
 					26: That'll show them!
-					27: Don't mess with us!
-					28: Easy!
+					27: And that's that.
+					28: Time to keep going.
 					29: Didn't even break a sweat.
 					30: That was so easy!
-					31: Enough of that one.
+					31: Let's get going.
 					32: An easy victory.
 					33: Right, that's that.
 					34: How could we ever lose?
@@ -4187,29 +4187,29 @@ Mods: {
 					12: You need some air, quick.
 					13: That's a lot of blood.. You aren't regenerating health now, that's for sure.
 					14: "[You can't make out the words- seems you've been confused]"
-					15: Whoops.
-					16: Did you mean to do that?
-					17: Sorry, little one.
+					15: Was that truly necessary?
+					16: An ambush!? That's cheating!
+					17: That was a part of the plan, right?
 					18: Good work.
-					19: That's another one down.
+					19: Nothing else nearby. You can take a rest now.
 					20: Well fought.
-					21: Another one down.
+					21: That should be all of them.
 					22: You're pretty good at this.
-					23: Nice work.
-					24: They'll never beat us.
-					25: You've defeated it.
+					23: Nice work. No nearby foes detected.
+					24: Seems to be all of them. Good work.
+					25: Looks like that's the lot of them.
 					26: That'll show them.
 					27: A good fight.
-					28: Easy.
-					29: No sweat.
-					30: Wasn't even a problem.
+					28: You fought well. Let's keep up the pace.
+					29: That's all of them. Onto the next...
+					30: Wasn't even a problem for you, huh? Great, let's keep it up.
 					31: We got that taken care of.
 					32: Good going.
-					33: Right, that's that.
+					33: Right, that's that. Onwards we go.
 					34: How could we ever lose?
-					35: It's over.
-					36: No more of that.
-					37: A good encounter.
+					35: It's over. Let's make up for lost time.
+					36: No more of that- let's continue.
+					37: A good encounter- let's keep going.
 					38: That was a little close for comfort..
 					39: That's over with, but we're still in trouble.
 					40: That was close.
@@ -4311,9 +4311,9 @@ Mods: {
 					136: Primordial energy is forming all around you.. The elements themselves are on the attack!
 					137: It's gotten quite hot here- this must be the Desert. I have an inkling we'll be here often- like it or not.
 					138: This verdant environment must be the Jungle. I'd make sure we're well equipped before braving its depths.
-					139: You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
-					140: So this is the place where the dead rest. Let's see what we can find.
-					141: It's the ocean... We can't cross it, so best leave it be.
+					139: It's the ocean... We can't cross it, so best leave it be.
+					140: You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
+					141: So this is the place where the dead rest. Let's see what we can find- they aren't using it anymore, hopefully.
 					142: I can feel the evil aura radiating from this place. I wouldn't mind leaving as soon as possible.
 					143: This place is.. disgusting. Let's not stay longer than we have to.
 					144: How curious, a veritable snowscape. Take care to avoid hypothermia- but you should be fine.
@@ -12393,7 +12393,7 @@ Mods: {
 			}
 
 			HologramPlinthTree: {
-				DisplayName: Hologram Plinth Tree
+				DisplayName: Hologram Plinth (Tree)
 				Tooltip: ""
 			}
 
@@ -12498,7 +12498,7 @@ Mods: {
 			}
 
 			HologramPlinthDrink: {
-				DisplayName: Hologram Plinth Drink
+				DisplayName: Hologram Plinth (Drink)
 				Tooltip: ""
 			}
 
@@ -12649,7 +12649,7 @@ Mods: {
 			}
 
 			HologramPlinthBigTree: {
-				DisplayName: Hologram Plinth Big Tree
+				DisplayName: Hologram Plinth (Big Tree)
 				Tooltip: ""
 			}
 
@@ -12738,7 +12738,7 @@ Mods: {
 					'''
 					[c/D294FF:Weapon Memory]
 					Grants a unique Path when Imprinted, providing bonus on-hit effects
-					(Path is assigned upon character creation and can not be changed)
+					Path is assigned upon character creation and can not be changed
 					'''
 
 				TooltipAttached: {
@@ -13014,6 +13014,11 @@ Mods: {
 					Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
 					'''
 				TooltipAttached: Press the Weapon Memory Key to fire a bullet, acting as an instance of this weapon's damage (2 second cooldown)
+			}
+
+			ThespianTrophyItem: {
+				DisplayName: Thespian Trophy Item
+				Tooltip: ""
 			}
 		}
 
@@ -17266,6 +17271,11 @@ Mods: {
 
 				DisableShockwaveEffect: {
 					Label: Disable Shockwave Effect
+					Tooltip: ""
+				}
+
+				ForceNeonVeilShader: {
+					Label: Force Neon Veil Shader
 					Tooltip: ""
 				}
 			}

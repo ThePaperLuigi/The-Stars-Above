@@ -486,6 +486,7 @@ namespace StarsAbove.UI.StarfarerMenu
             //https://starsabovemod.wiki.gg/
             Utils.OpenToURL("https://discord.gg/starsabove");
         }
+        public static bool voicesDisabled;
         private void HairstyleConfirm(UIMouseEvent evt, UIElement listeningElement)
         {
             if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
@@ -510,16 +511,25 @@ namespace StarsAbove.UI.StarfarerMenu
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
+                        }
 
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.1");
                         break;
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
+                        }
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.2");
                         break;
                     case 2:
-                        SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
+                        }
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.3");
                         break;
 
@@ -531,17 +541,26 @@ namespace StarsAbove.UI.StarfarerMenu
                 switch (randomVoice)
                 {
                     case 0:
-                        SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
+                        }
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.1");
 
                         break;
                     case 1:
-                        SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
+                        }
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.2");
 
                         break;
                     case 2:
-                        SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
+                        }
                         modPlayer.starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.3");
 
                         break;

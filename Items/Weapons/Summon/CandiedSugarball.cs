@@ -30,7 +30,7 @@ namespace StarsAbove.Items.Weapons.Summon
             ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-
+            ItemID.Sets.StaffMinionSlotsRequired[Item.type] = 2;
 
         }
 

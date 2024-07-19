@@ -2337,7 +2337,7 @@ namespace StarsAbove
 
             if (hit.Crit && !disablePromptsCombat)
             {
-                if (Main.rand.Next(0, 8) == 0)
+                if (Main.rand.Next(0, 18) == 0)
                 {
                     starfarerPromptActive("onCrit");
                 }
@@ -2416,6 +2416,16 @@ namespace StarsAbove
                             }
                             else
                             {
+                                for (int i = 0; i < Main.maxNPCs; i++)
+                                {
+                                    NPC npc = Main.npc[i];
+                                    if (npc.active && !npc.boss && !npc.friendly && npc.Distance(Player.Center) < 1200)
+                                    {
+                                        return;
+
+
+                                    }
+                                }
                                 starfarerPromptActive("onKillEnemy");
                             }
 
@@ -4070,7 +4080,19 @@ namespace StarsAbove
                     armsthriftWeaponTypeOld = Player.HeldItem.DamageType;
                     return;
                 }
-                if(armsthriftWeaponIDOld != Player.HeldItem.type && !Player.HasBuff(BuffType<ArmsthriftCooldown>()) && Player.HeldItem.damage > 0)
+                if (armsthriftWeaponIDOld != Player.HeldItem.type && ( Player.HasBuff(BuffType<ArmsthriftBuff>()) || Player.HasBuff(BuffType<ArmsthriftBuffStrong>()) ) && Player.HeldItem.damage > 0)
+                {
+                    if (Player.HasBuff(BuffType<ArmsthriftBuff>()))
+                    {
+                        Player.ClearBuff(BuffType<ArmsthriftBuff>());
+                    }
+                    if (Player.HasBuff(BuffType<ArmsthriftBuffStrong>()))
+                    {
+                        Player.ClearBuff(BuffType<ArmsthriftBuffStrong>());
+                    }
+
+                }
+                if (armsthriftWeaponIDOld != Player.HeldItem.type && !Player.HasBuff(BuffType<ArmsthriftCooldown>()) && Player.HeldItem.damage > 0)
                 {
                     Player.AddBuff(BuffType<ArmsthriftCooldown>(), 10 * 60);
 
@@ -4132,6 +4154,7 @@ namespace StarsAbove
             }
             gaussianBlurProgress = MathHelper.Clamp(gaussianBlurProgress, 0f, 1f);
         }
+        static public bool ForceNeonVeilShader = false;
         private void NeonVeilShaderEffect()
         {
             if (Player.InModBiome<NeonVeilBiome>())
@@ -4156,7 +4179,7 @@ namespace StarsAbove
 
                 if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server && Main.screenWidth <= 1920)
                 {
-                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Player.Center.X, (Main.maxTilesY - 110)*16));
+                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 110)*16));
 
                 }
                 if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
@@ -4203,7 +4226,7 @@ namespace StarsAbove
 
                 }
             }
-            if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server) && Main.screenWidth > 1920)
+            if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server) && (Main.screenWidth > 1920 && !ForceNeonVeilShader))
             {
                 Filters.Scene.Deactivate("NeonVeilReflectionEffect");
 
@@ -4483,7 +4506,7 @@ namespace StarsAbove
                 if (NPC.downedQueenSlime)
                 {
                     SetupActiveDialogue(ref newDiskNotification,
-                        134, //The ID of the dialogue.
+                        74, //The ID of the dialogue.
                         ref QueenSlimeDialogue, //The flag of the dialogue.
                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
@@ -4844,7 +4867,7 @@ namespace StarsAbove
                               false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                               false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                     
-                }
+                }              
                 if (WallOfFleshWeaponDialogue == 2)//Hardmode
                 {
                     SetupActiveDialogue(ref newDiskNotification,
@@ -4877,7 +4900,7 @@ namespace StarsAbove
                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
-                if (LunaticCultistWeaponDialogue == 2)//Hardmode
+                if (NPC.downedAncientCultist)//Hardmode
                 {
                     SetupActiveDialogue(ref newDiskNotification,
                         134, //The ID of the dialogue.
@@ -8187,15 +8210,7 @@ namespace StarsAbove
                     starfarerPromptActive("onPharaoh");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("TheAdvisorHead").Type) && !seenAdvisor)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
-                    starfarerPromptActive("onAdvisor");
-                    seenUnknownBossTimer = 300;
-                }
+                
                 if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Polaris").Type) && !seenPolaris)
                 {
                     if (starfarerPromptCooldown > 0)
@@ -10447,6 +10462,11 @@ namespace StarsAbove
         {
             if (!Main.dedServ)
             {
+                if (inCombat <= 0)
+                {
+                    starfarerPromptActive("onAmbush");
+
+                }
                 inCombat = 1200;
                 timeAfterGettingHit = 0;
             }
@@ -11000,25 +11020,20 @@ namespace StarsAbove
 
                     }
 
-                     
-                    randomDialogue = Main.rand.Next(0, 3);
-                    promptExpression = 2;
-                    if (randomDialogue == 0)
-                    {
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".15", Player.name); //Whoops..
-                    }
-                    if (randomDialogue == 1)
-                    {
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".16", Player.name); //Sorry, little guy.
-                    }
-                    if (randomDialogue == 2)
-                    {
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".17", Player.name); //Oops.
-                    }
+                    LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".15", Player.name); //Whoops..
                 }
                 if (eventPrompt == "onEverlastingLight")
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.ALight0);
+                    if (chosenStarfarer == 1)
+                    {
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.ALight0); }
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.ELight0); }
+
+                    }
 
                      
                     promptExpression = 2;
@@ -11292,34 +11307,110 @@ namespace StarsAbove
 
                     if (randomDialogue == 0)
                     {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor1); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor1); }
+
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".50", Player.name); //Wow. I felt that one..
                     }
                     if (randomDialogue == 1)
                     {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor1); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor1); }
+
+                        }
                         promptExpression = 2;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".51", Player.name); //That's.. not good.
                     }
                     if (randomDialogue == 2)
                     {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor1); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor1); }
+
+                        }
                         promptExpression = 1;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".52", Player.name); //Ouch...
                     }
                     if (randomDialogue == 3)
                     {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor2); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor2); }
+
+                        }
                         promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".53", Player.name); //That wasn't good at all..
                     }
                     if (randomDialogue == 4)
                     {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor2); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor2); }
+
+                        }
                         promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".54", Player.name); //You should probably heal after that one.
                     }
                     if (randomDialogue == 5)
                     {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor2); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor2); }
+
+                        }
                         promptExpression = 3;
                         promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".55", Player.name); //Barely a scratch.. right?
                     }
+                }
+                if (eventPrompt == "onAmbush")
+                {
+                    randomDialogue = Main.rand.Next(0, 3);
+                    if (chosenStarfarer == 1)
+                    {
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAmbush0); }
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniAmbush0); }
+
+                    }
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".16", Player.name); //That wasn't supposed to happen..
                 }
                 if (eventPrompt == "onDeath")
                 {
@@ -12174,12 +12265,19 @@ namespace StarsAbove
                 {
                     if(chosenStarfarer == 1)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.AExploreRare0);
+
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AExploreRare0);
+                        }
 
                     }
                     else if (chosenStarfarer == 2)
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.EExploreRare0);
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EExploreRare0);
+                        }
 
                     }
 
@@ -12346,19 +12444,40 @@ namespace StarsAbove
                 //Upon certain weather conditions..
                 if (eventPrompt == "onRain")
                 {
-                    int randomVoice = Main.rand.Next(0, 2);
-                    switch (randomVoice)
+                    if(!voicesDisabled)
                     {
-                        case 0:
-                            SoundEngine.PlaySound(StarsAboveAudio.ARain0);
+                        int randomVoice = Main.rand.Next(0, 2);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                if (chosenStarfarer == 1)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ARain0);
 
-                            break;
-                        case 1:
-                            SoundEngine.PlaySound(StarsAboveAudio.ARain1);
+                                }
+                                else if (chosenStarfarer == 2)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ERain0);
 
-                            break;
+                                }
 
+                                break;
+                            case 1:
+                                if (chosenStarfarer == 1)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ARain1);
+
+                                }
+                                else if (chosenStarfarer == 2)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ERain1);
+
+                                }
+                                break;
+
+                        }
                     }
+                    
                     promptExpression = 5;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".157", Player.name); //Looks like it started raining. Hopefully this doesn't put a damper on things.. heh.
                     seenRain = true;
@@ -12523,7 +12642,11 @@ namespace StarsAbove
 
         private void VoiceExplore()
         {
-            int randomVoice = Main.rand.Next(0, 5);
+            if (voicesDisabled)
+            {
+                return;
+            }
+                int randomVoice = Main.rand.Next(0, 5);
             
             if (chosenStarfarer == 1)
             {

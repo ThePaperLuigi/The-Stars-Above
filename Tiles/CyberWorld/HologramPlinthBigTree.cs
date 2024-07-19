@@ -97,19 +97,7 @@ namespace StarsAbove.Tiles.CyberWorld
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			// This code here infers the placeStyle the tile was placed with. Only required if you go the Item.placeStyle approach. You just need Item.NewItem otherwise
-			// The placeStyle calculated here corresponds to whatever placeStyle you specified on your items that place this tile (Either through Item.placeTile or Item.DefaultToPlacableTile)
-			int placeStyle = frameX / FrameWidth;
-
-			int itemType = 0;
-            itemType = ModContent.ItemType<HologramPlinthBigTree>();
-
-
-            if (itemType > 0)
-			{
-				// Spawn the item
-				Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
-			}
+			
 		}
 		public override bool CreateDust(int i, int j, ref int type)
 		{

@@ -148,13 +148,10 @@ namespace StarsAbove.NPCs.Starfarers
         {
 			
 			potionType = ItemID.GreaterHealingPotion;
-            if (!DownedBossSystem.downedStarfarers)
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
             {
-                DownedBossSystem.downedStarfarers = true;
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-                }
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
             }
 
             base.BossLoot(ref name, ref potionType);
@@ -530,27 +527,13 @@ namespace StarsAbove.NPCs.Starfarers
 			if (NPC.localAI[1] >= 240f)
 			{
 
-                if (!DownedBossSystem.downedStarfarers)
+                DownedBossSystem.downedStarfarers = true;
+                if (Main.netMode == NetmodeID.Server)
                 {
-                    DownedBossSystem.downedStarfarers = true;
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-                    }
+                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
                 }
-				/*
-				if (modPlayer.tsukiyomiDialogue == 0)
-				{
-					//Force open the dialogue.
-					modPlayer.chosenDialogue = 73;
-					modPlayer.tsukiyomiDialogue = 2;
-					modPlayer.dialoguePrep = true;
-					modPlayer.starfarerDialogue = true;
-					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-					modPlayer.tsukiyomiDialogue = 2;
-				}*/
-				
-				NPC.life = 0;
+
+                NPC.life = 0;
 				NPC.HitEffect(0, 0);
 				NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
 

@@ -547,7 +547,7 @@ namespace StarsAbove.NPCs.Thespian
 			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<ThespianBossBag>()));
 
             // Trophies are spawned with 1/10 chance
-            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.ThespianTrophyItem>(), 10));
 
 
             // ItemDropRule.MasterModeCommonDrop for the relic
