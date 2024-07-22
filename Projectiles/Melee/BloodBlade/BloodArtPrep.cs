@@ -116,7 +116,11 @@ namespace StarsAbove.Projectiles.Melee.BloodBlade
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            default(Effects.RedTrail).Draw(Projectile);
+            if(Projectile.timeLeft > 30)
+            {
+                default(Effects.RedTrail).Draw(Projectile);
+
+            }
 
             return true;
         }

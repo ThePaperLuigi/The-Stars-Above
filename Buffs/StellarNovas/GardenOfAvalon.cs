@@ -25,10 +25,10 @@ namespace StarsAbove.Buffs.StellarNovas
             if (tickHeal >= 60)
             {
                 Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 40, player.width, player.height); //Heal
-                CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod))}", false, false);
+                CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod / 100))}", false, false);
 
                 Rectangle textPos2 = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height); //Mana Heal
-                CombatText.NewText(textPos2, new Color(50, 64, 205, 240), $"{(int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod))}", false, false);
+                CombatText.NewText(textPos2, new Color(50, 64, 205, 240), $"{(int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod / 100))}", false, false);
 
                 player.statLife += (int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod));
                 player.statMana += (int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod));

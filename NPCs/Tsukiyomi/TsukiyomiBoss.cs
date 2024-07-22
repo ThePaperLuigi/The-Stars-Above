@@ -151,6 +151,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
         {
 			
 			potionType = ItemID.None;
+
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedTsuki, -1);
+
             DownedBossSystem.downedTsuki = true;
 
             if (Main.netMode == NetmodeID.Server)

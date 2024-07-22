@@ -11020,7 +11020,7 @@ namespace StarsAbove
 
                     }
 
-                    LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".15", Player.name); //Whoops..
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".15", Player.name);
                 }
                 if (eventPrompt == "onEverlastingLight")
                 {

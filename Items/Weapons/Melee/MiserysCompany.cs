@@ -40,7 +40,6 @@ namespace StarsAbove.Items.Weapons.Melee
 			Item.value = Item.buyPrice(gold: 1);          
 			Item.rare = ItemRarityID.Orange;             
 														 
-			Item.scale = 2f;
 			Item.autoReuse = true;
 			Item.shoot = ProjectileType<TruesilverSlash>();
 			Item.shootSpeed = 10f;

@@ -93,16 +93,18 @@ namespace StarsAbove.Items.Weapons.Other
             //Toss the plush into the air, and it disappears in a sparkle. Mark your cursor location with a pulsing orb and draw a line from the sky projectile (where the train will come from) to that location
             if (player.whoAmI == Main.myPlayer)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, -5, ProjectileType<ExpresswayPlushActive>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
-                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<ExpresswayTarget>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
-				player.AddBuff(BuffType<OrbitalExpresswayPlushCooldown>(), 60 * 60);
+                
             }
             return base.UseItem(player);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			return false;
+            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, -5, ProjectileType<ExpresswayPlushActive>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
+            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld.X, Main.MouseWorld.Y, 0, 0, ProjectileType<ExpresswayTarget>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
+            player.AddBuff(BuffType<OrbitalExpresswayPlushCooldown>(), 60 * 60);
+
+            return false;
 		}
 		public override void AddRecipes()
 		{

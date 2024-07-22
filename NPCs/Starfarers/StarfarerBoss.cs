@@ -148,12 +148,13 @@ namespace StarsAbove.NPCs.Starfarers
         {
 			
 			potionType = ItemID.GreaterHealingPotion;
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
+
             DownedBossSystem.downedStarfarers = true;
             if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
             }
-
             base.BossLoot(ref name, ref potionType);
         }
         public override bool CheckDead()
