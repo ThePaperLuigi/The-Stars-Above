@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using StarsAbove.Projectiles.Bosses.Penthesilea;
 using StarsAbove.Items.Memories;
 using StarsAbove.Systems;
+using StarsAbove.NPCs.Dioskouroi;
 
 namespace StarsAbove.NPCs.Starfarers
 {
@@ -146,7 +147,6 @@ namespace StarsAbove.NPCs.Starfarers
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-			
 			potionType = ItemID.GreaterHealingPotion;
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
 
@@ -180,7 +180,7 @@ namespace StarsAbove.NPCs.Starfarers
 			//REPLACE BAR WITH YOUR OWN
             bossPlayer.StarfarerBossBarActive = true;
 
-            NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
+            NPC.velocity *= 0.98f; //So the dashes don't propel the boss a dy
 
             Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
             FindTargetPlayer();
@@ -523,16 +523,16 @@ namespace StarsAbove.NPCs.Starfarers
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Starfarers/LegendsYetUnspunOutro");
 			NPC.dontTakeDamage = true;
-			
-			NPC.localAI[1] += 1f;
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+            NPC.localAI[1] += 1f;
 			if (NPC.localAI[1] >= 240f)
 			{
 
-                DownedBossSystem.downedStarfarers = true;
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-                }
+                
 
                 NPC.life = 0;
 				NPC.HitEffect(0, 0);
@@ -542,7 +542,18 @@ namespace StarsAbove.NPCs.Starfarers
 			}
 			return;
 		}
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
+        public override void OnKill()
+        {
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
+
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+            base.OnKill();
+        }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{/*
 		  * 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
@@ -611,7 +622,16 @@ namespace StarsAbove.NPCs.Starfarers
 				}
             }
             AI_CastTimer++;
+            if (!NPC.AnyNPCs(NPCType<StarfarerBossWallsNPC>()))
+            {
+                int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<StarfarerBossWallsNPC>(), NPC.whoAmI);
 
+
+                if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                {
+                    NetMessage.SendData(MessageID.SyncNPC, number: index);
+                }
+            }
             if (AI_CastTimer > 210)
             {
 

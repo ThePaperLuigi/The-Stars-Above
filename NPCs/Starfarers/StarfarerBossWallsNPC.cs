@@ -52,6 +52,7 @@ namespace StarsAbove.NPCs.Starfarers
 			NPC.dontCountMe = true;
 			NPC.dontTakeDamage = true;
 			NPC.timeLeft = 10;
+			NPC.life = 999;
 			if (!NPC.AnyNPCs(ModContent.NPCType<StarfarerBoss>()))
 			{
 

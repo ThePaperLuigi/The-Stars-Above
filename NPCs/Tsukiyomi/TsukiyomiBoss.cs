@@ -176,8 +176,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			}
 			return true;
 		}
+        public override void OnKill()
+        {
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
 
-		public override void AI()
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+            base.OnKill();
+        }
+        public override void AI()
         {
 			DrawOffsetY = 94;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
@@ -1103,11 +1113,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			NPC.dontTakeDamage = true;
 			
 			NPC.localAI[1] += 1f;
-			
+
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedTsuki, -1);
+
+            DownedBossSystem.downedTsuki = true;
+
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
 
 
-			
-			if(NPC.localAI[1] == 10)
+            if (NPC.localAI[1] == 10)
             {
 				NPC.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 240);
 				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);

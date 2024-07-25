@@ -749,9 +749,10 @@ namespace StarsAbove.NPCs.Nalhaun
 				{
 					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
 				}
-				
 
-				NPC.life = 0;
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().nalhaunCutsceneProgress = 10;
+
+                NPC.life = 0;
 				NPC.HitEffect(0, 0);
 				NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
 

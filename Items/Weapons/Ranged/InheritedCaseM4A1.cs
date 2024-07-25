@@ -34,7 +34,8 @@ namespace StarsAbove.Items.Weapons.Ranged
 
         public override void SetDefaults()
         {
-
+            Item.damage = 100;
+            /*
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
                 Item.damage = 350;
@@ -42,7 +43,7 @@ namespace StarsAbove.Items.Weapons.Ranged
             else
             {
                 Item.damage = 90;
-            }
+            }*/
 
             //The damage of your weapon
             Item.DamageType = DamageClass.Ranged;

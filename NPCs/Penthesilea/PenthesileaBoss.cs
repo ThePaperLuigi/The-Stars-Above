@@ -145,7 +145,6 @@ namespace StarsAbove.NPCs.Penthesilea
         {
 
             potionType = ItemID.GreaterHealingPotion;
-
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedPenth, -1);
 
             DownedBossSystem.downedPenth = true;
@@ -173,6 +172,7 @@ namespace StarsAbove.NPCs.Penthesilea
 
 		public override void AI()
         {
+
             Lighting.AddLight(NPC.Center, TorchID.Pink);
 
             DrawOffsetY = 94;

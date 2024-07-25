@@ -11814,6 +11814,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/D294FF:Weapon Memory]
+					When Imprinted into a weapon, gain the following effects:
 					Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
 					''' */
 				// TooltipAttached: Gain 0.5% critical strike chance every time an enemy is struck with a non-critical strike (Reset upon landing a critical strike)
