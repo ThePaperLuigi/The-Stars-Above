@@ -1,6 +1,6 @@
 
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.EverlastingPickaxe;
+using StarsAbove.Buffs.Celestial.EverlastingPickaxe;
 using StarsAbove.Systems;
 using System.Collections.Generic;
 using Terraria;

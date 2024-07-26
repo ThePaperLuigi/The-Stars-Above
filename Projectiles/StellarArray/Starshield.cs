@@ -37,7 +37,11 @@ namespace StarsAbove.Projectiles.StellarArray
             DrawOriginOffsetY = -15;
             DrawOffsetX = -26;
         }
-
+        public override bool? CanCutTiles()
+        {
+            
+            return false;
+        }
         public override bool PreDraw(ref Color lightColor)
         {
 
@@ -64,7 +68,7 @@ namespace StarsAbove.Projectiles.StellarArray
             Projectile.timeLeft = 10;
             Player projOwner = Main.player[Projectile.owner];
             Player player = Main.player[Projectile.owner];
-            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.StarshieldBuff>()))
+            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.StellarArray.StarshieldBuff>()))
             {
                 Projectile.alpha++;
             }

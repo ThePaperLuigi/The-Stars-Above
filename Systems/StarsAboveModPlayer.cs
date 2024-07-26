@@ -1,17 +1,31 @@
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
+using StarsAbove.Biomes;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.EmberFlask;
+using StarsAbove.Buffs.Boss;
+using StarsAbove.Buffs.Celestial.UltimaThule;
+using StarsAbove.Buffs.Magic.StygianNymph;
+using StarsAbove.Buffs.Magic.VenerationOfButterflies;
+using StarsAbove.Buffs.Melee.PenthesileaMuse;
+using StarsAbove.Buffs.Melee.Umbra;
 using StarsAbove.Buffs.Memories;
+using StarsAbove.Buffs.Other.Farewells;
 using StarsAbove.Buffs.StarfarerAttire;
 using StarsAbove.Buffs.StellarArray;
 using StarsAbove.Buffs.StellarNovas;
+using StarsAbove.Buffs.StellarPrisms;
+using StarsAbove.Buffs.StellarSpoils.EmberFlask;
 using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Buffs.Umbra;
+using StarsAbove.Buffs.Subworlds;
+using StarsAbove.Buffs.Summon.Kifrosse;
 using StarsAbove.Dialogue;
 using StarsAbove.Items.Armor.StarfarerArmor;
 using StarsAbove.Items.Consumables;
+using StarsAbove.Items.Materials;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Items.Weapons.Celestial;
+using StarsAbove.Items.Weapons.Summon;
 using StarsAbove.NPCs;
 using StarsAbove.NPCs.Arbitration;
 using StarsAbove.NPCs.Nalhaun;
@@ -22,15 +36,21 @@ using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Projectiles.StellarArray;
 using StarsAbove.Projectiles.StellarNovas;
+using StarsAbove.Projectiles.StellarNovas.FireflyTypeIV;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
+using StarsAbove.Systems.Items;
+using StarsAbove.Systems.StellarNovas;
 using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.StellarNova;
 using StarsAbove.Utilities;
 using SubworldLibrary;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -45,7 +65,7 @@ using Terraria.UI;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Systems
+namespace StarsAbove
 {
     public class StarsAbovePlayer : ModPlayer
     {
@@ -59,6 +79,9 @@ namespace StarsAbove.Systems
         public bool SyncWorldProgress = false;
         public bool AlwaysSyncWorldProgress = false;
 
+        //This timer is set to a static value to prevent voiced dialogue from overlapping.
+        public float globalVoiceDelayTimer = 0;
+        public static float globalVoiceDelayMax = 4 * 60; //Minimum 5 seconds between voiced dialogue.
 
         public static bool BossEnemySpawnModDisabled = false;
 
@@ -74,6 +97,7 @@ namespace StarsAbove.Systems
         public bool activateUltimaShockwaveEffect = false;
         public bool activateBlackHoleShockwaveEffect = false;
 
+        public bool activateArbiterShockwaveEffect = false;
 
         //Warrior of Light code //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -229,6 +253,11 @@ namespace StarsAbove.Systems
         public int starfarerOutfitVanity = 0;//Vanity Outfit
         public int starfarerOutfitVisible = 0;//The visible outfit
 
+        public int starfarerHairstyle = 0;//0 is default
+
+        //Could probably be solved with a list or something, but there's going to be so few it doesn't really matter
+        public bool cyberpunkHairstyleUnlocked = false;
+
         //Starfarer outfit buff variables
         public int hopesBrilliance = 0;
         public int hopesBrillianceMax = 100;
@@ -245,10 +274,13 @@ namespace StarsAbove.Systems
         public int chosenDialogue = 0;//This determines which dialogue option you get.
         public int dialogueLeft = 1;//This is the number of pages a dialogue option has. If it reaches 0, the box will close. It depends on chosenDialogue.
         public int expression = 0;//This is the expression relating to both the current chosenDialogue and the current dialogueLeft.
-                                  //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
+
+        public int nextExpression = 0;//used for voice
+
         public bool dialoguePrep;// This will be flipped to 'false' once dialogueLeft has been established.
         public string dialogue = ""; //Depending on the chosen Starfarer, this will be the string of dialogue pushed to the Text GUI.
                                      //Keep account of dialogueLeft and tie it to that + chosenDialogue
+        public bool dialogueFinished = false;//So the dialogue knows when to close.
 
         static public bool instantText = false;
 
@@ -406,6 +438,8 @@ namespace StarsAbove.Systems
         public int observatoryIntroDialogue;
         public int yojimboIntroDialogue;
         public int garridineIntroDialogue;
+        public int andyerIntroDialogue;
+        public int andyerQuestProgress;
 
         public int MnemonicDialogue1;
         public int MnemonicDialogue2;
@@ -501,6 +535,20 @@ namespace StarsAbove.Systems
         public int WavedancerWeaponDialogue = 0;
         public int ClarentWeaponDialogue = 0;
         public int ThespianWeaponDialogue = 0;
+
+        public int TwoCrownWeaponDialogue = 0;
+        public int ExpresswayWeaponDialogue = 0;
+        public int StarphoenixWeaponDialogue = 0;
+        public int SugarballWeaponDialogue = 0;
+        public int NecrosisWeaponDialogue = 0;
+        public int ArbiterWeaponDialogue = 0;
+        public int M4A1WeaponDialogue = 0;
+        public int ShieldWeaponDialogue = 0;
+        public int ParadiseLostWeaponDialogue = 0;
+        public int DreadmotherWeaponDialogue = 0;
+        public int WolvesbaneWeaponDialogue = 0;
+        public int QuisUtDeusWeaponDialogue = 0;
+        public int PhasmasaberWeaponDialogue = 0;
 
         //Subworld dialogues
         public int observatoryDialogue = 0;
@@ -602,13 +650,14 @@ namespace StarsAbove.Systems
         int healthyConfidenceHealTimer;
         int beyondInfinityTimer;
         float beyondInfinityDamageMod;
+        float lavenderRefrainMaxManaReduction;
 
         public int armsthriftWeaponIDOld = 0;
         public DamageClass armsthriftWeaponTypeOld;
 
         public int oldHP;
 
-        int timeAfterGettingHit;
+        public int timeAfterGettingHit;
 
         int umbralEntropyCooldown;
 
@@ -637,8 +686,8 @@ namespace StarsAbove.Systems
         public bool novaReadyInfo = false;
         public bool gaugeChargeAnimation = false;
 
-        public int novaGauge;
-        public int novaGaugeMax = 100;//This is affected by the chosen Nova
+        public float novaGauge;
+        public float novaGaugeMax = 100;//This is affected by the chosen Nova
         public int novaGaugeChargeTimer;
         public int novaGaugeLossTimer;
 
@@ -650,14 +699,18 @@ namespace StarsAbove.Systems
         public int baseNovaDamageAdd = 1;
         public int novaDamage = 300;
         public int novaCritDamage = 450;
-        public int novaCritChance = 10;
+        public float novaCritChance = 10;
+        public float novaEffectDuration = 5;
 
         public double novaDamageMod;
-        public int novaCritChanceMod;
+        public float novaCritChanceMod;
         public double novaCritDamageMod;
         public int novaChargeMod;
 
-        public int trueNovaGaugeMax;
+        //New stats
+        public float novaEffectDurationMod;
+
+        public float trueNovaGaugeMax;
 
         public bool NovaCutInStart;
         public int NovaCutInTimer;
@@ -681,8 +734,8 @@ namespace StarsAbove.Systems
         public string abilityDescription;
         public string starfarerBonus;
         public string baseStats;
-
-        
+        public string modStats;
+        public string setBonusInfo;
 
         public string affix1; //Name of the affix.
         public string affix2;
@@ -707,6 +760,7 @@ namespace StarsAbove.Systems
         public int edingenesisquasar; //0 = LOCKED, 1 = UNLOCKED, 2 = SELECTED 2 does not matter really
         public int unlimitedbladeworks;
         public int guardianslight;
+        public int fireflytypeiv;
 
         public int goldenGunShots;
         public bool squallReady;
@@ -811,6 +865,8 @@ namespace StarsAbove.Systems
         public bool seenHallowBiome;
         public bool seenSpaceBiome;
         public bool seenUnderworldBiome;
+
+        public bool seenNeonVeilBiome;
 
         //Calamity Biomes
         public bool seenCragBiome;
@@ -938,10 +994,11 @@ namespace StarsAbove.Systems
         public static bool disablePromptsCombat;
 
         public static bool disableBlur;
+        public static bool disableScreenShake;
 
         public static bool noLockedCamera;
 
-        public static bool voicesEnabled;
+        public static bool voicesDisabled;
 
         ////////////////////////////////////////////////////////////////////////////////// STARFARER MENU
 
@@ -951,11 +1008,10 @@ namespace StarsAbove.Systems
         public float costumeChangeOpacity;
         int starfarerOutfitSaved = 0;
 
+        public bool fullMetalArcanistActive;
+        public bool viralUploadActive;
 
-
-        //Lore list?
-        //
-
+        public int hardlight;
 
         public bool seenMusicWarning;
 
@@ -977,7 +1033,7 @@ namespace StarsAbove.Systems
         //player.GetModPlayer<StarsAbovePlayer>().VARIABLENAME = VALUE;
         public override void SaveData(TagCompound tag)
         {
-
+            tag["Hardlight"] = hardlight;
             tag["chosenStarfarer"] = chosenStarfarer;
 
             tag["starfarerOutfit"] = starfarerOutfit;
@@ -1095,6 +1151,8 @@ namespace StarsAbove.Systems
             tag["observatoryIntroDialogue"] = observatoryIntroDialogue;
             tag["yojimboIntroDialogue"] = yojimboIntroDialogue;
             tag["garridineIntroDialogue"] = garridineIntroDialogue;
+            tag["andyerIntroDialogue"] = andyerIntroDialogue;
+            tag["andyerQuestProgress"] = andyerQuestProgress;
 
             tag["MnemonicDialogue1"] = MnemonicDialogue1;
             tag["MnemonicDialogue2"] = MnemonicDialogue2;
@@ -1188,6 +1246,19 @@ namespace StarsAbove.Systems
             tag["ClarentWeaponDialogue"] = ClarentWeaponDialogue;
             tag["ThespianWeaponDialogue"] = ThespianWeaponDialogue;
 
+            tag["TwoCrownWeaponDialogue"] = TwoCrownWeaponDialogue;
+            tag["ExpresswayWeaponDialogue"] = ExpresswayWeaponDialogue;
+            tag["StarphoenixWeaponDialogue"] = StarphoenixWeaponDialogue;
+            tag["SugarballWeaponDialogue"] = SugarballWeaponDialogue;
+            tag["NecrosisWeaponDialogue"] = NecrosisWeaponDialogue;
+            tag["ArbiterWeaponDialogue"] = ArbiterWeaponDialogue;
+            tag["M4A1WeaponDialogue"] = M4A1WeaponDialogue;
+            tag["ShieldWeaponDialogue"] = ShieldWeaponDialogue;
+            tag["ParadiseLostWeaponDialogue"] = ParadiseLostWeaponDialogue;
+            tag["DreadmotherWeaponDialogue"] = DreadmotherWeaponDialogue;
+            tag["WolvesbaneWeaponDialogue"] = WolvesbaneWeaponDialogue;
+            tag["QuisUtDeusWeaponDialogue"] = QuisUtDeusWeaponDialogue;
+            tag["PhasmasaberWeaponDialogue"] = PhasmasaberWeaponDialogue;
 
             tag["observatoryDialogue"] = observatoryDialogue;
             tag["cosmicVoyageDialogue"] = cosmicVoyageDialogue;
@@ -1325,6 +1396,7 @@ namespace StarsAbove.Systems
             tag["seenDungeon"] = seenDungeonBiome;
             tag["seenSpace"] = seenSpaceBiome;
             tag["seenUnderworld"] = seenUnderworldBiome;
+            tag["seenNeonVeilBiome"] = seenNeonVeilBiome;
 
             tag["seenCrag"] = seenCragBiome;
             tag["seenAstral"] = seenAstralBiome;
@@ -1347,6 +1419,11 @@ namespace StarsAbove.Systems
             tag["starfarerVanityItem"] = StarfarerMenu._starfarerVanitySlot.Item;
 
             tag["starfarerVisibleOutfit"] = starfarerOutfitVisible;
+
+            tag["starfarerHairstyle"] = starfarerHairstyle;
+            tag["cyberpunkHairstyleUnlocked"] = cyberpunkHairstyleUnlocked;
+
+
             tag["starfarerSavedOutfit"] = starfarerOutfitSaved;
             tag["seenBossesList"] = seenBossesList;
 
@@ -1361,11 +1438,17 @@ namespace StarsAbove.Systems
 
         public override void LoadData(TagCompound tag)
         {
+            hardlight = tag.GetInt("Hardlight");
+
             seenIntroCutscene = tag.GetBool("seenIntroCutscene");
 
             firstJoinedWorld = tag.GetInt("firstJoinedWorld");
             firstJoinedWorldName = tag.GetString("firstJoinedWorldName");
             AlwaysSyncWorldProgress = tag.GetBool("AlwaysSync");
+
+            starfarerHairstyle = tag.GetInt("starfarerHairstyle");
+
+            cyberpunkHairstyleUnlocked = tag.GetBool("cyberpunkHairstyleUnlocked");
 
             chosenStarfarer = tag.GetInt("chosenStarfarer");
 
@@ -1435,6 +1518,8 @@ namespace StarsAbove.Systems
             observatoryIntroDialogue = tag.GetInt("observatoryIntroDialogue");
             yojimboIntroDialogue = tag.GetInt("yojimboIntroDialogue");
             garridineIntroDialogue = tag.GetInt("garridineIntroDialogue");
+            andyerIntroDialogue = tag.GetInt("andyerIntroDialogue");
+            andyerQuestProgress = tag.GetInt("andyerQuestProgress");
 
             MnemonicDialogue1 = tag.GetInt("MnemonicDialogue1");
             MnemonicDialogue2 = tag.GetInt("MnemonicDialogue2");
@@ -1526,6 +1611,19 @@ namespace StarsAbove.Systems
             ClarentWeaponDialogue = tag.GetInt("ClarentWeaponDialogue");
             ThespianWeaponDialogue = tag.GetInt("ThespianWeaponDialogue");
 
+            TwoCrownWeaponDialogue = tag.GetInt("TwoCrownWeaponDialogue");
+            ExpresswayWeaponDialogue = tag.GetInt("ExpresswayWeaponDialogue");
+            StarphoenixWeaponDialogue = tag.GetInt("StarphoenixWeaponDialogue");
+            SugarballWeaponDialogue = tag.GetInt("SugarballWeaponDialogue");
+            NecrosisWeaponDialogue = tag.GetInt("NecrosisWeaponDialogue");
+            ArbiterWeaponDialogue = tag.GetInt("ArbiterWeaponDialogue");
+            M4A1WeaponDialogue = tag.GetInt("M4A1WeaponDialogue");
+            ShieldWeaponDialogue = tag.GetInt("ShieldWeaponDialogue");
+            ParadiseLostWeaponDialogue = tag.GetInt("ParadiseLostWeaponDialogue");
+            DreadmotherWeaponDialogue = tag.GetInt("DreadmotherWeaponDialogue");
+            WolvesbaneWeaponDialogue = tag.GetInt("WolvesbaneWeaponDialogue");
+            QuisUtDeusWeaponDialogue = tag.GetInt("QuisUtDeusWeaponDialogue");
+            PhasmasaberWeaponDialogue = tag.GetInt("PhasmasaberWeaponDialogue");
 
             observatoryDialogue = tag.GetInt("observatoryDialogue");
             cosmicVoyageDialogue = tag.GetInt("cosmicVoyageDialogue");
@@ -1714,6 +1812,7 @@ namespace StarsAbove.Systems
             seenDungeonBiome = tag.GetBool("seenDungeon");
             seenSpaceBiome = tag.GetBool("seenSpace");
             seenUnderworldBiome = tag.GetBool("seenUnderworld");
+            seenNeonVeilBiome = tag.GetBool("seenNeonVeilBiome");
 
             seenCragBiome = tag.GetBool("seenCrag");
             seenAstralBiome = tag.GetBool("seenAstral");
@@ -1806,10 +1905,11 @@ namespace StarsAbove.Systems
             {
                 SyncWorldProgress = false;
             }
+
             if (!AlwaysSyncWorldProgress)
             {
                 //Prompt the player to sync progress or not.
-                if (firstJoinedWorld != Main.worldID)
+                if (firstJoinedWorld != Main.worldID && !SubworldSystem.AnyActive())
                 {
                     sceneID = 2;
                     VNDialogueActive = true;
@@ -1822,7 +1922,193 @@ namespace StarsAbove.Systems
                 SyncWorldProgress = true;
             }
 
+            if(chosenStarfarer == 2)
+            {
+                if(starshower == 2 || ironskin == 2 || evasionmastery == 2 || aquaaffinity == 2 || hikari == 2 || livingdead == 2 || umbralentropy == 2 || celestialevanesence == 2 || butchersdozen == 2 || mysticforging == 2 || flashfreeze == 2)
+                {
+                    if ( starshower == 2)
+                    {
+                         stellarGauge -= 1;
+                         starshower = 1;
+                    }
+                    if ( ironskin == 2)
+                    {
+                         stellarGauge -= 1;
+                         ironskin = 1;
+                    }
+                    if ( evasionmastery == 2)
+                    {
+                         stellarGauge -= 1;
+                         evasionmastery = 1;
+                    }
+                    if ( healthyConfidence == 2)
+                    {
+                         stellarGauge -= 2;
+                         healthyConfidence = 1;
+                    }
+                    if ( aquaaffinity == 2)
+                    {
+                         stellarGauge -= 1;
+                         aquaaffinity = 1;
+                    }
+                    if ( bloomingflames == 2)
+                    {
+                         stellarGauge -= 2;
+                         bloomingflames = 1;
+                    }
+                    if ( astralmantle == 2)
+                    {
+                         stellarGauge -= 2;
+                         astralmantle = 1;
+                    }
+                    if ( beyondinfinity == 2)
+                    {
+                         stellarGauge -= 3;
+                         beyondinfinity = 1;
+                    }
+                    if ( keyofchronology == 2)
+                    {
+                         stellarGauge -= 3;
+                         keyofchronology = 1;
 
+                    }
+                    if ( avataroflight == 2)
+                    {
+                         stellarGauge -= 2;
+                         avataroflight = 1;
+                    }
+                    if ( hikari == 2)
+                    {
+                         stellarGauge -= 1;
+                         hikari = 1;
+                    }
+                    if ( inneralchemy == 2)
+                    {
+                         stellarGauge -= 1;
+                         inneralchemy = 1;
+                    }
+                    if ( livingdead == 2)
+                    {
+                         stellarGauge -= 1;
+                         livingdead = 1;
+                    }
+                    if ( umbralentropy == 2)
+                    {
+                         stellarGauge -= 1;
+                         umbralentropy = 1;
+                    }
+                    if ( celestialevanesence == 2)
+                    {
+                         stellarGauge -= 1;
+                         celestialevanesence = 1;
+                    }
+                    if ( afterburner == 2)
+                    {
+                         stellarGauge -= 2;
+                         afterburner = 1;
+                    }
+                    if ( weaknessexploit == 2)
+                    {
+                         stellarGauge -= 2;
+                         weaknessexploit = 1;
+                    }
+                    if ( aprismatism == 2)
+                    {
+                         stellarGauge -= 2;
+                         aprismatism = 1;
+                    }
+                    if ( unbridledradiance == 2)
+                    {
+                         stellarGauge -= 3;
+                         unbridledradiance = 1;
+                    }
+                    if ( beyondtheboundary == 2)
+                    {
+                         stellarGauge -= 3;
+                         beyondtheboundary = 1;
+                    }
+                    if ( butchersdozen == 2)
+                    {
+                         stellarGauge -= 1;
+                         butchersdozen = 1;
+                    }
+                    if ( mysticforging == 2)
+                    {
+                         stellarGauge -= 1;
+                         mysticforging = 1;
+                    }
+                    if ( flashfreeze == 2)
+                    {
+                         stellarGauge -= 1;
+                         flashfreeze = 1;
+                    }
+                    if ( artofwar == 2)
+                    {
+                         stellarGauge -= 2;
+                         artofwar = 1;
+                    }
+                    if ( mysticIncision == 2)
+                    {
+                         stellarGauge -= 1;
+                         mysticIncision = 1;
+                    }
+                    if ( lavenderRefrain == 2)
+                    {
+                         stellarGauge -= 1;
+                         lavenderRefrain = 1;
+                    }
+                    if ( swiftstrikeTheory == 2)
+                    {
+                         stellarGauge -= 1;
+                         swiftstrikeTheory = 1;
+                    }
+                    if ( inevitableEnd == 2)
+                    {
+                         stellarGauge -= 1;
+                         inevitableEnd = 1;
+                    }
+                    if ( arborealEchoes == 2)
+                    {
+                         stellarGauge -= 1;
+                         arborealEchoes = 1;
+                    }
+                    if ( kiTwinburst == 2)
+                    {
+                         stellarGauge -= 1;
+                         kiTwinburst = 1;
+                    }
+                    if ( kineticConversion == 2)
+                    {
+                         stellarGauge -= 1;
+                         kineticConversion = 1;
+                    }
+                    if ( fabledFashion == 2)
+                    {
+                         stellarGauge -= 1;
+                         fabledFashion = 1;
+                    }
+                    if ( catharsis == 2)
+                    {
+                         stellarGauge -= 1;
+                         catharsis = 1;
+                    }
+                    if ( stayTheCourse == 2)
+                    {
+                         stellarGauge -= 1;
+                         stayTheCourse = 1;
+                    }
+                    if ( armsthrift == 2)
+                    {
+                         stellarGauge -= 1;
+                         armsthrift = 1;
+                    }
+                    if ( spectralNail == 2)
+                    {
+                         stellarGauge -= 1;
+                         spectralNail = 1;
+                    }
+                }
+            }
 
 
 
@@ -1847,15 +2133,23 @@ namespace StarsAbove.Systems
 
 
         }
+        int edgerunnerCooldown;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             OnHitStarfarerDialogue(target);
-            if (target.lifeMax > 5)
+            if (target.lifeMax > 5 && target.CanBeChasedBy())
             {
                 inCombat = inCombatMax;
             }
-           
-            if(kiTwinburst == 2)
+            if (starfarerOutfit == 7 && chosenStarfarer == 2 && edgerunnerCooldown <= 0 && inCombat > 0 && target.CanBeChasedBy()) // Eridani's Synthweave
+            {
+                edgerunnerCooldown = 30;
+                novaGaugeChangeAlpha = 1f;
+                novaGaugeChangeAlphaSlow = 1f;
+                novaGauge += 2f + Math.Min(1f, damageDone / 50f);
+
+            }
+            if (kiTwinburst == 2)
             {
                 target.SimpleStrikeNPC(damageDone,hit.HitDirection,hit.Crit,hit.Knockback,hit.DamageType);
                 
@@ -1909,7 +2203,7 @@ namespace StarsAbove.Systems
                 if (flashfreeze == 2 && flashFreezeCooldown < 0)
                 {
                     //damage += target.lifeMax;
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                     flashFreezeCooldown = 480;
 
@@ -2000,7 +2294,7 @@ namespace StarsAbove.Systems
                         {
                             if (Main.rand.NextBool(3))
                             {
-                                SoundEngine.PlaySound(SoundID.Item37, Player.Center);
+                                SoundEngine.PlaySound(SoundID.Item37);
                                 for (int ix = 0; ix < 30; ix++)
                                 {
                                     Vector2 position = Vector2.Lerp(Player.Center, projTarget.Center, (float)ix / 30);
@@ -2033,7 +2327,7 @@ namespace StarsAbove.Systems
             if (hit.Crit && flashfreeze == 2 && flashFreezeCooldown < 0)
             {
                 //damage += target.lifeMax;
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_electroSmack);
 
                 Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, 0, 0, Mod.Find<ModProjectile>("FlashFreezeExplosion").Type, damageDone / 4, 0, Player.whoAmI, 0f);
                 flashFreezeCooldown = 240;
@@ -2043,7 +2337,7 @@ namespace StarsAbove.Systems
 
             if (hit.Crit && !disablePromptsCombat)
             {
-                if (Main.rand.Next(0, 8) == 0)
+                if (Main.rand.Next(0, 18) == 0)
                 {
                     starfarerPromptActive("onCrit");
                 }
@@ -2063,7 +2357,7 @@ namespace StarsAbove.Systems
             if (proj.type == ProjectileType<Prototokia>())
             {
                 prototokiaOnHit(target);
-                target.AddBuff(BuffType<VoidAtrophy1>(), 1800);
+                target.AddBuff(BuffType<VoidAtrophy1>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
                 OnEnemyHitWithNova(target, 1, ref damageDone, ref hit.Crit);
             }
 
@@ -2073,7 +2367,7 @@ namespace StarsAbove.Systems
                 {
                     if (chosenStarfarer == 1)
                     {
-                        target.AddBuff(BuffType<VoidAtrophy2>(), 1800);
+                        target.AddBuff(BuffType<VoidAtrophy2>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
                     }
                     else
                     {
@@ -2101,6 +2395,7 @@ namespace StarsAbove.Systems
 
         }
 
+        
         private void OnHitStarfarerDialogue(NPC target)
         {
             if (!disablePromptsCombat)
@@ -2121,6 +2416,16 @@ namespace StarsAbove.Systems
                             }
                             else
                             {
+                                for (int i = 0; i < Main.maxNPCs; i++)
+                                {
+                                    NPC npc = Main.npc[i];
+                                    if (npc.active && !npc.boss && !npc.friendly && npc.Distance(Player.Center) < 1200)
+                                    {
+                                        return;
+
+
+                                    }
+                                }
                                 starfarerPromptActive("onKillEnemy");
                             }
 
@@ -2129,10 +2434,9 @@ namespace StarsAbove.Systems
                     }
 
                 }
-                if (!target.active && target.lifeMax >= 15000)
+                if (!target.active && target.boss)
                 {
 
-                    starfarerPromptActive("onKillBossEnemy");
 
 
                 }
@@ -2146,28 +2450,95 @@ namespace StarsAbove.Systems
         {
             if(lavenderRefrain == 2)
             {
-                healValue /= 2;
+                
+                
             }
             base.GetHealMana(item, quickHeal, ref healValue);
         }
 
         public override void OnMissingMana(Item item, int neededMana)
         {
-            if(mysticIncision == 2)
+            if(mysticIncision == 2 && Player.statLife >= Player.statLifeMax2/2)
             {
-                Player.statMana = neededMana;
+                //Player.statMana = neededMana;
             }
             base.OnMissingMana(item, neededMana);
+        }
+        public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+        {
+            if(beyondinfinity == 2 && item.OriginalDamage <= 100)
+            {
+                bool gray = item.OriginalRarity == ItemRarityID.Gray;
+                bool white = item.OriginalRarity == ItemRarityID.White;
+                bool blue = item.OriginalRarity == ItemRarityID.Blue;
+                bool green = item.OriginalRarity == ItemRarityID.Green;
+                bool orange = item.OriginalRarity == ItemRarityID.Orange;
+                bool lightred = item.OriginalRarity == ItemRarityID.LightRed;
+                bool pink = item.OriginalRarity == ItemRarityID.Pink;
+                bool lightpurple = item.OriginalRarity == ItemRarityID.LightPurple;
+                bool lime = item.OriginalRarity == ItemRarityID.Lime;
+                bool yellow = item.OriginalRarity == ItemRarityID.Yellow;
+                bool cyan = item.OriginalRarity == ItemRarityID.Cyan;
+                bool red = item.OriginalRarity == ItemRarityID.Red;
+                bool purple = item.OriginalRarity == ItemRarityID.Purple;
+
+                
+
+                if(starfarerOutfit == 4)
+                {
+                    //Aegis of Hope's Legacy
+                    float damageMult = 1f +
+                    (gray ? 50f : 0f) + //No weapons have a base rarity of gray, so this is just for fun
+                    (white ? 20f : 0f) +
+                    (blue ? 12f : 0f) +
+                    (green ? 9f : 0f) +
+                    (orange ? 7f : 0f) +
+                    (lightred ? 6f : 0f) +
+                    (pink ? 4f : 0f) +
+                    (lightpurple ? 2f : 0f) +
+                    (lime ? 1.5f : 0f) +
+                    (yellow ? 1f : 0f) +
+                    (cyan ? 0.5f : 0f) +
+                    (red ? 0.05f : 0f) +
+                    (purple ? 0.01f : 0f);
+                    damage *= damageMult;
+
+                }
+                else
+                {
+                    float damageMult = 1f +
+                    (gray ? 20f : 0f) + //No weapons have a base rarity of gray, so this is just for fun
+                    (white ? 12f : 0f) +
+                    (blue ? 9f : 0f) +
+                    (green ? 7f : 0f) +
+                    (orange ? 6f : 0f) +
+                    (lightred ? 4f : 0f) +
+                    (pink ? 2f : 0f) +
+                    (lightpurple ? 1.5f : 0f) +
+                    (lime ? 1f : 0f) +
+                    (yellow ? 0.5f : 0f) +
+                    (cyan ? 0.5f : 0f) +
+                    (red ? 0.05f : 0f) +
+                    (purple ? 0.01f : 0f);
+                    damage *= damageMult;
+
+                }
+
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (arborealEchoes == 2)
             {
-                if (target.life == target.lifeMax && target.CanBeChasedBy())
+                if (target.life == target.lifeMax && target.CanBeChasedBy() && !target.boss)
                 {
                     modifiers.FinalDamage += 0.3f;
                     Player.Heal(10);
                 }
+            }
+            if(mysticIncision == 2)
+            {
+                modifiers.CritDamage += Math.Min(0.6f,MathHelper.Lerp(0f,0.6f,Player.GetTotalArmorPenetration(DamageClass.Generic)/120));
             }
             if (kiTwinburst == 2)
             {
@@ -2179,19 +2550,14 @@ namespace StarsAbove.Systems
             }
             if (kineticConversion == 2)
             {
-                modifiers.SourceDamage *= 0.1f + Player.velocity.Length() / 7f * 0.2f;
+                modifiers.SourceDamage *= 1.1f + Player.velocity.Length() / 7f * 0.2f;
             }
             if (mysticforging == 2)
             {
                 modifiers.DisableCrit();
-                modifiers.SourceDamage += 1 + MathHelper.Lerp(0, 1, Player.GetCritChance(DamageClass.Generic) / 100) / 2;
+                modifiers.SourceDamage += 0f + MathHelper.Lerp(0f, 0.6f, Player.GetCritChance(DamageClass.Generic) / 100f) / 2f;
             }
 
-            if (beyondinfinity == 2 && beyondInfinityDamageMod > 0)
-            {
-                modifiers.SourceDamage += 1 + beyondInfinityDamageMod;
-                beyondInfinityDamageMod = 0;
-            }
 
             //Will be replaced when these bosses get their new AI.
 
@@ -2227,7 +2593,7 @@ namespace StarsAbove.Systems
                 target.AddBuff(BuffID.OnFire, 60);
             }
 
-            if (Player.HasBuff(BuffType<Buffs.Kifrosse.AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
+            if (Player.HasBuff(BuffType<AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
             {
                 modifiers.SourceDamage += 0.5f;
             }
@@ -2243,7 +2609,7 @@ namespace StarsAbove.Systems
                     //If the attack was a crit
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat = (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2256,7 +2622,7 @@ namespace StarsAbove.Systems
                 {
                     //If the attack was not a crit
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat = (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat = (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2305,7 +2671,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.016f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.016f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2313,7 +2679,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.016f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.016f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2328,7 +2694,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2337,7 +2703,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     //modifiers.FinalDamage *= 0.02f;//Reduce the final damage due to the amount of blades.
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2353,7 +2719,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.33f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.33f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2361,7 +2727,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.33f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.33f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2376,7 +2742,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2384,7 +2750,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2399,7 +2765,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2407,7 +2773,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2422,7 +2788,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 8f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 8f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2430,7 +2796,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 8f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 8f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2445,7 +2811,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2453,7 +2819,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2468,7 +2834,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2477,7 +2843,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2493,7 +2859,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2501,7 +2867,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2516,7 +2882,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2525,7 +2891,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2541,7 +2907,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2550,7 +2916,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 10;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 10;
                     modifiers.FinalDamage *= 0.5f;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2561,7 +2927,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -2571,11 +2937,11 @@ namespace StarsAbove.Systems
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2586,11 +2952,11 @@ namespace StarsAbove.Systems
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2605,7 +2971,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -2615,11 +2981,11 @@ namespace StarsAbove.Systems
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.5f;
                     }
 
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2631,11 +2997,11 @@ namespace StarsAbove.Systems
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.25f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.5f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.5f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2647,7 +3013,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_GunbladeImpact);
                 screenShakeTimerGlobal = -80;
                 int uniqueCrit = Main.rand.Next(100);
                 if (uniqueCrit <= novaCritChance + novaCritChanceMod)
@@ -2657,11 +3023,11 @@ namespace StarsAbove.Systems
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.08f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.08f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) * 0.25f;
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
@@ -2672,11 +3038,11 @@ namespace StarsAbove.Systems
                     modifiers.DisableCrit();
                     if (proj.penetrate < 999)
                     {//If the projectile has penetrated at least 1 target
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.08f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.08f;
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) * 0.25f;
+                        modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) * 0.25f;
                     }
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2693,12 +3059,12 @@ namespace StarsAbove.Systems
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
                     if (target.HasBuff(BuffID.OnFire))
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 4;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 4;
 
                     }
                     else
                     {
-                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod)) / 5;
+                        modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100)) / 5;
 
                     }
                     ModifyHitEnemyWithNova(target, ref modifiers);
@@ -2708,7 +3074,7 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod)) / 5;
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)) / 5;
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
 
@@ -2729,7 +3095,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
 
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
                 screenShakeTimerGlobal = -80;
                 novaGauge += 5;
                 int uniqueCrit = Main.rand.Next(100);
@@ -2737,7 +3103,7 @@ namespace StarsAbove.Systems
                 {
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     ModifyHitEnemyWithNova(target, ref modifiers);
                     ModifyHitEnemyWithNovaCrit(target, ref modifiers);
 
@@ -2745,10 +3111,313 @@ namespace StarsAbove.Systems
                 else
                 {
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
+
+            }
+            if (proj.type == ProjectileType<FireflySlash>() || proj.type == ProjectileType<FireflySlashFollowUp>() || proj.type == ProjectileType<FireflyKick>() || proj.type == ProjectileType<FireflySkill>() || proj.type == ProjectileType<FireflyKickExplosion>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
+
+                //Complete Combustion
+                if (target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks >= 100)
+                {
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
+
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks -= 100;
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                    float dustAmount = 60f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X - 50, target.Center.Y) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X + 50, target.Center.Y) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 50) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = new Vector2(target.Center.X , target.Center.Y + 50) + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+                    }
+                    
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = target.Center + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                    }
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant + MathHelper.ToRadians(90));
+                        int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                        Main.dust[dust].scale = 1.5f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = target.Center + spinningpoint5;
+                        Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                    }
+
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
+                    CombatText.NewText(textPos, new Color(255, 12, 12, 110), $"{Math.Round((float)(novaCritDamage * (1 + novaCritDamageMod/100)))}", true, false);
+                    modifiers.HideCombatText();
+                    return;
+                }
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    float dustAmount = 44f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    if(Main.rand.NextBool())
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
+                    }
+                    
+                    
+
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 8;
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100)); //This Nova doesn't have crit scaling, only on the final attack
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 10 - Main.rand.Next(0, 20), target.width, target.height);
+                    CombatText.NewText(textPos, new Color(155, 12, 12, 110), $"{Math.Round((float)(novaDamage * (1 + novaDamageMod/100)))}", false, false);
+                    modifiers.HideCombatText();
+                }
+                else
+                {
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 2;
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<FireflySkillCombo>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                //SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
+
+                
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    float dustAmount = 44f;
+                    float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                    if (Main.rand.NextBool())
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < dustAmount; i++)
+                        {
+                            Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                            spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                            spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                            int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                            Main.dust[dust].scale = 1.5f;
+                            Main.dust[dust].noGravity = true;
+                            Main.dust[dust].position = target.Center + spinningpoint5;
+                            Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+                        }
+                    }
+
+
+
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 8;
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod / 100)); //This Nova doesn't have crit scaling, only on the final attack
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+                    Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 10 - Main.rand.Next(0, 20), target.width, target.height);
+                    CombatText.NewText(textPos, new Color(155, 12, 12, 110), $"{Math.Round((float)(novaDamage * (1 + novaDamageMod / 100)))}", false, false);
+                    modifiers.HideCombatText();
+                }
+                else
+                {
+                    target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks += 2;
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod / 100));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
+            if (proj.type == ProjectileType<FireflyComboFinisher>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterFinish);
+
+                target.GetGlobalNPC<StarsAboveGlobalNPC>().completeCombustionStacks = 0;
+                modifiers.SetCrit();
+                modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod / 100));
+                ModifyHitEnemyWithNova(target, ref modifiers);
+                ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                float dustAmount = 60f;
+                float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X - 50, target.Center.Y) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X + 50, target.Center.Y) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y - 50) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = new Vector2(target.Center.X, target.Center.Y + 50) + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 32f;
+                }
+
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant);
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemTopaz);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 33f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + randomConstant + MathHelper.ToRadians(90));
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemEmerald);
+                    Main.dust[dust].scale = 1.5f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 33f;
+                }
+
+                Rectangle textPos = new Rectangle((int)target.position.X, (int)target.position.Y - 20, target.width, target.height);
+                CombatText.NewText(textPos, new Color(255, 12, 12, 110), $"{Math.Round((float)(novaCritDamage * (1 + novaCritDamageMod / 100)))}", true, false);
+                modifiers.HideCombatText();
+                return;
 
             }
             if (Player.HasBuff(BuffType<AstarteDriver>()) && !target.HasBuff(BuffType<AstarteDriverEnemyCooldown>()))
@@ -2763,7 +3432,7 @@ namespace StarsAbove.Systems
                     //If the attack was a crit
                     modifiers.SetCrit();
                     modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
-                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod/100));
                     if (chosenStarfarer == 1)
                     {
                         modifiers.FinalDamage.Flat += baseNovaDamageAdd / 10;
@@ -2776,7 +3445,7 @@ namespace StarsAbove.Systems
                 {
                     //If the attack was not a crit
                     modifiers.DisableCrit();
-                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod));
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod/100));
                     ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
@@ -2905,9 +3574,13 @@ namespace StarsAbove.Systems
             {
                 screenCache = Main.screenPosition;
             }
-
+            
             if (screenShakeTimerGlobal < 0 && screenShakeTimerGlobal > -100)
             {
+                if(disableScreenShake)
+                {
+                    return;
+                }
                 Main.screenPosition += new Vector2(Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100), Main.rand.Next(-screenShakeVelocity / 100, screenShakeVelocity / 100));
                 if (screenShakeVelocity >= 100)
                 {
@@ -2937,33 +3610,49 @@ namespace StarsAbove.Systems
             }
             
 
-            //Fix old array stuff
-            if(chosenStarfarer == 2)
-            {
-               starshower = 0; //
-                ironskin = 0; //
-               evasionmastery = 0;//
-                aquaaffinity = 0;//
-                inneralchemy = 0;
-                hikari = 0;
-                livingdead = 0;
-                umbralentropy = 0;
-               celestialevanesence = 0;
-               butchersdozen = 0; //
-               mysticforging = 0;
-                flashfreeze = 0;
-            }
-
             base.UpdateEquips();
         }
 
-        public override void SetStaticDefaults()
+        public override void ModifyLuck(ref float luck)
         {
+            if (Player.HasBuff(BuffType<OffSeersJourney>()))
+            {
+                Player.luckMaximumCap += 5f;
 
+                if (chosenStarfarer == 2)
+                {
+                    luck += 1f;
+                }
+                luck += 2f;
+            }
+            if (Player.HasBuff(BuffType<OffSeersPurpose>()))
+            {
+                Player.luckMaximumCap += 5f;
 
+                if (chosenStarfarer == 1)
+                {
+                    luck += 1f;
+                }
+
+                luck += 2f;
+            }
+            if (Player.HasBuff(BuffType<FarewellOfFlames>()))
+            {
+
+                luck += 1f;
+            }
+
+            base.ModifyLuck(ref luck);
         }
+
+        public static bool shockwaveEffectDisabled;
         public override void PreUpdate()
         {
+            globalVoiceDelayTimer--;
+            if(voicesDisabled)
+            {
+                globalVoiceDelayTimer = 10;
+            }
             GlobalRotation++;
             if (GlobalRotation >= 360)
             {
@@ -2977,7 +3666,7 @@ namespace StarsAbove.Systems
 
             CutsceneProgress();
             timeAfterGettingHit++;
-
+            edgerunnerCooldown--;
             //Stellar Array Values
             HealthyConfidence();
             BeyondInfinity();
@@ -2994,7 +3683,7 @@ namespace StarsAbove.Systems
             InevitableEnd();
             SwiftstrikeTheory();
             EmberFlask();
-
+            
             DialogueScroll();
 
             AspectedDamageModification();
@@ -3081,6 +3770,7 @@ namespace StarsAbove.Systems
                 costumeChangeOpacity -= 0.1f;
 
                 GaussianBlur();
+                NeonVeilShaderEffect();
                 if (starfarerMenuActive)
                 {
                     starfarerMenuUIOpacity += 0.1f;
@@ -3172,8 +3862,9 @@ namespace StarsAbove.Systems
                 //If there is dialogue...
                 if (chosenDialogue != 0)
                 {
-                    StarsAboveDialogueSystem.SetupDialogueSystem(chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, Player, Mod);
+                    StarsAboveDialogueSystem.SetupDialogueSystem(false, chosenStarfarer, ref chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
                 }
+
                 SetupVNDialogue();
 
                 animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);//Dialogue increment magic
@@ -3192,9 +3883,15 @@ namespace StarsAbove.Systems
                 }
                 if (chosenStarfarerEffect == true)
                 {
+                    if(shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     activateShockwaveEffect = true;
 
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_StarfarerChosen, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_StarfarerChosen);
                     Dust dust;
                     for (int d = 0; d < 50; d++)
                     {
@@ -3206,6 +3903,12 @@ namespace StarsAbove.Systems
 
                 if (activateShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     rippleCount = 4;
                     rippleSpeed = 60;
                     rippleSize = 35;
@@ -3218,6 +3921,12 @@ namespace StarsAbove.Systems
                 }
                 if (activateAuthorityShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     rippleCount = 2;
                     rippleSpeed = 35;
                     rippleSize = 30;
@@ -3228,8 +3937,38 @@ namespace StarsAbove.Systems
                     }
                     shockwaveProgress = 0;
                 }
+                if (activateArbiterShockwaveEffect)
+                {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
+                    if (Main.netMode != NetmodeID.Server && Filters.Scene["Shockwave"].IsActive())
+                    {
+                        Filters.Scene.Deactivate("Shockwave");
+
+                    }
+
+                    rippleCount = 1;
+                    rippleSpeed = 25;
+                    rippleSize = 4;
+                    activateArbiterShockwaveEffect = false;
+                    if (Main.netMode != NetmodeID.Server && !Filters.Scene["Shockwave"].IsActive())
+                    {
+                        Filters.Scene.Activate("Shockwave", Player.Center).GetShader().UseColor(rippleCount, rippleSize, rippleSpeed).UseTargetPosition(new Vector2(Player.Center.X, Player.Center.Y));
+                    }
+                    shockwaveProgress = 0;
+                }
                 if (activateBlackHoleShockwaveEffect)
                 {
+                    if (shockwaveEffectDisabled)
+                    {
+                        activateShockwaveEffect = false;
+
+                        return;
+                    }
                     rippleCount = 8;
                     rippleSpeed = 10;
                     rippleSize = 65;
@@ -3269,13 +4008,36 @@ namespace StarsAbove.Systems
 
 
         }
+        int lavenderRefrainReductionTimer;
+        private void LavenderRefrain()
+        {
+            if (lavenderRefrain == 2)
+            {
+                lavenderRefrainMaxManaReduction = Math.Clamp(lavenderRefrainMaxManaReduction, 0f, 1f);
+                Player.statManaMax2 = (int)(Player.statManaMax2 * lavenderRefrainMaxManaReduction);
+                if (timeAfterGettingHit > 600)
+                {
+                    lavenderRefrainReductionTimer++;
+                    if(lavenderRefrainReductionTimer > 240)
+                    {
+                        lavenderRefrainMaxManaReduction += 0.1f;
+
+                        lavenderRefrainReductionTimer = 0;
+                    }
+                    lavenderRefrainMaxManaReduction = MathHelper.Clamp(lavenderRefrainMaxManaReduction, 0f, 1f);
+                }
+            }
+        }
+
         private void SwiftstrikeTheory()
         {
             if (swiftstrikeTheory == 2)
             {
+                
                 if (Player.immune && Player.immuneTime > 0)
                 {
-                    Player.GetAttackSpeed(DamageClass.Generic) += 0.8f;
+                    Player.AddBuff(BuffType<SwiftstrikeBuff>(), 2);
+
                 }
             }
         }
@@ -3297,13 +4059,12 @@ namespace StarsAbove.Systems
         }
         private void MysticIncision()
         {
-            Player.GetArmorPenetration(DamageClass.Generic) += 20f;
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
                 if (npc.active && !npc.boss && npc.Distance(Player.Center) < 100)
                 {
-                    Player.GetArmorPenetration(DamageClass.Generic) += 50f;
+                    Player.GetArmorPenetration(DamageClass.Generic) *= 0.3f;
 
                 }
             }
@@ -3319,7 +4080,19 @@ namespace StarsAbove.Systems
                     armsthriftWeaponTypeOld = Player.HeldItem.DamageType;
                     return;
                 }
-                if(armsthriftWeaponIDOld != Player.HeldItem.type && !Player.HasBuff(BuffType<ArmsthriftCooldown>()) && Player.HeldItem.damage > 0)
+                if (armsthriftWeaponIDOld != Player.HeldItem.type && ( Player.HasBuff(BuffType<ArmsthriftBuff>()) || Player.HasBuff(BuffType<ArmsthriftBuffStrong>()) ) && Player.HeldItem.damage > 0)
+                {
+                    if (Player.HasBuff(BuffType<ArmsthriftBuff>()))
+                    {
+                        Player.ClearBuff(BuffType<ArmsthriftBuff>());
+                    }
+                    if (Player.HasBuff(BuffType<ArmsthriftBuffStrong>()))
+                    {
+                        Player.ClearBuff(BuffType<ArmsthriftBuffStrong>());
+                    }
+
+                }
+                if (armsthriftWeaponIDOld != Player.HeldItem.type && !Player.HasBuff(BuffType<ArmsthriftCooldown>()) && Player.HeldItem.damage > 0)
                 {
                     Player.AddBuff(BuffType<ArmsthriftCooldown>(), 10 * 60);
 
@@ -3380,6 +4153,84 @@ namespace StarsAbove.Systems
                 }
             }
             gaussianBlurProgress = MathHelper.Clamp(gaussianBlurProgress, 0f, 1f);
+        }
+        static public bool ForceNeonVeilShader = false;
+        private void NeonVeilShaderEffect()
+        {
+            if (Player.InModBiome<NeonVeilBiome>())
+            {
+                if (Main.rand.NextBool(3))
+                {
+                    // Initial random position vector
+                    Vector2 vector = new Vector2(
+                        Main.rand.Next(-1548, 1548) * (0.003f * 200) - 10,
+                        Main.rand.Next(-1548, 1548) * (0.003f * 200) - 10);
+
+                    // Create the dust particle
+                    Dust d = Main.dust[Dust.NewDust(
+                        Player.Center + vector, 1, 1,
+                        DustID.GemAmethyst, 0, 0, 255,
+                        new Color(1f, 1f, 1f), 0.8f)];
+
+                    // Apply player velocity influence
+                    d.noGravity = true;
+                }
+                
+
+                if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server && Main.screenWidth <= 1920)
+                {
+                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 110)*16));
+
+                }
+                if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
+                {
+                    // Calculate the player's Y coordinate in tile coordinates
+                    int playerTileY = Player.Center.ToTileCoordinates().Y;
+
+                    // Define the threshold value
+                    int thresholdY = Main.maxTilesY - 100;
+                    float intensity = 1f;
+                    // Check if the player is above the threshold
+                    if (playerTileY > thresholdY)
+                    {
+                        // Calculate how far the player is above the threshold
+                        float distanceAboveThreshold = playerTileY - thresholdY;
+
+                        // Calculate the maximum distance for full interpolation (20 tiles)
+                        float maxDistance = 10f;
+
+                        // Interpolate the intensity from 1f to 0f based on the distance above the threshold
+                        intensity = MathHelper.Lerp(1f, 0f, distanceAboveThreshold / maxDistance);
+
+                        // Clamp the intensity to the range [0f, 1f]
+                        intensity = MathHelper.Clamp(intensity, 0f, 1f);
+                    }
+                    else
+                    {
+                        // If the player is not above the threshold, set intensity to 1f
+                        intensity = 1f;
+                    }
+
+                    if (Main.UIScale != 1)
+                    {
+                        //intensity = 0f;
+                    }
+                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X + MathHelper.Lerp(0,Main.screenWidth/4,Math.Min(1f,Main.GameZoomTarget - 1)), (Main.maxTilesY - 100) * 16));
+                }
+            }
+            else
+            {
+                if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server))
+                {
+                    Filters.Scene.Deactivate("NeonVeilReflectionEffect");
+
+                }
+            }
+            if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server) && (Main.screenWidth > 1920 && !ForceNeonVeilShader))
+            {
+                Filters.Scene.Deactivate("NeonVeilReflectionEffect");
+
+            }
         }
 
         private void EmberFlask()
@@ -3531,1259 +4382,1271 @@ namespace StarsAbove.Systems
                 }
             }
         }
+
+        public Dictionary<int, int> ActiveDialogues = new Dictionary<int, int>();
+        public override void SetStaticDefaults()
+        {
+            ActiveDialogues = new Dictionary<int, int>();
+
+        }
+        public int activeDialougeCount = 0;
         private void StellarDiskDialogue()
         {
+            activeDialougeCount = 0;
             if (SyncWorldProgress)
             {
-                /*  if (SubworldSystem.IsActive<Observatory>() && observatoryDialogue == 0)
-                  {
-                      observatoryDialogue = 1;
-                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                      NewDiskDialogue = true;
+                bool newDiskNotification = false;
+                bool newArrayNotification = false;
+                bool newNovaNotification = false;
 
-                  }
-                  if (observatoryDialogue == 2 && cosmicVoyageDialogue == 0)
-                  {
-                      cosmicVoyageDialogue = 1;
-                                          InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                      NewDiskDialogue = true;
-
-                  }*/
-
-                if (NPC.downedSlimeKing && slimeDialogue == 0)
-                {
-                    slimeDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (Main.expertMode)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                    }
-                }
-                if (NPC.downedBoss1 && eyeDialogue == 0)
-                {
-                    eyeDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-
-                }
                 if (slimeDialogue == 2 && astrolabeIntroDialogue == 0)
                 {
+                    //VN dialogue so untouched.
                     astrolabeIntroDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-
-
-                }
-                if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
-                {
-                    observatoryIntroDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-
-
-                }
-                if (NPC.downedBoss2 && corruptBossDialogue == 0)
-                {
-                    corruptBossDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-                }
-                if (NPC.downedQueenBee && BeeBossDialogue == 0)
-                {
-                    BeeBossDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-                }
-
-                if (NPC.downedBoss3 && SkeletonDialogue == 0)
-                {
-                    SkeletonDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-                }
-                if (NPC.downedDeerclops && DeerclopsDialogue == 0)
-                {
-                    DeerclopsDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                }
-                if (Main.hardMode && WallOfFleshDialogue == 0)//Hardmode
-                {
-                    WallOfFleshDialogue = 1;
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-                }
-                if (WallOfFleshWeaponDialogue == 2 && ForceWeaponDialogue == 0)//Hardmode
-                {
-                    ForceWeaponDialogue = 1;
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                if (GolemWeaponDialogue == 2 && GenocideWeaponDialogue == 0)//Hardmode
-                {
-                    GenocideWeaponDialogue = 1;
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                if (CorruptBossWeaponDialogue == 2 && TakodachiWeaponDialogue == 0)//Hardmode
-                {
-                    TakodachiWeaponDialogue = 1;
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                if (NPC.downedMechBoss1 && TwinsDialogue == 0)//The Twins
-                {
-                    TwinsDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (bloomingflames == 0)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                    }
-
-
-                }
-                if (SkeletronPrimeDialogue == 2 && SkyStrikerWeaponDialogue == 0)//Hardmode
-                {
-                    SkyStrikerWeaponDialogue = 1;
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                if (LunaticCultistWeaponDialogue == 2 && TwinStarsWeaponDialogue == 0)//Hardmode
-                {
-                    TwinStarsWeaponDialogue = 1;
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247);}
-                }
-                //Dialogue for Calamity Mod bosses.
-
-
-                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
-                {
-                    if ((bool)calamityMod.Call("GetBossDowned", "desertscourge") && desertscourgeDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        desertscourgeDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "crabulon") && crabulonDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        crabulonDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "hivemind") && hivemindDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        hivemindDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "perforator") && perforatorDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        perforatorDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "slimegod") && slimegodDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        slimegodDialogue = 1;
-                    }
-                    //Hardmode
-                    if ((bool)calamityMod.Call("GetBossDowned", "cryogen") && cryogenDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        cryogenDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge") && aquaticscourgeDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        aquaticscourgeDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental") && brimstoneelementalDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        brimstoneelementalDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone") && calamitasDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        calamitasDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan") && leviathanDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        leviathanDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus") && astrumaureusDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        astrumaureusDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath") && plaguebringerDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        plaguebringerDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "ravager") && ravagerDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        ravagerDialogue = 1;
-                    }
-                    if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus") && astrumdeusDialogue == 0)
-                    {
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        astrumdeusDialogue = 1;
-                    }
-                }
-
-                if (NPC.downedQueenSlime && QueenSlimeDialogue == 0)
-                {
-                    QueenSlimeDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                }
-                if (DownedBossSystem.downedNalhaun && nalhaunDialogue == 0)
-                {
-                    nalhaunDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-
-
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-
-                }
-                if (DownedBossSystem.downedDioskouroi && dioskouroiDialogue == 0)
-                {
-                    dioskouroiDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    //NewStellarNova = true;
-                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    //NewStellarArrayAbility = true;
-
-
-                }
-                if (DownedBossSystem.downedPenth && penthDialogue == 0)
-                {
-                    penthDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    NewStellarNova = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-
-                }
-                if (DownedBossSystem.downedArbiter && arbiterDialogue == 0)
-                {
-                    arbiterDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    //NewStellarNova = true;
-                    if (Main.expertMode)
-                    {
-                        //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                        //NewStellarArrayAbility = true;
-                    }
-                }
-                if (DownedBossSystem.downedTsuki && tsukiyomiDialogue == 0)
-                {
-                    //tsukiyomiDialogue = 1;
-                    //NewDiskDialogue = true;
-                }
-
-                if (tsukiyomiDialogue >= 1)
-                {
-                    if (edingenesisquasar == 0)
-                    {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
-
-                        edingenesisquasar = 1;
-                    }
-                }
-
-
-                if (NPC.downedMechBoss2 && DestroyerDialogue == 0)//The Destroyer
-                {
-                    DestroyerDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (bloomingflames == 0)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                    }
-
-
-                }
-                if (NPC.downedMechBoss3 && SkeletronPrimeDialogue == 0)//Skeletron Prime
-                {
-                    SkeletronPrimeDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (bloomingflames == 0)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                    }
-
-
-                }
-                if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2 && AllMechsDefeatedDialogue == 0)//All Mech Bosses Defeated + Dialogue read
-                {
-                    AllMechsDefeatedDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-
-
-
-                }
-                if (NPC.downedPlantBoss && PlanteraDialogue == 0)
-                {
-                    PlanteraDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-                    //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("You have acquired a new Stellar Nova!"), 190, 100, 247);}
-
-                }
-                if (NPC.downedGolemBoss && GolemDialogue == 0)
-                {
-                    GolemDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (Main.expertMode)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                    }
-
-                }
-                if (NPC.downedEmpressOfLight && EmpressDialogue == 0)
-                {
-                    EmpressDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-
-                }
-                if (NPC.downedAncientCultist && CultistDialogue == 0)
-                {
-                    CultistDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (Main.expertMode)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                    }
-
-                }
-                if (NPC.downedMoonlord && MoonLordDialogue == 0)
-                {
-                    MoonLordDialogue = 1;
-
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-
-                }
-                if (NPC.downedFishron && DukeFishronDialogue == 0)
-                {
-                    DukeFishronDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                }
-                if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && warriorBossItemDialogue == 0 && vagrantDialogue == 2 && !SubworldSystem.AnyActive())
-                {
-                    warriorBossItemDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.HarshLight"), 239, 221, 106); }
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-
-                }
-                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
-                {
-                    onEverlastingLightText = true;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
-
-
-                }
-                if (DownedBossSystem.downedWarrior && WarriorOfLightDialogue == 0)
-                {
-                    WarriorOfLightDialogue = 1;
-                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLightEnd"), 239, 221, 106); }
-                    if (ModLoader.TryGetMod("BossChecklist", out Mod BossChecklist))
-                    {
-
-
-                    }
-
-
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-                    if (BossChecklist != null)
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.TsukiyomiBossChecklist"), 241, 255, 180); }
-
-                    }
-
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-
+                    newDiskNotification = true;
                 }
                 if (DownedBossSystem.downedVagrant && vagrantDialogue == 0)
                 {
+                    //VN dialogue so untouched.
                     vagrantDialogue = 1;
+                    newDiskNotification = true;
+                    newArrayNotification = true;
+                    newNovaNotification = true;
 
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
-                    NewStellarNova = true;
-
-
-                }
-
-                if (DownedBossSystem.downedThespian && thespianDialogue == 0)
-                {
-                    thespianDialogue = 1;
-
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    
-
-
-                }
-                if (DownedBossSystem.downedStarfarers && starfarerPostBattleDialogue == 0)
-                {
-                    starfarerPostBattleDialogue = 1;
-
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-
-
-
-                }
-                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && AllVanillaBossesDefeatedDialogue == 0)
-                {
-                    //AllVanillaBossesDefeatedDialogue = 1;
-                    //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    //NewDiskDialogue = true;
-
-                    //if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.ArrayAbility"), 190, 100, 247); }
-                    //NewStellarArrayAbility = true;
-
-
-                }
-                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && Main.expertMode && EverythingDefeatedDialogue == 0)
-                {
-                    //Expert mode only
-                    EverythingDefeatedDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                    NewStellarArrayAbility = true;
-
-
-                }
-
-                if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2 && HellWeaponDialogue == 0)
-                {
-                    HellWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                }
-                if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2 && Stellaglyph2WeaponDialogue == 0)
-                {
-                    Stellaglyph2WeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                }
-                if (SkeletonWeaponDialogue == 2 && NanomachineWeaponDialogue == 0)
-                {
-                    NanomachineWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                }
-                //Boss Spawn items
-                if (vagrantBossItemDialogue == 0 && NPC.downedBoss1)
-                {
-                    vagrantBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                }
-                if (dioskouroiBossItemDialogue == 0 && SkeletonDialogue == 2 && vagrantDialogue == 2)
-                {
-                    dioskouroiBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-
-                }
-                if (penthBossItemDialogue == 0 && (SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
-                {
-                    penthBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
 
                 }
                 if (starfarerBossItemDialogue == 0 && DownedBossSystem.downedPenth && DownedBossSystem.downedThespian && DownedBossSystem.downedDioskouroi && DownedBossSystem.downedVagrant && NPC.downedPlantBoss)
                 {
                     starfarerBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                    newDiskNotification = true;
 
                 }
-                if (starfarerPostBattleDialogue == 0 && DownedBossSystem.downedStarfarers)
+                if (DownedBossSystem.downedStarfarers && starfarerPostBattleDialogue == 0)
                 {
+                    //VN dialogue so untouched.
                     starfarerPostBattleDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-
+                    newDiskNotification = true;
                 }
-                if (nalhaunBossItemDialogue == 0 && GolemDialogue == 2 && vagrantDialogue == 2)
+                if (observatoryIntroDialogue == 0 && astrolabeIntroDialogue == 2 && SubworldSystem.IsActive<Observatory>())
                 {
-
-                    nalhaunBossItemDialogue = 1;
-                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-
+                    //VN dialogue so untouched.
+                    observatoryIntroDialogue = 1;
+                    newDiskNotification = true;
                 }
 
-                //Zone specific weapons do not have delay
-                if (Player.ZoneHallow && GoldWeaponDialogue == 0)
+                //New system.
+                if (NPC.downedSlimeKing)
                 {
-                    GoldWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    return;
-
+                    SetupActiveDialogue(ref newDiskNotification,
+                        51,
+                        ref slimeDialogue,
+                        true, out newArrayNotification,
+                        false, out newNovaNotification);
                 }
-                if (Player.ZoneGraveyard && FarewellWeaponDialogue == 0)
+                if (NPC.downedBoss1)
                 {
-                    FarewellWeaponDialogue = 1;
-                                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                    NewDiskDialogue = true;
-
-                    return;
+                    SetupActiveDialogue(ref newDiskNotification,
+                        52, //The ID of the dialogue.
+                        ref eyeDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
 
                 }
-                if (WeaponDialogueTimer <= 0)//7200 = 2 min in between 
-                {//The order of these should not matter.
-                    if (vagrantDialogue == 2 && TrickspinWeaponDialogue == 0)
-                    {
-                        TrickspinWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                    }
-                    if (NPC.downedBoss2 && SoldierWeaponDialogue == 0)
-                    {
-                        SoldierWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                    }
-                    if (PlanteraWeaponDialogue == 2 && DreamerWeaponDialogue == 0)
-                    {
-                        DreamerWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                    }
-                    if (DukeFishronWeaponDialogue == 2 && KineticWeaponDialogue == 0)
-                    {
-                        KineticWeaponDialogue = 1;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                    }
-                    if (SkeletonDialogue == 2 && SkeletonWeaponDialogue == 0)
-                    {
-                        SkeletonWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-                    }
-                    if (tsukiyomiDialogue == 2 && ArchitectWeaponDialogue == 0)
-                    {
-                        ArchitectWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-
-
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-
-                    }
-                    if (ArchitectWeaponDialogue == 2 && CosmicDestroyerWeaponDialogue == 0)
-                    {
-                        CosmicDestroyerWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-
-
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-
-
-                    }
-                    if (CosmicDestroyerWeaponDialogue == 2 && KarnaWeaponDialogue == 0)
-                    {
-                        KarnaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-
-
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-
-
-                    }
-                    if (MurasamaWeaponDialogue == 0 && NPC.downedEmpressOfLight && Main.masterMode && DownedBossSystem.downedVagrant)
-                    {
-                        //Obtained from Arbitration now.
-
-                        //MurasamaWeaponDialogue = 1;
-                        //                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        //NewDiskDialogue = true;
-                        //WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        //return;
-                    }
-                    if (MercyWeaponDialogue == 0 && NPC.downedGolemBoss)
-                    {
-                        MercyWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (ThespianWeaponDialogue == 0 && thespianDialogue == 2)
-                    {
-                        ThespianWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (DragaliaWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
-                    {
-                        DragaliaWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (WavedancerWeaponDialogue == 0 && ThespianWeaponDialogue == 2)
-                    {
-                        WavedancerWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (ClarentWeaponDialogue == 0 && NalhaunWeaponDialogue == 2)
-                    {
-                        ClarentWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (GundbitWeaponDialogue == 0 && LunaticCultistWeaponDialogue == 2)
-                    {
-                        GundbitWeaponDialogue = 1;
-                        InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (SakuraWeaponDialogue == 0 && NPC.downedEmpressOfLight)
-                    {
-                        SakuraWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (EternalWeaponDialogue == 0 && NPC.downedMoonlord)
-                    {
-                        EternalWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (DaemonWeaponDialogue == 0 && NPC.downedMoonlord)
-                    {
-                        DaemonWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (OzmaWeaponDialogue == 0 && NPC.downedAncientCultist)
-                    {
-                        OzmaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (UrgotWeaponDialogue == 0 && NPC.downedQueenSlime)
-                    {
-                        UrgotWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (BloodWeaponDialogue == 0 && NPC.downedHalloweenKing)
-                    {
-                        BloodWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (MorningStarWeaponDialogue == 0 && NPC.downedDeerclops)
-                    {
-                        MorningStarWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (VirtueWeaponDialogue == 0 && NPC.downedMoonlord)
-                    {
-                        VirtueWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (QueenSlimeWeaponDialogue == 0 && NPC.downedQueenSlime)
-                    {
-                        QueenSlimeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (NeedlepointWeaponDialogue == 0 && NPC.downedEmpressOfLight)
-                    {
-                        NeedlepointWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-                    }
-                    if (eyeDialogue == 2 && EyeBossWeaponDialogue == 0)
-                    {
-                        EyeBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-                    }
-                    if (corruptBossDialogue == 2 && CorruptBossWeaponDialogue == 0)
-                    {
-                        CorruptBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-                        return;
-
-                    }
-                    //Nalhaun weapons have been moved...
-                    if (dioskouroiDialogue == 2 && NalhaunWeaponDialogue == 0)
-                    {
-                        NalhaunWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    //Vagrant weapons have been moved...
-                    if (QueenSlimeWeaponDialogue == 2 && VagrantWeaponDialogue == 0)
-                    {
-                        VagrantWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (BeeBossDialogue == 2 && QueenBeeWeaponDialogue == 0)
-                    {
-                        QueenBeeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (SkeletonWeaponDialogue == 2 && OceanWeaponDialogue == 0 && Player.ZoneBeach)
-                    {
-                        OceanWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (SkeletonWeaponDialogue == 2 && MiseryWeaponDialogue == 0)
-                    {
-                        MiseryWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (slimeDialogue == 2 && KingSlimeWeaponDialogue == 0)
-                    {
-                        KingSlimeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WallOfFleshDialogue == 2 && WallOfFleshWeaponDialogue == 0)
-                    {
-                        WallOfFleshWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (WallOfFleshWeaponDialogue == 2 && LumaWeaponDialogue == 0)
-                    {
-                        LumaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2) && MechBossWeaponDialogue == 0)
-                    {
-                        MechBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && AllMechBossWeaponDialogue == 0 && MechBossWeaponDialogue == 2 && AllMechBossWeaponDialogue == 0)
-                    {
-                        AllMechBossWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MechBossWeaponDialogue == 2 && HullwroughtWeaponDialogue == 0)
-                    {
-                        HullwroughtWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (HullwroughtWeaponDialogue == 2 && MonadoWeaponDialogue == 0)
-                    {
-                        MonadoWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-
-                    if (PlanteraDialogue == 2 && PlanteraWeaponDialogue == 0)
-                    {
-                        PlanteraWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (NPC.downedChristmasIceQueen && FrostMoonWeaponDialogue == 0)
-                    {
-                        FrostMoonWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (GolemDialogue == 2 && GolemWeaponDialogue == 0)
-                    {
-                        GolemWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (penthDialogue == 2 && PenthesileaWeaponDialogue == 0)
-                    {
-                        PenthesileaWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (PenthesileaWeaponDialogue == 2 && MuseWeaponDialogue == 0)
-                    {
-                        MuseWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (PlanteraWeaponDialogue == 2 && KifrosseWeaponDialogue == 0)
-                    {
-                        KifrosseWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    //Moved from Arbitration to Nalhaun.
-                    if (nalhaunDialogue == 2 && ArbitrationWeaponDialogue == 0)
-                    {
-                        ArbitrationWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (ArbitrationWeaponDialogue == 2 && LevinstormWeaponDialogue == 0)
-                    {
-                        LevinstormWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (ArbitrationWeaponDialogue == 2 && ClaimhWeaponDialogue == 0)
-                    {
-                        ClaimhWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (DukeFishronDialogue == 2 && DukeFishronWeaponDialogue == 0)
-                    {
-                        DukeFishronWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (DukeFishronWeaponDialogue == 2 && ManiacalWeaponDialogue == 0)
-                    {
-                        ManiacalWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (CultistDialogue == 2 && LunaticCultistWeaponDialogue == 0)
-                    {
-                        LunaticCultistWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MoonLordDialogue == 2 && MoonLordWeaponDialogue == 0)
-                    {
-                        MoonLordWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MoonLordWeaponDialogue == 2 && ShadowlessWeaponDialogue == 0)
-                    {
-                        ShadowlessWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && WarriorWeaponDialogue == 0)
-                    {
-                        WarriorWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && AuthorityWeaponDialogue == 0)
-                    {
-                        AuthorityWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && RedMageWeaponDialogue == 0)
-                    {
-                        RedMageWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && BlazeWeaponDialogue == 0)
-                    {
-                        BlazeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (WarriorOfLightDialogue == 2 && PickaxeWeaponDialogue == 0)
-                    {
-                        PickaxeWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (AllMechsDefeatedDialogue == 2 && HardwareWeaponDialogue == 0)
-                    {
-                        HardwareWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (LunaticCultistWeaponDialogue == 2 && CatalystWeaponDialogue == 0)
-                    {
-                        CatalystWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (CatalystWeaponDialogue == 2 && UmbraWeaponDialogue == 0)
-                    {
-                        UmbraWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (SaltwaterWeaponDialogue == 0 && NPC.downedPirates)
-                    {
-                        SaltwaterWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (ClockWeaponDialogue == 0 && vagrantDialogue == 2)
-                    {
-                        ClockWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (SanguineWeaponDialogue == 0 && Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
-                    {
-                        SanguineWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (GoldlewisWeaponDialogue == 0 && NPC.downedMartians)
-                    {
-                        GoldlewisWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (ChaosWeaponDialogue == 0 && NPC.downedQueenSlime)
-                    {
-                        ChaosWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-                    }
-                    if (GolemWeaponDialogue == 2 && SilenceWeaponDialogue == 0)
-                    {
-                        SilenceWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-                    if (MoonLordWeaponDialogue == 2 && SoulWeaponDialogue == 0)
-                    {
-                        SoulWeaponDialogue = 1;
-                                            InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
-                        NewDiskDialogue = true;
-                        WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
-                        return;
-
-                    }
-
-                    WeaponDialogueTimer = Main.rand.Next(3600, 7200);
-
+                if (NPC.downedBoss2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        53, //The ID of the dialogue.
+                        ref corruptBossDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedQueenBee)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        54, //The ID of the dialogue.
+                        ref BeeBossDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+
+                if (NPC.downedBoss3)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        55, //The ID of the dialogue.
+                        ref SkeletonDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedDeerclops)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        76, //The ID of the dialogue.
+                        ref DeerclopsDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (Main.hardMode)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        56, //The ID of the dialogue.
+                        ref WallOfFleshDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBoss1)//The Twins
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        57, //The ID of the dialogue.
+                        ref TwinsDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedQueenSlime)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        74, //The ID of the dialogue.
+                        ref QueenSlimeDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (DownedBossSystem.downedNalhaun)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        70, //The ID of the dialogue.
+                        ref nalhaunDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (DownedBossSystem.downedDioskouroi)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        69, //The ID of the dialogue.
+                        ref dioskouroiDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (DownedBossSystem.downedPenth)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        71, //The ID of the dialogue.
+                        ref penthDialogue, //The flag of the dialogue.
+                        true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (DownedBossSystem.downedArbiter)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                          72, //The ID of the dialogue.
+                          ref arbiterDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (DownedBossSystem.downedTsuki)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                          73, //The ID of the dialogue.
+                          ref tsukiyomiDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          true, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                 }
 
 
 
 
-                if (NPC.downedSlimeKing && Main.expertMode == true)
+                if (NPC.downedMechBoss2)//The Destroyer
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                          58, //The ID of the dialogue.
+                          ref DestroyerDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedMechBoss3)//Skeletron Prime
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                           59, //The ID of the dialogue.
+                           ref SkeletronPrimeDialogue, //The flag of the dialogue.
+                           false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                           false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (SkeletronPrimeDialogue == 2 && TwinsDialogue == 2 && DestroyerDialogue == 2)//All Mech Bosses Defeated + Dialogue read
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                            60, //The ID of the dialogue.
+                            ref AllMechsDefeatedDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                            false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                             61, //The ID of the dialogue.
+                             ref PlanteraDialogue, //The flag of the dialogue.
+                             true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                             false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedGolemBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                             62, //The ID of the dialogue.
+                             ref GolemDialogue, //The flag of the dialogue.
+                             true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                             false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedEmpressOfLight)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                             75, //The ID of the dialogue.
+                             ref EmpressDialogue, //The flag of the dialogue.
+                             true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                             false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              64, //The ID of the dialogue.
+                              ref CultistDialogue, //The flag of the dialogue.
+                              true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              65, //The ID of the dialogue.
+                              ref MoonLordDialogue, //The flag of the dialogue.
+                              true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedFishron)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              63, //The ID of the dialogue.
+                              ref DukeFishronDialogue, //The flag of the dialogue.
+                              true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if ((EverlastingLightEvent.isEverlastingLightPreviewActive || EverlastingLightEvent.isEverlastingLightActive) && !SubworldSystem.AnyActive())
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                                                  304, //The ID of the dialogue.
+                                                  ref warriorBossItemDialogue, //The flag of the dialogue.
+                                                  false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                                                  false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (EverlastingLightEvent.isEverlastingLightActive && !onEverlastingLightText && !SubworldSystem.AnyActive())
+                {
+                    //Do a prompt
+                    onEverlastingLightText = true;
+                    starfarerPromptActive("onEverlastingLight");
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.EverlastingLight"), 239, 221, 106); }
+                }
+                if (DownedBossSystem.downedWarrior)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                                                   66, //The ID of the dialogue.
+                                                   ref WarriorOfLightDialogue, //The flag of the dialogue.
+                                                   true, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                                                   false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+
+
+                if (DownedBossSystem.downedThespian)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              78, //The ID of the dialogue.
+                              ref thespianDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && NPC.downedQueenSlime && NPC.downedEmpressOfLight && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && Main.expertMode)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              68, //The ID of the dialogue.
+                              ref EverythingDefeatedDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                //Boss Spawn items
+                if (NPC.downedBoss1)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              77, //The ID of the dialogue.
+                              ref vagrantBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (SkeletonDialogue == 2 && vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              305, //The ID of the dialogue.
+                              ref dioskouroiBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if ((SkeletronPrimeDialogue == 2 || TwinsDialogue == 2 || DestroyerDialogue == 2) && vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              302, //The ID of the dialogue.
+                              ref penthBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+
+                if (GolemDialogue == 2 && vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              301, //The ID of the dialogue.
+                              ref nalhaunBossItemDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                //Dialogue for Calamity Mod bosses.
+                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                {
+                    if ((bool)calamityMod.Call("GetBossDowned", "desertscourge"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                        201, //The ID of the dialogue.
+                        ref desertscourgeDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "crabulon"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                        202, //The ID of the dialogue.
+                        ref crabulonDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "hivemind"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          203, //The ID of the dialogue.
+                          ref hivemindDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "perforator"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          204, //The ID of the dialogue.
+                          ref perforatorDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "slimegod"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         205, //The ID of the dialogue.
+                         ref slimegodDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    //Hardmode
+                    if ((bool)calamityMod.Call("GetBossDowned", "cryogen"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         206, //The ID of the dialogue.
+                         ref cryogenDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "aquaticscourge"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         207, //The ID of the dialogue.
+                         ref aquaticscourgeDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "brimstoneelemental"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          208, //The ID of the dialogue.
+                          ref brimstoneelementalDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "calamitasClone"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          209, //The ID of the dialogue.
+                          ref calamitasDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "anahitaleviathan"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          210, //The ID of the dialogue.
+                          ref leviathanDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "astrumaureus"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                          211, //The ID of the dialogue.
+                          ref astrumaureusDialogue, //The flag of the dialogue.
+                          false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                          false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "plaguebringergoliath"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         212, //The ID of the dialogue.
+                         ref plaguebringerDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "ravager"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                         213, //The ID of the dialogue.
+                         ref ravagerDialogue, //The flag of the dialogue.
+                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                    if ((bool)calamityMod.Call("GetBossDowned", "astrumdeus"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                        214, //The ID of the dialogue.
+                        ref astrumdeusDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    }
+                }
+
+                //Weapon dialogues
+                if (Player.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              160, //The ID of the dialogue.
+                              ref Stellaglyph2WeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+
+                }
+                if (SkeletonWeaponDialogue == 2 )
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              167, //The ID of the dialogue.
+                              ref NanomachineWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (Player.ZoneUnderworldHeight && SkeletonWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              102, //The ID of the dialogue.
+                              ref HellWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (Player.ZoneHallow )
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              158, //The ID of the dialogue.
+                              ref GoldWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (Player.ZoneGraveyard)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              159, //The ID of the dialogue.
+                              ref FarewellWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }              
+                if (WallOfFleshWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        131, //The ID of the dialogue.
+                        ref ForceWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (GolemWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        132, //The ID of the dialogue.
+                        ref GenocideWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (CorruptBossWeaponDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        133, //The ID of the dialogue.
+                        ref TakodachiWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (SkeletronPrimeDialogue == 2)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        135, //The ID of the dialogue.
+                        ref SkyStrikerWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (NPC.downedAncientCultist)//Hardmode
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                        134, //The ID of the dialogue.
+                        ref TwinStarsWeaponDialogue, //The flag of the dialogue.
+                        false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                        false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              175, //The ID of the dialogue.
+                              ref TrickspinWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedBoss2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              173, //The ID of the dialogue.
+                              ref SoldierWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedBoss2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              181, //The ID of the dialogue.
+                              ref WolvesbaneWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedThespian)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              182, //The ID of the dialogue.
+                              ref SugarballWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBossAny)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              183, //The ID of the dialogue.
+                              ref ExpresswayWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBoss1)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              184, //The ID of the dialogue.
+                              ref NecrosisWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMechBoss3)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              185, //The ID of the dialogue.
+                              ref PhasmasaberWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              186, //The ID of the dialogue.
+                              ref StarphoenixWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              187, //The ID of the dialogue.
+                              ref ShieldWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              188, //The ID of the dialogue.
+                              ref ArbiterWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              189, //The ID of the dialogue.
+                              ref TwoCrownWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              190, //The ID of the dialogue.
+                              ref M4A1WeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedNalhaun)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              191, //The ID of the dialogue.
+                              ref DreadmotherWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedWarrior)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              192, //The ID of the dialogue.
+                              ref QuisUtDeusWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (DownedBossSystem.downedTsuki)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              193, //The ID of the dialogue.
+                              ref ParadiseLostWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+
+                }
+                if (PlanteraWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              174, //The ID of the dialogue.
+                              ref DreamerWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (DukeFishronWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              172, //The ID of the dialogue.
+                              ref KineticWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (SkeletonDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              101, //The ID of the dialogue.
+                              ref SkeletonWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (tsukiyomiDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              130, //The ID of the dialogue.
+                              ref ArchitectWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (ArchitectWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              138, //The ID of the dialogue.
+                              ref CosmicDestroyerWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (CosmicDestroyerWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              169, //The ID of the dialogue.
+                              ref KarnaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                
+                if (NPC.downedGolemBoss)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              141, //The ID of the dialogue.
+                              ref MercyWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (thespianDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              180, //The ID of the dialogue.
+                              ref ThespianWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (ThespianWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              176, //The ID of the dialogue.
+                              ref DragaliaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (ThespianWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              178, //The ID of the dialogue.
+                              ref WavedancerWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (DownedBossSystem.downedNalhaun)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              179, //The ID of the dialogue.
+                              ref ClarentWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (LunaticCultistWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              177, //The ID of the dialogue.
+                              ref GundbitWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedEmpressOfLight)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              142, //The ID of the dialogue.
+                              ref SakuraWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if ( NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              143, //The ID of the dialogue.
+                              ref EternalWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              144, //The ID of the dialogue.
+                              ref DaemonWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              145, //The ID of the dialogue.
+                              ref OzmaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedQueenSlime)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              146, //The ID of the dialogue.
+                              ref UrgotWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedHalloweenKing)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              147, //The ID of the dialogue.
+                              ref BloodWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedDeerclops)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              148, //The ID of the dialogue.
+                              ref MorningStarWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedMoonlord)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              150, //The ID of the dialogue.
+                              ref VirtueWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedQueenSlime)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              149, //The ID of the dialogue.
+                              ref QueenSlimeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedEmpressOfLight)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              140, //The ID of the dialogue.
+                              ref NeedlepointWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (eyeDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              136, //The ID of the dialogue.
+                              ref EyeBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (corruptBossDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              137, //The ID of the dialogue.
+                              ref CorruptBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                //Nalhaun weapons have been moved...
+                if (dioskouroiDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              117, //The ID of the dialogue.
+                              ref NalhaunWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                //Vagrant weapons have been moved...
+                if (QueenSlimeWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              115, //The ID of the dialogue.
+                              ref VagrantWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (BeeBossDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              103, //The ID of the dialogue.
+                              ref QueenBeeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (SkeletonWeaponDialogue == 2 && Player.ZoneBeach)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              123, //The ID of the dialogue.
+                              ref OceanWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (SkeletonWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              120, //The ID of the dialogue.
+                              ref MiseryWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (slimeDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              104, //The ID of the dialogue.
+                              ref KingSlimeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WallOfFleshDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              105, //The ID of the dialogue.
+                              ref WallOfFleshWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WallOfFleshWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              124, //The ID of the dialogue.
+                              ref LumaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if ((TwinsDialogue == 2 || DestroyerDialogue == 2 || SkeletronPrimeDialogue == 2))
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              106, //The ID of the dialogue.
+                              ref MechBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (TwinsDialogue == 2 && DestroyerDialogue == 2 && SkeletronPrimeDialogue == 2 && MechBossWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              107, //The ID of the dialogue.
+                              ref AllMechBossWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+
+                }
+                if (MechBossWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              121, //The ID of the dialogue.
+                              ref HullwroughtWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (HullwroughtWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              125, //The ID of the dialogue.
+                              ref MonadoWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+
+                if (PlanteraDialogue == 2 )
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              108, //The ID of the dialogue.
+                              ref PlanteraWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (NPC.downedChristmasIceQueen)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              126, //The ID of the dialogue.
+                              ref FrostMoonWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (GolemDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              109, //The ID of the dialogue.
+                              ref GolemWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (penthDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              118, //The ID of the dialogue.
+                              ref PenthesileaWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (PenthesileaWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              128, //The ID of the dialogue.
+                              ref MuseWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (PlanteraWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              129, //The ID of the dialogue.
+                              ref KifrosseWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                //Moved from Arbitration to Nalhaun.
+                if (nalhaunDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              119, //The ID of the dialogue.
+                              ref ArbitrationWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (ArbitrationWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              166, //The ID of the dialogue.
+                              ref LevinstormWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+
+                }
+                if (ArbitrationWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              127, //The ID of the dialogue.
+                              ref ClaimhWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                  
+
+                }
+                if (DukeFishronDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              116, //The ID of the dialogue.
+                              ref DukeFishronWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+
+                }
+                if (DukeFishronWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              170, //The ID of the dialogue.
+                              ref ManiacalWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (CultistDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              110, //The ID of the dialogue.
+                              ref LunaticCultistWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (MoonLordDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              111, //The ID of the dialogue.
+                              ref MoonLordWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+
+                }
+                if (MoonLordWeaponDialogue == 2 )
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              122, //The ID of the dialogue.
+                              ref ShadowlessWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              112, //The ID of the dialogue.
+                              ref WarriorWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              171, //The ID of the dialogue.
+                              ref AuthorityWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              151, //The ID of the dialogue.
+                              ref RedMageWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              152, //The ID of the dialogue.
+                              ref BlazeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (WarriorOfLightDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              153, //The ID of the dialogue.
+                              ref PickaxeWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+          
+
+                }
+                if (AllMechsDefeatedDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              154, //The ID of the dialogue.
+                              ref HardwareWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (LunaticCultistWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              155, //The ID of the dialogue.
+                              ref CatalystWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (CatalystWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              161, //The ID of the dialogue.
+                              ref UmbraWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedPirates)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              162, //The ID of the dialogue.
+                              ref SaltwaterWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                    
+                }
+                if (vagrantDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              164, //The ID of the dialogue.
+                              ref ClockWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (Player.HasItem(ItemID.GuideVoodooDoll) && Player.difficulty == PlayerDifficultyID.Hardcore)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              168, //The ID of the dialogue.
+                              ref SanguineWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedMartians)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              165, //The ID of the dialogue.
+                              ref GoldlewisWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (NPC.downedQueenSlime)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              163, //The ID of the dialogue.
+                              ref ChaosWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                   
+                }
+                if (GolemWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              156, //The ID of the dialogue.
+                              ref SilenceWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+                if (MoonLordWeaponDialogue == 2)
+                {
+                    SetupActiveDialogue(ref newDiskNotification,
+                              157, //The ID of the dialogue.
+                              ref SoulWeaponDialogue, //The flag of the dialogue.
+                              false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                              false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
+                }
+
+
+
+
+                if (NPC.downedSlimeKing)
                 {
 
                     if (aquaaffinity == 0)
                     {
+                        newArrayNotification = true;
+
                         aquaaffinity = 1;
                     }
                     if(stayTheCourse == 0)
@@ -4797,6 +5660,8 @@ namespace StarsAbove.Systems
 
                     if (starshower == 0)
                     {
+                        newArrayNotification = true;
+
                         starshower = 1;
                     }
                     if(spectralNail == 0)
@@ -4809,6 +5674,8 @@ namespace StarsAbove.Systems
                 {
                     if (ironskin == 0)
                     {
+                        newArrayNotification = true;
+
                         ironskin = 1;
                     }
                     if(armsthrift == 0)
@@ -4821,6 +5688,8 @@ namespace StarsAbove.Systems
                 {
                     if (evasionmastery == 0)
                     {
+                        newArrayNotification = true;
+
                         evasionmastery = 1;
                     }
                     if(mysticIncision == 0)
@@ -4833,6 +5702,8 @@ namespace StarsAbove.Systems
                 {
                     if (inneralchemy == 0)
                     {
+                        newArrayNotification = true;
+
                         inneralchemy = 1;
                     }
                     if (catharsis == 0)
@@ -4841,10 +5712,12 @@ namespace StarsAbove.Systems
 
                     }
                 }
-                if (Main.hardMode)
+                if (Player.statLifeMax >= 400)
                 {
                     if (healthyConfidence == 0)
                     {
+                        newArrayNotification = true;
+
                         healthyConfidence = 1;
                     }
                 }
@@ -4861,7 +5734,6 @@ namespace StarsAbove.Systems
                 {
                     if (unlimitedbladeworks == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         unlimitedbladeworks = 1;
                     }
@@ -4871,9 +5743,17 @@ namespace StarsAbove.Systems
                 {
                     if (guardianslight == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         guardianslight = 1;
+                    }
+
+                }
+                if (DownedBossSystem.downedStarfarers)
+                {
+                    if (fireflytypeiv == 0)
+                    {
+                        NewStellarNova = true;
+                        fireflytypeiv = 1;
                     }
 
                 }
@@ -4881,6 +5761,7 @@ namespace StarsAbove.Systems
                 {
                     if (butchersdozen == 0)
                     {
+
                         butchersdozen = 1;
                     }
                     if(swiftstrikeTheory == 0)
@@ -4890,17 +5771,40 @@ namespace StarsAbove.Systems
                     }
                     if (laevateinn == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         laevateinn = 1;
+                    }
+                }
+                if(DownedBossSystem.downedThespian)
+                {
+
+                }
+                if(DownedBossSystem.downedDioskouroi)
+                {
+                    if (celestialevanesence == 0)
+                    {
+
+                        celestialevanesence = 1;
+                    }
+                    if (arborealEchoes == 0)
+                    {
+                        arborealEchoes = 1;
+
+                    }
+                }
+                if (tsukiyomiDialogue >= 1)
+                {
+                    if (edingenesisquasar == 0)
+                    {
+                        edingenesisquasar = 1;
                     }
                 }
                 if (DownedBossSystem.downedPenth)
                 {
                     if (mysticforging == 0)
                     {
+
                         mysticforging = 1;
-                        lavenderRefrain = 1;
                     }
                     if(lavenderRefrain == 0)
                     {
@@ -4908,7 +5812,6 @@ namespace StarsAbove.Systems
                     }
                     if (gardenofavalon == 0)
                     {
-                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
                         NewStellarNova = true;
                         gardenofavalon = 1;
                     }
@@ -4917,6 +5820,7 @@ namespace StarsAbove.Systems
                 {
                     if (bloomingflames == 0)
                     {
+
                         bloomingflames = 1;
                     }
 
@@ -4927,8 +5831,7 @@ namespace StarsAbove.Systems
 
                     if (astralmantle == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
+                         
                         astralmantle = 1;
                     }
                 }
@@ -4937,6 +5840,7 @@ namespace StarsAbove.Systems
                 {
                     if (afterburner == 0)
                     {
+
                         afterburner = 1;
                     }
 
@@ -4946,6 +5850,7 @@ namespace StarsAbove.Systems
 
                     if (livingdead == 0)
                     {
+
                         livingdead = 1;
                     }
                     if(kineticConversion == 0)
@@ -4958,6 +5863,7 @@ namespace StarsAbove.Systems
                 {
                     if (hikari == 0)
                     {
+
                         hikari = 1;
                     }
                     if(fabledFashion == 0)
@@ -4969,11 +5875,12 @@ namespace StarsAbove.Systems
                 if (NPC.downedGolemBoss)
                 {
                 }
-                if (NPC.downedGolemBoss && Main.expertMode == true)
+                if (NPC.downedGolemBoss)
                 {
 
                     if (weaknessexploit == 0)
                     {
+
                         weaknessexploit = 1;
                     }
                 }
@@ -4981,22 +5888,11 @@ namespace StarsAbove.Systems
                 {
 
                 }
-                if (NPC.downedAncientCultist && Main.expertMode == true)
-                {
-                    if (celestialevanesence == 0)
-                    {
-                        celestialevanesence = 1;
-                    }
-                    if(arborealEchoes == 0)
-                    {
-                        arborealEchoes = 1;
-
-                    }
-                }
                 if (NPC.downedMoonlord)
                 {
                     if (umbralentropy == 0)
                     {
+
                         umbralentropy = 1;
                     }
                     if(kiTwinburst == 0)
@@ -5015,7 +5911,7 @@ namespace StarsAbove.Systems
 
 
                 }
-                if (DownedBossSystem.downedPenth && Main.expertMode)
+                if (NPC.downedEmpressOfLight)
                 {
                     if (flashfreeze == 0)
                     {
@@ -5024,83 +5920,146 @@ namespace StarsAbove.Systems
                     }
                     if(inevitableEnd == 0)
                     {
+
                         inevitableEnd = 1;
 
                     }
 
                 }
 
-                if (NPC.downedMoonlord && Main.expertMode == true)
+                if (NPC.downedMoonlord)
                 {
                     if (keyofchronology == 0)
                     {
+
                         keyofchronology = 1;
                     }
 
                 }
-                if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
+                if (DownedBossSystem.downedStarfarers)
                 {
 
 
                     if (artofwar == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
+                         
                         artofwar = 1;
                     }
 
                 }
-                if (DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun && Main.expertMode == true)
+                if (DownedBossSystem.downedThespian)
                 {
 
 
                     if (aprismatism == 0)
                     {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
+                         
                         aprismatism = 1;
                     }
 
                 }
-                if (DownedBossSystem.downedWarrior)
+                if (NPC.downedMartians)
                 {
                     if (avataroflight == 0)
                     {
+
                         avataroflight = 1;
                     }
 
 
 
                 }
+                if (DownedBossSystem.downedWarrior)
+                {
+                    if (beyondtheboundary == 0)
+                    {
+                         
+                        beyondtheboundary = 1;
+                    }
+
+                }
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord)
                 {
                     if (beyondinfinity == 0)
                     {
+
                         beyondinfinity = 1;
                     }
 
-                }
-                if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && DownedBossSystem.downedVagrant && DownedBossSystem.downedPenth && DownedBossSystem.downedNalhaun)
-                {
-                    if (beyondtheboundary == 0)
-                    {
-                        InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
-                        NewStellarArrayAbility = true;
-                        beyondtheboundary = 1;
-                    }
                 }
                 if (NPC.downedBoss1 && NPC.downedSlimeKing && NPC.downedBoss2 && NPC.downedBoss3 && NPC.downedQueenBee && Main.hardMode && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && NPC.downedPlantBoss && NPC.downedGolemBoss && NPC.downedFishron && NPC.downedMoonlord && DownedBossSystem.downedWarrior && Main.expertMode == true)
                 {
                     if (unbridledradiance == 0)
                     {
+
                         unbridledradiance = 1;
                     }
                 }
-                // 
+                for (int i = 0; i < ActiveDialogues.Count; i++)
+                {
+                    if (ActiveDialogues.Values.ElementAt(i) == 1)
+                    {
+                        activeDialougeCount++;
+                    }
+                }
 
+                if (newDiskNotification)
+                {
+                    InGameNotificationsTracker.AddNotification(new DiskDialogueNotification());
+                }
+                if (newArrayNotification)
+                {
+                    InGameNotificationsTracker.AddNotification(new ArrayAbilityNotification());
+                }
+                if (newNovaNotification)
+                {
+                    InGameNotificationsTracker.AddNotification(new NewNovaNotification());
+                }
 
             }
         }
+
+        private void SetupActiveDialogue(ref bool newDiskNotification, int dialogueID, ref int currentFlag, bool newArrayNotification, out bool newArray, bool newNovaNotification, out bool newNova)
+        {
+            newNova = false;
+            newArray = false;
+            if (!ActiveDialogues.ContainsKey(dialogueID))//If the dialogue doesn't exist
+            {
+
+                //If the dialogue has not been touched before (remember this int saves)
+                if (currentFlag != 2)//this is the flag of the dialogue
+                {
+                    //Add the ID to the active dialogues
+                    ActiveDialogues.Add(dialogueID, 1);
+                    //Pop up a new disk notification.
+                    newDiskNotification = true;
+                    if(newArrayNotification)
+                    {
+                        newArray = true;
+
+                    }
+                    if (newNovaNotification)
+                    {
+                        newNova = true;
+                    }
+                    
+                }
+                else
+                {
+                    //If the dialogue has been touched already...
+                    ActiveDialogues.Add(dialogueID, 2);
+                    currentFlag = 2;
+                }
+            }
+            else
+            {
+                currentFlag = ActiveDialogues[dialogueID];
+                //Update the Archive
+                StarsAboveDialogueSystem.SetupDialogueSystem(true, chosenStarfarer, ref dialogueID, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, Player, Mod);
+
+            }
+        }
+
         private void SetupVNDialogue()
         {
             if (sceneID != -1 && VNDialogueActive)//All this boils down to moving the crazy amount of dialogue lines outside of StarsAbovePlayer. Future me knows that you could've just made another StarsAbovePlayer. Oops.
@@ -5142,6 +6101,8 @@ namespace StarsAbove.Systems
 
                     VNDialogueThirdOption = false;
                 }
+
+                
                 dialogue = LangHelper.Wrap((string)VNScenes.SetupVNSystem(sceneID, sceneProgression)[13], 50);
                 //animatedDialogue = dialogue.Substring(0, dialogueScrollNumber);
 
@@ -5357,7 +6318,7 @@ namespace StarsAbove.Systems
             if (damageTakenInUndertale == true)
             {
                 damageTakenInUndertale = false;
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_TakingDamage, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_TakingDamage);
 
             }
         }
@@ -5367,251 +6328,100 @@ namespace StarsAbove.Systems
             novaCritChanceMod = 0;
             novaCritDamageMod = 0;
             novaChargeMod = 0;
-            if (affixItem1 != null && affixItem2 != null && affixItem3 != null)
+            novaEffectDurationMod = 0;
+            setBonusInfo = LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone");
+
+            Dictionary<int, int> SetBonus = new Dictionary<int, int>() {
+                {(int)ItemPrismSystem.MajorSetBonuses.Deadbloom, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.AuricExalt, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.BloodyBanquet, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.RoyalSunrise, 0},
+                {(int)ItemPrismSystem.MajorSetBonuses.LucidDreamer, 0},
+            };
+
+            if (affixItem1 != null)
             {
-                //TODO: replace with a better system.
-                //Just in case the idea of "different slots provide different bonuses" becomes true.
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RefulgentPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RefulgentPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RefulgentPrism>())
+                if (!affixItem1.IsAir)
                 {
-                    novaDamageMod += 0.2;//20%
-                    novaCritChanceMod -= 14;
-                    novaCritDamageMod -= 0.1;
-                    novaChargeMod += 5;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EverflamePrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EverflamePrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EverflamePrism>())
-                {
-                    novaDamageMod += 0.1;
-                    novaCritChanceMod += 7;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod -= 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CrystallinePrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CrystallinePrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CrystallinePrism>())
-                {
-                    novaDamageMod -= 0.2;
-                    novaCritChanceMod -= 7;
-                    novaCritDamageMod += 0.3;
-                    //novaChargeMod -= 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VerdantPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VerdantPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VerdantPrism>())
-                {
-                    //novaDamageMod += 50;
-                    novaCritChanceMod += 21;
-                    //novaCritDamageMod += 225;
-                    novaChargeMod -= 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RadiantPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RadiantPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RadiantPrism>())
-                {
-                    novaDamageMod -= 0.1;
-                    novaCritChanceMod -= 7;
-                    novaCritDamageMod -= 0.1;
-                    novaChargeMod += 15;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<ApocryphicPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<ApocryphicPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<ApocryphicPrism>())
-                {
-                    novaDamageMod += 0.2;
-                    novaCritChanceMod -= 14;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod -= 5;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<AlchemicPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<AlchemicPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<AlchemicPrism>())
-                {
-                    novaDamageMod -= 0.1;
-                    novaCritChanceMod += 14;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod -= 10;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<CastellicPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<CastellicPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<CastellicPrism>())
-                {
-                    novaDamageMod += 0.3;
-                    novaCritChanceMod -= 7;
-                    novaCritDamageMod -= 0.2;
-                    //novaChargeMod -= 10;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LucentPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LucentPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LucentPrism>())
-                {
-                    novaDamageMod -= 0.3;
-                    //novaCritChanceMod -= 7;
-                    novaCritDamageMod += 0.1;
-                    novaChargeMod += 10;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PhylacticPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PhylacticPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PhylacticPrism>())
-                {
-                    novaDamageMod -= 0.1;
-                    novaCritChanceMod += 21;
-                    //novaCritDamageMod += 75;
-                    novaChargeMod -= 10;
-                }
+                    if (affixItem1.GetGlobalItem<ItemPrismSystem>().isPrism)
+                    {
+                        var item = affixItem1.GetGlobalItem<ItemPrismSystem>();
 
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LightswornPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LightswornPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LightswornPrism>())
-                {
-                    lightswornPrism = true;
-                }
-                else
-                {
-                    lightswornPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<BurnishedPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<BurnishedPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<BurnishedPrism>())
-                {
-                    burnishedPrism = true;
-                }
-                else
-                {
-                    burnishedPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<GeminiPrism>() ||
-                     affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<GeminiPrism>() ||
-                     affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<GeminiPrism>())
-                {
-                    geminiPrism = true;
-                }
-                else
-                {
-                    geminiPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<SpatialPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<SpatialPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<SpatialPrism>())
-                {
-                    spatialPrism = true;
-                }
-                else
-                {
-                    spatialPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PaintedPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<PaintedPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<PaintedPrism>())
-                {
-                    paintedPrism = true;
-                }
-                else
-                {
-                    paintedPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<VoidsentPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<VoidsentPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<VoidsentPrism>())
-                {
-                    voidsentPrism = true;
-                }
-                //1.1.6 prisms
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<RoyalSlimePrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<RoyalSlimePrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<RoyalSlimePrism>())
-                {
-                    royalSlimePrism = true;
-                }
-                else
-                {
-                    royalSlimePrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<MechanicalPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<MechanicalPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<MechanicalPrism>())
-                {
-                    mechanicalPrism = true;
-                }
-                else
-                {
-                    mechanicalPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<OvergrownPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<OvergrownPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<OvergrownPrism>())
-                {
-                    overgrownPrism = true;
-                }
-                else
-                {
-                    overgrownPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<LihzahrdPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<LihzahrdPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<LihzahrdPrism>())
-                {
-                    lihzahrdPrism = true;
-                }
-                else
-                {
-                    lihzahrdPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<TyphoonPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<TyphoonPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<TyphoonPrism>())
-                {
-                    typhoonPrism = true;
-                }
-                else
-                {
-                    typhoonPrism = false;
-                }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<EmpressPrism>() ||
-                    affixItem2.ModItem != null && !affixItem2.IsAir && affixItem2.type == ItemType<EmpressPrism>() ||
-                    affixItem3.ModItem != null && !affixItem3.IsAir && affixItem3.type == ItemType<EmpressPrism>())
-                {
-                    empressPrism = true;
-                }
-                else
-                {
-                    empressPrism = false;
-                }
-                if (affixItem1 != null && !affixItem1.IsAir && affixItem1.type == ItemType<LuminitePrism>() ||
-                    affixItem2 != null && !affixItem2.IsAir && affixItem2.type == ItemType<LuminitePrism>() ||
-                    affixItem3 != null && !affixItem3.IsAir && affixItem3.type == ItemType<LuminitePrism>())
-                {
-                    luminitePrism = true;
-                }
-                else
-                {
-                    luminitePrism = false;
-                }
-                //Tier 3 Prisms
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheRuinedKing>())
-                {
-                    ruinedKingPrism = true;
+                        novaDamageMod += item.Damage;
+                        novaCritChanceMod += item.CritRate;
+                        novaCritDamageMod += item.CritDamage;
+                        novaChargeMod += item.EnergyCost;
+                        novaEffectDurationMod += item.EffectDuration;
+                        SetBonus[item.MajorSetBonus]++;
 
+                    }
                 }
-                else
+            }
+            if (affixItem2 != null)
+            {
+                if (!affixItem2.IsAir)
                 {
-                    ruinedKingPrism = false;
+                    if (affixItem2.GetGlobalItem<ItemPrismSystem>().isPrism)
+                    {
+                        var item = affixItem2.GetGlobalItem<ItemPrismSystem>();
 
+                        novaDamageMod += item.Damage;
+                        novaCritChanceMod += item.CritRate;
+                        novaCritDamageMod += item.CritDamage;
+                        novaChargeMod += item.EnergyCost;
+                        novaEffectDurationMod += item.EffectDuration;
+                        SetBonus[item.MajorSetBonus]++;
+                    }
                 }
-                if (affixItem1.ModItem != null && !affixItem1.IsAir && affixItem1.type == ItemType<PrismOfTheCosmicPhoenix>())
+            }
+            if (affixItem3 != null)
+            {
+                if (!affixItem3.IsAir)
                 {
-                    cosmicPhoenixPrism = true;
+                    if (affixItem3.GetGlobalItem<ItemPrismSystem>().isPrism)
+                    {
+                        var item = affixItem3.GetGlobalItem<ItemPrismSystem>();
 
+                        novaDamageMod += item.Damage;
+                        novaCritChanceMod += item.CritRate;
+                        novaCritDamageMod += item.CritDamage;
+                        novaChargeMod += item.EnergyCost;
+                        novaEffectDurationMod += item.EffectDuration;
+                        SetBonus[item.MajorSetBonus]++;
+                    }
                 }
-                else
-                {
-                    cosmicPhoenixPrism = false;
+            }
+            bool multipleEntries = SetBonus.Count(entry => entry.Value > 0) > 1;
 
+            foreach (var entry in SetBonus)
+            {
+                if (entry.Value >= 1)
+                {
+                    if (setBonusInfo == LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone"))
+                    {
+                        setBonusInfo = "";
+                    }
+
+                    string name = Enum.GetName(typeof(ItemPrismSystem.MajorSetBonuses), entry.Key);
+                    string baseTag = "[c/";
+                    string[] colorTags = { "ADADAD", "FCC167", "FFE3B9" };
+
+                    int maxTier = multipleEntries ? entry.Value : 3;
+
+                    for (int i = 1; i <= maxTier; i++)
+                    {
+                        string colortag = entry.Value >= i ? colorTags[1] : colorTags[0];
+                        setBonusInfo += $"{baseTag}{colortag}:{LangHelper.GetTextValue($"StellarNova.StellarPrisms.{name}.Name")} ({entry.Value}/{i})]\n";
+                        colortag = entry.Value >= i ? colorTags[2] : colorTags[0];
+                        setBonusInfo += $"{baseTag}{colortag}:{LangHelper.GetTextValue($"StellarNova.StellarPrisms.{name}.SetBonus{i}")}]\n";
+                    }
                 }
             }
 
+            NovaSetBonuses(SetBonus);
 
             //Starfarer stuff here.
             if (starfarerArmorEquipped != null)
@@ -5644,6 +6454,10 @@ namespace StarsAbove.Systems
                 {
                     starfarerOutfit = 6;
                 }
+                if (starfarerArmorEquipped.type == ItemType<RenegadeTechnomancerSynthweave>())
+                {
+                    starfarerOutfit = 7;
+                }
             }
             if (starfarerVanityEquipped != null)
             {
@@ -5671,6 +6485,10 @@ namespace StarsAbove.Systems
                 {
                     starfarerOutfitVanity = 6;
                 }
+                if (starfarerVanityEquipped.type == ItemType<RenegadeTechnomancerSynthweave>())
+                {
+                    starfarerOutfitVanity = 7;
+                }
                 if (starfarerVanityEquipped.type == ItemType<FamiliarLookingAttire>())
                 {
                     starfarerOutfitVanity = -1;
@@ -5680,12 +6498,12 @@ namespace StarsAbove.Systems
             if (chosenStellarNova == 0)//No Nova selected
             {
                 abilityName = "";
-                abilitySubName = "No Stellar Nova has been selected.";
+                abilitySubName = LangHelper.GetTextValue("StellarNova.StellarNovaInfo.NoNova");
                 abilityDescription = "";
                 starfarerBonus = "";
                 baseStats = "";
-
-
+                modStats = "";
+                setBonusInfo = LangHelper.GetTextValue("StellarNova.StellarPrisms.SetBonusNone");
             }
 
             SetupStellarNovas NovaSetup = new SetupStellarNovas();
@@ -5696,9 +6514,11 @@ namespace StarsAbove.Systems
                 novaGaugeMax = NovaSetup.GetNovaCost(chosenStellarNova);
                 novaCritChance = NovaSetup.GetNovaCritChance(chosenStellarNova);
                 novaCritDamage = NovaSetup.GetNovaCritDamageMod(chosenStellarNova, baseNovaDamageAdd);
+                novaEffectDuration = NovaSetup.GetNovaEffectDuration(chosenStellarNova);
 
                 abilityName = NovaSetup.GetInfo(chosenStellarNova, "AbilityName", baseNovaDamageAdd);
                 abilitySubName = NovaSetup.GetInfo(chosenStellarNova, "AbilitySubName", baseNovaDamageAdd);
+
                 if (chosenStellarNova == 7)//Guardian's Light
                 {
                     if (MeleeAspect == 2)
@@ -5743,23 +6563,37 @@ namespace StarsAbove.Systems
                 {
                     baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseDamage") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
-                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost");
+
+                    string novaGaugeValue = $"{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                    if(novaGaugeMax - novaChargeMod < 20)
+                    {
+                        novaGaugeValue = $"20 " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCostMin");
+                    }
+                    modStats = "" +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod / 100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.Damage") +
+                    $"\n{(float)Math.Round(novaCritChance + novaCritChanceMod),2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100), 0)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritDamage") +
+                    $"\n{novaEffectDuration + novaEffectDurationMod}s " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EffectDuration") +
+                    $"\n" + novaGaugeValue;
                 }
                 else
                 {
                     baseStats = "" +
                     $"{novaDamage} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseHealStrength") +
-                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost") +
-                    $"\n" +
-                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
-                    $"\n{novaCritChance + novaCritChanceMod}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
-                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod), 5)} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
-                    $"\n{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                    $"\n{novaGaugeMax} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.BaseEnergyCost");
+                    string novaGaugeValue = $"{novaGaugeMax - novaChargeMod} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCost");
+                    if (novaGaugeMax - novaChargeMod < 20)
+                    {
+                        novaGaugeValue = $"20 " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EnergyCostMin");
+                    }
+
+                    modStats = "" +
+                    $"\n{Math.Round(novaDamage * (1 + novaDamageMod / 100)),0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.HealStrength") +
+                    $"\n{Math.Round(novaCritChance + novaCritChanceMod),2}% " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritChance") +
+                    $"\n{Math.Round(novaCritDamage * (1 + novaCritDamageMod / 100)),0} " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.CritHealStrength") +
+                    $"\n{novaEffectDuration + novaEffectDurationMod}s " + LangHelper.GetTextValue("StellarNova.StellarNovaInfo.EffectDuration") +
+                     $"\n" + novaGaugeValue;
                 }
 
 
@@ -5769,6 +6603,192 @@ namespace StarsAbove.Systems
             abilityDescription = LangHelper.Wrap(abilityDescription, 85);
             starfarerBonus = LangHelper.Wrap(starfarerBonus, 85);
         }
+        int exaltedStacks;
+
+        public int deadbloomLevel = 0;
+        public int crescentMeteorLevel = 0;
+        public int auricExaltLevel = 0;
+        public int luminousHallowLevel = 0;
+        public int dreadMechanicalLevel = 0;
+        public int bloodyBanquetLevel = 0;
+        public int royalSunriseLevel = 0;
+        public int lucidDreamerLevel = 0;
+
+        private void NovaSetBonuses(Dictionary<int, int> SetBonus)
+        {
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.Deadbloom] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.Deadbloom];
+                deadbloomLevel = amount;
+                if (amount >= 1)
+                {
+                }
+                if (amount >= 2)
+                {
+                }
+                if (amount >= 3)
+                {
+                    novaEffectDurationMod += novaCritChance + novaCritChanceMod;
+                    //Done
+                }
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.CrescentMeteor];
+                crescentMeteorLevel = amount;
+                if (amount >= 1)
+                {
+                    novaChargeMod = -novaChargeMod;
+                }
+                if (amount >= 2)
+                {
+
+                }
+                if (amount >= 3)
+                {
+                    //Done
+                }
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LuminousHallow];
+                luminousHallowLevel = amount;
+                if (amount >= 1)
+                {
+                    novaChargeMod += (int)(novaEffectDuration + novaEffectDurationMod * 0.02f);
+                }
+                if(amount >= 2)
+                {
+                    novaChargeMod += (int)(novaCritChance + novaCritChanceMod * 0.02f);
+                }
+                if (amount >= 3)
+                {
+                    novaChargeMod += (int)(novaCritChance + novaCritChanceMod * 0.04f);
+                    novaChargeMod += (int)(novaEffectDuration + novaEffectDurationMod * 0.04f);
+                }//Done
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.DreadMechanical];
+                dreadMechanicalLevel = amount;
+                if (amount >= 1)
+                {
+
+                }
+                if (amount >= 2)
+                {
+
+                }
+                if (amount >= 3)
+                {
+                    novaChargeMod -= 30;
+
+                }
+                
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.AuricExalt] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.AuricExalt];
+                auricExaltLevel = amount;
+                if (amount >= 1)
+                {
+                    novaDamageMod += exaltedStacks * 4;
+                    novaCritChanceMod += exaltedStacks * 4;
+                    novaCritDamageMod += exaltedStacks * 4;
+                    novaEffectDurationMod += exaltedStacks * 4;
+                }
+                if (amount >= 2)
+                {
+                    novaChargeMod += exaltedStacks*2;
+                }
+                if (amount >= 3)
+                {
+                    if (exaltedStacks > 6)
+                    {
+                        exaltedStacks = 6;
+                    }
+                }
+                else
+                {
+                    if (exaltedStacks > 3)
+                    {
+                        exaltedStacks = 3;
+                    }
+                }//Done
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.BloodyBanquet] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.BloodyBanquet];
+                bloodyBanquetLevel = amount;
+                switch (amount)
+                {
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                }
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.RoyalSunrise] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.RoyalSunrise];
+                royalSunriseLevel = amount;
+                if (amount >= 1)
+                {
+                    if (Player.statLife >= 500)
+                    {
+                        novaDamageMod += 15;
+                        novaCritChanceMod += 15;
+                        novaCritDamageMod += 15;
+                    }
+                }
+                if (amount >= 2)
+                {
+                    if (Player.statLife >= 500)
+                    {
+                        novaDamageMod += 15;
+                        novaCritChanceMod += 15;
+                        novaCritDamageMod += 15;
+                    }
+                }
+                if (amount >= 3)
+                {
+                    if (Player.statLife >= 250 && Player.statLife < 500)
+                    {
+                        novaDamageMod += 30;
+                        novaCritChanceMod += 30;
+                        novaCritDamageMod += 30;
+                    }
+                    //Done
+                }
+
+            }
+            if (SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LucidDreamer] > 0)
+            {
+                int amount = SetBonus[(int)ItemPrismSystem.MajorSetBonuses.LucidDreamer];
+                lucidDreamerLevel = amount;
+                if (amount >= 1)
+                {
+                    novaGauge = trueNovaGaugeMax;
+                }
+                if (amount >= 2)
+                {
+                    
+                }
+                if (amount >= 3)
+                {
+                    
+                }
+            }
+        }
+
         private void AspectedDamageModification()
         {
             if (chosenStarfarer != 0)
@@ -6070,18 +7090,18 @@ namespace StarsAbove.Systems
         {
             if (inCombat > 0 && beyondinfinity == 2)
             {
-                beyondInfinityTimer++;
+                //beyondInfinityTimer++;
             }
             if (inCombat <= 0)
             {
-                beyondInfinityTimer = 0;
-                beyondInfinityDamageMod = 0;
+                //beyondInfinityTimer = 0;
+                //beyondInfinityDamageMod = 0;
             }
             if (beyondInfinityTimer >= 120 && beyondinfinity == 2)
             {
-                beyondInfinityTimer = 0;
-                beyondInfinityDamageMod += 0.1f;
-                beyondInfinityDamageMod = MathHelper.Clamp(beyondInfinityDamageMod, 0, 1f);
+                //beyondInfinityTimer = 0;
+                //beyondInfinityDamageMod += 0.1f;
+                //beyondInfinityDamageMod = MathHelper.Clamp(beyondInfinityDamageMod, 0, 1f);
             }
         }
         private void InnerAlchemy()
@@ -6104,9 +7124,9 @@ namespace StarsAbove.Systems
             {
                 for (int i = 0; i <= Main.maxNPCs; i++)
                 {
-                    if (Main.npc[i].boss && Main.npc[i].active)
+                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].ModNPC?.Mod == ModLoader.GetMod("StarsAbove"))
                     {
-                        //Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
+                        Player.AddBuff(BuffType<BossEnemySpawnMod>(), 10);
                     }
 
                 }
@@ -6134,7 +7154,7 @@ namespace StarsAbove.Systems
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6143,11 +7163,11 @@ namespace StarsAbove.Systems
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
 
                     }
@@ -6173,7 +7193,7 @@ namespace StarsAbove.Systems
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6182,11 +7202,11 @@ namespace StarsAbove.Systems
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
 
                     }
@@ -6213,7 +7233,7 @@ namespace StarsAbove.Systems
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6222,11 +7242,11 @@ namespace StarsAbove.Systems
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
 
                     }
@@ -6251,7 +7271,7 @@ namespace StarsAbove.Systems
 
                         if (dialogueAudio == 1)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect);
                             //Main.PlaySound(SoundID.MenuTick, player.position);
                         }
                         if (dialogueAudio == 2)
@@ -6260,11 +7280,11 @@ namespace StarsAbove.Systems
                         }
                         if (dialogueAudio == 3)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect2);
                         }
                         if (dialogueAudio == 4)
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_textsoundeffect3);
                         }
                     }
                 }
@@ -6274,6 +7294,7 @@ namespace StarsAbove.Systems
             {
 
                 animatedPromptDialogue = promptDialogue.Substring(0, promptDialogueScrollNumber);//Prompt dialogue increment magic
+                animatedPromptDialogue = LangHelper.Wrap(animatedPromptDialogue, 78);
             }
             if (novaUIActive && chosenStarfarer != 0)
             {
@@ -6284,7 +7305,10 @@ namespace StarsAbove.Systems
             if (starfarerMenuActive && chosenStarfarer != 0)
             {
                 novaGauge = 0;
-                animatedStarfarerMenuDialogue = starfarerMenuDialogue.Substring(0, starfarerMenuDialogueScrollNumber);//Prompt dialogue increment magic
+                int validScrollNumber = Math.Max(0, Math.Min(starfarerMenuDialogueScrollNumber, starfarerMenuDialogue.Length));
+
+                // Extract the substring up to the valid scroll number
+                animatedStarfarerMenuDialogue = starfarerMenuDialogue.Substring(0, validScrollNumber);
                 animatedStarfarerMenuDialogue = LangHelper.Wrap(animatedStarfarerMenuDialogue, 46);
             }
         }
@@ -6322,7 +7346,7 @@ namespace StarsAbove.Systems
 
                 }
             }
-
+            LavenderRefrain();
         }
         public override void PostUpdate()
         {
@@ -6340,6 +7364,10 @@ namespace StarsAbove.Systems
                         }
                     }
                 }
+            }
+            if(hardlight > 25000)
+            {
+                hardlight = 25000;
             }
             oldHP = Player.statLife;
             //These trigger Starfarer prompts
@@ -6443,7 +7471,7 @@ namespace StarsAbove.Systems
 
 
             //Weather
-            if (Player.ZoneRain && !seenRain)
+            if (Player.ZoneRain && !Player.ZoneSnow && !seenRain)
             {
                 if (starfarerPromptCooldown > 0)
                 {
@@ -6479,7 +7507,7 @@ namespace StarsAbove.Systems
             astarteDriverCooldown--;
             ryukenTimer--;
 
-            trueNovaGaugeMax = novaGaugeMax - novaChargeMod;
+            trueNovaGaugeMax = Math.Max(20 , novaGaugeMax - novaChargeMod);
         }
         private void BiomePrompts()
         {
@@ -6538,6 +7566,14 @@ namespace StarsAbove.Systems
                     starfarerPromptCooldown = 0;
                 }
                 starfarerPromptActive("onEnterDesert");
+            }
+            if (Player.InModBiome<NeonVeilBiome>() && !seenNeonVeilBiome)
+            {
+                if (starfarerPromptCooldown > 0)
+                {
+                    starfarerPromptCooldown = 0;
+                }
+                starfarerPromptActive("onEnterNeonVeil");
             }
             if (Player.ZoneJungle && !seenJungleBiome)
             {
@@ -7174,15 +8210,7 @@ namespace StarsAbove.Systems
                     starfarerPromptActive("onPharaoh");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("TheAdvisorHead").Type) && !seenAdvisor)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
-                    starfarerPromptActive("onAdvisor");
-                    seenUnknownBossTimer = 300;
-                }
+                
                 if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Polaris").Type) && !seenPolaris)
                 {
                     if (starfarerPromptCooldown > 0)
@@ -7412,6 +8440,7 @@ namespace StarsAbove.Systems
         {
             if (NPC.AnyNPCs(NPCID.EyeofCthulhu) && !seenEyeOfCthulhu)
             {
+
                 if (starfarerPromptCooldown > 0)
                 {
                     starfarerPromptCooldown = 0;
@@ -7637,9 +8666,27 @@ namespace StarsAbove.Systems
                 seenUnknownBossTimer = 300;
             }
         }
+        public override bool CanConsumeAmmo(Item weapon, Item ammo)
+        {
+            if(Player.HasBuff(BuffType<QuarkDriveBuff>()))
+            {
+                return false;
+            }
+            return base.CanConsumeAmmo(weapon, ammo);
+        }
 
         private void OnKillEnemy(NPC npc)
         {
+            if(Player.InModBiome<NeonVeilBiome>())
+            {
+                hardlight += Main.rand.Next(2, 5);
+            }
+            else
+            {
+                hardlight += Main.rand.Next(1, 3);
+
+            }
+
             if (aquaaffinity == 2)//Cyclic Hunter
             {
 
@@ -7673,7 +8720,7 @@ namespace StarsAbove.Systems
                 {
                     if (Player.HasBuff(BuffType<AstarteDriver>()))
                     {
-                        Player.AddBuff(BuffType<AstarteDriver>(), 1500);
+                        Player.AddBuff(BuffType<AstarteDriver>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
                     }
                 }
 
@@ -7739,13 +8786,10 @@ namespace StarsAbove.Systems
         {
             if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && novaDrain <= 0)
             {
-                if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+                if (NPC.AnyNPCs(ModContent.NPCType<StarfarerBoss>()) && StarsAbove.novaKey.JustPressed)
                 {
-                    if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type) && StarsAbove.novaKey.JustPressed)
-                    {
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
-                        return;
-                    }
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue($"Common.BlockedNova"), 241, 255, 180); }
+                    return;
                 }
 
                 if (chosenStellarNova == 6 && Player.ownedProjectileCounts[ProjectileType<UnlimitedBladeWorksBackground>()] >= 1)
@@ -7758,7 +8802,7 @@ namespace StarsAbove.Systems
                 {
                     squallReady = false;
                     //Silence and Squall
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2);
                     Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
                     Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall2>(), novaDamage, 0, Player.whoAmI);
 
@@ -7802,7 +8846,7 @@ namespace StarsAbove.Systems
                         {
                             Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia3>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                                                                                                                                                                                                            //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
@@ -7831,7 +8875,7 @@ namespace StarsAbove.Systems
                         {
                             Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                         }
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
 
                         Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<Prototokia2>(), novaDamage, 4, Player.whoAmI, 0, 1);                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                                                                                                                                                                                                            //Projectile.NewProjectile(Player.GetSource_FromThis(),new Vector2(player.Center.X - 100, player.Center.Y), Vector2.Zero, mod.ProjectileType("prototokia2"), novaDamage + novaDamageMod, 4, player.whoAmI, 0, 1);                                                                                                                                                                                                                                                                                                                                             //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
@@ -7851,7 +8895,7 @@ namespace StarsAbove.Systems
                         if (chosenStellarNova == 3)//Kiwami Ryuken
                         {
                             novaGauge = 0;
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive);
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
@@ -7880,9 +8924,83 @@ namespace StarsAbove.Systems
                 }
                 else
                 //This is the Stellar Nova code (barring unique ones like prototokia dualcast or kiwami ryuken
-                if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
+                if ((StarsAbove.novaKey.JustPressed || (luminousHallowLevel >= 1 && novaGauge >= trueNovaGaugeMax))&& !stellarArray && !starfarerDialogue && chosenStellarNova != 0)
                 {
+                    
+                    if (novaGauge >= trueNovaGaugeMax && Player.HasBuff(BuffType<RebelPathCooldown>()))
+                    {
+                        Player.ClearBuff(BuffType<RebelPathCooldown>());
+                    }
+                    if(Player.HasBuff(BuffType<LucidDreamerNovaCooldown>()))
+                    {
+                        return;
+                    }
+                    //If nova is not full prevent nova use
+                    if (novaGauge < trueNovaGaugeMax)
+                    {                      
+                        //If certain abilities allow the player to use the Nova early...
+                        if (chosenStarfarer == 1 && chosenStellarNova == 8 && !Player.HasBuff(BuffType<FireflyActive>()) && !Player.HasBuff(BuffType<AsphodeneFireflyCooldown>()))
+                        {
+                            Player.AddBuff(BuffType<AsphodeneFireflyCooldown>(), (60 * 90));
+                            int type = ProjectileType<FireflySkill>();
+                            Vector2 position = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
+                            Vector2 npcCenter = new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y);
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                            {
+                                NPC npc = Main.npc[i];
+                                if (npc.active && npc.Distance(Player.Center) < 1000 && npc.CanBeChasedBy())
+                                {
+                                    position = npc.Center;
+                                    npcCenter = npc.Center;
+                                }
+                            }
+                            if (Main.rand.NextBool())
+                            {
+                                position = new Vector2(position.X - 900, position.Y + Main.rand.Next(-300,300));
+                            }
+                            else
+                            {
+                                position = new Vector2(position.X + 900, position.Y + Main.rand.Next(-300, 300));
+                            }
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, position);
+
+
+                            float launchSpeed = 66f;
+                            Vector2 direction = Vector2.Normalize(npcCenter - position);
+                            Vector2 velocity = direction * launchSpeed;
+
+                            if (Main.myPlayer == Player.whoAmI)
+                            {
+                                int index = Projectile.NewProjectile(Player.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, 1, 0f, Player.whoAmI);
+
+                            }
+                            return;
+                        }
+                        else if(chosenStarfarer == 1 && starfarerOutfit == 7 && !Player.HasBuff(BuffType<RebelPathCooldown>()))
+                        {
+                            Player.AddBuff(BuffType<RebelPathCooldown>(), 8*60*60);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    if (chosenStellarNova == 8 && Player.HasBuff(BuffType<FireflyActive>()))
+                    {
+                        return;
+                    }
+                    if (luminousHallowLevel >= 1)
+                    {
+                        novaGauge = 0;
+                    }
+
+                    if (chosenStellarNova != 8)
                     StellarNovaCutIn();
+                    StellarNovaVoice();
+                    if(lucidDreamerLevel >= 1)
+                    {
+                        Player.AddBuff(BuffType<LucidDreamerNovaCooldown>(), (int)(trueNovaGaugeMax * 60));
+                    }
                     //Player.GetModPlayer<StarsAbovePlayer>().activateShockwaveEffect = true;
 
 
@@ -7891,7 +9009,7 @@ namespace StarsAbove.Systems
                         //Activate the Stellar Novas here.
                         if (chosenStellarNova == 1)//Prototokia Aster
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
                             Player.AddBuff(BuffType<PrototokiaDualcast>(), 600);
                             for (int d = 0; d < 105; d++)
                             {
@@ -7908,9 +9026,9 @@ namespace StarsAbove.Systems
                                                                                                                                                                                                                  //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                             onActivateStellarNova();
                         }
-                        if (chosenStellarNova == 2)//Ars Laevateinn
+                        else if(chosenStellarNova == 2)//Ars Laevateinn
                         {
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
                             for (int d = 0; d < 105; d++)
                             {
                                 Dust.NewDust(Player.Center, 0, 0, 269, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
@@ -7921,11 +9039,11 @@ namespace StarsAbove.Systems
                             }
 
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("Laevateinn").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
-                            Player.AddBuff(BuffType<SurtrTwilight>(), 600);                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
+                            Player.AddBuff(BuffType<SurtrTwilight>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));                                                                                                        //Vector2 mousePosition = Main.MouseWorld;
                                                                                                                                                                                    //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                             onActivateStellarNova();                                                                                                                                                           //Projectile.NewProjectile(Player.GetSource_FromThis(),player.Center.X, player.Center.Y - 200, (Main.MouseWorld).ToRotation(), direction, ProjectileID.StarWrath, novaDamage + novaDamageMod, 0, player.whoAmI, 0f);
                         }
-                        if (chosenStellarNova == 4)//The Garden of Avalon
+                        else if(chosenStellarNova == 4)//The Garden of Avalon
                         {
                             //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/prototokiaActive"));
                             for (int d = 0; d < 105; d++)
@@ -7940,15 +9058,15 @@ namespace StarsAbove.Systems
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 860), Vector2.Zero, Mod.Find<ModProjectile>("GardenOfAvalon").Type, novaDamage, 4, Player.whoAmI, 0, 1);//The 1 here means that ai1 will be set to 1. this is good for the first cast.
                             onActivateStellarNova();
                             //player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), (novaDamage / 100));                                                                                                                                                                             //Vector2 mousePosition = Main.MouseWorld;
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated, Player.Center);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated);
                             //activateGardenBuff();
 
 
                             //Garden of Avalon buffs.
-                            Player.AddBuff(BuffType<Buffs.GardenOfAvalon>(), 8 * 60);
+                            Player.AddBuff(BuffType<Buffs.StellarNovas.GardenOfAvalon>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
                             if (chosenStarfarer == 2)
                             {
-                                Player.AddBuff(BuffType<DreamlikeCharisma>(), 8 * 60);
+                                Player.AddBuff(BuffType<DreamlikeCharisma>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
 
                             }
 
@@ -7970,8 +9088,8 @@ namespace StarsAbove.Systems
                                 CombatText.NewText(textPos2, new Color(255, 132, 2, 240), $"Critical cast!", false, false);
 
                                 Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 40, Player.width, Player.height); //Heal
-                                CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(novaCritDamage * (1 + novaCritDamageMod))}", false, false);
-                                Player.statLife += (int)(novaCritDamage * (1 + novaCritDamageMod));
+                                CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(novaCritDamage * (1 + novaCritDamageMod/100))}", false, false);
+                                Player.statLife += (int)(novaCritDamage * (1 + novaCritDamageMod/100));
                                 Player.AddBuff(BuffType<SolemnAegis>(), 15 * 60);
                             }
                             else
@@ -7981,7 +9099,7 @@ namespace StarsAbove.Systems
 
 
                         }
-                        if (chosenStellarNova == 5)//Edin Shugra Quasar
+                        else if(chosenStellarNova == 5)//Edin Shugra Quasar
                         {
 
 
@@ -7992,16 +9110,16 @@ namespace StarsAbove.Systems
 
 
                         }
-                        if (chosenStellarNova == 6)//Unlimited Blade Works
+                        else if (chosenStellarNova == 6)//Unlimited Blade Works
                         {
 
 
                             onActivateStellarNova();
-                            SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
-                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, trueNovaGaugeMax / 10 * 60);
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (int)((novaEffectDuration + novaEffectDurationMod) * 60) + (int)((trueNovaGaugeMax * 0.15f) * 60));
 
                         }
-                        if (chosenStellarNova == 7)//Guardian's Light
+                        else if(chosenStellarNova == 7)//Guardian's Light
                         {
                             onActivateStellarNova();
 
@@ -8009,7 +9127,7 @@ namespace StarsAbove.Systems
                             {
                                 //Thundercrash
                                 Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashStart, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_ThundercrashStart);
 
                                 //Give player velocity towards their cursor, give Invincibility, give a active hitbox that detonates on the first foe struck (pierce 1)
                                 Vector2 Leap = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
@@ -8021,7 +9139,7 @@ namespace StarsAbove.Systems
                             }
                             else if (RangedAspect == 2)
                             {
-                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+                                Player.AddBuff(BuffType<BearerOfLight>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
 
                                 //Golden Gun
                                 //Fire 1 shot and grant 2 more shots later
@@ -8032,12 +9150,12 @@ namespace StarsAbove.Systems
                             }
                             else if (MagicAspect == 2)
                             {
-                                Player.AddBuff(BuffType<BearerOfLight>(), 60 * 10);
+                                Player.AddBuff(BuffType<BearerOfLight>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
 
                                 //Nova Bomb
 
 
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_NovaBomb, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_NovaBomb);
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
                                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<NovaBomb>(), novaDamage, 0, Player.whoAmI);
 
@@ -8054,8 +9172,8 @@ namespace StarsAbove.Systems
                             }
                             else if (SummonAspect == 2)
                             {
-                                Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm, Player.Center);
+                                Player.AddBuff(BuffType<BearerOfDarkness>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_Needlestorm);
 
                                 //Needlestorm
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
@@ -8083,7 +9201,7 @@ namespace StarsAbove.Systems
                             {
 
                                 //Silence and Squall
-                                SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.SFX_SilenceSquall2);
                                 Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 30f;
 
                                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<SilenceSquall1>(), novaDamage, 0, Player.whoAmI);
@@ -8098,7 +9216,7 @@ namespace StarsAbove.Systems
 
                                 }
                                 squallReady = true;
-                                Player.AddBuff(BuffType<BearerOfDarkness>(), 60 * 10);
+                                Player.AddBuff(BuffType<BearerOfDarkness>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
 
                                 return;
                             }
@@ -8108,7 +9226,26 @@ namespace StarsAbove.Systems
                             // Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<UnlimitedBladeWorksBackground>(), novaDamage, 0, Player.whoAmI, 0, (trueNovaGaugeMax / 10) * 60);
 
                         }
+                        else if (chosenStellarNova == 8 && !Player.HasBuff(BuffType<FireflyActive>()))//Firefly Type IV
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_FFTransformation);
+
+
+                            Player.AddBuff(BuffType<FireflyActive>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60) + (int)((trueNovaGaugeMax * 0.05f) * 60) + 120);
+                            //DEBUG
+                            //Player.AddBuff(BuffType<FireflyActive>(), 18000);
+
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 600), Vector2.Zero, ProjectileType<FireflyMinion>(), novaDamage, 0, Player.whoAmI);
+
+                            onActivateStellarNova();
+                            Player.GetModPlayer<BossPlayer>().ffCutsceneProgress = 10;
+                            //Player.AddBuff(BuffType<AstarteDriverPrep>(), 180);
+                            Player.AddBuff(BuffType<Invincibility>(), 120);
+
+
+                        }
                     }
+
 
                 }
             }
@@ -8119,7 +9256,7 @@ namespace StarsAbove.Systems
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Vector2.Zero, ProjectileType<GoldenGunHeld>(), 0, 0, Player.whoAmI);
 
 
-            SoundEngine.PlaySound(StarsAboveAudio.SFX_FireGoldenGun, Player.Center);
+            SoundEngine.PlaySound(StarsAboveAudio.SFX_FireGoldenGun);
             Vector2 Target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 40f;
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), Target, ProjectileType<GoldenGunBullet>(), novaDamage, 0, Player.whoAmI);
 
@@ -8142,88 +9279,288 @@ namespace StarsAbove.Systems
             NovaCutInOpacity = 0;
 
 
-            StellarNovaVoice();
         }
 
         private void StellarNovaVoice()
         {
-
             //If the ModConfig's voices are enabled, continue.
-            if (!voicesEnabled)
+            if (!voicesDisabled)
             {
-                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+                //Disabled for now
+                if (false) //Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
-
+                    /*
                     switch (chosenStellarNova)
                     {
                         case 1:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial1);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial1);
 
                             }
                             break;
                         case 2:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial2);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial2);
 
                             }
                             break;
                         case 3:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial3);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial3);
 
                             }
                             break;
                         case 4:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial4);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial4);
 
                             }
                             break;
                         case 5:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial5);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial5);
 
                             }
                             break;
                         case 6:
                             if (chosenStarfarer == 1)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial6, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ANSpecial6);
                             }
                             else if (chosenStarfarer == 2)
                             {
-                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial6, Player.Center);
+                                SoundEngine.PlaySound(StarsAboveAudio.ENSpecial6);
 
                             }
                             break;
+                    }*/
+                }
+                else
+                {
+                    StarsAboveAudio audio = new StarsAboveAudio();
+
+                    if (Main.rand.NextBool(100))
+                    {
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".Joke");
+                        novaDialogue = LangHelper.Wrap(novaQuote, 20);
+
+                        //1 in 20 chance for a rare line to play.
+                        if (chosenStarfarer == 1)
+                        {
+                            SoundEngine.PlaySound(audio.ASJoke);
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            SoundEngine.PlaySound(audio.ERJoke);
+
+                        }
+                        return;
                     }
+                    else
+                    {
+                        randomNovaDialogue = Main.rand.Next(0, 18);
+                        string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
+                        novaDialogue = LangHelper.Wrap(novaQuote, 20);
+
+
+
+                    }
+                    if(chosenStarfarer == 1)
+                    {
+                        switch (randomNovaDialogue)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(audio.AS1);
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(audio.AS2);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(audio.AS3);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(audio.AS4);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(audio.AS5);
+
+                                break;
+                            case 5:
+                                SoundEngine.PlaySound(audio.AS6);
+
+                                break;
+                            case 6:
+                                SoundEngine.PlaySound(audio.AS7);
+
+                                break;
+                            case 7:
+                                SoundEngine.PlaySound(audio.AS8);
+
+                                break;
+                            case 8:
+                                SoundEngine.PlaySound(audio.AS9);
+
+                                break;
+                            case 9:
+                                SoundEngine.PlaySound(audio.AS10);
+
+                                break;
+                            case 10:
+                                SoundEngine.PlaySound(audio.AS11);
+
+                                break;
+                            case 11:
+                                SoundEngine.PlaySound(audio.AS12);
+
+                                break;
+                            case 12:
+                                SoundEngine.PlaySound(audio.AS13);
+
+                                break;
+                            case 13:
+                                SoundEngine.PlaySound(audio.AS14);
+
+                                break;
+                            case 14:
+                                SoundEngine.PlaySound(audio.AS15);
+
+                                break;
+                            case 15:
+                                SoundEngine.PlaySound(audio.AS16);
+
+                                break;
+                            case 16:
+                                SoundEngine.PlaySound(audio.AS17);
+
+                                break;
+                            case 17:
+                                SoundEngine.PlaySound(audio.AS18);
+
+                                break;
+                            
+
+                        }
+
+                    }
+                    else if(chosenStarfarer == 2)
+                    {
+                        switch (randomNovaDialogue)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(audio.ER1);
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(audio.ER2);
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(audio.ER3);
+
+                                break;
+                            case 3:
+                                SoundEngine.PlaySound(audio.ER4);
+
+                                break;
+                            case 4:
+                                SoundEngine.PlaySound(audio.ER5);
+
+                                break;
+                            case 5:
+                                SoundEngine.PlaySound(audio.ER6);
+
+                                break;
+                            case 6:
+                                SoundEngine.PlaySound(audio.ER7);
+
+                                break;
+                            case 7:
+                                SoundEngine.PlaySound(audio.ER8);
+
+                                break;
+                            case 8:
+                                SoundEngine.PlaySound(audio.ER9);
+
+                                break;
+                            case 9:
+                                SoundEngine.PlaySound(audio.ER10);
+
+                                break;
+                            case 10:
+                                SoundEngine.PlaySound(audio.ER11);
+
+                                break;
+                            case 11:
+                                SoundEngine.PlaySound(audio.ER12);
+
+                                break;
+                            case 12:
+                                SoundEngine.PlaySound(audio.ER13);
+
+                                break;
+                            case 13:
+                                SoundEngine.PlaySound(audio.ER14);
+
+                                break;
+                            case 14:
+                                SoundEngine.PlaySound(audio.ER15);
+
+                                break;
+                            case 15:
+                                SoundEngine.PlaySound(audio.ER16);
+
+                                break;
+                            case 16:
+                                SoundEngine.PlaySound(audio.ER17);
+
+                                break;
+                            case 17:
+                                SoundEngine.PlaySound(audio.ER18);
+
+                                break;
+                            
+
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+                {
+                    novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
+
+                    
                 }
                 else
                 {
@@ -8232,150 +9569,17 @@ namespace StarsAbove.Systems
                         string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".10");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
-                        //1 in 20 chance for a rare line to play.
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN10, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN10, Player.Center);
-
-                        }
+                        
                         return;
                     }
                     else
                     {
-                        randomNovaDialogue = Main.rand.Next(0, 9);
+                        randomNovaDialogue = Main.rand.Next(0, 18);
                         string novaQuote = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + $".{randomNovaDialogue + 1}");
                         novaDialogue = LangHelper.Wrap(novaQuote, 20);
 
 
-
                     }
-                    if (randomNovaDialogue == 0)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN1, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN1, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 1)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN2, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN2, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 2)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN3, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN3, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 3)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN4, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN4, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 4)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN5, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN5, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 5)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN6, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN6, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 6)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN7, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN7, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 7)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN8, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN8, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 8)
-                    {
-                        if (chosenStarfarer == 1)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.AN9, Player.Center);
-
-                        }
-                        else if (chosenStarfarer == 2)
-                        {
-                            SoundEngine.PlaySound(StarsAboveAudio.EN9, Player.Center);
-
-                        }
-                    }
-                    else if (randomNovaDialogue == 9)
-                    {
-
-                    }
-
                 }
             }
         }
@@ -8400,7 +9604,7 @@ namespace StarsAbove.Systems
                     {
                         Dust.NewDust(Player.Center, 0, 0, 90, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1.5f);
                     }
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive);
                     Vector2 mousePosition = Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                     for (int i = 0; i < 10; i++)
                     {
@@ -8635,7 +9839,7 @@ namespace StarsAbove.Systems
                 {
                     if (Player.buffTime[i] == 1)
                     {
-                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 1500);
+                        Player.AddBuff(BuffType<AfterburnerCooldown>(), 20 * 60);
 
 
                     }
@@ -8960,8 +10164,8 @@ namespace StarsAbove.Systems
                         //Change
 
                         astarteDriverAttacks = 3;
-                        Player.AddBuff(BuffType<AstarteDriver>(), 1500);
-                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
+                        Player.AddBuff(BuffType<AstarteDriver>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning);
 
                     }
 
@@ -9073,6 +10277,11 @@ namespace StarsAbove.Systems
             }
             if (starfarerOutfit == 4) // Aegis of Hope's Legacy
             {
+                if (Player.immune && Player.immuneTime > 0)
+                {
+                    Player.GetDamage(DamageClass.Generic) -= 0.7f;
+
+                }
                 Player.aggro += 5;
                 Player.AddBuff(BuffType<HopesBrillianceBuff>(), 2);
                 if (hopesBrilliance > hopesBrillianceMax)
@@ -9082,7 +10291,7 @@ namespace StarsAbove.Systems
 
                 if (beyondinfinity == 2)
                 {
-                    Player.GetDamage(DamageClass.Generic) += 0.3f;
+                    //Player.GetDamage(DamageClass.Generic) += 0.3f;
                 }
                 if (keyofchronology == 2)
                 {
@@ -9127,6 +10336,10 @@ namespace StarsAbove.Systems
                 }
                 Player.GetDamage(DamageClass.Generic) -= 0.5f;
                 Player.statDefense *= 0.5f;
+            }
+            if(Player.InModBiome<NeonVeilBiome>())
+            {
+                Player.AddBuff(BuffType<NeonVeilBuff>(), 2);
             }
         }
         public override bool CanUseItem(Item item)
@@ -9197,6 +10410,11 @@ namespace StarsAbove.Systems
         }
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
         {
+            if(Player.HasBuff(BuffType<CyberpsychosisDebuff>()))
+            {
+                healValue = (int)(healValue * 0.1);
+            }
+
             if(arborealEchoes == 2)
             {
                 healValue = (int)(healValue * 1.3);
@@ -9211,7 +10429,7 @@ namespace StarsAbove.Systems
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
                     NPC npc = Main.npc[i];
-                    if (npc.active && !npc.boss && npc.Distance(Player.Center) < 1000)
+                    if (npc.active && npc.Distance(Player.Center) < 1000)
                     {
                         npc.SimpleStrikeNPC(Player.GetWeaponDamage(Player.HeldItem), 0, true, 0, DamageClass.Generic, false, 0);
                     }
@@ -9230,12 +10448,25 @@ namespace StarsAbove.Systems
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
             }
+            if(lucidDreamerLevel >= 3)
+            {
+                if(Player.HasBuff(BuffType<LucidDreamerNovaCooldown>()))
+                {
+                    Player.ClearBuff(BuffType<LucidDreamerNovaCooldown>());
+                }
+            }
             base.Kill(damage, hitDirection, pvp, damageSource);
         }
+        int circutSurge;
         public override void OnHurt(Player.HurtInfo info)
         {
             if (!Main.dedServ)
             {
+                if (inCombat <= 0)
+                {
+                    starfarerPromptActive("onAmbush");
+
+                }
                 inCombat = 1200;
                 timeAfterGettingHit = 0;
             }
@@ -9247,17 +10478,41 @@ namespace StarsAbove.Systems
                 Player.AddBuff(BuffID.Regeneration, 480);
                 Player.AddBuff(BuffID.Endurance, 480);
             }
-            
-            if(lavenderRefrain == 2)
+            if (starfarerOutfit == 7 && chosenStarfarer == 2) // Eridani's Synthweave
             {
-                if(Player.statMana > 0)
+                novaGauge += Math.Min(6, info.Damage / 50);
+                novaGaugeChangeAlpha = 1f;
+                novaGaugeChangeAlphaSlow = 1f;
+            }
+            if (starfarerOutfit == 7 && chosenStarfarer == 1) // Asphodene's Synthweave
+            {
+                if(circutSurge >= 4)
                 {
+                    circutSurge = 0;
+                    Player.AddBuff(BuffType<CyberpsychosisDebuff>(), 60);
+                }
+                else
+                {
+                    circutSurge++;
+                    novaGauge += (trueNovaGaugeMax * 0.1f);
+                }
+            }
+            if (lavenderRefrain == 2)
+            {
+                inCombat = 1200;
+                timeAfterGettingHit = 0;
+
+                if (Player.statMana > 0)
+                {
+                    Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
+                    CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{Player.statMana}", false, false);
                     //If mana isn't enough to mitigate all the damage (as in Consumable Dodge)
                     info.Damage -= Player.statMana;
                     Player.statMana = 0;
                     Player.manaRegenDelay = 480;
-
-
+                    Player.immune = true;
+                    Player.immuneTime = 60;
+                    lavenderRefrainMaxManaReduction -= 0.4f;
                 }
             }
             if (ruinedKingPrism)
@@ -9339,14 +10594,20 @@ namespace StarsAbove.Systems
         {
             if(lavenderRefrain == 2)
             {
-                if(Player.statMana >= info.Damage)
+                if(Player.statMana >= info.Damage && !Player.immune)
                 {
+                    
+                    Player.immune = true;
+                    Player.immuneTime = 60;
+
+                    inCombat = 1200;
+                    timeAfterGettingHit = 0;
+
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(122, 113, 153, 255), $"{info.Damage}", false, false);
                     Player.statMana -= info.Damage;
                     Player.manaRegenDelay = 480;
-                    Player.immune = true;
-                    Player.immuneTime = 60;
+                    lavenderRefrainMaxManaReduction -= 0.4f;
                     return true;
                 }
             }
@@ -9401,7 +10662,7 @@ namespace StarsAbove.Systems
                         starfarerPromptCooldown = 0;
                     }
                     starfarerPromptActive("onKeyOfChronology");
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_TimeEffect);
                     for (int d = 0; d < 12; d++)
                     {
                         Dust.NewDust(Player.position, 0, 0, 113, 0f + Main.rand.Next(-7, 7), 0f + Main.rand.Next(-7, 7), 150, default, 1.5f);
@@ -9454,7 +10715,7 @@ namespace StarsAbove.Systems
                 Vector2 direction = Vector2.Normalize(mousePosition - Player.Center);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), direction, Mod.Find<ModProjectile>("kiwamiryukenstun").Type, 1, 0, Player.whoAmI, 0, 1);
                 onActivateStellarNova();
-                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact, Player.Center);
+                SoundEngine.PlaySound(StarsAboveAudio.SFX_CounterImpact);
                 return false;
             }
             return false;
@@ -9612,2551 +10873,2007 @@ namespace StarsAbove.Systems
         }
         public void starfarerPromptActive(string eventPrompt)
         {
-            if (starfarerPromptCooldown <= 0 && !promptIsActive && !disablePrompts && chosenStarfarer != 0)
+            if (starfarerPromptCooldown <= 0 && !promptIsActive && !disablePrompts && chosenStarfarer != 0 && starfarerPromptActiveTimer <= 0)
             {
                 //If the check was successful...
                 SoundEngine.PlaySound(SoundID.MenuOpen, Player.position); //Menu sound here
-                promptIsActive = true;
-                starfarerPromptActiveTimer = 210;
-                if (eventPrompt == "Tsukiyomi1")
+                if(!promptIsActive)
                 {
-                    starfarerPromptActiveTimer = 350;
+                    promptExpression = 0;
+                    promptDialogue = "";
+                    promptDialogueScrollNumber = 0;
+                    promptDialogueScrollTimer = 0;
+                    animatedPromptDialogue = "";
+                    starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
+
+                    promptIsActive = true;
 
                 }
+                 
+
                 promptMoveIn = 15f;
                 int randomDialogue;
 
-                //0 Neutral | 1 Dissatisfied | 2 Angry | 3 Smug | 4 Questioning | 5 Sigh | 6 Intrigued
-                if (chosenStarfarer == 1) //Asphodene's lines                                          | Soft limit
+                string starfarerName = "";
+                if(chosenStarfarer == 1)
                 {
+                    starfarerName = "Asphodene";
+                }
+                else if (chosenStarfarer == 2)
+                {
+                    starfarerName = "Eridani";
 
-                    //When the player is debuffed..
-                    if (eventPrompt == "onPoison")
-                    {
+                }
+                //When the player is debuffed..
+                if (eventPrompt == "onPoison")
+                {
+                     
+                    randomDialogue = Main.rand.Next(0, 4);
+                    promptExpression = 1;
 
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.1", Player.name);//Looks like you've been poisoned. I'll send you a get well card.
-                    }
-                    if (eventPrompt == "onIchor")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.2", Player.name); //It looks like your defenses are lowered! Be careful.
-                    }
-                    if (eventPrompt == "onSilence")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.3", Player.name); //You've been silenced! Magic is out of the question.
-                    }
-                    if (eventPrompt == "onCurse")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.4", Player.name); //I think you've been cursed. That's.. not good. You aren't able to use anything for now.
-                    }
-                    if (eventPrompt == "onFrozen")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.5", Player.name); //You've been frozen! 
-                    }
-                    if (eventPrompt == "onFrostburn")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.6", Player.name); //You're burning up? Or freezing? It looks like it hurts regardless!
-                        //promptDialogue = "You're burning up! Or freezing? " +
-                        //    " ..It hurts regardless!" +
-                        //    " ";
-                    }
-                    if (eventPrompt == "onWebbed")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.7", Player.name); //Ew. It looks like you're covered in webs.. 
-                    }
-                    if (eventPrompt == "onStoned")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.8", Player.name); //You've been petrified! How does that even work? 
-                    }
-                    if (eventPrompt == "onBurning")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.9", Player.name); //You're standing on something REALLY hot. I'm no expert on thermodynamics, but you should not do that.
-                    }
-                    if (eventPrompt == "onSuffocation")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.10", Player.name); //You're dying- and quickly. Get out of there! 
-                    }
-                    if (eventPrompt == "onFire")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.11", Player.name); //That's probably not good.
-                    }
-                    if (eventPrompt == "onDrowning")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.12", Player.name); //I hate to break this to you, but you're about to drown.
-                    }
-                    if (eventPrompt == "onBleeding")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.13", Player.name); //You're losing a LOT of blood. Yikes. You can't regenerate health any more.
-                    }
-                    if (eventPrompt == "onConfusion")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.14", Player.name); //[You can't make out the words- looks like you've been confused.] 
-                    }
-
-                    //During combat..
-                    if (eventPrompt == "onKillCritter")
-                    {
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        randomDialogue = Main.rand.Next(0, 3);
-                        promptExpression = 2;
-                        if (randomDialogue == 0)
-                        {
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.15", Player.name); //Whoops..
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.16", Player.name); //Sorry, little guy.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.17", Player.name); //Oops.
-                        }
-                    }
-                    if (eventPrompt == "onKillEnemy")
-                    {
-                        randomDialogue = Main.rand.Next(0, 20);
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.18", Player.name); //That's one down.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.19", Player.name); //One more defeated!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.20", Player.name); //That takes care of that.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.21", Player.name); //Another one down.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.22", Player.name); //You're great at this!
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.23", Player.name); //Nice work. That's one down.
-                        }
-                        if (randomDialogue == 6)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.24", Player.name); //There it goes!
-                        }
-                        if (randomDialogue == 7)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.25", Player.name); //That'll teach em!
-                        }
-                        if (randomDialogue == 8)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.26", Player.name); //That'll show them!
-                        }
-                        if (randomDialogue == 9)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.27", Player.name); //Don't mess with us!
-                        }
-                        if (randomDialogue == 10)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.28", Player.name); //Easy!
-                        }
-                        if (randomDialogue == 11)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.29", Player.name); //Didn't even break a sweat.
-                        }
-                        if (randomDialogue == 12)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.30", Player.name); //That was so easy!
-                        }
-                        if (randomDialogue == 13)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.31", Player.name); //Enough of that one.
-                        }
-                        if (randomDialogue == 14)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.32", Player.name); //An easy victory.
-                        }
-                        if (randomDialogue == 15)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.33", Player.name); //Right, that's that.
-                        }
-                        if (randomDialogue == 16)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.34", Player.name); //How could we ever lose?
-                        }
-                        if (randomDialogue == 17)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.35", Player.name); //It's over.
-                        }
-                        if (randomDialogue == 18)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.36", Player.name); //No more of that.
-                        }
-                        if (randomDialogue == 19)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.37", Player.name); //A good encounter.
-                        }
-                    }
-                    if (eventPrompt == "onKillEnemyDanger")
-                    {
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.38", Player.name); //That was close..
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.39", Player.name); //That was almost really bad.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.40", Player.name); //Thank goodness we killed it in time.
-                        }
-                    }
-                    if (eventPrompt == "onKillBossEnemy")
-                    {
-                        starfarerPromptActiveTimer = 150;
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.41", Player.name); //Finally. You got it!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.42", Player.name); //And that takes care of that one.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.43", Player.name); //That was a strong one.
-                        }
-                    }
-                    if (eventPrompt == "onCrit")
-                    {
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        randomDialogue = Main.rand.Next(0, 6);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.44", Player.name); //A decisive crit!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.45", Player.name); //They felt that one!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.46", Player.name); //A perfectly-timed attack.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.47", Player.name); //Nice, you hit their weak spot.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.48", Player.name); //A critical hit..!
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.49", Player.name); //Well struck. That was definitely critical.
-                        }
-                    }
-                    if (eventPrompt == "onTakeHeavyDamage")
-                    {
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        randomDialogue = Main.rand.Next(0, 6);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.50", Player.name); //Wow. I felt that one..
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 2;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.51", Player.name); //That's.. not good.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.52", Player.name); //Ouch...
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.53", Player.name); //That wasn't good at all..
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.54", Player.name); //You should probably heal after that one.
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.55", Player.name); //Barely a scratch.. right?
-                        }
-                    }
-                    if (eventPrompt == "onDeath")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.56", Player.name); //That wasn't supposed to happen..
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 2;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.57", Player.name); //I don't think you can walk that one off.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.58", Player.name); //....Ouch.
-                        }
-                    }
-
-                    //Upon first contact with a boss..
-                    if (eventPrompt == "onUnknownBoss")
-                    {
-
-                        randomDialogue = Main.rand.Next(0, 5);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.59", Player.name); //A powerful foe approaches! We aren't going to lose this.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.60", Player.name); //An incredibly strong foe draws near! Let's give them a fight to remember!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.61", Player.name); //A strong foe draws near. It's time to fight.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.62", Player.name); //Right. No more games. A powerful foe is approaching.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.63", Player.name);//Looks like danger's on the horizon, {0}. I've been itching for a fight!
-                            //promptDialogue = $"{Player.name}, danger approaches!" +
-                            //                " I've been itching for a fight!";
-                        }
-
-                    }
-                    if (eventPrompt == "onEyeOfCthulhu")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
-                        seenEyeOfCthulhu = true;
-                    }
-                    if (eventPrompt == "onKingSlime")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.65", Player.name); //It's the lord of the slimes! I think it has a teleportation-like ability..
-                        seenKingSlime = true;
-                    }
-                    if (eventPrompt == "onEaterOfWorlds")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.66", Player.name); //A colossal worm! Watch where it emerges; it'll try and hit your blind spots!
-                        seenEaterOfWorlds = true;
-                    }
-                    if (eventPrompt == "onBrainOfCthulhu")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.67", Player.name); //This thing is trying to attack your mind directly..! Don't be fooled by the mirages!
-                        seenBrainOfCthulhu = true;
-                    }
-                    if (eventPrompt == "onQueenBee")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.68", Player.name); //Watch out.. the Queen Bee is awake! Make sure to dodge the horizontal charges!
-                        seenQueenBee = true;
-                    }
-                    if (eventPrompt == "onSkeletron")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.69", Player.name); //Don't underestimate this monster! Stay away from his skull and arms!
-                        seenSkeletron = true;
-                    }
-                    if (eventPrompt == "onWallOfFlesh")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.70", Player.name); //That thing is massive! If you can, try and build a path to fight it on.
-                        seenWallOfFlesh = true;
-                    }
-                    if (eventPrompt == "onTwins")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.71", Player.name); //There's two giant eyeballs coming your way! Let's see... The red one will shoot at you, and the green one charges.
-                        seenTwins = true;
-                    }
-                    if (eventPrompt == "onDeerclops")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.72", Player.name); //What in the world is that thing? A deer? It's only got one eye... aim for it!
-                        seenDeerclops = true;
-                    }
-                    if (eventPrompt == "onQueenSlime")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.73", Player.name); //It's another colossal slime! It looks like it's going to summon some minions!
-                        seenQueenSlime = true;
-                    }
-                    if (eventPrompt == "onEmpress")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.74", Player.name); //A Hallow-aspected foe has appeared! Maybe leave the butterfly alone next time...?
-                        seenEmpress = true;
-                    }
-                    if (eventPrompt == "onDestroyer")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.75", Player.name); //A giant mechanical worm.. What can we do..? How about trying to attack multiple parts of it at once?
-                        seenDestroyer = true;
-                    }
-                    if (eventPrompt == "onSkeletronPrime")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.76", Player.name); //It's a more advanced version of Skeletron.. Try going for the arms first, instead of the head.
-                        seenSkeletronPrime = true;
-                    }
-                    if (eventPrompt == "onPlantera")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.77", Player.name); //Plantera is awake! Be mindful of its vines. It would be great to have a huge arena to fight it in.
-                        seenPlantera = true;
-                    }
-                    if (eventPrompt == "onGolem")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.78", Player.name); //An ancient mechanical monster.. Watch out for the traps in the temple while fighting it.
-                        seenGolem = true;
-                    }
-                    if (eventPrompt == "onDukeFishron")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.79", Player.name); //You reeled in something crazy! Something tells me you should stay near the sea!
-                        seenDukeFishron = true;
-                    }
-                    if (eventPrompt == "onLunaticCultist")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.80", Player.name); //It's one of those Lunatic Cultists.. Stop them before they unleash a calamity..!
-                        seenCultist = true;
-                    }
-                    if (eventPrompt == "onMoonLord")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.81", Player.name); //I can't believe it.. it's the Moon Lord! This is the final battle! We have to win this!
-                        seenMoonLord = true;
-                    }
-                    if (eventPrompt == "onWarriorOfLight")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.82", Player.name); //The Warrior of Light approaches.. When he breaks his limits, prepare yourself!
-                        seenWarriorOfLight = true;
-                    }
-                    if (eventPrompt == "onVagrant")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.83", Player.name); //Something about this foe seems familiar... Attacks won't work; just survive for as long as you can!
-                        seenVagrant = true;
-                    }
-                    if (eventPrompt == "onNalhaun")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.84", Player.name); //Don't underestimate this foe..! Keep grabbing the stolen lifeforce he's taking from you!
-                        seenNalhaun = true;
-                    }
-                    if (eventPrompt == "onPenth")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.85", Player.name); //This witch attacks with paint! Mind what color you're doused in!
-                        seenPenth = true;
-                    }
-                    if (eventPrompt == "onArbiter")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.86", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
-                        seenArbiter = true;
-                    }
-                    if (eventPrompt == "onThespian")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.202", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
-                        seenThespian = true;
-                    }
-                    if (eventPrompt == "onStarfarerBoss")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.203", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
-                        seenStarfarers = true;
-                    }
-                    //Calamity mod bosses!
-                    if (eventPrompt == "onDesertScourge")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.87", Player.name); //There's something coming from below, and fast! Prepare yourself.. this is one strong worm!
-                        seenDesertScourge = true;
-                    }
-                    if (eventPrompt == "onCrabulon")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.88", Player.name); //It's a massive moving mass of mycelium.. Let's take out the trash!
-                        seenCrabulon = true;
-                    }
-                    if (eventPrompt == "onHiveMind")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.89", Player.name); //A corrupted beast draws near! Kill its minions quickly, lest it overwhelm you!
-                        seenHiveMind = true;
-                    }
-                    if (eventPrompt == "onPerforators")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.90", Player.name); //What in the world is that thing? Aim for that disgusting Hive before it's too late!
-                        seenPerforators = true;
-                    }
-                    if (eventPrompt == "onSlimeGod")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.91", Player.name); //So this is the source of all the world's slimes. Don't get hasty; I'm certain those slimes will split when hurt!
-                        seenSlimeGod = true;
-                    }
-                    //Hardmode Calamity Bosses
-                    if (eventPrompt == "onCryogen")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.92", Player.name); //Something is strange about this thing, but I don't know what. Don't get frozen... but you could probably already tell.
-                        seenCryogen = true;
-                    }
-                    if (eventPrompt == "onAquaticScourge")
-                    {
-
-                        if (seenDesertScourge)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.93", Player.name); //Hey, it's the Desert Scourge- but not so dried up! We've seen one before, how bad could this one be?
-                        }
-                        else
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.94", Player.name); //It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
-                        }
-
-                        seenAquaticScourge = true;
-                    }
-                    if (eventPrompt == "onBrimstoneElemental")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.95", Player.name); //The flames have brought forth a demonic spirit! Take care to watch your footing, lest you succumb to lava!
-                        seenBrimstoneElemental = true;
-                    }
-                    if (eventPrompt == "onCalamitas")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.96", Player.name); //This thing... it's a herald of destruction.. You know what devestation it can bring. Don't lose..!
-                        seenCalamitas = true;
-                    }
-                    if (eventPrompt == "onSiren")
-                    {
-                        if (leviathanDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.97", Player.name); //...It's Anahita again. Are you going to challenge the Leviathan?
-                        }
-                        else
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.98", Player.name); //...Do you hear that? Whatever it is.. it sounds really dangerous.
-                        }
-
-                        seenSiren = true;
-                    }
-                    if (eventPrompt == "onAnahita")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.99", Player.name); //That demon of the sea is fighting back! I hope you're ready for this...
-                        seenAnahita = true;
-                    }
-                    if (eventPrompt == "onLeviathan")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.100", Player.name); //Whoa. This thing is enormous!! Who knew she had this up her sleeve..?
-                        seenLeviathan = true;
-                    }
-                    if (eventPrompt == "onAstrumAureus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.101", Player.name); //The Astral Infection has corrupted whatever this was. Don't underestimate it. The Infection can do anything...
-                        seenAstrumAureus = true;
-                    }
-                    if (eventPrompt == "onPlaguebringer")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.102", Player.name); //Oh, great.. a giant robotic bug. It kind of looks like the Queen Bee, so try and remember her attacks!
-                        seenPlaguebringer = true;
-                    }
-                    if (eventPrompt == "onRavager")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.103", Player.name); //This is.. an amalgamation of flesh and machinery.. Above everything, try and stay away from it!
-                        seenRavager = true;
-                    }
-                    if (eventPrompt == "onAstrumDeus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.104", Player.name); //This is.. a descendant of a cosmic god! {Player.name}, don't get reckless!
-                        seenAstrumDeus = true;
-                    }
-                    //Post Moon Lord Calamity Bosses
-                    if (eventPrompt == "onProfanedGuardian")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.105", Player.name); //Something's reacting to the Profaned Shard! Prepare for a fight!
-                        seenProfanedGuardian = true;
-                    }
-                    if (eventPrompt == "onDragonfolly")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.106", Player.name); //You've summoned a draconic monster..! It looks to be incredibly quick!
-                        seenDragonfolly = true;
-                    }
-                    if (eventPrompt == "onProvidence")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.107", Player.name); //The fiery god of both light and dark descends.. No way we're losing to this thing!
-                        seenProvidence = true;
-                    }
-                    if (eventPrompt == "onStormWeaver")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.108", Player.name); //A spatial worm is approaching! Don't get careless.
-                        seenStormWeaver = true;
-                    }
-                    if (eventPrompt == "onCeaselessVoid")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.109", Player.name); //That rune has summoned some sort of.. void entity..?
-                        seenCeaselessVoid = true;
-                    }
-                    if (eventPrompt == "onSignus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.110", Player.name); //Someone.. or something.. is approaching. It can shapeshift at will! Get ready!
-                        seenSignus = true;
-                    }
-                    if (eventPrompt == "onPolterghast")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.111", Player.name); //Something's awake. The Dungeon's volatile spirits have coalesed...
-                        seenPolterghast = true;
-                    }
-                    if (eventPrompt == "onOldDuke")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.112", Player.name); //The acid ocean has spat out a monster! Wait until it gets tired to strike!
-                        seenOldDuke = true;
-                    }
-                    if (eventPrompt == "onDog")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.113", Player.name); //The Devourer of Gods has arrived! Fight! Fight with all your strength!
-                        seenDog = true;
-                    }
-                    if (eventPrompt == "onYharon")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.114", Player.name); //Yharim's loyal beast, in the flesh..! Let's send this tyrant down a peg!
-                        seenYharon = true;
-                    }
-                    if (eventPrompt == "onYharonDespawn")
-                    {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.115", Player.name); //Huh? Where's it going? We were in the middle of something!
-                        seenYharonDespawn = true;
-                    }
-                    if (eventPrompt == "onSupremeCalamitas")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.116", Player.name); //We bow to no one! Let's bring this witch down!
-                        seenSupremeCalamitas = true;
-                    }
-                    if (eventPrompt == "onDraedon")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.117", Player.name); //This is Yharim's loyal scientist. His knowledge is nigh-infinite.. Stay cautious.
-                        seenDraedon = true;
-                    }
-                    if (eventPrompt == "onArtemis")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.118", Player.name); //Twin mechanical eyes- incredibly powerful. Don't get overwhelmed..!
-                        seenArtemis = true;
-                    }
-                    if (eventPrompt == "onThanatos")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.119", Player.name); //The very earth trembles before this foe. Draedon's toys have become stronger...
-                        seenThanatos = true;
-                    }
-                    if (eventPrompt == "onAres")
-                    {
-
-                        promptExpression = 1;
-                        //promptDialogue = $"Heads up, {Player.name}!" +
-                        //                $" That machine is blotting out the sky!";
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.120", Player.name);//Heads up, {0}! Looks like that machine's blotting out the whole sky!
-                        seenAres = true;
-                    }
-                    //Fargos Souls Bosses
-                    if (eventPrompt == "onTrojanSquirrel")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
-                        seenTrojanSquirrel = true;
-                    }
-                    if (eventPrompt == "onDeviantt")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.122", Player.name);
-                        //promptDialogue = $"Aww, this pint-sized witch wants a fight? Alright then!" +
-                        //                $" It looks like you'll be barraged with debuffs- Get the heals ready.";
-                        seenDeviantt = true;
-                    }
-                    if (eventPrompt == "onEridanus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.123", Player.name);
-                        //promptDialogue = $"Hah? Just look at this muppet... thinking he's better than us or something!" +
-                        //                $" Give him a good whallop!";
-                        seenEridanus = true;
-                    }
-                    if (eventPrompt == "onAbominationn")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.124", Player.name);
-                        //promptDialogue = $"Let's get this show started!" +
-                        //                $" He'll be attacking with the power of worldly invaders, if you remember those!";
-                        seenAbominationn = true;
-                    }
-                    if (eventPrompt == "onMutant")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.125", Player.name);
-                        //promptDialogue = $"If I had a nickel for times you've thrown voodoo dolls into lava... Never mind." +
-                        //                $" Mutant's super upset, super strong, and super coming straight for you.";
-                        seenMutant = true;
-                    }
-                    if (eventPrompt == "onScarabeus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.194", Player.name);
-                        seenScarabeus = true;
-                    }
-                    if (eventPrompt == "onMoonJellyWizard")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.195", Player.name);
-                        seenMoonJellyWizard = true;
-                    }
-                    if (eventPrompt == "onVinewrathBane")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.196", Player.name);
-                        seenVinewrathBane = true;
-                    }
-                    if (eventPrompt == "onAncientAvian")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.197", Player.name);
-                        seenAncientAvian = true;
-                    }
-                    if (eventPrompt == "onStarplateVoyager")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.198", Player.name);
-                        seenStarplateVoyager = true;
-                    }
-                    if (eventPrompt == "onInfernon")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.199", Player.name);
-                        seenInfernon = true;
-                    }
-                    if (eventPrompt == "onDusking")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.200", Player.name);
-                        seenDusking = true;
-                    }
-                    if (eventPrompt == "onAtlas")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.201", Player.name);
-                        seenAtlas = true;
-                    }
-                    //Wrath of the Gods
-                    if (eventPrompt == "onNoxusEgg")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.204", Player.name);
-                        seenNoxusEgg = true;
-                    }
-                    if (eventPrompt == "onEntropicGod")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.205", Player.name);
-                        seenEntropicGod = true;
-                    }
-                    if (eventPrompt == "onNamelessDeity")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.206", Player.name);
-                        seenNamelessDeity = true;
-                    }
-                    //Starlight River
-                    if (eventPrompt == "onGlassweaver")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.207", Player.name);
-                        seenGlassweaver = true;
-                    }               
-                    if (eventPrompt == "onAuroracle")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.208", Player.name);
-                        seenAuroracle = true;
-                    }
-                    if (eventPrompt == "onCeiros")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.209", Player.name);
-                        seenCeiros = true;
-                    }
-                    //Thorium bosses.
-                    if (eventPrompt == "onGrandThunderBird")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.126", Player.name); //A lightning bird is approaching! It's not too powerful, but don't get careless.
-                        seenGrandThunderBird = true;
-                    }
-                    if (eventPrompt == "onQueenJellyfish")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.127", Player.name); //Hey. Doesn't that jellyfish look a little too big? Whatever its issue is, it's coming this way!
-                        seenQueenJellyfish = true;
-                    }
-                    if (eventPrompt == "onViscount")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.128", Player.name); //Ugh, what is that thing? A vampire? Quick, find some silver! Or is that werewolves..?
-                        seenViscount = true;
-                    }
-                    if (eventPrompt == "onGraniteEnergyStorm")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.129", Player.name); //Looks like the granite has woken up..? Time to bury it where it belongs.
-                        seenGraniteEnergyStorm = true;
-                    }
-                    if (eventPrompt == "onBuriedChampion")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.130", Player.name); //This gladiator looks stronger than the others. Let's give it a fight to remember!
-                        seenBuriedChampion = true;
-                    }
-                    if (eventPrompt == "onStarScouter")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.131", Player.name); //It's an alien spaceship! It looks like it'll be stronger on low HP!
-                        seenStarScouter = true;
-                    }
-                    //Thorium Hardmode
-                    if (eventPrompt == "onBoreanStrider")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.132", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
-                        seenBoreanStrider = true;
-                    }
-                    if (eventPrompt == "onCoznix")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.133", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
-                        seenCoznix = true;
-                    }
-                    if (eventPrompt == "onLich")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.134", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
-                        seenLich = true;
-                    }
-                    if (eventPrompt == "onAbyssion")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.135", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
-                        seenAbyssion = true;
-                    }
-                    if (eventPrompt == "onPrimordials")
-                    {
-                        promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.136", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
-                        seenPrimordials = true;
-                    }
-
-                    //Secrets of the Shadows
-                    if (eventPrompt == "onPutridPinky")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
-                        seenPutridPinky = true;
-                    }
-                    if (eventPrompt == "onPharaoh")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
-                        seenPharaoh = true;
-                    }
-                    if (eventPrompt == "onAdvisor")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
-                        seenAdvisor = true;
-                    }
-                    if (eventPrompt == "onPolaris")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
-                        seenPolaris = true;
-                    }
-                    if (eventPrompt == "onLux")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
-                        seenLux = true;
-                    }
-                    if (eventPrompt == "onSubspaceSerpent")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
-                        seenSubspaceSerpent = true;
-                    }
-
-                    //Upon entering a biome for the first time..
-                    if (eventPrompt == "onEnterDesert")
-                    {
-                        promptExpression = 2;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.137", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
-                        seenDesertBiome = true;
-                    }
-                    if (eventPrompt == "onEnterJungle")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.138", Player.name); //So this is the Jungle. Take care when exploring. Ah, but make sure to explore everything!
-                        seenJungleBiome = true;
-                    }
-                    if (eventPrompt == "onEnterBeach")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.139", Player.name); //Well, it's the ocean. ...Did you want me to say something else? It's an ocean.
-                        seenBeachBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSpace")
-                    {
-                        promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.140", Player.name); //Isn't it nice up here?  
-                        seenSpaceBiome = true;
-                    }
-                    if (eventPrompt == "onEnterUnderworld")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.141", Player.name); //The Underworld, huh? Interesting. This goes without saying, but it's incredibly dangerous here.
-                        seenUnderworldBiome = true;
-                    }
-                    if (eventPrompt == "onEnterCorruption")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.142", Player.name); //The world is being corrupted away here. Let's not tarry.
-                        seenCorruptionBiome = true;
-                    }
-                    if (eventPrompt == "onEnterCrimson")
-                    {
-                        promptExpression = 2;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.143", Player.name); //The ground here feels like flesh. I feel like we shouldn't stay long- but that's obvious..
-                        seenCrimsonBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSnow")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.144", Player.name); //It's snow! I've been always fond of snow. The water-based kind, of course.
-                        seenSnowBiome = true;
-                    }
-                    if (eventPrompt == "onEnterHallow")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.145", Player.name); //It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
-                        seenHallowBiome = true;
-                    }
-                    if (eventPrompt == "onEnterMushroom")
-                    {
-                        promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.146", Player.name); //Whoa! This place is funky. You don't see these mushrooms every day.
-                        seenGlowingMushroomBiome = true;
-                    }
-                    if (eventPrompt == "onEnterDungeon")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.147", Player.name); //There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
-                        seenDungeonBiome = true;
-                    }
-                    if (eventPrompt == "onEnterMeteorite")
-                    {
-                        promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
-                        seenMeteoriteBiome = true;
-                    }
-
-                    //Verdant
-                    if (eventPrompt == "onEnterVerdant")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.180", Player.name);
-                        seenVerdantBiome = true;
-                    }
-
-                    //Calamity Biomes
-                    if (eventPrompt == "onEnterCrag")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.149", Player.name); //This is.. the Brimstone Crag. Something dreadful happened here.
-                        seenCragBiome = true;
-                    }
-                    if (eventPrompt == "onEnterAstral")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.150", Player.name); //So this is the Astral Infection. I've read about it, but actually seeing it...
-                        seenAstralBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSunkenSea")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.151", Player.name); //Wow.. This place is quite unique. I can't quite explain.
-                        seenSunkenSeaBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSulphurSea")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.152", Player.name); //Whatever was done to this place is irreversible. This ocean has been stained red with blood.
-                        seenSulphurSeaBiome = true;
-                    }
-                    if (eventPrompt == "onEnterAbyss")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.153", Player.name); //You're entering the true depths of the ocean. I hope you realize how dangerous this is!
-                        seenAbyssBiome = true;
-                    }
-
-                    //Thorium Biomes
-                    if (eventPrompt == "onEnterGranite")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.154", Player.name); //This cavern seems to be made of hard granite.. Curious.
-                        seenGraniteBiome = true;
-                    }
-                    if (eventPrompt == "onEnterMarble")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.155", Player.name); //This cave exhudes royalty. Perhaps it has to do with the abundance of marble.
-                        seenMarbleBiome = true;
-                    }
-                    if (eventPrompt == "onEnterAquaticDepths")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.156", Player.name); //This is a deep part of the ocean. Take care you don't drown...
-                        seenAquaticDepthsBiome = true;
-                    }
-
-
-                    //Upon certain weather conditions..
-                    if (eventPrompt == "onRain")
-                    {
-                        promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.157", Player.name); //Looks like it started raining. Hopefully this doesn't put a damper on things.. heh.
-                        seenRain = true;
-                    }
-                    if (eventPrompt == "onSnow")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.158", Player.name); //It's a blizzard! Don't get frostbite, now. That'd be embarassing.
-                        seenSnow = true;
-                    }
-                    if (eventPrompt == "onSandstorm")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.159", Player.name); //A sandstorm has kicked up. It gets everywhere, so be careful.
-                        seenSandstorm = true;
-                    }
-
-                    //Upon activation of certain Stellar Array passives...
-                    if (eventPrompt == "onKeyOfChronology")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.160", Player.name); //Time and space bend to my will!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.161", Player.name); //Not on my watch!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.162", Player.name); //Turn back the clock..!
-                        }
-                    }
-                    if (eventPrompt == "onLivingDead")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.163", Player.name); //By your undying rage..!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.164", Player.name); //It's just a flesh wound.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.165", Player.name); //Embrace the abyss! Set yourself free!
-                        }
-                    }
-                    if (eventPrompt == "onButchersDozen")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.166", Player.name); //No one will escape!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.167", Player.name); //Like lambs to slaughter!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.168", Player.name); //Butcher them!
-                        }
-                    }
-
-                    if (eventPrompt == "onStellarNovaCharged")
-                    {
-                        randomDialogue = Main.rand.Next(0, 6);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.169", Player.name); //Let's show them our power.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.170", Player.name); //I'm ready to unleash my power!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.171", Player.name); //I'm ready to use the Stellar Nova!
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.172", Player.name); //OK. Done charging- let's go.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.173", Player.name); //Just tell me when.
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.174", Player.name); //Here we go.
-                        }
-                    }
-
-                    //Visiting Subworlds for the first time.
-                    if (eventPrompt == "onObservatory")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.175", Player.name); //You've made it to the Observatory! So, what do you think?
-                        seenObservatory = true;
-                    }
-                    if (eventPrompt == "onSpaceRuins")
+                    if (randomDialogue == 0)
                     {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.176", Player.name); //Looks like you've arrived.  These are asteroids of interest- let's do some exploring.
-                        seenCygnusAsteroids = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".onPoison.1", Player.name);//Looks like you've been poisoned. I'll send you a get well card.
                     }
-                    if (eventPrompt == "onCitadel")
+                    if (randomDialogue == 1)
                     {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.177", Player.name); //We've made it. This planet is strange.. The surface has been wiped clean... What happened?
-                        seenBleachedPlanet = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".onPoison.2", Player.name);//Looks like you've been poisoned. I'll send you a get well card.
                     }
-                    if (eventPrompt == "onConfluence")
+                    if (randomDialogue == 2)
                     {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.178", Player.name); //She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
-                        seenConfluence = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".onPoison.3", Player.name);//Looks like you've been poisoned. I'll send you a get well card.
                     }
-                    if (eventPrompt == "onCity")
+                    if (randomDialogue == 3)
                     {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Asphodene.179", Player.name); //It looks like we can't explore this yet... Maybe next time.
-                        seenCity = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".onPoison.4", Player.name);//Looks like you've been poisoned. I'll send you a get well card.
                     }
                 }
-                if (chosenStarfarer == 2) //Eridani's lines                                              | Soft limit
+                if (eventPrompt == "onIchor")
                 {
 
-                    //When the player is debuffed..c
-                    if (eventPrompt == "onPoison")
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".2", Player.name); //It looks like your defenses are lowered! Be careful.
+                }
+                if (eventPrompt == "onSilence")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".3", Player.name); //You've been silenced! Magic is out of the question.
+                }
+                if (eventPrompt == "onCurse")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".4", Player.name); //I think you've been cursed. That's.. not good. You aren't able to use anything for now.
+                }
+                if (eventPrompt == "onFrozen")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".5", Player.name); //You've been frozen! 
+                }
+                if (eventPrompt == "onFrostburn")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".6", Player.name); //You're burning up? Or freezing? It looks like it hurts regardless!
+                                                                                                                   //promptDialogue = "You're burning up! Or freezing? " +
+                                                                                                                   //    " ..It hurts regardless!" +
+                                                                                                                   //    " ";
+                }
+                if (eventPrompt == "onWebbed")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".7", Player.name); //Ew. It looks like you're covered in webs.. 
+                }
+                if (eventPrompt == "onStoned")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".8", Player.name); //You've been petrified! How does that even work? 
+                }
+                if (eventPrompt == "onBurning")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".9", Player.name); //You're standing on something REALLY hot. I'm no expert on thermodynamics, but you should not do that.
+                }
+                if (eventPrompt == "onSuffocation")
+                {
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".10", Player.name); //You're dying- and quickly. Get out of there! 
+                }
+                if (eventPrompt == "onFire")
+                {
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".11", Player.name); //That's probably not good.
+                }
+                if (eventPrompt == "onDrowning")
+                {
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".12", Player.name); //I hate to break this to you, but you're about to drown.
+                }
+                if (eventPrompt == "onBleeding")
+                {
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".13", Player.name); //You're losing a LOT of blood. Yikes. You can't regenerate health any more.
+                }
+                if (eventPrompt == "onConfusion")
+                {
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".14", Player.name); //[You can't make out the words- looks like you've been confused.] 
+                }
+
+                //During combat..
+                if (eventPrompt == "onKillCritter")
+                {
+                    if(chosenStarfarer == 1)
                     {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.1", Player.name); //Uhh.. you're looking a little sick.
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAccident0);}
 
                     }
-                    if (eventPrompt == "onIchor")
+                    else if (chosenStarfarer == 2)
                     {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.2", Player.name); //The Ichor is dampening your defenses. Watch out.
-                    }
-                    if (eventPrompt == "onSilence")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.3", Player.name); //You've been silenced.. No magic for now.
-                    }
-                    if (eventPrompt == "onCurse")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.4", Player.name); //That looks to me like a curse.. You can't use anything right now.
-                    }
-                    if (eventPrompt == "onFrozen")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.5", Player.name); //That doesn't look good. You're frozen solid. 
-                    }
-                    if (eventPrompt == "onFrostburn")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.6", Player.name); //You've been inflicted with Frostburn! That's.. confusing. 
-                    }
-                    if (eventPrompt == "onWebbed")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.7", Player.name); //Yuck- you've been rendered immobile by webs. 
-                    }
-                    if (eventPrompt == "onStoned")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.8", Player.name); //You've been petrified.. 
-                    }
-                    if (eventPrompt == "onBurning")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.9", Player.name); //You're taking damage from a hot surface! 
-                    }
-                    if (eventPrompt == "onSuffocation")
-                    {
-
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.10", Player.name); //You're dying fast. Find a way out of there. 
-                    }
-                    if (eventPrompt == "onFire")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.11", Player.name); //Ouch. That's probably not good.
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniAccident0);}
 
                     }
-                    if (eventPrompt == "onDrowning")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.12", Player.name); //You need some air, quick.
-                    }
-                    if (eventPrompt == "onBleeding")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.13", Player.name); //That's a lot of blood.. You aren't regenerating health now, that's for sure.
-                    }
-                    if (eventPrompt == "onConfusion")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.14", Player.name); //[You can't make out the words.] 
-                    }
 
-                    //During combat..
-                    if (eventPrompt == "onKillCritter")
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".15", Player.name);
+                }
+                if (eventPrompt == "onEverlastingLight")
+                {
+                    if (chosenStarfarer == 1)
                     {
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        randomDialogue = Main.rand.Next(0, 3);
-                        promptExpression = 2;
-                        if (randomDialogue == 0)
-                        {
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.15", Player.name); //Whoops.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.16", Player.name); //Did you mean to do that?
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.17", Player.name); //Sorry, little one.
-                        }
-                    }
-                    if (eventPrompt == "onKillEnemy")
-                    {
-                        randomDialogue = Main.rand.Next(0, 20);
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.18", Player.name); //Good work.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.19", Player.name); //That's another one down.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.20", Player.name); //Well fought.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.21", Player.name); //Another one down.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.22", Player.name); //You're pretty good at this.
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.23", Player.name); //Nice work.
-                        }
-                        if (randomDialogue == 6)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.24", Player.name); //They'll never beat us.
-                        }
-                        if (randomDialogue == 7)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.25", Player.name); //You've defeated it.
-                        }
-                        if (randomDialogue == 8)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.26", Player.name); //That'll show them.
-                        }
-                        if (randomDialogue == 9)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.27", Player.name); //A good fight.
-                        }
-                        if (randomDialogue == 10)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.28", Player.name); //Easy.
-                        }
-                        if (randomDialogue == 11)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.29", Player.name); //No sweat.
-                        }
-                        if (randomDialogue == 12)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.30", Player.name); //Wasn't even a problem.
-                        }
-                        if (randomDialogue == 13)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.31", Player.name); //We got that taken care of.
-                        }
-                        if (randomDialogue == 14)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.32", Player.name); //Good going.
-                        }
-                        if (randomDialogue == 15)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.33", Player.name); //Right, that's that.
-                        }
-                        if (randomDialogue == 16)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.34", Player.name); //How could we ever lose?
-                        }
-                        if (randomDialogue == 17)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.35", Player.name); //It's over.
-                        }
-                        if (randomDialogue == 18)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.36", Player.name); //No more of that.
-                        }
-                        if (randomDialogue == 19)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.37", Player.name); //A good encounter.
-                        }
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.ALight0); }
 
                     }
-                    if (eventPrompt == "onKillEnemyDanger")
+                    else if (chosenStarfarer == 2)
                     {
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        randomDialogue = Main.rand.Next(0, 3);
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.ELight0); }
 
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.38", Player.name); //That was a little close for comfort..
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.39", Player.name); //That's over with, but we're still in trouble.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.40", Player.name); //That was close.
-                        }
-                    }
-                    if (eventPrompt == "onKillBossEnemy")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-                        starfarerPromptActiveTimer = 150;
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.41", Player.name); //Finally. It's defeated.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.42", Player.name); //You bested it, finally. Good job.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.43", Player.name); //What a powerful foe...
-                        }
-                    }
-                    if (eventPrompt == "onCrit")
-                    {
-                        randomDialogue = Main.rand.Next(0, 6);
-                        starfarerPromptActiveTimer = starfarerPromptActiveTimerSetting;
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.44", Player.name); //Perfect attack!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.45", Player.name); //A critical hit!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.46", Player.name); //Expertly done.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.47", Player.name); //Nice, you hit their weak spot.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.48", Player.name); //That was great!
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.49", Player.name); //A decisive blow.
-                        }
-                    }
-                    if (eventPrompt == "onTakeHeavyDamage")
-                    {
-                        randomDialogue = Main.rand.Next(0, 6);
-                        starfarerPromptActiveTimer = 150;
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.50", Player.name); //Ouch. That looked like it hurt.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 2;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.51", Player.name); //Are you alright?
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.52", Player.name); //That doesn't look good.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.53", Player.name); //This could be going better..
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.54", Player.name); //Oww..
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 2;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.55", Player.name); //Yikes.
-                        }
-                    }
-                    if (eventPrompt == "onDeath")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.56", Player.name); //This is.. bad..
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 2;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.57", Player.name); //That is.. not good.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.58", Player.name); //They'll pay for that..
-                        }
                     }
 
-                    //Upon first contact with a boss..
-                    if (eventPrompt == "onUnknownBoss")
-                    {
-                        randomDialogue = Main.rand.Next(0, 5);
+                     
+                    promptExpression = 2;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".217", Player.name);
 
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.59", Player.name); //A powerful foe approaches. Let's send it back to where it belongs.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.60", Player.name); //I can sense powerful energy approaching. Ready or not, it's time for a fight.
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.61", Player.name); //A strong opponent draws near. Prepare yourself.
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.62", Player.name); //Stay alert, {0}. Something powerful is on its way.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.63", Player.name); //Danger approaches. We will show no mercy.
-                        }
-                    }
-                    if (eventPrompt == "onEyeOfCthulhu")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.64", Player.name); //Here it comes. Whatever it is, it's dangerous. Take extra care when it's weak; it'll be forced into a frenzy.
-                        seenEyeOfCthulhu = true;
-                    }
-                    if (eventPrompt == "onKingSlime")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.65", Player.name); //That's a.. giant slime. It seems to be able to move really quickly. Watch for that.
-                        seenKingSlime = true;
-                    }
-                    if (eventPrompt == "onEaterOfWorlds")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.66", Player.name); //This must be the Eater of Worlds. It'll try and suprise you from below.
-                        seenEaterOfWorlds = true;
-                    }
-                    if (eventPrompt == "onBrainOfCthulhu")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.67", Player.name); //Watch out. It's trying to attack your mind itself. Pay close attention to the mirages.
-                        seenBrainOfCthulhu = true;
-                    }
-                    if (eventPrompt == "onQueenBee")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.68", Player.name); //That giant bee is attacking! Don't get caught in the honey!
-                        seenQueenBee = true;
-                    }
-                    if (eventPrompt == "onSkeletron")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.69", Player.name); //The Clothier has turned into.. this.. Stay away from its skull and arms.
-                        seenSkeletron = true;
-                    }
-                    if (eventPrompt == "onWallOfFlesh")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.70", Player.name); //This thing is incredibly strong.. Whatever you do, keep running..!
-                        seenWallOfFlesh = true;
-                    }
-                    if (eventPrompt == "onTwins")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.71", Player.name); //The Eye of Cthulhu is back? Wait, there's two of them..! Try and focus one at a time!
-                        seenTwins = true;
-                    }
-                    if (eventPrompt == "onDeerclops")
+
+                }
+                if (eventPrompt == "onKillEnemy")
+                {
+                    randomDialogue = Main.rand.Next(0, 20);
+                     
+                    if (randomDialogue == 0)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.72", Player.name); //It's a cyclops... wait.. It has antlers... Is it a deer? Is it both..?
-                        seenDeerclops = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".18", Player.name); //That's one down.
                     }
-                    if (eventPrompt == "onQueenSlime")
+                    if (randomDialogue == 1)
                     {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.73", Player.name); //Looks to be another type of gigantic slime. I have a feeling it'll use minions to do its bidding.
-                        seenQueenSlime = true;
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".19", Player.name); //One more defeated!
                     }
-                    if (eventPrompt == "onEmpress")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.74", Player.name); //Something dangerous stirs in the Hallow... It looks to draw overwhelming power during the daytime!
-                        seenEmpress = true;
-                    }
-                    if (eventPrompt == "onDestroyer")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.75", Player.name); //The Destroyer approaches.. Let's try using area-of-effect attacks against it.
-                        seenDestroyer = true;
-                    }
-                    if (eventPrompt == "onSkeletronPrime")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.76", Player.name); //Skeletron is back, and better than ever! Try prioritizing the appendages first.
-                        seenSkeletronPrime = true;
-                    }
-                    if (eventPrompt == "onPlantera")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.77", Player.name); //The menace of the Jungle is attacking..! Don't get stuck on your surroundings!
-                        seenPlantera = true;
-                    }
-                    if (eventPrompt == "onGolem")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.78", Player.name); //The Lizhard's beast is awake! Mind the Jungle Temple's traps during this fight.
-                        seenGolem = true;
-                    }
-                    if (eventPrompt == "onDukeFishron")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.79", Player.name); //You've reeled in a dangerous foe! Stay near the sea lest it become enraged!
-                        seenDukeFishron = true;
-                    }
-                    if (eventPrompt == "onLunaticCultist")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.80", Player.name); //It's a Lunatic Cultist.. You have to defeat them before they can summon calamity!
-                        seenCultist = true;
-                    }
-                    if (eventPrompt == "onMoonLord")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.81", Player.name); //The Moon Lord.. We come face to face with a god. We have to win this! There's no other option!
-                        seenMoonLord = true;
-                    }
-                    if (eventPrompt == "onWarriorOfLight")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.82", Player.name); //The Warrior of Light approaches.. His Limit Breaks are incredibly strong!
-                        seenWarriorOfLight = true;
-                    }
-                    if (eventPrompt == "onVagrant")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.83", Player.name); //Something about this foe seems familiar... Your attacks won't work; just try and survive!
-                        seenVagrant = true;
-                    }
-                    if (eventPrompt == "onNalhaun")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.84", Player.name); //Don't underestimate this king of eld! Take back the lifeforce he's stealing!
-                        seenNalhaun = true;
-                    }
-                    if (eventPrompt == "onPenth")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.85", Player.name); //She's covering you with paint. Take careful note of your color!
-                        seenPenth = true;
-                    }
-                    if (eventPrompt == "onArbiter")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.86", Player.name); //It seems to be able to swap forms! Try to memorize its attacks..!
-                        seenArbiter = true;
-                    }
-                    if (eventPrompt == "onThespian")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.204", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
-                        seenThespian = true;
-                    }
-                    if (eventPrompt == "onStarfarerBoss")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.205", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
-                        seenStarfarers = true;
-                    }
-                    //Calamity Mod Bosses
-
-                    if (eventPrompt == "onDesertScourge")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.87", Player.name); //Something's tunneling in the sand..! Try and get off the ground!
-                        seenDesertScourge = true;
-                    }
-                    if (eventPrompt == "onCrabulon")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.88", Player.name); //A mycelium beast, huh? It's spewing mushrooms everywhere...
-                        seenCrabulon = true;
-                    }
-                    if (eventPrompt == "onHiveMind")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.89", Player.name); //The corruption has spewed out a new beast. Look out for its barrage of minions.
-                        seenHiveMind = true;
-                    }
-                    if (eventPrompt == "onPerforators")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.90", Player.name); //Flesh beasts draw near..! Focus your attention on the Hive!
-                        seenPerforators = true;
-                    }
-                    if (eventPrompt == "onSlimeGod")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.179", Player.name); //This huge amalgamate draws from the world's evils! Killing one slime will empower the other!
-                        seenSlimeGod = true;
-                    }
-                    //Hardmode Calamity Bosses
-                    if (eventPrompt == "onCryogen")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.91", Player.name); //This foe radiates mystic ice. Stay away from it- those icy spikes are not for show.
-                        seenCryogen = true;
-                    }
-                    if (eventPrompt == "onAquaticScourge")
-                    {
-
-                        if (seenDesertScourge)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.92", Player.name); //The Desert Scourge makes a return... I knew it- This was what it once was.
-                        }
-                        else
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.93", Player.name); //A colossal serpent makes its way towards us.. It may overwhelm you.. don't get reckless.
-                        }
-
-                        seenAquaticScourge = true;
-                    }
-                    if (eventPrompt == "onBrimstoneElemental")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.94", Player.name); //That Charred Idol has summoned a flaming spirit.. It can teleport everywhere- don't lose track of it.
-                        seenBrimstoneElemental = true;
-                    }
-                    if (eventPrompt == "onCalamitas")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.95", Player.name); //Calamitas.. With a name like that, it begs respect. We've seen what it can do. You musn't lose this fight.
-                        seenCalamitas = true;
-                    }
-                    if (eventPrompt == "onSiren")
-                    {
-                        if (leviathanDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.96", Player.name); //It's Anahita singing again. Do you want to fight her once more?
-                        }
-                        else
-                        {
-
-                            promptExpression = 3;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.97", Player.name); //Can you hear that, {0}? Something's singing in the ocean?
-
-                        }
-
-                        seenSiren = true;
-                    }
-                    if (eventPrompt == "onAnahita")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.98", Player.name); //Ah.. It looks like you've angered her. I hope you're prepared for a fight..
-                        seenAnahita = true;
-                    }
-                    if (eventPrompt == "onLeviathan")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.99", Player.name); //What in the world.. It's massive! Take caution; the playing field has changed!
-                        seenLeviathan = true;
-                    }
-                    if (eventPrompt == "onAstrumAureus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.100", Player.name); //It's a mechanical beast, but it's been corrupted by the Astral Infection. Stay cautious.
-                        seenAstrumAureus = true;
-                    }
-                    if (eventPrompt == "onPlaguebringer")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.101", Player.name); //Ugh. It's a disgusting bug, but now it has artillery. When it gets wounded, those missiles will likely detonate.
-                        seenPlaguebringer = true;
-                    }
-                    if (eventPrompt == "onRavager")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.102", Player.name); //Yuck. It's a huge pile of flesh and bones. From what I can tell, getting too close will end you fast.
-                        seenRavager = true;
-                    }
-                    if (eventPrompt == "onAstrumDeus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.103", Player.name); //This is a descendant of a cosmic god! We can't lose to something like this!
-                        seenAstrumDeus = true;
-                    }
-                    //Post Moon Lord Calamity Bosses
-                    if (eventPrompt == "onProfanedGuardian")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.104", Player.name); //The Profaned Shard has summoned something! Prepare for a fight!
-                        seenProfanedGuardian = true;
-                    }
-                    if (eventPrompt == "onDragonfolly")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.105", Player.name); //Hey, those pheromones.. Looks like it attracted a feral beast.
-                        seenDragonfolly = true;
-                    }
-                    if (eventPrompt == "onProvidence")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.106", Player.name); //A deity of light and darkness approaches!. We musn't lose this..!
-                        seenProvidence = true;
-                    }
-                    if (eventPrompt == "onStormWeaver")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.107", Player.name); //Something just entered the upper atmosphere! Brace for impact!
-                        seenStormWeaver = true;
-                    }
-                    if (eventPrompt == "onCeaselessVoid")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.108", Player.name); //Wait. I sense something from the Dungeon's depths. Prepare yourself for a fight!
-                        seenCeaselessVoid = true;
-                    }
-                    if (eventPrompt == "onSignus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.109", Player.name); //A demon is approaching..! Watch out! Whatever it wants, it'll kill you for it!
-                        seenSignus = true;
-                    }
-                    if (eventPrompt == "onPolterghast")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.110", Player.name); //The ghosts of the dungeon.. They're fusing together! Prepare yourself!
-                        seenPolterghast = true;
-                    }
-                    if (eventPrompt == "onOldDuke")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.111", Player.name); //Something descends from the acid rain! It's looking for a fight!
-                        seenOldDuke = true;
-                    }
-                    if (eventPrompt == "onDog")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.112", Player.name); //The Devourer of Gods has appeared! You must give this battle your all!
-                        seenDog = true;
-                    }
-                    if (eventPrompt == "onYharon")
+                    if (randomDialogue == 2)
                     {
                         promptExpression = 4;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.113", Player.name); //The Jungle Dragon roars. Let's throw a wrench in Yharim's plans.
-                        seenYharon = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".20", Player.name); //That takes care of that.
                     }
-                    if (eventPrompt == "onYharonDespawn")
+                    if (randomDialogue == 3)
                     {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.114", Player.name); //Where's it going? Were we.. not strong enough?
-                        seenYharonDespawn = true;
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".21", Player.name); //Another one down.
                     }
-                    if (eventPrompt == "onSupremeCalamitas")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.115", Player.name); //No way.. Its power is ineffable. {Player.name}.. We have to win this!
-                        seenSupremeCalamitas = true;
-                    }
-                    //Draedon Update
-                    if (eventPrompt == "onDraedon")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.116", Player.name); //Draedon is here... Be mindful of his tactics. His knowledge spans the world over.
-                        seenDraedon = true;
-                    }
-                    if (eventPrompt == "onArtemis")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.117", Player.name); //Stay sharp. Multiple foes detected. Draedon's inventions are on the move.
-                        seenArtemis = true;
-                    }
-                    if (eventPrompt == "onThanatos")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.118", Player.name); //Quick- find higher ground! A colossal mechanical serpent draws near!
-                        seenThanatos = true;
-                    }
-                    if (eventPrompt == "onAres")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.178", Player.name); //A being of the apocalypse has appeared. It wields destruction in all its appendages!
-
-                        seenAres = true;
-                    }
-                    //Fargos Souls Bosses
-                    if (eventPrompt == "onTrojanSquirrel")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.119", Player.name); //...Never mind the absurdity of the giant mechanical squirrel. Focus on attacking its head and arms to stop its most dangerous attacks.
-
-                        seenTrojanSquirrel = true;
-                    }
-                    if (eventPrompt == "onDeviantt")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.120", Player.name); //Huh? She looks weak, but she's actually kind of powerful... If you get hit, you'll be slammed with debuffs; keep your healing ready.
-
-                        seenDeviantt = true;
-                    }
-                    if (eventPrompt == "onEridanus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.121", Player.name); //Who does this guy think he is, wielding celestial power all willy-nilly? Not to mention... Ugh- I don't have to spell it out, do I?
-
-
-                        seenEridanus = true;
-                    }
-                    if (eventPrompt == "onAbominationn")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.122", Player.name); //Well, no time like the present. His arsenal revolves around invader events- we've seen our share of those.
-
-
-                        seenAbominationn = true;
-                    }
-                    if (eventPrompt == "onMutant")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.123", Player.name); //Oh, you just HAD to throw that thing into lava, did you? Well, good luck, because Mutant is pissed. Didn't see that coming- wait, I did.
-
-
-                        seenMutant = true;
-                    }
-                    if (eventPrompt == "onScarabeus")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.196", Player.name);
-                        seenScarabeus = true;
-                    }
-                    if (eventPrompt == "onMoonJellyWizard")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.197", Player.name);
-                        seenMoonJellyWizard = true;
-                    }
-                    if (eventPrompt == "onVinewrathBane")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.198", Player.name);
-                        seenVinewrathBane = true;
-                    }
-                    if (eventPrompt == "onAncientAvian")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.199", Player.name);
-                        seenAncientAvian = true;
-                    }
-                    if (eventPrompt == "onStarplateVoyager")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.200", Player.name);
-                        seenStarplateVoyager = true;
-                    }
-                    if (eventPrompt == "onInfernon")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.201", Player.name);
-                        seenInfernon = true;
-                    }
-                    if (eventPrompt == "onDusking")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.202", Player.name);
-                        seenDusking = true;
-                    }
-                    if (eventPrompt == "onAtlas")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.203", Player.name);
-                        seenAtlas = true;
-                    }
-                    //Wrath of the Gods
-                    if (eventPrompt == "onNoxusEgg")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.206", Player.name);
-                        seenNoxusEgg = true;
-                    }
-                    if (eventPrompt == "onEntropicGod")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.207", Player.name);
-                        seenEntropicGod = true;
-                    }
-                    if (eventPrompt == "onNamelessDeity")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.208", Player.name);
-                        seenNamelessDeity = true;
-                    }
-                    //Starlight River
-                    if (eventPrompt == "onGlassweaver")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.209", Player.name);
-                        seenGlassweaver = true;
-                    }
-                    if (eventPrompt == "onAuroracle")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.210", Player.name);
-                        seenAuroracle = true;
-                    }
-                    if (eventPrompt == "onCeiros")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.211", Player.name);
-                        seenCeiros = true;
-                    }
-                    //Thorium bosses.
-                    if (eventPrompt == "onGrandThunderBird")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.124", Player.name); //The Storm Flare has called something down! Hmm? It looks to be lightning-aspected.
-                        seenGrandThunderBird = true;
-                    }
-                    if (eventPrompt == "onQueenJellyfish")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.125", Player.name); //Some sort of jellyfish monster is approaching. It looks like there's someone trapped inside..?
-                        seenQueenJellyfish = true;
-                    }
-                    if (eventPrompt == "onViscount")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.126", Player.name); //It's a giant vampire bat! Mind yourself...
-                        seenViscount = true;
-                    }
-                    if (eventPrompt == "onGraniteEnergyStorm")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.127", Player.name); //The cavern's energy has congealed into a monster! What in the world..?
-                        seenGraniteEnergyStorm = true;
-                    }
-                    if (eventPrompt == "onBuriedChampion")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.128", Player.name); //A knight has arisen from the marble cave! Look out- it's prepared to fight!
-                        seenBuriedChampion = true;
-                    }
-                    if (eventPrompt == "onStarScouter")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.129", Player.name); //It's an alien spaceship! It looks like it'll be stronger on low HP!
-                        seenStarScouter = true;
-                    }
-                    //Thorium Hardmode
-                    if (eventPrompt == "onBoreanStrider")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.130", Player.name); //Do you see that..? It looks like a giant snow spider! Let's kill it quickly..
-                        seenBoreanStrider = true;
-                    }
-                    if (eventPrompt == "onCoznix")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.131", Player.name); //A Beholder..? Don't get reckless.. These foes are incredibly fearsome!
-                        seenCoznix = true;
-                    }
-                    if (eventPrompt == "onLich")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.132", Player.name); //That sigil you used.. I can sense an undead beast approaching! Get ready for a fight!
-                        seenLich = true;
-                    }
-                    if (eventPrompt == "onAbyssion")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.133", Player.name); //The Abyssal Shadows are converging..! This sea monster holds dominion over dark magic!
-                        seenAbyssion = true;
-                    }
-                    if (eventPrompt == "onPrimordials")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.134", Player.name); //Primordial energy is forming all around you.. The elements themselves are on the attack!
-                        seenPrimordials = true;
-                    }
-                    //Secrets of the Shadows
-                    if (eventPrompt == "onPutridPinky")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
-                        seenPutridPinky = true;
-                    }
-                    if (eventPrompt == "onPharaoh")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
-                        seenPharaoh = true;
-                    }
-                    if (eventPrompt == "onAdvisor")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
-                        seenAdvisor = true;
-                    }
-                    if (eventPrompt == "onPolaris")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
-                        seenPolaris = true;
-                    }
-                    if (eventPrompt == "onLux")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
-                        seenLux = true;
-                    }
-                    if (eventPrompt == "onSubspaceSerpent")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
-                        seenSubspaceSerpent = true;
-                    }
-
-                    //Upon entering a biome for the first time..
-                    if (eventPrompt == "onEnterDesert")
-                    {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.135", Player.name); //It's a desert. Seriously.. I'm no fan of heat- and it's hot.
-                        seenDesertBiome = true;
-                    }
-                    if (eventPrompt == "onEnterJungle")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.136", Player.name); //This verdant environment must be the Jungle. This place is dangerous, but also rewarding.
-                        seenJungleBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSpace")
+                    if (randomDialogue == 4)
                     {
                         promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.137", Player.name); //You're nearing the limit of breathable air. I do not recommend burning up in the atmosphere. Don't ask.
-                        seenSpaceBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".22", Player.name); //You're great at this!
                     }
-                    if (eventPrompt == "onEnterUnderworld")
+                    if (randomDialogue == 5)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".23", Player.name); //Nice work. That's one down.
+                    }
+                    if (randomDialogue == 6)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".24", Player.name); //There it goes!
+                    }
+                    if (randomDialogue == 7)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.138", Player.name); //So this is the place where the dead rest. Let's see what we can find.
-                        seenUnderworldBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".25", Player.name); //That'll teach em!
                     }
-                    if (eventPrompt == "onEnterBeach")
+                    if (randomDialogue == 8)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.139", Player.name); //It's the ocean... We can't cross it, so best leave it be.
-                        seenBeachBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".26", Player.name); //That'll show them!
                     }
-                    if (eventPrompt == "onEnterCorruption")
+                    if (randomDialogue == 9)
                     {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.140", Player.name); //I can feel the evil aura radiating from this place. I wouldn't mind leaving as soon as possible.
-                        seenCorruptionBiome = true;
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".27", Player.name); //Don't mess with us!
                     }
-                    if (eventPrompt == "onEnterCrimson")
-                    {
-                        promptExpression = 2;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.141", Player.name); //This place is.. disgusting. Let's not stay longer than we have to.
-                        seenCrimsonBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSnow")
+                    if (randomDialogue == 10)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.142", Player.name); //It's a typical boreal forest. Not that I dislike snowy places.
-                        seenSnowBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".28", Player.name); //Easy!
                     }
-                    if (eventPrompt == "onEnterHallow")
+                    if (randomDialogue == 11)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.143", Player.name); //We've stepped straight into fairytale land. It would be prettier if everything here wasn't hostile.
-                        seenHallowBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".29", Player.name); //Didn't even break a sweat.
                     }
-                    if (eventPrompt == "onEnterMushroom")
+                    if (randomDialogue == 12)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".30", Player.name); //That was so easy!
+                    }
+                    if (randomDialogue == 13)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".31", Player.name); //Enough of that one.
+                    }
+                    if (randomDialogue == 14)
                     {
                         promptExpression = 5;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.144", Player.name); //Giant glowing mushrooms.. It feels rather.. welcoming? We should take some back home, just in case.
-                        seenGlowingMushroomBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".32", Player.name); //An easy victory.
                     }
-                    if (eventPrompt == "onEnterDungeon")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.145", Player.name); //I can feel traps everywhere. Strong weapons are buried here as well. Stay ready.
-                        seenDungeonBiome = true;
-                    }
-                    if (eventPrompt == "onEnterMeteorite")
-                    {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.146", Player.name); //So this is the meteor impact we heard. Wonder what you can make out of it..?
-                        seenMeteoriteBiome = true;
-                    }
-
-                    //Verdant
-                    if (eventPrompt == "onEnterVerdant")
+                    if (randomDialogue == 15)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.180", Player.name);
-                        seenVerdantBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".33", Player.name); //Right, that's that.
                     }
-
-
-                    //Calamity Biomes
-                    if (eventPrompt == "onEnterCrag")
+                    if (randomDialogue == 16)
                     {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.147", Player.name); //The Brimstone Crag.. I can feel the horrors of the past..
-                        seenCragBiome = true;
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".34", Player.name); //How could we ever lose?
                     }
-                    if (eventPrompt == "onEnterAstral")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.148", Player.name); //This is the Astral Infection. A subject I'm all too familiar with...
-                        seenAstralBiome = true;
-                    }
-                    if (eventPrompt == "onEnterSunkenSea")
+                    if (randomDialogue == 17)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.149", Player.name); //This place is quite beautiful. Who knew it would be under the desert..?
-                        seenSunkenSeaBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".35", Player.name); //It's over.
                     }
-                    if (eventPrompt == "onEnterSulphurSea")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.150", Player.name); //This was once a pleasant coastline. What happened here..?
-                        seenSulphurSeaBiome = true;
-                    }
-                    if (eventPrompt == "onEnterAbyss")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.151", Player.name); //You've decided to breach the ocean's depths. Please consider how dangerous this really is..
-                        seenAbyssBiome = true;
-                    }
-
-                    //Thorium Biomes
-                    if (eventPrompt == "onEnterGranite")
+                    if (randomDialogue == 18)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.152", Player.name); //This cavern seems to be all granite. Some rouge spirits have made their home here.
-                        seenGraniteBiome = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".36", Player.name); //No more of that.
                     }
-                    if (eventPrompt == "onEnterMarble")
+                    if (randomDialogue == 19)
                     {
                         promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.153", Player.name); //So this is a Marble Cavern. Perhaps we can use the material to build?
-                        seenMarbleBiome = true;
-                    }
-                    if (eventPrompt == "onEnterAquaticDepths")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.154", Player.name); //We're very deep in the ocean. These waters are trouble, I can tell that much.
-                        seenAquaticDepthsBiome = true;
-                    }
-
-                    //Upon certain weather conditions..
-                    if (eventPrompt == "onRain")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.155", Player.name); //It's raining. Hopefully nothing important gets too wet.
-                        seenRain = true;
-                    }
-                    if (eventPrompt == "onSnow")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.156", Player.name); //Looks like it's a blizzard. 'Cold' doesn't begin to cover it.
-                        seenSnow = true;
-                    }
-                    if (eventPrompt == "onSandstorm")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.157", Player.name); //A sandstorm has kicked up. Mind your eyes.
-                        seenSandstorm = true;
-
-                    }
-
-                    //For certain Stellar Array abilities...
-
-                    if (eventPrompt == "onKeyOfChronology")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 5;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.158", Player.name); //Time and space bend to my will!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.159", Player.name); //Let's try that again, shall we?
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.160", Player.name); //Chronal reversal complete..!
-                        }
-                    }
-                    if (eventPrompt == "onLivingDead")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.161", Player.name); //March forth, and keep fighting!
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.162", Player.name); //We're not about to stop here!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.163", Player.name); //Embrace the abyss! Set yourself free!
-                        }
-                    }
-                    if (eventPrompt == "onButchersDozen")
-                    {
-                        randomDialogue = Main.rand.Next(0, 3);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.164", Player.name); //They'll all fall before us.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.165", Player.name); //Like lambs to slaughter!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.166", Player.name); //We'll finish them all off!
-                        }
-                    }
-                    //
-                    if (eventPrompt == "onStellarNovaCharged")
-                    {
-                        randomDialogue = Main.rand.Next(0, 6);
-
-                        if (randomDialogue == 0)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.167", Player.name); //I'm ready when you are.
-                        }
-                        if (randomDialogue == 1)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.168", Player.name); //The Stellar Nova is ready!
-                        }
-                        if (randomDialogue == 2)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.169", Player.name); //I'm ready. Are you?
-                        }
-                        if (randomDialogue == 3)
-                        {
-                            promptExpression = 0;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.170", Player.name); //Let's do this.
-                        }
-                        if (randomDialogue == 4)
-                        {
-                            promptExpression = 4;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.171", Player.name); //Just tell me when.
-                        }
-                        if (randomDialogue == 5)
-                        {
-                            promptExpression = 1;
-                            promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.172", Player.name); //Let's find an opening.
-                        }
-                    }
-
-                    //Visiting Subworlds for the first time.
-                    if (eventPrompt == "onObservatory")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.173", Player.name); //Celestial coordinates established. Welcome to the Observatory Hyperborea.
-                        seenObservatory = true;
-                    }
-                    if (eventPrompt == "onSpaceRuins")
-                    {
-                        promptExpression = 0;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.174", Player.name); //We've made it. These are asteroids of interest. Let's look around.
-                        seenCygnusAsteroids = true;
-                    }
-                    if (eventPrompt == "onCitadel")
-                    {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.175", Player.name); //This is it. An entire planet that's devoid of color? The surface looks like it was wiped away somehow...
-                        seenBleachedPlanet = true;
-                    }
-                    if (eventPrompt == "onConfluence")
-                    {
-                        promptExpression = 1;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.176", Player.name); //She was here the whole time...? Well.. I'm ready when you are. Use the Sigil in the middle.
-                        seenConfluence = true;
-                    }
-                    if (eventPrompt == "onCity")
-                    {
-                        promptExpression = 3;
-                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue.Eridani.177", Player.name); //It looks like we can't explore this yet... Maybe next time.
-                        seenCity = true;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".37", Player.name); //A good encounter.
                     }
                 }
-                promptDialogue = LangHelper.Wrap(promptDialogue, 78);
+                if (eventPrompt == "onKillEnemyDanger")
+                {
+                     
+                    randomDialogue = Main.rand.Next(0, 3);
+
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".38", Player.name); //That was close..
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".39", Player.name); //That was almost really bad.
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 3;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".40", Player.name); //Thank goodness we killed it in time.
+                    }
+                }
+                if (eventPrompt == "onKillBossEnemyPerfect")
+                {
+
+                    if(chosenStarfarer == 1)
+                    {
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossPerfect);}
+
+                    }
+                    else if(chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossPerfect);}
+
+                    }
+
+                    promptExpression = 5;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".220", Player.name);
+
+
+                }
+                if (eventPrompt == "onKillBossEnemy")
+                {
+
+                    randomDialogue = Main.rand.Next(0, 2);
+
+                    if (randomDialogue == 0)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory0);}
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory0);}
+
+                        }
+
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".41", Player.name);
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneVictory1);}
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniVictory1);}
+
+                        }
+
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".42", Player.name);
+                    }
+
+                }
+                if (eventPrompt == "onKillBossEnemyLowHP")
+                {
+
+                    randomDialogue = Main.rand.Next(0, 2);
+
+                    if (randomDialogue == 0)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP0);}
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP0);}
+
+                        }
+
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".221", Player.name);
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossLowHP1);}
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossLowHP1);}
+
+                        }
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".222", Player.name);
+                    }
+
+                }
+                if (eventPrompt == "onCrit")
+                {
+                     
+                    randomDialogue = Main.rand.Next(0, 6);
+
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".44", Player.name); //A decisive crit!
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".45", Player.name); //They felt that one!
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".46", Player.name); //A perfectly-timed attack.
+                    }
+                    if (randomDialogue == 3)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".47", Player.name); //Nice, you hit their weak spot.
+                    }
+                    if (randomDialogue == 4)
+                    {
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".48", Player.name); //A critical hit..!
+                    }
+                    if (randomDialogue == 5)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".49", Player.name); //Well struck. That was definitely critical.
+                    }
+                }
+                if (eventPrompt == "onTakeHeavyDamage")
+                {
+                     
+                    randomDialogue = Main.rand.Next(0, 6);
+
+                    if (randomDialogue == 0)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor1); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor1); }
+
+                        }
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".50", Player.name); //Wow. I felt that one..
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor1); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor1); }
+
+                        }
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".51", Player.name); //That's.. not good.
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor1); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor1); }
+
+                        }
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".52", Player.name); //Ouch...
+                    }
+                    if (randomDialogue == 3)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor2); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor2); }
+
+                        }
+                        promptExpression = 3;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".53", Player.name); //That wasn't good at all..
+                    }
+                    if (randomDialogue == 4)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor2); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor2); }
+
+                        }
+                        promptExpression = 3;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".54", Player.name); //You should probably heal after that one.
+                    }
+                    if (randomDialogue == 5)
+                    {
+                        if (chosenStarfarer == 1)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor2); }
+
+                        }
+                        else if (chosenStarfarer == 2)
+                        {
+                            if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor2); }
+
+                        }
+                        promptExpression = 3;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".55", Player.name); //Barely a scratch.. right?
+                    }
+                }
+                if (eventPrompt == "onAmbush")
+                {
+                    randomDialogue = Main.rand.Next(0, 3);
+                    if (chosenStarfarer == 1)
+                    {
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAmbush0); }
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled) { SoundEngine.PlaySound(StarsAboveAudio.EridaniAmbush0); }
+
+                    }
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".16", Player.name); //That wasn't supposed to happen..
+                }
+                if (eventPrompt == "onDeath")
+                {
+                    randomDialogue = Main.rand.Next(0, 3);
+                    if(chosenStarfarer == 1)
+                    {
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHurtMajor0);}
+
+                    }
+                    else if(chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniHurtMajor0);}
+
+                    }
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".56", Player.name); //That wasn't supposed to happen..
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 2;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".57", Player.name); //I don't think you can walk that one off.
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".58", Player.name); //....Ouch.
+                    }
+                }
+
+                //Upon first contact with a boss..
+                if (eventPrompt == "onUnknownBoss")
+                {
+
+                    randomDialogue = Main.rand.Next(0, 5);
+
+                    if (randomDialogue == 0)
+                    {
+                        BossVoiceNeutral();
+
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".59", Player.name);
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        BossVoiceAngry();
+
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".60", Player.name);
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        BossVoiceNeutral();
+
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".61", Player.name);
+                    }
+                    if (randomDialogue == 3)
+                    {
+                        BossVoiceNeutral();
+
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".62", Player.name);
+                    }
+                    if (randomDialogue == 4)
+                    {
+                        BossVoiceNeutral();
+
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".63", Player.name);
+                    }
+
+                }
+                if (eventPrompt == "onEyeOfCthulhu")
+                {
+                    BossVoiceNeutral();
+
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".64", Player.name); //The.. eyeball.. approaches. Watch yourself- it's a big one. It gets stronger when it's on its last legs, I think.
+                    seenEyeOfCthulhu = true;
+                }
+                if (eventPrompt == "onKingSlime")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".65", Player.name); //It's the lord of the slimes! I think it has a teleportation-like ability..
+                    seenKingSlime = true;
+                }
+                if (eventPrompt == "onEaterOfWorlds")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".66", Player.name); //A colossal worm! Watch where it emerges; it'll try and hit your blind spots!
+                    seenEaterOfWorlds = true;
+                }
+                if (eventPrompt == "onBrainOfCthulhu")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".67", Player.name); //This thing is trying to attack your mind directly..! Don't be fooled by the mirages!
+                    seenBrainOfCthulhu = true;
+                }
+                if (eventPrompt == "onQueenBee")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".68", Player.name); //Watch out.. the Queen Bee is awake! Make sure to dodge the horizontal charges!
+                    seenQueenBee = true;
+                }
+                if (eventPrompt == "onSkeletron")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".69", Player.name); //Don't underestimate this monster! Stay away from his skull and arms!
+                    seenSkeletron = true;
+                }
+                if (eventPrompt == "onWallOfFlesh")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".70", Player.name); //That thing is massive! If you can, try and build a path to fight it on.
+                    seenWallOfFlesh = true;
+                }
+                if (eventPrompt == "onTwins")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".71", Player.name); //There's two giant eyeballs coming your way! Let's see... The red one will shoot at you, and the green one charges.
+                    seenTwins = true;
+                }
+                if (eventPrompt == "onDeerclops")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".72", Player.name); //What in the world is that thing? A deer? It's only got one eye... aim for it!
+                    seenDeerclops = true;
+                }
+                if (eventPrompt == "onQueenSlime")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".73", Player.name); //It's another colossal slime! It looks like it's going to summon some minions!
+                    seenQueenSlime = true;
+                }
+                if (eventPrompt == "onEmpress")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".74", Player.name); //A Hallow-aspected foe has appeared! Maybe leave the butterfly alone next time...?
+                    seenEmpress = true;
+                }
+                if (eventPrompt == "onDestroyer")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".75", Player.name); //A giant mechanical worm.. What can we do..? How about trying to attack multiple parts of it at once?
+                    seenDestroyer = true;
+                }
+                if (eventPrompt == "onSkeletronPrime")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".76", Player.name); //It's a more advanced version of Skeletron.. Try going for the arms first, instead of the head.
+                    seenSkeletronPrime = true;
+                }
+                if (eventPrompt == "onPlantera")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".77", Player.name); //Plantera is awake! Be mindful of its vines. It would be great to have a huge arena to fight it in.
+                    seenPlantera = true;
+                }
+                if (eventPrompt == "onGolem")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".78", Player.name); //An ancient mechanical monster.. Watch out for the traps in the temple while fighting it.
+                    seenGolem = true;
+                }
+                if (eventPrompt == "onDukeFishron")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".79", Player.name); //You reeled in something crazy! Something tells me you should stay near the sea!
+                    seenDukeFishron = true;
+                }
+                if (eventPrompt == "onLunaticCultist")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".80", Player.name); //It's one of those Lunatic Cultists.. Stop them before they unleash a calamity..!
+                    seenCultist = true;
+                }
+                if (eventPrompt == "onMoonLord")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".81", Player.name); //I can't believe it.. it's the Moon Lord! This is the final battle! We have to win this!
+                    seenMoonLord = true;
+                }
+                if (eventPrompt == "onWarriorOfLight")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".82", Player.name); //The Warrior of Light approaches.. When he breaks his limits, prepare yourself!
+                    seenWarriorOfLight = true;
+                }
+                if (eventPrompt == "onVagrant")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".83", Player.name); //Something about this foe seems familiar... Attacks won't work; just survive for as long as you can!
+                    seenVagrant = true;
+                }
+                if (eventPrompt == "onNalhaun")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".84", Player.name); //Don't underestimate this foe..! Keep grabbing the stolen lifeforce he's taking from you!
+                    seenNalhaun = true;
+                }
+                if (eventPrompt == "onPenth")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".85", Player.name); //This witch attacks with paint! Mind what color you're doused in!
+                    seenPenth = true;
+                }
+                if (eventPrompt == "onArbiter")
+                {
+                    BossVoiceSuprise();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".86", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                    seenArbiter = true;
+                }
+                if (eventPrompt == "onThespian")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".202", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                    seenThespian = true;
+                }
+                if (eventPrompt == "onStarfarerBoss")
+                {
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".203", Player.name); //This thing changes its attack patterns! Take note of its stances, or else!
+                    seenStarfarers = true;
+                }
+                //Calamity mod bosses!
+                if (eventPrompt == "onDesertScourge")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".87", Player.name); //There's something coming from below, and fast! Prepare yourself.. this is one strong worm!
+                    seenDesertScourge = true;
+                }
+                if (eventPrompt == "onCrabulon")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".88", Player.name); //It's a massive moving mass of mycelium.. Let's take out the trash!
+                    seenCrabulon = true;
+                }
+                if (eventPrompt == "onHiveMind")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".89", Player.name); //A corrupted beast draws near! Kill its minions quickly, lest it overwhelm you!
+                    seenHiveMind = true;
+                }
+                if (eventPrompt == "onPerforators")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".90", Player.name); //What in the world is that thing? Aim for that disgusting Hive before it's too late!
+                    seenPerforators = true;
+                }
+                if (eventPrompt == "onSlimeGod")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".91", Player.name); //So this is the source of all the world's slimes. Don't get hasty; I'm certain those slimes will split when hurt!
+                    seenSlimeGod = true;
+                }
+                //Hardmode Calamity Bosses
+                if (eventPrompt == "onCryogen")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".92", Player.name); //Something is strange about this thing, but I don't know what. Don't get frozen... but you could probably already tell.
+                    seenCryogen = true;
+                }
+                if (eventPrompt == "onAquaticScourge")
+                {
+                    BossVoiceNeutral();
+
+                    if (seenDesertScourge)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".93", Player.name); //Hey, it's the Desert Scourge- but not so dried up! We've seen one before, how bad could this one be?
+                    }
+                    else
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".94", Player.name); //It's a giant sea serpent! Hang on... This thing is SERIOUSLY dangerous!
+                    }
+
+                    seenAquaticScourge = true;
+                }
+                if (eventPrompt == "onBrimstoneElemental")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".95", Player.name); //The flames have brought forth a demonic spirit! Take care to watch your footing, lest you succumb to lava!
+                    seenBrimstoneElemental = true;
+                }
+                if (eventPrompt == "onCalamitas")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".96", Player.name); //This thing... it's a herald of destruction.. You know what devestation it can bring. Don't lose..!
+                    seenCalamitas = true;
+                }
+                if (eventPrompt == "onSiren")
+                {
+                    BossVoiceNeutral();
+
+                    if (leviathanDialogue == 2)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".97", Player.name); //...It's Anahita again. Are you going to challenge the Leviathan?
+                    }
+                    else
+                    {
+                        promptExpression = 3;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".98", Player.name); //...Do you hear that? Whatever it is.. it sounds really dangerous.
+                    }
+
+                    seenSiren = true;
+                }
+                if (eventPrompt == "onAnahita")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".99", Player.name); //That demon of the sea is fighting back! I hope you're ready for this...
+                    seenAnahita = true;
+                }
+                if (eventPrompt == "onLeviathan")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".100", Player.name); //Whoa. This thing is enormous!! Who knew she had this up her sleeve..?
+                    seenLeviathan = true;
+                }
+                if (eventPrompt == "onAstrumAureus")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".101", Player.name); //The Astral Infection has corrupted whatever this was. Don't underestimate it. The Infection can do anything...
+                    seenAstrumAureus = true;
+                }
+                if (eventPrompt == "onPlaguebringer")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".102", Player.name); //Oh, great.. a giant robotic bug. It kind of looks like the Queen Bee, so try and remember her attacks!
+                    seenPlaguebringer = true;
+                }
+                if (eventPrompt == "onRavager")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".103", Player.name); //This is.. an amalgamation of flesh and machinery.. Above everything, try and stay away from it!
+                    seenRavager = true;
+                }
+                if (eventPrompt == "onAstrumDeus")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".104", Player.name); //This is.. a descendant of a cosmic god! {Player.name}, don't get reckless!
+                    seenAstrumDeus = true;
+                }
+                //Post Moon Lord Calamity Bosses
+                if (eventPrompt == "onProfanedGuardian")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".105", Player.name); //Something's reacting to the Profaned Shard! Prepare for a fight!
+                    seenProfanedGuardian = true;
+                }
+                if (eventPrompt == "onDragonfolly")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".106", Player.name); //You've summoned a draconic monster..! It looks to be incredibly quick!
+                    seenDragonfolly = true;
+                }
+                if (eventPrompt == "onProvidence")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".107", Player.name); //The fiery god of both light and dark descends.. No way we're losing to this thing!
+                    seenProvidence = true;
+                }
+                if (eventPrompt == "onStormWeaver")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".108", Player.name); //A spatial worm is approaching! Don't get careless.
+                    seenStormWeaver = true;
+                }
+                if (eventPrompt == "onCeaselessVoid")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".109", Player.name); //That rune has summoned some sort of.. void entity..?
+                    seenCeaselessVoid = true;
+                }
+                if (eventPrompt == "onSignus")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".110", Player.name); //Someone.. or something.. is approaching. It can shapeshift at will! Get ready!
+                    seenSignus = true;
+                }
+                if (eventPrompt == "onPolterghast")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".111", Player.name); //Something's awake. The Dungeon's volatile spirits have coalesed...
+                    seenPolterghast = true;
+                }
+                if (eventPrompt == "onOldDuke")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".112", Player.name); //The acid ocean has spat out a monster! Wait until it gets tired to strike!
+                    seenOldDuke = true;
+                }
+                if (eventPrompt == "onDog")
+                {
+                    BossVoiceSuprise();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".113", Player.name); //The Devourer of Gods has arrived! Fight! Fight with all your strength!
+                    seenDog = true;
+                }
+                if (eventPrompt == "onYharon")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".114", Player.name); //Yharim's loyal beast, in the flesh..! Let's send this tyrant down a peg!
+                    seenYharon = true;
+                }
+                if (eventPrompt == "onYharonDespawn")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 3;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".115", Player.name); //Huh? Where's it going? We were in the middle of something!
+                    seenYharonDespawn = true;
+                }
+                if (eventPrompt == "onSupremeCalamitas")
+                {
+                    BossVoiceSuprise();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".116", Player.name); //We bow to no one! Let's bring this witch down!
+                    seenSupremeCalamitas = true;
+                }
+                if (eventPrompt == "onDraedon")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".117", Player.name); //This is Yharim's loyal scientist. His knowledge is nigh-infinite.. Stay cautious.
+                    seenDraedon = true;
+                }
+                if (eventPrompt == "onArtemis")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".118", Player.name); //Twin mechanical eyes- incredibly powerful. Don't get overwhelmed..!
+                    seenArtemis = true;
+                }
+                if (eventPrompt == "onThanatos")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".119", Player.name); //The very earth trembles before this foe. Draedon's toys have become stronger...
+                    seenThanatos = true;
+                }
+                if (eventPrompt == "onAres")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    //promptDialogue = $"Heads up, {Player.name}!" +
+                    //                $" That machine is blotting out the sky!";
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".120", Player.name);//Heads up, {0}! Looks like that machine's blotting out the whole sky!
+                    seenAres = true;
+                }
+                //Fargos Souls Bosses
+                if (eventPrompt == "onTrojanSquirrel")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".121", Player.name);//Whoa, look at this thing. What a go-getter! Oh, right- strategy. Looks like you can aim for its arms, so try that.
+                    seenTrojanSquirrel = true;
+                }
+                if (eventPrompt == "onDeviantt")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".122", Player.name);
+                    //promptDialogue = $"Aww, this pint-sized witch wants a fight? Alright then!" +
+                    //                $" It looks like you'll be barraged with debuffs- Get the heals ready.";
+                    seenDeviantt = true;
+                }
+                if (eventPrompt == "onEridanus")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".123", Player.name);
+                    //promptDialogue = $"Hah? Just look at this muppet... thinking he's better than us or something!" +
+                    //                $" Give him a good whallop!";
+                    seenEridanus = true;
+                }
+                if (eventPrompt == "onAbominationn")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".124", Player.name);
+                    //promptDialogue = $"Let's get this show started!" +
+                    //                $" He'll be attacking with the power of worldly invaders, if you remember those!";
+                    seenAbominationn = true;
+                }
+                if (eventPrompt == "onMutant")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".125", Player.name);
+                    //promptDialogue = $"If I had a nickel for times you've thrown voodoo dolls into lava... Never mind." +
+                    //                $" Mutant's super upset, super strong, and super coming straight for you.";
+                    seenMutant = true;
+                }
+                if (eventPrompt == "onScarabeus")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".194", Player.name);
+                    seenScarabeus = true;
+                }
+                if (eventPrompt == "onMoonJellyWizard")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".195", Player.name);
+                    seenMoonJellyWizard = true;
+                }
+                if (eventPrompt == "onVinewrathBane")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".196", Player.name);
+                    seenVinewrathBane = true;
+                }
+                if (eventPrompt == "onAncientAvian")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".197", Player.name);
+                    seenAncientAvian = true;
+                }
+                if (eventPrompt == "onStarplateVoyager")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".198", Player.name);
+                    seenStarplateVoyager = true;
+                }
+                if (eventPrompt == "onInfernon")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".199", Player.name);
+                    seenInfernon = true;
+                }
+                if (eventPrompt == "onDusking")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".200", Player.name);
+                    seenDusking = true;
+                }
+                if (eventPrompt == "onAtlas")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".201", Player.name);
+                    seenAtlas = true;
+                }
+                //Wrath of the Gods
+                if (eventPrompt == "onNoxusEgg")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".204", Player.name);
+                    seenNoxusEgg = true;
+                }
+                if (eventPrompt == "onEntropicGod")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".205", Player.name);
+                    seenEntropicGod = true;
+                }
+                if (eventPrompt == "onNamelessDeity")
+                {
+                    BossVoiceSuprise();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".206", Player.name);
+                    seenNamelessDeity = true;
+                }
+                //Starlight River
+                if (eventPrompt == "onGlassweaver")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".207", Player.name);
+                    seenGlassweaver = true;
+                }
+                if (eventPrompt == "onAuroracle")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".208", Player.name);
+                    seenAuroracle = true;
+                }
+                if (eventPrompt == "onCeiros")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".209", Player.name);
+                    seenCeiros = true;
+                }
+                //Thorium bosses.
+                if (eventPrompt == "onGrandThunderBird")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".126", Player.name); //A lightning bird is approaching! It's not too powerful, but don't get careless.
+                    seenGrandThunderBird = true;
+                }
+                if (eventPrompt == "onQueenJellyfish")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".127", Player.name); //Hey. Doesn't that jellyfish look a little too big? Whatever its issue is, it's coming this way!
+                    seenQueenJellyfish = true;
+                }
+                if (eventPrompt == "onViscount")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".128", Player.name); //Ugh, what is that thing? A vampire? Quick, find some silver! Or is that werewolves..?
+                    seenViscount = true;
+                }
+                if (eventPrompt == "onGraniteEnergyStorm")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".129", Player.name); //Looks like the granite has woken up..? Time to bury it where it belongs.
+                    seenGraniteEnergyStorm = true;
+                }
+                if (eventPrompt == "onBuriedChampion")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".130", Player.name); //This gladiator looks stronger than the others. Let's give it a fight to remember!
+                    seenBuriedChampion = true;
+                }
+                if (eventPrompt == "onStarScouter")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".131", Player.name); //It's an alien spaceship! It looks like it'll be stronger on low HP!
+                    seenStarScouter = true;
+                }
+                //Thorium Hardmode
+                if (eventPrompt == "onBoreanStrider")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".132", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
+                    seenBoreanStrider = true;
+                }
+                if (eventPrompt == "onCoznix")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".133", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
+                    seenCoznix = true;
+                }
+                if (eventPrompt == "onLich")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".134", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
+                    seenLich = true;
+                }
+                if (eventPrompt == "onAbyssion")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".135", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
+                    seenAbyssion = true;
+                }
+                if (eventPrompt == "onPrimordials")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 5;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".136", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                    seenPrimordials = true;
+                }
+
+                //Secrets of the Shadows
+                if (eventPrompt == "onPutridPinky")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".181", Player.name); //Watch yourself.. looks like a Borean Strider is nearby.
+                    seenPutridPinky = true;
+                }
+                if (eventPrompt == "onPharaoh")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".182", Player.name); //Looks like a Beholder's reacted with the Void Lens. Let's stab it in its big ugly eye..!
+                    seenPharaoh = true;
+                }
+                if (eventPrompt == "onAdvisor")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".183", Player.name); //The Grim Harvest Sigil has summoned a powerful foe. I don't know what else you expected!
+                    seenAdvisor = true;
+                }
+                if (eventPrompt == "onPolaris")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".184", Player.name); //The Abyssal Shadows are converging! I sense powerful dark magic from this sea creature..
+                    seenPolaris = true;
+                }
+                if (eventPrompt == "onLux")
+                {
+                    BossVoiceAngry();
+
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".185", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                    seenLux = true;
+                }
+                if (eventPrompt == "onSubspaceSerpent")
+                {
+                    BossVoiceNeutral();
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".186", Player.name); //The elements themselves are on the hunt. Let's show them a thing or two!
+                    seenSubspaceSerpent = true;
+                }
+                if (eventPrompt == "onEnterNeonVeil")
+                {
+                    if(chosenStarfarer == 1)
+                    {
+
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.AExploreRare0);
+                        }
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.EExploreRare0);
+                        }
+
+                    }
+
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".215", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
+                    seenNeonVeilBiome = true;
+                }
+                //Upon entering a biome for the first time..
+                if (eventPrompt == "onEnterDesert")
+                {
+                    VoiceExplore();
+                    promptExpression = 2;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".137", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
+                    seenDesertBiome = true;
+                }
+                if (eventPrompt == "onEnterJungle")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".138", Player.name); //So this is the Jungle. Take care when exploring. Ah, but make sure to explore everything!
+                    seenJungleBiome = true;
+                }
+                if (eventPrompt == "onEnterBeach")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".139", Player.name); //Well, it's the ocean. ...Did you want me to say something else? It's an ocean.
+                    seenBeachBiome = true;
+                }
+                if (eventPrompt == "onEnterSpace")
+                {
+                    VoiceExplore();
+                    promptExpression = 5;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".140", Player.name); //Isn't it nice up here?  
+                    seenSpaceBiome = true;
+                }
+                if (eventPrompt == "onEnterUnderworld")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".141", Player.name); //The Underworld, huh? Interesting. This goes without saying, but it's incredibly dangerous here.
+                    seenUnderworldBiome = true;
+                }
+                if (eventPrompt == "onEnterCorruption")
+                {
+                    VoiceExplore();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".142", Player.name); //The world is being corrupted away here. Let's not tarry.
+                    seenCorruptionBiome = true;
+                }
+                if (eventPrompt == "onEnterCrimson")
+                {
+                    VoiceExplore();
+                    promptExpression = 2;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".143", Player.name); //The ground here feels like flesh. I feel like we shouldn't stay long- but that's obvious..
+                    seenCrimsonBiome = true;
+                }
+                if (eventPrompt == "onEnterSnow")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".144", Player.name); //It's snow! I've been always fond of snow. The water-based kind, of course.
+                    seenSnowBiome = true;
+                }
+                if (eventPrompt == "onEnterHallow")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".145", Player.name); //It's the Hallow, the stuff of legend! Awesome! Everything here wants to kill us, though. Bummer.
+                    seenHallowBiome = true;
+                }
+                if (eventPrompt == "onEnterMushroom")
+                {
+                    VoiceExplore();
+                    promptExpression = 5;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".146", Player.name); //Whoa! This place is funky. You don't see these mushrooms every day.
+                    seenGlowingMushroomBiome = true;
+                }
+                if (eventPrompt == "onEnterDungeon")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".147", Player.name); //There's a skele-ton of enemies here! Don't you enjoy a little danger? I sure do.
+                    seenDungeonBiome = true;
+                }
+                if (eventPrompt == "onEnterMeteorite")
+                {
+                    VoiceExplore();
+                    promptExpression = 5;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".148", Player.name); //So this is the meteor impact we heard. I bet we can make some crazy stuff with a meteorite.
+                    seenMeteoriteBiome = true;
+                }
+
+                //Verdant
+                if (eventPrompt == "onEnterVerdant")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".180", Player.name);
+                    seenVerdantBiome = true;
+                }
+
+                //Calamity Biomes
+                if (eventPrompt == "onEnterCrag")
+                {
+                    VoiceExplore();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".149", Player.name); //This is.. the Brimstone Crag. Something dreadful happened here.
+                    seenCragBiome = true;
+                }
+                if (eventPrompt == "onEnterAstral")
+                {
+                    VoiceExplore();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".150", Player.name); //So this is the Astral Infection. I've read about it, but actually seeing it...
+                    seenAstralBiome = true;
+                }
+                if (eventPrompt == "onEnterSunkenSea")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".151", Player.name); //Wow.. This place is quite unique. I can't quite explain.
+                    seenSunkenSeaBiome = true;
+                }
+                if (eventPrompt == "onEnterSulphurSea")
+                {
+                    VoiceExplore();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".152", Player.name); //Whatever was done to this place is irreversible. This ocean has been stained red with blood.
+                    seenSulphurSeaBiome = true;
+                }
+                if (eventPrompt == "onEnterAbyss")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".153", Player.name); //You're entering the true depths of the ocean. I hope you realize how dangerous this is!
+                    seenAbyssBiome = true;
+                }
+
+                //Thorium Biomes
+                if (eventPrompt == "onEnterGranite")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".154", Player.name); //This cavern seems to be made of hard granite.. Curious.
+                    seenGraniteBiome = true;
+                }
+                if (eventPrompt == "onEnterMarble")
+                {
+                    VoiceExplore();
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".155", Player.name); //This cave exhudes royalty. Perhaps it has to do with the abundance of marble.
+                    seenMarbleBiome = true;
+                }
+                if (eventPrompt == "onEnterAquaticDepths")
+                {
+                    VoiceExplore();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".156", Player.name); //This is a deep part of the ocean. Take care you don't drown...
+                    seenAquaticDepthsBiome = true;
+                }
+
+
+                //Upon certain weather conditions..
+                if (eventPrompt == "onRain")
+                {
+                    if(!voicesDisabled)
+                    {
+                        int randomVoice = Main.rand.Next(0, 2);
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                if (chosenStarfarer == 1)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ARain0);
+
+                                }
+                                else if (chosenStarfarer == 2)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ERain0);
+
+                                }
+
+                                break;
+                            case 1:
+                                if (chosenStarfarer == 1)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ARain1);
+
+                                }
+                                else if (chosenStarfarer == 2)
+                                {
+                                    SoundEngine.PlaySound(StarsAboveAudio.ERain1);
+
+                                }
+                                break;
+
+                        }
+                    }
+                    
+                    promptExpression = 5;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".157", Player.name); //Looks like it started raining. Hopefully this doesn't put a damper on things.. heh.
+                    seenRain = true;
+                }
+                if (eventPrompt == "onSnow")
+                {
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".158", Player.name); //It's a blizzard! Don't get frostbite, now. That'd be embarassing.
+                    seenSnow = true;
+                }
+                if (eventPrompt == "onSandstorm")
+                {
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".159", Player.name); //A sandstorm has kicked up. It gets everywhere, so be careful.
+                    seenSandstorm = true;
+                }
+
+                //Upon activation of certain Stellar Array passives...
+                if (eventPrompt == "onKeyOfChronology")
+                {
+                    randomDialogue = Main.rand.Next(0, 3);
+
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".160", Player.name); //Time and space bend to my will!
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".161", Player.name); //Not on my watch!
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".162", Player.name); //Turn back the clock..!
+                    }
+                }
+                if (eventPrompt == "onLivingDead")
+                {
+                    randomDialogue = Main.rand.Next(0, 3);
+
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".163", Player.name); //By your undying rage..!
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".164", Player.name); //It's just a flesh wound.
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".165", Player.name); //Embrace the abyss! Set yourself free!
+                    }
+                }
+                if (eventPrompt == "onButchersDozen")
+                {
+                    randomDialogue = Main.rand.Next(0, 3);
+
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".166", Player.name); //No one will escape!
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".167", Player.name); //Like lambs to slaughter!
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".168", Player.name); //Butcher them!
+                    }
+                }
+
+                if (eventPrompt == "onStellarNovaCharged")
+                {
+                    if(chosenStarfarer == 1)
+                    {
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneReady0);}
+
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniReady0);}
+
+                    }
+                    randomDialogue = Main.rand.Next(0, 6);
+
+                    if (randomDialogue == 0)
+                    {
+                        promptExpression = 1;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".169", Player.name); //Let's show them our power.
+                    }
+                    if (randomDialogue == 1)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".170", Player.name); //I'm ready to unleash my power!
+                    }
+                    if (randomDialogue == 2)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".171", Player.name); //I'm ready to use the Stellar Nova!
+                    }
+                    if (randomDialogue == 3)
+                    {
+                        promptExpression = 0;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".172", Player.name); //OK. Done charging- let's go.
+                    }
+                    if (randomDialogue == 4)
+                    {
+                        promptExpression = 4;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".173", Player.name); //Just tell me when.
+                    }
+                    if (randomDialogue == 5)
+                    {
+                        promptExpression = 5;
+                        promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".174", Player.name); //Here we go.
+                    }
+                }
+
+                //Visiting Subworlds for the first time.
+                if (eventPrompt == "onObservatory")
+                {
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".175", Player.name); //You've made it to the Observatory! So, what do you think?
+                    seenObservatory = true;
+                }
+                if (eventPrompt == "onSpaceRuins")
+                {
+                    promptExpression = 0;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".176", Player.name); //Looks like you've arrived.  These are asteroids of interest- let's do some exploring.
+                    seenCygnusAsteroids = true;
+                }
+                if (eventPrompt == "onCitadel")
+                {
+                    promptExpression = 3;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".177", Player.name); //We've made it. This planet is strange.. The surface has been wiped clean... What happened?
+                    seenBleachedPlanet = true;
+                }
+                if (eventPrompt == "onConfluence")
+                {
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".178", Player.name); //She was so close all along... Use the Mnemonic Sigil on the arena's center to begin.
+                    seenConfluence = true;
+                }
+                if (eventPrompt == "onCity")
+                {
+                    promptExpression = 3;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".179", Player.name); //It looks like we can't explore this yet... Maybe next time.
+                    seenCity = true;
+                }
+            }
+
+            //promptDialogue = LangHelper.Wrap(promptDialogue, 78);
+        
+        }
+
+        private void VoiceExplore()
+        {
+            if (voicesDisabled)
+            {
+                return;
+            }
+                int randomVoice = Main.rand.Next(0, 5);
+            
+            if (chosenStarfarer == 1)
+            {
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore0);
+
+                        break;
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore1);
+
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore2);
+
+                        break;
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore3);
+
+                        break;
+                    case 4:
+                        SoundEngine.PlaySound(StarsAboveAudio.AExplore4);
+
+                        break;
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                switch (randomVoice)
+                {
+                    case 0:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore0);
+
+                        break;
+                    case 1:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore1);
+
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore2);
+
+                        break;
+                    case 3:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore3);
+
+                        break;
+                    case 4:
+                        SoundEngine.PlaySound(StarsAboveAudio.EExplore4);
+
+                        break;
+                }
             }
         }
+
+        private void BossVoiceSuprise()
+        {
+            int randomVoice;
+
+            if (chosenStarfarer == 1)
+            {
+                randomVoice = Main.rand.Next(0, 2);
+                switch (randomVoice)
+                {
+                    case 0:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised0);}
+
+                        break;
+
+                    case 1:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossSuprised1);}
+
+                        break;
+
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);}
+                randomVoice = Main.rand.Next(0, 2);
+                switch (randomVoice)
+                {
+                    case 0:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossSuprised0);}
+
+                        break;
+
+                    case 1:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossWorried1);}
+
+                        break;
+
+                }
+            }
+        }
+        private void BossVoiceNeutral()
+        {
+            int randomVoice;
+
+            if (chosenStarfarer == 1)
+            {
+                randomVoice = Main.rand.Next(0, 4);
+                switch (randomVoice)
+                {
+                    case 0:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral0);}
+
+                        break;
+
+                    case 1:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral1);}
+
+                        break;
+
+                    case 2:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossNeutral2);}
+
+                        break;
+
+                    case 3:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossWorried3);}
+
+                        break;
+
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                randomVoice = Main.rand.Next(0, 6);
+                switch (randomVoice)
+                {
+                    case 0:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral0);}
+
+                        break;
+
+                    case 1:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral1);}
+
+                        break;
+
+                    case 2:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral2);}
+
+                        break;
+                    case 3:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral3);}
+
+                        break;
+
+                    case 4:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral4);}
+
+                        break;
+
+                    case 5:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossNeutral5);}
+
+                        break;
+
+                }
+            }
+        }
+
+        private void BossVoiceAngry()
+        {
+            int randomVoice;
+            
+            if (chosenStarfarer == 1)
+            {
+                randomVoice = Main.rand.Next(0, 4);
+                switch(randomVoice)
+                {
+                    case 0:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry0);}
+
+                        break;
+
+                    case 1:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry1);}
+
+                        break;
+
+                    case 2:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry2);}
+
+                        break;
+
+                    case 3:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneBossAngry3);}
+
+                        break;
+
+                }
+
+
+            }
+            else if (chosenStarfarer == 2)
+            {
+                randomVoice = Main.rand.Next(0, 3);
+                switch (randomVoice)
+                {
+                    case 0:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry0);}
+
+                        break;
+
+                    case 1:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry1);}
+
+                        break;
+
+                    case 2:
+                        if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniBossAngry2);}
+
+                        break;
+
+                }
+            }
+        }
+
         public void StellarNovaEnergy()
         {
             novaGaugeChangeAlpha -= 0.1f;
@@ -12178,16 +12895,38 @@ namespace StarsAbove.Systems
                     //Every x ticks, the gauge charges by 1.
                     if (novaGaugeChargeTimer >= 60)
                     {
-                        //Natural charge rate.
-                        novaGauge++;
-                        //Special visuals on the gauge
-                        novaGaugeChangeAlpha = 1f;
-                        novaGaugeChangeAlphaSlow = 1f;
+                        if (starfarerOutfit == 7 && chosenStarfarer == 2 && !Player.HasBuff(BuffType<QuarkDriveBuff>()))
+                        {
+                            //Natural charge rate.
+                            if(novaGauge >= trueNovaGaugeMax)
+                            {
 
-                        //Reset the timer.
-                        novaGaugeChargeTimer = 0;
-                        //If any effect speeds up the Nova gauge charging, add it here.
-                        NovaChargeModifiers();
+                            }
+                            else
+                            {
+                                novaGauge -= 0.5f;
+
+                            }
+
+
+                            novaGaugeChargeTimer = 0;
+                            //NovaChargeModifiers();
+
+                        }
+                        else
+                        {
+                            //Natural charge rate.
+                            novaGauge++;
+                            //Special visuals on the gauge
+                            novaGaugeChangeAlpha = 1f;
+                            novaGaugeChangeAlphaSlow = 1f;
+
+                            //Reset the timer.
+                            novaGaugeChargeTimer = 0;
+                            //If any effect speeds up the Nova gauge charging, add it here.
+                            NovaChargeModifiers();
+                        }
+                        
 
                     }
                 }
@@ -12215,13 +12954,13 @@ namespace StarsAbove.Systems
                 }
             }
 
-            if (novaGauge == trueNovaGaugeMax)
+            if (novaGauge == trueNovaGaugeMax && lucidDreamerLevel < 1)
             {
                 if (novaReadyInfo)
                 {
                     gaugeChargeAnimation = true;
                     novaReadyInfo = false;
-                    SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX, Player.Center);
+                    SoundEngine.PlaySound(StarsAboveAudio.SFX_superReadySFX);
                     Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
                     CombatText.NewText(textPos, new Color(255, 0, 125, 240), LangHelper.GetTextValue("CombatText.StellarNovaReady"), false, false);
                     if (Main.rand.Next(0, 5) == 0)
@@ -12237,7 +12976,7 @@ namespace StarsAbove.Systems
 
             }
 
-            novaGauge = (int)MathHelper.Clamp(novaGauge, 0, trueNovaGaugeMax);
+            novaGauge = MathHelper.Clamp(novaGauge, 0, trueNovaGaugeMax);
         }
 
         private void NovaChargeModifiers()
@@ -12257,10 +12996,22 @@ namespace StarsAbove.Systems
                 //Decrease the time spent charging
                 novaGaugeChargeTimer += 5;
             }
+            if(crescentMeteorLevel >= 3)
+            {
+                novaGaugeChargeTimer += 15;
+            }
         }
 
         private void SetupStarfarerOutfit()
         {
+            if(starfarerHairstyle == 1)
+            {
+
+            }
+            else//Change later if more hairstyles are added
+            {
+
+            }
 
 
             if (starfarerOutfitVanity != 0)//Is there a vanity outfit equipped? This will change drawing.
@@ -12285,6 +13036,59 @@ namespace StarsAbove.Systems
             {
                 costumeChangeOpacity = 1f;
                 //Add dialogue here for changing outfits.
+                int randomVoice = Main.rand.Next(0, 3);
+
+                if(starfarerOutfitVisible != 0)
+                {
+                    starfarerMenuDialogueScrollNumber = 0;
+                    starfarerMenuDialogueScrollTimer = 0;
+                    if (chosenStarfarer == 1)
+                    {
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
+                                
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.1");
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.2");
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.3");
+                                break;
+
+
+                        }
+                    }
+                    else if (chosenStarfarer == 2)
+                    {
+                        switch (randomVoice)
+                        {
+                            case 0:
+                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.1");
+
+                                break;
+                            case 1:
+                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.2");
+
+                                break;
+                            case 2:
+                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
+                                starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.3");
+
+                                break;
+
+
+                        }
+                    }
+                }
+                
+                
                 starfarerOutfitSaved = starfarerOutfitVisible;
             }
             //Change actual stats here.
@@ -12317,9 +13121,99 @@ namespace StarsAbove.Systems
                     Player.GetDamage(DamageClass.Generic) += 0.15f;
                 }
             }
+            if(starfarerOutfit == 7)
+            {
+                if(chosenStarfarer == 1)
+                {
+                    Player.GetDamage(DamageClass.Generic) += (float)((novaDamageMod/100) * 0.05f);
+                }
+                else if(chosenStarfarer == 2)
+                {
+                    if(Player.HasBuff(BuffType<QuarkDriveBuff>()))
+                    {
+                        if(Player.HasBuff(BuffID.ManaSickness))
+                        {
+                            Player.ClearBuff(BuffID.ManaSickness);
+                        }
+                    }
+                    if(inCombat > 0)
+                    {
+                        if(Player.HasBuff(BuffType<QuarkDriveBuff>()))
+                        {
+                            Player.lifeRegen += 10;
+                        }
+                        else
+                        {
+                            Player.lifeRegenTime = 10;
+
+                        }
+                    }
+                }
+            }
         }
         public void onActivateStellarNova()
         {
+            if (starfarerOutfit == 7)
+            {
+                if (chosenStarfarer == 1)
+                {
+                    if (Player.HasBuff(BuffType<CyberpsychosisDebuff>()))
+                    {
+                        Player.ClearBuff(BuffType<CyberpsychosisDebuff>());
+                    }
+                    Player.GetDamage(DamageClass.Generic) += (float)((novaDamageMod / 100) * 0.05f);
+                }
+                else if (chosenStarfarer == 2)
+                {
+                    Player.AddBuff(BuffType<QuarkDriveBuff>(), (int)(5 * 60 + (trueNovaGaugeMax * 0.05f) * 60));
+                }
+            }
+            if(dreadMechanicalLevel >= 1)
+            {
+                if(dreadMechanicalLevel >= 3)
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60 * 5);
+                }
+                else if (dreadMechanicalLevel >= 2)
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60 * 2);
+
+                }
+                else
+                {
+                    Player.AddBuff(BuffType<Invincibility>(), 60 * 1);
+
+                }
+            }
+            if(crescentMeteorLevel >= 2)
+            {
+                novaGauge += 20;
+            }
+            if (fullMetalArcanistActive)
+            {
+                Player.statMana = Player.statManaMax2;
+                if(Player.HasBuff(BuffID.ManaSickness))
+                {
+                    Player.ClearBuff(BuffID.ManaSickness);
+                }
+            }
+            if(viralUploadActive)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC npc = Main.npc[i];
+                    if (npc.active && npc.Distance(Player.Center) < 1000)
+                    {
+                        npc.SimpleStrikeNPC(Player.statDefense, 0, false, 0, DamageClass.Generic, false, 0);
+                    }
+                }
+
+                for (int i = 0; i < 100; i++)
+                {
+                    int dustIndex = Dust.NewDust(new Vector2(Player.Center.X, Player.Center.Y), 0, 0, DustID.LifeDrain, 0f + Main.rand.Next(-36, 36), 0f + Main.rand.Next(-36, 36), 100, default, 1f);
+                    Main.dust[dustIndex].velocity *= 1.4f;
+                }
+            }
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
 
@@ -12420,6 +13314,28 @@ namespace StarsAbove.Systems
         }
         private void ModifyHitEnemyWithNova(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if(deadbloomLevel >= 1)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                    {
+                        modifiers.FinalDamage += 0.12f;
+                        break;
+                    }
+                }
+                if (deadbloomLevel >= 2)
+                {
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                        {
+                            modifiers.CritDamage += 0.3f;
+                            break;
+                        }
+                    }
+                }
+            }
             if (empressPrism)
             {
                 modifiers.SetCrit();
@@ -12447,14 +13363,60 @@ namespace StarsAbove.Systems
             }
             if (luminitePrism)
             {
-                if (trueNovaGaugeMax >= 200)
+                if (novaChargeMod >= 20)
                 {
-                    modifiers.FinalDamage *= 1.5f;
+                    modifiers.FinalDamage *= 1.2f;
                 }
             }
         }
         private void OnEnemyHitWithNova(NPC target, int nova, ref int damage, ref bool crit)
         {
+            if(!target.active)
+            {
+                if(bloodyBanquetLevel >= 1)
+                {
+                    novaGauge += (int)(trueNovaGaugeMax * 0.01f);
+                    if (bloodyBanquetLevel >= 2)
+                    {
+                        if (bloodyBanquetLevel >= 3)
+                        {
+                            Player.Heal(2);
+                        }
+                        if (Player.HasBuff(BuffType<BearerOfLight>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<BearerOfLight>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<BearerOfDarkness>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<BearerOfDarkness>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<Buffs.StellarNovas.GardenOfAvalon>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<Buffs.StellarNovas.GardenOfAvalon>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<DreamlikeCharisma>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<DreamlikeCharisma>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<AstarteDriver>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<AstarteDriver>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<VoidStrength>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<VoidStrength>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<Bladeforged>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<Bladeforged>())] += 120;
+                        }
+                        if (Player.HasBuff(BuffType<FireflyActive>()))
+                        {
+                            Player.buffTime[Player.FindBuffIndex(BuffType<FireflyActive>())] += 120;
+                        }
+                    }
+                }
+            }
             if (paintedPrism)
             {
                 target.AddBuff(BuffID.Ichor, 720);
@@ -12484,9 +13446,14 @@ namespace StarsAbove.Systems
 
         public override void ResetEffects()
         {
-
-
-
+            deadbloomLevel = 0;
+            crescentMeteorLevel = 0;
+            auricExaltLevel = 0;
+            luminousHallowLevel = 0;
+            dreadMechanicalLevel = 0;
+            bloodyBanquetLevel = 0;
+            royalSunriseLevel = 0;
+            lucidDreamerLevel = 0;
 
             Observatory = false;
             SeaOfStars = false;
@@ -12515,7 +13482,8 @@ namespace StarsAbove.Systems
             TsukiyomiActive = false;
             TsukiyomiBarActive = false;
 
-
+            fullMetalArcanistActive = false;
+            viralUploadActive = false;
         }
 
 

@@ -32,7 +32,7 @@ namespace StarsAbove.Items.Pets
 			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 0, 10, 0);
-			Item.buffType = BuffType<Buffs.UmbreonPetBuff>();
+			Item.buffType = BuffType<Buffs.Pets.UmbreonPetBuff>();
 		}
 
 		public override void AddRecipes()
@@ -46,16 +46,16 @@ namespace StarsAbove.Items.Pets
 
 		public override void UseStyle(Player player, Rectangle heldItemFrame) {
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0) {
-				player.AddBuff(BuffType<Buffs.UmbreonPetBuff>(), 3600, true);
-				player.AddBuff(BuffType<Buffs.EspeonPetBuff>(), 3600, true);
+				player.AddBuff(BuffType<Buffs.Pets.UmbreonPetBuff>(), 3600, true);
+				player.AddBuff(BuffType<Buffs.Pets.EspeonPetBuff>(), 3600, true);
 			}
 		}
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-			if(player.HasBuff(BuffType<Buffs.EspeonPetBuff>()))
+			if(player.HasBuff(BuffType<Buffs.Pets.EspeonPetBuff>()))
             {
-				player.DelBuff(BuffType<Buffs.UmbreonPetBuff>());
-				player.DelBuff(BuffType<Buffs.EspeonPetBuff>());
+				player.DelBuff(BuffType<Buffs.Pets.UmbreonPetBuff>());
+				player.DelBuff(BuffType<Buffs.Pets.EspeonPetBuff>());
 			}
 			
 			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, Mod.Find<ModProjectile>("UmbreonPet").Type, 0, 0, player.whoAmI, 0f);

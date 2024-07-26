@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.BrilliantSpectrum;
+using StarsAbove.Buffs.Celestial.BrilliantSpectrum;
 using StarsAbove.Systems;
 using System;
 using Terraria;

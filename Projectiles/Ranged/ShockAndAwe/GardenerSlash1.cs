@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.ShockAndAwe;
+using StarsAbove.Buffs.Ranged.ShockAndAwe;
 using StarsAbove.Systems;
 using System;
 using Terraria;

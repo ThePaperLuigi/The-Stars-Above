@@ -7,8 +7,8 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.Kifrosse;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -58,7 +58,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = StarsAboveAudio.SFX_summoning;
 			Item.shoot = ProjectileType<Kifrosse1>();
-			Item.buffType = BuffType<Buffs.Kifrosse.KifrosseBuff1>(); //The buff added to player after used the item
+			Item.buffType = BuffType<Buffs.Summon.Kifrosse.KifrosseBuff1>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
 
@@ -113,7 +113,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 9"), 250, 100, 247);}
 
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff9>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff9>(), 2);
 				
 				type = ProjectileType<Kifrosse9>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -122,7 +122,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 8 == player.maxMinions)
 			{
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff8>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff8>(), 2);
 				
 				type = ProjectileType<Kifrosse8>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -131,7 +131,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if(player.GetModPlayer<WeaponPlayer>().activeMinions + 7 == player.maxMinions)
 			{
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff7>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff7>(), 2);
 				
 				type = ProjectileType<Kifrosse7>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -140,7 +140,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if(player.GetModPlayer<WeaponPlayer>().activeMinions + 6 == player.maxMinions)
 			{
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff6>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff6>(), 2);
 				
 				type = ProjectileType<Kifrosse6>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -149,7 +149,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if(player.GetModPlayer<WeaponPlayer>().activeMinions + 5 == player.maxMinions)
 			{
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff5>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff5>(), 2);
 				
 				type = ProjectileType<Kifrosse5>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -158,7 +158,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 4 == player.maxMinions)
 			{
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff4>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff4>(), 2);
 				
 				type = ProjectileType<Kifrosse4>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -167,7 +167,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			if (player.GetModPlayer<WeaponPlayer>().activeMinions + 3 == player.maxMinions)
 			{
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff3>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff3>(), 2);
 				
 				type = ProjectileType<Kifrosse3>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -178,7 +178,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 2"), 250, 100, 247);}
 
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff2>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff2>(), 2);
 				
 				type = ProjectileType<Kifrosse2>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
@@ -189,7 +189,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				//if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue($"Tried 1"), 250, 100, 247);}
 
-				player.AddBuff(BuffType<Buffs.Kifrosse.KifrosseBuff1>(), 2);
+				player.AddBuff(BuffType<Buffs.Summon.Kifrosse.KifrosseBuff1>(), 2);
 				type = ProjectileType<Kifrosse1>();
 				int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
 				Main.projectile[index].originalDamage = damage;

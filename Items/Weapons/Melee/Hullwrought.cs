@@ -10,8 +10,8 @@ using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.Hullwrought;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

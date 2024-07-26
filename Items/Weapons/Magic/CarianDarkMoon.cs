@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CarianDarkMoon;
 using StarsAbove.Items.Essences;
 using Terraria;
 using Terraria.DataStructures;
@@ -8,8 +7,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Magic.CarianDarkMoon;
+using StarsAbove.Buffs.Magic.CarianDarkMoon;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {
@@ -75,13 +75,16 @@ namespace StarsAbove.Items.Weapons.Magic
 			{
 				if (player.statMana >= 100)
                 {
-
-					player.statMana -= 100;
+                    player.AddBuff(BuffType<MoonlitGreatblade>(), 1180);//The buff lasts as long as the sword transformation animation. Once it's done, grant the buff "Moonlight Greatsword"
+                    player.statMana -= 100;
 					player.manaRegenDelay = 600;
-					
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, 0, -30, ProjectileType<DarkmoonSpawn>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
-					//The sword will be thrown above the player, spinning quickly but then slowing down, and then explode in a bunch of particles as it becomes empowered.
-					return true;
+					if(Main.netMode != NetmodeID.MultiplayerClient)
+					{
+                        Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, 0, -30, ProjectileType<DarkmoonSpawn>(), 0, 0, player.whoAmI, 0f);//Spawn the sword.
+
+                    }
+                    //The sword will be thrown above the player, spinning quickly but then slowing down, and then explode in a bunch of particles as it becomes empowered.
+                    return true;
 				}
 				else
                 {

@@ -5,7 +5,7 @@ using System;
 using Terraria;
 using Terraria.Graphics.Effects;
 
-namespace StarsAbove.Systems
+namespace StarsAbove.Systems.StellarNovas
 {
     public class SetupStellarNovas
     {
@@ -20,7 +20,7 @@ namespace StarsAbove.Systems
 
         string starfarerBonusAsphodene;
         string starfarerBonusEridani;
-
+        
         public string GetInfo(int id, string grab, int baseDamage)
         {
             switch (id)
@@ -39,6 +39,8 @@ namespace StarsAbove.Systems
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.UnlimitedBladeWorks." + grab);
                 case 7:
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GuardiansLight." + grab);
+                case 8:
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.FireflyTypeIV." + grab);
                 default:
                     break;
             }
@@ -53,7 +55,7 @@ namespace StarsAbove.Systems
                 case 2:
                     return baseDamage + 250;
                 case 3:
-                    return baseDamage / 2;
+                    return baseDamage + 850;
                 case 4:
                     return baseDamage / 500;
                 case 5:
@@ -62,29 +64,58 @@ namespace StarsAbove.Systems
                     return baseDamage / 4;
                 case 7:
                     return baseDamage / 3;
+                case 8:
+                    return baseDamage / 48;
                 default:
                     break;
             }
             return 100;
+        }
+        public float GetNovaEffectDuration(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    return 12.5f;
+                case 2:
+                    return 6.5f;
+                case 3:
+                    return 2;
+                case 4:
+                    return 8;
+                case 5:
+                    return 20;
+                case 6:
+                    return 18.5f;
+                case 7:
+                    return 10;
+                case 8:
+                    return 5;
+                default:
+                    break;
+            }
+            return 10f;
         }
         public int GetNovaCost(int id)
         {
             switch (id)
             {
                 case 1:
-                    return 90;
+                    return 100;
                 case 2:
                     return 110;
                 case 3:
-                    return 50;
+                    return 70;
                 case 4:
-                    return 150;
+                    return 170;
                 case 5:
-                    return 180;
+                    return 200;
                 case 6:
-                    return 140;
+                    return 160;
                 case 7:
-                    return 65;
+                    return 85;
+                case 8:
+                    return 155;
                 default:
                     break;
             }
@@ -107,6 +138,8 @@ namespace StarsAbove.Systems
                 case 6:
                     return 15;
                 case 7:
+                    return 10;
+                case 8:
                     return 10;
                 default:
                     break;
@@ -131,6 +164,8 @@ namespace StarsAbove.Systems
                     return baseDamage / 2;
                 case 7:
                     return (int)(baseDamage * 0.4f);
+                case 8:
+                    return (int)(baseDamage * 0.9);
                 default:
                     break;
             }

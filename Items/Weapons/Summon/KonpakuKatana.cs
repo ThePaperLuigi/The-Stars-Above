@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using System;
-using StarsAbove.Buffs.Youmu;
 using Terraria.GameContent.Drawing;
 using StarsAbove.Projectiles.Summon.Youmu;
+using StarsAbove.Buffs.Summon.Youmu;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

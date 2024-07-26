@@ -1,4 +1,4 @@
-﻿using StarsAbove.Buffs;
+﻿using StarsAbove.Buffs.Accessories;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using Terraria;

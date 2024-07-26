@@ -5,8 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Magic.VenerationOfButterflies;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {
@@ -57,10 +57,10 @@ namespace StarsAbove.Items.Weapons.Magic
 
 				if (player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent == 100)
 				{
-					if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+					if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Magic.VenerationOfButterflies.ButterflyTrance>()))
 					{
 						player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent = 0;
-						player.AddBuff(BuffType<Buffs.ButterflyTrance>(), 300);
+						player.AddBuff(BuffType<Buffs.Magic.VenerationOfButterflies.ButterflyTrance>(), 300);
 
 						for (int d = 0; d < 10; d++)
 						{
@@ -89,7 +89,7 @@ namespace StarsAbove.Items.Weapons.Magic
 
 			}
 
-			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+			if (Main.LocalPlayer.HasBuff(BuffType<Buffs.Magic.VenerationOfButterflies.ButterflyTrance>()))
 			{
 				Item.mana = 0;
 				Item.useTime = 10;
@@ -105,7 +105,7 @@ namespace StarsAbove.Items.Weapons.Magic
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.ButterflyTrance>()))
+			if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Magic.VenerationOfButterflies.ButterflyTrance>()))
 			{
 				player.GetModPlayer<WeaponPlayer>().ButterflyResourceCurrent += 5;
 

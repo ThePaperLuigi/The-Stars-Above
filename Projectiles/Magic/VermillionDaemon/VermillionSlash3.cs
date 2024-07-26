@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.VermillionDaemon;
+using StarsAbove.Buffs.Magic.VermillionDaemon;
 
 namespace StarsAbove.Projectiles.Magic.VermillionDaemon
 {

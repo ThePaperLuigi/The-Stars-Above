@@ -5,12 +5,12 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs;
 using StarsAbove.Items.Pets;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Other.ArchitectLuminance;
+using StarsAbove.Buffs.Other.ArchitectsLuminance;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -69,7 +69,7 @@ namespace StarsAbove.Items.Weapons.Other
 			{
 				if (!player.HasBuff(BuffType<ArtificeSirenBuff>()) && !player.HasBuff(BuffType<ArtificeSirenCooldown>()))
 				{
-					player.AddBuff(BuffType<Buffs.ArtificeSirenBuff>(), 900);
+					player.AddBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArtificeSirenBuff>(), 900);
 					//Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),Main.MouseWorld, Vector2.Zero, mod.ProjectileType("ErinysFX"), 0, 0, player.whoAmI, 0, 1);
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 
@@ -100,7 +100,7 @@ namespace StarsAbove.Items.Weapons.Other
 		public override void HoldItem(Player player)
 		{
 			Item.scale = 2f;
-			player.AddBuff(BuffType<Buffs.ArchitectLuminanceBuff>(), 2);
+			player.AddBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArchitectLuminanceBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>()] < 1)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Other.ArchitectLuminance.Armament>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);

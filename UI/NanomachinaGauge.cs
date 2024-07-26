@@ -1,7 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.Nanomachina;
 using StarsAbove.Items;
 using StarsAbove.Items.Weapons;
 using StarsAbove.Items.Weapons.Summon;
@@ -15,6 +14,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Buffs.Other.Nanomachina;
 using StarsAbove.Systems;
 
 namespace StarsAbove.UI

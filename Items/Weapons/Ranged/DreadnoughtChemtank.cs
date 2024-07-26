@@ -5,9 +5,9 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.Chemtank;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.Chemtank;
+using StarsAbove.Buffs.Ranged.Chemtank;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -111,7 +111,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 		public override void HoldItem(Player player)
 		{
 			
-			player.AddBuff(BuffType<Buffs.Chemtank.ChemtankBuff>(), 2);
+			player.AddBuff(BuffType<Buffs.Ranged.Chemtank.ChemtankBuff>(), 2);
 			player.GetModPlayer<WeaponPlayer>().ChemtankHeld = true;
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Ranged.Chemtank.ChemtankMarker1>()] < 1)
 			{

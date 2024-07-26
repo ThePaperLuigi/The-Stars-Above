@@ -1,8 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Buffs.Manifestation;
+using StarsAbove.Buffs.Celestial.Manifestation;
 
 namespace StarsAbove.SceneEffects
 {

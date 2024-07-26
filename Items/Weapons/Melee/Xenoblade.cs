@@ -8,8 +8,8 @@ using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.Xenoblade;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

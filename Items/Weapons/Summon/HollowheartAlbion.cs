@@ -35,7 +35,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 110;           //The damage of your weapon
+			Item.damage = 80;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;
 			Item.width = 220;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -44,7 +44,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.useStyle = 5;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 12;         //The force of knockback of the weapon. Maximum is 20
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
-			Item.rare = ItemRarityID.Red;              //The rarity of the weapon, from -1 to 13
+			Item.rare = ItemRarityID.Pink;              //The rarity of the weapon, from -1 to 13
 			Item.UseSound = StarsAboveAudio.SFX_AlbionBlast;
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 			Item.noMelee = true; // Important because the spear is actually a projectile instead of an item. This prevents the melee hitbox of this item.
@@ -220,9 +220,8 @@ namespace StarsAbove.Items.Weapons.Summon
 		public override void AddRecipes()
 		{
 			CreateRecipe(1)
-				.AddIngredient(ItemID.ShroomiteBar, 2)
-				.AddIngredient(ItemID.JackOLanternLauncher, 1)
-				.AddIngredient(ItemID.SnowmanCannon, 1)
+				.AddIngredient(ItemID.QueenSlimeHook, 1)
+				.AddIngredient(ItemID.DefenderMedal, 10)
 				.AddIngredient(ItemType<EssenceOfTheHollowheart>())
 				.AddTile(TileID.Anvils)
 				.Register();

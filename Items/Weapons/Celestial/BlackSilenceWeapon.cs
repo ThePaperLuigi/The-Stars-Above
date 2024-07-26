@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.BlackSilence;
+using StarsAbove.Buffs;
+using StarsAbove.Buffs.Celestial.BlackSilence;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Celestial.BlackSilence;
 using StarsAbove.Systems;
+using StarsAbove.Systems.WeaponSystems;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -352,8 +354,17 @@ namespace StarsAbove.Items.Weapons.Celestial
 
                         SoundEngine.PlaySound(StarsAboveAudio.SFX_BlackSilenceSwing, Main.LocalPlayer.Center);
 
+                        if (player.HasBuff(BuffType<ComboCooldown>()))
+                        {
+                            player.AddBuff(BuffType<BlackSilenceAttackCooldown>(), 120);
 
-                        player.AddBuff(BuffType<BlackSilenceAttackCooldown>(), 30);
+                        }
+                        else
+                        {
+                            player.AddBuff(BuffType<BlackSilenceAttackCooldown>(), 30);
+                            player.AddBuff(BuffType<ComboCooldown>(), 240);
+                        }
+                        
                     }
 
 

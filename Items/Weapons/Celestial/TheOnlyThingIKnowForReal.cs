@@ -8,10 +8,10 @@ using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
-using StarsAbove.Buffs.TheOnlyThingIKnowForReal;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Celestial.TheOnlyThingIKnowForReal;
+using StarsAbove.Buffs.Celestial.TheOnlyThingIKnowForReal;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {

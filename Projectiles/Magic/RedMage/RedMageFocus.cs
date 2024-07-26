@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.RedMage;
+using StarsAbove.Buffs.Magic.RedMage;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;

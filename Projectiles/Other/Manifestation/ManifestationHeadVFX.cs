@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.Manifestation;
+ 
+using StarsAbove.Buffs.Celestial.Manifestation;
 using System;
 using Terraria;
 using Terraria.Audio;

@@ -9,9 +9,8 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
 using Terraria.Graphics.Shaders;
-using StarsAbove.Buffs.DraggedBelow;
-using StarsAbove.Buffs.Gundbits;
-using StarsAbove.Buffs.RebellionBloodArthur;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.RebellionBloodArthur;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Melee.RebellionBloodArthur

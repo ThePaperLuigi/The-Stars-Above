@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Buffs.Summon.Apalistik;
 using StarsAbove.Projectiles.Summon.Apalistik;
 using Terraria;
 using Terraria.DataStructures;
@@ -51,75 +52,50 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.shoot = ProjectileType<ApalistikUpgradedProjectile>();
 		}
 
-		
 
-		public override bool AltFunctionUse(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            bool slimeKing = NPC.downedSlimeKing;
+            bool eye = NPC.downedBoss1;
+            bool evilboss = NPC.downedBoss2;
+            bool queenBee = NPC.downedQueenBee;
+            bool skeletron = NPC.downedBoss3;
+            bool hardmode = Main.hardMode;
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+            float damageMult = 1f +
+                (slimeKing ? 0.1f : 0f) +
+                (eye ? 0.12f : 0f) +
+                (evilboss ? 0.14f : 0f) +
+                (queenBee ? 0.36f : 0f) +
+                (skeletron ? 0.58f : 0f) +
+                (hardmode ? 1.2f : 0f) +
+                (anyMech ? 1.23f : 0f) +
+                (allMechs ? 1.3f : 0f) +
+                (plantera ? 1.5f : 0f) +
+                (golem ? 1.8f : 0f) +
+                (cultist ? 2f : 0f) +
+                (moonLord ? 2.5f : 0f);
+
+            damage *= damageMult;
+        }
+        public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
-        public override void UpdateInventory(Player player)
-        {
-			if (NPC.downedSlimeKing)
-			{
-				Item.damage = 40;
-			}
-			if (NPC.downedBoss1)
-			{
-				Item.damage = 42;
-			}
-			if (NPC.downedBoss2)
-			{
-				Item.damage = 45;
-			}
-			if (NPC.downedQueenBee)
-			{
-				Item.damage = 48;
-			}
-			if (NPC.downedBoss3)
-			{
-				Item.damage = 54;
-			}
-			if (Main.hardMode)
-			{
-				Item.damage = 69;
-			}
-			if (NPC.downedMechBossAny)
-			{
-				Item.damage = 70;
-			}
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				Item.damage = 85;
-			}
-			if (NPC.downedPlantBoss)
-			{
-				Item.damage = 98;
-			}
-			if (NPC.downedGolemBoss)
-			{
-				Item.damage = 105;
-			}
-			if (NPC.downedFishron)
-			{
-				Item.damage = 111;
-			}
-			if (NPC.downedAncientCultist)
-			{
-				Item.damage = 125;
-			}
-			if (NPC.downedMoonlord)
-			{
-				Item.damage = 165;
-			}
-			base.UpdateInventory(player);
-        }
+
 
         public override bool CanUseItem(Player player)
 		{
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<Buffs.SeabornCooldown>()) && !player.HasBuff(BuffType<Buffs.SeabornWrath>()))
+				if (!player.HasBuff(BuffType<SeabornCooldown>()) && !player.HasBuff(BuffType<SeabornWrath>()))
 				{
 					for (int d = 0; d < 10; d++)
 					{
@@ -129,7 +105,7 @@ namespace StarsAbove.Items.Weapons.Summon
 					{
 						Dust.NewDust(player.Center, 0, 0, DustType<Dusts.bubble>(), 0f + Main.rand.Next(-25, 25), 0f + Main.rand.Next(-15, 15), 0, default(Color), 1.5f);
 					}
-					player.AddBuff(BuffType<Buffs.SeabornWrath>(), 480);
+					player.AddBuff(BuffType<SeabornWrath>(), 480);
 					return true;
 				}
 				else
@@ -168,7 +144,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 			else
             {
-				if (player.HasBuff(BuffType<Buffs.SeabornWrath>()))
+				if (player.HasBuff(BuffType<SeabornWrath>()))
 				{
 					int numberProjectiles = 8 + Main.rand.Next(2); //random shots
 					for (int i = 0; i < numberProjectiles; i++)
@@ -179,13 +155,13 @@ namespace StarsAbove.Items.Weapons.Summon
 						perturbedSpeed = perturbedSpeed * scale;
 						
 						int index1 = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<Bubble>(), damage / 10, knockback, player.whoAmI);
-						Main.projectile[index1].originalDamage = Item.damage;
+						Main.projectile[index1].originalDamage = damage/10;
 					}
 				}
 			}
 
-			int index = Projectile.NewProjectile(source, position, velocity, type, Item.damage, knockback, player.whoAmI, 0f);
-			Main.projectile[index].originalDamage = Item.damage;
+			int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
+			Main.projectile[index].originalDamage = damage;
 
 			return false;
 

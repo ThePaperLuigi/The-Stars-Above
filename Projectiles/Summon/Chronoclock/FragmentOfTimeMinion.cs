@@ -62,7 +62,7 @@ namespace StarsAbove.Projectiles.Summon.Chronoclock
             projOwner.buffImmune[BuffID.Slow] = true;
 
             Projectile.scale = 1f;
-            if (!player.HasBuff(BuffType<Buffs.Chronoclock.ChronoclockMinionBuff>()))
+            if (!player.HasBuff(BuffType<Buffs.Summon.Chronoclock.ChronoclockMinionBuff>()))
             {
                 Projectile.Kill();
             }
@@ -139,7 +139,7 @@ namespace StarsAbove.Projectiles.Summon.Chronoclock
             if (projOwner.ownedProjectileCounts[ProjectileType<TimePulse>()] >= 1)
             {
                 Projectile.frame = 2;
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     // Charging dust
                     Vector2 vector2 = new Vector2(
@@ -404,7 +404,7 @@ namespace StarsAbove.Projectiles.Summon.Chronoclock
 
 
             // Some visuals here
-            Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
+            //Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
         }
         private void HoverAnimation()
         {

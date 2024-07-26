@@ -27,13 +27,13 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Items.BossBags;
 using static StarsAbove.NPCs.Thespian.ThespianBoss;
 using System.Collections.Generic;
 using StarsAbove.Projectiles.Bosses.Penthesilea;
 using StarsAbove.Projectiles.Bosses.WarriorOfLight;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Penthesilea
 {
@@ -145,7 +145,6 @@ namespace StarsAbove.NPCs.Penthesilea
         {
 
             potionType = ItemID.GreaterHealingPotion;
-
             NPC.SetEventFlagCleared(ref DownedBossSystem.downedPenth, -1);
 
             DownedBossSystem.downedPenth = true;
@@ -173,6 +172,7 @@ namespace StarsAbove.NPCs.Penthesilea
 
 		public override void AI()
         {
+
             Lighting.AddLight(NPC.Center, TorchID.Pink);
 
             DrawOffsetY = 94;
@@ -518,7 +518,6 @@ namespace StarsAbove.NPCs.Penthesilea
 
             StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.PaintedPrism>(), 4));
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.FaerieVoyagerAttirePrecursor>(), 8));
 
@@ -669,7 +668,7 @@ namespace StarsAbove.NPCs.Penthesilea
             Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
             drawOrigin = r2.Size() / 2f;
             Vector2 position3 = position1 + new Vector2(0.0f, -46f);
-            Microsoft.Xna.Framework.Color color3 = new Color(Main.DiscoB,220,150);
+            Microsoft.Xna.Framework.Color color3 = new Color(Main.DiscoB,220,150, 100);
             Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, 1f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
             float num15 = 1f + num11 * 0.15f;
             Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, NPC.rotation, drawOrigin, 1f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);

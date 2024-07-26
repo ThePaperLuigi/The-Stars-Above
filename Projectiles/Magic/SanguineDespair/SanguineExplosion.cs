@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
+using StarsAbove.Buffs.Melee.Unforgotten;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

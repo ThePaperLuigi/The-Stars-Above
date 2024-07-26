@@ -5,7 +5,9 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
@@ -2300,13 +2302,14 @@ namespace StarsAbove.UI.Starfarers
 		{
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArrayVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().stellarArray == true))
 				return;
-
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked != 0)
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked != 0)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 0;
+                SoundEngine.PlaySound(SoundID.Shatter);
+                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 0;
 				return;
 			}
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked == 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
+
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked == 0 && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
 			{
 				if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                 {
@@ -2339,8 +2342,10 @@ namespace StarsAbove.UI.Starfarers
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
 				{
 					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().AspectLocked = 8;
-				}
-				return;
+                }
+                SoundEngine.PlaySound(SoundID.Unlock);
+
+                return;
 
 			}
 			

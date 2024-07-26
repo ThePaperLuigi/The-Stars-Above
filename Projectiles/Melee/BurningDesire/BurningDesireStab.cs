@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.BurningDesire;
+using StarsAbove.Buffs.Melee.BurningDesire;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

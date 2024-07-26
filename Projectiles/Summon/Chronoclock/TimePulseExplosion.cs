@@ -37,7 +37,11 @@ namespace StarsAbove.Projectiles.Summon.Chronoclock
         public bool firstSpawn = true;
         public float sizeX;
         public float sizeY;
+        public override bool? CanCutTiles()
+        {
 
+            return false;
+        }
         public override void AI()
         {
 

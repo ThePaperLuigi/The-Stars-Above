@@ -1,0 +1,31 @@
+﻿using StarsAbove.NPCs;
+using StarsAbove.Systems;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace StarsAbove.Buffs.Magic.SupremeAuthority
+{
+    public class AuthoritySacrificeMark : ModBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            // DisplayName.SetDefault("Supreme Authority Mark");
+            // Description.SetDefault("Marked for death");
+            Main.buffNoTimeDisplay[Type] = false;
+            Main.debuff[Type] = false;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+
+
+
+        }
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<StarsAboveGlobalNPC>().AuthoritySacrificeMark = true;
+
+
+        }
+    }
+}

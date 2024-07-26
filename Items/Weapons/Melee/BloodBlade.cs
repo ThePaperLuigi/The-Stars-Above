@@ -6,9 +6,9 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.BloodBlade;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.BloodBlade;
+using StarsAbove.Buffs.Melee.BloodBlade;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -82,7 +82,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 			if (player.altFunctionUse == 2)
 			{
-				if(!player.HasBuff(BuffType<Buffs.BloodBlade.BladeArtDragonPrepBuff>()) && !player.HasBuff(BuffType<Buffs.BloodBlade.BladeArtDragonCooldown>()) && player.statLife > (int)(player.statLifeMax*0.2) + 1)
+				if(!player.HasBuff(BuffType<Buffs.Melee.BloodBlade.BladeArtDragonPrepBuff>()) && !player.HasBuff(BuffType<Buffs.Melee.BloodBlade.BladeArtDragonCooldown>()) && player.statLife > (int)(player.statLifeMax*0.2) + 1)
                 {
 					player.AddBuff(BuffType<BladeArtDragonCooldown>(), 1200);
 					player.AddBuff(BuffType<Invincibility>(), 50);

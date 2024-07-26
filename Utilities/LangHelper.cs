@@ -4,7 +4,6 @@ using System;
 using System.Text;
 using Terraria.Localization;
 using Terraria.ModLoader;
-
 namespace StarsAbove.Utilities;
 
 internal static class LangHelper
@@ -18,8 +17,17 @@ internal static class LangHelper
 	{
 		return Language.GetTextValue($"Mods.{mod.Name}.{key}", args);
 	}
+    private static int GetModTextCategorySize(Mod mod, string key)
+    {
+        return Language.GetCategorySize($"Mods.{mod.Name}.{key}");
+    }
+    internal static int GetCategorySize(string key)
+    {
+        return GetModTextCategorySize(StarsAbove.Instance, key);
 
-	public static string LegacyWrap(string v, int size)
+    }
+
+    public static string LegacyWrap(string v, int size)
 	{
 	    v = v.TrimStart();
 	    if (v.Length <= size) return v;

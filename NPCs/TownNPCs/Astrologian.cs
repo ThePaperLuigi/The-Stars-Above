@@ -218,6 +218,9 @@ namespace StarsAbove.NPCs.TownNPCs
                     player.HasItemInAnyInventory(ModContent.ItemType<RuinedCrown>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<Trumpet>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<Pawn>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<BlackLightbulb>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<Aeonseal>()) ||
+                    player.HasItemInAnyInventory(ModContent.ItemType<GarridineGadget>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<MonsterTooth>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<NetheriteBar>()) ||
                     player.HasItemInAnyInventory(ModContent.ItemType<MercenaryAuracite>()) ||
@@ -404,15 +407,20 @@ namespace StarsAbove.NPCs.TownNPCs
 				.Add<CosmoturgyStationItem>()
 				.Add<TarotCard>()
 				.Add<KnightsShovelhead>()
+                .Add<LonelyBand>(Condition.TimeNight)
                 .Add<ChoiceGlasses>(Condition.InExpertMode)
                 .Add<ReprintedBlueprint>(Condition.DownedEyeOfCthulhu)
                 .Add<MatterManipulator>(Condition.DownedEarlygameBoss)
                 .Add<AetherBarrel>(Condition.DownedSkeletron)
+                .Add<WetCrowbar>(Condition.DownedQueenBee)
                 .Add<MagicSigil>(Condition.Hardmode)
 				.Add<MeleeSigil>(Condition.Hardmode)
                 .Add<RangedSigil>(Condition.Hardmode)
                 .Add<SummonSigil>(Condition.Hardmode)
+                .Add<OutbackWrangler>(Condition.Hardmode)      
                 .Add<OnyxJackal>(Condition.DownedQueenSlime)
+                .Add<CrystalshotCartridge>(Condition.DownedTwins)
+                .Add<StrangeScrap>(Condition.DownedMechBossAny)
                 .Add<SimulacraShifter>(Condition.DownedDestroyer)
                 .Add<NookMilesTicket>(Condition.DownedPlantera)
 				.Add<SigilOfHope>(Condition.DownedMoonLord)

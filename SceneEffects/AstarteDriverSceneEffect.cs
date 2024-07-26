@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
 using StarsAbove.Buffs.SubworldModifiers;
-using StarsAbove.Buffs;
+using StarsAbove.Buffs.StellarNovas;
 
 namespace StarsAbove.SceneEffects
 {

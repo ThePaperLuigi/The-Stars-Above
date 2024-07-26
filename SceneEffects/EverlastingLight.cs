@@ -4,6 +4,7 @@ using Terraria.Graphics.Effects;
 using SubworldLibrary;
 using StarsAbove.Subworlds;
 using StarsAbove.Systems;
+using StarsAbove.NPCs.WarriorOfLight;
 
 namespace StarsAbove.SceneEffects
 {

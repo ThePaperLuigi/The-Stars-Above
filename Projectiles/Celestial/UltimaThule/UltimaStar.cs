@@ -55,7 +55,7 @@ namespace StarsAbove.Projectiles.Celestial.UltimaThule
 
             Projectile.timeLeft = 10;
 
-            if (!player.HasBuff(BuffType<Buffs.CosmicConception>()))
+            if (!player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConception>()))
             {
                 Projectile.scale -= 0.015f;
                 Projectile.alpha += 25;

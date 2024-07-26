@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.ManiacalJustice;
+using StarsAbove.Buffs.Melee.ManiacalJustice;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using System;

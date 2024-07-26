@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Consumables;
@@ -11,8 +10,9 @@ using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Celestial.UltimaThule;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Celestial.UltimaThule;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {
@@ -98,7 +98,7 @@ namespace StarsAbove.Items.Weapons.Celestial
         public override bool CanUseItem(Player player)
         {
             
-            if (attackCooldown > 0 || player.HasBuff(BuffType<Buffs.Voidform>()))
+            if (attackCooldown > 0 || player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.Voidform>()))
             {
                 return false;
             }
@@ -119,7 +119,7 @@ namespace StarsAbove.Items.Weapons.Celestial
             */
             if(player.altFunctionUse == 2)
             {
-                if (!player.HasBuff(BuffType<Buffs.CosmicConceptionCooldown>()) && !player.HasBuff(BuffType<Buffs.CosmicConception>()))
+                if (!player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConceptionCooldown>()) && !player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConception>()))
                 {
                     /*Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                     Vector2 leap = Vector2.Normalize(mousePosition2) * 15f;
@@ -176,8 +176,8 @@ namespace StarsAbove.Items.Weapons.Celestial
                         Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
                     }
                     #endregion
-                    player.AddBuff(BuffType<Buffs.CosmicConception>(), 480);
-                    player.AddBuff(BuffType<Buffs.Voidform>(), 590);
+                    player.AddBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConception>(), 480);
+                    player.AddBuff(BuffType<Buffs.Celestial.UltimaThule.Voidform>(), 590);
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_CelestialConception, player.Center);
 
                     if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaStar>()] < 1)
@@ -199,7 +199,7 @@ namespace StarsAbove.Items.Weapons.Celestial
         }
         public override void HoldItem(Player player)
         {
-            player.AddBuff(BuffType<Buffs.Ultima>(), 2);
+            player.AddBuff(BuffType<Buffs.Celestial.UltimaThule.Ultima>(), 2);
             
             if (player.ownedProjectileCounts[ProjectileType<Projectiles.Celestial.UltimaThule.UltimaPlanet1>()] < 1)
             {
@@ -269,11 +269,11 @@ namespace StarsAbove.Items.Weapons.Celestial
                     }
                     starSpawnTimer = 0;
                 }
-                if (player.HasBuff(BuffType<Buffs.CosmicConception>()))
+                if (player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.CosmicConception>()))
                 {
                     starSpawnTimer++;
                 }
-                if (!player.HasBuff(BuffType<Buffs.Voidform>()))
+                if (!player.HasBuff(BuffType<Buffs.Celestial.UltimaThule.Voidform>()))
                 {
                     Vector2 vector = new Vector2(
                    Main.rand.Next(-28, 28) * (0.003f * 40 - 10),

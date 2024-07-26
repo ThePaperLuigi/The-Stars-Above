@@ -33,7 +33,7 @@ namespace StarsAbove.Items.Pets
 			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 0, 10, 0);
-			Item.buffType = BuffType<Buffs.BloopPetBuff>();
+			Item.buffType = BuffType<Buffs.Pets.BloopPetBuff>();
 		}
 
 		public override void AddRecipes()
@@ -46,16 +46,16 @@ namespace StarsAbove.Items.Pets
 		}
 		public override void UseStyle(Player player, Rectangle heldItemFrame) {
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0) {
-				player.AddBuff(BuffType<Buffs.BloopPetBuff>(), 3600, true);
-				player.AddBuff(BuffType<Buffs.BubbaPetBuff>(), 3600, true);
+				player.AddBuff(BuffType<Buffs.Pets.BloopPetBuff>(), 3600, true);
+				player.AddBuff(BuffType<Buffs.Pets.BubbaPetBuff>(), 3600, true);
 			}
 		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (player.HasBuff(BuffType<Buffs.BubbaPetBuff>()))
+			if (player.HasBuff(BuffType<Buffs.Pets.BubbaPetBuff>()))
 			{
-				player.DelBuff(BuffType<Buffs.BloopPetBuff>());
-				player.DelBuff(BuffType<Buffs.BubbaPetBuff>());
+				player.DelBuff(BuffType<Buffs.Pets.BloopPetBuff>());
+				player.DelBuff(BuffType<Buffs.Pets.BubbaPetBuff>());
 			}
 			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, Mod.Find<ModProjectile>("BloopPet").Type, 0, 0, player.whoAmI, 0f);
 			Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, Mod.Find<ModProjectile>("BubbaPet").Type, 0, 0, player.whoAmI, 0f);

@@ -51,7 +51,7 @@ namespace StarsAbove.Projectiles.Magic.TwinStars
 
             Projectile.timeLeft = 10;
             Player player = Main.player[Projectile.owner];
-            if (player.HasBuff(BuffType<Buffs.TwinStarsBuff>()))
+            if (player.HasBuff(BuffType<Buffs.Magic.TwinStarsOfAlbiero.TwinStarsBuff>()))
             {
                 Projectile.alpha -= 10;
                 if (Projectile.alpha < 0)
@@ -59,7 +59,7 @@ namespace StarsAbove.Projectiles.Magic.TwinStars
                     Projectile.alpha = 0;
                 }
             }
-            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.TwinStarsBuff>()))
+            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Magic.TwinStarsOfAlbiero.TwinStarsBuff>()))
             {
                 Projectile.alpha += 20;
             }

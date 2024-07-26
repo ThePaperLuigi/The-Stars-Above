@@ -23,12 +23,13 @@ namespace StarsAbove.Items.BossBags
 
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Treasure Bag (Dioskouroi, the Twin Forces)");
-			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
+            // DisplayName.SetDefault("Treasure Bag (Dioskouroi, the Twin Forces)");
+            // Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); // References a language key that says "Right Click To Open" in the language of the game
 
-			ItemID.Sets.BossBag[Type] = true;
+            ItemID.Sets.BossBag[Type] = true;
+            ItemID.Sets.PreHardmodeLikeBossBag[Type] = true;
 
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
 		}
 
 		public override void SetDefaults()
@@ -51,7 +52,6 @@ namespace StarsAbove.Items.BossBags
 			StellarSpoils.SetupStellarSpoils(itemLoot);
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 3, 1, 1));
 
-			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GeminiPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<CastorBoss>()));
 		}
 		

@@ -9,8 +9,8 @@ using static Terraria.ModLoader.ModContent;
 
 using Terraria.GameContent;
 using ReLogic.Content;
-using StarsAbove.Buffs.KissOfDeath;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Ranged.KissOfDeath;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Ranged.KissOfDeath

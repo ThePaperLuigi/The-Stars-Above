@@ -71,7 +71,7 @@ namespace StarsAbove.Items.Weapons.Magic
 		public override void HoldItem(Player player)
 		{
 
-			player.AddBuff(BuffType<Buffs.TwinStarsBuff>(), 2);
+			player.AddBuff(BuffType<Buffs.Magic.TwinStarsOfAlbiero.TwinStarsBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Magic.TwinStars.TwinStar1>()] < 1)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Magic.TwinStars.TwinStar1>(), 0, 4, player.whoAmI, 0f);

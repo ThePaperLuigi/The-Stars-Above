@@ -67,7 +67,8 @@ namespace StarsAbove.Projectiles.Summon.PhantomInTheMirror
 
                 }
                 movementFactor += throwSpeed;
-                throwSpeed -= 0.6f;
+                throwSpeed -= 0.6f; Projectile.alpha += 10;
+
                 if (movementFactor < 0)
                 {
                     movementFactor = 0;

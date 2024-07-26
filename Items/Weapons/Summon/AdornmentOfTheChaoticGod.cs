@@ -1,7 +1,7 @@
 
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.Adornment;
+using StarsAbove.Buffs.Summon.Adornment;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Summon.Adornment;
 using StarsAbove.Utilities;

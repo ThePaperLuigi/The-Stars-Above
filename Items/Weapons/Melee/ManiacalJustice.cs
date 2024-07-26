@@ -10,10 +10,10 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Utilities;
-using StarsAbove.Buffs.ManiacalJustice;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.ManiacalJustice;
+using StarsAbove.Buffs.Melee.ManiacalJustice;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -133,7 +133,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 				if (player.HasBuff(BuffType<SpecialAttackBuff>()))
 				{
-					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<ManiacalSwing2>(), player.GetWeaponDamage(Item), 3, player.whoAmI, 0f);
+					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.MountedCenter.X, player.MountedCenter.Y, arrowVelocity3.X, arrowVelocity3.Y, ProjectileType<ManiacalSwing2>(), player.GetWeaponDamage(Item)*2, 3, player.whoAmI, 0f);
 
 				}
 				else
@@ -224,7 +224,6 @@ namespace StarsAbove.Items.Weapons.Melee
 			CreateRecipe(1)
 				.AddIngredient(ItemID.PsychoKnife, 1)
 				.AddIngredient(ItemID.Bone, 12)
-				.AddIngredient(ItemID.Skull, 1)
 				.AddIngredient(ItemID.BoneSword, 1)
 				.AddIngredient(ItemType<EssenceOfMania>())
 				.AddTile(TileID.Anvils)

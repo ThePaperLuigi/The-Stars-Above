@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Systems;
 using System;
-using StarsAbove.Buffs.ShepherdSunstone;
 using Terraria.GameContent.Drawing;
 
 namespace StarsAbove.Items.Tools
@@ -43,7 +42,7 @@ namespace StarsAbove.Items.Tools
 				Item item = Main.item[j];
 				if (item.active && item.noGrabDelay == 0 && !ItemLoader.GrabStyle(item, player) && ItemLoader.CanPickup(item, player))
 				{
-					if (player.CanPullItem(item, player.ItemSpace(item)) && item.Distance(player.Center) < range)
+					if (player.CanPullItem(item, player.ItemSpace(item)) && item.Distance(player.Center) < range && item.Distance(player.Center) > 40)
 					{
 						ParticleOrchestraSettings particleOrchestraSettings = default(ParticleOrchestraSettings);
 						particleOrchestraSettings.PositionInWorld = item.Center;

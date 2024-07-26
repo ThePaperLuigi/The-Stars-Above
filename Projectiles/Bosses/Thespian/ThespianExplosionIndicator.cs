@@ -45,15 +45,15 @@ namespace StarsAbove.Projectiles.Bosses.Thespian
 		public override void AI()
 		{
 			Projectile.timeLeft = 10;
-
-			if (Projectile.ai[1] > 0)
+            Projectile.netUpdate = true;
+            if (Projectile.ai[1] > 0)
             {
 
             }
 			else
             {
 				Projectile.alpha -= 10;
-				if (Projectile.ai[0] == 0)
+				if (Projectile.ai[0] <= 0)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_Laevateinn, Projectile.Center);
 

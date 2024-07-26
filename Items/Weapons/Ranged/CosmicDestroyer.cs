@@ -8,8 +8,8 @@ using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Ranged.CosmicDestroyer;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Ranged
 {
@@ -67,7 +67,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 			{
 				if (player.GetModPlayer<WeaponPlayer>().CosmicDestroyerGauge >= 100)
 				{
-					player.AddBuff(BuffType<Buffs.CosmicDestroyer.MagitonOverheat>(), 480);
+					player.AddBuff(BuffType<Buffs.Ranged.CosmicDestroyer.MagitonOverheat>(), 480);
 					
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
@@ -91,7 +91,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 				}
 
 			}
-			if(player.HasBuff(BuffType<Buffs.CosmicDestroyer.Overheated>()))
+			if(player.HasBuff(BuffType<Buffs.Ranged.CosmicDestroyer.Overheated>()))
             {
 				return false;
             }
@@ -135,7 +135,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 
 			
 			SoundEngine.PlaySound(SoundID.Item11, player.position);
-			if(player.HasBuff(BuffType<Buffs.CosmicDestroyer.MagitonOverheat>()) && player.GetModPlayer<WeaponPlayer>().CosmicDestroyerRounds > 0)
+			if(player.HasBuff(BuffType<Buffs.Ranged.CosmicDestroyer.MagitonOverheat>()) && player.GetModPlayer<WeaponPlayer>().CosmicDestroyerRounds > 0)
             {
 				player.GetModPlayer<WeaponPlayer>().CosmicDestroyerRounds--;
 				damage *= 3;

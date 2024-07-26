@@ -27,8 +27,8 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Tsukiyomi
 {
@@ -152,8 +152,16 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			
 			potionType = ItemID.None;
 
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedTsuki, -1);
 
-			base.BossLoot(ref name, ref potionType);
+            DownedBossSystem.downedTsuki = true;
+
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+
+            base.BossLoot(ref name, ref potionType);
         }
         public override bool CheckDead()
 		{
@@ -168,8 +176,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			}
 			return true;
 		}
+        public override void OnKill()
+        {
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
 
-		public override void AI()
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+            base.OnKill();
+        }
+        public override void AI()
         {
 			DrawOffsetY = 94;
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
@@ -1095,11 +1113,18 @@ namespace StarsAbove.NPCs.Tsukiyomi
 			NPC.dontTakeDamage = true;
 			
 			NPC.localAI[1] += 1f;
-			
+
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedTsuki, -1);
+
+            DownedBossSystem.downedTsuki = true;
+
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
 
 
-			
-			if(NPC.localAI[1] == 10)
+            if (NPC.localAI[1] == 10)
             {
 				NPC.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 240);
 				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);
@@ -1121,30 +1146,12 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				
 
 
-				DownedBossSystem.downedTsuki = true;
 				
-				if (Main.netMode == NetmodeID.Server)
-				{
-					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-				}
 
 				//SubworldSystem.Exit();
 
-				if(modPlayer.edingenesisquasar == 0)
-                {
-					modPlayer.edingenesisquasar = 1;
 
-				}
-				if (modPlayer.tsukiyomiDialogue == 0)
-				{
-					//Force open the dialogue.
-					modPlayer.chosenDialogue = 73;
-					modPlayer.tsukiyomiDialogue = 2;
-					modPlayer.dialoguePrep = true;
-					modPlayer.starfarerDialogue = true;
-					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-					modPlayer.tsukiyomiDialogue = 2;
-				}
+				
 				
 				NPC.life = 0;
 				NPC.HitEffect(0, 0);

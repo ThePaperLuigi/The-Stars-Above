@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Summon.Apalistik;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
@@ -24,10 +25,10 @@ namespace StarsAbove.Items.Weapons.Summon
 				"\nDamage scales with world progression" +
 				$""); */  //The (English) text shown below your weapon's name
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            ItemID.Sets.Spears[Item.type] = true;
+        }
 
-		}
-
-		public override void SetDefaults() {
+        public override void SetDefaults() {
 			Item.damage = 6;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useAnimation = 45;
@@ -47,66 +48,46 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.shoot = ProjectileType<ApalistikProjectile>();
 		}
 
-		
 
-		public override bool AltFunctionUse(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+			bool slimeKing = NPC.downedSlimeKing;
+			bool eye = NPC.downedBoss1;
+			bool evilboss = NPC.downedBoss2;
+			bool queenBee = NPC.downedQueenBee;
+			bool skeletron = NPC.downedBoss3;
+			bool hardmode = Main.hardMode;
+			bool anyMech = NPC.downedMechBossAny;
+			bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+			float damageMult = 1f +
+                (slimeKing ? 0.1f : 0f) +
+                (eye ? 0.12f : 0f) +
+                (evilboss ? 0.14f : 0f) +
+                (queenBee ? 0.36f : 0f) +
+                (skeletron ? 0.58f : 0f) +
+                (hardmode ? 1.2f : 0f) +
+                (anyMech ? 1.23f : 0f) +
+                (allMechs ? 1.3f : 0f) +
+                (plantera ? 1.5f : 0f) +
+				(golem ? 1.8f : 0f) +
+				(cultist ? 2f : 0f) +
+				(moonLord ? 2.5f : 0f);
+
+            damage *= damageMult;
+            
+        }
+        public override bool AltFunctionUse(Player player)
 		{
 			return false;
 		}
         public override void UpdateInventory(Player player)
         {
-			if (NPC.downedSlimeKing)
-			{
-				Item.damage = 8;
-			}
-			if (NPC.downedBoss1)
-			{
-				Item.damage = 12;
-			}
-			if (NPC.downedBoss2)
-			{
-				Item.damage = 14;
-			}
-			if (NPC.downedQueenBee)
-			{
-				Item.damage = 19;
-			}
-			if (NPC.downedBoss3)
-			{
-				Item.damage = 22;
-			}
-			if (Main.hardMode)
-			{
-				Item.damage = 26;
-			}
-			if (NPC.downedMechBossAny)
-			{
-				Item.damage = 35;
-			}
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				Item.damage = 44;
-			}
-			if (NPC.downedPlantBoss)
-			{
-				Item.damage = 68;
-			}
-			if (NPC.downedGolemBoss)
-			{
-				Item.damage = 80;
-			}
-			if (NPC.downedFishron)
-			{
-				Item.damage = 96;
-			}
-			if (NPC.downedAncientCultist)
-			{
-				Item.damage = 110;
-			}
-			if (NPC.downedMoonlord)
-			{
-				Item.damage = 125;
-			}
+			
 			base.UpdateInventory(player);
         }
 
@@ -151,8 +132,8 @@ namespace StarsAbove.Items.Weapons.Summon
 			}
 
 
-			int index = Projectile.NewProjectile(source, position, velocity, type, Item.damage, knockback, player.whoAmI, 0f);
-			Main.projectile[index].originalDamage = Item.damage;
+			int index = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f);
+			Main.projectile[index].originalDamage = damage;
 			return false;
 
 		}

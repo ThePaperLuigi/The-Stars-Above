@@ -97,7 +97,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		{
 			NPC.boss = true;
 			NPC.lifeMax = 195000;
-			NPC.damage = 30;
+			NPC.damage = 15;
 			NPC.defense = 45;
 			NPC.knockBackResist = 0f;
 			NPC.width = 300;
@@ -151,7 +151,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
 			drawOrigin = r2.Size() / 2f;
 			Vector2 position3 = position1 + new Vector2(0.0f, -150f);
-			Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(245, 220, 135) * 1.6f; //This is the color of the pulse!
+			Microsoft.Xna.Framework.Color color3 = new Microsoft.Xna.Framework.Color(245, 220, 135, 100) * 1.6f; //This is the color of the pulse!
 																											//Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation, drawOrigin, NPC.scale * 0.5f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
 			float num15 = 3f; //+ num11 * 2.75f; //Scale?
 			Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3, NPC.rotation + num11, drawOrigin, NPC.scale * 0.5f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
@@ -192,9 +192,15 @@ namespace StarsAbove.NPCs.WarriorOfLight
         {
 
 			potionType = ItemID.SuperHealingPotion;
+            if (ModLoader.TryGetMod("BossChecklist", out Mod BossChecklist))
+            {
+                if (BossChecklist != null)
+                {
+                    if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"Common.TsukiyomiBossChecklist"), 241, 255, 180); }
+                }
+            }
 
-
-			NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedWarrior, -1);
 			DownedBossSystem.downedWarrior = true;
 
 			if (Main.netMode == NetmodeID.Server)
@@ -913,7 +919,6 @@ namespace StarsAbove.NPCs.WarriorOfLight
 			// Boss masks are spawned with 1/7 chance
 			//notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
 
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.LightswornPrism>(), 4));
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.DullTotemOfLight>(), 1));
 			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Materials.AegisOfHopesLegacyPrecursor>(), 8));
 

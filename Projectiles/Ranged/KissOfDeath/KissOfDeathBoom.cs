@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.KissOfDeath;
+using StarsAbove.Buffs.Ranged.KissOfDeath;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

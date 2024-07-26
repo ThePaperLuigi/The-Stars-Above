@@ -171,7 +171,7 @@ namespace StarsAbove.Systems
         public override void PreUpdateInvasions()
         {
 
-            if (isEverlastingLightActive)
+            if (isEverlastingLightActive && !DownedBossSystem.downedWarrior && NPC.downedMoonlord)//Extra checks
             {
                 Main.eclipse = false;
             }

@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.GossamerNeedle;
+using StarsAbove.Buffs.Other.GossamerNeedle;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles;
 using StarsAbove.Projectiles.Other.GossamerNeedle;

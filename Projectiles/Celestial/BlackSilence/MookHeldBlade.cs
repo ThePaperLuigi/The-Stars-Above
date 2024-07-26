@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.BlackSilence;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Systems;
+ 
+using StarsAbove.Buffs.Celestial.BlackSilence;
+using StarsAbove.Systems.WeaponSystems;
 using System;
 using Terraria;
 using Terraria.Audio;

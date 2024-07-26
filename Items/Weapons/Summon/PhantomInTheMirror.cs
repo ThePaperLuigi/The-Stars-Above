@@ -30,7 +30,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 102;           //The damage of your weapon
+			Item.damage = 42;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;          //Is your weapon a melee weapon?
 			Item.width = 74;            //Weapon's texture's width
 			Item.height = 74;           //Weapon's texture's height
@@ -101,13 +101,13 @@ namespace StarsAbove.Items.Weapons.Summon
 							player.GetModPlayer<WeaponPlayer>().phantomKill = true;
 							player.GetModPlayer<WeaponPlayer>().phantomSavedPosition = new Vector2(player.Center.X, player.Center.Y - 5);
 							Vector2 teleportPosition = new Vector2(player.Center.X, player.Center.Y - 5);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.BloodstainedCrescent>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
 
 
 							
 							player.Teleport(vector32, 1, 0);
 							NetMessage.SendData(MessageID.TeleportEntity, -1, -1, null, 0, (float)player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
-							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.BloodstainedCrescent>(), 90, 0, player.whoAmI, 0f);
+							Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.Center.X, player.Center.Y, 0, 0, ProjectileType<Projectiles.Summon.PhantomInTheMirror.BloodstainedCrescent>(), player.GetWeaponDamage(Item), 0, player.whoAmI, 0f);
 
 							teleportCooldown = 30;
 							vector32 = teleportPosition;
@@ -219,9 +219,9 @@ namespace StarsAbove.Items.Weapons.Summon
 		public override void AddRecipes()
 		{//Change me
 			CreateRecipe(1)
-				.AddIngredient(ItemID.ShroomiteBar, 2)
-				.AddIngredient(ItemID.TheHorsemansBlade, 1)
-				.AddIngredient(ItemID.ChristmasTreeSword, 1)
+				.AddIngredient(ItemID.HellstoneBar, 6)
+				.AddIngredient(ItemID.ThrowingKnife, 1)
+				.AddIngredient(ItemID.MimeMask, 1)
 				.AddIngredient(ItemType<EssenceOfThePhantom>())
 				.AddTile(TileID.Anvils)
 				.Register();

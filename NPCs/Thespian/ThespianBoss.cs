@@ -27,7 +27,6 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Dusts;
 using System.Collections.Generic;
@@ -35,6 +34,7 @@ using static Terraria.GameContent.Animations.IL_Actions.NPCs;
 using StarsAbove.Items.BossBags;
 using StarsAbove.Items.Memories;
 using Terraria.UI;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Thespian
 {
@@ -111,8 +111,8 @@ namespace StarsAbove.NPCs.Thespian
 		public override void SetDefaults()
 		{
 			NPC.boss = true;
-			NPC.lifeMax = 90000;
-			NPC.damage = 15;
+			NPC.lifeMax = 7100;
+			NPC.damage = 5;
 			NPC.defense = 15;
 			NPC.knockBackResist = 0f;
 			NPC.width = 100;
@@ -547,7 +547,7 @@ namespace StarsAbove.NPCs.Thespian
 			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<ThespianBossBag>()));
 
             // Trophies are spawned with 1/10 chance
-            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.VagrantTrophyItem>(), 10));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.ThespianTrophyItem>(), 10));
 
 
             // ItemDropRule.MasterModeCommonDrop for the relic

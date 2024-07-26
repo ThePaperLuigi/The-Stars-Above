@@ -27,13 +27,13 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Buffs.SubworldModifiers;
 using StarsAbove.Items.Accessories;
 using StarsAbove.Items.BossBags;
 using static StarsAbove.NPCs.Thespian.ThespianBoss;
 using System.Collections.Generic;
+using StarsAbove.Systems;
 
 namespace StarsAbove.NPCs.Arbitration
 {
@@ -487,13 +487,12 @@ namespace StarsAbove.NPCs.Arbitration
 
             StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.VoidsentPrism>(), 4));
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AnomalyByte>(), 4));
 
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfBloodshed>(), 2)).OnFailedRoll(ItemDropRule.Common(ModContent.ItemType<Items.Essences.EssenceOfMimicry>(), 2));
 
-
-			StellarSpoils.SetupBossStellarSpoils(npcLoot);
+            npcLoot.Add(notExpertRule);
+            StellarSpoils.SetupBossStellarSpoils(npcLoot);
 		}
 		
 		private void SpawnAnimation()
@@ -504,8 +503,12 @@ namespace StarsAbove.NPCs.Arbitration
             //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
             //Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSlamSprite>(), 0, 0, Main.myPlayer);
 
-            Vector2 initialMoveTo = new Vector2(14601, 5054);
-            NPC.position = initialMoveTo;
+			if(SubworldSystem.AnyActive())
+			{
+                Vector2 initialMoveTo = new Vector2(14601, 5054);
+                NPC.position = initialMoveTo;
+            }
+            
             //SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
 

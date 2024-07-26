@@ -6,6 +6,7 @@ using StarsAbove.Systems;
 using StarsAbove.Utilities;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
@@ -34,8 +35,11 @@ namespace StarsAbove.UI.Starfarers
 		private Vector2 offset;
 		public bool dragging = false;
 		public static bool Draggable;
+        static public float AdjustmentFactor = 1.5f;
 
-		private UIElement face;
+        public static bool voicesDisabled;
+
+        private UIElement face;
 		public override void OnInitialize() {
 			
 
@@ -129,24 +133,71 @@ namespace StarsAbove.UI.Starfarers
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility >= 2f && Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue == true))
 				return;
 
-			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber < Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue.Length)
+			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+
+
+            if (modPlayer.dialogueScrollNumber < modPlayer.dialogue.Length)
 			{
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue.Length;
+				modPlayer.dialogueScrollNumber = modPlayer.dialogue.Length;
 			}
 			else
             {
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueLeft--;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollTimer = 0;
-				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueScrollNumber = 0;
 
-				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogueLeft <= 0)
+                modPlayer.dialogueLeft++;
+
+				modPlayer.dialogueScrollTimer = 0;
+				modPlayer.dialogueScrollNumber = 0;
+
+				if (modPlayer.dialogueFinished) //If the dialogue ends, the next click will end the dialogue.
 				{
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogue = false;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenDialogue = 0;
-					Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().dialogue = "";
+                    if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer < 0 && modPlayer.expression < 8)
+                    {
+                        if (Main.rand.NextBool())
+                        {
+                            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
+
+                            if (modPlayer.chosenStarfarer == 1)
+                            {
+                                if (Main.rand.NextBool())
+                                {
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueEnd0);}
+
+                                }
+                                else
+                                {
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDialogueEnd1);}
+
+                                }
+                            }
+                            else if (modPlayer.chosenStarfarer == 2)
+                            {
+                                if (Main.rand.NextBool())
+                                {
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueEnd0);}
+
+                                }
+                                else
+                                {
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniDialogueEnd1);}
+
+                                }
+                            }
+                        }
+                    }
+                    
+
+					modPlayer.starfarerDialogue = false;
+					modPlayer.chosenDialogue = 0;
+					modPlayer.dialogue = "";
+					modPlayer.dialogueFinished = false;
 
 				}
-			}
+                else
+                {
+                    DialogueVoice(modPlayer.chosenStarfarer, modPlayer.expression);
+
+                }
+            }
 			
 
 
@@ -154,9 +205,210 @@ namespace StarsAbove.UI.Starfarers
 
 			// We can do stuff in here!
 		}
+        private static void DialogueVoice(int chosenStarfarer, int expression)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer > 0)
+            {
+                return;
+            }
 
+            //Voice system. This has a chance to play when dialogue starts and when its progressed (through clicking the dialogue UI)
+            if (chosenStarfarer == 1)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 65)
+                {
+                    //65% chance nothing plays.
+                }
+                else
+                {
+                    Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().globalVoiceDelayTimer = StarsAbovePlayer.globalVoiceDelayMax * 60;
 
-		public override void Draw(SpriteBatch spriteBatch) {
+                    int randomA = Main.rand.Next(0, 2);
+                    int randomB = Main.rand.Next(0, 3);
+
+                    switch (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().nextExpression)
+                    {
+                        case 0:
+
+                            break;
+                        case 1:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneAngry1);}
+
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneWorried0);}
+
+                            break;
+
+                        case 3:
+                            switch (randomB)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);}
+
+                                    break;
+                                case 2:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneThinking1);}
+
+                                    break;
+                            }
+                            break;
+
+                        case 4:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneSmug1);}
+
+                                    break;
+                            }
+                            break;
+
+                        case 5:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneHappy1);}
+
+                                    break;
+                            }
+                            break;
+
+                        case 6:
+
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.AsphodeneDeadInside0);}
+
+                            break;
+
+                    }
+
+                    
+                
+                }
+            }
+            else if (chosenStarfarer == 2)
+            {
+                int randomDialogue = Main.rand.Next(0, 100);
+                if (randomDialogue < 65)
+                {
+                    //65% chance nothing plays.
+                }
+                else
+                {
+                    int randomA = Main.rand.Next(0, 2);
+                    int randomB = Main.rand.Next(0, 3);
+
+                    switch (expression)
+                    {
+                        case 0:
+
+                            break;
+                        case 1:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniAngry1);}
+
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniWorried0);}
+
+                            break;
+
+                        case 3:
+                            switch (randomB)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);}
+
+                                    break;
+                                case 2:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniThinking1);}
+
+                                    break;
+                            }
+                            break;
+
+                        case 4:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniSmug1);}
+
+                                    break;
+                            }
+                            break;
+
+                        case 5:
+                            switch (randomA)
+                            {
+                                case 0:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy0);}
+
+                                    break;
+
+                                case 1:
+                                    if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniHappy1);}
+
+                                    break;
+                            }
+                            break;
+
+                        case 6:
+
+                            if (!voicesDisabled){SoundEngine.PlaySound(StarsAboveAudio.EridaniDeadInside0);}
+
+                            break;
+
+                    }
+                }
+            }
+        }
+
+        public override void Draw(SpriteBatch spriteBatch) {
 			// This prevents drawing unless we are using an ExampleDamageItem
 			if (!(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerDialogueVisibility > 0))
 				return;
@@ -215,13 +467,32 @@ namespace StarsAbove.UI.Starfarers
             {
                 if (modPlayer.chosenStarfarer == 1)
                 {
+					
                     if (modPlayer.vagrantDialogue == 2)
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
                     }
                     else
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/ABase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
 
                     }
                     spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/As1" + modPlayer.expression), faceHitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
@@ -244,11 +515,29 @@ namespace StarsAbove.UI.Starfarers
                 {
                     if (modPlayer.vagrantDialogue == 2)
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/HEBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
                     }
                     else
                     {
-                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBaseAlt1"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/Starfarers/DialoguePortraits/EBase"), hitbox, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
+
+                        }
 
                     }
                     spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/Er0" + modPlayer.expression), faceHitboxAlt, Color.White * (modPlayer.starfarerDialogueVisibility - 0.3f));
@@ -282,7 +571,7 @@ namespace StarsAbove.UI.Starfarers
 
             // The factor which determines the speed of rectangle movement relative to player velocity.
             // This can be adjusted based on how responsive you want the movement to be.
-            float factor = 1.5f;
+            float factor = AdjustmentFactor;
 
             // Modify the position based on the player's X and Y velocity
             float newX = startX - playerVelocityX * factor;

@@ -51,6 +51,8 @@ namespace StarsAbove.Projectiles.StellarNovas
         {
             if (firstSpawn)
             {
+                Projectile.ai[2] = 40;
+
                 if (Projectile.owner == Main.myPlayer)
                 {
                     Projectile.timeLeft = (int)Projectile.ai[1] + 60;
@@ -255,8 +257,9 @@ namespace StarsAbove.Projectiles.StellarNovas
                             if (!tileAboveTile.HasTile && !tile.IsActuated && !tile.IsTileInvisible)//
                             {
                                 Vector2 tileCenter = new Point16(tileX, tileY).ToWorldCoordinates();
-                                if (Main.rand.NextBool(700) && Projectile.owner == Main.myPlayer && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI)
+                                if (Main.rand.NextBool(700) && Projectile.owner == Main.myPlayer && Projectile.timeLeft > 60 && Projectile.owner == Main.LocalPlayer.whoAmI && Projectile.ai[2] > 0)
                                 {
+                                    Projectile.ai[2]--;
                                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), new Vector2(tileCenter.X + Main.rand.Next(-10, 11), tileCenter.Y - 30), Vector2.Zero, ProjectileType<UBWBladeProjectile>(), Projectile.damage, 0, Main.player[Projectile.owner].whoAmI, 0, 0, Projectile.timeLeft - 20 - radius);
 
                                     /*if (bladeAllotment > 0)
@@ -292,29 +295,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 				Main.dust[dust].position = Projectile.Center + spinningpoint5;
 				Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 9f;
 			}
-			Point Az = Projectile.Center.ToTileCoordinates();
-			int Aradius = 34;
-			for (int Ax = -Aradius; Ax <= Aradius; Ax++)
-			{
-				for (int Ay = -Aradius; Ay <= Aradius; Ay++)
-				{
-					if (Ax * Ax + Ay * Ay <= Aradius * Aradius)
-					{
-						int tileX = Az.X + Ax;
-						int tileY = Az.Y + Ay;
-
-						Tile tile = Main.tile[tileX, tileY];
-						Tile tileAboveTile = Main.tile[tileX, tileY - 1];
-
-						if (tile.HasTile)
-						{
-                            tile.IsTileFullbright = false;
-
-
-                        }
-                    }
-				}
-			}
+			
 		}
         public static Texture2D texture;
 

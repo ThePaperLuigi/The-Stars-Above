@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
+using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Buffs.SubworldModifiers;
 using Terraria;
 using Terraria.Graphics.Capture;

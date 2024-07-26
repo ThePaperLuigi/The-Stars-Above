@@ -8,9 +8,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Buffs.SanguineDespair;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Magic.SanguineDespair;
+using StarsAbove.Buffs.Magic.SanguineDespair;
 
 namespace StarsAbove.Items.Weapons.Magic
 {

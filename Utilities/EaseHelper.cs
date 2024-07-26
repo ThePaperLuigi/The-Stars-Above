@@ -24,7 +24,7 @@ internal static class EaseHelper
     public static float Pulse(float time)
     {
         const float pi = 3.14f;
-        const float frequency = 10; // Frequency in Hz
+        const float frequency = 1; // Frequency in Hz
         return (float)(0.5 * (1 + Math.Sin(2 * pi * frequency * time)));
     }
     public static float InQuad(float t) => t * t;

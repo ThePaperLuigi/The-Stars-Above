@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Dialogue;
+using StarsAbove.Items.Memories;
 using StarsAbove.Systems;
 using StarsAbove.Systems;
 using Terraria;
@@ -248,9 +249,14 @@ namespace StarsAbove.UI.VN
 				ResetVNDialogue(modPlayer);
 				return;
 			}
+			if(modPlayer.sceneID == 34)
+			{
+                Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<GarridineGadget>());
+
+            }
 
 
-			modPlayer.dialogueScrollTimer = 0;
+            modPlayer.dialogueScrollTimer = 0;
 			modPlayer.dialogueScrollNumber = 0;
 			modPlayer.sceneID = (int)VNScenes.SetupVNSystem(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneID, Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().sceneProgression)[4];
 			modPlayer.sceneProgression = 0;
@@ -372,17 +378,33 @@ namespace StarsAbove.UI.VN
 
 				if (modPlayer.VNCharacter1 == "Asphodene" || modPlayer.VNCharacter1 == "Eridani")//Main characters get extra drawing.
 				{
-					//Draw the hair behind the body and head. Remember to take account of pre/post Vagrant color change.
-					if (DownedBossSystem.downedVagrant)
-					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairBH"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+                    if (modPlayer.starfarerHairstyle == 1 && modPlayer.VNCharacter1 == "Asphodene")
+                    {
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairBAlt1"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
 
-					}
-					else
-					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairB"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+                    }
+                    else
+                    {
+                        if (modPlayer.starfarerHairstyle == 1 && modPlayer.VNCharacter1 == "Eridani")
+                        {
 
-					}
+                        }
+                        else
+                        {
+                            //Draw the hair behind the body and head. Remember to take account of pre/post Vagrant color change.
+                            if (DownedBossSystem.downedVagrant)
+                            {
+                                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairBH"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                            }
+                            else
+                            {
+                                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairB"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                            }
+                        }
+                    }
+                    
 					//Draw the head, accounting for pose.
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "Head"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
 
@@ -392,12 +414,30 @@ namespace StarsAbove.UI.VN
 					//Draw the hair on top of the head. Same deal with color change.
 					if (DownedBossSystem.downedVagrant)
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairH"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+						if (modPlayer.starfarerHairstyle == 1)
+						{
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairAlt1H"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
 
-					}
+                        }
+                        else
+						{
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairH"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                        }
+
+                    }
 					else
 					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "Hair"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "HairAlt1"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter1.Substring(0, 2) + modPlayer.VNCharacter1Pose + "Hair"), hitbox1, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                        }
 
 					}
 					
@@ -451,38 +491,72 @@ namespace StarsAbove.UI.VN
             {
 				if (modPlayer.VNCharacter2 == "Asphodene" || modPlayer.VNCharacter2 == "Eridani")//Main characters get extra drawing.
 				{
-					//Draw the hair behind the body and head. Remember to take account of pre/post Vagrant color change.
-					if (DownedBossSystem.downedVagrant)
-					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairBH"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
+                    if (modPlayer.starfarerHairstyle == 1 && modPlayer.VNCharacter2 == "Asphodene")
+                    {
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairBAlt1"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
 
-					}
-					else
-					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairB"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
+                    }
+                    else
+                    {
+                        if (modPlayer.starfarerHairstyle == 1 && modPlayer.VNCharacter2 == "Eridani")
+                        {
 
-					}
-					//Draw the head, accounting for pose.
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "Head"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
+                        }
+						else
+						{
+                            //Draw the hair behind the body and head. Remember to take account of pre/post Vagrant color change.
+                            if (DownedBossSystem.downedVagrant)
+                            {
+                                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairBH"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                            }
+                            else
+                            {
+                                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairB"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                            }
+                        }
+                        
+                    }
+                    //Draw the head, accounting for pose.
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "Head"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
 
 					//Draw the body, accounting for outfits and pose.
 					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "Body" + modPlayer.starfarerOutfitVisible), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
 
 
-					//Draw the hair on top of the head. Same deal with color change.
-					if (DownedBossSystem.downedVagrant)
-					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairH"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
+                    //Draw the hair on top of the head. Same deal with color change.
+                    if (DownedBossSystem.downedVagrant)
+                    {
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairAlt1H"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
 
-					}
-					else
-					{
-						spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "Hair"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairH"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
 
-					}
-					
-					//Draw the expression, accounting for pose.
-					spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + modPlayer.VNCharacter2Expression), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));//Base character's expression
+                        }
+
+                    }
+                    else
+                    {
+                        if (modPlayer.starfarerHairstyle == 1)
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "HairAlt1"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                        }
+                        else
+                        {
+                            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + "Hair"), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker)));
+
+                        }
+
+                    }
+
+                    //Draw the expression, accounting for pose.
+                    spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/VN/" + modPlayer.VNCharacter2.Substring(0, 2) + modPlayer.VNCharacter2Pose + modPlayer.VNCharacter2Expression), hitbox2, Color.White * (modPlayer.starfarerVNDialogueVisibility - (0.2f + modPlayer.MainSpeaker2)));//Base character's expression
 				}
 				if (modPlayer.VNCharacter2 != "Asphodene" && modPlayer.VNCharacter2 != "Eridani")//Non-main characters get simplified drawing.
 																								 //Input: Perseus, Pose 1, Expression 1

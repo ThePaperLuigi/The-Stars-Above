@@ -8,7 +8,6 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Localization;
-using StarsAbove.Systems;
 using StarsAbove.Systems.Items;
 using Terraria.ModLoader;
 using StarsAbove.Items.Memories;
@@ -17,6 +16,9 @@ using System.Collections.Generic;
 using System;
 using Terraria.Audio;
 using Terraria.ID;
+using StarsAbove.Items.Weapons.Other;
+using StarsAbove.Systems;
+using StarsAbove.Systems;
 
 namespace StarsAbove.UI.Cosmoturgy
 {
@@ -135,7 +137,7 @@ namespace StarsAbove.UI.Cosmoturgy
 				MaxWidth = { Pixels = 70 },
 				MaxHeight = { Pixels = 70 },
 
-				ValidItemFunc = item => (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && item.damage > 0) || item.IsAir, //Only weapons from this mod in this slot
+				ValidItemFunc = item => (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") && (item.damage > 0 || item.type == ItemType<LegendaryShield>())) || item.IsAir, //Only weapons from this mod in this slot
 				IgnoresMouseInteraction = false
 			};
 			_weaponSlot.OnMouseOver += SpecialAffixHover;
@@ -289,33 +291,67 @@ namespace StarsAbove.UI.Cosmoturgy
 			}
 			else
 			{
-				if (!_affixSlot1.Item.IsAir)
-				{
-					if(_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                if (_weaponSlot.Item.type == ModContent.ItemType<LegendaryShield>())
+                {
+                    if (!_affixSlot1.Item.IsAir)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot1 = GetMemoryID(_affixSlot1.Item);
-						_affixSlot1.Item.TurnToAir();
-					}			
-				}
-				if (!_affixSlot2.Item.IsAir)
-				{
-					if(_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        if (_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().legendaryShieldMemories.Add(GetMemoryID(_affixSlot1.Item));
+                            _affixSlot1.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot2.Item.IsAir)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot2 = GetMemoryID(_affixSlot2.Item);
-						_affixSlot2.Item.TurnToAir();
-					}				
-				}
-				if (!_affixSlot3.Item.IsAir)
-				{
-					if(_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        if (_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().legendaryShieldMemories.Add(GetMemoryID(_affixSlot2.Item));
+                            _affixSlot2.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot3.Item.IsAir)
                     {
-						_weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot3 = GetMemoryID(_affixSlot3.Item);
-						_affixSlot3.Item.TurnToAir();
-					}				
-				}
-                SoundEngine.PlaySound(SoundID.Item29);
-                Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
-				Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
+                        if (_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().legendaryShieldMemories.Add(GetMemoryID(_affixSlot3.Item));
+                            _affixSlot3.Item.TurnToAir();
+                        }
+                    }
+                    SoundEngine.PlaySound(SoundID.Item29);
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
+                }
+				else
+				{
+                    if (!_affixSlot1.Item.IsAir)
+                    {
+                        if (_affixSlot1.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot1 = GetMemoryID(_affixSlot1.Item);
+                            _affixSlot1.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot2.Item.IsAir)
+                    {
+                        if (_affixSlot2.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot2 = GetMemoryID(_affixSlot2.Item);
+                            _affixSlot2.Item.TurnToAir();
+                        }
+                    }
+                    if (!_affixSlot3.Item.IsAir)
+                    {
+                        if (_affixSlot3.Item.GetGlobalItem<ItemMemorySystem>().isMemory)
+                        {
+                            _weaponSlot.Item.GetGlobalItem<ItemMemorySystem>().itemMemorySlot3 = GetMemoryID(_affixSlot3.Item);
+                            _affixSlot3.Item.TurnToAir();
+                        }
+                    }
+                    SoundEngine.PlaySound(SoundID.Item29);
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().imbueSuccessAnimationTimer = 1f;
+                    Main.LocalPlayer.GetModPlayer<CosmoturgyPlayer>().description = LangHelper.GetTextValue($"UIElements.Cosmoturgy.MemoriesImprinted", Main.LocalPlayer);
+                }
+                
 			}
 		}
 		private Dictionary<int, int> memoryIDs = new Dictionary<int, int>
@@ -355,6 +391,14 @@ namespace StarsAbove.UI.Cosmoturgy
             {ItemType<SimulacraShifter>(), 34 },
             {ItemType<BlackLightbulb>(), 35 },
             {ItemType<OnyxJackal>(), 36 },
+
+            {ItemType<WetCrowbar>(), 37 },
+            {ItemType<CrystalshotCartridge>(), 38 },
+            {ItemType<OutbackWrangler>(), 39 },
+            {ItemType<LonelyBand>(), 40 },
+            {ItemType<StrangeScrap>(), 41 },
+            {ItemType<Aeonseal>(), 42 },
+            {ItemType<GarridineGadget>(), 43 },
 
             {ItemType<TarotCard>(), 100 },
 

@@ -14,9 +14,7 @@ using StarsAbove.Subworlds;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Items.Accessories;
-using StarsAbove.Buffs.Farewells;
 using System;
-using StarsAbove.Buffs.IrminsulDream;
 using StarsAbove.Biomes;
 using StarsAbove.Items.Materials;
 using StarsAbove.NPCs;
@@ -24,6 +22,23 @@ using StarsAbove.Buffs.Boss;
 using StarsAbove.NPCs.Vagrant;
 using Microsoft.CodeAnalysis;
 using StarsAbove.Items.Memories;
+using StarsAbove.Projectiles.Summon.StarphoenixFunnel;
+using Terraria.GameContent.Drawing;
+using Terraria.Audio;
+using StarsAbove.Buffs.Magic.CloakOfAnArbiter;
+using StarsAbove.Buffs.Ranged.StringOfCurses;
+using StarsAbove.Buffs.Magic.IrminsulDream;
+using StarsAbove.Buffs.Other.Farewells;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Magic.ParadiseLost;
+using Terraria.GameContent;
+using StarsAbove.NPCs.OffworldNPCs.Caelum;
+using StarsAbove.Subworlds.ThirdRegion;
+using StarsAbove.NPCs.NeonVeil;
+using StarsAbove.Projectiles.Melee.Umbra;
+using StarsAbove.Projectiles.Ranged.QuisUtDeus;
+using StarsAbove.Buffs.Other.Phasmasaber;
+using StarsAbove.Buffs.Subworlds;
 
 namespace StarsAbove.Systems
 {
@@ -49,34 +64,62 @@ namespace StarsAbove.Systems
         public int NanitePlagueLevel = 0;
         public int JudgementStacks = 0;
         public int spectralNailStacks = 0;
+        public int elementalSurgeStacks = 0;
+        public int quisUtDeusStacks = 0;
+
+        public int completeCombustionStacks = 0;
 
         int dustTimer = 0;
-
+        public override void TownNPCAttackStrength(NPC npc, ref int damage, ref float knockback)
+        {
+            if(npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                damage += 50;
+            }
+            base.TownNPCAttackStrength(npc, ref damage, ref knockback);
+        }
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
+            if (spawnInfo.Player.InModBiome<NeonVeilBiome>())
+            {
+                pool.Clear();
+                pool.Add(NPCType<NPCs.PrismLoot>(), 0.1f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AmethystHeadpiercer>(), 0.02f);
+                pool.Add(NPCID.BlackSlime, 0.8f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AmethystSwordsinner>(), 0.02f);
+                pool.Add(NPCType<NPCs.OffworldNPCs.AsteroidWormHead>(), 0.01f);
 
+                pool.Add(NPCType<SemaphoreEnemy>(), 1f);
+                pool.Add(NPCType<LogicVirusEnemy>(), 1f);
+                pool.Add(NPCID.GoldenSlime, 0.05f);
+                pool.Add(NPCID.GoldDragonfly, 0.1f);      
 
-            base.EditSpawnPool(pool, spawnInfo);
-
-
-
+            }
+            
+           
         }
 
         public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
         {
             if (player.HasBuff(BuffType<BossEnemySpawnMod>()))
             {
-                //maxSpawns = 0;
+                spawnRate *= 5;
+                maxSpawns = (int)(maxSpawns * 0.001f);
             }
             if (player.HasBuff(BuffType<OffSeersPurpose>()))
             {
-                //spawnRate += 10;
+                spawnRate = (int)(spawnRate * 0.6);
+                maxSpawns = (int)(maxSpawns * 2.5f);
             }
             if (player.HasBuff(BuffType<Conversationalist>()))
             {
-                //spawnRate -= 30;
+                spawnRate = (int)(spawnRate * 3);
             }
-            base.EditSpawnRate(player, ref spawnRate, ref maxSpawns);
+            if (player.HasBuff(BuffType<NeonVeilLuckBuff>()))
+            {
+                spawnRate = (int)(spawnRate * 0.6);
+                maxSpawns = (int)(maxSpawns * 2.5f);
+            }
         }
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -123,9 +166,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffID.OnFire));
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -133,7 +176,7 @@ namespace StarsAbove.Systems
                     }
 
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
-                    CombatText.NewText(textPos, new Color(230, 164, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.03), 120)}", false, false);
+                    CombatText.NewText(textPos, new Color(230, 164, 164, 240), $"{Math.Min((int)(npc.lifeMax * 0.1), 120)}", false, false);
                     return;
                 }
                 if (npc.HasBuff(BuffID.Frostburn))
@@ -141,9 +184,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffID.Frostburn));
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -159,9 +202,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
                     npc.DelBuff(npc.FindBuffIndex(BuffID.CursedInferno));
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -176,9 +219,9 @@ namespace StarsAbove.Systems
                     npc.DelBuff(npc.FindBuffIndex(BuffType<VerdantEmbrace>()));
 
                     npc.DelBuff(npc.FindBuffIndex(BuffID.ShadowFlame));
-                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.03), 120))
+                    if (npc.life > Math.Min((int)(npc.lifeMax * 0.1), 120))
                     {
-                        npc.life -= Math.Min((int)(npc.lifeMax * 0.03), 120);
+                        npc.life -= Math.Min((int)(npc.lifeMax * 0.1), 120);
                     }
                     else
                     {
@@ -191,6 +234,18 @@ namespace StarsAbove.Systems
                 }
             }
             if (Hyperburn)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 30;
+
+                damage = 30;
+
+            }
+
+            if (npc.HasBuff(BuffType<SpiritflameDebuff>()))
             {
                 if (npc.lifeRegen > 0)
                 {
@@ -258,7 +313,17 @@ namespace StarsAbove.Systems
             }
 
         }
+        public override void PostAI(NPC npc)
+        {
+            if (npc.Center.ToTileCoordinates().Y > Main.maxTilesY - 100)
+            {
 
+                npc.velocity.Y -= 10f;
+
+            }
+            
+            base.PostAI(npc);
+        }
         public override void ResetEffects(NPC npc)
         {
             OceanCulling = false;
@@ -276,6 +341,62 @@ namespace StarsAbove.Systems
             AuthoritySacrificeMark = false;
             Hyperburn = false;
             KarmicRetribution = false;
+        }
+        public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if(npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                // This is where we specify which way to flip the sprite. If the npc is moving to the left, then flip it vertically.
+                SpriteEffects spriteEffects = npc.spriteDirection <= 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
+                // Getting texture of npc
+                Rectangle sourceRectangle;
+                Vector2 origin;
+                sourceRectangle = new Rectangle((int)npc.Center.X, (int)npc.Center.Y, 260, 260);
+                origin = sourceRectangle.Size() / 2f;
+
+                Microsoft.Xna.Framework.Color color1 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
+                Vector2 drawOrigin = new Vector2(npc.width * 0.5f, npc.height * 0.5f);
+                int r1 = (int)color1.R;
+                //drawOrigin.Y += 34f;
+                //drawOrigin.Y += 8f;
+                --drawOrigin.X;
+                Vector2 position1 = npc.Center - Main.screenPosition;
+                Texture2D texture2D2 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Projectiles/Magic/ParadiseLost/ParadiseLostVFX2");
+                Texture2D VFX1 = (Texture2D)ModContent.Request<Texture2D>("StarsAbove/Effects/ParadiseLostVFX");
+
+                float num11 = (float)((double)Main.GlobalTimeWrappedHourly % 1.0 / 1.0);
+                float num12 = num11;
+                if ((double)num12 > 0.5)
+                    num12 = 1f - num11;
+                if ((double)num12 < 0.0)
+                    num12 = 0.0f;
+                float num13 = (float)(((double)num11 + 0.5) % 1.0);
+                float num14 = num13;
+                if ((double)num14 > 0.5)
+                    num14 = 1f - num13;
+                if ((double)num14 < 0.0)
+                    num14 = 0.0f;
+                Microsoft.Xna.Framework.Rectangle r2 = texture2D2.Frame(1, 1, 0, 0);
+                drawOrigin = r2.Size() / 2f;
+                Vector2 position3 = position1 + new Vector2(0.0f, -10f);
+                Microsoft.Xna.Framework.Color color3 = new Color(255, 0, 0, 100);
+                float magicFade = 1f + num11 * 0.25f;
+
+                Main.spriteBatch.Draw(VFX1, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, 0, drawOrigin, 1f, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+                float num15 = 1f + num11 * 0.45f;
+                Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num12, 0, drawOrigin, 0.5f * num15, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+                float original16 = 1f + num13 * 0.45f;
+
+                float num16 = -1f + num13 * -0.15f;
+                Main.spriteBatch.Draw(texture2D2, position3, new Microsoft.Xna.Framework.Rectangle?(r2), color3 * num14, 0, drawOrigin, 0.5f * original16, SpriteEffects.None ^ SpriteEffects.FlipHorizontally, 0.0f);
+
+
+            }
+
+            return base.PreDraw(npc, spriteBatch, screenPos, drawColor);
         }
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -365,7 +486,78 @@ namespace StarsAbove.Systems
                     drawColor = drawColor.MultiplyRGB(Color.Yellow);
                 }
             }
+            if (npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                //drawColor = drawColor.MultiplyRGBA;
 
+            }
+            if (npc.HasBuff(BuffType<Necrosis>()))
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Bone, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.2f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
+            if (npc.HasBuff(BuffType<FairyTagDamage>()))
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Enchanted_Gold, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.2f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
+            if (npc.HasBuff(BuffType<Ensnared>()))
+            {
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 3), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 4), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 2), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+
+                    Dust d = Main.dust[Dust.NewDust(new Vector2(npc.Center.X - npc.width, npc.Center.Y - npc.height / 1.5f), npc.width * 2, 0, DustID.GoldFlame, 0, Main.rand.Next(-5, -2), 150, default, 0.3f)];
+                    d.fadeIn = 0.3f;
+                    d.noLight = true;
+                    d.noGravity = true;
+                }
+            }
             if (NanitePlague)
             {
                 if (Main.rand.Next(4) < 3)
@@ -382,7 +574,45 @@ namespace StarsAbove.Systems
                 }
                 Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
             }
+            if (npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 235, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.2f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
             if (Hyperburn)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust2 = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.FireworkFountain_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1f);
+                    Main.dust[dust2].noGravity = true;
+
+                }
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, DustID.Firework_Pink, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 1.1f);
+
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.NextBool(4))
+                    {
+
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(npc.position, 0.1f, 0.2f, 0.7f);
+            }
+            if (npc.HasBuff(BuffType<SpiritflameDebuff>()))
             {
                 if (Main.rand.Next(4) < 3)
                 {
@@ -462,6 +692,28 @@ namespace StarsAbove.Systems
                         spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
                         spinningpoint5 = spinningpoint5.RotatedBy(npc.velocity.ToRotation());
                         int dust = Dust.NewDust(npc.Center, 0, 0, DustID.GemTopaz);
+                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].position = npc.Center + spinningpoint5;
+                        Main.dust[dust].velocity = npc.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+                    }
+                    dustTimer = 0;
+                }
+
+
+            }
+            if (npc.HasBuff(BuffType<BaptisedBuff>()) && !npc.HasBuff(BuffType<ApostleBuff>()))
+            {
+                dustTimer++;
+                if (dustTimer > 60)
+                {
+                    float dustAmount = 10f;
+                    for (int i = 0; i < dustAmount; i++)
+                    {
+                        Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                        spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(4f, 4f);
+                        spinningpoint5 = spinningpoint5.RotatedBy(npc.velocity.ToRotation());
+                        int dust = Dust.NewDust(npc.Center, 0, 0, DustID.LifeDrain);
                         Main.dust[dust].scale = 2f;
                         Main.dust[dust].noGravity = true;
                         Main.dust[dust].position = npc.Center + spinningpoint5;
@@ -629,7 +881,7 @@ namespace StarsAbove.Systems
                     if (Main.rand.NextBool(6))
                     {
                         Main.dust[dust].noGravity = false;
-                        Main.dust[dust].scale = 2f;
+                        Main.dust[dust].scale = 1f;
                     }
 
 
@@ -642,7 +894,7 @@ namespace StarsAbove.Systems
                 if (Main.rand.NextBool(4))
                 {
                     Main.dust[dust2].noGravity = false;
-                    Main.dust[dust2].scale = 1f;
+                    Main.dust[dust2].scale = 0.5f;
                 }
 
             }
@@ -754,7 +1006,8 @@ namespace StarsAbove.Systems
                 {
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
                     CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
-                    npc.life -= (int)(damageDone * 0.2);
+                    npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
+
                     spectralNailStacks = 0;
                 }
             }
@@ -766,7 +1019,7 @@ namespace StarsAbove.Systems
             {
                 modifiers.FinalDamage += 1f;
             }
-            
+
 
 
         }
@@ -785,14 +1038,96 @@ namespace StarsAbove.Systems
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
+            if (projectile.type == ProjectileType<QuisUtDeusRound>())
+            {
+                quisUtDeusStacks++;
+                if (quisUtDeusStacks > 5)
+                {
+
+                    quisUtDeusStacks = 0;
+
+                    Vector2 position = npc.Center + new Vector2(Main.rand.Next(-200, 201), Main.rand.Next(-100, 101));
+                    position.Y -= 500;
+                    Vector2 heading = npc.Center - position;
+                    heading.Normalize();
+                    heading *= 16f;
+
+                    Vector2 velocity = new Vector2(0, 0);
+                    velocity.X = heading.X;
+                    velocity.Y = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
+                    if (projectile.owner == Main.LocalPlayer.whoAmI)
+                    {
+                        Projectile.NewProjectile(Main.LocalPlayer.GetSource_OnHit(npc), position.X, position.Y, velocity.X, velocity.Y, ProjectileID.StarWrath, damageDone, 0, Main.LocalPlayer.whoAmI, 0f);
+
+                    }
+                }
+
+            }
+            if (projectile.type == ProjectileType<StarphoenixRound>())
+            {
+                elementalSurgeStacks++;
+                if (elementalSurgeStacks > 6)
+                {
+                    SoundEngine.PlaySound(SoundID.Item27, npc.Center);
+                    elementalSurgeStacks = 0;
+                    npc.SimpleStrikeNPC((int)(damageDone * 1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks++;
+                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
+            new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
+            projectile.owner);
+                    if (Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks > 5)
+                    {
+                        Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks = 5;
+                    }
+                }
+
+            }
+            if (projectile.type == ProjectileType<CatalystKey>())
+            {
+                elementalSurgeStacks++;
+                if (elementalSurgeStacks > 6)
+                {
+                    SoundEngine.PlaySound(SoundID.Item27, npc.Center);
+                    elementalSurgeStacks = 0;
+                    npc.SimpleStrikeNPC((int)(damageDone * 1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
+            new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
+            projectile.owner);
+                    if (Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks > 5)
+                    {
+                        Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks = 5;
+                    }
+                }
+
+            }
+            if (projectile.type == ProjectileType<StarphoenixMinionBullet>())
+            {
+                elementalSurgeStacks++;
+                if (elementalSurgeStacks > 6)
+                {
+                    SoundEngine.PlaySound(SoundID.Item27, npc.Center);
+                    elementalSurgeStacks = 0;
+                    npc.SimpleStrikeNPC((int)(damageDone * 1.5), 0, false, 0, DamageClass.Default, false, 0);
+                    Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks++;
+                    ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.Keybrand,
+            new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(npc.Hitbox) },
+            projectile.owner);
+                    if (Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks > 5)
+                    {
+                        Main.player[projectile.owner].GetModPlayer<WeaponPlayer>().alignmentStacks = 5;
+                    }
+                }
+
+            }
             if (Main.player[projectile.owner].GetModPlayer<StarsAbovePlayer>().spectralNail == 2)
             {
                 spectralNailStacks++;
-                if(spectralNailStacks >= 5)
+                if (spectralNailStacks >= 5)
                 {
                     Rectangle textPos = new Rectangle((int)npc.position.X, (int)npc.position.Y - 20, npc.width, npc.height);
                     CombatText.NewText(textPos, new Color(255, 62, 247, 240), $"{(int)(damageDone * 0.2)}", false, false);
-                    npc.life -= (int)(damageDone * 0.2);
+                    npc.SimpleStrikeNPC((int)(damageDone * 0.2), 0, false, 0, DamageClass.Default, false, 0);
+
                     spectralNailStacks = 0;
                 }
             }
@@ -806,13 +1141,12 @@ namespace StarsAbove.Systems
         {
             if (npc.type == NPCID.QueenSlimeBoss)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<RoyalSlimePrism>(), 4));
                 npcLoot.Add(ItemDropRule.Common(ItemType<YoumuHilt>(), 4));
 
             }
             if (npc.type == NPCID.Spazmatism || npc.type == NPCID.Retinazer || npc.type == NPCID.TheDestroyer || npc.type == NPCID.SkeletronPrime)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<MechanicalPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<MechanicalPrism>(), 4));
             }
             if (npc.type == NPCID.EyeofCthulhu)
             {
@@ -827,7 +1161,7 @@ namespace StarsAbove.Systems
             if (npc.type == NPCID.WallofFlesh)
             {
                 npcLoot.Add(ItemDropRule.Common(ItemType<RedSpiderLily>(), 4));
-                if(Main.expertMode)
+                if (Main.expertMode)
                 {
                     npcLoot.Add(ItemDropRule.Common(ItemType<MindflayerWorm>(), 4));
 
@@ -840,7 +1174,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.Plantera)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<OvergrownPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<OvergrownPrism>(), 4));
                 npcLoot.Add(ItemDropRule.Common(ItemType<DekuNut>(), 4));
 
             }
@@ -861,7 +1195,7 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.Golem)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<LihzahrdPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<LihzahrdPrism>(), 4));
             }
             if (npc.type == NPCID.SkeletronPrime)
             {
@@ -869,15 +1203,19 @@ namespace StarsAbove.Systems
             }
             if (npc.type == NPCID.HallowBoss)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<EmpressPrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<EmpressPrism>(), 4));
             }
             if (npc.type == NPCID.DukeFishron)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<TyphoonPrism>(), 4));
+            }
+            if (npc.type == NPCID.CultistBoss)
+            {
+                npcLoot.Add(ItemDropRule.Common(ItemType<ResonanceGem>(), 4));
+
             }
             if (npc.type == NPCID.MoonLordCore)
             {
-                npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
+                //npcLoot.Add(ItemDropRule.Common(ItemType<LuminitePrism>(), 4));
 
             }
             if (npc.type == NPCID.MoonLordCore || npc.type == NPCID.CultistBoss)
@@ -886,7 +1224,7 @@ namespace StarsAbove.Systems
 
             }
 
-
+            /*
             VagrantDrops VagrantDropCondition = new VagrantDrops();
             IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
 
@@ -898,7 +1236,7 @@ namespace StarsAbove.Systems
             IItemDropRule rule1 = ItemDropRule.Common(ItemType<Starlight>(), chanceDenominator: 25);
             conditionalRule.OnSuccess(rule1);
             npcLoot.Add(conditionalRule1);
-
+            */
             //IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
             //IItemDropRule rule2 = ItemDropRule.Common(ItemType<PerfectlyGenericAccessory>(), chanceDenominator: 10000);
             //conditionalRule.OnSuccess(rule2);
@@ -911,23 +1249,23 @@ namespace StarsAbove.Systems
         public override void ModifyGlobalLoot(GlobalLoot globalLoot)
         {
 
-            /* Doesn't work with Calamity for some reason.
+            
 			VagrantDrops VagrantDropCondition = new VagrantDrops();
 			IItemDropRule conditionalRule = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule = ItemDropRule.Common(Mod.Find<ModItem>("PrismaticCore").Type, chanceDenominator: 100);
+			IItemDropRule rule = ItemDropRule.Common(ModContent.ItemType<PrismaticCore>(), chanceDenominator: 100);
 			conditionalRule.OnSuccess(rule);
 			globalLoot.Add(conditionalRule);
 
 			IItemDropRule conditionalRule1 = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule1 = ItemDropRule.Common(Mod.Find<ModItem>("Starlight").Type, chanceDenominator: 25);
+			IItemDropRule rule1 = ItemDropRule.Common(ModContent.ItemType<Starlight>(), chanceDenominator: 25);
 			conditionalRule.OnSuccess(rule1);
 			globalLoot.Add(conditionalRule1);
 
-			IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
-			IItemDropRule rule2 = ItemDropRule.Common(Mod.Find<ModItem>("PerfectlyGenericAccessory").Type, chanceDenominator: 10000);
-			conditionalRule.OnSuccess(rule2);
-			globalLoot.Add(conditionalRule2);
-			*/
+            IItemDropRule conditionalRule2 = new LeadingConditionRule(VagrantDropCondition);
+            IItemDropRule rule2 = ItemDropRule.Common(ModContent.ItemType<Hardlight>(), chanceDenominator: 20);
+            conditionalRule.OnSuccess(rule2);
+            globalLoot.Add(conditionalRule2);
+
         }
 
 

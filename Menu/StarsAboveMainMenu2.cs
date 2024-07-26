@@ -16,7 +16,7 @@ namespace StarsAbove.Menu
 		private const string menuAssetPath = "StarsAbove/Menu"; // Creates a constant variable representing the texture path, so we don't have to write it out multiple Rotation1s
 
 		
-		public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>($"StarsAbove/Menu/StarsAboveLogo");
+		public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>($"StarsAbove/Menu/StarsAbove2Logo");
 
 		//public override Asset<Texture2D> SunTexture => ModContent.Request<Texture2D>($"{menuAssetPath}/Empty");
 

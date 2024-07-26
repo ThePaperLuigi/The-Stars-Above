@@ -168,14 +168,14 @@ namespace StarsAbove.Items.Weapons.Celestial
 				}
 				if (player.statMana == 0)
 				{
-					player.AddBuff(BuffType<Buffs.UmbralAspectDepleted>(), 1);
+					player.AddBuff(BuffType<Buffs.Misc.UmbralAspectDepleted>(), 1);
 				}
 				if (player.statMana > 1)
 				{
 
 					//Main.monolithType = 1;
 					
-					player.AddBuff(BuffType<Buffs.UmbralAspect>(), 1);
+					player.AddBuff(BuffType<Buffs.Misc.UmbralAspect>(), 1);
 					for (int i = 0; i < 100; i++)
 					{
 						// Charging dust
@@ -205,7 +205,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 				Item.noUseGraphic = false;
 				Item.noMelee = false;
 				player.statMana += 1 / 2;
-				player.AddBuff(BuffType<Buffs.AstralAspect>(), 1);
+				player.AddBuff(BuffType<Buffs.Misc.AstralAspect>(), 1);
 				//Main.monolithType = 2;
 				Dust dust;
 				// You need to set position depending on what you are doing. You may need to subtract width/2 and height/2 as well to center the spawn rectangle.

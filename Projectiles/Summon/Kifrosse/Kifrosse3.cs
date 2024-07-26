@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.Kifrosse;
+using StarsAbove.Buffs.Summon.Kifrosse;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Summon.Kifrosse

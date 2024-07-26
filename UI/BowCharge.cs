@@ -34,7 +34,7 @@ namespace StarsAbove.UI
 			area.Height.Set(60, 0f);
 			area.HAlign = area.VAlign = 0.5f; // 1
 
-			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/BowChargeFrame"));
+			barFrame = new UIImage(Request<Texture2D>("StarsAbove/UI/blank"));
 			barFrame.Left.Set(22, 0f);
 			barFrame.Top.Set(0, 0f);
 			barFrame.Width.Set(138, 0f);
@@ -130,8 +130,20 @@ namespace StarsAbove.UI
 
 				}
 			}
-		}
-		public override void Update(GameTime gameTime) {
+
+			if(modPlayer.M4A1Held)
+			{
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/BowChargeFrameM4A1"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+
+            }
+			else
+			{
+                spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/BowChargeFrame"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);
+
+            }
+
+        }
+        public override void Update(GameTime gameTime) {
 			if (!(Main.LocalPlayer.GetModPlayer<WeaponPlayer>().bowChargeActive == true))
 				return;
 

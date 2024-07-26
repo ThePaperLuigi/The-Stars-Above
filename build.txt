@@ -1,6 +1,6 @@
 displayName = [c/EC1B9D:The Stars Above]
 author = PaperLuigi
-version = 2.0.1
+version = 2.1.2.2
 modReferences = SubworldLibrary
 dllReferences = StructureHelper
 homepage = https://discord.gg/kFURRZZszD

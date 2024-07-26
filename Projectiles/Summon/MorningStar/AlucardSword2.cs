@@ -1,4 +1,4 @@
-﻿using StarsAbove.Buffs.MorningStar;
+﻿using StarsAbove.Buffs.Summon.MorningStar;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

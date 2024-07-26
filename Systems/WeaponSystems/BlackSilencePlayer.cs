@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.BlackSilence;
+using StarsAbove.Buffs.Celestial.BlackSilence;
 using StarsAbove.Items.Armor.BlackSilence;
 using StarsAbove.Projectiles.Celestial.BlackSilence;
 using StarsAbove.Utilities;
@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace StarsAbove.Systems
+namespace StarsAbove.Systems.WeaponSystems
 {
     public class BlackSilencePlayer : ModPlayer
     {

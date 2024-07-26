@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.AshenAmbition;
 using StarsAbove.Items.Essences;
 using System;
 using Terraria;
@@ -11,12 +10,12 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Projectiles;
-using StarsAbove.Buffs.BrilliantSpectrum;
 using Terraria.Graphics.Shaders;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.AshenAmbition;
 using StarsAbove.Projectiles.Celestial.BrilliantSpectrum;
+using StarsAbove.Buffs.Celestial.BrilliantSpectrum;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {
@@ -31,7 +30,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 
 		public override void SetDefaults()
 		{
-			Item.damage = 30;           //The damage of your weapon
+			Item.damage = 45;           //The damage of your weapon
 			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -57,63 +56,39 @@ namespace StarsAbove.Items.Weapons.Celestial
 		{
 			return true;
 		}
-		public override void UpdateInventory(Player player)
-		{
-			if (NPC.downedSlimeKing)
-			{
-				Item.damage = 8;
-			}
-			if (NPC.downedBoss1)
-			{
-				Item.damage = 12;
-			}
-			if (NPC.downedBoss2)
-			{
-				Item.damage = 14;
-			}
-			if (NPC.downedQueenBee)
-			{
-				Item.damage = 19;
-			}
-			if (NPC.downedBoss3)
-			{
-				Item.damage = 22;
-			}
-			if (Main.hardMode)
-			{
-				Item.damage = 26;
-			}
-			if (NPC.downedMechBossAny)
-			{
-				Item.damage = 35;
-			}
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				Item.damage = 44;
-			}
-			if (NPC.downedPlantBoss)
-			{
-				Item.damage = 68;
-			}
-			if (NPC.downedGolemBoss)
-			{
-				Item.damage = 80;
-			}
-			if (NPC.downedFishron)
-			{
-				Item.damage = 96;
-			}
-			if (NPC.downedAncientCultist)
-			{
-				Item.damage = 110;
-			}
-			if (NPC.downedMoonlord)
-			{
-				Item.damage = 125;
-			}
-			base.UpdateInventory(player);
-		}
-		public override bool CanUseItem(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            bool slimeKing = NPC.downedSlimeKing;
+            bool eye = NPC.downedBoss1;
+            bool evilboss = NPC.downedBoss2;
+            bool queenBee = NPC.downedQueenBee;
+            bool skeletron = NPC.downedBoss3;
+            bool hardmode = Main.hardMode;
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+            float damageMult = 1f +
+                (slimeKing ? 0.1f : 0f) +
+                (eye ? 0.12f : 0f) +
+                (evilboss ? 0.14f : 0f) +
+                (queenBee ? 0.36f : 0f) +
+                (skeletron ? 0.58f : 0f) +
+                (hardmode ? 1.2f : 0f) +
+                (anyMech ? 1.23f : 0f) +
+                (allMechs ? 1.3f : 0f) +
+                (plantera ? 1.5f : 0f) +
+                (golem ? 1.8f : 0f) +
+                (cultist ? 2f : 0f) +
+                (moonLord ? 2.5f : 0f);
+
+            damage *= damageMult;
+
+        }
+        public override bool CanUseItem(Player player)
 		{
 			
 			if (player.altFunctionUse == 2)

@@ -77,18 +77,12 @@ namespace StarsAbove.Tiles.BossLoot
 			AddMapEntry(new Color(233, 207, 94), Language.GetText("MapObject.Relic"));
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			// This code here infers the placeStyle the tile was placed with. Only required if you go the Item.placeStyle approach. You just need Item.NewItem otherwise
-			// The placeStyle calculated here corresponds to whatever placeStyle you specified on your items that place this tile (Either through Item.placeTile or Item.DefaultToPlacableTile)
-			int placeStyle = frameX / FrameWidth;
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
 
-            int itemType = ModContent.ItemType<Items.Placeable.BossLoot.NalhaunBossRelicItem>();
-
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, itemType);
         }
 
-		public override bool CreateDust(int i, int j, ref int type)
+        public override bool CreateDust(int i, int j, ref int type)
 		{
 			return false;
 		}

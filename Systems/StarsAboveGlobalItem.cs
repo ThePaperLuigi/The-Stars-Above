@@ -27,6 +27,8 @@ using Terraria.UI.Chat;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Items.Loot;
+using System.Reflection.Metadata;
+using StarsAbove.Items.Consumables;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Systems
@@ -46,453 +48,454 @@ namespace StarsAbove.Systems
         public bool spatialWeapon;
         public bool loadItem = true;
 
-        public List<int> AstralWeapons = new List<int>() {
-            ItemType<CarianDarkMoon>(),
-            ItemType<NeoDealmaker>(),
-            ItemType<DerFreischutz>(),
-            ItemType<Persephone>(),
-            ItemType<Skofnung>(),
-            ItemType<AegisDriver>(),
-            ItemType<KarlanTruesilver>(),
-            ItemType<IzanagiEdge>(),
-            ItemType<VenerationOfButterflies>(),
-            ItemType<RideTheBull>(),
-            ItemType<CrimsonOutbreak>(),
-            ItemType<StygianNymph>(),
-            ItemType<CrimsonKey>(),
-            ItemType<PhantomInTheMirror>(),
-            ItemType<PleniluneGaze>(),
-            ItemType<VisionOfEuthymia>(),
-            ItemType<RexLapis>(),
-            ItemType<LiberationBlazing>(),
-            ItemType<Suistrume>(),
-            ItemType<KeyOfTheKingsLaw>(),
-            ItemType<HunterSymphony>(),
-            ItemType<KevesiFarewell>(),
-            ItemType<PodZero42>(),
-            ItemType<GossamerNeedle>(),
-            ItemType<DevotedHavoc>(),
-
-			//ModContent.ItemType<EssenceOf>(),
-			ItemType<EssenceOfTheDarkMoon>(),
-            ItemType<EssenceOfBitterfrost>(),
-            ItemType<EssenceOfButterflies>(),
-            ItemType<EssenceOfDuality>(),
-            ItemType<EssenceOfEuthymia>(),
-            ItemType<EssenceOfIzanagi>(),
-            ItemType<EssenceOfLiberation>(),
-            ItemType<EssenceOfSilverAsh>(),
-            ItemType<EssenceOfSin>(),
-            ItemType<EssenceOfStarsong>(),
-            ItemType<EssenceOfTheAegis>(),
-            ItemType<EssenceOfTheAnomaly>(),
-            ItemType<EssenceOfTheBull>(),
-            ItemType<EssenceOfTheFreeshooter>(),
-            ItemType<EssenceOfTheMoonlitAdepti>(),
-            ItemType<EssenceOfThePhantom>(),
-            ItemType<EssenceOfTheSwarm>(),
-            ItemType<EssenceOfTheTreasury>(),
-            ItemType<EssenceOfTheUnderworldGoddess>(),
-            ItemType<EssenceOfTheUnyieldingEarth>(),
-            ItemType<EssenceOfTheHunt>(),
-            ItemType<EssenceOfFarewells>(),
-            ItemType<EssenceOfTheAutomaton>(),
-            ItemType<EssenceOfTheHallownest>(),
-            ItemType<EssenceOfEnergy>(),
-
-        };
-        public List<int> UmbralWeapons = new List<int>() {
-            ItemType<KonpakuKatana>(),
-            ItemType<AshenAmbition>(),
-            ItemType<DeathInFourActs>(),
-            ItemType<KazimierzSeraphim>(),
-            ItemType<InugamiRipsaw>(),
-            ItemType<RadGun>(),
-            ItemType<EveryMomentMatters>(),
-            ItemType<Hawkmoon>(),
-            ItemType<MementoMuse>(),
-            ItemType<Drachenlance>(),
-            ItemType<VoiceOfTheFallen>(),
-            ItemType<CaesuraOfDespair>(),
-            ItemType<CrimsonSakuraAlpha>(),
-            ItemType<HollowheartAlbion>(),
-            ItemType<Tartaglia>(),
-            ItemType<KroniicAccelerator>(),
-            ItemType<YunlaiStiletto>(),
-            ItemType<Unforgotten>(),
-            ItemType<Naganadel>(),
-            ItemType<LightUnrelenting>(),
-            ItemType<SparkblossomBeacon>(),
-            ItemType<IrminsulDream>(),
-            ItemType<AgnianFarewell>(),
-            ItemType<DraggedBelow>(),
-            ItemType<SoliloquyOfSovereignSeas>(),
-
-            ItemType<EssenceOfAlpha>(),
-            ItemType<EssenceOfAsh>(),
-            ItemType<EssenceOfAzakana>(),
-            ItemType<EssenceOfDeathsApprentice>(),
-            ItemType<EssenceOfDrivingThunder>(),
-            ItemType<EssenceOfFingers>(),
-            ItemType<EssenceOfIRyS>(),
-            ItemType<EssenceOfLunarDominion>(),
-            ItemType<EssenceOfPerfection>(),
-            ItemType<EssenceOfStyle>(),
-            ItemType<EssenceOfSurpassingLimits>(),
-            ItemType<EssenceOfTheDragonslayer>(),
-            ItemType<EssenceOfTheFallen>(),
-            ItemType<EssenceOfTheGardener>(),
-            ItemType<EssenceOfTheHarbinger>(),
-            ItemType<EssenceOfTheHawkmoon>(),
-            ItemType<EssenceOfTheHollowheart>(),
-            ItemType<EssenceOfThePegasus>(),
-            ItemType<EssenceOfTheSharpshooter>(),
-            ItemType<EssenceOfTime>(),
-            ItemType<EssenceOfStaticShock>(),
-            ItemType<EssenceOfOffseeing>(),
-            ItemType<EssenceOfTheVoid>(),
-            ItemType<EssenceOfHydro>(),
-
-        };
-        public List<int> SpatialWeapons = new List<int>(){
-
-            ItemType<Apalistik>(),
-            ItemType<MiserysCompany>(),
-            ItemType<AncientBook>(),
-            ItemType<LuminaryWand>(),
-            ItemType<DreadnoughtChemtank>(),
-            ItemType<ApalistikUpgraded>(),
-            ItemType<Xenoblade>(),
-            ItemType<SkyStrikerArms>(),
-            ItemType<ForceOfNature>(),
-            ItemType<Hullwrought>(),
-            ItemType<PenthesileaMuse>(),
-            ItemType<Kifrosse>(),
-            ItemType<Genocide>(),
-            ItemType<Mercy>(),
-            ItemType<ArachnidNeedlepoint>(),
-            ItemType<SakuraVengeance>(),
-            ItemType<TheOnlyThingIKnowForReal>(),
-            ItemType<TwinStars>(),
-            ItemType<Ozma>(),
-            ItemType<ClaimhSolais>(),
-            ItemType<MorningStar>(),
-
-            ItemType<EternalStar>(),
-            ItemType<VermillionDaemon>(),
-            ItemType<ShadowlessCerulean>(),
-            ItemType<HullwroughtMKII>(),
-            ItemType<IgnitionAstra>(),
-            ItemType<BuryTheLight>(),
-            ItemType<ArchitectLuminance>(),
-            ItemType<CosmicDestroyer>(),
-            ItemType<VirtuesEdge>(),
-            ItemType<UltimaThule>(),
-            ItemType<BloodBlade>(),
-            ItemType<RedMage>(),
-            ItemType<BurningDesire>(),
-            ItemType<EverlastingPickaxe>(),
-            ItemType<CatalystMemory>(),
-            ItemType<ElCapitansHardware>(),
-            ItemType<BlackSilenceWeapon>(),
-            ItemType<SoulReaver>(),
-            ItemType<GoldenKatana>(),
-            ItemType<Manifestation>(),
-
-			//Stars Above v1.3
-			ItemType<Umbra>(),
-            ItemType<SaltwaterScourge>(),
-            ItemType<AdornmentOfTheChaoticGod>(),
-            ItemType<Chronoclock>(),
-            ItemType<KissOfDeath>(),
-
-			//Stars Above v1.4
-			ItemType<Nanomachina>(),
-            ItemType<LevinstormAxe>(),
-            ItemType<SanguineDespair>(),
-            ItemType<SunsetOfTheSunGod>(),
-            ItemType<ManiacalJustice>(),
-            ItemType<SupremeAuthority>(),
-
-			//Stars Above v1.5
-			ItemType<DreamersInkwell>(),
-            ItemType<BrilliantSpectrum>(),
-            ItemType<ShockAndAwe>(),
-            ItemType<TrickspinTwoStep>(),
-
-            //Stars Above v2.0
-            ItemType<DragaliaFound>(),
-            ItemType<GundbitStaves>(),
-            ItemType<Wavedancer>(),
-            ItemType<RebellionBloodArthur>(),
-
-            ItemType<EssenceOfAdagium>(),
-            ItemType<EssenceOfBloodshed>(),
-            ItemType<EssenceOfChemtech>(),
-            ItemType<EssenceOfEternity>(),
-            ItemType<EssenceOfFoxfire>(),
-            ItemType<EssenceOfInk>(),
-            ItemType<EssenceOfLuminance>(),
-            ItemType<EssenceOfMisery>(),
-            ItemType<EssenceOfOuterGods>(),
-            ItemType<EssenceOfRadiance>(),
-            ItemType<EssenceOfSakura>(),
-            ItemType<EssenceOfTechnology>(),
-            ItemType<EssenceOfTheAerialAce>(),
-            ItemType<EssenceOfTheAscendant>(),
-            ItemType<EssenceOfTheBeginningAndEnd>(),
-            ItemType<EssenceOfExplosions>(),
-            ItemType<EssenceOfTheBionis>(),
-            ItemType<EssenceOfTheChimera>(),
-            ItemType<EssenceOfTheCosmos>(),
-            ItemType<EssenceOfTheFuture>(),
-            ItemType<EssenceOfBlasting>(),
-            ItemType<EssenceOfTheGunlance>(),
-            ItemType<EssenceOfTheObservatory>(),
-            ItemType<EssenceOfTheOcean>(),
-            ItemType<EssenceOfTwinStars>(),
-            ItemType<EssenceOfVampirism>(),
-            ItemType<EssenceOfDestiny>(),
-            ItemType<EssenceOfBlood>(),
-            ItemType<EssenceOfLifethirsting>(),
-            ItemType<EssenceOfBalance>(),
-            ItemType<EssenceOfTheOverwhelmingBlaze>(),
-            ItemType<EssenceOfTheAbyss>(),
-            ItemType<EssenceOfTheRenegade>(),
-            ItemType<EssenceOfQuantum>(),
-            ItemType<EssenceOfSilence>(),
-            ItemType<EssenceOfSouls>(),
-            ItemType<EssenceOfGold>(),
-            ItemType<EssenceOfMimicry>(),
-            ItemType<EssenceOfTheTimeless>(),
-            ItemType<EssenceOfPiracy>(),
-            ItemType<EssenceOfAbsoluteChaos>(),
-            ItemType<EssenceOfTheWatch>(),
-            ItemType<EssenceOfTheBehemothTyphoon>(),
-            ItemType<EssenceOfLightning>(),
-            ItemType<EssenceOfNanomachines>(),
-            ItemType<EssenceOfDespair>(),
-            ItemType<EssenceOfMania>(),
-            ItemType<EssenceOfSurya>(),
-            ItemType<EssenceOfAuthority>(),
-            ItemType<EssenceOfKinetics>(),
-            ItemType<EssenceOfDreams>(),
-            ItemType<EssenceOfTheSoldier>(),
-            ItemType<EssenceOfSpinning>(),
-
-            ItemType<EssenceOfHydro>(),
-            ItemType<EssenceOfKingslaying>(),
-            ItemType<EssenceOfFirepower>(),
-            ItemType<EssenceOfTheDragon>(),
-        };
-
-        public List<int> Prisms = new List<int>() {
-
-            ItemType<PrismaticCore>(),
-
-            ItemType<AlchemicPrism>(),
-            ItemType<ApocryphicPrism>(),
-            ItemType<CastellicPrism>(),
-            ItemType<CrystallinePrism>(),
-            ItemType<EmpressPrism>(),
-            ItemType<EverflamePrism>(),
-            ItemType<LightswornPrism>(),
-            ItemType<LihzahrdPrism>(),
-            ItemType<LucentPrism>(),
-            ItemType<LuminitePrism>(),
-            ItemType<MechanicalPrism>(),
-            ItemType<OvergrownPrism>(),
-            ItemType<PaintedPrism>(),
-            ItemType<PhylacticPrism>(),
-            ItemType<RadiantPrism>(),
-            ItemType<RefulgentPrism>(),
-            ItemType<RoyalSlimePrism>(),
-            ItemType<SpatialPrism>(),
-            ItemType<TyphoonPrism>(),
-            ItemType<VerdantPrism>(),
-            ItemType<VoidsentPrism>(),
-            ItemType<PrismOfTheCosmicPhoenix>(),
-            ItemType<PrismOfTheRuinedKing>(),
-
-
-        };
-
-        #region Gifts
-        //Temporary addition, possibly for the 'Rapport' system, kind of like Social Links.
-        public List<int> AsphodeneLikes = new List<int>()
+        public static List<int> AstralWeapons = new List<int>();
+        public static List<int> UmbralWeapons = new List<int>();
+        public static List<int> SpatialWeapons = new List<int>();
+        public static List<int> Prisms = new List<int>();
+        public static List<int> Outfits = new List<int>();
+        public static List<int> GlowingItems = new List<int>();
+        public static List<int> Essences = new List<int>();
+        public static List<int> WeaponsUnaffectedByAspectedDamagePenalty = new List<int>();
+        public override void SetStaticDefaults()
         {
+            AstralWeapons = new List<int>() {
+                ItemType<CarianDarkMoon>(),
+                ItemType<NeoDealmaker>(),
+                ItemType<DerFreischutz>(),
+                ItemType<Persephone>(),
+                ItemType<Skofnung>(),
+                ItemType<AegisDriver>(),
+                ItemType<KarlanTruesilver>(),
+                ItemType<IzanagiEdge>(),
+                ItemType<VenerationOfButterflies>(),
+                ItemType<RideTheBull>(),
+                ItemType<CrimsonOutbreak>(),
+                ItemType<StygianNymph>(),
+                ItemType<CrimsonKey>(),
+                ItemType<PhantomInTheMirror>(),
+                ItemType<PleniluneGaze>(),
+                ItemType<VisionOfEuthymia>(),
+                ItemType<RexLapis>(),
+                ItemType<LiberationBlazing>(),
+                ItemType<Suistrume>(),
+                ItemType<KeyOfTheKingsLaw>(),
+                ItemType<HunterSymphony>(),
+                ItemType<KevesiFarewell>(),
+                ItemType<PodZero42>(),
+                ItemType<GossamerNeedle>(),
+                ItemType<DevotedHavoc>(),
 
-            //ModContent.ItemType<TotemOfLightEmpowered>(),
-            //ModContent.ItemType<VirtuesEdge>(),
+			    //ModContent.ItemType<EssenceOf>(),
+			    ItemType<EssenceOfTheDarkMoon>(),
+                ItemType<EssenceOfBitterfrost>(),
+                ItemType<EssenceOfButterflies>(),
+                ItemType<EssenceOfDuality>(),
+                ItemType<EssenceOfEuthymia>(),
+                ItemType<EssenceOfIzanagi>(),
+                ItemType<EssenceOfLiberation>(),
+                ItemType<EssenceOfSilverAsh>(),
+                ItemType<EssenceOfSin>(),
+                ItemType<EssenceOfStarsong>(),
+                ItemType<EssenceOfTheAegis>(),
+                ItemType<EssenceOfTheAnomaly>(),
+                ItemType<EssenceOfTheBull>(),
+                ItemType<EssenceOfTheFreeshooter>(),
+                ItemType<EssenceOfTheMoonlitAdepti>(),
+                ItemType<EssenceOfThePhantom>(),
+                ItemType<EssenceOfTheSwarm>(),
+                ItemType<EssenceOfTheTreasury>(),
+                ItemType<EssenceOfTheUnderworldGoddess>(),
+                ItemType<EssenceOfTheUnyieldingEarth>(),
+                ItemType<EssenceOfTheHunt>(),
+                ItemType<EssenceOfFarewells>(),
+                ItemType<EssenceOfTheAutomaton>(),
+                ItemType<EssenceOfTheHallownest>(),
+                ItemType<EssenceOfEnergy>(),
 
+            };
+            UmbralWeapons = new List<int>() {
+                ItemType<KonpakuKatana>(),
+                ItemType<AshenAmbition>(),
+                ItemType<DeathInFourActs>(),
+                ItemType<KazimierzSeraphim>(),
+                ItemType<InugamiRipsaw>(),
+                ItemType<RadGun>(),
+                ItemType<EveryMomentMatters>(),
+                ItemType<Hawkmoon>(),
+                ItemType<MementoMuse>(),
+                ItemType<Drachenlance>(),
+                ItemType<VoiceOfTheFallen>(),
+                ItemType<CaesuraOfDespair>(),
+                ItemType<CrimsonSakuraAlpha>(),
+                ItemType<HollowheartAlbion>(),
+                ItemType<Tartaglia>(),
+                ItemType<KroniicAccelerator>(),
+                ItemType<YunlaiStiletto>(),
+                ItemType<Unforgotten>(),
+                ItemType<Naganadel>(),
+                ItemType<LightUnrelenting>(),
+                ItemType<SparkblossomBeacon>(),
+                ItemType<IrminsulDream>(),
+                ItemType<AgnianFarewell>(),
+                ItemType<DraggedBelow>(),
+                ItemType<SoliloquyOfSovereignSeas>(),
 
-        };
-        public List<int> EridaniLikes = new List<int>()
-        {
+                ItemType<EssenceOfAlpha>(),
+                ItemType<EssenceOfAsh>(),
+                ItemType<EssenceOfAzakana>(),
+                ItemType<EssenceOfDeathsApprentice>(),
+                ItemType<EssenceOfDrivingThunder>(),
+                ItemType<EssenceOfFingers>(),
+                ItemType<EssenceOfIRyS>(),
+                ItemType<EssenceOfLunarDominion>(),
+                ItemType<EssenceOfPerfection>(),
+                ItemType<EssenceOfStyle>(),
+                ItemType<EssenceOfSurpassingLimits>(),
+                ItemType<EssenceOfTheDragonslayer>(),
+                ItemType<EssenceOfTheFallen>(),
+                ItemType<EssenceOfTheGardener>(),
+                ItemType<EssenceOfTheHarbinger>(),
+                ItemType<EssenceOfTheHawkmoon>(),
+                ItemType<EssenceOfTheHollowheart>(),
+                ItemType<EssenceOfThePegasus>(),
+                ItemType<EssenceOfTheSharpshooter>(),
+                ItemType<EssenceOfTime>(),
+                ItemType<EssenceOfStaticShock>(),
+                ItemType<EssenceOfOffseeing>(),
+                ItemType<EssenceOfTheVoid>(),
+                ItemType<EssenceOfHydro>(),
+                ItemType<EssenceOfNature>(),
 
-            //ModContent.ItemType<TotemOfLightEmpowered>(),
-            //ModContent.ItemType<VirtuesEdge>(),
+            };
+            SpatialWeapons = new List<int>(){
+                ItemType<Apalistik>(),
+                ItemType<MiserysCompany>(),
+                ItemType<AncientBook>(),
+                ItemType<LuminaryWand>(),
+                ItemType<DreadnoughtChemtank>(),
+                ItemType<ApalistikUpgraded>(),
+                ItemType<Xenoblade>(),
+                ItemType<SkyStrikerArms>(),
+                ItemType<ForceOfNature>(),
+                ItemType<Hullwrought>(),
+                ItemType<PenthesileaMuse>(),
+                ItemType<Kifrosse>(),
+                ItemType<Genocide>(),
+                ItemType<Mercy>(),
+                ItemType<ArachnidNeedlepoint>(),
+                ItemType<SakuraVengeance>(),
+                ItemType<TheOnlyThingIKnowForReal>(),
+                ItemType<TwinStars>(),
+                ItemType<Ozma>(),
+                ItemType<ClaimhSolais>(),
+                ItemType<MorningStar>(),
 
+                ItemType<EternalStar>(),
+                ItemType<VermillionDaemon>(),
+                ItemType<ShadowlessCerulean>(),
+                ItemType<HullwroughtMKII>(),
+                ItemType<IgnitionAstra>(),
+                ItemType<BuryTheLight>(),
+                ItemType<ArchitectLuminance>(),
+                ItemType<CosmicDestroyer>(),
+                ItemType<VirtuesEdge>(),
+                ItemType<UltimaThule>(),
+                ItemType<BloodBlade>(),
+                ItemType<RedMage>(),
+                ItemType<BurningDesire>(),
+                ItemType<EverlastingPickaxe>(),
+                ItemType<CatalystMemory>(),
+                ItemType<ElCapitansHardware>(),
+                ItemType<BlackSilenceWeapon>(),
+                ItemType<SoulReaver>(),
+                ItemType<GoldenKatana>(),
+                ItemType<Manifestation>(),
 
-        };
-        public List<int> PerseusLikes = new List<int>()
-        {
+			    //Stars Above v1.3
+			    ItemType<Umbra>(),
+                ItemType<SaltwaterScourge>(),
+                ItemType<AdornmentOfTheChaoticGod>(),
+                ItemType<Chronoclock>(),
+                ItemType<KissOfDeath>(),
 
-            //ModContent.ItemType<TotemOfLightEmpowered>(),
-            //ModContent.ItemType<VirtuesEdge>(),
+			    //Stars Above v1.4
+			    ItemType<Nanomachina>(),
+                ItemType<LevinstormAxe>(),
+                ItemType<SanguineDespair>(),
+                ItemType<SunsetOfTheSunGod>(),
+                ItemType<ManiacalJustice>(),
+                ItemType<SupremeAuthority>(),
 
+			    //Stars Above v1.5
+			    ItemType<DreamersInkwell>(),
+                ItemType<BrilliantSpectrum>(),
+                ItemType<ShockAndAwe>(),
+                ItemType<TrickspinTwoStep>(),
 
-        };
-        public List<int> GarridineLikes = new List<int>()
-        {
+                //Stars Above v2.0
+                ItemType<DragaliaFound>(),
+                ItemType<GundbitStaves>(),
+                ItemType<Wavedancer>(),
+                ItemType<RebellionBloodArthur>(),
+                
+                //Stars Above v2.1
+                ItemType<LegendaryShield>(),
+                ItemType<Wolvesbane>(),
+                ItemType<WolvesbaneRearmed>(),
+                ItemType<WolvesbaneAwakened>(),
+                ItemType<CandiedSugarball>(),
+                ItemType<OrbitalExpresswayPlush>(),
+                ItemType<StringOfCurses>(),
+                ItemType<Phasmasaber>(),
+                ItemType<StarphoenixFunnel>(),
+                ItemType<CloakOfAnArbiter>(),
+                ItemType<TwoCrownBow>(),
+                ItemType<InheritedCaseM4A1>(),
+                ItemType<DreadmotherDarkIdol>(),
+                ItemType<QuisUtDeus>(),
+                ItemType<ParadiseLost>(),
 
-            //ModContent.ItemType<TotemOfLightEmpowered>(),
-            //ModContent.ItemType<VirtuesEdge>(),
+                ItemType<EssenceOfAdagium>(),
+                ItemType<EssenceOfBloodshed>(),
+                ItemType<EssenceOfChemtech>(),
+                ItemType<EssenceOfEternity>(),
+                ItemType<EssenceOfFoxfire>(),
+                ItemType<EssenceOfInk>(),
+                ItemType<EssenceOfLuminance>(),
+                ItemType<EssenceOfMisery>(),
+                ItemType<EssenceOfOuterGods>(),
+                ItemType<EssenceOfRadiance>(),
+                ItemType<EssenceOfSakura>(),
+                ItemType<EssenceOfTechnology>(),
+                ItemType<EssenceOfTheAerialAce>(),
+                ItemType<EssenceOfTheAscendant>(),
+                ItemType<EssenceOfTheBeginningAndEnd>(),
+                ItemType<EssenceOfExplosions>(),
+                ItemType<EssenceOfTheBionis>(),
+                ItemType<EssenceOfTheChimera>(),
+                ItemType<EssenceOfTheCosmos>(),
+                ItemType<EssenceOfTheFuture>(),
+                ItemType<EssenceOfBlasting>(),
+                ItemType<EssenceOfTheGunlance>(),
+                ItemType<EssenceOfTheObservatory>(),
+                ItemType<EssenceOfTheOcean>(),
+                ItemType<EssenceOfTwinStars>(),
+                ItemType<EssenceOfVampirism>(),
+                ItemType<EssenceOfDestiny>(),
+                ItemType<EssenceOfBlood>(),
+                ItemType<EssenceOfLifethirsting>(),
+                ItemType<EssenceOfBalance>(),
+                ItemType<EssenceOfTheOverwhelmingBlaze>(),
+                ItemType<EssenceOfTheAbyss>(),
+                ItemType<EssenceOfTheRenegade>(),
+                ItemType<EssenceOfQuantum>(),
+                ItemType<EssenceOfSilence>(),
+                ItemType<EssenceOfSouls>(),
+                ItemType<EssenceOfGold>(),
+                ItemType<EssenceOfMimicry>(),
+                ItemType<EssenceOfTheTimeless>(),
+                ItemType<EssenceOfPiracy>(),
+                ItemType<EssenceOfAbsoluteChaos>(),
+                ItemType<EssenceOfTheWatch>(),
+                ItemType<EssenceOfTheBehemothTyphoon>(),
+                ItemType<EssenceOfLightning>(),
+                ItemType<EssenceOfNanomachines>(),
+                ItemType<EssenceOfDespair>(),
+                ItemType<EssenceOfMania>(),
+                ItemType<EssenceOfSurya>(),
+                ItemType<EssenceOfAuthority>(),
+                ItemType<EssenceOfKinetics>(),
+                ItemType<EssenceOfDreams>(),
+                ItemType<EssenceOfTheSoldier>(),
+                ItemType<EssenceOfSpinning>(),
 
+                ItemType<EssenceOfKingslaying>(),
+                ItemType<EssenceOfFirepower>(),
+                ItemType<EssenceOfTheDragon>(),
+                ItemType<EssenceOfDancingSeas>(),
 
-        };
-        public List<int> YojimboLikes = new List<int>()
-        {
+                ItemType<EssenceOfTheShield>(),
+                ItemType<EssenceOfWolves>(),
+                ItemType<EssenceOfSugar>(),
+                ItemType<EssenceOfCookies>(),
+                ItemType<EssenceOfNecrosis>(),
+                ItemType<EssenceOfChionicEnergy>(),
+                ItemType<EssenceOfThePhoenix>(),
+                ItemType<EssenceOfASingularity>(),
+                ItemType<EssenceOfTheHuntress>(),
+                ItemType<EssenceOfTheRifle>(),
+                ItemType<EssenceOfTheDarkMaker>(),
+                ItemType<EssenceOfTheStars>(),
+                ItemType<EssenceOfTheWhiteNight>(),
+            };
+            Prisms = new List<int>() {
 
-            //ModContent.ItemType<TotemOfLightEmpowered>(),
-            //ModContent.ItemType<VirtuesEdge>(),
+                ItemType<PrismaticCore>(),
 
+                ItemType<AuricExaltPrism>(),
+                ItemType<BloodyBanquetPrism>(),
+                ItemType<CrescentMeteorPrism>(),
+                ItemType<DeadbloomPrism>(),
+                ItemType<DreadMechanicalPrism>(),
+                ItemType<LucidDreamerPrism>(),
+                ItemType<LuminousHallowPrism>(),
+                ItemType<RoyalSunrisePrism>(),
+                
+            };
+            WeaponsUnaffectedByAspectedDamagePenalty = new List<int>() {
+                ItemType<ArchitectLuminance>(),
+                ItemType<SkyStrikerArms>(),
+                ItemType<SunsetOfTheSunGod>(),
+                ItemType<DreadmotherDarkIdol>(),
+            };
+            Outfits = new List<int>() {
+                ItemType<FaerieVoyagerAttire>(),
+                ItemType<StellarCasualAttire>(),
+                ItemType<AegisOfHopesLegacy>(),
+                ItemType<CelestialPrincessGenesis>(),
+                ItemType<FamiliarLookingAttire>(),
+                ItemType<SeventhSigilAutumnAttire>(),
+                ItemType<GarmentsOfWinterRainAttire>(),
+                ItemType<RenegadeTechnomancerSynthweave>(),
+            };
+            GlowingItems = new List<int>() {
+                ItemType<TotemOfLightEmpowered>(),
+                ItemType<BlackSilenceWeapon>(),
+                ItemType<AdornmentOfTheChaoticGod>(),
+                ItemType<Chronoclock>(),
+                ItemType<BrilliantSpectrum>(),
+                ItemType<ProgenitorWish>(),
+                ItemType<Phasmasaber>(),
+                ItemType<ElectrumScissors>(),
+            };
+            Essences = new List<int>() {
+                ItemType<EssenceOfLifethirsting>(),
+                ItemType<EssenceOfTheDarkMoon>(),
+                ItemType<EssenceOfAdagium>(),
+                ItemType<EssenceOfBloodshed>(),
+                ItemType<EssenceOfChemtech>(),
+                ItemType<EssenceOfEternity>(),
+                ItemType<EssenceOfFoxfire>(),
+                ItemType<EssenceOfInk>(),
+                ItemType<EssenceOfLuminance>(),
+                ItemType<EssenceOfMisery>(),
+                ItemType<EssenceOfOuterGods>(),
+                ItemType<EssenceOfRadiance>(),
+                ItemType<EssenceOfSakura>(),
+                ItemType<EssenceOfTechnology>(),
+                ItemType<EssenceOfTheAerialAce>(),
+                ItemType<EssenceOfTheAscendant>(),
+                ItemType<EssenceOfTheBeginningAndEnd>(),
+                ItemType<EssenceOfExplosions>(),
+                ItemType<EssenceOfTheBionis>(),
+                ItemType<EssenceOfTheChimera>(),
+                ItemType<EssenceOfTheCosmos>(),
+                ItemType<EssenceOfTheFuture>(),
+                ItemType<EssenceOfBlasting>(),
+                ItemType<EssenceOfTheGunlance>(),
+                ItemType<EssenceOfTheObservatory>(),
+                ItemType<EssenceOfTheOcean>(),
+                ItemType<EssenceOfTwinStars>(),
+                ItemType<EssenceOfVampirism>(),
+                ItemType<EssenceOfDestiny>(),
+                ItemType<EssenceOfAlpha>(),
+                ItemType<EssenceOfAsh>(),
+                ItemType<EssenceOfAzakana>(),
+                ItemType<EssenceOfDeathsApprentice>(),
+                ItemType<EssenceOfDrivingThunder>(),
+                ItemType<EssenceOfFingers>(),
+                ItemType<EssenceOfIRyS>(),
+                ItemType<EssenceOfLunarDominion>(),
+                ItemType<EssenceOfPerfection>(),
+                ItemType<EssenceOfStyle>(),
+                ItemType<EssenceOfSurpassingLimits>(),
+                ItemType<EssenceOfTheDragonslayer>(),
+                ItemType<EssenceOfTheFallen>(),
+                ItemType<EssenceOfTheGardener>(),
+                ItemType<EssenceOfTheHarbinger>(),
+                ItemType<EssenceOfTheHawkmoon>(),
+                ItemType<EssenceOfTheHollowheart>(),
+                ItemType<EssenceOfThePegasus>(),
+                ItemType<EssenceOfTheSharpshooter>(),
+                ItemType<EssenceOfTime>(),
+                ItemType<EssenceOfStaticShock>(),
+                ItemType<EssenceOfBitterfrost>(),
+                ItemType<EssenceOfButterflies>(),
+                ItemType<EssenceOfDuality>(),
+                ItemType<EssenceOfEuthymia>(),
+                ItemType<EssenceOfIzanagi>(),
+                ItemType<EssenceOfLiberation>(),
+                ItemType<EssenceOfSilverAsh>(),
+                ItemType<EssenceOfSin>(),
+                ItemType<EssenceOfStarsong>(),
+                ItemType<EssenceOfTheAegis>(),
+                ItemType<EssenceOfTheAnomaly>(),
+                ItemType<EssenceOfTheBull>(),
+                ItemType<EssenceOfTheFreeshooter>(),
+                ItemType<EssenceOfTheMoonlitAdepti>(),
+                ItemType<EssenceOfThePhantom>(),
+                ItemType<EssenceOfTheSwarm>(),
+                ItemType<EssenceOfTheTreasury>(),
+                ItemType<EssenceOfTheUnderworldGoddess>(),
+                ItemType<EssenceOfTheUnyieldingEarth>(),
+                ItemType<EssenceOfTheHunt>(),
+                ItemType<EssenceOfBlood>(),
+                ItemType<EssenceOfBalance>(),
+                ItemType<EssenceOfTheOverwhelmingBlaze>(),
+                ItemType<EssenceOfTheAbyss>(),
+                ItemType<EssenceOfTheRenegade>(),
+                ItemType<EssenceOfQuantum>(),
+                ItemType<EssenceOfSilence>(),
+                ItemType<EssenceOfSouls>(),
+                ItemType<EssenceOfGold>(),
+                ItemType<EssenceOfFarewells>(),
+                ItemType<EssenceOfOffseeing>(),
+                ItemType<EssenceOfMimicry>(),
+                ItemType<EssenceOfTheAutomaton>(),
+                ItemType<EssenceOfNature>(),
+                ItemType<EssenceOfTheTimeless>(),
+                ItemType<EssenceOfPiracy>(),
+                ItemType<EssenceOfAbsoluteChaos>(),
+                ItemType<EssenceOfTheWatch>(),
+                ItemType<EssenceOfDespair>(),
+                ItemType<EssenceOfTheBehemothTyphoon>(),
+                ItemType<EssenceOfLightning>(),
+                ItemType<EssenceOfNanomachines>(),
+                ItemType<EssenceOfMania>(),
+                ItemType<EssenceOfSurya>(),
+                ItemType<EssenceOfTheVoid>(),
+                ItemType<EssenceOfTheHallownest>(),
+                ItemType<EssenceOfKinetics>(),
+                ItemType<EssenceOfTheSoldier>(),
+                ItemType<EssenceOfSpinning>(),
+                ItemType<EssenceOfDreams>(),
+                ItemType<EssenceOfAuthority>(),
 
-        };
-        #endregion
+                ItemType<EssenceOfHydro>(),
+                ItemType<EssenceOfFirepower>(),
+                ItemType<EssenceOfKingslaying>(),
+                ItemType<EssenceOfDancingSeas>(),
+                ItemType<EssenceOfEnergy>(),
+                ItemType<EssenceOfTheDragon>(),
 
-        public List<int> Outfits = new List<int>() {
+                ItemType<EssenceOfTheShield>(),
+                ItemType<EssenceOfWolves>(),
+                ItemType<EssenceOfSugar>(),
+                ItemType<EssenceOfCookies>(),
+                ItemType<EssenceOfNecrosis>(),
+                ItemType<EssenceOfChionicEnergy>(),
+                ItemType<EssenceOfThePhoenix>(),
+                ItemType<EssenceOfASingularity>(),
+                ItemType<EssenceOfTheHuntress>(),
+                ItemType<EssenceOfTheRifle>(),
+                ItemType<EssenceOfTheDarkMaker>(),
+                ItemType<EssenceOfTheStars>(),
+                ItemType<EssenceOfTheWhiteNight>(),
 
-            ItemType<FaerieVoyagerAttire>(),
-            ItemType<StellarCasualAttire>(),
-            ItemType<AegisOfHopesLegacy>(),
-            ItemType<CelestialPrincessGenesis>(),
-            ItemType<FamiliarLookingAttire>(),
-            ItemType<SeventhSigilAutumnAttire>(),
-            ItemType<GarmentsOfWinterRainAttire>(),
-
-        };
-
-        public List<int> GlowingItems = new List<int>() {
-
-            ItemType<TotemOfLightEmpowered>(),
-            ItemType<BlackSilenceWeapon>(),
-            ItemType<AdornmentOfTheChaoticGod>(),
-            ItemType<Chronoclock>(),
-            ItemType<BrilliantSpectrum>(),
-        };
-        public List<int> Essences = new List<int>() {
-
-            ItemType<EssenceOfLifethirsting>(),
-            ItemType<EssenceOfTheDarkMoon>(),
-            ItemType<EssenceOfAdagium>(),
-            ItemType<EssenceOfBloodshed>(),
-            ItemType<EssenceOfChemtech>(),
-            ItemType<EssenceOfEternity>(),
-            ItemType<EssenceOfFoxfire>(),
-            ItemType<EssenceOfInk>(),
-            ItemType<EssenceOfLuminance>(),
-            ItemType<EssenceOfMisery>(),
-            ItemType<EssenceOfOuterGods>(),
-            ItemType<EssenceOfRadiance>(),
-            ItemType<EssenceOfSakura>(),
-            ItemType<EssenceOfTechnology>(),
-            ItemType<EssenceOfTheAerialAce>(),
-            ItemType<EssenceOfTheAscendant>(),
-            ItemType<EssenceOfTheBeginningAndEnd>(),
-            ItemType<EssenceOfExplosions>(),
-            ItemType<EssenceOfTheBionis>(),
-            ItemType<EssenceOfTheChimera>(),
-            ItemType<EssenceOfTheCosmos>(),
-            ItemType<EssenceOfTheFuture>(),
-            ItemType<EssenceOfBlasting>(),
-            ItemType<EssenceOfTheGunlance>(),
-            ItemType<EssenceOfTheObservatory>(),
-            ItemType<EssenceOfTheOcean>(),
-            ItemType<EssenceOfTwinStars>(),
-            ItemType<EssenceOfVampirism>(),
-            ItemType<EssenceOfDestiny>(),
-            ItemType<EssenceOfAlpha>(),
-            ItemType<EssenceOfAsh>(),
-            ItemType<EssenceOfAzakana>(),
-            ItemType<EssenceOfDeathsApprentice>(),
-            ItemType<EssenceOfDrivingThunder>(),
-            ItemType<EssenceOfFingers>(),
-            ItemType<EssenceOfIRyS>(),
-            ItemType<EssenceOfLunarDominion>(),
-            ItemType<EssenceOfPerfection>(),
-            ItemType<EssenceOfStyle>(),
-            ItemType<EssenceOfSurpassingLimits>(),
-            ItemType<EssenceOfTheDragonslayer>(),
-            ItemType<EssenceOfTheFallen>(),
-            ItemType<EssenceOfTheGardener>(),
-            ItemType<EssenceOfTheHarbinger>(),
-            ItemType<EssenceOfTheHawkmoon>(),
-            ItemType<EssenceOfTheHollowheart>(),
-            ItemType<EssenceOfThePegasus>(),
-            ItemType<EssenceOfTheSharpshooter>(),
-            ItemType<EssenceOfTime>(),
-            ItemType<EssenceOfStaticShock>(),
-            ItemType<EssenceOfBitterfrost>(),
-            ItemType<EssenceOfButterflies>(),
-            ItemType<EssenceOfDuality>(),
-            ItemType<EssenceOfEuthymia>(),
-            ItemType<EssenceOfIzanagi>(),
-            ItemType<EssenceOfLiberation>(),
-            ItemType<EssenceOfSilverAsh>(),
-            ItemType<EssenceOfSin>(),
-            ItemType<EssenceOfStarsong>(),
-            ItemType<EssenceOfTheAegis>(),
-            ItemType<EssenceOfTheAnomaly>(),
-            ItemType<EssenceOfTheBull>(),
-            ItemType<EssenceOfTheFreeshooter>(),
-            ItemType<EssenceOfTheMoonlitAdepti>(),
-            ItemType<EssenceOfThePhantom>(),
-            ItemType<EssenceOfTheSwarm>(),
-            ItemType<EssenceOfTheTreasury>(),
-            ItemType<EssenceOfTheUnderworldGoddess>(),
-            ItemType<EssenceOfTheUnyieldingEarth>(),
-            ItemType<EssenceOfTheHunt>(),
-            ItemType<EssenceOfBlood>(),
-            ItemType<EssenceOfBalance>(),
-            ItemType<EssenceOfTheOverwhelmingBlaze>(),
-            ItemType<EssenceOfTheAbyss>(),
-            ItemType<EssenceOfTheRenegade>(),
-            ItemType<EssenceOfQuantum>(),
-            ItemType<EssenceOfSilence>(),
-            ItemType<EssenceOfSouls>(),
-            ItemType<EssenceOfGold>(),
-            ItemType<EssenceOfFarewells>(),
-            ItemType<EssenceOfOffseeing>(),
-            ItemType<EssenceOfMimicry>(),
-            ItemType<EssenceOfTheAutomaton>(),
-            ItemType<EssenceOfNature>(),
-            ItemType<EssenceOfTheTimeless>(),
-            ItemType<EssenceOfPiracy>(),
-            ItemType<EssenceOfAbsoluteChaos>(),
-            ItemType<EssenceOfTheWatch>(),
-            ItemType<EssenceOfDespair>(),
-            ItemType<EssenceOfTheBehemothTyphoon>(),
-            ItemType<EssenceOfLightning>(),
-            ItemType<EssenceOfNanomachines>(),
-            ItemType<EssenceOfMania>(),
-            ItemType<EssenceOfSurya>(),
-            ItemType<EssenceOfTheVoid>(),
-            ItemType<EssenceOfTheHallownest>(),
-            ItemType<EssenceOfKinetics>(),
-            ItemType<EssenceOfTheSoldier>(),
-            ItemType<EssenceOfSpinning>(),
-            ItemType<EssenceOfDreams>(),
-            ItemType<EssenceOfAuthority>(),
-
-            ItemType<EssenceOfHydro>(),
-            ItemType<EssenceOfFirepower>(),
-            ItemType<EssenceOfKingslaying>(),
-            ItemType<EssenceOfDancingSeas>(),
-            ItemType<EssenceOfEnergy>(),
-            ItemType<EssenceOfTheDragon>(),
-
-        };
+            };
+            base.SetStaticDefaults();
+        }
+  
         public static bool disableAspectPenalty;
         public static bool disableCalamityWeaponBuffs;
         public static bool disableWeaponRestriction = false;
@@ -772,8 +775,15 @@ namespace StarsAbove.Systems
 
 
         }
+
+        public DamageClass getOldDamageClass()
+        {
+            return oldDamageClass;
+        }
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
+            oldDamageClass = item.GetGlobalItem<StarsAboveGlobalItem>().getOldDamageClass();
             //damage += 0.2f;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
@@ -785,7 +795,7 @@ namespace StarsAbove.Systems
 
 
             }
-
+            //If the weapon is from stars above or aprismatism is active, and the weapon deals damage...
             if ((item.ModItem?.Mod == ModLoader.GetMod("StarsAbove") || player.GetModPlayer<StarsAbovePlayer>().aprismatism == 2) && item.damage > 0)
             { //
                 if (item.DamageType != GetInstance<CelestialDamageClass>())
@@ -815,7 +825,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
+                    else if (player.GetModPlayer<StarsAbovePlayer>().BardAspect == 2)
                     {
                         if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
                         {
@@ -836,7 +846,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().HealerAspect == 2)
                     {
                         if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
                         {
@@ -857,7 +867,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().ThrowerAspect == 2)
                     {
                         if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
                         {
@@ -878,12 +888,19 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
+
+                    //if the player is melee aspected
+                    else if(player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                     {
+
+                        
+                        //if the old damage class is not melee
                         if (oldDamageClass != DamageClass.Melee && oldDamageClass != DamageClass.MeleeNoSpeed)
                         {
+                            //damage is the total damage of melee? might need changing to fix scaling.
                             damage = player.GetTotalDamage(DamageClass.Melee);
 
+                            //reduce damage if aspect penalty is false.
                             if (!disableAspectPenalty)
                             {
                                 damage -= 0.15f;
@@ -896,7 +913,7 @@ namespace StarsAbove.Systems
                         }
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
                     {
                         if (oldDamageClass != DamageClass.Magic && oldDamageClass != DamageClass.MagicSummonHybrid)
                         {
@@ -913,11 +930,11 @@ namespace StarsAbove.Systems
 
 
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
                     {
                         if (oldDamageClass != DamageClass.Ranged)
                         {
-                            player.GetTotalDamage(DamageClass.Ranged);
+                            damage = player.GetTotalDamage(DamageClass.Ranged);
                             if (!disableAspectPenalty)
                             {
                                 damage -= 0.1f;
@@ -928,7 +945,7 @@ namespace StarsAbove.Systems
 
                         }
                     }
-                    if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
+                    else if(player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
                     {
                         if (oldDamageClass != DamageClass.Summon && oldDamageClass != DamageClass.MagicSummonHybrid && oldDamageClass != DamageClass.SummonMeleeSpeed)
                         {
@@ -949,7 +966,8 @@ namespace StarsAbove.Systems
 
             }
 
-            if (!disableAspectPenalty && (player.HasBuff(BuffType<BearerOfLight>()) || player.HasBuff(BuffType<BearerOfDarkness>()) && player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2))
+            if (!disableAspectPenalty && 
+                ((player.HasBuff(BuffType<BearerOfLight>()) || (player.HasBuff(BuffType<BearerOfDarkness>())) && player.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)))
             {
                 if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                 {
@@ -962,20 +980,22 @@ namespace StarsAbove.Systems
 
                 }
             }
+            //TODO: create a list with weapons unaffected by penalty
             if (player.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
             {
-                if (item.ModItem is ArchitectLuminance && !disableAspectPenalty) //Melee weapons
+                if(WeaponsUnaffectedByAspectedDamagePenalty.Contains(item.type) && !disableAspectPenalty)
                 {
                     damage += 0.1f;
                 }
-                if (item.ModItem is SkyStrikerArms && !disableAspectPenalty)
+                
+            }
+            if (player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
+            {
+                if ((item.ModItem is Phasmasaber || item.ModItem is Wolvesbane || item.ModItem is WolvesbaneAwakened || item.ModItem is WolvesbaneRearmed) && !disableAspectPenalty) //Ranged weapons
                 {
                     damage += 0.1f;
                 }
-                if (item.ModItem is SunsetOfTheSunGod && !disableAspectPenalty)
-                {
-                    damage += 0.1f;
-                }
+
             }
             if (player.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2 || player.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
             {
@@ -1079,7 +1099,7 @@ namespace StarsAbove.Systems
 
 
             }
-
+            
 
             base.HoldItem(item, player);
         }
@@ -1089,7 +1109,11 @@ namespace StarsAbove.Systems
             {
 
             }
-            item.DamageType = oldDamageClass;
+            if(oldDamageClass != null)
+            {
+                item.DamageType = oldDamageClass;
+
+            }
         }
 
 

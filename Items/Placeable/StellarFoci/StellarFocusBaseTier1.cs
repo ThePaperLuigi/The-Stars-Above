@@ -58,7 +58,8 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 			CreateRecipe(1)
 				.AddIngredient(ItemID.Amber, 5)
 				.AddIngredient(ItemID.GoldCoin, 3)
-				.AddTile(TileType<Tiles.CelestriadRoot>())
+                .DisableDecraft()
+                .AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();
 		}
 	}

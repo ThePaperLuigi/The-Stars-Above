@@ -28,10 +28,10 @@ namespace StarsAbove.NPCs.TownNPCs
 
 			NPCID.Sets.ExtraFramesCount[Type] = 5; // Generally for Town NPCs, but this is how the NPC does extra things such as sitting in a chair and talking to other NPCs.
 			NPCID.Sets.AttackFrameCount[Type] = 4;
-			NPCID.Sets.DangerDetectRange[Type] = 700; // The amount of pixels away from the center of the npc that it tries to attack enemies.
+			NPCID.Sets.DangerDetectRange[Type] = 0; // The amount of pixels away from the center of the npc that it tries to attack enemies.
 			NPCID.Sets.AttackType[Type] = 0;
 			NPCID.Sets.AttackTime[Type] = 90; // The amount of time it takes for the NPC's attack animation to be over once it starts.
-			NPCID.Sets.AttackAverageChance[Type] = 30;
+			NPCID.Sets.AttackAverageChance[Type] = 8888;
 			NPCID.Sets.HatOffsetY[Type] = 4; // For when a party is active, the party hat spawns at a Y offset.
 
 			//This sets entry is the most important part of this NPC. Since it is true, it tells the game that we want this NPC to act like a town NPC without ACTUALLY being one.
@@ -70,7 +70,6 @@ namespace StarsAbove.NPCs.TownNPCs
 			NPC.HitSound = SoundID.NPCHit1;
 			NPC.DeathSound = SoundID.NPCDeath1;
 			NPC.knockBackResist = 0.5f;
-			
 			
 			AnimationType = NPCID.Steampunker;
 		}
@@ -171,6 +170,7 @@ namespace StarsAbove.NPCs.TownNPCs
 		}
         public override void AI()
         {
+			NPC.dontTakeDamage = true;
 			//Lighting.AddLight(NPC.Center, TorchID.Ice);
 			for (int i = 0; i < Main.maxPlayers; i++)
 			{
@@ -230,8 +230,8 @@ namespace StarsAbove.NPCs.TownNPCs
 		}
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-			projType = ModContent.ProjectileType<SkyStrikerRailgunRound>();
-			attackDelay = 1;
+			projType = ProjectileID.None;
+			attackDelay = 60;
         }
     }
 }

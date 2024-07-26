@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
 using StarsAbove.Items.Essences;
 using System;
 using Terraria;
@@ -9,8 +8,9 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.ShadowlessCerulean;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.ShadowlessCerulean;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -103,7 +103,7 @@ namespace StarsAbove.Items.Weapons.Melee
 					}
 
 					modPlayer.ceruleanFlameGauge = 0;
-					player.AddBuff(BuffType<Buffs.Ignited>(), 60);
+					player.AddBuff(BuffType<Buffs.Melee.ShadowlessCerulean.Ignited>(), 60);
 					player.AddBuff(BuffType<Buffs.Invincibility>(), 60);
 					Vector2 teleportPosition = new Vector2(player.GetModPlayer<StarsAbovePlayer>().playerMousePos.X, player.GetModPlayer<StarsAbovePlayer>().playerMousePos.Y - 5);
 					player.Teleport(teleportPosition, 1, 0);
@@ -188,7 +188,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			slashDuration--;
 			if (slashDuration == 1)
             {
-				player.AddBuff(BuffType<Buffs.WrathfulCeruleanFlame>(), 480);
+				player.AddBuff(BuffType<Buffs.Melee.ShadowlessCerulean.WrathfulCeruleanFlame>(), 480);
 				Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
 				Vector2 leap = Vector2.Normalize(mousePosition2) * -11f;
 				player.velocity = new Vector2(leap.X,leap.Y - 8);

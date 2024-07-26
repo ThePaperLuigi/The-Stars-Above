@@ -38,12 +38,13 @@ namespace StarsAbove.Projectiles.StellarNovas
 		float spin = 0;
 		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			Projectile.damage /= 2;
+            Projectile.friendly = false;
 
-			 
 
-		}
-		public override void AI()
+
+
+        }
+        public override void AI()
 		{
 			
 			

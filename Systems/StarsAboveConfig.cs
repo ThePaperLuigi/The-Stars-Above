@@ -1,4 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using StarsAbove.Dialogue;
+using StarsAbove.Items.Consumables;
+using StarsAbove.UI.Starfarers;
 using System;
 using System.ComponentModel;
 using Terraria.ModLoader;
@@ -12,15 +15,21 @@ namespace StarsAbove.Systems
 
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
-        [Header("$Mods.StarsAbove.Config.StellarNovaHeader")]
+        [Header("$Mods.StarsAbove.Configs.StellarNovaHeader")]
 
         public bool DisableStellarNovaCutIns;
 
-        public bool EnableStarfarerVoices;
+        public bool DisableStarfarerVoices;
+
+        [Increment(1)]
+        [Range(3, 20)]
+        [DefaultValue(5)]
+        [Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
+        public int StarfarerVoiceCooldown;
 
         public bool DisableStellarNovaDialogue;
 
-        [Header("$Mods.StarsAbove.Config.PopUpDialogueHeader")]
+        [Header("$Mods.StarsAbove.Configs.PopUpDialogueHeader")]
 
         public bool DisableStarfarerCommentary;
 
@@ -30,7 +39,7 @@ namespace StarsAbove.Systems
 
         [Increment(1)]
         [Range(1, 60)]
-        [DefaultValue(8)]
+        [DefaultValue(4)]
         [Slider] // The Slider attribute makes this field be presented with a slider rather than a text input. The default ticks is 1.
         public int StarfarerPromptCooldown;
 
@@ -44,8 +53,11 @@ namespace StarsAbove.Systems
         [Range(-1920f, 0f)]
         public Vector2 PromptLoc { get; set; }
 
+        [DefaultValue(typeof(Vector2), "0.77, 0.01")]
+        [Range(0f, 1f)]
+        public Vector2 NovaGaugeLoc { get; set; }
 
-        [Header("$Mods.StarsAbove.Config.DialogueHeader")]
+        [Header("$Mods.StarsAbove.Configs.DialogueHeader")]
 
         [Increment(1)]
         [Range(1, 5)]
@@ -68,9 +80,13 @@ namespace StarsAbove.Systems
         public float MovingDialogueAmount;
 
 
-        [Header("$Mods.StarsAbove.Config.MiscHeader")]
+        [Header("$Mods.StarsAbove.Configs.MiscHeader")]
+        public bool ForceNeonVeilShader;
+
         public bool EnableMusicOverride;
         public bool DisableBlur;
+        public bool DisableShockwaveEffect;
+        public bool DisableScreenShake;
 
         //[Label("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Label")]
         //[Tooltip("$Mods.StarsAbove.Config.EnablePlayerWorldLock.Tooltip")]
@@ -93,22 +109,38 @@ namespace StarsAbove.Systems
             //UI.StellarNova.StellarNovaCutIn.ShadesVisible = EnableAprilFools;
             UI.EmotionGauge.AnimationDisabled = DisableWeaponCutIns;
 
+            UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
             UI.Starfarers.StarfarerPrompt.PromptPos = PromptLoc;
             //UI.StellarNovaGauge.NovaGaugePos = NovaGaugeLoc;
             UI.StellarNova.StellarNovaCutIn.Visible = DisableStellarNovaCutIns;
             UI.StellarNova.StellarNovaCutIn.disableDialogue = DisableStellarNovaDialogue;
             UI.StarfarerMenu.StarfarerMenu.AdjustmentFactor = MovingDialogueAmount;
+            UI.Starfarers.StarfarerText.AdjustmentFactor = MovingDialogueAmount;
+
             //StarsAbovePlayer.noLockedCamera = DisableLockedCamera;
             StarsAbovePlayer.disablePrompts = DisableStarfarerCommentary;
             StarsAbovePlayer.starfarerPromptCooldownMax = StarfarerPromptCooldown;
+            StarsAbovePlayer.globalVoiceDelayMax = StarfarerVoiceCooldown;
+
             StarsAbovePlayer.instantText = InstantText;
             StarsAbovePlayer.disablePromptsBuffs = DisableStarfarerCommentaryBuffs;
             StarsAbovePlayer.disablePromptsCombat = DisableStarfarerCommentaryCombat;
             StarsAbovePlayer.starfarerPromptActiveTimerSetting = CommentaryTimer;
-            StarsAbovePlayer.voicesEnabled = EnableStarfarerVoices;
+
+            StarsAbovePlayer.voicesDisabled = DisableStarfarerVoices;
+            SpatialDisk.voicesDisabled = DisableStarfarerVoices;
+            StarsAboveDialogueSystem.voicesDisabled = DisableStarfarerVoices;
+            StarfarerText.voicesDisabled = DisableStarfarerVoices;
+            UI.StarfarerMenu.StarfarerMenu.voicesDisabled = DisableStarfarerVoices;
+
+            StarsAbovePlayer.ForceNeonVeilShader = ForceNeonVeilShader;
+
+            StarsAbovePlayer.shockwaveEffectDisabled = DisableShockwaveEffect;
+            StarsAbovePlayer.disableScreenShake = DisableScreenShake;
             StarsAbovePlayer.dialogueScrollTimerMax = DialogueScrollValue;
             StarsAbovePlayer.dialogueAudio = DialogueAudio;
             StarsAbovePlayer.disableBlur = DisableBlur;
+
 
             if (EnableMusicOverride)
             {

@@ -64,7 +64,8 @@ namespace StarsAbove.Items.Placeable.StellarFoci
 				.AddIngredient(ModContent.ItemType<PrismaticCore>(), 12)
 				.AddIngredient(ItemID.PlatinumCoin, 2)
 				.AddIngredient(ModContent.ItemType<StellarFocusBaseTier2>(), 1)
-				.AddTile(TileType<Tiles.CelestriadRoot>())
+                .DisableDecraft()
+                .AddTile(TileType<Tiles.CelestriadRoot>())
 				.Register();
 		}
 	}

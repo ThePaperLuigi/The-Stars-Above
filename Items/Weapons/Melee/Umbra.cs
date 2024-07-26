@@ -5,8 +5,8 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.Umbra;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

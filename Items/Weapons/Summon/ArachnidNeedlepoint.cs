@@ -8,13 +8,12 @@ using static Terraria.ModLoader.ModContent;
 using System.Collections.Generic;
 using System;
 using StarsAbove.Items.Essences;
-using StarsAbove.Buffs;
 using Terraria.Audio;
 using Terraria.Enums;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.Creative;
-using StarsAbove.Buffs.ArachnidNeedlepoint;
+using StarsAbove.Buffs.Summon.ArachnidNeedlepoint;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

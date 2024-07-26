@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs.CatalystMemory;
-using StarsAbove.Buffs.Gundbits;
+ 
+using StarsAbove.Buffs.Magic.Gundbits;
 using StarsAbove.Projectiles.Generics;
 using StarsAbove.Systems;
 using StarsAbove.Utilities;

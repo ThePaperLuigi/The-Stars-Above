@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.ID;
 using Terraria.Graphics.Shaders;
-using StarsAbove.Buffs.DraggedBelow;
+using StarsAbove.Buffs.Magic.DraggedBelow;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Magic.DraggedBelow

@@ -3,11 +3,10 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.Ozma;
-using StarsAbove.Buffs.CatalystMemory;
 using Terraria.Audio;
 using System;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Celestial.CatalystMemory;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Celestial.CatalystMemory

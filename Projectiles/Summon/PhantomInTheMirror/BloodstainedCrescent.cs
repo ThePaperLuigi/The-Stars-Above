@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Projectiles.Summon.PhantomInTheMirror
@@ -22,11 +24,11 @@ namespace StarsAbove.Projectiles.Summon.PhantomInTheMirror
             Projectile.timeLeft = 5;
             Projectile.penetrate = -1;
             Projectile.scale = 1f;
-            Projectile.alpha = 125;
+            Projectile.alpha = 255;
             Projectile.penetrate = -1;
             Projectile.friendly = true;
             Projectile.minion = true;
-
+            Projectile.tileCollide = false;
         }
 
         // In here the AI uses this example, to make the code more organized and readable
@@ -40,24 +42,76 @@ namespace StarsAbove.Projectiles.Summon.PhantomInTheMirror
 
         public override void AI()
         {
-
-            Projectile.ai[0] += 1f;
-
-            for (int d = 0; d < 6; d++)
+            float dustAmount = 30f;
+            float randomConstant = MathHelper.ToRadians(Main.rand.Next(0, 360));
+            for (int i = 0; i < dustAmount; i++)
             {
-                Dust.NewDust(Projectile.Center, 0, 0, 20, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default, 1.5f);
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = new Vector2(Projectile.Center.X - 50, Projectile.Center.Y) + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
             }
-            for (int d = 0; d < 16; d++)
+            for (int i = 0; i < dustAmount; i++)
             {
-                Dust.NewDust(Projectile.Center, 0, 0, 132, 0f + Main.rand.Next(-10, 10), 0f + Main.rand.Next(-10, 10), 150, default, 1.5f);
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = new Vector2(Projectile.Center.X + 50, Projectile.Center.Y) + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+            }
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = new Vector2(Projectile.Center.X, Projectile.Center.Y - 50) + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
+            }
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(1f, 1f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = new Vector2(Projectile.Center.X, Projectile.Center.Y + 50) + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 12f;
             }
 
-            // Fade in
-            Projectile.alpha--;
-            if (Projectile.alpha < 100)
+            for (int i = 0; i < dustAmount; i++)
             {
-                Projectile.alpha = 100;
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant);
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
             }
+            for (int i = 0; i < dustAmount; i++)
+            {
+                Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(115f, 4f);
+                spinningpoint5 = spinningpoint5.RotatedBy(Projectile.velocity.ToRotation() + randomConstant + MathHelper.ToRadians(90));
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LifeDrain);
+                Main.dust[dust].scale = 1.5f;
+                Main.dust[dust].noGravity = true;
+                Main.dust[dust].position = Projectile.Center + spinningpoint5;
+                Main.dust[dust].velocity = Projectile.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 13f;
+            }
+            
 
 
         }

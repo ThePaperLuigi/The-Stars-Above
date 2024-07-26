@@ -56,7 +56,7 @@ namespace StarsAbove.Projectiles.Melee.SoulReaver
             {
                 Projectile.Kill();
             }
-            if (player.HasBuff(BuffType<Buffs.SoulReaver.SoulSplit>()))
+            if (player.HasBuff(BuffType<Buffs.Melee.SoulReaver.SoulSplit>()))
             {
                 orbit = (int)MathHelper.Lerp(300, 0, player.GetModPlayer<WeaponPlayer>().bowCharge / 100);
             }

@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.Other.ArchitectLuminance
 
             //projectile.timeLeft = 999;
             Player player = Main.player[Projectile.owner];
-            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.ArtificeSirenBuff>()))
+            if (player.dead && !player.active || !player.HasBuff(BuffType<Buffs.Other.ArchitectsLuminance.ArtificeSirenBuff>()))
             {
                 Projectile.Kill();
             }

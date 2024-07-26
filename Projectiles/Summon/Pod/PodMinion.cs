@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.RedMage;
+using StarsAbove.Buffs.Summon.Pod;
 using StarsAbove.Systems;
 using System;
 using Terraria;
@@ -50,7 +50,7 @@ namespace StarsAbove.Projectiles.Summon.Pod
             Player projOwner = Main.player[Projectile.owner];
 
             Projectile.scale = 0.9f;
-            if (!player.HasBuff(BuffType<Buffs.Pod.PodBuff>()))
+            if (!player.HasBuff(BuffType<PodBuff>()))
             {
                 Projectile.Kill();
             }

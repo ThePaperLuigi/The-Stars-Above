@@ -45,8 +45,17 @@ namespace StarsAbove.Systems
         private UserInterface _ButterflyResourceBarUserInterface;
         internal ButterflyResourceBar ButterflyResourceBar;
 
+        private UserInterface _TwoCrownBowGaugeUserInterface;
+        internal TwoCrownBowGauge TwoCrownBowGauge;
+
         private UserInterface _DraggedBelowBarUserInterface;
         internal DraggedBelowBar DraggedBelowBar;
+
+        private UserInterface _DreadmotherGaugeUserInterface;
+        internal DreadmotherGauge DreadmotherGauge;
+
+        private UserInterface _WolvesbaneGaugeUserInterface;
+        internal WolvesbaneGauge WolvesbaneGauge;
 
         private UserInterface _DragonshiftGaugeUserInterface;
         internal DragonshiftGauge DragonshiftGauge;
@@ -235,6 +244,10 @@ namespace StarsAbove.Systems
                 _ButterflyResourceBarUserInterface = new UserInterface();
                 _ButterflyResourceBarUserInterface.SetState(ButterflyResourceBar);
 
+                TwoCrownBowGauge = new TwoCrownBowGauge();
+                _TwoCrownBowGaugeUserInterface = new UserInterface();
+                _TwoCrownBowGaugeUserInterface.SetState(TwoCrownBowGauge);
+
                 DragonshiftGauge = new DragonshiftGauge();
                 _DragonshiftGaugeUserInterface = new UserInterface();
                 _DragonshiftGaugeUserInterface.SetState(DragonshiftGauge);
@@ -242,6 +255,14 @@ namespace StarsAbove.Systems
                 DraggedBelowBar = new DraggedBelowBar();
                 _DraggedBelowBarUserInterface = new UserInterface();
                 _DraggedBelowBarUserInterface.SetState(DraggedBelowBar);
+
+                DreadmotherGauge = new DreadmotherGauge();
+                _DreadmotherGaugeUserInterface = new UserInterface();
+                _DreadmotherGaugeUserInterface.SetState(DreadmotherGauge);
+
+                WolvesbaneGauge = new WolvesbaneGauge();
+                _WolvesbaneGaugeUserInterface = new UserInterface();
+                _WolvesbaneGaugeUserInterface.SetState(WolvesbaneGauge);
 
                 DreamersInkwellUI = new DreamersInkwellGauge();
                 _DreamersInkwellUIUserInterface = new UserInterface();
@@ -475,8 +496,12 @@ namespace StarsAbove.Systems
 
             _NanomachinaGaugeUserInterface?.Update(gameTime);
             _ButterflyResourceBarUserInterface?.Update(gameTime);
+            _TwoCrownBowGaugeUserInterface?.Update(gameTime);
+
             _DragonshiftGaugeUserInterface?.Update(gameTime);
             _DraggedBelowBarUserInterface?.Update(gameTime);
+            _DreadmotherGaugeUserInterface?.Update(gameTime);
+            _WolvesbaneGaugeUserInterface?.Update(gameTime);
 
             _DreamersInkwellUIUserInterface?.Update(gameTime);
 
@@ -640,6 +665,15 @@ namespace StarsAbove.Systems
                     InterfaceScaleType.UI)
                 );
                 layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Two Crown Bow Resource Bar",
+                    delegate
+                    {
+                        _TwoCrownBowGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
                     "StarsAbove: Dragonshift Gauge",
                     delegate
                     {
@@ -653,6 +687,24 @@ namespace StarsAbove.Systems
                     delegate
                     {
                         _DraggedBelowBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Dreadmother's Dark Idol Gauge",
+                    delegate
+                    {
+                        _DreadmotherGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Wolvesbane Gauge",
+                    delegate
+                    {
+                        _WolvesbaneGaugeUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)

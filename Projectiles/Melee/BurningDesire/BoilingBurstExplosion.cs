@@ -117,9 +117,9 @@ namespace StarsAbove.Projectiles.Melee.BurningDesire
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 
-            if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.BloodBlade.BladeArtDragonCooldown>()) && !target.SpawnedFromStatue && target.damage > 0)
+            if (!target.active && Main.player[Projectile.owner].HasBuff(BuffType<Buffs.Melee.BloodBlade.BladeArtDragonCooldown>()) && !target.SpawnedFromStatue && target.damage > 0)
             {
-                Main.player[Projectile.owner].ClearBuff(BuffType<Buffs.BloodBlade.BladeArtDragonCooldown>());
+                Main.player[Projectile.owner].ClearBuff(BuffType<Buffs.Melee.BloodBlade.BladeArtDragonCooldown>());
             }
 
         }

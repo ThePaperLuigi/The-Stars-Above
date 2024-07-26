@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.RedMage;
+using StarsAbove.Buffs.Magic.RedMage;
 using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Projectiles.Magic.RedMage;

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Buffs.Subworlds;
 using StarsAbove.Items.Materials;
+using StarsAbove.Items.Memories;
 using StarsAbove.Items.Placeable;
 using StarsAbove.Items.Prisms;
 using StarsAbove.Subworlds;
@@ -838,7 +839,7 @@ namespace StarsAbove.UI.CelestialCartography
                     {
                         if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                         {
-                            //Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<BandedTenebrium>(), 5);
+                            Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<PrismaticCore>(), 15);
 
                             Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
                             Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -886,7 +887,7 @@ namespace StarsAbove.UI.CelestialCartography
                     {
                         if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                         {
-                            //Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<BandedTenebrium>(), 5);
+                            Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<ArgentumShard>(), 1);
 
                             Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
                             Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -934,7 +935,7 @@ namespace StarsAbove.UI.CelestialCartography
                     {
                         if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                         {
-                            //Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<BandedTenebrium>(), 5);
+                            Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<PrismaticCore>(), 9);
 
                             Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
                             Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
@@ -982,8 +983,8 @@ namespace StarsAbove.UI.CelestialCartography
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
-
-							Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
+                            Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_GiftOrReward(), ModContent.ItemType<ElectricGuitarPick>(), 1);
+                            Main.LocalPlayer.AddBuff(BuffType<SubworldLootCooldown>(), 36000);
 							Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.MultiplayerCompatibility"), 215, 215, 255);
 						}
 						else
@@ -1024,7 +1025,7 @@ namespace StarsAbove.UI.CelestialCartography
 
 			if (Main.LocalPlayer.HasBuff(BuffType<PortalReady>()) || Main.LocalPlayer.HasBuff(BuffType<StellaglyphReady>()))
 			{
-				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
+				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().andyerIntroDialogue > 0)
 				{
 					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
 					{
@@ -1036,19 +1037,9 @@ namespace StarsAbove.UI.CelestialCartography
 						}
 						
 					}
-					if (Main.netMode == NetmodeID.SinglePlayer)
-					{
-						SubworldSystem.Enter("StarsAbove/Pyxis");
+                    SubworldSystem.Enter<Pyxis>();
 
-					}
-					else
-					{
-						ModPacket packet = ModContent.GetInstance<StarsAbove>().GetPacket();
-						packet.Write((byte)0); // id
-						packet.Write("Pyxis"); // message
-						packet.Send();
-					}
-					Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
+                    Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
 				}
 				else
 				{

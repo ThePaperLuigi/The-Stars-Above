@@ -8,8 +8,8 @@ using System;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Magic.StygianNymph;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Magic
 {
@@ -108,19 +108,19 @@ namespace StarsAbove.Items.Weapons.Magic
             {
                 if (player.GetModPlayer<WeaponPlayer>().duality < 50)
                 {
-                    player.AddBuff(BuffType<Buffs.ClawsOfNyx>(), 10);
+                    player.AddBuff(BuffType<Buffs.Magic.StygianNymph.ClawsOfNyx>(), 10);
                 }
                 
 
                 if (StarsAbove.weaponActionKey.JustPressed)
                 {
-                    if (player.GetModPlayer<WeaponPlayer>().duality >= 50 && !player.HasBuff(BuffType<Buffs.FlashOfEternityCooldown>()))
+                    if (player.GetModPlayer<WeaponPlayer>().duality >= 50 && !player.HasBuff(BuffType<Buffs.Magic.StygianNymph.FlashOfEternityCooldown>()))
                     {
                         Vector2 mousePosition2 = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                         Vector2 leap = Vector2.Normalize(mousePosition2) * 15f;
                         player.velocity = leap;
-                        player.AddBuff(BuffType<Buffs.FlashOfEternity>(), 120);
-                        player.AddBuff(BuffType<Buffs.FlashOfEternityCooldown>(), 480);
+                        player.AddBuff(BuffType<Buffs.Magic.StygianNymph.FlashOfEternity>(), 120);
+                        player.AddBuff(BuffType<Buffs.Magic.StygianNymph.FlashOfEternityCooldown>(), 480);
                     }
                 }
             }

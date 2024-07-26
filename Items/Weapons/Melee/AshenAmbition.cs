@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.AshenAmbition;
 using StarsAbove.Items.Essences;
 using System;
 using Terraria;
@@ -11,8 +10,9 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.AshenAmbition;
+using StarsAbove.Buffs.Melee.AshenAmbition;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {

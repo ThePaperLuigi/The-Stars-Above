@@ -72,7 +72,7 @@ namespace StarsAbove.Items.Weapons.Melee
 
 		public override void HoldItem(Player player)
 		{
-			player.AddBuff(BuffType<Buffs.Skofnung.SkofnungBuff>(), 2);
+			player.AddBuff(BuffType<Buffs.Melee.Skofnung.SkofnungBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Melee.Skofnung.SkofnungSummon>()] < 1)
 			{
 				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<Projectiles.Melee.Skofnung.SkofnungSummon>(), 8, 4, player.whoAmI, 0f);

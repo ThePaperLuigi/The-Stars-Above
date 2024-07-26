@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
-using StarsAbove.Buffs.Gundbits;
+using StarsAbove.Buffs.Magic.Gundbits;
 
 namespace StarsAbove.Projectiles.Magic.Gundbit
 {

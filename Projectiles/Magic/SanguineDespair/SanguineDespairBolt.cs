@@ -4,9 +4,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using System;
-using StarsAbove.Buffs;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.Unforgotten;
 
 namespace StarsAbove.Projectiles.Magic.SanguineDespair
 {

@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.Adornment;
-using StarsAbove.Buffs.RedMage;
+ 
+using StarsAbove.Buffs.Summon.Adornment;
 using StarsAbove.Systems;
 using System;
 using Terraria;

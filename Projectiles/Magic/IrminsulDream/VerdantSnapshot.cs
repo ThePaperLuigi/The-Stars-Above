@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.IrminsulDream;
+using StarsAbove.Buffs.Magic.IrminsulDream;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

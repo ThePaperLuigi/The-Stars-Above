@@ -5226,6 +5226,2675 @@ namespace StarsAbove.Dialogue
                     dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
                 }
             }
+
+            //Meeting Garridine and Andyer in the Neon Veil
+            if (sceneID == 25)
+            {
+                //Include all scenes
+                sceneLength = 23;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 4)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 5)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 6)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 7)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 8)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 1;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 9)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 1;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 10)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 11)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 12)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 1;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 13)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 14)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 15)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 16)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 17)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 18)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 19)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 1;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 20)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 4;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 21)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 22)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 23)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+            }
+
+            //Garrdine Andyer intro (eridani)
+            if (sceneID == 26)
+            {
+                //Include all scenes
+                sceneLength = 23;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 4)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 5)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 6)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 7)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 8)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 1;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 9)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 1;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 10)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 11)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 12)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 1;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 13)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 14)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 15)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 16)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 17)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 18)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 19)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 1;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 20)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Garridine";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 4;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 21)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 22)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                else if (sceneProgress == 23)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+            }
+
+            //Garridine no available quests
+            if (sceneID == 27)
+            {
+                //Include all scenes
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                 LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 17;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 18;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+
+            }
+
+            //Andyer quest start (Asphodene
+            if (sceneID == 28)
+            {
+                //Include all scenes
+                sceneLength = 10;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 3;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 4)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 5)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 6)
+                {
+                    //Who is the main character?
+                    character1 = "Asphodene";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Asphodene";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 7)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 8)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 9)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 10)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+            }
+            //Andyer quest start eri ver
+            if (sceneID == 29)
+            {
+                //Include all scenes
+                sceneLength = 10;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 3;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 3)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 4)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 1;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 5)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 6)
+                {
+                    //Who is the main character?
+                    character1 = "Eridani";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 2;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "Andyer";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Eridani";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 7)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 8)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 9)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 10)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+            }
+            //Andyer quest progress
+            if (sceneID == 30)
+            {
+                //Include all scenes
+                sceneLength = 2;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                
+                
+            }
+            //Andyer quest reminder
+            if (sceneID == 31)
+            {
+                //Include all scenes
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                
+
+
+            }
+            //Andyer temp end of questline
+            if (sceneID == 32)
+            {
+                //Include all scenes
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Andyer";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Andyer";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+
+
+            }
+            //Garridine quest progress
+            if (sceneID == 33)
+            {
+                //Include all scenes
+                sceneLength = 2;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 21;//placeholder
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 21;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 1)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+                if (sceneProgress == 2)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 1;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+
+            }
+            //Garridine
+            if (sceneID == 34)
+            {
+                //Include all scenes
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = true;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 35;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 38;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 0;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+
+
+            }
+            //Garridine
+            if (sceneID == 35)
+            {
+                //Include all scenes
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 35;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 38;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 5;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+
+
+            }
+            //Garridine
+            if (sceneID == 36)
+            {
+                //Include all scenes
+                sceneLength = 0;
+
+                //Does this scene have a dialouge choice at the end of it?
+                sceneHasChoice = false;
+
+                //What appears in the choice boxes?
+                sceneChoice1 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.1");
+                sceneChoice2 =
+                  LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Choices.2");
+
+                //What does the scene change to when you choose the first option?
+                choice1Scene = 35;
+
+                //What does the scene change to when you choose the second option?
+                choice2Scene = 38;
+
+                if (sceneProgress == 0)
+                {
+                    //Who is the main character?
+                    character1 = "Garridine";
+
+                    //What is their pose?
+                    character1Pose = 0;
+
+                    //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
+                    character1Expression = 4;
+
+
+                    //Who is the sub character? If there is no second character, write "None";
+                    character2 = "None";
+
+                    //What is their pose?
+                    character2Pose = 0;
+
+                    //What is their expression?
+                    character2Expression = 0;
+
+
+                    //Who's name should be in the dialogue box?
+                    name = "Garridine";
+
+
+                    //What is the dialogue?
+                    dialogue = LangHelper.GetTextValue($"Dialogue.VNDialogue.SceneID." + sceneID + ".Dialogue." + sceneProgress, Main.LocalPlayer.name);
+                }
+
+
+
+            }
             //Yojimbo talks about the Ardor
             if (sceneID == 100)
             {

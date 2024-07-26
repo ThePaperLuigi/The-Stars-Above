@@ -258,7 +258,7 @@ namespace StarsAbove.UI.Undertale
 				modPlayer.damageTakenInUndertale = true;
 				if (Main.expertMode == true)
 				{
-					modPlayer.Player.AddBuff(BuffType<Buffs.Vulnerable>(), 1800);
+					modPlayer.Player.AddBuff(BuffType<Buffs.Boss.Vulnerable>(), 1800);
 				}
 			}
 			if (modPlayer.heartX <= damageXBlue + 3 && modPlayer.heartX >= damageXBlue - 3 && modPlayer.undertaleiFrames <= 0 && coloredSword == 0)
@@ -274,7 +274,7 @@ namespace StarsAbove.UI.Undertale
 					modPlayer.damageTakenInUndertale = true;
 					if (Main.expertMode == true)
 					{
-						modPlayer.Player.AddBuff(BuffType<Buffs.Vulnerable>(), 1800);
+						modPlayer.Player.AddBuff(BuffType<Buffs.Boss.Vulnerable>(), 1800);
 					}
 				}
 			}
@@ -296,7 +296,7 @@ namespace StarsAbove.UI.Undertale
 					modPlayer.damageTakenInUndertale = true;
 					if (Main.expertMode == true)
 					{
-						modPlayer.Player.AddBuff(BuffType<Buffs.Vulnerable>(), 1800);
+						modPlayer.Player.AddBuff(BuffType<Buffs.Boss.Vulnerable>(), 1800);
 					}
 				}
 			}
@@ -312,7 +312,7 @@ namespace StarsAbove.UI.Undertale
 				}
 				if (Main.expertMode == true)
 				{
-					modPlayer.Player.AddBuff(BuffType<Buffs.Vulnerable>(), 1800);
+					modPlayer.Player.AddBuff(BuffType<Buffs.Boss.Vulnerable>(), 1800);
 				}
 				modPlayer.undertaleiFrames += 60;
 				modPlayer.damageTakenInUndertale = true;

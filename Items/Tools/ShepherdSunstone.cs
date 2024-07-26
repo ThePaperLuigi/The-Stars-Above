@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Systems;
 using System;
-using StarsAbove.Buffs.ShepherdSunstone;
+using StarsAbove.Buffs.StellarSpoils.ShepherdSunstone;
 
 namespace StarsAbove.Items.Tools
 {

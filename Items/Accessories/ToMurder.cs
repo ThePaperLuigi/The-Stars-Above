@@ -32,11 +32,11 @@ namespace StarsAbove.Items.Accessories
 
 			if (player.statDefense < 30)
 			{
-				player.GetDamage(DamageClass.Generic) += 0.10f;
+				player.GetDamage(DamageClass.Generic) += 0.05f;
 			}
 			if(player.statDefense < 10)
             {
-				player.GetDamage(DamageClass.Generic) += 0.35f;
+				player.GetDamage(DamageClass.Generic) += 0.10f;
 			}
 			player.aggro += 80;
 			//player.respawnTimer += 600;

@@ -7,12 +7,12 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using StarsAbove.Items.Essences;
-using StarsAbove.Buffs;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.Takodachi;
+using StarsAbove.Buffs.Summon.Takonomicon;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -43,7 +43,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 14;
+			Item.damage = 3;
 			Item.DamageType = DamageClass.Summon;
 			Item.mana = 10;
 			Item.width = 21;
@@ -56,10 +56,41 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item44;
 			Item.shoot = ProjectileType<TakodachiMinion>();
-			Item.buffType = BuffType<Buffs.TakodachiBuff>(); //The buff added to player after used the item
+			Item.buffType = BuffType<TakodachiBuff>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
-		public override bool AltFunctionUse(Player player)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            bool slimeKing = NPC.downedSlimeKing;
+            bool eye = NPC.downedBoss1;
+            bool evilboss = NPC.downedBoss2;
+            bool queenBee = NPC.downedQueenBee;
+            bool skeletron = NPC.downedBoss3;
+            bool hardmode = Main.hardMode;
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+            float damageMult = 1f +
+                (slimeKing ? 0.1f : 0f) +
+                (eye ? 0.12f : 0f) +
+                (evilboss ? 0.14f : 0f) +
+                (queenBee ? 0.36f : 0f) +
+                (skeletron ? 0.58f : 0f) +
+                (hardmode ? 1.2f : 0f) +
+                (anyMech ? 1.23f : 0f) +
+                (allMechs ? 1.3f : 0f) +
+                (plantera ? 2.4f : 0f) +
+                (golem ? 3.45f : 0f) +
+                (cultist ? 4f : 0f) +
+                (moonLord ? 5f : 0f);
+
+            damage *= damageMult;
+        }
+        public override bool AltFunctionUse(Player player)
 		{
 			return true;
 		}
@@ -73,8 +104,7 @@ namespace StarsAbove.Items.Weapons.Summon
         }
         public override void HoldItem(Player player)
         {
-			//item.damage = 120 + player.statLifeMax2 / 20 + player.statManaMax2 / 20 + (Math.Max(Math.Max(Math.Max(player.meleeCrit, player.magicCrit), player.rangedCrit), player.thrownCrit));
-            base.HoldItem(player);
+			//damage += 120 + player.statLifeMax2 / 20 + player.statManaMax2 / 20 + (Math.Max(Math.Max(Math.Max(player.meleeCrit, player.magicCrit), player.rangedCrit), player.thrownCrit));
 
 			//player.GetModPlayer<WeaponPlayer>().takodachiGauge++;//Debug.
 			Vector2 position = player.Center;
@@ -129,8 +159,8 @@ namespace StarsAbove.Items.Weapons.Summon
 					{
 						
 						
-						int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), targetPosition.X + Main.rand.Next(-170, 170), targetPosition.Y + Main.rand.Next(-170, 170), velocity.X, velocity.Y, ProjectileType<TentacleCircle>(), (Item.damage), 2f, player.whoAmI);
-						Main.projectile[index].originalDamage = (Item.damage);
+						int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), targetPosition.X + Main.rand.Next(-170, 170), targetPosition.Y + Main.rand.Next(-170, 170), velocity.X, velocity.Y, ProjectileType<TentacleCircle>(), player.GetWeaponDamage(Item), 2f, player.whoAmI);
+						Main.projectile[index].originalDamage = player.GetWeaponDamage(Item);
 					}
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 
@@ -167,58 +197,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
         public override void UpdateInventory(Player player)
         {
-			if (NPC.downedSlimeKing)
-			{
-				Item.damage = 15;
-			}
-			if (NPC.downedBoss1)
-			{
-				Item.damage = 16;
-			}
-			if (NPC.downedBoss2)
-			{
-				Item.damage = 17;
-			}
-			if (NPC.downedQueenBee)
-			{
-				Item.damage = 18;
-			}
-			if (NPC.downedBoss3)
-			{
-				Item.damage = 19;
-			}
-			if (Main.hardMode)
-			{
-				Item.damage = 22;
-			}
-			if (NPC.downedMechBossAny)
-			{
-				Item.damage = 24;
-			}
-			if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-			{
-				Item.damage = 26;
-			}
-			if (NPC.downedPlantBoss)
-			{
-				Item.damage = 28;
-			}
-			if (NPC.downedGolemBoss)
-			{
-				Item.damage = 30;
-			}
-			if (NPC.downedFishron)
-			{
-				Item.damage = 34;
-			}
-			if (NPC.downedAncientCultist)
-			{
-				Item.damage = 44;
-			}
-			if (NPC.downedMoonlord)
-			{
-				Item.damage = 60;
-			}
+			
 			
         }
         public override Vector2? HoldoutOffset()
@@ -232,15 +211,15 @@ namespace StarsAbove.Items.Weapons.Summon
 			{
 				if (!player.HasBuff(BuffType<TakodachiLaserBuff>()) && !player.HasBuff(BuffType<TakodachiLaserBuffCooldown>()))
 				{
-					player.AddBuff(BuffType<Buffs.TakodachiLaserBuff>(), 180);
+					player.AddBuff(BuffType<TakodachiLaserBuff>(), 180);
 					player.GetModPlayer<WeaponPlayer>().takoTarget = Main.MouseWorld;
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, player.Center);
 					
 					
-					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, Mod.Find<ModProjectile>("TakonomiconLaser").Type, Item.damage, 0, player.whoAmI);
-					Main.projectile[index].originalDamage = Item.damage;
+					int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, Mod.Find<ModProjectile>("TakonomiconLaser").Type, player.GetWeaponDamage(Item), 0, player.whoAmI);
+					Main.projectile[index].originalDamage = player.GetWeaponDamage(Item);
 					int index2 = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, Vector2.Zero, Mod.Find<ModProjectile>("MagicCircle").Type, 0, 0, player.whoAmI);
-					Main.projectile[index2].originalDamage = Item.damage;
+					Main.projectile[index2].originalDamage = player.GetWeaponDamage(Item);
 					player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 
 					return false;
@@ -279,7 +258,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			position = Main.MouseWorld;
 			
 
-			player.SpawnMinionOnCursor(source, player.whoAmI, type, 14, knockback);
+			player.SpawnMinionOnCursor(source, player.whoAmI, type, damage, knockback);
 			return false;
 
 		}

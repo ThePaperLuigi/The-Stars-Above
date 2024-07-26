@@ -81,7 +81,7 @@ namespace StarsAbove.Systems
         public int tsukiCutscene2Progress = 0;
         public int warriorCutsceneProgress = 0;
         public int warriorCutsceneProgress2 = 0;
-
+        public int ffCutsceneProgress = 0;
         public float WhiteAlpha = 0f;
         public float BlackAlpha = 0f;
         public float VideoAlpha = 0f;
@@ -103,7 +103,10 @@ namespace StarsAbove.Systems
 
         bool speedrunEasterEgg;
         int bossTimer;
+        int perfectBossTimer;
+        bool hitDuringBoss = false;
 
+        bool inCombatWithBossLowHP;
         public override void OnHurt(Player.HurtInfo info)
         {
             for (int k = 0; k < Main.maxNPCs; k++)
@@ -121,11 +124,15 @@ namespace StarsAbove.Systems
 
 
             }
-
+            if(perfectBossTimer > 0)
+            {
+                hitDuringBoss = true;
+            }
             base.OnHurt(info);
         }
         public override void PreUpdate()
         {
+            inCombatWithBoss--;
             if (QTEActive)
             {
                 if (StarsAbove.novaKey.JustPressed)
@@ -195,6 +202,11 @@ namespace StarsAbove.Systems
                     if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].target == Main.myPlayer)
                     {
                         hasBossAggro = 10;
+                        if (Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
+
+                        }
                     }
 
                 }
@@ -203,11 +215,7 @@ namespace StarsAbove.Systems
 
             hasBossAggro--;
             hasBossAggro = Math.Clamp(hasBossAggro, 0, 10);
-            if (hasBossAggro > 0 && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
-            {
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
-
-            }
+            
 
             if (NPC.AnyNPCs(NPCType<VagrantBoss>())
                 || NPC.AnyNPCs(NPCType<PolluxBoss>())
@@ -235,6 +243,54 @@ namespace StarsAbove.Systems
                     }
                 }
                 bossTimer = 0;
+            }
+            bool isAnyBossActive = false;
+
+            for (int k = 0; k < 200; k++)
+            {
+                NPC npc = Main.npc[k];
+                if(npc.boss && npc.active)
+                {
+                    isAnyBossActive = true;
+                    perfectBossTimer++;
+                }
+                
+
+            }
+            if (perfectBossTimer > 60 * 1 && !isAnyBossActive)
+            {
+                if(Player.active && !Player.dead && inCombatWithBoss > 0 && inCombatWithBossLowHP)
+                {
+                    if (!hitDuringBoss && Player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
+                    {
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyPerfect");
+                    }
+                    else
+                    {
+                        Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptCooldown = 0;
+
+
+                        if (Player.statLife < (Player.statLifeMax2 * 0.2))
+                        {
+
+                            Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemyLowHP");
+
+                        }
+                        else
+                        {
+                            Player.GetModPlayer<StarsAbovePlayer>().starfarerPromptActive("onKillBossEnemy");
+
+                        }
+
+
+                    }
+                }
+                
+                perfectBossTimer = 0;
+
+                hitDuringBoss = false;
+
             }
             for (int k = 0; k < 200; k++)
             {
@@ -314,7 +370,7 @@ namespace StarsAbove.Systems
             tsukiCutscene2Progress--;
             warriorCutsceneProgress--;
             warriorCutsceneProgress2--;
-
+            ffCutsceneProgress--;
             VideoDuration--;
 
             BlackAlpha = Math.Clamp(BlackAlpha, 0, 1);
@@ -385,6 +441,7 @@ namespace StarsAbove.Systems
 
         public override void ResetEffects()
         {
+            inCombatWithBossLowHP = false;
             QTEActive = false;
 
             CastTime = 0;
@@ -398,7 +455,7 @@ namespace StarsAbove.Systems
             TsukiyomiBarActive = false;
             WarriorOfLightBarActive = false;
             CastorBarActive = false;
-            PolluxBarActive = false; 
+            PolluxBarActive = false;
             ThespianBarActive = false;
             StarfarerBossBarActive = false;
             PenthesileaBarActive = false;
@@ -413,7 +470,7 @@ namespace StarsAbove.Systems
                     if (Player.buffTime[i] == 180)
                     {
                         Rectangle textPos = new Rectangle((int)Player.position.X, (int)Player.position.Y - 20, Player.width, Player.height);
-                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight",3), false, false);
+                        CombatText.NewText(textPos, new Color(155, 90, 155, 240), LangHelper.GetTextValue("CombatText.Thespian.MoveRight", 3), false, false);
                     }
                     else if (Player.buffTime[i] == 120)
                     {
@@ -427,7 +484,7 @@ namespace StarsAbove.Systems
                     }
                     else if (Player.buffTime[i] == 1)
                     {
-                        if(Player.velocity.X > 0)
+                        if (Player.velocity.X > 0)
                         {
                             for (int g = 0; g < 12; g++)
                             {
@@ -441,7 +498,7 @@ namespace StarsAbove.Systems
                             Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + LangHelper.GetTextValue("DeathReason.Thespian")), (int)(Player.statLifeMax2 * 0.3f), 0, false, false, -1, false, 0, 0, 0);
                         }
                     }
-                    
+
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<ForceMoveLeft>())
@@ -572,7 +629,7 @@ namespace StarsAbove.Systems
                     else if (Player.buffTime[i] == 10)
                     {
                         Player.AddBuff(BuffType<DownForTheCount>(), 30);
-                        
+
                     }
                     else if (Player.buffTime[i] == 1)
                     {
@@ -583,13 +640,13 @@ namespace StarsAbove.Systems
                 }
             for (int i = 0; i < Player.CountBuffs(); i++)
                 if (Player.buffType[i] == BuffType<ThespianSadAttack>())
-                {    
+                {
                     if (Player.buffTime[i] == 180)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
 
-                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2*0.1f), 0, Player.whoAmI);
-                        if(Main.netMode == NetmodeID.SinglePlayer)
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
+                        if (Main.netMode == NetmodeID.SinglePlayer)
                         {
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X + 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X - 100, Player.Center.Y - 440), new Vector2(0, 12), ProjectileType<ThespianSadBolt>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI);
@@ -639,18 +696,16 @@ namespace StarsAbove.Systems
                 {
                     //Clean later (or not)
                     buffEffectTimer++;
-                    if(buffEffectTimer >= 10)
+                    if (buffEffectTimer >= 10)
                     {
                         SoundEngine.PlaySound(SoundID.Item21, Player.Center);
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
+                        {
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), new Vector2(0, 0), ProjectileType<ThespianExplosionIndicator>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI, 120);
 
-                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y), new Vector2(0, 0), ProjectileType<ThespianExplosionIndicator>(), (int)(Player.statLifeMax2 * 0.1f), 0, Player.whoAmI, 120);
+                        }
                         buffEffectTimer = 0;
                     }
-                    if (Player.buffTime[i] == 180)
-                    {
-                        
-                    }
-                    
 
                 }
             base.PreUpdateBuffs();
@@ -665,10 +720,6 @@ namespace StarsAbove.Systems
             if (!DisableDamageModifier)
             {
                 bossReductionMod = 0;
-                if (npc.type == NPCType<DummyEnemy>())
-                {
-                    bossReductionMod = 500;
-                }
                 if (npc.type == NPCType<VagrantBoss>())
                 {
                     bossReductionMod = 700;
@@ -721,6 +772,7 @@ namespace StarsAbove.Systems
 
             }
         }
+        public int inCombatWithBoss;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (bossReductionMod > 0)
@@ -736,6 +788,14 @@ namespace StarsAbove.Systems
                 damageReductionAmount = (float)Math.Tanh(stress / bossReductionMod);
 
             }
+            if(target.boss)
+            {
+                inCombatWithBoss = 120;
+                if(target.life < (int)(target.lifeMax * 0.1))
+                {
+                    inCombatWithBossLowHP = true;
+                }
+            }
         }
         private void WarriorTeleport(NPC npc)
         {
@@ -747,7 +807,7 @@ namespace StarsAbove.Systems
                 if (Player.position.X <= npc.Center.X - halfWidth)//Left wall
                 {
                     newPosition.X = npc.Center.X - halfWidth - Player.width - 1;
-                    Player.velocity = new Vector2(20, Player.velocity.Y);
+                    Player.velocity = new Vector2(4, Player.velocity.Y);
                     // if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("1"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -758,7 +818,7 @@ namespace StarsAbove.Systems
                 else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
                 {
                     newPosition.X = npc.Center.X + halfWidth + 1;
-                    Player.velocity = new Vector2(-20, Player.velocity.Y);
+                    Player.velocity = new Vector2(-4, Player.velocity.Y);
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("2"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -769,7 +829,7 @@ namespace StarsAbove.Systems
                 else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
                 {
                     newPosition.Y = npc.Center.Y - halfHeight - Player.height - 1;
-                    Player.velocity = new Vector2(Player.velocity.X, 20);
+                    Player.velocity = new Vector2(Player.velocity.X, 4);
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("3"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -780,7 +840,7 @@ namespace StarsAbove.Systems
                 else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
                 {
                     newPosition.Y = npc.Center.Y + halfHeight + 1;
-                    Player.velocity = new Vector2(Player.velocity.X, -20);
+                    Player.velocity = new Vector2(Player.velocity.X, -4);
                     //if (Main.netMode != NetmodeID.Server){Main.NewText(Language.GetTextValue("4"), 190, 100, 247);}
                     while (Collision.SolidCollision(newPosition, Player.width, Player.height))
                     {
@@ -956,7 +1016,7 @@ namespace StarsAbove.Systems
                         newPosition.X -= 8f;
 
                     }
-                    if(Player.HasBuff(BuffType<AthanoricCurse>()))
+                    if (Player.HasBuff(BuffType<AthanoricCurse>()))
                     {
                         for (int d = 0; d < 10; d++)
                         {
@@ -1041,7 +1101,7 @@ namespace StarsAbove.Systems
                         newPosition.X -= 8f;
 
                     }
-                    
+
                 }
                 else if (Player.position.X + Player.width >= npc.Center.X + halfWidth)//Right Wall
                 {
@@ -1053,7 +1113,7 @@ namespace StarsAbove.Systems
                         newPosition.X += 8f;
 
                     }
-                   
+
                 }
                 else if (Player.position.Y <= npc.Center.Y - halfHeight)//Top
                 {
@@ -1065,7 +1125,7 @@ namespace StarsAbove.Systems
                         newPosition.Y -= 8f;
 
                     }
-                    
+
                 }
                 else if (Player.position.Y + Player.height >= npc.Center.Y + halfHeight)//Bottom
                 {
@@ -1077,7 +1137,7 @@ namespace StarsAbove.Systems
 
                         newPosition.Y += 8f;
                     }
-                    
+
                 }
             }
         }

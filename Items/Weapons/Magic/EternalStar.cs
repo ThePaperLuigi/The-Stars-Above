@@ -64,7 +64,7 @@ namespace StarsAbove.Items.Weapons.Magic
 
 			if (player.altFunctionUse == 2)
 			{
-				if (!player.HasBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>()) && player.GetModPlayer<WeaponPlayer>().EternalGauge >= 100)
+				if (!player.HasBuff(BuffType<Buffs.Magic.EternalStar.ImmemorialSupernova>()) && player.GetModPlayer<WeaponPlayer>().EternalGauge >= 100)
 				{
 					/*for (int d = 0; d < 10; d++)
 					{
@@ -76,7 +76,7 @@ namespace StarsAbove.Items.Weapons.Magic
 					}*/
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), Main.MouseWorld, Vector2.Zero, Mod.Find<ModProjectile>("ImmemorialSupernovaProjectile").Type, player.GetWeaponDamage(Item), 0, player.whoAmI);
 					player.GetModPlayer<WeaponPlayer>().EternalGauge = 0;
-					player.AddBuff(BuffType<Buffs.EternalStar.ImmemorialSupernova>(), 300);
+					player.AddBuff(BuffType<Buffs.Magic.EternalStar.ImmemorialSupernova>(), 300);
 					return true;
 				}
 				else

@@ -5,8 +5,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Magic.VenerationOfButterflies;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

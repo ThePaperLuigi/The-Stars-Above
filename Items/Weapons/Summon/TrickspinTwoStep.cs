@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.TrickspinTwoStep;
+using StarsAbove.Buffs.Summon.TrickspinTwoStep;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Summon.TrickspinTwoStep;
 using StarsAbove.Systems;

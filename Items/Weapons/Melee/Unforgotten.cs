@@ -9,8 +9,8 @@ using StarsAbove.Items.Essences;
 using StarsAbove.Items.Prisms;
 using Terraria.Audio;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.Unforgotten;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -70,7 +70,7 @@ namespace StarsAbove.Items.Weapons.Melee
             
 
             for (int i = 0; i < player.CountBuffs(); i++)
-                if (player.buffType[i] == BuffType<Buffs.SoulUnbound>())
+                if (player.buffType[i] == BuffType<Buffs.Melee.Unforgotten.SoulUnbound>())
                 {
                     if (player.buffTime[i] <= 40)
                     {
@@ -81,13 +81,13 @@ namespace StarsAbove.Items.Weapons.Melee
 
             if (player.altFunctionUse == 2)
             {
-                if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.SoulUnbound>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.SoulUnboundCooldown>()))
+                if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.Unforgotten.SoulUnbound>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.Unforgotten.SoulUnboundCooldown>()))
                 {
                     Vector2 mousePosition = player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos) * Main.rand.Next(20, 22);
                     Vector2 leap = Vector2.Normalize(mousePosition) * 15f;
                     player.velocity = leap;
 
-                    player.AddBuff(BuffType<Buffs.SoulUnbound>(), 480);
+                    player.AddBuff(BuffType<Buffs.Melee.Unforgotten.SoulUnbound>(), 480);
 
                     //player.GetModPlayer<WeaponPlayer>().phantomTeleport = true;
                     //Main.PlaySound(SoundLoader.customSoundType, (int)player.Center.X, (int)player.Center.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/TeleportPrep"));

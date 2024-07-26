@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.SoliloquyOfSovereignSeas;
+using StarsAbove.Buffs.Other.SoliloquyOfSovereignSeas;
 using StarsAbove.Systems;
 using System;
 using Terraria;
@@ -26,6 +26,7 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
 			Projectile.CloneDefaults(ProjectileID.DD2PetGhost);
 			AIType = ProjectileID.DD2PetGhost;
 			Projectile.light = 1f;
+            Projectile.minionSlots = 1f;
 		}
 
 		public override bool PreAI()
@@ -60,7 +61,16 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
                     Player p = Main.player[i];
                     if (p.active && !p.dead && p.Distance(Projectile.Center) < 490f)
                     {
-                        p.Heal((int)(Projectile.damage * 0.05f));
+                        if(p.statLife < 200)
+                        {
+                            p.Heal((int)(Projectile.damage * 0.1f));
+
+                        }
+                        else
+                        {
+                            p.Heal((int)(Projectile.damage * 0.05f));
+
+                        }
                     }
 
                 }

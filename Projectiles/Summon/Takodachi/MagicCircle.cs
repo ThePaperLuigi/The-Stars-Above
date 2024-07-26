@@ -39,7 +39,7 @@ namespace StarsAbove.Projectiles.Summon.Takodachi
             Projectile.timeLeft = 10;
             Player projOwner = Main.player[Projectile.owner];
             Player player = Main.player[Projectile.owner];
-            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.TakodachiLaserBuff>()))
+            if (projOwner.dead && !projOwner.active || !projOwner.HasBuff(BuffType<Buffs.Summon.Takonomicon.TakodachiLaserBuff>()))
             {
                 Projectile.alpha += 20;
             }

@@ -1,8 +1,9 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.SupremeAuthority;
+using StarsAbove.Buffs.Magic.SupremeAuthority;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Magic.EternalStar;
 using StarsAbove.Projectiles.Magic.SupremeAuthority;
+using StarsAbove.Systems;
 using StarsAbove.Systems;
 using System;
 using Terraria;

@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.CatalystMemory;
+ 
+using StarsAbove.Buffs.Melee.Mercy;
 using StarsAbove.Projectiles.Generics;
 using System;
 using Terraria;
@@ -69,6 +70,14 @@ namespace StarsAbove.Projectiles.Melee.Mercy
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = Main.player[Projectile.owner].Center.X < target.Center.X ? 1 : -1;
+
+            if(hit.Crit)
+            {
+                if(Main.player[Projectile.owner].HasBuff(BuffType<EdgeOfAnguishCooldown>()))
+                {
+                    Main.player[Projectile.owner].buffTime[Main.player[Projectile.owner].FindBuffIndex(BuffType<EdgeOfAnguishCooldown>())] -= 60;
+                }
+            }
         }
         public override void OnKill(int timeLeft)
         {

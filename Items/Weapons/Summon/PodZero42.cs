@@ -50,7 +50,7 @@ namespace StarsAbove.Items.Weapons.Summon
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item44;
             Item.shoot = ProjectileType<PodMinion>();
-            Item.buffType = BuffType<Buffs.Pod.PodBuff>(); //The buff added to player after used the item
+            Item.buffType = BuffType<Buffs.Summon.Pod.PodBuff>(); //The buff added to player after used the item
             Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
         }
         public override bool AltFunctionUse(Player player)

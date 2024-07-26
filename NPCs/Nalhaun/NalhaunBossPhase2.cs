@@ -744,7 +744,6 @@ namespace StarsAbove.NPCs.Nalhaun
 		{
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
 			//Chance for a Prism
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
 
 			// Add the treasure bag using ItemDropRule.BossBag (automatically checks for expert mode)
 			npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<NalhaunBossBag>()));
@@ -764,7 +763,6 @@ namespace StarsAbove.NPCs.Nalhaun
 
 			StellarSpoils.SetupBossStellarSpoils(npcLoot);
 
-			notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<Items.Prisms.BurnishedPrism>(), 4));
 
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);

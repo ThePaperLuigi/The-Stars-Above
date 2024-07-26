@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Audio;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Buffs.KissOfDeath;
+using StarsAbove.Buffs.Ranged.KissOfDeath;
 
 namespace StarsAbove.Projectiles.Ranged.KissOfDeath
 {

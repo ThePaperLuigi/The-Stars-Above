@@ -27,12 +27,13 @@ using SubworldLibrary;
 using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.Items.Loot;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Extra;
 using static StarsAbove.NPCs.Thespian.ThespianBoss;
 using System.Collections.Generic;
 using StarsAbove.Projectiles.Bosses.Penthesilea;
 using StarsAbove.Items.Memories;
+using StarsAbove.Systems;
+using StarsAbove.NPCs.Dioskouroi;
 
 namespace StarsAbove.NPCs.Starfarers
 {
@@ -124,7 +125,18 @@ namespace StarsAbove.NPCs.Starfarers
 			SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.SeaOfStarsBiome>().Type };
 			NPC.netAlways = true;
 		}
-		public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
+        {
+            if(DownedBossSystem.downedTsuki)
+			{
+				NPC.lifeMax = (int)(3000000 * balance * bossAdjustment);
+				NPC.damage = 70;
+			}
+
+
+            base.ApplyDifficultyAndPlayerScaling(numPlayers, balance, bossAdjustment);
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
 		{
 			return false;
 		}
@@ -135,17 +147,14 @@ namespace StarsAbove.NPCs.Starfarers
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-			
 			potionType = ItemID.GreaterHealingPotion;
-            if (!DownedBossSystem.downedStarfarers)
-            {
-                DownedBossSystem.downedStarfarers = true;
-                if (Main.netMode == NetmodeID.Server)
-                {
-                    NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-                }
-            }
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
 
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
             base.BossLoot(ref name, ref potionType);
         }
         public override bool CheckDead()
@@ -171,7 +180,7 @@ namespace StarsAbove.NPCs.Starfarers
 			//REPLACE BAR WITH YOUR OWN
             bossPlayer.StarfarerBossBarActive = true;
 
-            NPC.velocity *= 0.98f; //So the dashes don't propel the boss away
+            NPC.velocity *= 0.98f; //So the dashes don't propel the boss a dy
 
             Player P = Main.player[NPC.target];//THIS IS THE BOSS'S MAIN TARGET
             FindTargetPlayer();
@@ -203,9 +212,7 @@ namespace StarsAbove.NPCs.Starfarers
 				
 			}
 			else if (AI_Timer >= AttackTimer) //An attack is active. (Temp 480, usually 120, or 2 seconds)
-            {
-
-                
+            {             
                 if (DownedBossSystem.downedTsuki)
                 {
                     //Ultra boss rotation
@@ -347,19 +354,13 @@ namespace StarsAbove.NPCs.Starfarers
 				Player player = Main.player[i];
 				if (player.active)
 				{
-					if(DownedBossSystem.downedTsuki)
-					{
-                        player.AddBuff(BuffType<SharedPowerSpecial>(), 10);
-                    }
-					else
-					{
-                        player.AddBuff(BuffType<SharedPower>(), 10);
-                    }
-
-				}
+                    player.AddBuff(BuffType<SharedPower>(), 10);
 
 
-			}
+                }
+
+
+            }
 			
 		}
 		private void FindTargetPlayer()
@@ -374,8 +375,7 @@ namespace StarsAbove.NPCs.Starfarers
         {
             if (Main.player[NPC.target].dead)
             {
-                //Leave if all players are dead.
-				/*
+                
                 Vector2 vector8 = new Vector2(NPC.Center.X, NPC.Center.Y);
                 for (int d = 0; d < 100; d++)
                 {
@@ -395,7 +395,7 @@ namespace StarsAbove.NPCs.Starfarers
                 }
                 NPC.active = false;
 
-				*/
+				
             }
         }
 
@@ -523,32 +523,18 @@ namespace StarsAbove.NPCs.Starfarers
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Boss/Starfarers/LegendsYetUnspunOutro");
 			NPC.dontTakeDamage = true;
-			
-			NPC.localAI[1] += 1f;
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+            NPC.localAI[1] += 1f;
 			if (NPC.localAI[1] >= 240f)
 			{
-				
 
+                
 
-				//DownedBossSystem.downedTsuki = true;
-				
-				if (Main.netMode == NetmodeID.Server)
-				{
-					NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
-				}
-				/*
-				if (modPlayer.tsukiyomiDialogue == 0)
-				{
-					//Force open the dialogue.
-					modPlayer.chosenDialogue = 73;
-					modPlayer.tsukiyomiDialogue = 2;
-					modPlayer.dialoguePrep = true;
-					modPlayer.starfarerDialogue = true;
-					//if (Main.netMode != NetmodeID.Server) { Main.NewText(Language.GetTextValue("The Spatial Disk begins to resonate. Left click to interact."), 241, 255, 180); }
-					modPlayer.tsukiyomiDialogue = 2;
-				}*/
-				
-				NPC.life = 0;
+                NPC.life = 0;
 				NPC.HitEffect(0, 0);
 				NPC.checkDead(); // This will trigger ModNPC.CheckDead the second time, causing the real death.
 
@@ -556,7 +542,18 @@ namespace StarsAbove.NPCs.Starfarers
 			}
 			return;
 		}
-		public override void ModifyNPCLoot(NPCLoot npcLoot)
+        public override void OnKill()
+        {
+            NPC.SetEventFlagCleared(ref DownedBossSystem.downedStarfarers, -1);
+
+            DownedBossSystem.downedStarfarers = true;
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.WorldData); // Immediately inform clients of new world state.
+            }
+            base.OnKill();
+        }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{/*
 		  * 
 			// Do NOT misuse the ModifyNPCLoot and OnKill hooks: the former is only used for registering drops, the latter for everything else
@@ -587,8 +584,14 @@ namespace StarsAbove.NPCs.Starfarers
 			// Finally add the leading rule
 			npcLoot.Add(ExpertRule);
 			npcLoot.Add(notExpertRule);*/
-			//npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 2, 3));
+            //npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Materials.CelestialPrincessGenesisPrecursor>(), 4));
+
+            // Trophies are spawned with 1/10 chance
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.AsphodeneTrophyItem>(), 10));
+            // Trophies are spawned with 1/10 chance
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.Placeable.BossLoot.EridaniTrophyItem>(), 10));
+
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 1, 2, 3));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DescenderGemstone>(), 4, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PhantomMask>(), 4, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PowerMoon>(), 4, 1, 1));
@@ -619,7 +622,16 @@ namespace StarsAbove.NPCs.Starfarers
 				}
             }
             AI_CastTimer++;
+            if (!NPC.AnyNPCs(NPCType<StarfarerBossWallsNPC>()))
+            {
+                int index = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<StarfarerBossWallsNPC>(), NPC.whoAmI);
 
+
+                if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                {
+                    NetMessage.SendData(MessageID.SyncNPC, number: index);
+                }
+            }
             if (AI_CastTimer > 210)
             {
 

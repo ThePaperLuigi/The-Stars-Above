@@ -29,7 +29,7 @@ namespace StarsAbove.Items.Pets
 			Item.rare = ModContent.GetInstance<StellarSpoilsRarity>().Type; // Custom Rarity
 			Item.noMelee = true;
 			Item.value = Item.sellPrice(0, 0, 10, 0);
-			Item.buffType = BuffType<Buffs.MantisCatPetBuff>();
+			Item.buffType = BuffType<Buffs.Pets.MantisCatPetBuff>();
 		}
 		public override void AddRecipes()
 		{

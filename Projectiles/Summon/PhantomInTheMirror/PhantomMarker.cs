@@ -65,7 +65,7 @@ namespace StarsAbove.Projectiles.Summon.PhantomInTheMirror
             if (Main.rand.NextBool(5))
             {
                 Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, 20,
-                    Projectile.velocity.X * .2f, Projectile.velocity.Y * .2f, 269, Scale: 1.2f);
+                    Projectile.velocity.X * .2f, Projectile.velocity.Y * .2f, 269, Scale: 0.4f);
                 dust.velocity += Projectile.velocity * 0.3f;
                 dust.velocity *= 0.2f;
             }

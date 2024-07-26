@@ -50,7 +50,6 @@ namespace StarsAbove.Items.BossBags
 			StellarSpoils.SetupStellarSpoils(itemLoot);
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StellarSpoils>(), 3, 1, 2));
 
-			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<PaintedPrism>(), 4, 1, 1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<FaerieVoyagerAttirePrecursor>(), 4, 1, 1));
 
 			itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<PenthesileaBoss>()));

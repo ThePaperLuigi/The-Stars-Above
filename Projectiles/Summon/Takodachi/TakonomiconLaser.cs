@@ -1,12 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Buffs;
 using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Enums;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using StarsAbove.Buffs.Summon.Takonomicon;
 using StarsAbove.Systems;
 
 namespace StarsAbove.Projectiles.Summon.Takodachi

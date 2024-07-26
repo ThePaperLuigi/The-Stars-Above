@@ -42,7 +42,7 @@ namespace StarsAbove.Projectiles.Ranged.Genocide
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
 
-            target.AddBuff(BuffType<Buffs.MortalWounds>(), 720);
+            target.AddBuff(BuffType<Buffs.Melee.Unforgotten.MortalWounds>(), 720);
 
 
         }

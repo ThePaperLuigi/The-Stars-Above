@@ -22,7 +22,7 @@ namespace StarsAbove.Items.Memories
 			Item.width = 30;
 			Item.height = 30;
 			Item.accessory = false;
-			Item.value = Item.buyPrice(platinum: 2);
+			Item.value = Item.buyPrice(gold: 10);
 			Item.rare = ModContent.GetInstance<WeaponMemoryRarity>().Type; // Custom Rarity
 		}
 		

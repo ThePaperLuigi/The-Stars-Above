@@ -71,7 +71,7 @@ namespace StarsAbove.Items.Weapons.Summon
 		}
 		public override void HoldItem(Player player)
 		{
-			player.AddBuff(BuffType<Buffs.IrysBuff>(), 2);
+			player.AddBuff(BuffType<Buffs.Summon.CaesuraOfDespair.IrysBuff>(), 2);
 			if (player.ownedProjectileCounts[ProjectileType<Projectiles.Summon.CaesuraOfDespair.Irys>()] < 1)
 			{
 

@@ -1,4 +1,4 @@
-﻿using StarsAbove.Buffs.Skofnung;
+﻿using StarsAbove.Buffs.Melee.Skofnung;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs;
-using StarsAbove.Buffs.DragaliaFound;
+using StarsAbove.Buffs.Summon.DragaliaFound;
 using StarsAbove.Items.Essences;
 using StarsAbove.Mounts.DragaliaFound;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Projectiles.Summon.DragaliaFound;
+using StarsAbove.Systems;
 using StarsAbove.Systems;
 using System;
 using Terraria;
@@ -28,12 +29,12 @@ namespace StarsAbove.Items.Weapons.Summon
 
         public override void SetDefaults()
         {
-            Item.damage = 90;           //The damage of your weapon
+            Item.damage = 15;           //The damage of your weapon
             Item.DamageType = DamageClass.SummonMeleeSpeed;          //Is your weapon a melee weapon?
             Item.width = 38;            //Weapon's texture's width
             Item.height = 132;           //Weapon's texture's height
-            Item.useTime = 25;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
-            Item.useAnimation = 25;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+            Item.useTime = 30;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
+            Item.useAnimation = 30;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
             Item.UseSound = SoundID.Item1;      //The sound when the weapon is using
             Item.useStyle = ItemUseStyleID.HiddenAnimation;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
             Item.knockBack = 2;         //The force of knockback of the weapon. Maximum is 20
@@ -68,60 +69,40 @@ namespace StarsAbove.Items.Weapons.Summon
         {
 
         }
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            bool slimeKing = NPC.downedSlimeKing;
+            bool eye = NPC.downedBoss1;
+            bool evilboss = NPC.downedBoss2;
+            bool queenBee = NPC.downedQueenBee;
+            bool skeletron = NPC.downedBoss3;
+            bool hardmode = Main.hardMode;
+            bool anyMech = NPC.downedMechBossAny;
+            bool allMechs = NPC.downedMechBoss3 && NPC.downedMechBoss2 && NPC.downedMechBoss1;
+            bool plantera = NPC.downedPlantBoss;
+            bool golem = NPC.downedGolemBoss;
+            bool cultist = NPC.downedAncientCultist;
+            bool moonLord = NPC.downedMoonlord;
+
+            float damageMult = 1f +
+                (slimeKing ? 0.1f : 0f) +
+                (eye ? 0.12f : 0f) +
+                (evilboss ? 0.14f : 0f) +
+                (queenBee ? 0.36f : 0f) +
+                (skeletron ? 0.58f : 0f) +
+                (hardmode ? 1.2f : 0f) +
+                (anyMech ? 1.23f : 0f) +
+                (allMechs ? 1.3f : 0f) +
+                (plantera ? 2.4f : 0f) +
+                (golem ? 3.45f : 0f) +
+                (cultist ? 4f : 0f) +
+                (moonLord ? 5f : 0f);
+
+            damage *= damageMult;
+        }
         public override void HoldItem(Player player)
         {
-            if (NPC.downedSlimeKing)
-            {
-                Item.damage = 15;
-            }
-            if (NPC.downedBoss1)
-            {
-                Item.damage = 16;
-            }
-            if (NPC.downedBoss2)
-            {
-                Item.damage = 17;
-            }
-            if (NPC.downedQueenBee)
-            {
-                Item.damage = 18;
-            }
-            if (NPC.downedBoss3)
-            {
-                Item.damage = 29;
-            }
-            if (Main.hardMode)
-            {
-                Item.damage = 32;
-            }
-            if (NPC.downedMechBossAny)
-            {
-                Item.damage = 40;
-            }
-            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-            {
-                Item.damage = 50;
-            }
-            if (NPC.downedPlantBoss)
-            {
-                Item.damage = 70;
-            }
-            if (NPC.downedGolemBoss)
-            {
-                Item.damage = 80;
-            }
-            if (NPC.downedFishron)
-            {
-                Item.damage = 90;
-            }
-            if (NPC.downedAncientCultist)
-            {
-                Item.damage = 111;
-            }
-            if (NPC.downedMoonlord)
-            {
-                Item.damage = 151;
-            }
+            
 
             player.GetModPlayer<WeaponPlayer>().DragaliaFoundHeld = true;
             player.AddBuff(BuffType<TempestDragonlightBuff>(), 10);
@@ -143,6 +124,11 @@ namespace StarsAbove.Items.Weapons.Summon
                     Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<DragonArm>(), 0, 0, player.whoAmI);
 
                     player.mount.SetMount(MountType<DragonshiftMount>(), player);
+                    if(player.mount.Type == MountType<DragonshiftMount>())
+                    {
+                        player.Heal(100);
+
+                    }
                     player.AddBuff(BuffType<DragonshiftActiveBuff>(), 240);
                     player.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -70;
                     //Boom
@@ -204,7 +190,7 @@ namespace StarsAbove.Items.Weapons.Summon
         int attackComboCooldown;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            attackComboCooldown = 30;
+            attackComboCooldown = 60;
             if (player.altFunctionUse == 2)
             {
                 if (!player.HasBuff(BuffType<DragonshiftSpecialAttackCooldownBuff>()))

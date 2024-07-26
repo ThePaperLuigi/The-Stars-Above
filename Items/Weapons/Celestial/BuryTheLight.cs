@@ -13,10 +13,10 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Buffs.BuryTheLight;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Celestial.BuryTheLight;
+using StarsAbove.Buffs.Celestial.BuryTheLight;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {
@@ -38,7 +38,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 			{
 				Item.damage = 222;
 			}
-			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>(); // Makes our item use our custom damage type.
+			Item.DamageType = ModContent.GetInstance<CelestialDamageClass>(); // Makes our item use our custom damage type.
 
 			
 

@@ -5,9 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Creative;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.RupturedHeaven;
 using StarsAbove.Projectiles.Summon.MorningStar;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Summon
 {

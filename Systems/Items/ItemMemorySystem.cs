@@ -27,7 +27,6 @@ using Terraria.UI.Chat;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.StellarNovas;
 using StarsAbove.Items.Loot;
-using StarsAbove.Systems;
 using Terraria.DataStructures;
 using Terraria.ModLoader.IO;
 using StarsAbove.Items.Memories;
@@ -40,10 +39,16 @@ using System.Reflection;
 using Terraria.Audio;
 using StarsAbove.Buffs.TagDamage;
 using Terraria.WorldBuilding;
+using StarsAbove.Projectiles.Summon.ArachnidNeedlepoint;
+using static Humanizer.In;
+using StarsAbove.Systems;
+using Terraria.GameContent.Drawing;
+using Terraria.GameContent.UI.Elements;
+using StarsAbove.Projectiles.Ranged.Huckleberry;
 
 namespace StarsAbove.Systems.Items
 {
-    public class ItemMemorySystem : GlobalItem
+    public class ItemMemorySystem : StarsAboveGlobalItem
     {
         public List<string> EquippedMemories = new List<string>()//Unused
         {
@@ -54,6 +59,13 @@ namespace StarsAbove.Systems.Items
         public int itemMemorySlot1;
         public int itemMemorySlot2;
         public int itemMemorySlot3;
+
+        
+
+        public List<int> legendaryShieldMemories = new List<int>()
+        {
+            
+        };
 
         public bool isMemory = false;
 
@@ -91,14 +103,19 @@ namespace StarsAbove.Systems.Items
         public bool JackalMask;//32
         public bool KnightsShovelhead;//33
 
+        //v2.0.5
+        public bool WetCrowbar;
+        public bool CrystalshotCartridge;
+        public bool OutbackWrangler;
+        public bool LonelyBand;
+        public bool StrangeScrap;
+        
         //Each weapon has a random tarot card effect assigned.
         public bool TarotCard;//100
         public int tarotCardType = -1;
 
         //Garridine's Protocores
-        public bool ProtocoreMonoclaw;//201
-        public bool ProtocoreManacoil;//202
-        public bool ProtocoreShockrod;//203
+        public bool GarridineGadget;//201
 
         //Sigils
         public bool RangedSigil;//301
@@ -107,15 +124,8 @@ namespace StarsAbove.Systems.Items
         public bool SummonSigil;//304
 
         //Aeonseals
-        public bool AeonsealDestruction;//401
-        public bool AeonsealHunt;//402
-        public bool AeonsealErudition;//403
-        public bool AeonsealHarmony;//404
-        public bool AeonsealNihility;//405
-        public bool AeonsealPreservation;//406
-        public bool AeonsealAbundance;//407
+        public bool Aeonseal;
 
-        public bool AeonsealTrailblazer;//408
 
         public int OldHP;
         public int HeldWeaponTypeChoice;
@@ -134,33 +144,64 @@ namespace StarsAbove.Systems.Items
         //Affects everything except cooldowns (damage, support) very OP
         public float memoryGlobalMod;
 
-        StarsAboveGlobalItem globalItem = new StarsAboveGlobalItem();
+        StarsAboveGlobalItem StarsAboveGlobalItem = new StarsAboveGlobalItem();
         public override bool InstancePerEntity => true;     
         public override void SetDefaults(Item entity)
         {
             
         }
+        //WIP
+        public static List<int> ItemsThatHaveMultiplayerEffects = new List<int>() {
+            ItemType<Suistrume>(),
+            ItemType<Chronoclock>(),
+            ItemType<LegendaryShield>(),
+            ItemType<HunterSymphony>(),
+        };
         public override void SaveData(Item item, TagCompound tag)
         {
-            tag["M1"] = itemMemorySlot1;
-            tag["M2"] = itemMemorySlot2;
-            tag["M3"] = itemMemorySlot3;
-            tag["TarotEffect"] = tarotCardType;
+            if(item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            {
+                if (itemMemorySlot1 != 0)
+                {
+                    tag["M1"] = itemMemorySlot1;
+
+                }
+                if (itemMemorySlot2 != 0)
+                {
+                    tag["M2"] = itemMemorySlot2;
+
+                }
+                if (itemMemorySlot2 != 0)
+                {
+                    tag["M3"] = itemMemorySlot3;
+
+                }
+                tag["TarotEffect"] = tarotCardType;
+
+                tag["LegendaryShieldMemoryList"] = legendaryShieldMemories;
+            }
+            
 
             base.SaveData(item, tag);
         }
         public override void LoadData(Item item, TagCompound tag)
         {
-            itemMemorySlot1 = tag.GetInt("M1");
-            itemMemorySlot2 = tag.GetInt("M2");
-            itemMemorySlot3 = tag.GetInt("M3");
-            tarotCardType = tag.GetInt("TarotEffect");
+            if (item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
+            {
+                itemMemorySlot1 = tag.GetInt("M1");
+                itemMemorySlot2 = tag.GetInt("M2");
+                itemMemorySlot3 = tag.GetInt("M3");
+                tarotCardType = tag.GetInt("TarotEffect");
 
+                legendaryShieldMemories = (List<int>)tag.GetList<int>("LegendaryShieldMemoryList");
+            }
+            
             base.LoadData(item, tag);
         }
         int check;
         string memoryTooltip;
         string memoryTooltipInfo;
+
         public override bool CanUseItem(Item item, Player player)
         {
             if(player.HasBuff(BuffType<ChoiceGlassesLock>()))
@@ -175,13 +216,14 @@ namespace StarsAbove.Systems.Items
         }
         public override bool? UseItem(Item item, Player player)
         {
-            if(ChoiceGlasses && !player.HasBuff(BuffType<ChoiceGlassesLock>()))
+            if(ChoiceGlasses && !player.HasBuff(BuffType<ChoiceGlassesLock>()) && player.GetModPlayer<StarsAbovePlayer>().inCombat > 0)
             {
                 player.AddBuff(BuffType<ChoiceGlassesLock>(), 60 * 60);
                 HeldWeaponTypeChoice = item.type;
             }
-            if(PowerMoon && player.altFunctionUse == 2)
+            if(PowerMoon && player.altFunctionUse == 2  && !player.HasBuff(BuffType<PowerMoonCooldown>()))
             {
+                player.AddBuff(BuffType<PowerMoonCooldown>(), 60 * 4);
                 player.GetModPlayer<StarsAbovePlayer>().novaGauge += 4;
             }
             if (RuinedCrown && player.altFunctionUse == 2 && !player.HasBuff(BuffType<RuinedCrownCooldown>()))
@@ -190,11 +232,53 @@ namespace StarsAbove.Systems.Items
                 player.AddBuff(BuffType<RuinedCrownBuff>(), 60 * 2);
 
             }
+            if (CrystalshotCartridge && player.altFunctionUse == 2 && !player.HasBuff(BuffType<CrystalshotCooldown>()))
+            {
+                Vector2 velocity = Vector2.Normalize(player.DirectionTo(player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+
+                int numberProjectiles = player.GetModPlayer<ItemMemorySystemPlayer>().crystalshot; //random shots
+                for (int i = 0; i < numberProjectiles; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(45)); // 30 degree spread.
+                                                                                                                            // If you want to randomize the speed to stagger the projectiles
+                    float scale = 1f - (Main.rand.NextFloat() * .3f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ProjectileType<CrystalshotBullet>(), (int)(item.damage*0.4f), 3, player.whoAmI);
+                }
+
+                for (int d = 0; d < 21; d++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(velocity.X, velocity.Y).RotatedByRandom(MathHelper.ToRadians(47));
+                    float scale = 2f - (Main.rand.NextFloat() * .9f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    int dustIndex = Dust.NewDust(player.Center, 0, 0, 127, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 2f);
+                    Main.dust[dustIndex].noGravity = true;
+
+                }
+                for (int d = 0; d < 16; d++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(velocity.X / 2, velocity.Y / 2).RotatedByRandom(MathHelper.ToRadians(47));
+                    float scale = 2f - (Main.rand.NextFloat() * .9f);
+                    perturbedSpeed = perturbedSpeed * scale;
+                    int dustIndex = Dust.NewDust(player.Center, 0, 0, 31, perturbedSpeed.X, perturbedSpeed.Y, 150, default(Color), 1f);
+                    Main.dust[dustIndex].noGravity = true;
+                }
+
+            }
+
             if (Trumpet)
             {
                 SoundEngine.PlaySound(StarsAboveAudio.SFX_Trumpet, player.Center);
             }
             return base.UseItem(item, player);
+        }
+        public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult)
+        {
+            if (LonelyBand && ItemsThatHaveMultiplayerEffects.Contains(item.type) && Main.netMode == NetmodeID.SinglePlayer)
+            {
+                reduce -= 0.8f;
+            }
+            base.ModifyManaCost(item, player, ref reduce, ref mult);
         }
         int dekuNutCD;
         public override void OnConsumeMana(Item item, Player player, int manaConsumed)
@@ -214,7 +298,7 @@ namespace StarsAbove.Systems.Items
         }
         public override void OnConsumeItem(Item item, Player player)
         {
-            if(item.healLife > 0)
+            if(item.healLife > 0 && AetherBarrel)
             {
                 player.GetModPlayer<ItemMemorySystemPlayer>().powderCharges = 2;
             }
@@ -236,11 +320,15 @@ namespace StarsAbove.Systems.Items
         }
         public override void UpdateInventory(Item item, Player player)
         {
-            if ((globalItem.AstralWeapons.Contains(item.type) || globalItem.UmbralWeapons.Contains(item.type) || globalItem.SpatialWeapons.Contains(item.type)) && tarotCardType == -1)
+            if ((StarsAboveGlobalItem.AstralWeapons.Contains(item.type) || StarsAboveGlobalItem.UmbralWeapons.Contains(item.type) || StarsAboveGlobalItem.SpatialWeapons.Contains(item.type)) && tarotCardType == -1)
             {
                 //0 fool, 2 magician, 3 priestess, 4 empress, 5 emperor, 6 heirophant, 7 lovers, 8 chariot, 9 justice,
                 //10 hermit, 11 fortune, 12 strength, 13 hanged man, 14 death, 15 temperance, 16 devil, 17 tower, 18 star, 19 moon, 20 sun
                 tarotCardType = Main.rand.Next(0, 21);
+            }
+            if(player.GetModPlayer<WeaponPlayer>().LegendaryShieldEquippedAsAccessory)
+            {
+                return;
             }
             ResetMemories(player);
             if (itemMemorySlot1 != 0)
@@ -255,13 +343,56 @@ namespace StarsAbove.Systems.Items
             {
                 CheckMemories(item, itemMemorySlot3, player);
             }
+            //Special code for the Legendary Shield's ability to eat all memories
+            if(item.type == ModContent.ItemType<LegendaryShield>())
+            {
+                if(legendaryShieldMemories == null)
+                {
 
+                }
+                else
+                {
+                    for (int i = 0; i < legendaryShieldMemories.Count; i++)
+                    {
+                        CheckMemories(item, legendaryShieldMemories[i], player);
+
+                    }
+                }
+                
+            }
             //All effects are processed at the end just in case some weapons have 'buff other effect' effects
-            BuffMemories(player);
-            Memories(player);
+            BuffMemories(player, item);
+            Memories(player, item);
+        }
+        public override void UpdateEquip(Item item, Player player)
+        {
+            ResetMemories(player);
+
+            //The Legendary Shield can also be equipped as an accessory
+            if (item.type == ModContent.ItemType<LegendaryShield>())
+            {
+                for (int i = 0; i < legendaryShieldMemories.Count; i++)
+                {
+                    CheckMemories(item, legendaryShieldMemories[i], player);
+
+                }
+            }//All effects are processed at the end just in case some weapons have 'buff other effect' effects
+            BuffMemories(player, item);
+            Memories(player, item);
+
+            SyncMemoriesToModPlayer(player);
+
+        }
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+           
         }
         public override void HoldItem(Item item, Player player)
         {
+            if (player.GetModPlayer<WeaponPlayer>().LegendaryShieldEquippedAsAccessory)
+            {
+                return;
+            }
             SyncMemoriesToModPlayer(player);
 
             
@@ -304,13 +435,19 @@ namespace StarsAbove.Systems.Items
             modPlayer.JackalMask = JackalMask;//32
             modPlayer.KnightsShovelhead = KnightsShovelhead;//33
 
+            modPlayer.WetCrowbar = WetCrowbar;
+            modPlayer.CrystalshotCartridge = CrystalshotCartridge;
+            modPlayer.OutbackWrangler = OutbackWrangler;
+            modPlayer.LonelyBand = LonelyBand;
+            modPlayer.StrangeScrap = StrangeScrap;
+
+            modPlayer.BlackLightbulb = BlackLightbulb;//30
+
             //Each weapon has a random tarot card effect assigned.
             modPlayer.TarotCard = TarotCard;//100
 
             //Garridine's Protocores
-            modPlayer.ProtocoreMonoclaw = ProtocoreMonoclaw;//201
-            modPlayer.ProtocoreManacoil = ProtocoreManacoil;//202
-            modPlayer.ProtocoreShockrod = ProtocoreShockrod;//203
+            modPlayer.GarridineGadget = GarridineGadget;//201
 
             //Sigils
             modPlayer.RangedSigil = RangedSigil;//301
@@ -319,15 +456,8 @@ namespace StarsAbove.Systems.Items
             modPlayer.SummonSigil = SummonSigil;//304
 
             //Aeonseals
-            modPlayer.AeonsealDestruction = AeonsealDestruction;//401
-            modPlayer.AeonsealHunt = AeonsealHunt;//402
-            modPlayer.AeonsealErudition = AeonsealErudition;//403
-            modPlayer.AeonsealHarmony = AeonsealHarmony;//404
-            modPlayer.AeonsealNihility = AeonsealNihility;//405
-            modPlayer.AeonsealPreservation = AeonsealPreservation;//406
-            modPlayer.AeonsealAbundance = AeonsealAbundance;//407
+            modPlayer.Aeonseal = Aeonseal;
 
-            modPlayer.AeonsealTrailblazer = AeonsealTrailblazer;//408
         }
 
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
@@ -642,13 +772,20 @@ namespace StarsAbove.Systems.Items
             JackalMask = false;//32
             KnightsShovelhead = false;//33
 
+            WetCrowbar = false;
+            CrystalshotCartridge = false;
+            OutbackWrangler = false;
+            LonelyBand = false;
+            StrangeScrap = false;
+
+            BlackLightbulb = false;//30
+
+
             //Each weapon has a random tarot card effect assigned.
             TarotCard = false;//100
 
             //Garridine's Protocores
-            ProtocoreMonoclaw = false;//201
-            ProtocoreManacoil = false;//202
-            ProtocoreShockrod = false;//203
+            GarridineGadget = false;//201
 
             //Sigils
             RangedSigil = false;//301
@@ -657,19 +794,12 @@ namespace StarsAbove.Systems.Items
             SummonSigil = false;//304
 
             //Aeonseals
-            AeonsealDestruction = false;//401
-            AeonsealHunt = false;//402
-            AeonsealErudition = false;//403
-            AeonsealHarmony = false;//404
-            AeonsealNihility = false;//405
-            AeonsealPreservation = false;//406
-            AeonsealAbundance = false;//407
-
-            AeonsealTrailblazer = false;//408
+            Aeonseal = false;
+           
         }
 
         //Memories which provide buffs to other memories are calculated first.
-        private void BuffMemories(Player player)
+        private void BuffMemories(Player player, Item item)
         {
             if(SigilOfHope)
             {
@@ -687,12 +817,21 @@ namespace StarsAbove.Systems.Items
             {
                 damageModAdditive += 0.08f;
             }
+            if (Aeonseal && player.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath == 5)
+            {
+                player.statDefense += (int)(item.damage * 0.08);
+            }
             player.GetModPlayer<ItemMemorySystemPlayer>().cooldownMod = cooldownReductionMod;
         }
         //All other memories.
-        private void Memories(Player player)
+        private void Memories(Player player, Item item)
         {
-            
+            if(StrangeScrap)
+            {
+                player.GetModPlayer<ItemMemorySystemPlayer>().strangeScrapPriceCopper = (int)MathHelper.Clamp(player.GetModPlayer<ItemMemorySystemPlayer>().strangeScrapPriceCopper, 0, 8000000);
+                item.shopCustomPrice = (int?)(player.GetModPlayer<ItemMemorySystemPlayer>().strangeScrapPriceCopper);
+
+            }
         }
         private void CheckMemories(Item item, int slot, Player player)
         {
@@ -736,10 +875,21 @@ namespace StarsAbove.Systems.Items
             SetMemory(slot, 35, "BlackLightbulb", ref BlackLightbulb, item, player);
             SetMemory(slot, 36, "OnyxJackal", ref JackalMask, item, player);
 
+            SetMemory(slot, 37, "WetCrowbar", ref WetCrowbar, item, player);
+            SetMemory(slot, 38, "CrystalshotCartridge", ref CrystalshotCartridge, item, player);
+            SetMemory(slot, 39, "OutbackWrangler", ref OutbackWrangler, item, player);
+            SetMemory(slot, 40, "LonelyBand", ref LonelyBand, item, player);
+            SetMemory(slot, 41, "StrangeScrap", ref StrangeScrap, item, player);
+
+            //SetMemory(slot, 42, "Aeonseal", ref Aeonseal, item, player);
+            SetMemory(slot, 43, "GarridineGadget", ref GarridineGadget, item, player);
+
+
             SetMemory(slot, 301, "RangedSigil", ref RangedSigil, item, player);
             SetMemory(slot, 302, "MagicSigil", ref MagicSigil, item, player);
             SetMemory(slot, 303, "MeleeSigil", ref MeleeSigil, item, player);
             SetMemory(slot, 304, "SummonSigil", ref SummonSigil, item, player);
+
             check = 100;//TarotCard
             if (slot == check)
             {
@@ -827,6 +977,67 @@ namespace StarsAbove.Systems.Items
                 }
                 memoryCount++;
             }
+
+            check = 42;//Aeonseal
+            if (slot == check)
+            {
+                Aeonseal = true;
+                if (player.HeldItem == item)
+                    player.GetModPlayer<ItemMemorySystemPlayer>().Aeonseal = true;
+                string itemIcon = $"[i:{ItemType<Aeonseal>()}]";
+                string itemName = "Aeonseal";
+                string cardName = "";
+                //1 fool, 2 magician, 3 priestess, 4 empress, 5 emperor, 6 heirophant, 7 lovers, 8 chariot, 9 justice,
+                //10 hermit, 11 fortune, 12 strength, 13 hanged man, 14 death, 15 temperance, 16 devil, 17 tower, 18 star, 19 moon, 20 sun
+                switch (player.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath)
+                {
+                    case 0:
+                        cardName = "Destruction";
+                        break;
+                    case 1:
+                        cardName = "Hunt";
+                        break;
+                    case 2:
+                        cardName = "Erudition";
+                        break;
+                    case 3:
+                        cardName = "Harmony";
+                        break;
+                    case 4:
+                        cardName = "Nihility";
+                        break;
+                    case 5:
+                        cardName = "Preservation";
+                        break;
+                    case 6:
+                        cardName = "Abundance";
+                        break;
+                    case 7:
+                        cardName = "Elation";
+                        break;
+                    case 8:
+                        cardName = "Propagation";
+                        break;
+                    case 9:
+                        cardName = "Rememberance";
+                        break;
+                    case 10:
+                        cardName = "Trailblaze";
+                        break;
+                }
+                memoryTooltip += itemIcon;
+                if (memoryTooltipInfo == "")
+                {
+                    memoryTooltipInfo += itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached." + cardName);
+
+                }
+                else
+                {
+                    memoryTooltipInfo += "\n" + itemIcon + ": " + LangHelper.GetTextValue($"Items." + $"{itemName}" + ".TooltipAttached." + cardName);
+
+                }
+                memoryCount++;
+            }
         }
         private void SetMemory(int slot, int check, string itemName, ref bool itemFlag, Item item, Player player)
         {
@@ -851,19 +1062,19 @@ namespace StarsAbove.Systems.Items
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (globalItem.AstralWeapons.Contains(item.type) || globalItem.UmbralWeapons.Contains(item.type) || globalItem.SpatialWeapons.Contains(item.type))
+            if (StarsAboveGlobalItem.AstralWeapons.Contains(item.type) || StarsAboveGlobalItem.UmbralWeapons.Contains(item.type) || StarsAboveGlobalItem.SpatialWeapons.Contains(item.type))
             {
                 string tooltipAddition = "";
                 //Determine the aspect of aspected weapons.
-                if (globalItem.AstralWeapons.Contains(item.type))
+                if (StarsAboveGlobalItem.AstralWeapons.Contains(item.type))
                 {
                     tooltipAddition = $"[i:{ItemType<Astral>()}]";
                 }
-                if (globalItem.UmbralWeapons.Contains(item.type))
+                if (StarsAboveGlobalItem.UmbralWeapons.Contains(item.type))
                 {
                     tooltipAddition = $"[i:{ItemType<Umbral>()}]";
                 }
-                if (globalItem.SpatialWeapons.Contains(item.type))
+                if (StarsAboveGlobalItem.SpatialWeapons.Contains(item.type))
                 {
                     tooltipAddition = $"[i:{ItemType<Spatial>()}]";
                 }
@@ -898,6 +1109,50 @@ namespace StarsAbove.Systems.Items
                 }
 
                 TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AspectIdentifier", tooltipAddition) { OverrideColor = Color.White };
+                tooltips.Add(tooltip);
+            }
+
+            if(item.type == ModContent.ItemType<Aeonseal>())
+            {
+                string pathName = "";
+                switch (Main.LocalPlayer.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath)
+                {
+                    case 0:
+                        pathName = "Destruction";
+                        break;
+                    case 1:
+                        pathName = "Hunt";
+                        break;
+                    case 2:
+                        pathName = "Erudition";
+                        break;
+                    case 3:
+                        pathName = "Harmony";
+                        break;
+                    case 4:
+                        pathName = "Nihility";
+                        break;
+                    case 5:
+                        pathName = "Preservation";
+                        break;
+                    case 6:
+                        pathName = "Abundance";
+                        break;
+                    case 7:
+                        pathName = "Elation";
+                        break;
+                    case 8:
+                        pathName = "Propagation";
+                        break;
+                    case 9:
+                        pathName = "Rememberance";
+                        break;
+                    case 10:
+                        pathName = "Trailblaze";
+                        break;
+                }
+                
+                TooltipLine tooltip = new TooltipLine(Mod, "StarsAbove: AeonsealPath", LangHelper.GetTextValue($"Items." + $"Aeonseal" + ".TooltipAttached." + pathName)) { OverrideColor = Color.White };
                 tooltips.Add(tooltip);
             }
         }
@@ -939,14 +1194,20 @@ namespace StarsAbove.Systems.Items
         public bool JackalMask;//32
         public bool KnightsShovelhead;//33
 
+        public bool WetCrowbar;//
+        public bool CrystalshotCartridge;//
+        public bool OutbackWrangler;//
+        public bool LonelyBand;//
+        public bool StrangeScrap;//
+
+        public bool GarridineGadget;//30
+
+
         //Each weapon has a random tarot card effect assigned.
         public bool TarotCard;//100
         public int tarotCardType = 0;
 
         //Garridine's Protocores
-        public bool ProtocoreMonoclaw;//201
-        public bool ProtocoreManacoil;//202
-        public bool ProtocoreShockrod;//203
 
         //Sigils
         public bool RangedSigil;//301
@@ -955,15 +1216,8 @@ namespace StarsAbove.Systems.Items
         public bool SummonSigil;//304
 
         //Aeonseals
-        public bool AeonsealDestruction;//401
-        public bool AeonsealHunt;//402
-        public bool AeonsealErudition;//403
-        public bool AeonsealHarmony;//404
-        public bool AeonsealNihility;//405
-        public bool AeonsealPreservation;//406
-        public bool AeonsealAbundance;//407
+        public bool Aeonseal;
 
-        public bool AeonsealTrailblazer;//408
 
         public float cooldownMod;
 
@@ -971,10 +1225,26 @@ namespace StarsAbove.Systems.Items
         public int oldHP;
         public int accursedEdgeStacks = 0;
         public float ragebladeStacks = 0f;
+        public int crystalshot;
+        public int strangeScrapPriceCopper;
+        public int wranglerCrits;
+        public int aeonsealPath = -1;
+
+        public override void SaveData(TagCompound tag)
+        {
+            tag["aeonsealPath"] = aeonsealPath;
+        }
+       
+        public override void LoadData(TagCompound tag)
+        {
+            aeonsealPath = tag.GetInt("aeonsealPath");
+
+        }
+        
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (Main.LocalPlayer.active && !Main.LocalPlayer.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
+            if (Player.active && !Player.dead && !Player.GetModPlayer<BossPlayer>().QTEActive && StarsAbove.weaponMemoryKey.JustPressed)
             {
                 if (SimulacraShifter && !Player.HasBuff(BuffType<SimulacraShifterCooldown>()))
                 {
@@ -1063,6 +1333,40 @@ namespace StarsAbove.Systems.Items
                         Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
                     }
                 }
+                if (OutbackWrangler && !Player.HasBuff(BuffType<OutbackWranglerCooldown>()))
+                {
+                    for (int ir = 0; ir < 20; ir++)
+                    {
+                        Vector2 position = Player.Center;
+                        Dust d = Dust.NewDustPerfect(position, DustID.LifeDrain, null, 240, default, 0.7f);
+                        d.fadeIn = 0.3f;
+                        d.noLight = true;
+                        d.noGravity = true;
+
+                    }
+                    Player.statMana = 0;
+                    Player.manaRegenDelay = 480;
+                    for (int i = 0; i < Main.maxProjectiles; i++)
+                    {
+                        Projectile proj = Main.projectile[i];
+
+                        if (proj.active && proj.owner == Player.whoAmI &&
+                            proj.minion && proj.minionSlots > 0)
+                        {
+                            for (int ir = 0; ir < 20; ir++)
+                            {
+                                Vector2 position = proj.Center;
+                                Dust d = Dust.NewDustPerfect(position, DustID.LifeDrain, null, 240, default, 0.7f);
+                                d.fadeIn = 0.3f;
+                                d.noLight = true;
+                                d.noGravity = true;
+
+                            }
+                            wranglerCrits++;
+                            proj.Kill();
+                        }
+                    }
+                }
                 if (YoumuHilt && !Player.HasBuff(BuffType<PhantomHiltCooldown>()))
                 {
                     //Defense
@@ -1104,12 +1408,24 @@ namespace StarsAbove.Systems.Items
                         Main.dust[dust].velocity = Player.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 6f;
                     }
                 }
+                if (GarridineGadget && !Player.HasBuff(BuffType<GarridineGadgetCooldown>()))
+                {
+                    Player.AddBuff(BuffType<GarridineGadgetCooldown>(), 120);
+                    Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center.X, Player.Center.Y, 0, 0, ProjectileType<GarridineGadgetGun>(), 0, 0, Player.whoAmI);
+                    SoundEngine.PlaySound(SoundID.Item11);
+                    Vector2 target = Vector2.Normalize(Player.DirectionTo(Player.GetModPlayer<StarsAbovePlayer>().playerMousePos)) * 10f;
+                    Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center.X, Player.Center.Y, target.X, target.Y, ProjectileType<GarridineGadgetRound>(), Player.GetWeaponDamage(Player.HeldItem), 0, Player.whoAmI);
 
+                }
             }
             base.ProcessTriggers(triggersSet);
         }
         public override void PreUpdate()
         {
+            if(aeonsealPath == -1)
+            {
+                aeonsealPath = Main.rand.Next(0, 11);
+            }
             if (Rageblade)
             {
                 if (Player.GetModPlayer<StarsAbovePlayer>().inCombat <= 0)
@@ -1122,9 +1438,18 @@ namespace StarsAbove.Systems.Items
                 ragebladeStacks = 0;
 
             }
+            
+            if(NetheriteBar)
+            {
+                Player.statDefense += 4;
+            }
             if(MercenaryAuracite)
             {
                 Player.GetCritChance(DamageClass.Generic) += MercenaryCritChance;
+            }
+            if(crystalshot > 0)
+            {
+                Player.AddBuff(BuffType<CrystalshotPrepped>(), 10);
             }
             base.PreUpdate();
         }
@@ -1145,10 +1470,33 @@ namespace StarsAbove.Systems.Items
             {
                 OnKillNPC(target);
             }
-            if(JackalMask)
+            
+            if (BlackLightbulb && !target.boss && hit.Crit)
+            {
+                if (Main.rand.Next(0, 101) < 14)
+                {
+                    for (int d = 0; d < 8; d++)//Visual effects
+                    {
+                        ParticleOrchestrator.RequestParticleSpawn(clientOnly: false, ParticleOrchestraType.BlackLightningSmall,
+                        new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox) },
+                        Player.whoAmI);
+                    }
+                    target.SimpleStrikeNPC(target.life, 0, true, 0);
+                }
+            }
+            if (JackalMask)
             {
                 Player.MinionAttackTargetNPC = target.whoAmI;
                 
+            }
+            if (CrystalshotCartridge && Main.rand.NextBool(15))
+            {
+                int k = Item.NewItem(Player.GetSource_OnHit(target), (int)target.position.X + Main.rand.Next(-20, 20), (int)target.position.Y + Main.rand.Next(-20, 20), target.width, target.height, Mod.Find<ModItem>("Crystallize").Type, 1, false);
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    NetMessage.SendData(MessageID.SyncItem, -1, -1, null, k, 1f);
+                }
+
             }
             if (Player.HasBuff(BuffType<RuinedCrownBuff>()))
             {
@@ -1181,8 +1529,9 @@ namespace StarsAbove.Systems.Items
                     ragebladeStacks = 0.20f;
                 }
             }
-            if (KnightsShovelhead)
+            if (KnightsShovelhead && !Player.HasBuff(BuffType<ComboCooldown>()))
             {
+                Player.AddBuff(BuffType<ComboCooldown>(), 10);
                 Player.velocity.Y -= 10f;
             }
             if(hit.Crit && powderCharges > 0)
@@ -1237,6 +1586,7 @@ namespace StarsAbove.Systems.Items
                     target.AddBuff(BuffType<OnyxJackalTagDamage>(), 240);
                 }
             }
+            
             base.OnHitNPCWithProj(proj, target, hit, damageDone);
         }
         public void OnKillNPC(NPC target)
@@ -1244,6 +1594,10 @@ namespace StarsAbove.Systems.Items
             if(MatterManipulator)
             {
                 Player.AddBuff(BuffID.Mining, 60 * 30);
+            }
+            if(Aeonseal && aeonsealPath == 6)
+            {
+                Player.Heal(2);
             }
             if(Pawn)
             {
@@ -1262,14 +1616,83 @@ namespace StarsAbove.Systems.Items
                 }
                 
             }
+            if(StrangeScrap)
+            {
+
+                strangeScrapPriceCopper += 10;
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if(BottledChaos)
+            if (Aeonseal && aeonsealPath == 0)
+            {
+                modifiers.CritDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 1 && target.boss)
+            {
+                modifiers.FinalDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 2 && !target.boss)
+            {
+                modifiers.FinalDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 3)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (Player.buffType[i] > 0 && !Main.debuff[Player.buffType[i]])
+                    {
+                        modifiers.FinalDamage += 0.005f;
+                        continue;
+                    }
+                }
+
+            }
+            if (Aeonseal && aeonsealPath == 4)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    if (target.buffType[i] > 0 && Main.debuff[target.buffType[i]])
+                    {
+                        modifiers.FinalDamage += 0.12f;
+                        break;
+                    }
+                }
+
+            }
+            if (Aeonseal && aeonsealPath == 7)
+            {
+                modifiers.FinalDamage += Main.rand.NextFloat(0f, 0.12f);
+
+            }
+            if (Aeonseal && aeonsealPath == 8)
+            {
+                modifiers.FinalDamage += Player.numMinions * 0.02f;
+
+            }
+            if (Aeonseal && aeonsealPath == 9 && target.HasBuff(BuffType<Stun>()))
+            {
+                modifiers.FinalDamage += 0.12f;
+
+            }
+            if (target.HasBuff(BuffType<TrailblazeBuff>()) && aeonsealPath != 10)
+            {
+                modifiers.FinalDamage += 0.12f;
+            }
+            if (Aeonseal && aeonsealPath == 10)
+            {
+                target.AddBuff(BuffType<TrailblazeBuff>(), 240);
+            }
+            if (BottledChaos)
             {
                 modifiers.DamageVariationScale *= 3f;
             }
-            if(Player.HasBuff(BuffType<AccursedEdge>()))
+            if (WetCrowbar && target.life == target.lifeMax)
+            {
+                modifiers.NonCritDamage += 0.3f;
+                modifiers.CritDamage += 0.5f;
+            }
+            if (Player.HasBuff(BuffType<AccursedEdge>()))
             {
                 modifiers.FinalDamage += 0.4f;
             }
@@ -1280,10 +1703,15 @@ namespace StarsAbove.Systems.Items
                     modifiers.FinalDamage += 0.3f;
                 }
             }
+            if(wranglerCrits > 0)
+            {
+                modifiers.SetCrit();
+            }
             if(Player.HasBuff(BuffType<RuinedCrownBuff>()))
             {
                 modifiers.FinalDamage += 0.15f;
             }
+            
             base.ModifyHitNPC(target, ref modifiers);
         }
         public override void PostUpdate()
@@ -1374,10 +1802,9 @@ namespace StarsAbove.Systems.Items
             //Each weapon has a random tarot card effect assigned.
             TarotCard = false;//100
 
-            //Garridine's Protocores
-            ProtocoreMonoclaw = false;//201
-            ProtocoreManacoil = false;//202
-            ProtocoreShockrod = false;//203
+            //Garridine
+            GarridineGadget = false;
+
 
             //Sigils
             RangedSigil = false;//301
@@ -1386,15 +1813,8 @@ namespace StarsAbove.Systems.Items
             SummonSigil = false;//304
 
             //Aeonseals
-            AeonsealDestruction = false;//401
-            AeonsealHunt = false;//402
-            AeonsealErudition = false;//403
-            AeonsealHarmony = false;//404
-            AeonsealNihility = false;//405
-            AeonsealPreservation = false;//406
-            AeonsealAbundance = false;//407
-
-            AeonsealTrailblazer = false;//408
+            Aeonseal = false;
+            
             base.ResetEffects();
         }
     }

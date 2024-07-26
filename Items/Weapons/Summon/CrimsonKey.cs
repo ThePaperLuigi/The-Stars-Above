@@ -11,6 +11,7 @@ using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Summon.KeyOfTheSinner;
+using StarsAbove.Buffs.Summon.KeyOfTheSinner;
 
 namespace StarsAbove.Items.Weapons.Summon
 {
@@ -48,8 +49,8 @@ namespace StarsAbove.Items.Weapons.Summon
 			Item.rare = ItemRarityID.Red;
 			Item.UseSound = StarsAboveAudio.SFX_summoning;
 			
-			Item.shoot = ProjectileType<Satanael>();
-			Item.buffType = BuffType<Buffs.Satanael>(); //The buff added to player after used the item
+			Item.shoot = ProjectileType<Projectiles.Summon.KeyOfTheSinner.Satanael>();
+			Item.buffType = BuffType<Buffs.Summon.KeyOfTheSinner.Satanael>(); //The buff added to player after used the item
 			Item.value = Item.buyPrice(gold: 1);           //The value of the weapon
 		}
 

@@ -10,8 +10,8 @@ using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Other.Hawkmoon;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {

@@ -8,9 +8,9 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
 using StarsAbove.Systems;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Bosses.OldBossAttacks;
 using StarsAbove.Projectiles.Melee.CrimsonSakuraAlpha;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -79,7 +79,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			
 			if (player.altFunctionUse == 2)
 			{
-				if(bladeWillTriggerBlue > 0 && bladeWillTriggerRed > 0 && bladeWillTriggerYellow > 0 && !player.GetModPlayer<WeaponPlayer>().Player.GetModPlayer<WeaponPlayer>().bladeWill && !player.HasBuff(BuffType<Buffs.BladeWillCooldown>()))
+				if(bladeWillTriggerBlue > 0 && bladeWillTriggerRed > 0 && bladeWillTriggerYellow > 0 && !player.GetModPlayer<WeaponPlayer>().Player.GetModPlayer<WeaponPlayer>().bladeWill && !player.HasBuff(BuffType<Buffs.Melee.CrimsonSakuraAlpha.BladeWillCooldown>()))
                 {
 					Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 					CombatText.NewText(textPos, new Color(255, 0, 125, 240), "Blade Will activated!", false, false);
@@ -92,7 +92,7 @@ namespace StarsAbove.Items.Weapons.Melee
 				if (!player.GetModPlayer<WeaponPlayer>().bladeWill)
 				for (int i = 0; i < player.CountBuffs(); i++)
 				{
-					if (player.buffType[i] == BuffType<Buffs.YellowOrb>())
+					if (player.buffType[i] == BuffType<Buffs.Melee.CrimsonSakuraAlpha.YellowOrb>())
 					{
 							SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, player.Center);
 
@@ -111,12 +111,12 @@ namespace StarsAbove.Items.Weapons.Melee
 							return true;
 
 					}
-					if (player.buffType[i] == BuffType<Buffs.BlueOrb>())
+					if (player.buffType[i] == BuffType<Buffs.Melee.CrimsonSakuraAlpha.BlueOrb>())
 					{
 							SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, player.Center);
 
 							bladeWillTriggerBlue = 300;
-						player.AddBuff(BuffType<Buffs.LightbreakStrike>(), 120);
+						player.AddBuff(BuffType<Buffs.Melee.CrimsonSakuraAlpha.LightbreakStrike>(), 120);
 
 						player.DelBuff(i);
 						for (int d = 0; d < 20; d++)
@@ -130,7 +130,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							return true;
 
 					}
-					if (player.buffType[i] == BuffType<Buffs.RedOrb>())
+					if (player.buffType[i] == BuffType<Buffs.Melee.CrimsonSakuraAlpha.RedOrb>())
 					{
 							SoundEngine.PlaySound(StarsAboveAudio.SFX_HolyStab, player.Center);
 
@@ -173,7 +173,7 @@ namespace StarsAbove.Items.Weapons.Melee
 			bladeWillTriggerYellow--;
 			if(player.statMana <= 0)
             {
-				Main.LocalPlayer.AddBuff(BuffType<Buffs.BladeWillCooldown>(), 3600);
+				Main.LocalPlayer.AddBuff(BuffType<Buffs.Melee.CrimsonSakuraAlpha.BladeWillCooldown>(), 3600);
 				player.GetModPlayer<WeaponPlayer>().bladeWill = false;
             }
 			else

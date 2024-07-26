@@ -124,7 +124,7 @@ namespace StarsAbove.Projectiles.Melee.SakuraVengeance
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, vel, ProjectileType<CursedFlames>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, 1);
                 }
             }
-            if (player.HasBuff(BuffType<Buffs.SakuraVengeance.ElementalChaos>()))
+            if (player.HasBuff(BuffType<Buffs.Melee.SakuraVengeance.ElementalChaos>()))
             {
                 target.AddBuff(BuffID.Frostburn, 120);
                 target.AddBuff(BuffID.OnFire, 120);

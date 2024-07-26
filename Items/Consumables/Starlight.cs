@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using StarsAbove.Systems;
+using Terraria.Audio;
+using StarsAbove.Buffs.StellarNovas;
 
 namespace StarsAbove.Items.Consumables
 {
@@ -48,8 +50,16 @@ namespace StarsAbove.Items.Consumables
 		}
 
 		public override bool OnPickup(Player player)
-		{
-			Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
+        {
+            SoundEngine.PlaySound(SoundID.MaxMana);
+			if(player.GetModPlayer<StarsAbovePlayer>().lucidDreamerLevel >= 2)
+			{
+				if(player.HasBuff(ModContent.BuffType<LucidDreamerNovaCooldown>()))
+				{
+					player.buffTime[player.FindBuffIndex(ModContent.BuffType<LucidDreamerNovaCooldown>())] -= 5 * 60;
+				}
+			}
+            Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 20, player.width, player.height);
 			CombatText.NewText(textPos, new Color(255, 43, 139, 240), "5", false, false);
 			player.GetModPlayer<StarsAbovePlayer>().novaGauge += 5;
 			return false;

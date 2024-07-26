@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.SoliloquyOfSovereignSeas;
+using StarsAbove.Buffs.Other.SoliloquyOfSovereignSeas;
+using StarsAbove.Systems;
 using StarsAbove.Systems;
 using System;
 using Terraria;
@@ -25,7 +26,7 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
 			Projectile.CloneDefaults(ProjectileID.BrainOfCthulhuPet);
 			AIType = ProjectileID.BrainOfCthulhuPet;
 			Projectile.netImportant = true;
-			Projectile.DamageType = ModContent.GetInstance<Systems.ArkheDamageClass>();
+			Projectile.DamageType = ModContent.GetInstance<ArkheDamageClass>();
 			Projectile.minion = true;
 			
 			Projectile.minionSlots = 0f;

@@ -61,13 +61,13 @@ namespace StarsAbove.Items.Weapons.Melee
 			
 			if (player.altFunctionUse == 2)
 			{
-				if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.BerserkerModeCooldown>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.BerserkerMode>()))
+				if (!Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.InugamiRipsaw.BerserkerModeCooldown>()) && !Main.LocalPlayer.HasBuff(BuffType<Buffs.Melee.InugamiRipsaw.BerserkerMode>()))
 				{
 					
 					
 
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_InugamiCharge, player.Center);//
-					player.AddBuff(BuffType<Buffs.BerserkerMode>(), 300);
+					player.AddBuff(BuffType<Buffs.Melee.InugamiRipsaw.BerserkerMode>(), 300);
 					for (int d = 0; d < 25; d++)
 					{
 						Dust.NewDust(player.position, player.width, player.height, 45, 0f + Main.rand.Next(-15, 15), 0f + Main.rand.Next(-15, 15), 150, default(Color), 1.5f);

@@ -7,10 +7,10 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Buffs.VirtuesEdge;
-using StarsAbove.Systems;
 using StarsAbove.Systems;
 using StarsAbove.Projectiles.Celestial.VirtuesEdge;
+using StarsAbove.Buffs.Celestial.VirtuesEdge;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Celestial
 {
@@ -51,7 +51,7 @@ namespace StarsAbove.Items.Weapons.Celestial
 			{
 				Item.damage = 225;
 			}
-			Item.DamageType = ModContent.GetInstance<Systems.CelestialDamageClass>();
+			Item.DamageType = ModContent.GetInstance<CelestialDamageClass>();
 			Item.width = 30;
 			Item.height = 30;
 			Item.knockBack = 7;
@@ -149,8 +149,9 @@ namespace StarsAbove.Items.Weapons.Celestial
 			}
 			else
             {
-				if(modPlayer.VirtueGauge >= 100 && modPlayer.VirtueMode == 0)//Add cooldown check as well 
+				if(modPlayer.VirtueGauge >= 100 && modPlayer.VirtueMode == 0 && !player.HasBuff(BuffType<CelestialVoidCooldown>()))//Add cooldown check as well 
                 {
+					player.AddBuff(BuffType<CelestialVoidCooldown>(), 45 * 60);
 					modPlayer.VirtueGauge = 0;
 					//Spawn a slower cleaving sword.
 					Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center.X, player.Center.Y, 0, 0, ProjectileType<VirtueEdgeSlashVoid>(), damage, knockback, player.whoAmI, 0f);

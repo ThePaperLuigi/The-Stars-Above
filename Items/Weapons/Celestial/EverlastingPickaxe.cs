@@ -1,5 +1,5 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs.EverlastingPickaxe;
+using StarsAbove.Buffs.Celestial.EverlastingPickaxe;
 using StarsAbove.Items.Essences;
 using StarsAbove.Projectiles.Celestial.EverlastingPickaxe;
 using StarsAbove.Systems;

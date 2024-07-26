@@ -7,15 +7,14 @@ using static Terraria.ModLoader.ModContent;
 using StarsAbove.Items.Essences;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using StarsAbove.Systems;
-using StarsAbove.Buffs.SoliloquyOfSovereignSeas;
 using StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas;
-using StarsAbove.Buffs.DragaliaFound;
 using StarsAbove.Mounts.DragaliaFound;
 using StarsAbove.Projectiles.Extra;
 using StarsAbove.Projectiles.Summon.DragaliaFound;
 using System;
 using StarsAbove.Items.Prisms;
+using StarsAbove.Buffs.Other.SoliloquyOfSovereignSeas;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Items.Weapons.Other
 {
@@ -30,7 +29,7 @@ namespace StarsAbove.Items.Weapons.Other
 
 		public override void SetDefaults() {
 			Item.damage = 40;
-			Item.DamageType = ModContent.GetInstance<Systems.ArkheDamageClass>();
+			Item.DamageType = ModContent.GetInstance<ArkheDamageClass>();
 			Item.width = 40;
 			Item.height = 20;
 			Item.useTime = 20;

@@ -74,9 +74,9 @@ namespace StarsAbove.Systems
         }
         public override void PostUpdate()
         {
-            
+
         }
-       
+
 
         public static float InQuad(float t) => t * t;
         public static float OutQuad(float t) => 1 - InQuad(1 - t);
@@ -110,20 +110,20 @@ namespace StarsAbove.Systems
             imbueSuccessAnimationTimer = MathHelper.Clamp(imbueSuccessAnimationTimer, 0f, 1f);
 
             //Give time for the crystal to flash its animation before the weapon starts glowing
-            if(imbueSuccessAnimationTimer < 0.92f)
+            if (imbueSuccessAnimationTimer < 0.92f)
             {
                 weaponGlowOpacity = MathHelper.Lerp(0, 1, imbueSuccessAnimationTimer);
                 crystalFrame = 0;
             }
             else
             {
-                weaponGlowOpacity+= 0.1f;
+                weaponGlowOpacity += 0.1f;
             }
             if (imbueSuccessAnimationTimer > 0.92f)
             {
                 crystalFrameTimer++;
             }
-            if(crystalFrameTimer > 3)
+            if (crystalFrameTimer > 3)
             {
                 crystalFrameTimer = 0;
                 crystalFrame++;
@@ -132,9 +132,9 @@ namespace StarsAbove.Systems
 
             quadraticFloatTimer += 0.0005f;
             quadraticFloat = InOutQuad(pulse(quadraticFloatTimer));
-         
+
             smoothRotation += 0.5f;
-            if(smoothRotation > 360)
+            if (smoothRotation > 360)
             {
                 smoothRotation = 0f;
             }
@@ -149,7 +149,7 @@ namespace StarsAbove.Systems
 
         public override void ResetEffects()
         {
-            
+
 
         }
     }

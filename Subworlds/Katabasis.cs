@@ -8,10 +8,10 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using StarsAbove.Systems;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.IO;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Subworlds
 {

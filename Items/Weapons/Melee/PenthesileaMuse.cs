@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using StarsAbove.Buffs;
 using StarsAbove.Items.Essences;
 using Terraria;
 using Terraria.DataStructures;
@@ -7,8 +6,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using StarsAbove.Systems;
 using StarsAbove.Projectiles.Melee.Pigment;
+using StarsAbove.Systems;
+using StarsAbove.Buffs.Melee.PenthesileaMuse;
 
 namespace StarsAbove.Items.Weapons.Melee
 {
@@ -230,7 +230,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							splatterCooldown = 10;
 
 						}
-						closest.AddBuff(BuffType<Buffs.RedPaint>(), 30);
+						closest.AddBuff(BuffType<Buffs.Melee.PenthesileaMuse.RedPaint>(), 30);
 					}
 					if (modPlayer.targetPaintColor == 1)
 					{
@@ -241,7 +241,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							splatterCooldown = 10;
 
 						}
-						closest.AddBuff(BuffType<Buffs.OrangePaint>(), 30);
+						closest.AddBuff(BuffType<Buffs.Melee.PenthesileaMuse.OrangePaint>(), 30);
 					}
 					if (modPlayer.targetPaintColor == 2)
 					{
@@ -252,7 +252,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							splatterCooldown = 10;
 
 						}
-						closest.AddBuff(BuffType<Buffs.YellowPaint>(), 30);
+						closest.AddBuff(BuffType<Buffs.Melee.PenthesileaMuse.YellowPaint>(), 30);
 					}
 					if (modPlayer.targetPaintColor == 3)
 					{
@@ -263,7 +263,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							splatterCooldown = 10;
 
 						}
-						closest.AddBuff(BuffType<Buffs.GreenPaint>(), 30);
+						closest.AddBuff(BuffType<Buffs.Melee.PenthesileaMuse.GreenPaint>(), 30);
 					}
 					if (modPlayer.targetPaintColor == 4)
 					{
@@ -274,7 +274,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							splatterCooldown = 10;
 
 						}
-						closest.AddBuff(BuffType<Buffs.BluePaint>(), 30);
+						closest.AddBuff(BuffType<Buffs.Melee.PenthesileaMuse.BluePaint>(), 30);
 					}
 					if (modPlayer.targetPaintColor == 5)
 					{
@@ -285,7 +285,7 @@ namespace StarsAbove.Items.Weapons.Melee
 							splatterCooldown = 10;
 
 						}
-						closest.AddBuff(BuffType<Buffs.PurplePaint>(), 30);
+						closest.AddBuff(BuffType<Buffs.Melee.PenthesileaMuse.PurplePaint>(), 30);
 					}
 
 
