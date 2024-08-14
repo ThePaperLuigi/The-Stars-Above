@@ -23,7 +23,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
 		public override void SetDefaults()
 		{
-			Item.damage = 22;           //The damage of your weapon
+			Item.damage = 12;           //The damage of your weapon
 			Item.DamageType = DamageClass.Summon;          //Is your weapon a melee weapon?
 			Item.width = 68;            //Weapon's texture's width
 			Item.height = 68;           //Weapon's texture's height
@@ -62,7 +62,7 @@ namespace StarsAbove.Items.Weapons.Summon
 			player.AddBuff(BuffType<WavedancerBuff>(), 10);
 			if (player.ownedProjectileCounts[ProjectileType<WavedancerSummon>()] < 1)
 			{
-				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<WavedancerSummon>(), player.GetWeaponDamage(Item), 4, player.whoAmI, 0f);
+				Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ProjectileType<WavedancerSummon>(), player.GetWeaponDamage(Item) * 2, 4, player.whoAmI, 0f);
 
 			}
 			if (player.altFunctionUse == 2)
@@ -86,7 +86,7 @@ namespace StarsAbove.Items.Weapons.Summon
 				{
 					if (StarsAbove.weaponActionKey.JustPressed && !player.HasBuff(BuffType<WavedancerCooldown>()))
 					{
-						Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<WavedancerSwordSpin>(), player.GetWeaponDamage(Item), 0, player.whoAmI);
+						Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<WavedancerSwordSpin>(), (int)(player.GetWeaponDamage(Item) * 1.5), 0, player.whoAmI);
 						player.AddBuff(BuffType<WavedancerCooldown>(), 240);
 					}
 

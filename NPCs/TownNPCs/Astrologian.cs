@@ -412,6 +412,8 @@ namespace StarsAbove.NPCs.TownNPCs
                 .Add<ReprintedBlueprint>(Condition.DownedEyeOfCthulhu)
                 .Add<MatterManipulator>(Condition.DownedEarlygameBoss)
                 .Add<AetherBarrel>(Condition.DownedSkeletron)
+                .Add<BlackLightbulb>(Condition.DownedSkeletron)
+                .Add<Aeonseal>(Condition.DownedSkeletron)
                 .Add<WetCrowbar>(Condition.DownedQueenBee)
                 .Add<MagicSigil>(Condition.Hardmode)
 				.Add<MeleeSigil>(Condition.Hardmode)
@@ -422,6 +424,7 @@ namespace StarsAbove.NPCs.TownNPCs
                 .Add<CrystalshotCartridge>(Condition.DownedTwins)
                 .Add<StrangeScrap>(Condition.DownedMechBossAny)
                 .Add<SimulacraShifter>(Condition.DownedDestroyer)
+                .Add<ArgentumShard>(Condition.DownedSkeletronPrime)//Fragment of Lost Memory
                 .Add<NookMilesTicket>(Condition.DownedPlantera)
 				.Add<SigilOfHope>(Condition.DownedMoonLord)
 				;

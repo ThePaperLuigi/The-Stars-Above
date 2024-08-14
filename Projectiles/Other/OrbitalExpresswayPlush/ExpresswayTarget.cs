@@ -96,12 +96,8 @@ namespace StarsAbove.Projectiles.Other.OrbitalExpresswayPlush
         public override void OnKill(int timeLeft)
         {
             Player projOwner = Main.player[Projectile.owner];
-            if (Main.netMode != NetmodeID.MultiplayerClient)
-            {
-                SpawnTrain(projOwner);
-                SpawnVFX(projOwner);
-
-            }
+            SpawnTrain(projOwner);
+            SpawnVFX(projOwner);
 
         }
 

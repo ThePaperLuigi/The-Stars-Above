@@ -46,14 +46,12 @@ namespace StarsAbove.NPCs.TownNPCs
 			//uncomment this line below.
 			NPCID.Sets.AllowDoorInteraction[Type] = true;
 
-			// Influences how the NPC looks in the Bestiary
-			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
-			{
-				Velocity = 1f, // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
-				Direction = 1 // -1 is left and 1 is right. NPCs are drawn facing the left by default but ExamplePerson will be drawn facing the right
-			};
+            // Influences how the NPC looks in the Bestiary
+            NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new()
+            {
+                Hide = true // Hides this NPC from the bestiary
+            };
 
-			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 		}
 
 		public override void SetDefaults()
@@ -79,19 +77,7 @@ namespace StarsAbove.NPCs.TownNPCs
 			return false;
 		}
 
-		public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
-		{
-			// We can use AddRange instead of calling Add multiple times in order to add multiple items at once
-			bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
-				// Sets the preferred biomes of this town NPC listed in the bestiary.
-				// With Town NPCs, you usually set this to what biome it likes the most in regards to NPC happiness.
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Sky,
-
-				// You can add multiple elements if you really wanted to
-				// You can also use localization keys (see Localization/en-US.lang)
-				new FlavorTextBestiaryInfoElement("Mods.StarsAbove.Bestiary.Yojimbo")
-			});
-		}
+        
         public override bool PreKill()
         {
 			NPC.life = 1;

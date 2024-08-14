@@ -56,6 +56,8 @@ namespace StarsAbove.Systems
         public static List<int> GlowingItems = new List<int>();
         public static List<int> Essences = new List<int>();
         public static List<int> WeaponsUnaffectedByAspectedDamagePenalty = new List<int>();
+        public static List<int> ScalingWeapons = new List<int>();
+
         public override void SetStaticDefaults()
         {
             AstralWeapons = new List<int>() {
@@ -357,6 +359,15 @@ namespace StarsAbove.Systems
                 ItemType<SeventhSigilAutumnAttire>(),
                 ItemType<GarmentsOfWinterRainAttire>(),
                 ItemType<RenegadeTechnomancerSynthweave>(),
+            };
+            ScalingWeapons = new List<int>() {
+                ItemType<AncientBook>(),
+                ItemType<Wolvesbane>(),
+                ItemType<WolvesbaneAwakened>(),
+                ItemType<BrilliantSpectrum>(),
+                ItemType<Apalistik>(),
+                ItemType<ApalistikUpgraded>(),
+                ItemType<DragaliaFound>(),
             };
             GlowingItems = new List<int>() {
                 ItemType<TotemOfLightEmpowered>(),

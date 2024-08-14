@@ -70,7 +70,7 @@ namespace StarsAbove.Projectiles.Summon.Takodachi
 
 
             float maxDetectRadius = 400f; // The maximum radius at which a projectile can detect a target
-            float projSpeed = 5f; // The speed at which the projectile moves towards the target
+            float projSpeed = 15f; // The speed at which the projectile moves towards the target
 
             // Trying to find NPC closest to the projectile
             NPC closestNPC = FindClosestNPC(maxDetectRadius);

@@ -2466,7 +2466,7 @@ namespace StarsAbove
         }
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
-            if(beyondinfinity == 2 && item.OriginalDamage <= 100)
+            if(beyondinfinity == 2 && !StarsAboveGlobalItem.ScalingWeapons.Contains(item.type))
             {
                 bool gray = item.OriginalRarity == ItemRarityID.Gray;
                 bool white = item.OriginalRarity == ItemRarityID.White;
@@ -2526,6 +2526,7 @@ namespace StarsAbove
 
             }
         }
+
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (arborealEchoes == 2)
@@ -2533,7 +2534,7 @@ namespace StarsAbove
                 if (target.life == target.lifeMax && target.CanBeChasedBy() && !target.boss)
                 {
                     modifiers.FinalDamage += 0.3f;
-                    Player.Heal(10);
+                    Player.Heal(2);
                 }
             }
             if(mysticIncision == 2)
@@ -10722,6 +10723,10 @@ namespace StarsAbove
         }
         public override bool FreeDodge(Player.HurtInfo info)
         {
+            if(Player.HasBuff(BuffType<Invincibility>()))
+            {
+                return true;
+            }
             if (evasionmastery == 2)
             {
                 if (Main.rand.Next(0, 101) <= 3 && Player.immuneTime <= 0)

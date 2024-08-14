@@ -802,7 +802,6 @@ namespace StarsAbove.UI.CelestialCartography
                         SubworldSystem.Enter<DreamingCity>();
 
                         Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
-                        Main.LocalPlayer.AddBuff(BuffType<VoyageCooldown>(), 108000);
 
                     }
                     else
@@ -1100,7 +1099,6 @@ namespace StarsAbove.UI.CelestialCartography
                         SubworldSystem.Enter<Lyra>();
 
                         Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive = false;
-						Main.LocalPlayer.AddBuff(BuffType<VoyageCooldown>(), 108000);
 
 					}
 					else

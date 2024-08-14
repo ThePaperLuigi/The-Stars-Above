@@ -11,7 +11,7 @@ namespace StarsAbove.NPCs
 			// DisplayName.SetDefault("Dummy Enemy");
 			Main.npcFrameCount[NPC.type] = Main.npcFrameCount[NPCID.Zombie];
 			NPCID.Sets.MPAllowedEnemies[NPC.type] = true;
-			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+			NPCID.Sets.NPCBestiaryDrawModifiers bestiaryData = new()
 			{
 				Hide = true // Hides this NPC from the bestiary
 			};

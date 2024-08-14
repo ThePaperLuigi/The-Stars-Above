@@ -77,55 +77,62 @@ namespace StarsAbove.Items.Consumables
 		}
 		public override void HoldItem(Player player)
 		{
-			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+            if (Main.myPlayer == player.whoAmI)
+            {
+                var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
-			pingCooldown--;
-			if (!modPlayer.seenIntroCutscene)
-			{
-				if (modPlayer.IntroDialogueTimer <= 0 && modPlayer.chosenStarfarer == 0 && player.GetModPlayer<BossPlayer>().VideoDuration <= 0 && modPlayer.StarfarerSelectionVisibility <= 0)
-				{
-					modPlayer.IntroDialogueTimer = 300;//20 seconds if you say no.
-					modPlayer.sceneID = 0;
-					modPlayer.VNDialogueActive = true;
-				}
+                pingCooldown--;
+                if (!modPlayer.seenIntroCutscene)
+                {
+                    if (modPlayer.IntroDialogueTimer <= 0 && modPlayer.chosenStarfarer == 0 && player.GetModPlayer<BossPlayer>().VideoDuration <= 0 && modPlayer.StarfarerSelectionVisibility <= 0)
+                    {
+                        modPlayer.IntroDialogueTimer = 300;//20 seconds if you say no.
+                        modPlayer.sceneID = 0;
+                        modPlayer.VNDialogueActive = true;
+                    }
 
 
-				
-				return;
-			}
+
+                    return;
+                }
+            }
 			base.HoldItem(player);
 		}
 		public override bool CanUseItem(Player player)
 		{
-			var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
+            if (Main.myPlayer == player.whoAmI)
+            {
+                var modPlayer = player.GetModPlayer<StarsAbovePlayer>();
 
-			if (modPlayer.novaUIActive)
-				return false;
+                if (modPlayer.novaUIActive)
+                    return false;
 
-			if (player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
-				return false;
+                if (player.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
+                    return false;
 
-			if (player.altFunctionUse == 2)
-			{
-				if (modPlayer.chosenStarfarer != 0 && modPlayer.starfarerDialogue == false && modPlayer.stellarArray == false && modPlayer.novaUIActive == false && modPlayer.starfarerMenuActive == false && modPlayer.VNDialogueActive == false)
-				{
+                if (player.altFunctionUse == 2)
+                {
+                    if (modPlayer.chosenStarfarer != 0 && modPlayer.starfarerDialogue == false && modPlayer.stellarArray == false && modPlayer.novaUIActive == false && modPlayer.starfarerMenuActive == false && modPlayer.VNDialogueActive == false)
+                    {
 
-					return true;
+                        return true;
 
 
-				}
-				else
-				{
-					return false;
-				}
-			}
-			else
-			if (modPlayer.chosenStarfarer != 0 && modPlayer.starfarerDialogue == false && modPlayer.stellarArray == false && modPlayer.novaUIActive == false && modPlayer.starfarerMenuActive == false && modPlayer.VNDialogueActive == false)
-			{
-				return true;
-			}
-			else
-				return false;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                if (modPlayer.chosenStarfarer != 0 && modPlayer.starfarerDialogue == false && modPlayer.stellarArray == false && modPlayer.novaUIActive == false && modPlayer.starfarerMenuActive == false && modPlayer.VNDialogueActive == false)
+                {
+                    return true;
+                }
+                else
+                return false;
+            }
+            return true;
 		}
 		public override bool? UseItem(Player player)
 		{
@@ -362,12 +369,7 @@ namespace StarsAbove.Items.Consumables
                     return true;
 
                 }
-                if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
-                {
-                    modPlayer.chosenDialogue = 21;
-                    activateDialogue(player);
-                    return true;
-                }
+                
                 if (modPlayer.ActiveDialogues.Count > 0)
                 {
                     for (int i = 0; i < modPlayer.ActiveDialogues.Count; i++)
@@ -384,6 +386,12 @@ namespace StarsAbove.Items.Consumables
                     }
 
 
+                }
+                if (EverlastingLightEvent.isEverlastingLightActive && SubworldSystem.Current == null)
+                {
+                    modPlayer.chosenDialogue = 21;
+                    activateDialogue(player);
+                    return true;
                 }
                 //If there aren't any active dialogues, play an idle dialogue instead.
                 if (modPlayer.uniqueDialogueTimer <= 0)

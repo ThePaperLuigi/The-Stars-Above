@@ -39,6 +39,8 @@ using StarsAbove.Projectiles.Melee.Umbra;
 using StarsAbove.Projectiles.Ranged.QuisUtDeus;
 using StarsAbove.Buffs.Other.Phasmasaber;
 using StarsAbove.Buffs.Subworlds;
+using StarsAbove.Utilities;
+using Terraria.DataStructures;
 
 namespace StarsAbove.Systems
 {
@@ -315,13 +317,25 @@ namespace StarsAbove.Systems
         }
         public override void PostAI(NPC npc)
         {
+            bool fixVeilPosition = false;
             if (npc.Center.ToTileCoordinates().Y > Main.maxTilesY - 100)
             {
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player p = Main.player[i];
+                    if (p.active && p.Distance(npc.Center) < 1000 && !p.dead && p.InModBiome<NeonVeilBiome>())
+                    {
+                        fixVeilPosition = true;
+                    }
+                }
 
+
+            }
+            if(fixVeilPosition)
+            {
                 npc.velocity.Y -= 10f;
 
             }
-            
             base.PostAI(npc);
         }
         public override void ResetEffects(NPC npc)

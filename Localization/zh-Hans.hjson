@@ -12856,6 +12856,7 @@ Mods: {
 					8% increased damage
 					8% increased critical strike damage
 					5% increased critical strike chance
+					Set bonus changes with equipped helmet
 					'Protects against stray lasers'
 					''' */
 			}
@@ -12871,6 +12872,7 @@ Mods: {
 					'''
 					8% increased damage
 					10% reduced mana cost
+					Set bonus changes with equipped chestpiece
 					'Protects both your eyes'
 					''' */
 			}
@@ -12881,6 +12883,7 @@ Mods: {
 					'''
 					8% increased damage
 					10% reduced mana cost
+					Set bonus changes with equipped chestpiece
 					'Comes with air conditioning'
 					''' */
 			}
@@ -12891,6 +12894,7 @@ Mods: {
 					'''
 					8% increased damage
 					10% reduced mana cost
+					Set bonus changes with equipped chestpiece
 					'Doesn't let air in or out'
 					''' */
 			}
@@ -12902,6 +12906,7 @@ Mods: {
 					12% increased damage
 					8% increased critical strike chance
 					Increases maximum mana by 40
+					Set bonus changes with equipped helmet
 					'For the discerning netrunner'
 					''' */
 			}
