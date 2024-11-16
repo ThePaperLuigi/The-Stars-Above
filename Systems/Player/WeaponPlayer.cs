@@ -757,10 +757,14 @@ namespace StarsAbove.Systems
             }
             if (target.HasBuff(BuffType<Glitterglued>()) || Player.HasBuff(BuffType<TimelessPotential>()))
             {
-                if (Main.rand.Next(0, 100) > 70)
+                if(modifiers.DamageType != DamageClass.Summon)
                 {
-                    modifiers.SetCrit();
+                    if (Main.rand.Next(0, 100) > 70)
+                    {
+                        modifiers.SetCrit();
+                    }
                 }
+                
             }
             if (Player.HasBuff(BuffType<AmaterasuGrace>()) && target.HasBuff(BuffID.Frostburn))
             {

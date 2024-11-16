@@ -819,7 +819,7 @@ namespace StarsAbove.Systems.Items
             }
             if (Aeonseal && player.GetModPlayer<ItemMemorySystemPlayer>().aeonsealPath == 5)
             {
-                player.statDefense += (int)(item.damage * 0.08);
+                player.statDefense += Math.Min(30,(int)(item.damage * 0.01));
             }
             player.GetModPlayer<ItemMemorySystemPlayer>().cooldownMod = cooldownReductionMod;
         }
@@ -1471,7 +1471,7 @@ namespace StarsAbove.Systems.Items
                 OnKillNPC(target);
             }
             
-            if (BlackLightbulb && !target.boss && hit.Crit)
+            if (BlackLightbulb && !target.boss && hit.Crit && target.lifeMax < 500)
             {
                 if (Main.rand.Next(0, 101) < 14)
                 {

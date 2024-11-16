@@ -47,8 +47,8 @@ namespace StarsAbove.Items.Weapons.Magic
 		public override void SetDefaults()
 		{
 			Item.damage = 139;
-			Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
-			Item.width = 130;            //Weapon's texture's width
+            Item.DamageType = ModContent.GetInstance<Systems.MysticDamageClass>();
+            Item.width = 130;            //Weapon's texture's width
 			Item.height = 130;           //Weapon's texture's height
 			Item.useTime = 35;          //The time span of using the weapon. Remember in terraria, 60 frames is a second.
 			Item.useAnimation = 35;         //The time span of the using animation of the weapon, suggest set it the same as useTime.

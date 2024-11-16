@@ -62,7 +62,19 @@ namespace StarsAbove.Systems
             // and that we are NOT responsible for any temporary or permanent damage caused to you, your character, or your world as a result of your morbid curiosity.
             // To refer to a non-vanilla damage class for these sorts of things, use "ModContent.GetInstance<TargetDamageClassHere>()" instead of "DamageClass.XYZ".
         }
+        public override bool GetPrefixInheritance(DamageClass damageClass)
+        {
+            if (damageClass == DamageClass.Melee)
+                return true;
+            if (damageClass == DamageClass.Magic)
+                return false;
+            if (damageClass == DamageClass.Ranged)
+                return true;
+            if (damageClass == DamageClass.Summon)
+                return false;
 
+            return false;
+        }
         public override bool GetEffectInheritance(DamageClass damageClass)
         {
             // This method allows you to make your damage class benefit from and be able to activate other classes' effects (e.g. Spectre bolts, Magma Stone) based on what returns true.

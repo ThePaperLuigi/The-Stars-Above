@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using StarsAbove.Buffs;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.Buffs.Magic.ParadiseLost;
 using StarsAbove.Buffs.Magic.SupremeAuthority;
@@ -96,6 +97,8 @@ namespace StarsAbove.Items.Weapons.Magic
 
                     player.GetModPlayer<WeaponPlayer>().paradiseLostActive = true;
                     player.AddBuff(BuffType<ParadiseLostBuff>(), 2);
+                    player.AddBuff(BuffType<Invincibility>(), 2);
+
                     player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
                     if (player.ownedProjectileCounts[ProjectileType<ParadiseLostProjectile>()] < 1)
                     {

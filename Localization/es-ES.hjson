@@ -314,7 +314,7 @@ Mods: {
 
 				QuestionMark: {
 					// Name: " "
-					// Description: What further mysteries does the universe have in store?
+					// Description: What further mysteries does the universe have in store? Wishlist Second Stellar on Steam now!
 					// Threat: N/A
 					// Requirement: N/A
 					// Loot: N/A
@@ -6012,6 +6012,7 @@ Mods: {
 			// BlockedNova: You can't use the Stellar Nova right now!
 			// LockedChest: The chest is held shut by a mysterious power...
 			// UnlockedHairstyle: A new hairstyle has been unlocked!
+			// PromptVisibility: If you'd like to disable dialogue prompts, please check The Stars Above's mod settings! This message won't appear again on this character.
 			// CreditsHover: "[View the credits for the mod!]"
 			// Wiki: "[Check out the official wiki!]"
 			// Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
@@ -12604,7 +12605,7 @@ Mods: {
 					//4
 					// Nihility: You are guided by the Path of Nihility: Deal 12% more damage to debuffed foes
 					//5
-					// Preservation: You are guided by the Path of Preservation: 8% of weapon damage is added as defense
+					// Preservation: You are guided by the Path of Preservation: 1% of weapon damage is added as defense (Capped at 30 defense)
 					//6
 					// Abundance: You are guided by the Path of Abundance: Heal 2 HP when defeating foes
 					//7
@@ -16985,6 +16986,7 @@ Mods: {
 
 		DamageClasses: {
 			// AuricDamageClass.DisplayName: auric damage
+			// MysticDamageClass.DisplayName: mystic damage
 			// CelestialDamageClass.DisplayName: celestial damage
 			// GadgetDamageClass.DisplayName: gadget strength
 			// IncarnationDamageClass.DisplayName: incarnated damage

@@ -3182,10 +3182,10 @@ namespace StarsAbove.Dialogue
                     character1 = "Asphodene";
 
                     //What is their pose?
-                    character1Pose = 0;
+                    character1Pose = 1;
 
                     //What is their expression? (0 Neutral 1 Angry 2 Worried 3 Thinking 4 Intrigued/Smug 5 Happy)
-                    character1Expression = 3;
+                    character1Expression = 4;
 
 
                     //Who is the sub character? If there is no second character, write "None";

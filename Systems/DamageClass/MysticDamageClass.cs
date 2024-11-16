@@ -1,22 +1,19 @@
-﻿using StarsAbove.Utilities;
-using Terraria;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace StarsAbove.Systems
 {
     // This class handles everything for our custom damage class
     // Any class that we wish to be using our custom damage class will derive from this class, instead of ModItem
-    public class PsychomentDamageClass : DamageClass
+    public class MysticDamageClass : DamageClass
     {
         public override void SetStaticDefaults()
         {
-
         }
 
         //public string "Spatial Damage" => DisplayName;
 
-        public new string DisplayName => "Psychoment Damage";
+        public new string DisplayName => "Mystic Damage";
 
         // This is an example damage class designed to demonstrate all the current functionality of the feature and explain how to create one of your own, should you need one.
         // For information about how to apply stat bonuses to specific damage classes, please instead refer to ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.
@@ -27,15 +24,15 @@ namespace StarsAbove.Systems
             // Default is, you guessed it, the default damage class. It doesn't scale off of any class-specific stat bonuses or universal stat bonuses.
             // There are a number of items and projectiles that use this, such as thrown waters and the Bone Glove's bones.
             // Generic, on the other hand, scales off of all universal stat bonuses and nothing else; it's the base damage class upon which all others that aren't Default are built.
-            if (damageClass == DamageClass.Generic)
+            if (damageClass == DamageClass.Magic)
                 return StatInheritanceData.Full;
 
             return new StatInheritanceData(
-                damageInheritance: 0.7f,
-                critChanceInheritance: 1.5f,
-                attackSpeedInheritance: 0.7f,
-                armorPenInheritance: 0.7f,
-                knockbackInheritance: 0.7f
+                damageInheritance: 1f,
+                critChanceInheritance: 1f,
+                attackSpeedInheritance: 1f,
+                armorPenInheritance: 1f,
+                knockbackInheritance: 1f
             );
             // Now, what exactly did we just do, you might ask? Well, let's see here...
             // StatInheritanceData is a struct which you'll need to return one of for any given outcome this method.
@@ -68,13 +65,13 @@ namespace StarsAbove.Systems
         public override bool GetPrefixInheritance(DamageClass damageClass)
         {
             if (damageClass == DamageClass.Melee)
-                return true;
+                return false;
             if (damageClass == DamageClass.Magic)
-                return true;
+                return false;
             if (damageClass == DamageClass.Ranged)
                 return true;
             if (damageClass == DamageClass.Summon)
-                return true;
+                return false;
 
             return false;
         }
@@ -84,13 +81,13 @@ namespace StarsAbove.Systems
             // Note that unlike our stat inheritance methods up above, you do not need to account for universal bonuses in this method.
             // For this example, we'll make our class able to activate melee- and magic-specifically effects.
             if (damageClass == DamageClass.Melee)
-                return true;
+                return false;
             if (damageClass == DamageClass.Magic)
                 return true;
             if (damageClass == DamageClass.Ranged)
-                return true;
+                return false;
             if (damageClass == DamageClass.Summon)
-                return true;
+                return false;
 
             return false;
         }

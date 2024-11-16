@@ -15,7 +15,10 @@ namespace StarsAbove.Buffs.Memories
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
+            if(player.GetModPlayer<StarsAbovePlayer>().inCombat <= 0)
+            {
+                player.DelBuff(buffIndex);
+            }
         }
     }
 }

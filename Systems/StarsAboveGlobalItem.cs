@@ -798,11 +798,7 @@ namespace StarsAbove.Systems
             //damage += 0.2f;
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                if (!disableCalamityWeaponBuffs && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
-                {
-                    damage += 0.2f;
-
-                }
+                
 
 
             }

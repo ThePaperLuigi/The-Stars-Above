@@ -333,7 +333,24 @@ namespace StarsAbove.Systems.WorldGeneration
             StructureHelper.Generator.GenerateStructure("Structures/NeonVeil/" + currentStructure, new Terraria.DataStructures.Point16((Main.maxTilesX / 2) + offsetX, (Main.maxTilesY) - 190), StarsAbove.Instance);
             StructureHelper.Generator.GetDimensions("Structures/NeonVeil/" + currentStructure, StarsAbove.Instance, ref offsetDims);
 
-            //For the width of the structure, clear lava above it
+            // Calculate the rectangle that contains the structure
+            Rectangle structureRect = new Rectangle(
+                (Main.maxTilesX / 2) + offsetX,  // X position
+                (Main.maxTilesY) - 190,          // Y position
+                offsetDims.X,                    // Width
+                offsetDims.Y                     // Height
+            );
+
+            // Add the protected structure
+            GenVars.structures.AddProtectedStructure(structureRect, 10);
+            
+            /* Disabled, causes a crash. Just let the instabridgers have fun, I guess.
+            if (ModLoader.TryGetMod("Fargowiltas", out Mod fargosmod))
+            {
+                fargosmod?.Call("AddIndestructibleRectangle", structureRect);
+            }*/
+
+            // For the width of the structure, clear lava above it
             for (int i = (Main.maxTilesX / 2) + offsetX; i < (Main.maxTilesX / 2) + offsetX + offsetDims.X; i++)
             {
                 for (int j = (Main.maxTilesY) - 400; j < Main.maxTilesY; j++)
@@ -350,6 +367,7 @@ namespace StarsAbove.Systems.WorldGeneration
             {
                 neonVeilBlueprint.Remove(currentStructure);
             }
+            
         }
     }
 

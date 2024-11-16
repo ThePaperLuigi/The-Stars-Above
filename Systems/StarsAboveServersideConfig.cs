@@ -32,9 +32,7 @@ namespace StarsAbove.Systems
         [Tooltip("$Mods.StarsAbove.Config.DisableBossAggro.Tooltip")]
         public bool DisableBossAggro;
 
-        [Label("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Label")]
-        [Tooltip("$Mods.StarsAbove.Config.DisableCalamityWeaponBuffs.Tooltip")]
-        public bool DisableCalamityWeaponBuffs;
+
 
         [Label("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Label")]
         [Tooltip("$Mods.StarsAbove.Config.DisableWeaponRestrictions.Tooltip")]
@@ -78,7 +76,6 @@ namespace StarsAbove.Systems
             // We maintain both ExampleUI.visible and ShowCoinUI as separate values so ShowCoinUI can act as a default while ExampleUI.visible can change within a play session.
             StarsAboveGlobalItem.disableAspectPenalty = DisableTypePenalty;
             StarsAboveGlobalItem.disableWeaponRestriction = DisableWeaponRestrictions;
-            StarsAboveGlobalItem.disableCalamityWeaponBuffs = DisableCalamityWeaponBuffs;
             StarsAbovePlayer.inCombatMax = CombatTimer * 60;
             StarsAbovePlayer.BossEnemySpawnModDisabled = DisableBossEnemySpawnMod;
             StarsAboveGlobalBuff.DisableManaSicknessChange = DisableManaSicknessChange;

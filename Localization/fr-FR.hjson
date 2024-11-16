@@ -6012,6 +6012,7 @@ Mods: {
 			BlockedNova: Un ennemi puissant empêche l'utilisation du Stellar Nova !
 			// LockedChest: The chest is held shut by a mysterious power...
 			// UnlockedHairstyle: A new hairstyle has been unlocked!
+			// PromptVisibility: If you'd like to disable dialogue prompts, please check The Stars Above's mod settings! This message won't appear again on this character.
 			CreditsHover: "[View the credits for the mod!]"
 			// Wiki: "[Check out the official wiki!]"
 			// Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
@@ -12748,7 +12749,7 @@ Mods: {
 					//4
 					// Nihility: You are guided by the Path of Nihility: Deal 12% more damage to debuffed foes
 					//5
-					// Preservation: You are guided by the Path of Preservation: 8% of weapon damage is added as defense
+					// Preservation: You are guided by the Path of Preservation: 1% of weapon damage is added as defense (Capped at 30 defense)
 					//6
 					// Abundance: You are guided by the Path of Abundance: Heal 2 HP when defeating foes
 					//7
@@ -17142,6 +17143,7 @@ Mods: {
 
 		DamageClasses: {
 			AuricDamageClass.DisplayName: Dégats Auriques
+			// MysticDamageClass.DisplayName: mystic damage
 			CelestialDamageClass.DisplayName: Dégats Célestes
 			GadgetDamageClass.DisplayName: Force de gadgets
 			IncarnationDamageClass.DisplayName: Dégats d'incarnation

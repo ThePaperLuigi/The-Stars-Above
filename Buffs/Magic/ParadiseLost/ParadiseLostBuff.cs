@@ -13,6 +13,7 @@ namespace StarsAbove.Buffs.Magic.ParadiseLost
 
         public override void Update(Player player, ref int buffIndex)
         {
+            player.AddBuff(ModContent.BuffType<Invincibility>(), 10);
             player.immuneTime = 10;
             player.immune = true;
         }

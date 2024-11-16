@@ -1190,7 +1190,7 @@ namespace StarsAbove.UI.StellarNova
                         break;
                     case 8:
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIV"), fireflytypeIVArea, Color.White * (modPlayer.novaUIOpacity));
-                        //spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/guardianslightIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/fireflytypeIVIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
                         break;
                     default:
                         break;

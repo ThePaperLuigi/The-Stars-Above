@@ -45,7 +45,7 @@ namespace StarsAbove.Items.Weapons.Magic
         public override void SetDefaults()
         {
             Item.damage = 120;           //The damage of your weapon
-            Item.DamageType = DamageClass.Magic;          //Is your weapon a melee weapon?
+            Item.DamageType = ModContent.GetInstance<Systems.MysticDamageClass>();
             Item.mana = 0;
             Item.width = 40;            //Weapon's texture's width
             Item.crit = 26;

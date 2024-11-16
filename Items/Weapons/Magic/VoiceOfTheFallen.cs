@@ -27,8 +27,8 @@ namespace StarsAbove.Items.Weapons.Magic
 
 		public override void SetDefaults() {
 			Item.damage = 110;
-			Item.DamageType = DamageClass.Magic;
-			Item.width = 100;
+            Item.DamageType = ModContent.GetInstance<Systems.MysticDamageClass>();
+            Item.width = 100;
 			Item.height = 40;
 			Item.useTime = 80;
 			Item.useAnimation = 80;

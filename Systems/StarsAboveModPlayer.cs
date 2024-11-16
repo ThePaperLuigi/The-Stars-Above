@@ -5,6 +5,7 @@ using StarsAbove.Biomes;
 using StarsAbove.Buffs;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.Buffs.Celestial.UltimaThule;
+using StarsAbove.Buffs.Magic.ParadiseLost;
 using StarsAbove.Buffs.Magic.StygianNymph;
 using StarsAbove.Buffs.Magic.VenerationOfButterflies;
 using StarsAbove.Buffs.Melee.PenthesileaMuse;
@@ -6629,7 +6630,7 @@ namespace StarsAbove
                 }
                 if (amount >= 3)
                 {
-                    novaEffectDurationMod += novaCritChance + novaCritChanceMod;
+                    novaEffectDurationMod += (novaCritChance + novaCritChanceMod) * 0.1f;
                     //Done
                 }
 
@@ -10402,8 +10403,11 @@ namespace StarsAbove
         }
         public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable)
         {
-
             if (Player.HasBuff(BuffType<Invincibility>()))
+            {
+                return true;
+            }
+            if (Player.HasBuff(BuffType<ParadiseLostBuff>()))
             {
                 return true;
             }
@@ -10721,6 +10725,7 @@ namespace StarsAbove
             }
             return false;
         }
+        
         public override bool FreeDodge(Player.HurtInfo info)
         {
             if(Player.HasBuff(BuffType<Invincibility>()))
@@ -12293,6 +12298,8 @@ namespace StarsAbove
                 //Upon entering a biome for the first time..
                 if (eventPrompt == "onEnterDesert")
                 {
+                    if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) { Main.NewText(LangHelper.GetTextValue("Common.PromptVisibility"), 239, 221, 106); }
+
                     VoiceExplore();
                     promptExpression = 2;
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".137", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
