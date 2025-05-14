@@ -510,8 +510,6 @@ namespace StarsAbove.NPCs.Thespian
 			NPC.localAI[1] += 1f;
 			if (NPC.localAI[1] >= 240f)
 			{
-				
-
 
 				DownedBossSystem.downedThespian = true;
 				

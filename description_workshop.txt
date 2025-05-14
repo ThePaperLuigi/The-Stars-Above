@@ -1,8 +1,5 @@
 "Conquer the galaxy's evils, Starfarers at your side..."
 
-
-
-
 [h1]Join the Discord Server for The Stars Above!
 [url=https://discord.gg/kFURRZZszD] Discord Server [/url][/h1] 
 The Discord Server will be updated with the latest information pertaining to the mod, as well as previews of upcoming content!
@@ -15,7 +12,8 @@ Use the promo code "starsabove" to get 25% off your first month- and help suppor
 [img]https://i.imgur.com/giHAnWT.jpg[/img]
 
 The Stars Above is a Terraria expansion mod that adds a wide variety of content and a new important game mechanic:
-the Starfarer system. With over 1 million downloads in less than a year, The Stars Above guarantees a unique experience for any playthrough!
+the Starfarer system. The Stars Above guarantees a unique experience for any playthrough with new bosses, new areas to explore, and a focus on buildcrafting and player diversity.
+
 
 A brief overview of the mod's features:
 [list]
@@ -30,7 +28,7 @@ A brief overview of the mod's features:
     [*]9 unique bosses each with their own special cast-centric AI
     [*]Plenty of pets, accessories, and utility items
     [*]Settings to tailor the mod's content to your liking
-    [*]Can be added to any playthrough at any time, and has compatibility with 100% of major content mods (sometimes with unique dialogue)
+    [*]Compatibility with 100% of major content mods (sometimes with unique dialogue)
     [*]And much more!
 [/list]
 
@@ -128,6 +126,10 @@ The mod includes localization for Chinese, French, and Spanish, thanks to these 
 Chinese translation team:  Soammer(夏沫), MeireiHakuya(冥岭白夜), (亚砜), and Yukiko (羽曦)
 Spanish translation team: Bluefire72, Haturok, Aka Tofu, Karus (Note that the Spanish translation is outdated at the moment!)
 French translation team: Maksou and Ariaclipse
+Turkish translation team: Mehmet EROĞLU, Hayrunisa YILDIZ, Berkay ÖZYURT, Hilal EMEK, Betül GÖNEN.
 Thank you, translators!
+
+[h2]I'm working on a game based on this mod- thank you everyone for your support over the years![/h2] 
+Wishlist Second Stellar today! https://store.steampowered.com/app/3176850
 
 [H1]I'm active in the Discord, so please visit there if you want to ask questions or report bugs![/h1]

@@ -1,5 +1,4 @@
 ﻿using StarsAbove.Systems;
-using StarsAbove.Systems;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -36,13 +35,12 @@ namespace StarsAbove.Items.Accessories
 
 		
 
-		/*public override void AddRecipes() {
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}*/
+		public override void AddRecipes() {
+            CreateRecipe(1)
+                .AddIngredient(ModContent.ItemType<Materials.StellarRemnant>(), 40)
+                .AddCustomShimmerResult(ModContent.ItemType<Materials.StellarRemnant>(), 3)
+                .AddTile(Terraria.ID.TileID.Anvils)
+                .Register();
+        }
 	}
 }

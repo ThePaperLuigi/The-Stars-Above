@@ -5767,6 +5767,18 @@ Mods: {
 						// Eridani: We can't use this yet.
 					}
 				}
+
+				OriginInfinity: {
+					Unlocked: {
+						// Asphodene: This Stellar Nova can pierce any form of invincibility while also leading the way for your allies.
+						// Eridani: You can utilize this Nova to pierce even the most invincible of foes, as well as amplify allies.
+					}
+
+					Locked: {
+						// Asphodene: We don't have access to this yet.
+						// Eridani: We can't use this yet.
+					}
+				}
 			}
 
 			StellarNovaInfo: {
@@ -5840,6 +5852,14 @@ Mods: {
 					// AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. Repeated strikes build Complete Combustion, dealing the Nova's crit damage (Calculated as a crit.) once resolved. Critical Nova strikes inflict Complete Combustion much faster, but crits do not deal increased damage. 5% of Energy Cost is added to Nova duration. One instance of Complete Combustion is guaranteed in the finishing strike.
 					// AstralBonus: Pressing the Stellar Nova key while the Nova is not at full charge or active will allow you to immediately unleash the finishing strike on a nearby foe (90s cooldown)
 					// UmbralBonus: You can continue to gain Stellar Nova Energy while Firefly-Type IV is active.
+				}
+
+				OriginInfinity: {
+					// AbilityName: Origin's Infinity
+					// AbilitySubName: "[c/D0AAFA:Sword of Origin, Sword of the End]"
+					// AbilityDescription: Your Starfarer unveils the Unlimited Sword, targetting the foe with the highest Max HP (prioritizes bosses.) After a delay, deals true damage that pierces all forms of invincibility. Damage increased by 30% if invincibility was pierced. Reduce foe's defense to 0 based on Effect Duration. Inflict Chain Attack: if other players use Stellar Nova against the foe, damage is increased by 30%. Chain Attack duration is based on Effect Duration, increased by 7 seconds on hit with allied Stellar Nova.
+					// AstralBonus: When allies use their Nova to trigger Chain Attack, you both heal 7% HP.
+					// UmbralBonus: When allies use their Nova to trigger Chain Attack, you gain 7 Stellar Nova Energy.
 				}
 
 				BaseDamage: Daño Base
@@ -6036,6 +6056,7 @@ Mods: {
 				[c/DADADA:ES Translators: Tofu and Zeldris]
 				[c/DADADA:CN Translators: Koibumi Group(灾厄维基汉化组)]
 				[c/DADADA:FR Translators: Maksou and Ariaclipse]
+				[c/DADADA:TR Translators: Mehmet EROĞLU, Hayrunisa YILDIZ, Berkay ÖZYURT, Hilal EMEK, Betül GÖNEN]
 				[c/DADADA:Libraries: SubworldLibrary, StructureHelper]
 				[c/DADADA:Open-Source Code: ScalarVector, tomat, jopojelly, John Snail, Kazzymodus, Mirsario, Lion8cake, Rhoenicx]
 
@@ -11648,24 +11669,6 @@ Mods: {
 				// DisplayName: The Malsaine Draught
 			}
 
-			OriginInfinity: {
-				// DisplayName: Origin's Infinity
-				/* Tooltip:
-					'''
-					[c/F56BC9:This weapon modifies your active Stellar Nova]
-					Attacks with this weapon grant Stellar Nova Energy upon striking foes
-					Holding this weapon changes the active Stellar Nova to [Infinity Blade]
-					When [Infinity Blade] is activated, cleave a wide area in front of you with an incredibly powerful attack after a short delay
-					This attack ignores all forms of invincibility, permanently shreds foe defense by 30%, and deals true damage while granting [Unlimited Sword] for 20 seconds
-					[Unlimited Sword] drastically amplifies this weapon's abilities
-					Attacks while under the effect of [Unlimited Sword] ignore all defense and have a 3% chance to instantly defeat non-boss enemies
-					Additionally, this weapon inherits 15% of the Stellar Nova's damage and critical strike chance
-					Right click to unleash [Tachyon Slash], a powerful multi-hit attack which extends the duration of [Unlimited Sword] upon landing critical strikes (6 second cooldown)
-					Press the Weapon Action Key to prematurely end [Unlimited Sword], refunding Stellar Nova energy depending on the time remaining
-					'We will seize our destiny!'
-					''' */
-			}
-
 			RebellionBloodArthur: {
 				// DisplayName: Clarent Rebellion
 				/* Tooltip:
@@ -12877,6 +12880,11 @@ Mods: {
 				// DisplayName: Thespian Trophy Item
 				// Tooltip: ""
 			}
+
+			OriginInfinity: {
+				// DisplayName: Origin Infinity
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13967,6 +13975,8 @@ Mods: {
 			// PhasmasaberHorizontalSlash.DisplayName: Phasmasaber Horizontal Slash
 			// GarridineGadgetGun.DisplayName: Garridine Gadget Gun
 			// GarridineGadgetRound.DisplayName: Garridine Gadget Round
+			// AsphodeneBurstSP.DisplayName: Asphodene Burst S P
+			// EridaniBurstSP.DisplayName: Eridani Burst S P
 		}
 
 		Buffs: {

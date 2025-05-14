@@ -5767,6 +5767,18 @@ Mods: {
 						// Eridani: We can't use this yet.
 					}
 				}
+
+				OriginInfinity: {
+					Unlocked: {
+						// Asphodene: This Stellar Nova can pierce any form of invincibility while also leading the way for your allies.
+						// Eridani: You can utilize this Nova to pierce even the most invincible of foes, as well as amplify allies.
+					}
+
+					Locked: {
+						// Asphodene: We don't have access to this yet.
+						// Eridani: We can't use this yet.
+					}
+				}
 			}
 
 			StellarNovaInfo: {
@@ -5840,6 +5852,14 @@ Mods: {
 					// AbilityDescription: After a short delay, your Starfarer dons the Chrysalid Pyronexus and assists you in battle. All attacks deal 2 separate instances of Nova damage. Repeated strikes build Complete Combustion, dealing the Nova's crit damage (Calculated as a crit.) once resolved. Critical Nova strikes inflict Complete Combustion much faster, but crits do not deal increased damage. 5% of Energy Cost is added to Nova duration. One instance of Complete Combustion is guaranteed in the finishing strike.
 					// AstralBonus: Pressing the Stellar Nova key while the Nova is not at full charge or active will allow you to immediately unleash the finishing strike on a nearby foe (90s cooldown)
 					// UmbralBonus: You can continue to gain Stellar Nova Energy while Firefly-Type IV is active.
+				}
+
+				OriginInfinity: {
+					// AbilityName: Origin's Infinity
+					// AbilitySubName: "[c/D0AAFA:Sword of Origin, Sword of the End]"
+					// AbilityDescription: Your Starfarer unveils the Unlimited Sword, targetting the foe with the highest Max HP (prioritizes bosses.) After a delay, deals true damage that pierces all forms of invincibility. Damage increased by 30% if invincibility was pierced. Reduce foe's defense to 0 based on Effect Duration. Inflict Chain Attack: if other players use Stellar Nova against the foe, damage is increased by 30%. Chain Attack duration is based on Effect Duration, increased by 7 seconds on hit with allied Stellar Nova.
+					// AstralBonus: When allies use their Nova to trigger Chain Attack, you both heal 7% HP.
+					// UmbralBonus: When allies use their Nova to trigger Chain Attack, you gain 7 Stellar Nova Energy.
 				}
 
 				BaseDamage: Les dégâts de base
@@ -11794,24 +11814,6 @@ Mods: {
 				DisplayName: Le projet Malsaine
 			}
 
-			OriginInfinity: {
-				DisplayName: L'infini d'origine
-				Tooltip:
-					'''
-					[c/F56BC9 : Cette arme modifie votre Stellar Nova active]
-					Les attaques avec cette arme confèrent de l'énergie Stellar Nova en frappant des ennemis.
-					Tenir cette arme change le Stellar Nova actif en [Infinity Blade]
-					Lorsque [Infinity Blade] est activé, fendez une large zone devant vous avec une attaque incroyablement puissante après un court délai.
-					Cette attaque ignore toutes les formes d'invincibilité, détruit définitivement la défense de l'ennemi de 30 % et inflige de vrais dégâts tout en conférant [Épée illimitée] pendant 20 secondes.
-					[Épée illimitée] amplifie considérablement les capacités de cette arme
-					Les attaques sous l'effet de [Épée illimitée] ignorent toute défense et ont 3 % de chances de vaincre instantanément les ennemis autres que les boss.
-					De plus, cette arme hérite de 15 % des dégâts et des chances de coup critique du Stellar Nova.
-					Faites un clic droit pour déclencher [Tachyon Slash], une puissante attaque multi-coups qui prolonge la durée de [Unlimited Sword] lors de l'exécution de coups critiques (6 secondes de recharge)
-					Appuyez sur la touche d'action de l'arme pour mettre fin prématurément à [Épée illimitée], restituant ainsi l'énergie Stellar Nova en fonction du temps restant.
-					« Nous saisirons notre destin ! »
-					'''
-			}
-
 			RebellionBloodArthur: {
 				DisplayName: Rébellion de Clarent
 				Tooltip:
@@ -13021,6 +13023,24 @@ Mods: {
 				// DisplayName: Thespian Trophy Item
 				// Tooltip: ""
 			}
+
+			OriginInfinity: {
+				DisplayName: L'infini d'origine
+				Tooltip:
+					'''
+					[c/F56BC9 : Cette arme modifie votre Stellar Nova active]
+					Les attaques avec cette arme confèrent de l'énergie Stellar Nova en frappant des ennemis.
+					Tenir cette arme change le Stellar Nova actif en [Infinity Blade]
+					Lorsque [Infinity Blade] est activé, fendez une large zone devant vous avec une attaque incroyablement puissante après un court délai.
+					Cette attaque ignore toutes les formes d'invincibilité, détruit définitivement la défense de l'ennemi de 30 % et inflige de vrais dégâts tout en conférant [Épée illimitée] pendant 20 secondes.
+					[Épée illimitée] amplifie considérablement les capacités de cette arme
+					Les attaques sous l'effet de [Épée illimitée] ignorent toute défense et ont 3 % de chances de vaincre instantanément les ennemis autres que les boss.
+					De plus, cette arme hérite de 15 % des dégâts et des chances de coup critique du Stellar Nova.
+					Faites un clic droit pour déclencher [Tachyon Slash], une puissante attaque multi-coups qui prolonge la durée de [Unlimited Sword] lors de l'exécution de coups critiques (6 secondes de recharge)
+					Appuyez sur la touche d'action de l'arme pour mettre fin prématurément à [Épée illimitée], restituant ainsi l'énergie Stellar Nova en fonction du temps restant.
+					« Nous saisirons notre destin ! »
+					'''
+			}
 		}
 
 		UIElements: {
@@ -14111,6 +14131,8 @@ Mods: {
 			// PhasmasaberHorizontalSlash.DisplayName: Phasmasaber Horizontal Slash
 			// GarridineGadgetGun.DisplayName: Garridine Gadget Gun
 			// GarridineGadgetRound.DisplayName: Garridine Gadget Round
+			// AsphodeneBurstSP.DisplayName: Asphodene Burst S P
+			// EridaniBurstSP.DisplayName: Eridani Burst S P
 		}
 
 		Buffs: {

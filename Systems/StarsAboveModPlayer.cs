@@ -762,6 +762,7 @@ namespace StarsAbove
         public int unlimitedbladeworks;
         public int guardianslight;
         public int fireflytypeiv;
+        public int origininfinity;
 
         public int goldenGunShots;
         public bool squallReady;
@@ -1011,6 +1012,8 @@ namespace StarsAbove
 
         public bool fullMetalArcanistActive;
         public bool viralUploadActive;
+        bool seenEdinCutsceneThisSession = false;
+        bool seenFireflyCutsceneThisSession = false;
 
         public int hardlight;
 
@@ -1274,6 +1277,10 @@ namespace StarsAbove
             tag["edingenesisquasar"] = edingenesisquasar;
             tag["unlimitedbladeworks"] = unlimitedbladeworks;
             tag["guardianslight"] = guardianslight;
+            tag["fireflytypeiv"] = fireflytypeiv;
+            tag["origininfinity"] = origininfinity;
+
+
             tag["chosenStellarNova"] = chosenStellarNova;
 
             tag["seenEyeOfCthulhu"] = seenEyeOfCthulhu;
@@ -1689,6 +1696,8 @@ namespace StarsAbove
             edingenesisquasar = tag.GetInt("edingenesisquasar");
             unlimitedbladeworks = tag.GetInt("unlimitedbladeworks");
             guardianslight = tag.GetInt("guardianslight");
+            fireflytypeiv = tag.GetInt("fireflytypeiv");
+            origininfinity = tag.GetInt("origininfinity");
 
             seenEyeOfCthulhu = tag.GetBool("seenEyeOfCthulhu");
             seenKingSlime = tag.GetBool("seenKingSlime");
@@ -5759,6 +5768,15 @@ namespace StarsAbove
                     }
 
                 }
+                if(Player.HasItemInAnyInventory(ItemID.Zenith))
+                {
+                    if (origininfinity == 0)
+                    {
+                        NewStellarNova = true;
+                        origininfinity = 1;
+                    }
+                }
+
                 if (DownedBossSystem.downedNalhaun)
                 {
                     if (butchersdozen == 0)
@@ -8352,24 +8370,6 @@ namespace StarsAbove
             //Wrath of the Gods
             if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
             {
-                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NoxusEgg").Type) && !seenNoxusEgg)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
-                    starfarerPromptActive("onNoxusEgg");
-                    seenUnknownBossTimer = 300;
-                }
-                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("EntropicGod").Type) && !seenEntropicGod)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
-                    starfarerPromptActive("onEntropicGod");
-                    seenUnknownBossTimer = 300;
-                }
                 if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NamelessDeityBoss").Type) && !seenNamelessDeity)
                 {
                     if (starfarerPromptCooldown > 0)
@@ -9106,7 +9106,11 @@ namespace StarsAbove
 
 
                             onActivateStellarNova();
-                            astarteCutsceneProgress = 180;
+                            if (!seenEdinCutsceneThisSession)
+                            {
+                                astarteCutsceneProgress = 180;
+                                seenEdinCutsceneThisSession = true;
+                            }
                             Player.AddBuff(BuffType<AstarteDriverPrep>(), 180);
                             Player.AddBuff(BuffType<Invincibility>(), 400);
 
@@ -9240,7 +9244,11 @@ namespace StarsAbove
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 600), Vector2.Zero, ProjectileType<FireflyMinion>(), novaDamage, 0, Player.whoAmI);
 
                             onActivateStellarNova();
-                            Player.GetModPlayer<BossPlayer>().ffCutsceneProgress = 10;
+                            if(!seenFireflyCutsceneThisSession)
+                            {
+                                Player.GetModPlayer<BossPlayer>().ffCutsceneProgress = 10;
+                                seenFireflyCutsceneThisSession = true;
+                            }
                             //Player.AddBuff(BuffType<AstarteDriverPrep>(), 180);
                             Player.AddBuff(BuffType<Invincibility>(), 120);
 
@@ -13241,13 +13249,36 @@ namespace StarsAbove
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+                
+                if(Main.rand.Next(1001) == 0)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstSP").Type, 0, 0, Player.whoAmI, 0, 1);
+
+                }
+                else
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+
+                }
+
             }
             if (chosenStarfarer == 2)
             {
                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+
+                if (Main.rand.Next(1001) == 0)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstSP").Type, 0, 0, Player.whoAmI, 0, 1);
+
+                }
+                else
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+
+                }
+
+
             }
             if (ruinedKingPrism)
             {

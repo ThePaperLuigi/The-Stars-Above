@@ -41,6 +41,8 @@ namespace StarsAbove.Systems.StellarNovas
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.GuardiansLight." + grab);
                 case 8:
                     return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.FireflyTypeIV." + grab);
+                case 9:
+                    return LangHelper.GetTextValue("StellarNova.StellarNovaInfo.OriginInfinity." + grab);
                 default:
                     break;
             }
@@ -66,6 +68,8 @@ namespace StarsAbove.Systems.StellarNovas
                     return baseDamage / 3;
                 case 8:
                     return baseDamage / 48;
+                case 9:
+                    return baseDamage / 2;
                 default:
                     break;
             }
@@ -91,6 +95,8 @@ namespace StarsAbove.Systems.StellarNovas
                     return 10;
                 case 8:
                     return 5;
+                case 9:
+                    return 7;
                 default:
                     break;
             }
@@ -116,6 +122,8 @@ namespace StarsAbove.Systems.StellarNovas
                     return 85;
                 case 8:
                     return 155;
+                case 9:
+                    return 170;
                 default:
                     break;
             }
@@ -141,6 +149,8 @@ namespace StarsAbove.Systems.StellarNovas
                     return 10;
                 case 8:
                     return 10;
+                case 9:
+                    return 7;
                 default:
                     break;
             }
@@ -166,6 +176,8 @@ namespace StarsAbove.Systems.StellarNovas
                     return (int)(baseDamage * 0.4f);
                 case 8:
                     return (int)(baseDamage * 0.9);
+                case 9:
+                    return (int)(baseDamage * 4.7);
                 default:
                     break;
             }

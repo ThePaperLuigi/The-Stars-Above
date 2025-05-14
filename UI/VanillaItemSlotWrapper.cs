@@ -31,7 +31,12 @@ namespace StarsAbove.UI
 		}
 
 		protected override void DrawSelf(SpriteBatch spriteBatch) {
-			float oldScale = Main.inventoryScale;
+            if (Item == null)
+            {
+                return;
+            }
+
+            float oldScale = Main.inventoryScale;
 			Main.inventoryScale = _scale;
 			Rectangle rectangle = GetDimensions().ToRectangle();
 
@@ -43,6 +48,7 @@ namespace StarsAbove.UI
 				}
 			}
 			// Draw draws the slot itself and Item. Depending on context, the color will change, as will drawing other things like stack counts.
+			
 			ItemSlot.Draw(spriteBatch, ref Item, _context, rectangle.TopLeft());
 			Main.inventoryScale = oldScale;
 		}

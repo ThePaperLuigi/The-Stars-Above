@@ -134,10 +134,13 @@ namespace StarsAbove
 				//Shelved for later. Doesn't work yet.
 				//Terraria.GameContent.UI.Elements.On_UICharacterListItem.ctor += Hook_UICharacterList;
 			}
+
+
             IL_Main.DrawBG += UWBGInsert;
             IL_Main.DrawCapture += UWBGInsertCapture;
             On_AmbientSky.HellBatsGoupSkyEntity.ctor += HellBatsGoupSkyEntity_ctor;
             Terraria.IL_Player.UpdateBiomes += HeatRemoval;
+           
             Terraria.Graphics.Light.On_TileLightScanner.ApplyHellLight += TileLightScanner_ApplyHellLight;
 
             novaKey = KeybindLoader.RegisterKeybind(this, "Stellar Nova", "Z");
