@@ -133,7 +133,8 @@ namespace StarsAbove.Systems
             StarfarerText.voicesDisabled = DisableStarfarerVoices;
             UI.StarfarerMenu.StarfarerMenu.voicesDisabled = DisableStarfarerVoices;
 
-            StarsAbovePlayer.ForceNeonVeilShader = ForceNeonVeilShader;
+            // Depricated!
+            //StarsAbovePlayer.ForceNeonVeilShader = ForceNeonVeilShader;
 
             StarsAbovePlayer.shockwaveEffectDisabled = DisableShockwaveEffect;
             StarsAbovePlayer.disableScreenShake = DisableScreenShake;
