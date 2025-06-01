@@ -1,630 +1,584 @@
-﻿
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StarsAbove.Items;
-using StarsAbove.Items.Weapons;
-using StarsAbove.Items.Weapons.Summon;
-using StarsAbove.Items.Weapons.Ranged;
-using StarsAbove.Items.Weapons.Other;
-using StarsAbove.Items.Weapons.Celestial;
-using StarsAbove.Items.Weapons.Melee;
-using StarsAbove.Items.Weapons.Magic;
-using Terraria;
-using Terraria.GameContent;
-using Terraria.GameContent.UI.Elements;
-using Terraria.UI;
+﻿using System;
 using Microsoft.Xna.Framework.Media;
+using Terraria.UI;
+using Terraria.GameContent;
+using ReLogic.Content;
+using StarsAbove.Systems;
 using static Terraria.ModLoader.ModContent;
-using StarsAbove.Systems;
-using StarsAbove.Systems;
 
 namespace StarsAbove.UI.CutsceneUI
 {
     internal class CutsceneUI : UIState
 	{
-		private UIElement area;
-		private UIImage edinGenesisQuasarTransition;
+        // ----- Variables -----
+        private float _cutsceneIntroAlpha = 0;
+        private float _cutsceneExitAlpha = 0;
+        private bool _anyCutsceneActive;
 
-		private UIVideo edinGenesisQuasarVideo;
-        private UIVideo nalhaunCutsceneVideo;
-        private UIVideo tsukiCutsceneVideo;
-        private UIVideo tsukiCutsceneVideo2;
-        private UIVideo warriorCutsceneVideo;
-        private UIVideo warriorCutsceneVideo2;
-        private UIVideo starfarerIntroVideo;
+        // ----- UI Elements -----
+        private UIElement _area;
+		private UIVideo _edinGenesisQuasarVideo;
+        private UIVideo _nalhaunCutsceneVideo;
+        private UIVideo _tsukiCutsceneVideo;
+        private UIVideo _tsukiCutsceneVideo2;
+        private UIVideo _warriorCutsceneVideo;
+        private UIVideo _warriorCutsceneVideo2;
+        private UIVideo _starfarerIntroVideo;
+        private UIVideo _asphodeneFFVideo;
+        private UIVideo _eridaniFFVideo;
 
-        private UIVideo asphodeneFFVideo;
-        private UIVideo eridaniFFVideo;
+        // ----- Asset cache -----
+        private readonly static Asset<Texture2D> _edinGenesisQuasarTransitionTexture = Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition");
 
+        // ----- Shorthands -----
+        private static BossPlayer BossPlayer => Main.LocalPlayer.GetModPlayer<BossPlayer>();
+        private static StarsAbovePlayer StarsAbovePlayer => Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 
+        public override void OnInitialize() 
+        {
+            _area = new();
+            _area.Top.Set(0f, 0f);
+            _area.Left.Set(0f, 0f);
+            _area.Width.Set(0f, 1f);
+            _area.Height.Set(0f, 1f);
+            Append(_area);
 
-        public override void OnInitialize() {
-			
-			area = new UIElement();
-			area.Top.Set(0, 0f);
-			area.Left.Set(0, 0f);
-			area.Width.Set(Main.screenWidth, 1f);
-			area.Height.Set(Main.screenHeight, 1f);
-			area.HAlign = area.VAlign = 0.5f; // 1
+            _edinGenesisQuasarVideo = new UIVideo(Request<Video>("StarsAbove/Video/EdinGenesisQuasar"));
+            _edinGenesisQuasarVideo.Top.Set(0f, 0f);
+            _edinGenesisQuasarVideo.Left.Set(0f, 0f);
+            _edinGenesisQuasarVideo.Width.Set(0f, 1f);
+            _edinGenesisQuasarVideo.Height.Set(0f, 1f);
 
-			edinGenesisQuasarTransition = new UIImage(Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition"));
-			edinGenesisQuasarTransition.Width.Set(Main.screenWidth, 1f);
-			edinGenesisQuasarTransition.Height.Set(Main.screenHeight, 1f);
+            _nalhaunCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/NalhaunBossCutscene"));
+            _nalhaunCutsceneVideo.Top.Set(0f, 0f);
+            _nalhaunCutsceneVideo.Left.Set(0f, 0f);
+            _nalhaunCutsceneVideo.Width.Set(0f, 1f);
+            _nalhaunCutsceneVideo.Height.Set(0f, 1f);
 
-            edinGenesisQuasarVideo = new UIVideo(Request<Video>("StarsAbove/Video/EdinGenesisQuasar"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            edinGenesisQuasarVideo.Width.Set(Main.screenWidth, 1f);
-            edinGenesisQuasarVideo.Height.Set(Main.screenHeight, 1f);
+            _tsukiCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiBossCutscene"));
+            _tsukiCutsceneVideo.Top.Set(0f, 0f);
+            _tsukiCutsceneVideo.Left.Set(0f, 0f);
+            _tsukiCutsceneVideo.Width.Set(0f, 1f);
+            _tsukiCutsceneVideo.Height.Set(0f, 1f);
 
-            nalhaunCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/NalhaunBossCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            nalhaunCutsceneVideo.Width.Set(Main.screenWidth, 1f);
-            nalhaunCutsceneVideo.Height.Set(Main.screenHeight, 1f);
+            _tsukiCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiNovaCutscene"));
+            _tsukiCutsceneVideo2.Top.Set(0f, 0f);
+            _tsukiCutsceneVideo2.Left.Set(0f, 0f);
+            _tsukiCutsceneVideo2.Width.Set(0f, 1f);
+            _tsukiCutsceneVideo2.Height.Set(0f, 1f);
 
-            tsukiCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiBossCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            tsukiCutsceneVideo.Width.Set(Main.screenWidth, 1f);
-            tsukiCutsceneVideo.Height.Set(Main.screenHeight, 1f);
+            _warriorCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/WarriorIntroCutscene"));
+            _warriorCutsceneVideo.Top.Set(0f, 0f);
+            _warriorCutsceneVideo.Left.Set(0f, 0f);
+            _warriorCutsceneVideo.Width.Set(0f, 1f);
+            _warriorCutsceneVideo.Height.Set(0f, 1f);
 
-            tsukiCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/TsukiyomiNovaCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            tsukiCutsceneVideo2.Width.Set(Main.screenWidth, 1f);
-            tsukiCutsceneVideo2.Height.Set(Main.screenHeight, 1f);
+            _warriorCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/WarriorFinalPhaseCutscene"));
+            _warriorCutsceneVideo2.Top.Set(0f, 0f);
+            _warriorCutsceneVideo2.Left.Set(0f, 0f);
+            _warriorCutsceneVideo2.Width.Set(0f, 1f);
+            _warriorCutsceneVideo2.Height.Set(0f, 1f);
 
-            warriorCutsceneVideo = new UIVideo(Request<Video>("StarsAbove/Video/WarriorIntroCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            warriorCutsceneVideo.Width.Set(Main.screenWidth, 1f);
-            warriorCutsceneVideo.Height.Set(Main.screenHeight, 1f);
+            _starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"));
+            _starfarerIntroVideo.Top.Set(0f, 0f);
+            _starfarerIntroVideo.Left.Set(0f, 0f);
+            _starfarerIntroVideo.Width.Set(0f, 1f);
+            _starfarerIntroVideo.Height.Set(0f, 1f);
 
-            warriorCutsceneVideo2 = new UIVideo(Request<Video>("StarsAbove/Video/WarriorFinalPhaseCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            warriorCutsceneVideo2.Width.Set(Main.screenWidth, 1f);
-            warriorCutsceneVideo2.Height.Set(Main.screenHeight, 1f);
+            _asphodeneFFVideo = new UIVideo(Request<Video>("StarsAbove/Video/AsphodeneFFTransformation"));
+            _asphodeneFFVideo.Top.Set(0f, 0f);
+            _asphodeneFFVideo.Left.Set(0f, 0f);
+            _asphodeneFFVideo.Width.Set(0f, 1f);
+            _asphodeneFFVideo.Height.Set(0f, 1f);
 
-            starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            starfarerIntroVideo.Width.Set(Main.screenWidth, 1f);
-            starfarerIntroVideo.Height.Set(Main.screenHeight, 1f);
-
-            starfarerIntroVideo = new UIVideo(Request<Video>("StarsAbove/Video/StarfarerIntroCutscene"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            starfarerIntroVideo.Width.Set(Main.screenWidth, 1f);
-            starfarerIntroVideo.Height.Set(Main.screenHeight, 1f);
-
-            asphodeneFFVideo = new UIVideo(Request<Video>("StarsAbove/Video/AsphodeneFFTransformation"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            asphodeneFFVideo.Width.Set(Main.screenWidth, 1f);
-            asphodeneFFVideo.Height.Set(Main.screenHeight, 1f);
-
-            eridaniFFVideo = new UIVideo(Request<Video>("StarsAbove/Video/EridaniFFTransformation"))
-            {
-                ScaleToFit = true,
-                WaitForStart = true,
-                DoLoop = false
-            };
-            eridaniFFVideo.Width.Set(Main.screenWidth, 1f);
-            eridaniFFVideo.Height.Set(Main.screenHeight, 1f);
-            //area.Append(edinGenesisQuasarVideo);
-            Append(area);
+            _eridaniFFVideo = new UIVideo(Request<Video>("StarsAbove/Video/EridaniFFTransformation"));
+            _eridaniFFVideo.Top.Set(0f, 0f);
+            _eridaniFFVideo.Left.Set(0f, 0f);
+            _eridaniFFVideo.Width.Set(0f, 1f);
+            _eridaniFFVideo.Height.Set(0f, 1f);
 		}
 
-		public override void Draw(SpriteBatch spriteBatch) {
-			base.Draw(spriteBatch);
-		}
-
-		float CutsceneIntroAlpha = 0;
-		float CutsceneExitAlpha = 0;
-		//bool CutsceneExit = false;
-		protected override void DrawSelf(SpriteBatch spriteBatch) {
+		protected override void DrawSelf(SpriteBatch spriteBatch) 
+        {
+            // Draw all the other UI Elements first.
 			base.DrawSelf(spriteBatch);
-            var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-			
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/EdinGenesisQuasarTransition"), area.GetInnerDimensions().ToRectangle(), Color.White * CutsceneIntroAlpha);
-			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/WhiteScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * CutsceneExitAlpha);
+            // Get the dimensions of the area
+            CalculatedStyle dimensions = _area.GetInnerDimensions();
 
-            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/BlackScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * bossPlayer.BlackAlpha);
+            // Draw Edin Genesis Quasar
+            if (_cutsceneIntroAlpha > 0f)
+            {
+                // Draw a complete black screen
+                spriteBatch.Draw(
+                    TextureAssets.MagicPixel.Value,
+                    dimensions.Position(),
+                    new Rectangle(0, 0, (int)Math.Ceiling(dimensions.Width), (int)Math.Ceiling(dimensions.Height)),
+                    Color.Black * _cutsceneIntroAlpha,
+                    0f,
+                    Vector2.Zero,
+                    1f,
+                    SpriteEffects.None,
+                    0);
 
-            spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/CutsceneUI/WhiteScreen"), area.GetInnerDimensions().ToRectangle(), Color.White * bossPlayer.WhiteAlpha);
+                // Draw the texture
+                spriteBatch.Draw(
+                    _edinGenesisQuasarTransitionTexture.Value,
+                    dimensions.Center(),
+                    _edinGenesisQuasarTransitionTexture.Value.Bounds,
+                    Color.White * _cutsceneIntroAlpha,
+                    0f,
+                    new Vector2(_edinGenesisQuasarTransitionTexture.Width() * 0.5f, _edinGenesisQuasarTransitionTexture.Height()),
+                    1f / Main.UIScale,
+                    SpriteEffects.None,
+                    0);
+            }
+
+            // Draw White screen
+            if (_cutsceneExitAlpha > 0f)
+            {
+                // Draw a complete white screen
+                spriteBatch.Draw(
+                    TextureAssets.MagicPixel.Value,
+                    dimensions.Position(),
+                    new Rectangle(0, 0, (int)Math.Ceiling(dimensions.Width), (int)Math.Ceiling(dimensions.Height)),
+                    Color.White * _cutsceneExitAlpha,
+                    0f,
+                    Vector2.Zero,
+                    1f,
+                    SpriteEffects.None,
+                    0);
+            }
+
+            // Draw Black screen
+            if (BossPlayer.BlackAlpha > 0f)
+            {
+                // Draw a complete black screen
+                spriteBatch.Draw(
+                    TextureAssets.MagicPixel.Value,
+                    dimensions.Position(),
+                    new Rectangle(0, 0, (int)Math.Ceiling(dimensions.Width), (int)Math.Ceiling(dimensions.Height)),
+                    Color.Black * BossPlayer.BlackAlpha,
+                    0f,
+                    Vector2.Zero,
+                    1f,
+                    SpriteEffects.None,
+                    0);
+            }
+
+            // Draw White screen
+            if (BossPlayer.WhiteAlpha > 0f)
+            {
+                // Draw a complete white screen
+                spriteBatch.Draw(
+                    TextureAssets.MagicPixel.Value,
+                    dimensions.Position(),
+                    new Rectangle(0, 0, (int)Math.Ceiling(dimensions.Width), (int)Math.Ceiling(dimensions.Height)),
+                    Color.White * BossPlayer.WhiteAlpha,
+                    0f,
+                    Vector2.Zero,
+                    1f,
+                    SpriteEffects.None,
+                    0);
+            }
         }
-        bool alphaFade;
 
-        bool anyCutsceneActive;
 		public override void Update(GameTime gameTime)
         {
-            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
-            var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
-
-            CutsceneIntroAlpha = MathHelper.Clamp(CutsceneIntroAlpha, 0f, 1f);
-            CutsceneExitAlpha = MathHelper.Clamp(CutsceneExitAlpha, 0f, 1f);
+            _cutsceneIntroAlpha = MathHelper.Clamp(_cutsceneIntroAlpha, 0f, 1f);
+            _cutsceneExitAlpha = MathHelper.Clamp(_cutsceneExitAlpha, 0f, 1f);
 
             bool introWhite = false; //If true, intro is white. If false, intro is black.
             bool outroWhite = false; //If true, outro is white. If false, outro is black.
 
-            AstarteDriver(modPlayer);
-            NalhaunCutscene(bossPlayer);
-            TsukiCutscene(bossPlayer, ref introWhite, ref outroWhite);
-            TsukiCutscene2(bossPlayer, ref introWhite, ref outroWhite);
-            WarriorCutscene1(bossPlayer, ref introWhite, ref outroWhite);
-            WarriorCutscene2(bossPlayer, ref introWhite, ref outroWhite);
-            IntroCutscene(bossPlayer, ref introWhite, ref outroWhite);
-            if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 1)
+            AstarteDriver();
+            NalhaunCutscene();
+            TsukiCutscene(ref introWhite, ref outroWhite);
+            TsukiCutscene2(ref introWhite, ref outroWhite);
+            WarriorCutscene1(ref introWhite, ref outroWhite);
+            WarriorCutscene2(ref introWhite, ref outroWhite);
+            IntroCutscene(ref introWhite, ref outroWhite);
+
+            if (StarsAbovePlayer.chosenStarfarer == 1)
             {
-                AsphodeneFF(bossPlayer, ref introWhite, ref outroWhite);
-
+                AsphodeneFF(ref introWhite, ref outroWhite);
             }
-            else if(Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 2)
+            else if (StarsAbovePlayer.chosenStarfarer == 2)
             {
-                EridaniFF(bossPlayer, ref introWhite, ref outroWhite);
-
+                EridaniFF(ref introWhite, ref outroWhite);
             }
 
-            if (bossPlayer.VideoDuration == 0)
+            if (BossPlayer.VideoDuration == 0)
             {
                 if (outroWhite)
                 {
-                    bossPlayer.BlackAlpha = 0f;
-                    bossPlayer.WhiteAlpha = 1f;
+                    BossPlayer.BlackAlpha = 0f;
+                    BossPlayer.WhiteAlpha = 1f;
                 }
                 else
                 {
-                    bossPlayer.WhiteAlpha = 0f;
-                    bossPlayer.BlackAlpha = 1f;
-
+                    BossPlayer.WhiteAlpha = 0f;
+                    BossPlayer.BlackAlpha = 1f;
                 }
-
-
-            }
-            if(anyCutsceneActive)
-            {
-                //Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().gaussianBlurProgress = 1f;
             }
 
-
-            bossPlayer.WhiteAlpha -= 0.01f;
-            bossPlayer.BlackAlpha -= 0.01f;
-            
-            
+            BossPlayer.WhiteAlpha -= 0.01f;
+            BossPlayer.BlackAlpha -= 0.01f;
 
             base.Update(gameTime);
         }
 
-        private void AstarteDriver(StarsAbovePlayer modPlayer)
+        private void AstarteDriver()
         {
-            UIVideo Video = edinGenesisQuasarVideo;
-            bool CutsceneExit = false;
-            if (modPlayer.astarteCutsceneProgress <= 60 && modPlayer.astarteCutsceneProgress > 0)
+            UIVideo Video = _edinGenesisQuasarVideo;
+            if (StarsAbovePlayer.astarteCutsceneProgress <= 60 && StarsAbovePlayer.astarteCutsceneProgress > 0)
             {
-                CutsceneIntroAlpha += 0.05f;
+                _cutsceneIntroAlpha += 0.05f;
 
             }
 
-            CutsceneExitAlpha -= 0.02f;
-            if (modPlayer.WhiteFade >= 20)
+            _cutsceneExitAlpha -= 0.02f;
+            if (StarsAbovePlayer.WhiteFade >= 20)
             {
-                CutsceneExitAlpha = 1f;
+                _cutsceneExitAlpha = 1f;
 
             }
 
-
-            if (modPlayer.astarteCutsceneProgress == 1)
+            if (StarsAbovePlayer.astarteCutsceneProgress == 1)
             {
-                CutsceneIntroAlpha = 0f;
-                anyCutsceneActive = true;
-                edinGenesisQuasarVideo.FinishedVideo = false;
-                edinGenesisQuasarVideo.StartVideo = true;
-                area.Append(edinGenesisQuasarVideo);
-
-
+                _cutsceneIntroAlpha = 0f;
+                _anyCutsceneActive = true;
+                _edinGenesisQuasarVideo.FinishedVideo = false;
+                _edinGenesisQuasarVideo.StartVideo = true;
+                _area.Append(_edinGenesisQuasarVideo);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
-                Main.LocalPlayer.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;
+                _anyCutsceneActive = false;
+                BossPlayer.WhiteAlpha = 1f;
 
-                edinGenesisQuasarVideo.Remove();
+                _edinGenesisQuasarVideo.Remove();
             }
         }
         
-        private void NalhaunCutscene(BossPlayer modPlayer)
+        private void NalhaunCutscene()
         {
-            UIVideo Video = nalhaunCutsceneVideo;
-            var cutsceneProgress = modPlayer.nalhaunCutsceneProgress;
+            UIVideo Video = _nalhaunCutsceneVideo;
+            var cutsceneProgress = BossPlayer.nalhaunCutsceneProgress;
+
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {
-                modPlayer.BlackAlpha += 0.1f;
-            }
-            else
-            {
-                //modPlayer.BlackAlpha -= 0.1f;
+                BossPlayer.BlackAlpha += 0.1f;
             }
             
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                area.Append(Video);
-
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.BlackAlpha = 1f;
+                BossPlayer.BlackAlpha = 1f;
 
                 Video.Remove();
             }
         }
-        private void TsukiCutscene(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void TsukiCutscene(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = tsukiCutsceneVideo;
-            var cutsceneProgress = modPlayer.tsukiCutsceneProgress;
+            UIVideo Video = _tsukiCutsceneVideo;
+            var cutsceneProgress = BossPlayer.tsukiCutsceneProgress;
 
             introWhite = true;
             outroWhite = false;
 
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
-
+            {
+                //If the cutscene hasn't started yet, give time for the screen to fade.
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
-
-
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
 
-                area.Append(Video);
-
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.BlackAlpha = 1f;
+                BossPlayer.BlackAlpha = 1f;
                 Video.Remove();
             }
         }
-        private void TsukiCutscene2(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void TsukiCutscene2(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = tsukiCutsceneVideo2;
-            var cutsceneProgress = modPlayer.tsukiCutscene2Progress;
+            UIVideo Video = _tsukiCutsceneVideo2;
+            var cutsceneProgress = BossPlayer.tsukiCutscene2Progress;
 
             introWhite = false;
             outroWhite = true;
 
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
-
+            {
+                //If the cutscene hasn't started yet, give time for the screen to fade.
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
-
-
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
 
-                area.Append(Video);
+                _area.Append(Video);
 
             }
+
             if(Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.WhiteAlpha = 1f;
+                BossPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
-            
-            
         }
-        private void WarriorCutscene1(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void WarriorCutscene1(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = warriorCutsceneVideo;
-            var cutsceneProgress = modPlayer.warriorCutsceneProgress;
+            UIVideo Video = _warriorCutsceneVideo;
+            var cutsceneProgress = BossPlayer.warriorCutsceneProgress;
 
             introWhite = true;
             outroWhite = true;
 
-
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
-
+            {
+                //If the cutscene hasn't started yet, give time for the screen to fade.
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
 
 
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
 
-                area.Append(Video);
-
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.WhiteAlpha = 1f;
+                BossPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
-
-
         }
-        private void WarriorCutscene2(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void WarriorCutscene2(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = warriorCutsceneVideo2;
-            var cutsceneProgress = modPlayer.warriorCutsceneProgress2;
+            UIVideo Video = _warriorCutsceneVideo2;
+            var cutsceneProgress = BossPlayer.warriorCutsceneProgress2;
 
             introWhite = true;
             outroWhite = true;
 
-
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
-
+            {
+                //If the cutscene hasn't started yet, give time for the screen to fade.
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
-
-
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
 
-                area.Append(Video);
-
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.WhiteAlpha = 1f;
+                BossPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
-
-
         }
-        private void IntroCutscene(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void IntroCutscene(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = starfarerIntroVideo;
-            var cutsceneProgress = modPlayer.introCutsceneProgress;
+            UIVideo Video = _starfarerIntroVideo;
+            var cutsceneProgress = BossPlayer.introCutsceneProgress;
 
             introWhite = true;
             outroWhite = true;
 
-
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
-
+            {
+                //If the cutscene hasn't started yet, give time for the screen to fade.
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
-
-
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().seenIntroCutscene = true;
-                area.Append(Video);
-
+                StarsAbovePlayer.seenIntroCutscene = true;
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.WhiteAlpha = 1f;
+                BossPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
-
-
         }
-        private void AsphodeneFF(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void AsphodeneFF(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = asphodeneFFVideo;
-            var cutsceneProgress = modPlayer.ffCutsceneProgress;
+            UIVideo Video = _asphodeneFFVideo;
+            var cutsceneProgress = BossPlayer.ffCutsceneProgress;
 
             introWhite = false;
             outroWhite = true;
 
-
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
-            {//If the cutscene hasn't started yet, give time for the screen to fade.
-
+            {
+                //If the cutscene hasn't started yet, give time for the screen to fade.
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
-
-
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                area.Append(Video);
-
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.WhiteAlpha = 1f;
+                BossPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
-
-
         }
-        private void EridaniFF(BossPlayer modPlayer, ref bool introWhite, ref bool outroWhite)
+
+        private void EridaniFF(ref bool introWhite, ref bool outroWhite)
         {
-            UIVideo Video = eridaniFFVideo;
-            var cutsceneProgress = modPlayer.ffCutsceneProgress;
+            UIVideo Video = _eridaniFFVideo;
+            var cutsceneProgress = BossPlayer.ffCutsceneProgress;
 
             introWhite = false;
             outroWhite = true;
 
-
             if (cutsceneProgress <= 60 && cutsceneProgress > 0)
             {//If the cutscene hasn't started yet, give time for the screen to fade.
 
                 if (introWhite)
                 {
-                    modPlayer.WhiteAlpha += 0.1f;
+                    BossPlayer.WhiteAlpha += 0.1f;
                 }
                 else
                 {
-                    modPlayer.BlackAlpha += 0.1f;
+                    BossPlayer.BlackAlpha += 0.1f;
                 }
-
-
             }
-            else
-            {
 
-            }
             if (cutsceneProgress == 1)
             {
-                anyCutsceneActive = true;
+                _anyCutsceneActive = true;
 
                 Video.FinishedVideo = false;
                 Video.StartVideo = true;
-                area.Append(Video);
-
+                _area.Append(Video);
             }
+
             if (Video.FinishedVideo)
             {
                 Video.FinishedVideo = false;
-                anyCutsceneActive = false;
+                _anyCutsceneActive = false;
 
-                modPlayer.WhiteAlpha = 1f;
+                BossPlayer.WhiteAlpha = 1f;
                 Video.Remove();
             }
-
-
         }
     }
 }
