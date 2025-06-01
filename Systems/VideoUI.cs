@@ -1,140 +1,110 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using ReLogic.Content;
-using Terraria;
+using System;
+using Terraria.GameContent;
 using Terraria.UI;
 
 namespace StarsAbove.Systems;
 
-public class UIVideo : UIElement
+public class UIVideo(Asset<Video> video) : UIElement
 {
-	private Asset<Video>? video;
-	private VideoPlayer? videoPlayer;
-	private bool pendingResize;
-
-	
-	public bool ScaleToFit { get; set; }
-	public bool DoLoop { get; set; } = true;
-	public bool WaitForStart { get; set; } = false;
+	private readonly Asset<Video>? video = video;
+	private VideoPlayer videoPlayer = null;
 	public bool StartVideo { get; set; } = true;
 	public bool FinishedVideo { get; set; } = false;
-	public bool AllowResizingDimensions { get; set; } = true;
-	public bool RemoveFloatingPointsFromDrawPosition { get; set; }
-	public float ImageScale { get; set; } = 1f;
-	public float Rotation { get; set; }
-	public Color Color { get; set; } = Color.White;
-	public Vector2 NormalizedOrigin { get; set; }
+	public Color BackgroundColor { get; set; } = Color.Black;
 
-	public UIVideo(Asset<Video> video)
-	{
-		SetVideo(video);
-	}
+    public override void OnDeactivate()
+    {
+        // Clear the video player object
+        videoPlayer?.Dispose();
+        videoPlayer = null;
+    }
 
-	protected override void DrawSelf(SpriteBatch spriteBatch)
+    public override void Update(GameTime gameTime)
+    {
+		// Check if the video file is valid
+        if (this.video?.Value is not Video video)
+        {
+            return;
+        }
+
+        // Ensure that the video player object exists
+        videoPlayer ??= new();
+
+        // Wait for the start signal to play the video
+        if (StartVideo)
+        {
+            // Set videoplayer settings and then play the video 
+            videoPlayer.IsLooped = false;
+            videoPlayer.Play(video);
+
+            // Set flags
+            StartVideo = false;
+            FinishedVideo = false;
+        }
+
+        // Wait for the video to finish playing
+        if (videoPlayer.State != MediaState.Playing)
+        {
+            // Stop the video from playing
+            videoPlayer.Stop();
+
+            // Set flags
+            FinishedVideo = true;
+        }
+    }
+
+    protected override void DrawSelf(SpriteBatch spriteBatch)
 	{
+        // Check if the video is currently playing
+        if (videoPlayer?.State != MediaState.Playing)
+        {
+            return;
+        }
+
+        // Get the size of the UI element.
 		CalculatedStyle dimensions = GetDimensions();
 
-		if (this.video?.Value is not Video video)
-		{
-			return;
-		}
+        // Draw a black background to fill the entire screen
+        spriteBatch.Draw(
+            TextureAssets.MagicPixel.Value,
+            dimensions.Position(),
+            new Rectangle(0, 0, (int)Math.Ceiling(dimensions.Width), (int)Math.Ceiling(dimensions.Height)),
+            BackgroundColor,
+            0f,
+            Vector2.Zero,
+            1f,
+            SpriteEffects.None,
+            0);
 
-		EnsureInitialized();
-		
-		//true
-		if (WaitForStart) //If you need to prompt the video to begin...
-        {
-			//false
-			if (DoLoop && videoPlayer.IsLooped)//If DoLoop is true and the video looped once.
-			{
-				if (videoPlayer!.State != MediaState.Playing)
-				{
-					videoPlayer.Play(video);
-				}
-				//videoPlayer.IsLooped = false;
-			}
-			else
-			{
-				if (videoPlayer.IsLooped && !StartVideo) //Stop the video after the first loop.
-				{
-					videoPlayer.Stop();
-				}
-			}
-			if (StartVideo) //If the video should start.
-			{
-				StartVideo = false;
-				videoPlayer.IsLooped = false;
-				FinishedVideo = false;
+        // Get the current frame of the video as a Texture2D
+        Texture2D frameTexture = videoPlayer.GetTexture();
 
-				videoPlayer.Play(video);
-			}
-			if (videoPlayer!.State != MediaState.Playing) //If the video ended.
-			{
-				videoPlayer.Stop();
+        // Get the size of the texture in pixels
+        int width = frameTexture.Width;
+        int height = frameTexture.Height;
 
-				FinishedVideo = true;
-				videoPlayer.IsLooped = true;
-			}
-		}
-		else //If the video loops forever.
-		{
-			if (videoPlayer!.State != MediaState.Playing)
-			{
-				videoPlayer.IsLooped = true;
+        // Determine the scale on the X an Y
+        float scaleX = dimensions.Width / width;
+        float scaleY = dimensions.Height / height;
 
-				videoPlayer.Play(video);
-			}
-		}
-		
-		
+        // Get the smallest scale
+        float scale = Math.Min(scaleX, scaleY);
 
-		// Perhaps this should be done in Update() instead.
-		if (pendingResize && AllowResizingDimensions)
-		{
-			Width.Set(video.Width, 0f);
-			Height.Set(video.Height, 0f);
-
-			pendingResize = false;
-		}
-
-		var frameTexture = videoPlayer.GetTexture();
-
-		if (ScaleToFit)
-		{
-			spriteBatch.Draw(frameTexture, dimensions.ToRectangle(), Color);
-			return;
-		}
-
-		Vector2 size = frameTexture.Size();
-		Vector2 position = dimensions.Position() + size * (1f - ImageScale) / 2f + size * NormalizedOrigin;
-
-		if (RemoveFloatingPointsFromDrawPosition)
-		{
-			position = position.Floor();
-		}
-
-		spriteBatch.Draw(frameTexture, position, null, Color, Rotation, size * NormalizedOrigin, ImageScale, SpriteEffects.None, 0f);
-	}
-
-	public override void OnActivate()
-		=> EnsureInitialized();
-
-	public override void OnDeactivate()
-	{
-		videoPlayer?.Dispose();
-
-		videoPlayer = null;
-	}
-
-	public void SetVideo(Asset<Video> video)
-	{
-		this.video = video;
-		pendingResize = AllowResizingDimensions;
-	}
-
-	private void EnsureInitialized()
-	{
-		videoPlayer ??= new VideoPlayer();
+        // Draw the frame of the video to the element with
+        // the appropriate scale to fill the entire screen.
+        // When not on 16:9 aspect ratio the black background
+        // will be visible on the places not covered by the video.
+		spriteBatch.Draw(
+            frameTexture,
+            dimensions.Center(),
+            frameTexture.Bounds,
+            Color.White,
+            0f,
+            frameTexture.Size() * 0.5f,
+            scale,
+            SpriteEffects.None,
+            0f);
 	}
 }
