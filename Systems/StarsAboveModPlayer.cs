@@ -357,6 +357,8 @@ namespace StarsAbove
 
         public int screenShakeVelocity = 1000;
 
+        // Neon Veil
+        private float _neonVeilOpacity = 0f;
 
         //Unique dialogue lines
         public bool starfarerIntro = true;
@@ -4165,83 +4167,118 @@ namespace StarsAbove
             }
             gaussianBlurProgress = MathHelper.Clamp(gaussianBlurProgress, 0f, 1f);
         }
-        static public bool ForceNeonVeilShader = false;
+
+        /// <summary>
+        /// This method enables the Neon Veil's visual effect when 
+        /// the player is inside the Neon Veil biome.
+        /// </summary>
         private void NeonVeilShaderEffect()
         {
-            if (Player.InModBiome<NeonVeilBiome>())
+            // Only apply the shader effect on the own player,
+            // also do not apply on a server.
+            if (Player.whoAmI != Main.myPlayer || Main.dedServ)
             {
-                if (Main.rand.NextBool(3))
+                return;
+            }
+
+            // Fade in and fade out time of the shader effect
+            const int FadeTime = 60;
+
+            // Check if the player is currently in the Neon Veil biome
+            if (!Player.InModBiome<NeonVeilBiome>())
+            {
+                // Gradually decrease the Opacity of the shader effect while
+                // not in the Neon Veil
+                if (_neonVeilOpacity > 0f)
                 {
-                    // Initial random position vector
-                    Vector2 vector = new Vector2(
-                        Main.rand.Next(-1548, 1548) * (0.003f * 200) - 10,
-                        Main.rand.Next(-1548, 1548) * (0.003f * 200) - 10);
-
-                    // Create the dust particle
-                    Dust d = Main.dust[Dust.NewDust(
-                        Player.Center + vector, 1, 1,
-                        DustID.GemAmethyst, 0, 0, 255,
-                        new Color(1f, 1f, 1f), 0.8f)];
-
-                    // Apply player velocity influence
-                    d.noGravity = true;
+                    _neonVeilOpacity -= 1f / FadeTime;
+                    _neonVeilOpacity = Math.Max(0f, _neonVeilOpacity);
                 }
-                
 
-                if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server && Main.screenWidth <= 1920)
+                // Wait for the effect to fully fade out
+                if (_neonVeilOpacity <= 0f)
                 {
-                    Filters.Scene.Activate("NeonVeilReflectionEffect").GetShader().UseColor(1, 1, 1).UseTargetPosition(new Vector2(Main.screenPosition.X, (Main.maxTilesY - 110)*16));
-
-                }
-                if (Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server)
-                {
-                    // Calculate the player's Y coordinate in tile coordinates
-                    int playerTileY = Player.Center.ToTileCoordinates().Y;
-
-                    // Define the threshold value
-                    int thresholdY = Main.maxTilesY - 100;
-                    float intensity = 1f;
-                    // Check if the player is above the threshold
-                    if (playerTileY > thresholdY)
+                    // Disable the shader if it is active.
+                    if (Filters.Scene["NeonVeilReflectionEffect"].IsActive())
                     {
-                        // Calculate how far the player is above the threshold
-                        float distanceAboveThreshold = playerTileY - thresholdY;
-
-                        // Calculate the maximum distance for full interpolation (20 tiles)
-                        float maxDistance = 10f;
-
-                        // Interpolate the intensity from 1f to 0f based on the distance above the threshold
-                        intensity = MathHelper.Lerp(1f, 0f, distanceAboveThreshold / maxDistance);
-
-                        // Clamp the intensity to the range [0f, 1f]
-                        intensity = MathHelper.Clamp(intensity, 0f, 1f);
-                    }
-                    else
-                    {
-                        // If the player is not above the threshold, set intensity to 1f
-                        intensity = 1f;
+                        Filters.Scene.Deactivate("NeonVeilReflectionEffect");
                     }
 
-                    if (Main.UIScale != 1)
-                    {
-                        //intensity = 0f;
-                    }
-                    Filters.Scene["NeonVeilReflectionEffect"].GetShader().UseIntensity(intensity).UseTargetPosition(new Vector2(Main.screenPosition.X + MathHelper.Lerp(0,Main.screenWidth/4,Math.Min(1f,Main.GameZoomTarget - 1)), (Main.maxTilesY - 100) * 16));
+                    // Exit the method here, no drawing needed.
+                    return;
                 }
             }
             else
             {
-                if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server))
+                // Gradually increase the Opacity of the shader effect while
+                // inside the Neon Veil biome
+                if (_neonVeilOpacity < 1f)
                 {
-                    Filters.Scene.Deactivate("NeonVeilReflectionEffect");
-
+                    _neonVeilOpacity += 1f / FadeTime;
+                    _neonVeilOpacity = Math.Min(_neonVeilOpacity, 1f);
                 }
             }
-            if ((Filters.Scene["NeonVeilReflectionEffect"].IsActive() && Main.netMode != NetmodeID.Server) && (Main.screenWidth > 1920 && !ForceNeonVeilShader))
-            {
-                Filters.Scene.Deactivate("NeonVeilReflectionEffect");
 
+            // Spawn dust randomly inside the Neon Veil
+            if (Main.rand.NextBool(3))
+            {
+                // Get the screen size as spawning rectangle, 
+                // multiplied with a certian amount as padding.
+                Vector2 boundingBox = Main.ScreenSize.ToVector2() * 1.25f; // 25% padding
+
+                // Spawn the dust particle
+                int id = Dust.NewDust(
+                    Main.screenPosition + Main.ScreenSize.ToVector2() * 0.5f - boundingBox * 0.5f,
+                    (int)boundingBox.X,
+                    (int)boundingBox.Y,
+                    DustID.GemAmethyst,
+                    newColor: Color.White,
+                    Scale: 0.8f);
+
+                // Disable gravity
+                Main.dust[id].noGravity = true;
             }
+
+            // Activate the Neon Veil Shader if it is not active yet
+            if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive())
+            {
+                Filters.Scene.Activate("NeonVeilReflectionEffect");
+            }
+
+            // Fail-Safe: Check if the shader is active, if it somehow 
+            // is still not active: do not update the shader data
+            if (!Filters.Scene["NeonVeilReflectionEffect"].IsActive())
+            {
+                return;
+            }
+
+            // Calculate the cut-off Y position of the shader.
+            float thresholdY = (Main.maxTilesY - 100) * 16f;
+
+            // Create a new intensity variable.
+            float intensity = 1f;
+
+            // Check if the player is above the threshold (under the Neon Veil)
+            if (Player.Center.Y > thresholdY)
+            {
+                // Calculate how far the player is above the threshold
+                float distanceAboveThreshold = Player.Center.Y - thresholdY;
+
+                // The maximum distance for full interpolation (10 tiles)
+                const float maxDistance = 10f * 16f;
+
+                // Interpolate the intensity from 1f to 0f based on the distance above the threshold
+                intensity = MathHelper.Lerp(1f, 0f, distanceAboveThreshold / maxDistance);
+
+                // Clamp the intensity to the range [0f, 1f]
+                intensity = MathHelper.Clamp(intensity, 0f, 1f);
+            }
+
+            // Update the shader
+            Filters.Scene["NeonVeilReflectionEffect"].GetShader()
+                .UseColor(new Color(0.2f, 0.3f, 0.6f))              // Pass the Dark blue tint
+                .UseIntensity(intensity * _neonVeilOpacity)          // Pass the calculated intensity multiplied by the opacity
+                .UseTargetPosition(new Vector2(0f, thresholdY));    // Pass the Y position of the shader starting point, in world coordinates.
         }
 
         private void EmberFlask()
