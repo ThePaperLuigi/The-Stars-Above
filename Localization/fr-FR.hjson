@@ -5857,9 +5857,9 @@ Mods: {
 				OriginInfinity: {
 					// AbilityName: Origin's Infinity
 					// AbilitySubName: "[c/D0AAFA:Sword of Origin, Sword of the End]"
-					// AbilityDescription: Your Starfarer unveils the Unlimited Sword, targetting the foe with the highest Max HP (prioritizes bosses.) After a delay, deals true damage that pierces all forms of invincibility. Damage increased by 30% if invincibility was pierced. Reduce foe's defense to 0 based on Effect Duration. Inflict Chain Attack: if other players use Stellar Nova against the foe, damage is increased by 30%. Chain Attack duration is based on Effect Duration, increased by 7 seconds on hit with allied Stellar Nova.
-					// AstralBonus: When allies use their Nova to trigger Chain Attack, you both heal 7% HP.
-					// UmbralBonus: When allies use their Nova to trigger Chain Attack, you gain 7 Stellar Nova Energy.
+					// AbilityDescription: Your Starfarer unveils the Unlimited Sword, targetting the foe with the highest Max HP (prioritizes bosses.) After a delay, deals true damage that pierces all forms of invincibility. If piercing invincibility, Nova bonuses do not apply. Inflict Chain Attack: if other players use Stellar Nova against the foe, damage is increased by 5% of base Nova scaling. Chain Attack duration is based on Effect Duration. Additionally, foe defense is set to 0 during Chain Attack.
+					// AstralBonus: When allies use their Nova to trigger Chain Attack, they heal 7% HP. Additionally, heal an extra 2% per living ally.
+					// UmbralBonus: When allies use their Nova to trigger Chain Attack, they gain 3 Stellar Nova Energy. Additionally, gain an extra 1 Stellar Nova Energy per living ally.
 				}
 
 				BaseDamage: Les dégâts de base
@@ -14133,6 +14133,9 @@ Mods: {
 			// GarridineGadgetRound.DisplayName: Garridine Gadget Round
 			// AsphodeneBurstSP.DisplayName: Asphodene Burst S P
 			// EridaniBurstSP.DisplayName: Eridani Burst S P
+			// OriginInfinityNovaAttack.DisplayName: Origin Infinity Nova Attack
+			// OriginInfinityNovaAttackAsphodene.DisplayName: Origin Infinity Nova Attack Asphodene
+			// OriginInfinityNovaAttackEridani.DisplayName: Origin Infinity Nova Attack Eridani
 		}
 
 		Buffs: {
@@ -17027,6 +17030,21 @@ Mods: {
 			GarridineGadgetCooldown: {
 				// DisplayName: Garridine Gadget Cooldown
 				// Description: Mods.StarsAbove.Buffs.GarridineGadgetCooldown.Description
+			}
+
+			NovaChainAttack: {
+				// DisplayName: Nova Chain Attack
+				// Description: Mods.StarsAbove.Buffs.NovaChainAttack.Description
+			}
+
+			NovaChainAttackAsphodene: {
+				// DisplayName: Nova Chain Attack Asphodene
+				// Description: Mods.StarsAbove.Buffs.NovaChainAttackAsphodene.Description
+			}
+
+			NovaChainAttackEridani: {
+				// DisplayName: Nova Chain Attack Eridani
+				// Description: Mods.StarsAbove.Buffs.NovaChainAttackEridani.Description
 			}
 		}
 

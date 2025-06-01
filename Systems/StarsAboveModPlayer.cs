@@ -39,6 +39,7 @@ using StarsAbove.Projectiles.StellarArray;
 using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Projectiles.StellarNovas.FireflyTypeIV;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
+using StarsAbove.Projectiles.StellarNovas.OriginInfinity;
 using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.Systems;
@@ -2673,6 +2674,29 @@ namespace StarsAbove
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
+            if (proj.type == ProjectileType<OriginInfinityNovaAttackAsphodene>() || proj.type == ProjectileType<OriginInfinityNovaAttackEridani>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod / 100));
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod / 100));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+            }
             if (proj.type == ProjectileType<UBWBladeFollowUp>() || proj.type == ProjectileType<UBWBladeFollowUpDelay>())
             {
                 modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
@@ -9254,6 +9278,84 @@ namespace StarsAbove
 
 
                         }
+                        else if (chosenStellarNova == 9)
+                        {
+                            SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive);
+                            for (int d = 0; d < 55; d++)
+                            {
+                                Dust.NewDust(Player.Center, 0, 0, DustID.GemDiamond, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1f);
+                            }
+                            for (int d = 0; d < 25; d++)
+                            {
+                                Dust.NewDust(Player.Center, 0, 0, DustID.GemTopaz, 0f + Main.rand.Next(-65, 65), 0f + Main.rand.Next(-65, 65), 150, default, 1f);
+                            }                                                                                                                                                                                                   //Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
+                            onActivateStellarNova();
+
+                            NPC target = null;
+                            float targetHP = 0;
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                            {
+                                NPC npc = Main.npc[i];
+                                //If the npc is the boss, skip targetting
+                                if(npc.boss)
+                                {
+                                    target = npc;
+                                    break;
+                                }
+                                else if (npc.active && npc.lifeMax > targetHP)
+                                {
+                                    target = npc;
+                                    targetHP = npc.lifeMax;
+                                }
+
+
+
+
+                            }
+                            if(target == null)
+                            {
+                                Main.NewText("no target");
+                                return;
+                            }
+                            Vector2 targetCenter = target.Center;
+
+                            int type = ProjectileType<OriginInfinityNovaAttackAsphodene>();
+                            switch (chosenStarfarer)
+                            {
+                                case 1:
+                                    type = ProjectileType<OriginInfinityNovaAttackAsphodene>();
+
+                                    break;
+                                case 2:
+                                    type = ProjectileType<OriginInfinityNovaAttackEridani>();
+
+                                    break;
+                            }
+                            Vector2 position = new Vector2(targetCenter.X, targetCenter.Y);
+
+
+
+                            if (targetCenter.X > Player.Center.X)
+                            {
+                                position = new Vector2(targetCenter.X - 500, targetCenter.Y);
+                            }
+                            else if (targetCenter.X < Player.Center.X)
+                            {
+                                position = new Vector2(targetCenter.X + 500, targetCenter.Y);
+                            }
+
+
+                            float rotation = (float)Math.Atan2(position.Y - Main.MouseWorld.Y, position.X - Main.MouseWorld.X);//Aim towards mouse
+
+                            float launchSpeed = 26f;
+                            Vector2 mousePosition = playerMousePos;
+                            Vector2 direction = Vector2.Normalize(targetCenter - position);
+                            Vector2 velocity = direction * launchSpeed;
+                            Vector2 adjustedVelocity = velocity * 0.04f;
+
+                            int index = Projectile.NewProjectile(Player.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y - 40, type, novaDamage, 0f, Player.whoAmI);
+
+                        }
                     }
 
 
@@ -9566,7 +9668,7 @@ namespace StarsAbove
             }
             else
             {
-                if (Main.rand.NextBool(5) && chosenStellarNova != 7)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
+                if (Main.rand.NextBool(5) && chosenStellarNova != 7 && chosenStellarNova != 9)//1 in 5 chance to play a Nova specific line. (No unique quotes for Guardian's Light)
                 {
                     novaDialogue = LangHelper.Wrap(LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.StellarNovaQuotes." + $"{chosenStarfarer}" + ".Special" + $"{chosenStellarNova}"), 20);
 
@@ -13234,10 +13336,8 @@ namespace StarsAbove
                     Main.dust[dustIndex].velocity *= 1.4f;
                 }
             }
-            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
-            Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-
-            if (chosenStellarNova != 7)
+            
+            if (chosenStellarNova != 7 && chosenStellarNova != 9)
             {
                 activateShockwaveEffect = true;
             }
@@ -13245,41 +13345,47 @@ namespace StarsAbove
             //Drain the Stellar Nova gauge.
             novaDrain = 1f;
 
-            if (chosenStarfarer == 1)
+            if (chosenStellarNova != 9)
             {
-                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-                
-                if(Main.rand.Next(1001) == 0)
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("SpaceBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
+                if (chosenStarfarer == 1)
                 {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstSP").Type, 0, 0, Player.whoAmI, 0, 1);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
+
+                    if (Main.rand.Next(1001) == 0)
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurstSP").Type, 0, 0, Player.whoAmI, 0, 1);
+
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+
+                    }
 
                 }
-                else
+                if (chosenStarfarer == 2)
                 {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("AsphodeneBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
+
+                    if (Main.rand.Next(1001) == 0)
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstSP").Type, 0, 0, Player.whoAmI, 0, 1);
+
+                    }
+                    else
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
+
+                    }
+
 
                 }
-
             }
-            if (chosenStarfarer == 2)
-            {
-                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX").Type, 0, 0, Player.whoAmI, 0, 1);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstFX2").Type, 0, 0, Player.whoAmI, 0, 1);
-
-                if (Main.rand.Next(1001) == 0)
-                {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurstSP").Type, 0, 0, Player.whoAmI, 0, 1);
-
-                }
-                else
-                {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 500), Vector2.Zero, Mod.Find<ModProjectile>("EridaniBurst" + starfarerOutfitVisible).Type, 0, 0, Player.whoAmI, 0, 1);
-
-                }
-
-
-            }
+            
             if (ruinedKingPrism)
             {
                 Player.AddBuff(BuffType<SovereignDominion>(), 900);
@@ -13357,6 +13463,81 @@ namespace StarsAbove
         }
         private void ModifyHitEnemyWithNova(NPC target, ref NPC.HitModifiers modifiers)
         {
+            if(target.HasBuff(BuffType<NovaChainAttackAsphodene>()) || target.HasBuff(BuffType<NovaChainAttackEridani>()))
+            {
+                if(target.HasBuff(BuffType<NovaChainAttackAsphodene>()))
+                {
+                    Player.Heal((int)(Player.statLifeMax2 * 0.07f));
+                    int bonusHeal = 0;
+                    for (int i = 0; i < Main.maxPlayers; i++)
+                    {
+                        Player p = Main.player[i];
+                        if (p.active && !p.dead)
+                        {
+                            bonusHeal += 5;
+                        }
+                    }
+                    Player.Heal(bonusHeal);
+                }
+                if (target.HasBuff(BuffType<NovaChainAttackAsphodene>()))
+                {
+                    novaGauge += 3;
+                    for (int i = 0; i < Main.maxPlayers; i++)
+                    {
+                        Player p = Main.player[i];
+                        if (p.active && !p.dead)
+                        {
+                            novaGauge++;
+                        }
+                    }
+                }
+                modifiers.FinalDamage.Base += baseNovaDamageAdd * 0.05f;
+                float dustAmount = 10f;
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(15f, 15f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation());
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemDiamond);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 5f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(32f, 16f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation() + MathHelper.ToRadians(90));
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemAmethyst);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(128f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation());
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.FireworkFountain_Yellow);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 4f;
+                }
+                for (int i = 0; i < dustAmount; i++)
+                {
+                    Vector2 spinningpoint5 = Vector2.UnitX * 0f;
+                    spinningpoint5 += -Vector2.UnitY.RotatedBy(i * ((float)Math.PI * 2f / dustAmount)) * new Vector2(14f, 1f);
+                    spinningpoint5 = spinningpoint5.RotatedBy(target.velocity.ToRotation());
+                    int dust = Dust.NewDust(target.Center, 0, 0, DustID.GemDiamond);
+                    Main.dust[dust].scale = 2f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].position = target.Center + spinningpoint5;
+                    Main.dust[dust].velocity = target.velocity * 0f + spinningpoint5.SafeNormalize(Vector2.UnitY) * 3f;
+                }
+            }
             if(deadbloomLevel >= 1)
             {
                 for (int i = 0; i < 12; i++)
