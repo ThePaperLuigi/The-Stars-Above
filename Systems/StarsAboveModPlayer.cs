@@ -1857,6 +1857,7 @@ namespace StarsAbove
 
         }
 
+        int onEnterWorldInfoTimer = 400;
         public override void OnEnterWorld()
         {
             if (SubworldSystem.noReturn == true)
@@ -2123,8 +2124,24 @@ namespace StarsAbove
                 }
             }
 
-
-
+            //Delay timer
+            if(onEnterWorldInfoTimer < 400)
+            {
+                onEnterWorldInfoTimer = 400;
+            }
+            //Wrath of the Gods
+            if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
+            {
+                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NamelessDeityBoss").Type) && !seenNamelessDeity)
+                {
+                    if (starfarerPromptCooldown > 0)
+                    {
+                        starfarerPromptCooldown = 0;
+                    }
+                    starfarerPromptActive("onNamelessDeity");
+                    seenUnknownBossTimer = 300;
+                }
+            }
 
         }
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
@@ -4417,7 +4434,7 @@ namespace StarsAbove
 
             if (DownedBossSystem.downedWarrior)
             {
-                baseNovaDamageAdd = 17550;
+                baseNovaDamageAdd = 7150;
 
             }
 
@@ -4427,15 +4444,15 @@ namespace StarsAbove
             {
                 if ((bool)calamityMod.Call("GetBossDowned", "providence"))
                 {
-                    baseNovaDamageAdd = 20200;
+                    baseNovaDamageAdd = 8000;
                 }
                 if ((bool)calamityMod.Call("GetBossDowned", "allsentinel"))
                 {
-                    baseNovaDamageAdd = 24000;
+                    baseNovaDamageAdd = 9000;
                 }
                 if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
                 {
-                    baseNovaDamageAdd = 27500;
+                    baseNovaDamageAdd = 11000;
 
                     stellarGaugeMax++;
                     if (stellarGaugeUpgraded != 1)
@@ -4446,7 +4463,7 @@ namespace StarsAbove
                 }
                 if ((bool)calamityMod.Call("GetBossDowned", "yharon"))
                 {
-                    baseNovaDamageAdd = 33000;
+                    baseNovaDamageAdd = 23000;
                 }
                 if ((bool)calamityMod.Call("GetBossDowned", "supremecalamitas"))
                 {
@@ -7589,6 +7606,29 @@ namespace StarsAbove
             ryukenTimer--;
 
             trueNovaGaugeMax = Math.Max(20 , novaGaugeMax - novaChargeMod);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                //Wrath of the Gods
+                if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
+                {
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        //[Stars Above] You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+                    }
+
+                }
+                if (ModLoader.TryGetMod("SLUMP", out Mod compatibilityMod))
+                {
+                    //[Stars Above] Stars Above detects the Subworld Library Unofficial Mod Patch is installed. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer.
+
+                }
+                else
+                {
+                    //[Stars Above] Stars Above recommends you install the Subworld Library Unoffical Mod Patch for multiplayer Subworlds. If this isn't enabled, it's recommended to disable Subworld transit in Mod Settings.
+
+                }
+            }
+            
         }
         private void BiomePrompts()
         {

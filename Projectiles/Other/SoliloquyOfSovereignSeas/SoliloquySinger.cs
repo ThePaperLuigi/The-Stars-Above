@@ -14,7 +14,6 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
 		public override void SetStaticDefaults()
 		{
 
-			// DisplayName.SetDefault("Bloop"); // Automatic from .lang files
 			Main.projFrames[Projectile.type] = 1;
 			Main.projPet[Projectile.type] = true;
 			ProjectileID.Sets.LightPet[Projectile.type] = true;
@@ -61,14 +60,18 @@ namespace StarsAbove.Projectiles.Other.SoliloquyOfSovereignSeas
                     Player p = Main.player[i];
                     if (p.active && !p.dead && p.Distance(Projectile.Center) < 490f)
                     {
+                        if(p.HasBuff(BuffID.PotionSickness))
+                        {
+                            continue;
+                        }
                         if(p.statLife < 200)
                         {
-                            p.Heal((int)(Projectile.damage * 0.1f));
+                            p.Heal((int)(Projectile.damage * 0.05f));
 
                         }
                         else
                         {
-                            p.Heal((int)(Projectile.damage * 0.05f));
+                            p.Heal((int)(Projectile.damage * 0.02f));
 
                         }
                     }

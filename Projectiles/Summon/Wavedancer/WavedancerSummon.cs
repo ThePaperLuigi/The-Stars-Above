@@ -80,6 +80,10 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
             Projectile.timeLeft = 10;
             if (player.channel && player.GetModPlayer<WeaponPlayer>().wavedancerHeld)
             {
+                if(player.whoAmI != Main.myPlayer)
+                {
+                    return false;
+                }
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (player.Center -
                                new Vector2(Projectile.Center.X + (player.velocity.X * 0.05f), Projectile.Center.Y + (player.velocity.Y * 0.05f))
                                ).ToRotation() + MathHelper.PiOver2);
@@ -89,7 +93,7 @@ namespace StarsAbove.Projectiles.Summon.Wavedancer
                 SearchForTargets(player, out bool foundTarget, out float distanceFromTarget, out Vector2 targetCenter);
                 player.GetModPlayer<WeaponPlayer>().wavedancerPosition = Projectile.Center;
                 Projectile.localNPCHitCooldown = 10;
-
+                Projectile.netUpdate = true;
                 return false;
             }
             else

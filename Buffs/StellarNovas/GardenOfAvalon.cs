@@ -22,7 +22,7 @@ namespace StarsAbove.Buffs.StellarNovas
         public override void Update(Player player, ref int buffIndex)
         {
             tickHeal++;
-            if (tickHeal >= 60)
+            if (tickHeal >= 240)
             {
                 Rectangle textPos = new Rectangle((int)player.position.X, (int)player.position.Y - 40, player.width, player.height); //Heal
                 CombatText.NewText(textPos, new Color(63, 221, 53, 240), $"{(int)(player.GetModPlayer<StarsAbovePlayer>().novaDamage * (1 + player.GetModPlayer<StarsAbovePlayer>().novaDamageMod / 100))}", false, false);
