@@ -1858,6 +1858,7 @@ namespace StarsAbove
         }
 
         int onEnterWorldInfoTimer = 400;
+        bool onEnterWorldInfoDisplayed = false;
         public override void OnEnterWorld()
         {
             if (SubworldSystem.noReturn == true)
@@ -2176,7 +2177,7 @@ namespace StarsAbove
                 edgerunnerCooldown = 30;
                 novaGaugeChangeAlpha = 1f;
                 novaGaugeChangeAlphaSlow = 1f;
-                novaGauge += 2f + Math.Min(1f, damageDone / 50f);
+                novaGauge += 1f + Math.Min(6f, damageDone / 150f);
 
             }
             if (kiTwinburst == 2)
@@ -5892,10 +5893,25 @@ namespace StarsAbove
                 }
                 if (tsukiyomiDialogue >= 1)
                 {
-                    if (edingenesisquasar == 0)
+                    if(calamityMod != null)
                     {
-                        edingenesisquasar = 1;
+                        if((bool)calamityMod.Call("GetBossDowned", "calamitas"))
+                        {
+                            if (edingenesisquasar == 0)
+                            {
+                                edingenesisquasar = 1;
+                            }
+                        }
+                        
                     }
+                    else
+                    {
+                        if (edingenesisquasar == 0)
+                        {
+                            edingenesisquasar = 1;
+                        }
+                    }
+                    
                 }
                 if (DownedBossSystem.downedPenth)
                 {
@@ -6762,8 +6778,8 @@ namespace StarsAbove
                 }
                 if (amount >= 3)
                 {
-                    novaChargeMod += (int)(novaCritChance + novaCritChanceMod * 0.04f);
-                    novaChargeMod += (int)(novaEffectDuration + novaEffectDurationMod * 0.04f);
+                    novaChargeMod += (int)(novaCritChance + novaCritChanceMod * 0.02f);
+                    novaChargeMod += (int)(novaEffectDuration + novaEffectDurationMod * 0.02f);
                 }//Done
 
             }
@@ -7606,32 +7622,39 @@ namespace StarsAbove
             ryukenTimer--;
 
             trueNovaGaugeMax = Math.Max(20 , novaGaugeMax - novaChargeMod);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
+
+            onEnterWorldInfoTimer--;
+            if(onEnterWorldInfoTimer <= 0 && !onEnterWorldInfoDisplayed)
             {
-                //Wrath of the Gods
-                if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
+                onEnterWorldInfoDisplayed = true;
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    //Wrath of the Gods
+                    if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
                     {
-                        //[Stars Above] You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
-                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) {
-                            Main.NewText(LangHelper.GetTextValue($"WOTGCheck"), 255, 57, 57);
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            //[Stars Above] You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+                            if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI)
+                            {
+                                Main.NewText(LangHelper.GetTextValue($"WOTGCheck"), 255, 57, 57);
+                            }
+
                         }
 
                     }
+                    if (ModLoader.TryGetMod("SLUMP", out Mod compatibilityMod))
+                    {
+                        //[Stars Above] Stars Above detects the Subworld Library Unofficial Mod Patch is installed. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer.
+                        Main.NewText(LangHelper.GetTextValue($"SLUMPDetected"), 155, 155, 15);
 
-                }
-                if (ModLoader.TryGetMod("SLUMP", out Mod compatibilityMod))
-                {
-                    //[Stars Above] Stars Above detects the Subworld Library Unofficial Mod Patch is installed. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer.
-                    Main.NewText(LangHelper.GetTextValue($"SLUMPDetected"), 155, 155, 15);
+                    }
+                    else
+                    {
+                        //[Stars Above] Stars Above recommends you install the Subworld Library Unoffical Mod Patch for multiplayer Subworlds. If this isn't enabled, it's recommended to disable Subworld transit in Mod Settings.
+                        Main.NewText(LangHelper.GetTextValue($"SLUMPNotDetected"), 185, 97, 97);
 
-                }
-                else
-                {
-                    //[Stars Above] Stars Above recommends you install the Subworld Library Unoffical Mod Patch for multiplayer Subworlds. If this isn't enabled, it's recommended to disable Subworld transit in Mod Settings.
-                    Main.NewText(LangHelper.GetTextValue($"SLUMPNotDetected"), 185, 97, 97);
-
+                    }
                 }
             }
             
@@ -10680,7 +10703,7 @@ namespace StarsAbove
             }
             if (starfarerOutfit == 7 && chosenStarfarer == 2) // Eridani's Synthweave
             {
-                novaGauge += Math.Min(6, info.Damage / 50);
+                novaGauge += Math.Min(6, info.Damage / 40);
                 novaGaugeChangeAlpha = 1f;
                 novaGaugeChangeAlphaSlow = 1f;
             }
@@ -13645,22 +13668,6 @@ namespace StarsAbove
                     }
                 }
             }
-            if (empressPrism)
-            {
-                modifiers.SetCrit();
-                modifiers.FinalDamage *= 0.7f;
-            }
-            if (burnishedPrism)
-            {
-                if (target.boss)
-                {
-                    modifiers.DisableCrit();
-                }
-                else
-                {
-                    modifiers.FinalDamage *= 1.4f;
-                }
-            }
             if (starfarerOutfit == 4 && hopesBrilliance > 0)
             {
                 for (int i = 0; i < hopesBrilliance / 10; i++)
@@ -13670,13 +13677,25 @@ namespace StarsAbove
 
                 hopesBrilliance = 0;
             }
-            if (luminitePrism)
+
+            //Not the most elegant balancing but does the job
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                if (novaChargeMod >= 20)
+                if (
+                    NPC.AnyNPCs(calamityMod.Find<ModNPC>("DesertScourgeBody").Type)
+                    || NPC.AnyNPCs(calamityMod.Find<ModNPC>("PerforatorHive").Type)
+                    || NPC.AnyNPCs(calamityMod.Find<ModNPC>("AquaticScourgeHead").Type)
+                    || NPC.AnyNPCs(calamityMod.Find<ModNPC>("AstrumDeusBody").Type)
+                    || NPC.AnyNPCs(calamityMod.Find<ModNPC>("StormWeaverBody").Type)
+                    || NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type)
+                    || NPC.AnyNPCs(calamityMod.Find<ModNPC>("ThanatosHead").Type)
+                    )
                 {
-                    modifiers.FinalDamage *= 1.2f;
+                    modifiers.FinalDamage *= 0.1f;
+
                 }
             }
+                
         }
         private void OnEnemyHitWithNova(NPC target, int nova, ref int damage, ref bool crit)
         {
@@ -13684,7 +13703,7 @@ namespace StarsAbove
             {
                 if(bloodyBanquetLevel >= 1)
                 {
-                    novaGauge += (int)(trueNovaGaugeMax * 0.01f);
+                    novaGauge += (int)(trueNovaGaugeMax * 0.03f);
                     if (bloodyBanquetLevel >= 2)
                     {
                         if (bloodyBanquetLevel >= 3)

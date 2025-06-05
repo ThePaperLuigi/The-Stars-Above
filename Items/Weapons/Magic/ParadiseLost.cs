@@ -91,6 +91,7 @@ namespace StarsAbove.Items.Weapons.Magic
 
             if (player.whoAmI == Main.myPlayer && StarsAbove.weaponActionKey.JustPressed)
             {
+
                 if (!player.HasBuff(BuffType<ParadiseLostBuff>()) && !player.HasBuff(BuffType<Vulnerable>()))
                 {
                     SoundEngine.PlaySound(StarsAboveAudio.SFX_LimitBreakActive, player.Center);
@@ -121,6 +122,7 @@ namespace StarsAbove.Items.Weapons.Magic
                 else
                 {
                     player.AddBuff(BuffType<Vulnerable>(), 60*60);
+                    player.GetModPlayer<WeaponPlayer>().paradiseLostDrainTimerMax = 20f;
 
                     player.GetModPlayer<WeaponPlayer>().paradiseLostActive = false;
                     player.GetModPlayer<BossPlayer>().WhiteAlpha = 1f;

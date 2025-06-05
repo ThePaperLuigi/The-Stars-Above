@@ -492,7 +492,8 @@ namespace StarsAbove.Systems
         public int duality = 100;
 
         //ParadiseLost
-        public int paradiseLostDrainTimer;
+        public float paradiseLostDrainTimer;
+        public float paradiseLostDrainTimerMax = 20;
         public bool paradiseLostActive;
         public float paradiseLostAnimationTimer = 0;
         public float paradiseLostAnimationFloat1 = 0;
@@ -4537,9 +4538,10 @@ namespace StarsAbove.Systems
                 {
                     Player.lifeRegenTime = 0;
                     paradiseLostDrainTimer++;
-                    if (paradiseLostDrainTimer > 5)
+                    if (paradiseLostDrainTimer > Math.Max(2f, paradiseLostDrainTimerMax))
                     {
-                        Player.statLife--;
+                        Player.statLife -= 1;
+                        paradiseLostDrainTimerMax -= 0.2f;
                         paradiseLostDrainTimer = 0;
                     }
                 }

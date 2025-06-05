@@ -113,7 +113,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 3:
                     return 70;
                 case 4:
-                    return 170;
+                    return 180;
                 case 5:
                     return 200;
                 case 6:
@@ -121,7 +121,7 @@ namespace StarsAbove.Systems.StellarNovas
                 case 7:
                     return 85;
                 case 8:
-                    return 155;
+                    return 135;
                 case 9:
                     return 170;
                 default:

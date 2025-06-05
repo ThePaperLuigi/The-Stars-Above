@@ -12,7 +12,7 @@ Mods: {
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
-		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will crash, especially when combined with The Stars Above.
 		// SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
 		// SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
@@ -5959,7 +5959,7 @@ Mods: {
 					// Name: Bygone Fairytales
 					// SetBonus1: Nova automatically activates; cost reduced by 2% of duration
 					// SetBonus2: Cost is reduced by 2% of Crit Rate
-					// SetBonus3: Cost is reduced by 6% of both Crit Rate and Effect Duration
+					// SetBonus3: Cost is reduced by 2% of both Crit Rate and Effect Duration
 					// FlavorTooltip: A myth made real, the Hallowed is known but never charted
 				}
 
@@ -5973,7 +5973,7 @@ Mods: {
 
 				BloodyBanquet: {
 					// Name: Feast and Famine
-					// SetBonus1: The Nova charges by 1% for every foe killed by the Nova
+					// SetBonus1: The Nova charges by 3% for every foe killed by the Nova
 					// SetBonus2: Killing foes with the Nova increase Nova buff durations by 2 seconds
 					// SetBonus3: Killing foes with the Nova heals 2 HP
 					// FlavorTooltip: Blood for blood, a creed shared by the rimworlds in the third region
@@ -12357,6 +12357,15 @@ Mods: {
 					While holding this weapon, attacks can not be dodged and damage reduction is negated
 					'Commander, we are here'
 					''' */
+				/* ShortTooltip:
+					'''
+					Hold left click to charge; fires while charged
+					Upgrades musket balls into hypervelocity rounds
+					At max charge, consume charge to gain auxiliary gun (Up to 4)
+					Auxiliary guns provide unique bonuses
+					Right click to swap to rocket launcher form (disables auxiliary guns)
+					When held, dodges and damage reduction is disabled
+					''' */
 			}
 
 			LegendaryShieldAccessory: {
@@ -17182,7 +17191,7 @@ Mods: {
 
 				StellarNovaCutsceneOption: {
 					// Label: Stellar Nova Cutscenes
-					// Tooltip: Determines how frequent the cutscenes of stellar nova's are displayed.
+					// Tooltip: Determines how frequent the cutscenes of Stellar Novas are displayed.
 				}
 			}
 

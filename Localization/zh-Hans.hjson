@@ -12,7 +12,7 @@ Mods: {
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
-		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will crash, especially when combined with The Stars Above.
 		// SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
 		// SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
@@ -12488,6 +12488,15 @@ Mods: {
 					手持该武器时，无法进行闪避，伤害减免失效
 					“指挥官，我们在这”
 					'''
+				/* ShortTooltip:
+					'''
+					Hold left click to charge; fires while charged
+					Upgrades musket balls into hypervelocity rounds
+					At max charge, consume charge to gain auxiliary gun (Up to 4)
+					Auxiliary guns provide unique bonuses
+					Right click to swap to rocket launcher form (disables auxiliary guns)
+					When held, dodges and damage reduction is disabled
+					''' */
 			}
 
 			LegendaryShieldAccessory: {
@@ -17327,7 +17336,7 @@ Mods: {
 
 				StellarNovaCutsceneOption: {
 					// Label: Stellar Nova Cutscenes
-					// Tooltip: Determines how frequent the cutscenes of stellar nova's are displayed.
+					// Tooltip: Determines how frequent the cutscenes of Stellar Novas are displayed.
 				}
 			}
 

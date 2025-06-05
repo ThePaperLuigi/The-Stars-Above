@@ -36,7 +36,11 @@ namespace StarsAbove.Systems
                     {
                         projectile.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
                         calamityMod.Call("SetStealthProjectile", projectile, true);
+                        if ((bool)calamityMod.Call("CanStealthStrike") && (float)calamityMod.Call("GetCurrentStealth") >= (float)calamityMod.Call("GetMaxStealth"))
+                        {
+                            calamityMod.Call("ConsumeStealth");
 
+                        }
 
 
                     }
