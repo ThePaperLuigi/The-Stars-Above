@@ -12,7 +12,9 @@ Mods: {
 		}
 
 		// Boss.WarriorOfLight: The Warrior of Light descends!
-		// TempInfo: Hello! It looks like you're playing The Stars Above in Multiplayer! You may have problems with Subworld transit- if so, please select "Disable Multiplayer Compatibility Mode" (On by default) in the Serverside Settings. With it enabled, attempting to travel to Cosmic Voyage locations will give you their respective items on a timer.
+		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+		// SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
+		// SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
 		CombatText: {
 			// StellarNovaReady: Stellar Nova ready!
@@ -5858,7 +5860,7 @@ Mods: {
 					// AbilityName: Origin's Infinity
 					// AbilitySubName: "[c/D0AAFA:Sword of Origin, Sword of the End]"
 					// AbilityDescription: Your Starfarer unveils the Unlimited Sword, targetting the foe with the highest Max HP (prioritizes bosses.) After a delay, deals true damage that pierces all forms of invincibility. If piercing invincibility, Nova bonuses do not apply. Inflict Chain Attack: if other players use Stellar Nova against the foe, damage is increased by 5% of base Nova scaling. Chain Attack duration is based on Effect Duration. Additionally, foe defense is set to 0 during Chain Attack.
-					// AstralBonus: When allies use their Nova to trigger Chain Attack, they heal 7% HP. Additionally, heal an extra 2% per living ally.
+					// AstralBonus: When allies use their Nova to trigger Chain Attack, they heal 7% HP. Additionally, heal an extra 5 HP per living ally.
 					// UmbralBonus: When allies use their Nova to trigger Chain Attack, they gain 3 Stellar Nova Energy. Additionally, gain an extra 1 Stellar Nova Energy per living ally.
 				}
 
@@ -11682,6 +11684,13 @@ Mods: {
 					Right click to unleash [c/8D0404:Clarent Blood Arthur], dealing 200% damage in a powerful burst towards your cursor after a delay (1 minute cooldown)
 					Additionally, this attack is a guaranteed critical strike against bosses
 					''' */
+				/* ShortTooltip:
+					'''
+					Grants Rage on hit and makes Rage, Endurance and Ironskin stronger
+					After dealing enough damage, gain defense
+					At max defense, gain extra attacks
+					Right click at max defense for a special attack that crits bosses
+					''' */
 			}
 
 			SoliloquyOfSovereignSeas: {
@@ -11692,12 +11701,19 @@ Mods: {
 					Gain up to 30 bonus damage based on percentage of HP above 60% Max HP
 					Press the Weapon Action Key to swap [c/A9D5F0:Arkhe Alignment] between [c/F0DFA9:Pneuma] and [c/6C5BE8:Ousia], changing this weapon's abilities
 					While attuned to [c/F0DFA9:Pneuma], right click to summon the [c/5BBFE8:Singer of Seas], consuming 1 minion slot (Only one [c/5BBFE8:Singer of Seas] can be summoned at a time)
-					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 5% of this weapon's damage every 5 seconds (Increased to 10% below 200 HP)
+					The [c/5BBFE8:Singer of Seas] will heal all allies in a wide radius for 2% of this weapon's damage every 5 seconds (Increased to 5% below 200 HP; does not heal if afflicted with Potion Sickness)
 					While attuned to [c/6C5BE8:Ousia], right click to summon 3 [c/5BBFE8:Salon Attendants], consuming 1 minion slot (Only one group of [c/5BBFE8:Salon Attendants] can be summoned at a time)
 					The [c/5BBFE8:Salon Attendants] automatically attack nearby foes with homing bolts
 					Gain Waterwalking while summons are present
 					Summons will disappear when swapping [c/A9D5F0:Arkhe Alignment]
 					'Let the world come alive!'
+					''' */
+				/* ShortTooltip:
+					'''
+					Scales off of Magic and Summon damage
+					Right click to summon oceanic allies (Press Weapon Action Key to swap between damage and healing)
+					Gain Waterwalking when active
+					Gains bonus damage when at high HP
 					''' */
 			}
 
@@ -11712,6 +11728,12 @@ Mods: {
 					Grenades are upgraded into [c/FFB969:High-Velocity Grenades], dealing 300% damage
 					Shurikens are upgraded into [c/91CED3:Energy Stars], stunning non-boss foes struck for 1 second
 					Molotov Cocktails are upgraded into [c/FF5740:Thermal Flares], spawning more fire in a condensed area
+					''' */
+				/* ShortTooltip:
+					'''
+					Fires faster over time
+					Right click to throw empowered versions of Grenades, Shurikens or Molotov Cocktails
+					Press Weapon Action Key to swap
 					''' */
 			}
 
@@ -17198,8 +17220,8 @@ Mods: {
 				}
 
 				DisableCompatibilityMode: {
-					// Label: Disable Multiplayer Compatibility-Fix for Cosmic Voyages
-					// Tooltip: When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. This is known to cause issues, use at your own risk. When enabled, attempting to conduct Cosmic Voyages will drop their requisite items on a timer.
+					// Label: Multiplayer-Fallback Cosmic Voyages
+					// Tooltip: When enabled, attempting Cosmic Voyages will spawn loot items on a timer. When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. This is known to cause issues, use at your own risk or with the unoffical patch.
 				}
 
 				CombatTimer: {

@@ -12,7 +12,7 @@ Mods: {
 		}
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
-		WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+		WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will crash, especially when combined with The Stars Above.
 		SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
 		SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
@@ -14151,6 +14151,8 @@ Mods: {
 			AsphodeneBurstSP.DisplayName: Asphodene Burst S P
 			EridaniBurstSP.DisplayName: Eridani Burst S P
 			OriginInfinityNovaAttack.DisplayName: Origin Infinity Nova Attack
+			OriginInfinityNovaAttackAsphodene.DisplayName: Origin Infinity Nova Attack Asphodene
+			OriginInfinityNovaAttackEridani.DisplayName: Origin Infinity Nova Attack Eridani
 		}
 
 		Buffs: {
@@ -17044,6 +17046,16 @@ Mods: {
 			NovaChainAttack: {
 				DisplayName: Nova Chain Attack
 				Description: Mods.StarsAbove.Buffs.NovaChainAttack.Description
+			}
+
+			NovaChainAttackAsphodene: {
+				DisplayName: Nova Chain Attack Asphodene
+				Description: Mods.StarsAbove.Buffs.NovaChainAttackAsphodene.Description
+			}
+
+			NovaChainAttackEridani: {
+				DisplayName: Nova Chain Attack Eridani
+				Description: Mods.StarsAbove.Buffs.NovaChainAttackEridani.Description
 			}
 		}
 

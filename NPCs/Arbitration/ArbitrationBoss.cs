@@ -176,7 +176,6 @@ namespace StarsAbove.NPCs.Arbitration
 			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
             var bossPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();
 
-			//REPLACE BAR WITH YOUR OWN
             bossPlayer.ArbitrationBarActive = true;
             Lighting.AddLight(NPC.Center, TorchID.White);
             NPC.velocity *= 0.98f; //So the dashes don't propel the boss away

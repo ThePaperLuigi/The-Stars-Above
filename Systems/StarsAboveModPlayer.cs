@@ -7614,17 +7614,23 @@ namespace StarsAbove
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         //[Stars Above] You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+                        if (Main.netMode != NetmodeID.Server && Main.myPlayer == Player.whoAmI) {
+                            Main.NewText(LangHelper.GetTextValue($"WOTGCheck"), 255, 57, 57);
+                        }
+
                     }
 
                 }
                 if (ModLoader.TryGetMod("SLUMP", out Mod compatibilityMod))
                 {
                     //[Stars Above] Stars Above detects the Subworld Library Unofficial Mod Patch is installed. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer.
+                    Main.NewText(LangHelper.GetTextValue($"SLUMPDetected"), 155, 155, 15);
 
                 }
                 else
                 {
                     //[Stars Above] Stars Above recommends you install the Subworld Library Unoffical Mod Patch for multiplayer Subworlds. If this isn't enabled, it's recommended to disable Subworld transit in Mod Settings.
+                    Main.NewText(LangHelper.GetTextValue($"SLUMPNotDetected"), 185, 97, 97);
 
                 }
             }

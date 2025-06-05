@@ -39,6 +39,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.WorldBuilding;
 using StarsAbove.NPCs.Arbitration;
 using StarsAbove.Buffs.Boss;
+using StarsAbove.Items.Consumables;
 
 namespace StarsAbove.Systems
 {
@@ -473,12 +474,10 @@ namespace StarsAbove.Systems
                                 if (!NPC.AnyNPCs(NPCType<ArbitrationBoss>()) && anomalyTimer > 0)
                                 {
                                     anomalyTimer = 0;
-                                    int index = NPC.NewNPC(null, (int)Player.Center.X + 1150, (int)Player.Center.Y, NPCType<ArbitrationBoss>());
-
-                                    // Finally, syncing, only sync on server and if the NPC actually exists (Main.maxNPCs is the index of a dummy NPC, there is no point syncing it)
-                                    if (Main.netMode == NetmodeID.Server && index < Main.maxNPCs)
+                                    if (!Player.HasItem(ItemType<DemonicCrux>()))
                                     {
-                                        NetMessage.SendData(MessageID.SyncNPC, number: index);
+                                        Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ItemType<DemonicCrux>());
+
                                     }
 
                                 }

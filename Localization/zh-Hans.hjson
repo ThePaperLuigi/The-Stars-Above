@@ -12,7 +12,9 @@ Mods: {
 		}
 
 		Boss.WarriorOfLight: 光之战士 降临！
-		TempInfo: 你好！你看起来正在多人模式下游玩《星海苍穹》！请注意，目前不建议您关闭多人兼容模式。多人兼容开启时，尝试进行寰宇之旅将直接给予你对应的物品，该过程有一定冷却时间。
+		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will cause crashes.
+		// SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
+		// SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
 		CombatText: {
 			StellarNovaReady: 天体新星充能完毕！
@@ -5858,7 +5860,7 @@ Mods: {
 					// AbilityName: Origin's Infinity
 					// AbilitySubName: "[c/D0AAFA:Sword of Origin, Sword of the End]"
 					// AbilityDescription: Your Starfarer unveils the Unlimited Sword, targetting the foe with the highest Max HP (prioritizes bosses.) After a delay, deals true damage that pierces all forms of invincibility. If piercing invincibility, Nova bonuses do not apply. Inflict Chain Attack: if other players use Stellar Nova against the foe, damage is increased by 5% of base Nova scaling. Chain Attack duration is based on Effect Duration. Additionally, foe defense is set to 0 during Chain Attack.
-					// AstralBonus: When allies use their Nova to trigger Chain Attack, they heal 7% HP. Additionally, heal an extra 2% per living ally.
+					// AstralBonus: When allies use their Nova to trigger Chain Attack, they heal 7% HP. Additionally, heal an extra 5 HP per living ally.
 					// UmbralBonus: When allies use their Nova to trigger Chain Attack, they gain 3 Stellar Nova Energy. Additionally, gain an extra 1 Stellar Nova Energy per living ally.
 				}
 
@@ -11803,6 +11805,13 @@ Mods: {
 					点击右键释放[c/8D0404:对吾华丽父王的叛逆]，在短暂延迟后对你光标处位置的敌人造成200%的伤害（1分钟冷却）
 					此外，本次攻击对Boss必定造成暴击
 					'''
+				/* ShortTooltip:
+					'''
+					Grants Rage on hit and makes Rage, Endurance and Ironskin stronger
+					After dealing enough damage, gain defense
+					At max defense, gain extra attacks
+					Right click at max defense for a special attack that crits bosses
+					''' */
 			}
 
 			SoliloquyOfSovereignSeas: {
@@ -11820,6 +11829,13 @@ Mods: {
 					在切换[c/A9D5F0:始基力属性]时，召唤物会消失
 					“永世领唱，无尽圆舞！”
 					'''
+				/* ShortTooltip:
+					'''
+					Scales off of Magic and Summon damage
+					Right click to summon oceanic allies (Press Weapon Action Key to swap between damage and healing)
+					Gain Waterwalking when active
+					Gains bonus damage when at high HP
+					''' */
 			}
 
 			DevotedHavoc: {
@@ -11834,6 +11850,12 @@ Mods: {
 					手里剑升级为[c/91CED3:电弧星]，击晕击中的非Boss敌人1秒
 					莫洛托夫鸡尾酒升级为[c/FF5740:铝热剂手雷]，在一片密集的区域产生更多火焰
 					'''
+				/* ShortTooltip:
+					'''
+					Fires faster over time
+					Right click to throw empowered versions of Grenades, Shurikens or Molotov Cocktails
+					Press Weapon Action Key to swap
+					''' */
 			}
 
 			RebellionBody: {

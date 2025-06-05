@@ -112,19 +112,6 @@ namespace StarsAbove.Systems
                 pool.Add(NPCID.GemBunnyTopaz, 0.4f);
 
 
-                if (spawnInfo.Player.GetModPlayer<SubworldPlayer>().anomalyTimer >= 7200)
-                {
-                    if (!NPC.AnyNPCs(NPCType<NPCs.Arbitration.ArbitrationBoss>()))
-                    {
-                        pool.Add(NPCType<NPCs.Arbitration.ArbitrationBoss>(), 0.5f);
-
-                    }
-
-
-                }
-
-
-
             }
             if (spawnInfo.Player.InModBiome<CorvusBiome>())
             {

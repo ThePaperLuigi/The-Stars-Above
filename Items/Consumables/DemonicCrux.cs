@@ -1,6 +1,9 @@
 
+using StarsAbove.Buffs.Boss;
+using StarsAbove.NPCs.Arbitration;
 using StarsAbove.Subworlds;
 using StarsAbove.Systems;
+using Steamworks;
 using SubworldLibrary;
 using Terraria;
 using Terraria.ID;
@@ -42,27 +45,63 @@ namespace StarsAbove.Items.Consumables
 		// We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
 		public override bool CanUseItem(Player player) {
 
-			return !NPC.AnyNPCs(NPCType<NPCs.Arbitration.ArbitrationBoss>()) && SubworldSystem.Current == null;
+			return !NPC.AnyNPCs(NPCType<NPCs.Arbitration.ArbitrationBoss>());
 		}
+		static public bool MPCompat = false;
 
-		public override bool? UseItem(Player player) {
+        public override bool? UseItem(Player player) {
 			if (player.whoAmI == Main.myPlayer)
 			{
 				player.GetModPlayer<SubworldPlayer>().anomalyTimer = 1;
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
-                    int type = ModContent.NPCType<NPCs.Arbitration.ArbitrationBoss>();
+                    if (MPCompat)//True = timer, false = subworlds
+                    {
+                        int type = ModContent.NPCType<NPCs.Arbitration.ArbitrationBoss>();
 
-                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+                        NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+                        return false;
+                    }
+                    else
+                    {
+                        if (SubworldSystem.IsActive<Katabasis>())
+                        {
+                            int type = ModContent.NPCType<NPCs.Arbitration.ArbitrationBoss>();
+
+                            NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: type);
+
+                        }
+                        else
+                        {
+                            SubworldSystem.Enter<Katabasis>();
+
+                        }
+                    }
+
                     return false;
                 }
                 else
-                {
+                {                    //In singleplayer
 
-					SubworldSystem.Enter<Katabasis>();
+                    if (SubworldSystem.IsActive<Katabasis>())
+                    {
+                        int type = ModContent.NPCType<NPCs.Arbitration.ArbitrationBoss>();
+                        NPC.SpawnOnPlayer(player.whoAmI, type);
+
+
+                    }
+                    else
+                    {
+                        SubworldSystem.Enter<Katabasis>();
+
+                    }
+
                 }
+                
 
-			}
+				
+
+            }
 			
 			//NPC.NewNPC(null, (int)player.Center.X,(int)player.Center.Y-900, NPCType<NPCs.Arbitration.ArbitrationBoss>());
 			//Main.PlaySound(SoundID.Roar, player.position, 0);

@@ -1,4 +1,5 @@
-﻿using StarsAbove.NPCs;
+﻿using StarsAbove.Items.Consumables;
+using StarsAbove.NPCs;
 using StarsAbove.NPCs.AttackLibrary;
 using StarsAbove.Systems;
 using StarsAbove.UI.CelestialCartography;
@@ -82,6 +83,8 @@ namespace StarsAbove.Systems
             BossPlayer.disableBossAggro = DisableBossAggro;
             AttackLibrary.ColorblindEnabled = ColorblindBoss;
             CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
+            DemonicCrux.MPCompat = DisableCompatibilityMode;
+
         }
     }
 }
