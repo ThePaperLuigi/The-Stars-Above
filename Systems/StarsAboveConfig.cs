@@ -29,6 +29,12 @@ namespace StarsAbove.Systems
 
         public bool DisableStellarNovaDialogue;
 
+        [Increment(1)]
+        [DrawTicks]
+        [Slider]
+        [DefaultValue(StellarNovaCutscene.Session)]
+        public StellarNovaCutscene StellarNovaCutsceneOption;
+
         [Header("$Mods.StarsAbove.Configs.PopUpDialogueHeader")]
 
         public bool DisableStarfarerCommentary;
@@ -155,5 +161,12 @@ namespace StarsAbove.Systems
             }
             //StarsAbove.sharedAudio = EnableSuistrumeAudio;
         }
+    }
+
+    public enum StellarNovaCutscene
+    { 
+        Never,
+        Session,
+        Always
     }
 }

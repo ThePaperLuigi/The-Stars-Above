@@ -17179,6 +17179,11 @@ Mods: {
 					// Label: Force Neon Veil Shader
 					// Tooltip: ""
 				}
+
+				StellarNovaCutsceneOption: {
+					// Label: Stellar Nova Cutscenes
+					// Tooltip: Determines how frequent the cutscenes of stellar nova's are displayed.
+				}
 			}
 
 			StarsAboveServersideConfig: {
@@ -17228,6 +17233,13 @@ Mods: {
 					// Label: Combat Timer
 					// Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.'
 				}
+			}
+
+			StellarNovaCutscene: {
+				// Tooltip: ""
+				// Never.Label: Never
+				// Session.Label: Per session
+				// Always.Label: Always
 			}
 		}
 

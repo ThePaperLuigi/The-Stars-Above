@@ -17324,6 +17324,11 @@ Mods: {
 					Label: 强制霓虹面纱着色
 					Tooltip: ""
 				}
+
+				StellarNovaCutsceneOption: {
+					// Label: Stellar Nova Cutscenes
+					// Tooltip: Determines how frequent the cutscenes of stellar nova's are displayed.
+				}
 			}
 
 			StarsAboveServersideConfig: {
@@ -17373,6 +17378,13 @@ Mods: {
 					Label: 战斗计时器
 					Tooltip: 当你攻击敌人或者被敌人攻击后，获得一个以秒为单位的进战计时器。
 				}
+			}
+
+			StellarNovaCutscene: {
+				// Tooltip: ""
+				// Never.Label: Never
+				// Session.Label: Per session
+				// Always.Label: Always
 			}
 		}
 
