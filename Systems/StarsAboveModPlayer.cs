@@ -9207,7 +9207,8 @@ namespace StarsAbove
 
 
                             onActivateStellarNova();
-                            if (!seenEdinCutsceneThisSession)
+                            if (GetInstance<StarsAboveConfigClient>().StellarNovaCutsceneOption == StellarNovaCutscene.Always
+                                || (GetInstance<StarsAboveConfigClient>().StellarNovaCutsceneOption == StellarNovaCutscene.Session && !seenEdinCutsceneThisSession))
                             {
                                 astarteCutsceneProgress = 180;
                                 seenEdinCutsceneThisSession = true;
@@ -9345,7 +9346,8 @@ namespace StarsAbove
                             Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 600), Vector2.Zero, ProjectileType<FireflyMinion>(), novaDamage, 0, Player.whoAmI);
 
                             onActivateStellarNova();
-                            if(!seenFireflyCutsceneThisSession)
+                            if(GetInstance<StarsAboveConfigClient>().StellarNovaCutsceneOption == StellarNovaCutscene.Always
+                                || (GetInstance<StarsAboveConfigClient>().StellarNovaCutsceneOption == StellarNovaCutscene.Session && !seenFireflyCutsceneThisSession))
                             {
                                 Player.GetModPlayer<BossPlayer>().ffCutsceneProgress = 10;
                                 seenFireflyCutsceneThisSession = true;
