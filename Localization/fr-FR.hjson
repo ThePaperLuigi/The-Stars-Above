@@ -3000,6 +3000,309 @@ Mods: {
 						4: Laissons de côté cette idée. Même si j'ai mes craintes, c'est notre victoire. Toutes nos félicitations.
 					}
 				}
+
+				Providence: {
+					Asphodene: {
+						// Name: Providence Dialogue
+						// Description: ""
+						// 1: Did we do it? Did we really defeat that thing?
+
+						2: {
+							// $parentVal: Phew... what a powerful foe! Things got a little dicey when you started literally melting from divine flames, but I guess it worked out.
+							// E: Angry
+						}
+
+						3: {
+							// $parentVal: I can't help but feel like foes of this caliber are beyond this world's foundations...
+							// E: Worried
+						}
+					}
+
+					Eridani: {
+						// Name: Providence Dialogue
+						// Description: ""
+						// 1: That was a well-fought battle. I was a tad worried- the acrid smell of your burning flesh is naturally upsetting, you see.
+
+						2: {
+							// $parentVal: Of course, I completely believed you would prevail in the end. It was only a matter of endurance.
+							// E: Smug
+						}
+
+						// 3: Let's hope the capabilities of our upcoming foes don't balloon to unsustainable proportions... I have an inkling the opposite will become truth.
+					}
+				}
+
+				DevourerOfGods: {
+					Asphodene: {
+						// Name: Devourer Of Gods Dialogue
+						// Description: ""
+
+						1: {
+							// $parentVal: A feral, hungry devourer. I don't have a lot of respect for things that do nothing but consume.
+							// E: Angry
+						}
+
+						2: {
+							// $parentVal: And let's talk about that attitude- unbecoming of something so powerful! Has it ever heard of decorum?!
+							// E: Angry
+						}
+
+						// 3: If you're gonna espouse cool lines mid-fight, you needs have the form factor to back it up. Just chomping on things does NOT make you look cool.
+						// 4: Great work, by the way. It always feels good to knock a blowhard down a few pegs, doesn't it?
+					}
+
+					Eridani: {
+						// Name: Devourer Of Gods Dialogue
+						// Description: ""
+						// 1: The demonic form of the Devourer of Gods is defeated by your hand. I have... several comments on our foe, but...
+
+						2: {
+							// $parentVal: Ugh, if we face another foe who is serpentine by nature, I'm going to be rather perturbed. Sorry, I just had to get it off my chest.
+							// E: Angry
+						}
+
+						// 3: Now that I've shared that, what I was going to say earlier eludes me... Anyways, congratulations on another well fought victory.
+					}
+				}
+
+				Yharon: {
+					Asphodene: {
+						// Name: Yharon Dialogue
+						// Description: ""
+						// 1: A dragon of rebirth... defeated by your hands.
+
+						2: {
+							// $parentVal: The imagery of a phoenix comes to mind, but this foe was more... well, draconic. Sorry. Uhh.. dragon-like? Edible? Wait, no.
+							// E: Angry
+						}
+
+						// 3: Our conflict against these foes is drawing to a close. We're getting closer and closer to the end. Let's keep pushing.
+					}
+
+					Eridani: {
+						// Name: Yharon Dialogue
+						// Description: ""
+						// 1: Akin to a phoenix, the Dragon of Rebirth proved to be a most imposing opponent.
+
+						2: {
+							// $parentVal: The embodiment of "rebirth..." Clearly, it must needs refresh itself on that definition!
+							// E: Smug
+						}
+
+						// 3: ...It's not going to come back to life, right? Say, where did those ashes go?
+
+						4: {
+							// $parentVal: I hope it didn't catch that slight. If I get coated in dragonflame, I am going to literally die.
+							// E: Worried
+						}
+					}
+				}
+
+				ExoMechs: {
+					Asphodene: {
+						// Name: Exo Mechs Dialogue
+						// Description: ""
+						// 1: Nice work! Those amped-up creations of that Draedon fellow were definitely challenging opponents...
+						// 2: Me, personally, I think I would have chosen to best the giant one with the superweapons first. You know, biggest foe priority. Article of War or some such, I forget.
+						// 3: Hmm, but perhaps those twin eyes would be trouble... I'd probably get hit by those laser beams...
+						// 4: Ah, and that worm guy... I'd definitely get caught off guard while I was focusing on the other ones. You know what, I'm glad you take point.
+					}
+
+					Eridani: {
+						// Name: Exo Mechs Dialogue
+						// Description: ""
+						// 1: You've bested those mechs borne of Draedon's twisted mind... that was a difficult battle.
+
+						2: {
+							// $parentVal: Those other foes, Ares, Artemis, and Apollo- they were difficult, but my ire is drawn to one specific robot.
+							// E: Angry
+						}
+
+						3: {
+							// $parentVal: That accursed Draedon. Another serpent?! Has this galaxy truly run dry of novelty? What a lamentable portent this is.
+							// E: Angry
+						}
+					}
+				}
+
+				SupremeCalamitas: {
+					Asphodene: {
+						// Name: Supreme Calamitas Dialogue
+						// Description: ""
+						// 1: After all this time, we've finally fought and defeated Calamitas- the real one.
+
+						2: {
+							// $parentVal: I'm glad she conceded, but are we really just going to let her move in? To one of our houses?
+							// E: Angry
+						}
+
+						3: {
+							// $parentVal: A few of our townsfolk are... unique... but she's kind of a world ending threat? I mean... she's chilled out a bit... I guess.
+							// E: Worried
+						}
+
+						// 4: Not the worse idea you've had. That was probably when you smashed that ritual thing and summoned the Moon Lord. Or when you threw that doll into lava.
+						// 5: Or when you held the Profaned Core, disturbed that random plant in the Jungle, or brandished the Cosmic Worm, or...
+						// 6: Wait. You are full of terrible ideas. Can't say why it took me this long to figure that one out.
+						// 7: Well, at least you can follow through with your choices- that's hard for a lot of people. Anyways, I wonder what's next...? There IS something next, right?
+					}
+
+					Eridani: {
+						// Name: Supreme Calamitas Dialogue
+						// Description: ""
+						// 1: So the Witch of Calamity is defeated... Is this the end? From what we know... no.
+						// 2: I can hazard a guess on our final opponent, but will we be able to challenge them? For some reason, I feel we still lack the capability to do so.
+
+						3: {
+							// $parentVal: No, I'm not insinuating anything. However- if, just this one time, I were to stare directly at the camera and ask when can we, would that bother you?
+							// E: Angry
+						}
+
+						// 4: What camera? Uhh... worry not. If all goes well, I'll have something more substantial to say next time. Trust me, there will be a next time. Hopefully.
+						// 5: That aside, congratulations again on your victory. Is there anything else on our horizon?
+					}
+				}
+			}
+
+			FargosDialogue: {
+				Deviantt: {
+					Asphodene: {
+						// Name: Deviantt Dialogue
+						// Description: ""
+						// 1: Yeah, nobody likes getting destroyed by a magical girl, so I'm glad that fight is over.
+
+						2: {
+							// $parentVal: You know, if you couldn't revive after defeat, fighting someone like that would be... really messed up.
+							// E: Worried
+						}
+
+						3: {
+							// $parentVal: Imagine getting entombed with the epitaph: Died to a giant cutesy pink heart laser beam. We will remember how they dodged left instead of right.
+							// E: Angry
+						}
+
+						// 4: Okay, wait, it's still a little funny. Uhh, but you'd also be dead, which is not funny. Just wanted to make that clear.
+					}
+
+					Eridani: {
+						// Name: Deviantt Dialogue
+						// Description: ""
+						// 1: You finally defeated that girl. Is Deviantt her real name? I can probably believe it.
+						// 2: I digress. Her attacks were wild, overthemed, and a bit too on the nose, but her fighting style was quite impressive.
+						// 3: I'd like to probe further into how she obtained such power or the technique on how to use it, but you know the deal with gag characters.
+						// 4: Anyways... I have a feeling we'll have to duel with more of her ilk eventually. I wonder how that will be like?
+					}
+				}
+
+				Abominationn: {
+					Asphodene: {
+						// Name: Abominationn Dialogue
+						// Description: ""
+						// 1: Nice job- you've bested the Abominationn. Sucks that he was named that. Uhh, I guess his name changes depending if he's fighting us or not? Now I'm confused.
+						// 2: Eh, I guess it doesn't have much import. Anyways... I'd like to say great work, but to be completely honest...
+
+						3: {
+							// $parentVal: Kind of just makes me scared of that Mutant guy. I mean look at him! He truly must be the strongest sibling, his name is spelled correctly!
+							// E: Smug
+						}
+
+						// 4: Was that rude? Sorry. Just wondering what kind of parents names their children THAT. You get me, right?
+					}
+
+					Eridani: {
+						// Name: Abominationn Dialogue
+						// Description: ""
+						// 1: That was a tough battle- the Abominationn was no joke.
+						// 2: Is he out of earshot? Right. Am I the only one who's a bit confused on how... busy... his wardrobe is?
+						// 3: I can excuse his sister for her cool hat. The Mutant is probably wearing armor, or something... Should I just tell him my thoughts?
+						// 4: Never mind. You're probably looking for some post-battle pep talk yet all I can proffer is- if this is his power, how strong is his brother?!
+					}
+				}
+
+				Mutant: {
+					Asphodene: {
+						// Name: Mutant Dialogue
+						// Description: ""
+						// 1: You defeated the Mutant. That guy was nothing but crazy!
+						// 2: I was going to make a comment on how brutal the method of challenging this guy is, but the Abominationn just comes back... so no harm, no foul?
+						// 3: Kind of fought like you, actually. Do you guys get dizzy floating up and down with wings? I doubt it, right?
+						// 4: You'd be a natural in a real vaccum. Don't tell Eri this, but she was basically a brainless avian the first time. And the second.
+					}
+
+					Eridani: {
+						// Name: Mutant Dialogue
+						// Description: ""
+						// 1: You've finally defeated the Mutant. Congratulations- that was no small feat.
+						// 2: With the ability to command power like that, we need to find a way to recruit him to our cause.
+						// 3: Can you imagine? On the back foot, sick from overhealing and out of magic power, and then- boom! Ten thousand phantasmal death rays.
+						// 4: I mean, he used it to mangle you to bits- I can't see why he shouldn't just fire a few out from time to time. He lives in our town, after all.
+						// 5: Actually, mayhaps I should do the talking. You did just kill his brother to provoke his ire, even if his brother does come back after a while.
+					}
+				}
+
+				SoulOfEternity: {
+					Asphodene: {
+						// Name: Soul of Eternity Dialogue
+						// Description: ""
+						// 1: After all this time, you finally crafted that Soul of Eternity... such power!
+
+						2: {
+							// $parentVal: Is this the strength of divinity? What else could stop you? Phew!
+							// E: Smug
+						}
+
+						// 3: When gods get a power-up, do they test it out? Because we certainly should.
+					}
+
+					Eridani: {
+						// Name: Soul of Eternity Dialogue
+						// Description: ""
+						// 1: So this is the power of Eternity. It's unfathomable.
+
+						2: {
+							// $parentVal: ...As it should be, considering the back-breaking work you put in to forge it.
+							// E: Smug
+						}
+					}
+				}
+			}
+
+			ThoriumDialogue: {
+				GrandThunderBird: {
+					Asphodene: {
+						// Name: Grand Thunder Bird Dialogue
+						// Description: ""
+						// 1: That avian of the desert is defeated! Nice going.
+						// 2: Can't say how that flare has to do with it, but at least we got some weapons to wield.
+						// 3: I kind of feel a little bad, but at least we didn't hurt it too much.
+					}
+
+					Eridani: {
+						// Name: Grand Thunder Bird Dialogue
+						// Description: ""
+						// 1: That desert beast has fled. Well done.
+						// 2: In truth, it wasn't really barring our way or anything... but the loot is welcome.
+					}
+				}
+
+				ThoriumMjolnir: {
+					Asphodene: {
+						// Name: Mjolnir Dialogue
+						// Description: ""
+						// 1: Wow, that heirloom you've been holding on to finally has a purpose! I knew it would!
+						// 2: Ah, I love resolved plot strings.
+					}
+
+					Eridani: {
+						// Name: Mjolnir Dialogue
+						// Description: ""
+						// 1: So that heirloom you've been holding onto truly did have merit to keeping...?
+						// 2: That is... quite satisfying. And it forged a powerful weapon, as well.
+					}
+				}
+			}
+
+			UniqueItemDialogue: {
 			}
 
 			BossItemDialogue: {
@@ -4094,6 +4397,38 @@ Mods: {
 					// 220: That was amazing! You didn't even get hit at all!
 					// 221: That was close! At least we won in the end.
 					// 222: Phew! In the end, victory is all that matters.
+					//Mod: Fargo's Souls:
+					//CursedCoffin
+					// 223: Can't say I didn't see this coming... Pyramids are always riddled with curses.
+					//BanishedBaron
+					// 224: Ugh, this thing won't let you leave the water... Don't lose sight of it.
+					//Lifelight
+					// 225: ...That's no pixie... Looks like we have a fight on our hands!
+					//Mod of Redemption
+					//Thorn
+					// 226: That cursed thing... it's made up of thorns! Don't get caught in its brambles!
+					//Erhan
+					// 227: This was definitely a bad idea. Mayhaps I should have spoken up when you used the FORBIDDEN RITUAL- if it wasn't clear enough?!
+					//TheKeeper
+					// 228: What is this fiend's problem? ...Somehow, I feel like we can help them- at least, I think.
+					//SeedofInfection
+					// 229: Whatever this thing is, you need to get rid of it immediately. It looks like it'll spread and never stop!
+					//KingSlayerIII
+					// 230: Well, you've ticked them off- I'd try to pierce that bubble somehow... perhaps with close-ranged damage?
+					//1stOmegaPrototype
+					// 231: Now that's a big sword!! Ah, right- If you get struck, I recommend a brief retreat- it looks to be able to hinder your movement somehow.
+					//2ndOmegaPrototype
+					// 232: This seems a bit excessive... Alright, let's give it our best shot. Focus on those shield cores the boss uses; that seems like a natural weakness.
+					//3rdOmegaPrototype
+					// 233: Okay, surely this is the last of these things, right? What does 'prepare for obliteration' even mean?
+					//PatientZero
+					// 234: This huge xenomite thing is dangerous- don't take it lightly. Whatever it is, prepare for a tough fight.
+					//AncientDiety
+					// 235: Why is it raining all of a sudden? Wait, keep your guard up- this isn't like before!
+					//Nebuleus
+					// 236: That Galaxy Stone is resonating with someone from beyond the sky- I hope this was worth it...
+					//SirNautilus
+					// 237: Alright, a duel it is! Let's give it our all.
 				}
 
 				Eridani: {
@@ -4397,6 +4732,38 @@ Mods: {
 					// 220: An exceptional result! Looks like you didn't even get scratched!
 					// 221: A little too close for comfort... but it worked out in the end.
 					// 222: That could've gone worse, I suppose...!
+					//Mod: Fargo's Souls:
+					//Cursed Coffin
+					// 223: That coffin's started moving- likely provoked by that urn you had. Prepare yourself.
+					//Banished Baron
+					// 224: That lure seems to be working- perhaps a bit too well. Stay underwater- it's inflicting some sort of debilitation.
+					//Lifelight
+					// 225: Something's emerging from above- I daresay it's time to draw your weapon- doesn't seem affable in the slightest.
+					//Mod of Redemption
+					//Thorn, Bane of the Forest
+					// 226: Whatever or whoever this once was, their bodily form has been completely overgrown. Watch your step, lest the ground itself ensnare you.
+					//Erhan, Anglonic High Priest
+					// 227: It follows reason that a priest would arrive after a demonic summoning- what next?
+					//The Keeper
+					// 228: This strange apparition somehow feels like it's longing for something. I can't quite describe it, but there may be another solution to this.
+					//Seed of Infection
+					// 229: This disgusting infection threatens to spread unchecked if we fail here... so, let's try not to.
+					//King Slayer III
+					// 230: Guess the time for talk is over. I would try to pierce that shield of theirs- physical strikes should do it.
+					//1st Omega Prototype
+					// 231: I feel a bit of affinity with a sword that massive- but it's trying to make short work of us, so let's not get distracted.
+					//2nd Omega Prototype
+					// 232: Another tunneling foe- seems like the shield cores of this machine are its weakness. Now, how to target them?
+					//3rd Omega Prototype
+					// 233: And on cue, another one of these prototypes. I am slightly curious on what 'prepare for obliteration' entails...
+					//Patient Zero
+					// 234: The depths of the lab were containing... this. Let's dispatch of it immediately- it bears the same signatures as that seed of infection.
+					//Ancient Diety Duo
+					// 235: The weather patterns around you have gone haywire- something's up. Don't get reckless.
+					//Nebuleus, Angel of the Cosmos
+					// 236: Something has just descended from orbit- that stone definitely did something. What now?
+					//Sir Nautilus
+					// 237: A duel, huh? Leave naught to chance- fight as you would anywhere else.
 				}
 			}
 
@@ -6038,6 +6405,7 @@ Mods: {
 			CreditsHover: "[View the credits for the mod!]"
 			// Wiki: "[Check out the official wiki!]"
 			// Discord: "[Join the mod's Discord for up-to-date info and changelogs!]"
+			// Patreon: "[Support the mod's development and other projects! Note all mod content will always be free!]"
 			Credits:
 				'''
 				Credits

@@ -77,6 +77,7 @@ namespace StarsAbove.UI.StarfarerMenu
 		private UIImageButton credits;
         private UIImageButton wiki;
         private UIImageButton discord;
+        private UIImageButton patreon;
 
         private UIImageButton hairstyle;
 
@@ -154,7 +155,7 @@ namespace StarsAbove.UI.StarfarerMenu
             credits.OnLeftClick += CreditsConfirm;
             credits.Width.Set(70, 0f);
             credits.Height.Set(52, 0f);
-            credits.Left.Set(474, 0f);
+            credits.Left.Set(490, 0f);
             credits.Top.Set(420, 0f);
             credits.OnMouseOver += CreditsHover;
             credits.OnMouseOut += HoverOff;
@@ -163,7 +164,7 @@ namespace StarsAbove.UI.StarfarerMenu
             wiki.OnLeftClick += WikiConfirm;
             wiki.Width.Set(70, 0f);
             wiki.Height.Set(52, 0f);
-            wiki.Left.Set(480, 0f);
+            wiki.Left.Set(490, 0f);
             wiki.Top.Set(370, 0f);
             wiki.OnMouseOver += WikiHover;
             wiki.OnMouseOut += HoverOff;
@@ -181,10 +182,20 @@ namespace StarsAbove.UI.StarfarerMenu
             discord.OnLeftClick += DiscordConfirm;
             discord.Width.Set(70, 0f);
             discord.Height.Set(52, 0f);
-            discord.Left.Set(480, 0f);
+            discord.Left.Set(490, 0f);
             discord.Top.Set(470, 0f);
             discord.OnMouseOver += DiscordHover;
             discord.OnMouseOut += HoverOff;
+            
+
+            patreon = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/Patreon"));
+            patreon.OnLeftClick += PatreonConfirm;
+            patreon.Width.Set(70, 0f);
+            patreon.Height.Set(52, 0f);
+            patreon.Left.Set(490, 0f);
+            patreon.Top.Set(470, 0f);
+            patreon.OnMouseOver += PatreonHover;
+            patreon.OnMouseOut += HoverOff;
 
             stellarNova = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StarfarerMenu/StellarNova"));
 			stellarNova.OnLeftClick += StellarNovaConfirm;
@@ -399,7 +410,7 @@ namespace StarsAbove.UI.StarfarerMenu
 			area.Append(confirm);
 			area.Append(credits);
             area.Append(wiki);
-
+            area.Append(patreon);
             area.Append(discord);
 
             area.Append(text);
@@ -483,8 +494,16 @@ namespace StarsAbove.UI.StarfarerMenu
                 return;
 
             //Open the discord link
+            Utils.OpenToURL("https://discord.gg/kFURRZZszD");
+        }
+        private void PatreonConfirm(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+
+            //Open the patreon
             //https://starsabovemod.wiki.gg/
-            Utils.OpenToURL("https://discord.gg/starsabove");
+            Utils.OpenToURL("https://patreon.com/starsabove");
         }
         public static bool voicesDisabled;
         private void HairstyleConfirm(UIMouseEvent evt, UIElement listeningElement)
@@ -884,6 +903,19 @@ namespace StarsAbove.UI.StarfarerMenu
             Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
             Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
             Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"Common.CreditsHover");
+
+
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
+            // We can do stuff in here!
+        }
+
+        private void PatreonHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuActive)
+                return;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollNumber = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogueScrollTimer = 0;
+            Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().starfarerMenuDialogue = LangHelper.GetTextValue($"Common.Patreon");
 
 
             Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().textVisible = true;
@@ -2225,10 +2257,15 @@ namespace StarsAbove.UI.StarfarerMenu
 			{
 				Append(area);
 			}
-			
-		
+            //temp
+            wiki.Top.Set(355, 0f);
+            credits.Top.Set(400, 0f);
+            patreon.Top.Set(445, 0f);
 
-			var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+            discord.Top.Set(490, 0f);
+
+
+            var modPlayer = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
 			var archivePlayer = Main.LocalPlayer.GetModPlayer<ArchivePlayer>();
 
             if(modPlayer.cyberpunkHairstyleUnlocked)

@@ -424,18 +424,23 @@ namespace StarsAbove
         public int astrumdeusDialogue = 0;
 
         //Post Hardmode
-        public int profanedGuardianDialogue;
-        public int dragonfollyDialogue;
-        public int providenceDialogue;
-        public int stormWeaverDialogue;
-        public int ceaselessVoidDialogue;
-        public int signusDialogue;
-        public int polterghastDialogue;
-        public int oldDukeDialogue;
-        public int destroyerOfGodsDialogue;
-        public int yharonDialogue;
-        public int yharonDespawnDialogue;
-        public int supremeCalamitasDialogue;
+        public int providenceDialogue = 0;
+        public int devourerofgodsDialogue = 0;
+        public int yharonDialogue = 0;
+        public int exomechsDialogue = 0;
+        public int supremecalamitasDialogue = 0;
+
+        //Fargo's Souls dialogue
+        public int devianttDialogue = 0;
+        public int abominationnDialogue = 0;
+        public int mutantDialogue = 0;
+
+        //Modded items dialogue
+        public int mjolnirDialogue = 0;
+        public int soulofeternityDialogue = 0;
+
+
+
 
         //Long-form dialogue
         public int astrolabeIntroDialogue;
@@ -955,6 +960,25 @@ namespace StarsAbove
         public bool seenEridanus;
         public bool seenAbominationn;
         public bool seenMutant;
+        public bool seenCursedCoffin = false;
+        public bool seenBanishedBaron = false;
+        public bool seenLifelight = false;
+
+        //Redemption Mod
+        public bool seenThorn = false;
+        public bool seenErhan = false;
+        public bool seenTheKeeper = false;
+        public bool seenSeedOfInfection = false;
+        public bool seenKingSlayerIII = false;
+        public bool seen1stOmegaPrototype = false;
+        public bool seen2ndOmegaPrototype = false;
+        public bool seen3rdOmegaPrototype = false;
+        public bool seenPatientZero = false;
+        public bool seenAncientDeity = false;
+        public bool seenNebuleus = false;
+        
+        //Calamity Fables
+        public bool seenSirNautilus = false;
 
         //Spirit Bosses
         public bool seenScarabeus;
@@ -1152,6 +1176,18 @@ namespace StarsAbove
             tag["plaguebringerDialogue"] = plaguebringerDialogue;
             tag["ravagerDialogue"] = ravagerDialogue;
             tag["astrumdeusDialogue"] = astrumdeusDialogue;
+            tag["providenceDialogue"] = providenceDialogue;
+            tag["devourerofgodsDialogue"] = devourerofgodsDialogue;
+            tag["yharonDialogue"] = yharonDialogue;
+            tag["exomechsDialogue"] = exomechsDialogue;
+            tag["supremecalamitasDialogue"] = supremecalamitasDialogue;
+
+            tag["devianttDialogue"] = devianttDialogue;
+            tag["abominationnDialogue"] = abominationnDialogue;
+            tag["mutantDialogue"] = mutantDialogue;
+
+            tag["mjolnirDialogue"] = mjolnirDialogue;
+            tag["soulofeternityDialogue"] = soulofeternityDialogue;
 
             //Long form dialogue
             tag["astrolabeIntroDialogue"] = astrolabeIntroDialogue;
@@ -1373,6 +1409,23 @@ namespace StarsAbove
             tag["seenEridanus"] = seenEridanus;
             tag["seenAbominationn"] = seenAbominationn;
             tag["seenMutant"] = seenMutant;
+            tag["seenCursedCoffin"] = seenCursedCoffin;
+            tag["seenBanishedBaron"] = seenBanishedBaron;
+            tag["seenLifelight"] = seenLifelight;
+
+            tag["seenThorn"] = seenThorn;
+            tag["seenErhan"] = seenErhan;
+            tag["seenTheKeeper"] = seenTheKeeper;
+            tag["seenSeedOfInfection"] = seenSeedOfInfection;
+            tag["seenKingSlayerIII"] = seenKingSlayerIII;
+            tag["seen1stOmegaPrototype"] = seen1stOmegaPrototype;
+            tag["seen2ndOmegaPrototype"] = seen2ndOmegaPrototype;
+            tag["seen3rdOmegaPrototype"] = seen3rdOmegaPrototype;
+            tag["seenPatientZero"] = seenPatientZero;
+            tag["seenAncientDiety"] = seenAncientDeity;
+            tag["seenNebuleus"] = seenNebuleus;
+
+            tag["seenSirNautilus"] = seenSirNautilus;
 
             tag["seenScarabeus"] = seenScarabeus;
             tag["seenMoonJellyWizard"] = seenMoonJellyWizard;
@@ -1524,6 +1577,18 @@ namespace StarsAbove
             plaguebringerDialogue = tag.GetInt("plaguebringerDialogue");
             ravagerDialogue = tag.GetInt("ravagerDialogue");
             astrumdeusDialogue = tag.GetInt("astrumdeusDialogue");
+            providenceDialogue = tag.GetInt("providenceDialogue");
+            devourerofgodsDialogue = tag.GetInt("devourerofgodsDialogue");
+            yharonDialogue = tag.GetInt("yharonDialogue");
+            exomechsDialogue = tag.GetInt("exomechsDialogue");
+            supremecalamitasDialogue = tag.GetInt("supremecalamitasDialogue");
+
+            devianttDialogue = tag.GetInt("devianttDialogue");
+            abominationnDialogue = tag.GetInt("abominationnDialogue");
+            mutantDialogue = tag.GetInt("mutantDialogue");
+
+            mjolnirDialogue = tag.GetInt("mjolnirDialogue");
+            soulofeternityDialogue = tag.GetInt("soulofeternityDialogue");
 
             astrolabeIntroDialogue = tag.GetInt("astrolabeIntroDialogue");
             observatoryIntroDialogue = tag.GetInt("observatoryIntroDialogue");
@@ -1788,6 +1853,23 @@ namespace StarsAbove
             seenEridanus = tag.GetBool("seenEridanus");
             seenAbominationn = tag.GetBool("seenAbomination");
             seenMutant = tag.GetBool("seenMutant");
+            seenCursedCoffin = tag.GetBool("seenCursedCoffin");
+            seenBanishedBaron = tag.GetBool("seenBanishedBaron");
+            seenLifelight = tag.GetBool("seenLifelight");
+
+            seenThorn = tag.GetBool("seenThorn");
+            seenErhan = tag.GetBool("seenErhan");
+            seenTheKeeper = tag.GetBool("seenTheKeeper");
+            seenSeedOfInfection = tag.GetBool("seenSeedOfInfection");
+            seenKingSlayerIII = tag.GetBool("seenKingSlayerIII");
+            seen1stOmegaPrototype = tag.GetBool("seen1stOmegaPrototype");
+            seen2ndOmegaPrototype = tag.GetBool("seen2ndOmegaPrototype");
+            seen3rdOmegaPrototype = tag.GetBool("seen3rdOmegaPrototype");
+            seenPatientZero = tag.GetBool("seenPatientZero");
+            seenAncientDeity = tag.GetBool("seenAncientDiety");
+            seenNebuleus = tag.GetBool("seenNebuleus");
+
+            seenSirNautilus = tag.GetBool("seenSirNautilus");
 
             seenScarabeus = tag.GetBool("seenScarabeus");
             seenMoonJellyWizard = tag.GetBool("seenMoonJellyWizard");
@@ -4909,6 +4991,100 @@ namespace StarsAbove
                         false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
                         false, out newNovaNotification);//If there is a new Nova unlocked from this dialogue
                     }
+                    if ((bool)calamityMod.Call("GetBossDowned", "providence"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                            215, //The ID of the dialogue.
+                            ref providenceDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification, //If there is an array ability unlocked from this dialogue
+                            false, out newNovaNotification); //If there is a new Nova unlocked from this dialogue
+                    }
+
+                    if ((bool)calamityMod.Call("GetBossDowned", "devourerofgods"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                            216, //The ID of the dialogue.
+                            ref devourerofgodsDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification,
+                            false, out newNovaNotification);
+                    }
+
+                    if ((bool)calamityMod.Call("GetBossDowned", "yharon"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                            217, //The ID of the dialogue.
+                            ref yharonDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification,
+                            false, out newNovaNotification);
+                    }
+
+                    if ((bool)calamityMod.Call("GetBossDowned", "exomechs"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                            218, //The ID of the dialogue.
+                            ref exomechsDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification,
+                            false, out newNovaNotification);
+                    }
+
+                    if ((bool)calamityMod.Call("GetBossDowned", "supremecalamitas"))
+                    {
+                        SetupActiveDialogue(ref newDiskNotification,
+                            219, //The ID of the dialogue.
+                            ref supremecalamitasDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification,
+                            false, out newNovaNotification);
+                    }
+                    if (ModLoader.TryGetMod("FargowiltasSouls", out Mod fargosSoulsMod))
+                    {
+                        if (Player.HasItemInAnyInventory(fargosSoulsMod.Find<ModItem>("EternitySoul").Type))
+                        {
+                            SetupActiveDialogue(ref newDiskNotification,
+                                 224, //The ID of the dialogue.
+                                 ref soulofeternityDialogue, //The flag of the dialogue.
+                                 false, out newArrayNotification,
+                                 false, out newNovaNotification);
+                        }
+                        if ((bool)fargosSoulsMod.Call("DownedDeviantt"))
+                        {
+                            SetupActiveDialogue(ref newDiskNotification,
+                                220, //The ID of the dialogue.
+                                ref devianttDialogue, //The flag of the dialogue.
+                                false, out newArrayNotification,
+                                false, out newNovaNotification);
+                        }
+
+                        if ((bool)fargosSoulsMod.Call("DownedAbominationn"))
+                        {
+                            SetupActiveDialogue(ref newDiskNotification,
+                                221, //The ID of the dialogue.
+                                ref abominationnDialogue, //The flag of the dialogue.
+                                false, out newArrayNotification,
+                                false, out newNovaNotification);
+                        }
+
+                        if ((bool)fargosSoulsMod.Call("DownedMutant"))
+                        {
+                            SetupActiveDialogue(ref newDiskNotification,
+                                222, //The ID of the dialogue.
+                                ref mutantDialogue, //The flag of the dialogue.
+                                false, out newArrayNotification,
+                                false, out newNovaNotification);
+                        }
+                    }
+                    
+                    if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
+                    {
+                        if (Player.HasItemInAnyInventory(thoriumMod.Find<ModItem>("Mjolnir").Type))
+                        {
+                            SetupActiveDialogue(ref newDiskNotification,
+                            223, //The ID of the dialogue.
+                            ref mjolnirDialogue, //The flag of the dialogue.
+                            false, out newArrayNotification,
+                            false, out newNovaNotification);
+                        }
+                    }
+
                 }
 
                 //Weapon dialogues
@@ -7910,637 +8086,678 @@ namespace StarsAbove
         }
         private void OtherModBossStarfarerPrompts()
         {
-            //Calamity Mod Bosses
+            // Calamity Mod Bosses
             if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
             {
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DesertScourgeBody").Type) && !seenDesertScourge)
+                if (calamityMod.TryFind("DesertScourgeBody", out ModNPC desertScourgeNPC)
+                    && NPC.AnyNPCs(desertScourgeNPC.Type) && !seenDesertScourge)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onDesertScourge");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Crabulon").Type) && !seenCrabulon)
+
+                if (calamityMod.TryFind("Crabulon", out ModNPC crabulonNPC)
+                    && NPC.AnyNPCs(crabulonNPC.Type) && !seenCrabulon)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onCrabulon");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("HiveMind").Type) && !seenHiveMind)
+
+                if (calamityMod.TryFind("HiveMind", out ModNPC hiveMindNPC)
+                    && NPC.AnyNPCs(hiveMindNPC.Type) && !seenHiveMind)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onHiveMind");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("PerforatorHive").Type) && !seenPerforators)
+
+                if (calamityMod.TryFind("PerforatorHive", out ModNPC perforatorsNPC)
+                    && NPC.AnyNPCs(perforatorsNPC.Type) && !seenPerforators)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPerforators");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("PerforatorHive").Type) && !seenPerforators)
+
+                if (calamityMod.TryFind("SlimeGodCore", out ModNPC slimeGodNPC)
+                    && NPC.AnyNPCs(slimeGodNPC.Type) && !seenSlimeGod)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
-                    starfarerPromptActive("onPerforators");
-                    seenUnknownBossTimer = 300;
-                }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("SlimeGodCore").Type) && !seenSlimeGod)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onSlimeGod");
                     seenUnknownBossTimer = 300;
-                }//HARDMODE
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Cryogen").Type) && !seenCryogen)
+                }
+
+                // HARDMODE
+                if (calamityMod.TryFind("Cryogen", out ModNPC cryogenNPC)
+                    && NPC.AnyNPCs(cryogenNPC.Type) && !seenCryogen)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onCryogen");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("AquaticScourgeHead").Type) && !seenAquaticScourge)
+
+                if (calamityMod.TryFind("AquaticScourgeHead", out ModNPC aquaticScourgeNPC)
+                    && NPC.AnyNPCs(aquaticScourgeNPC.Type) && !seenAquaticScourge)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAquaticScourge");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("BrimstoneElemental").Type) && !seenBrimstoneElemental)
+
+                if (calamityMod.TryFind("BrimstoneElemental", out ModNPC brimstoneNPC)
+                    && NPC.AnyNPCs(brimstoneNPC.Type) && !seenBrimstoneElemental)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onBrimstoneElemental");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("CalamitasClone").Type) && !seenCalamitas)
+
+                if (calamityMod.TryFind("CalamitasClone", out ModNPC calamitasNPC)
+                    && NPC.AnyNPCs(calamitasNPC.Type) && !seenCalamitas)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onCalamitas");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Leviathan").Type) && !seenLeviathan)
+
+                if (calamityMod.TryFind("Leviathan", out ModNPC leviathanNPC)
+                    && NPC.AnyNPCs(leviathanNPC.Type) && !seenLeviathan)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onLeviathan");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("LeviathanStart").Type) && !seenSiren)
+
+                if (calamityMod.TryFind("LeviathanStart", out ModNPC sirenNPC)
+                    && NPC.AnyNPCs(sirenNPC.Type) && !seenSiren)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onSiren");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Anahita").Type) && !seenAnahita)
+
+                if (calamityMod.TryFind("Anahita", out ModNPC anahitaNPC)
+                    && NPC.AnyNPCs(anahitaNPC.Type) && !seenAnahita)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAnahita");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("AstrumAureus").Type) && !seenAstrumAureus)
+
+                if (calamityMod.TryFind("AstrumAureus", out ModNPC aureusNPC)
+                    && NPC.AnyNPCs(aureusNPC.Type) && !seenAstrumAureus)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAstrumAureus");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("PlaguebringerGoliath").Type) && !seenPlaguebringer)
+
+                if (calamityMod.TryFind("PlaguebringerGoliath", out ModNPC plagueNPC)
+                    && NPC.AnyNPCs(plagueNPC.Type) && !seenPlaguebringer)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPlaguebringer");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("RavagerBody").Type) && !seenRavager)
+
+                if (calamityMod.TryFind("RavagerBody", out ModNPC ravagerNPC)
+                    && NPC.AnyNPCs(ravagerNPC.Type) && !seenRavager)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onRavager");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("AstrumDeusBody").Type) && !seenAstrumDeus)
+
+                if (calamityMod.TryFind("AstrumDeusBody", out ModNPC deusNPC)
+                    && NPC.AnyNPCs(deusNPC.Type) && !seenAstrumDeus)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAstrumDeus");
                     seenUnknownBossTimer = 300;
                 }
-                //POST MOON LORD
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("ProfanedGuardianCommander").Type) && !seenProfanedGuardian)
+
+                // POST MOON LORD
+                if (calamityMod.TryFind("ProfanedGuardianCommander", out ModNPC profanedNPC)
+                    && NPC.AnyNPCs(profanedNPC.Type) && !seenProfanedGuardian)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onProfanedGuardian");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Bumblefuck").Type) && !seenDragonfolly)
+
+                if (calamityMod.TryFind("Bumblefuck", out ModNPC dragonfollyNPC)
+                    && NPC.AnyNPCs(dragonfollyNPC.Type) && !seenDragonfolly)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onDragonfolly");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Providence").Type) && !seenProvidence)
+
+                if (calamityMod.TryFind("Providence", out ModNPC providenceNPC)
+                    && NPC.AnyNPCs(providenceNPC.Type) && !seenProvidence)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onProvidence");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("StormWeaverBody").Type) && !seenStormWeaver)
+
+                if (calamityMod.TryFind("StormWeaverBody", out ModNPC stormNPC)
+                    && NPC.AnyNPCs(stormNPC.Type) && !seenStormWeaver)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onStormWeaver");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("CeaselessVoid").Type) && !seenCeaselessVoid)
+
+                if (calamityMod.TryFind("CeaselessVoid", out ModNPC voidNPC)
+                    && NPC.AnyNPCs(voidNPC.Type) && !seenCeaselessVoid)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onCeaselessVoid");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Signus").Type) && !seenSignus)
+
+                if (calamityMod.TryFind("Signus", out ModNPC signusNPC)
+                    && NPC.AnyNPCs(signusNPC.Type) && !seenSignus)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onSignus");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Polterghast").Type) && !seenPolterghast)
+
+                if (calamityMod.TryFind("Polterghast", out ModNPC polterNPC)
+                    && NPC.AnyNPCs(polterNPC.Type) && !seenPolterghast)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPolterghast");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("OldDuke").Type) && !seenOldDuke)
+
+                if (calamityMod.TryFind("OldDuke", out ModNPC oldDukeNPC)
+                    && NPC.AnyNPCs(oldDukeNPC.Type) && !seenOldDuke)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onOldDuke");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("DevourerofGodsBody").Type) && !seenDog)
+
+                if (calamityMod.TryFind("DevourerofGodsBody", out ModNPC dogNPC)
+                    && NPC.AnyNPCs(dogNPC.Type) && !seenDog)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onDog");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Yharon").Type) && !seenYharon)
+
+                if (calamityMod.TryFind("Yharon", out ModNPC yharonNPC)
+                    && NPC.AnyNPCs(yharonNPC.Type) && !seenYharon)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
                     yharonPresent = true;
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onYharon");
                     seenUnknownBossTimer = 300;
                 }
 
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("AstrumDeusBody").Type) && !seenAstrumDeus)
+                if (calamityMod.TryFind("SupremeCalamitas", out ModNPC supremeNPC)
+                    && NPC.AnyNPCs(supremeNPC.Type) && !seenSupremeCalamitas)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
-                    starfarerPromptActive("onAstrumDeus");
-                    seenUnknownBossTimer = 300;
-                }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("SupremeCalamitas").Type) && !seenSupremeCalamitas)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onSupremeCalamitas");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Draedon").Type) && !seenDraedon)
+
+                if (calamityMod.TryFind("Draedon", out ModNPC draedonNPC)
+                    && NPC.AnyNPCs(draedonNPC.Type) && !seenDraedon)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onDraedon");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("AresBody").Type) && !seenAres)
+
+                if (calamityMod.TryFind("AresBody", out ModNPC aresNPC)
+                    && NPC.AnyNPCs(aresNPC.Type) && !seenAres)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAres");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("Artemis").Type) && !seenArtemis)
+
+                if (calamityMod.TryFind("Artemis", out ModNPC artemisNPC)
+                    && NPC.AnyNPCs(artemisNPC.Type) && !seenArtemis)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onArtemis");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(calamityMod.Find<ModNPC>("ThanatosHead").Type) && !seenThanatos)
+
+                if (calamityMod.TryFind("ThanatosHead", out ModNPC thanatosNPC)
+                    && NPC.AnyNPCs(thanatosNPC.Type) && !seenThanatos)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onThanatos");
                     seenUnknownBossTimer = 300;
                 }
             }
-            //Fargos Mod Bosses
+
+            // Fargo's Mod Bosses
             if (ModLoader.TryGetMod("FargowiltasSouls", out Mod fargoSoulsMod))
             {
-                if (NPC.AnyNPCs(fargoSoulsMod.Find<ModNPC>("TrojanSquirrel").Type) && !seenTrojanSquirrel)
+                if (fargoSoulsMod.TryFind("TrojanSquirrel", out ModNPC trojanNPC)
+                    && NPC.AnyNPCs(trojanNPC.Type) && !seenTrojanSquirrel)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onTrojanSquirrel");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(fargoSoulsMod.Find<ModNPC>("DeviBoss").Type) && !seenDeviantt)
+
+                if (fargoSoulsMod.TryFind("DeviBoss", out ModNPC deviNPC)
+                    && NPC.AnyNPCs(deviNPC.Type) && !seenDeviantt)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onDeviantt");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(fargoSoulsMod.Find<ModNPC>("CosmosChampion").Type) && !seenEridanus)
+
+                if (fargoSoulsMod.TryFind("CosmosChampion", out ModNPC cosmosNPC)
+                    && NPC.AnyNPCs(cosmosNPC.Type) && !seenEridanus)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onEridanus");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(fargoSoulsMod.Find<ModNPC>("AbomBoss").Type) && !seenAbominationn)
+
+                if (fargoSoulsMod.TryFind("AbomBoss", out ModNPC abomNPC)
+                    && NPC.AnyNPCs(abomNPC.Type) && !seenAbominationn)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAbominationn");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(fargoSoulsMod.Find<ModNPC>("MutantBoss").Type) && !seenMutant)
+
+                if (fargoSoulsMod.TryFind("MutantBoss", out ModNPC mutantNPC)
+                    && NPC.AnyNPCs(mutantNPC.Type) && !seenMutant)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onMutant");
                     seenUnknownBossTimer = 300;
                 }
 
-            }
-            if (ModLoader.TryGetMod("SpiritMod", out Mod SpiritMod))
-            {
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Scarabeus").Type) && !seenScarabeus)
+                if (fargoSoulsMod.TryFind("CursedCoffin", out ModNPC coffinNPC)
+                    && NPC.AnyNPCs(coffinNPC.Type) && !seenCursedCoffin)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onCursedCoffin");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (fargoSoulsMod.TryFind("BanishedBaron", out ModNPC baronNPC)
+                    && NPC.AnyNPCs(baronNPC.Type) && !seenBanishedBaron)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onBanishedBaron");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (fargoSoulsMod.TryFind("LifeChallenger", out ModNPC lifeNPC)
+                    && NPC.AnyNPCs(lifeNPC.Type) && !seenLifelight)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onLifelight");
+                    seenUnknownBossTimer = 300;
+                }
+            }
+
+            // Spirit Mod Bosses
+            if (ModLoader.TryGetMod("SpiritMod", out Mod spiritMod))
+            {
+                if (spiritMod.TryFind("Scarabeus", out ModNPC scarabeusNPC)
+                    && NPC.AnyNPCs(scarabeusNPC.Type) && !seenScarabeus)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onScarabeus");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("MoonWizard").Type) && !seenMoonJellyWizard)
+
+                if (spiritMod.TryFind("MoonWizard", out ModNPC moonWizardNPC)
+                    && NPC.AnyNPCs(moonWizardNPC.Type) && !seenMoonJellyWizard)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onMoonJellyWizard");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("ReachBoss").Type) && !seenVinewrathBane)
+
+                if (spiritMod.TryFind("ReachBoss", out ModNPC reachNPC)
+                    && NPC.AnyNPCs(reachNPC.Type) && !seenVinewrathBane)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onVinewrathBane");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("AncientFlyer").Type) && !seenAncientAvian)
+
+                if (spiritMod.TryFind("AncientFlyer", out ModNPC ancientNPC)
+                    && NPC.AnyNPCs(ancientNPC.Type) && !seenAncientAvian)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAncientAvian");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("SteamRaiderHead").Type) && !seenStarplateVoyager)
+
+                if (spiritMod.TryFind("SteamRaiderHead", out ModNPC starplateNPC)
+                    && NPC.AnyNPCs(starplateNPC.Type) && !seenStarplateVoyager)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onStarplateVoyager");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Infernon").Type) && !seenInfernon)
+
+                if (spiritMod.TryFind("Infernon", out ModNPC infernonNPC)
+                    && NPC.AnyNPCs(infernonNPC.Type) && !seenInfernon)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onInfernon");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Dusking").Type) && !seenDusking)
+
+                if (spiritMod.TryFind("Dusking", out ModNPC duskingNPC)
+                    && NPC.AnyNPCs(duskingNPC.Type) && !seenDusking)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onDusking");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SpiritMod.Find<ModNPC>("Atlas").Type) && !seenAtlas)
+
+                if (spiritMod.TryFind("Atlas", out ModNPC atlasNPC)
+                    && NPC.AnyNPCs(atlasNPC.Type) && !seenAtlas)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAtlas");
                     seenUnknownBossTimer = 300;
                 }
             }
-            //Secrets of the Shadows Mod Bosses
-            if (ModLoader.TryGetMod("SOTS", out Mod SOTS))
+
+            // Secrets of the Shadows Mod Bosses
+            if (ModLoader.TryGetMod("SOTS", out Mod sotsMod))
             {
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("PutridPinkyPhase2").Type) && !seenPutridPinky)
+                if (sotsMod.TryFind("PutridPinkyPhase2", out ModNPC pinkyNPC)
+                    && NPC.AnyNPCs(pinkyNPC.Type) && !seenPutridPinky)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPutridPinky");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("PharaohsCurse").Type) && !seenPharaoh)
+
+                if (sotsMod.TryFind("PharaohsCurse", out ModNPC pharaohNPC)
+                    && NPC.AnyNPCs(pharaohNPC.Type) && !seenPharaoh)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPharaoh");
                     seenUnknownBossTimer = 300;
                 }
-                
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Polaris").Type) && !seenPolaris)
+
+                if (sotsMod.TryFind("Polaris", out ModNPC polarisNPC)
+                    && NPC.AnyNPCs(polarisNPC.Type) && !seenPolaris)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPolaris");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("Lux").Type) && !seenLux)
+
+                if (sotsMod.TryFind("Lux", out ModNPC luxNPC)
+                    && NPC.AnyNPCs(luxNPC.Type) && !seenLux)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onLux");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(SOTS.Find<ModNPC>("SubspaceSerpentBody").Type) && !seenSubspaceSerpent)
+
+                if (sotsMod.TryFind("SubspaceSerpentBody", out ModNPC serpentNPC)
+                    && NPC.AnyNPCs(serpentNPC.Type) && !seenSubspaceSerpent)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onSubspaceSerpent");
                     seenUnknownBossTimer = 300;
                 }
-
-
             }
-            //Thorium Mod Bosses
+
+            // Calamity Fables Mod Bosses
+            if (ModLoader.TryGetMod("CalamityFables", out Mod calamityFables))
+            {
+                if (calamityFables.TryFind("SirNautilus", out ModNPC nautilusNPC)
+                    && NPC.AnyNPCs(nautilusNPC.Type) && !seenSirNautilus)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onSirNautilus");
+                    seenUnknownBossTimer = 300;
+                }
+            }
+
+            // Redemption Mod Bosses
+            if (ModLoader.TryGetMod("Redemption", out Mod redemptionMod))
+            {
+                if (redemptionMod.TryFind("Thorn", out ModNPC thornNPC)
+                    && NPC.AnyNPCs(thornNPC.Type) && !seenThorn)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onThorn");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("Erhan", out ModNPC erhanNPC)
+                    && NPC.AnyNPCs(erhanNPC.Type) && !seenErhan)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onErhan");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("Keeper", out ModNPC keeperNPC)
+                    && NPC.AnyNPCs(keeperNPC.Type) && !seenTheKeeper)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onTheKeeper");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("SoI", out ModNPC soiNPC)
+                    && NPC.AnyNPCs(soiNPC.Type) && !seenSeedOfInfection)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onSeedOfInfection");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("KS3", out ModNPC ks3NPC)
+                    && NPC.AnyNPCs(ks3NPC.Type) && !seenKingSlayerIII)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onKingSlayerIII");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("OmegaCleaver", out ModNPC omega1NPC)
+                    && NPC.AnyNPCs(omega1NPC.Type) && !seen1stOmegaPrototype)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("on1stOmegaPrototype");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("Gigapora", out ModNPC omega2NPC)
+                    && NPC.AnyNPCs(omega2NPC.Type) && !seen2ndOmegaPrototype)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("on2ndOmegaPrototype");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("OO", out ModNPC omega3NPC)
+                    && NPC.AnyNPCs(omega3NPC.Type) && !seen3rdOmegaPrototype)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("on3rdOmegaPrototype");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("PZ", out ModNPC pzNPC)
+                    && NPC.AnyNPCs(pzNPC.Type) && !seenPatientZero)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onPatientZero");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("Ukko", out ModNPC deityNPC)
+                    && NPC.AnyNPCs(deityNPC.Type) && !seenAncientDeity)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onAncientDeity");
+                    seenUnknownBossTimer = 300;
+                }
+
+                if (redemptionMod.TryFind("Nebuleus", out ModNPC nebuleusNPC)
+                    && NPC.AnyNPCs(nebuleusNPC.Type) && !seenNebuleus)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
+                    starfarerPromptActive("onNebuleus");
+                    seenUnknownBossTimer = 300;
+                }
+            }
+
+            // Thorium Mod Bosses
             if (ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod))
             {
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("TheGrandThunderBirdv2").Type) && !seenGrandThunderBird)
+                if (thoriumMod.TryFind("TheGrandThunderBirdv2", out ModNPC thunderNPC)
+                    && NPC.AnyNPCs(thunderNPC.Type) && !seenGrandThunderBird)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onGrandThunderBird");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("QueenJelly").Type) && !seenQueenJellyfish)
+
+                if (thoriumMod.TryFind("QueenJelly", out ModNPC jellyNPC)
+                    && NPC.AnyNPCs(jellyNPC.Type) && !seenQueenJellyfish)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onQueenJellyfish");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("Viscount").Type) && !seenViscount)
+
+                if (thoriumMod.TryFind("Viscount", out ModNPC viscountNPC)
+                    && NPC.AnyNPCs(viscountNPC.Type) && !seenViscount)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onViscount");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("GraniteEnergyStorm").Type) && !seenGraniteEnergyStorm)
+
+                if (thoriumMod.TryFind("GraniteEnergyStorm", out ModNPC graniteNPC)
+                    && NPC.AnyNPCs(graniteNPC.Type) && !seenGraniteEnergyStorm)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onGraniteEnergyStorm");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("TheBuriedWarrior").Type) && !seenBuriedChampion)
+
+                if (thoriumMod.TryFind("TheBuriedWarrior", out ModNPC buriedNPC)
+                    && NPC.AnyNPCs(buriedNPC.Type) && !seenBuriedChampion)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onBuriedChampion");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("ThePrimeScouter").Type) && !seenStarScouter)
+
+                if (thoriumMod.TryFind("ThePrimeScouter", out ModNPC scouterNPC)
+                    && NPC.AnyNPCs(scouterNPC.Type) && !seenStarScouter)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onStarScouter");
                     seenUnknownBossTimer = 300;
                 }
-                //HARDMODE
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("BoreanStrider").Type) && !seenBoreanStrider)
+
+                // HARDMODE
+                if (thoriumMod.TryFind("BoreanStrider", out ModNPC boreanNPC)
+                    && NPC.AnyNPCs(boreanNPC.Type) && !seenBoreanStrider)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onBoreanStrider");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("FallenDeathBeholder").Type) && !seenCoznix)
+
+                if (thoriumMod.TryFind("FallenDeathBeholder", out ModNPC cozFluxNPC)
+                    && NPC.AnyNPCs(cozFluxNPC.Type) && !seenCoznix)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onCoznix");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("Lich").Type) && !seenLich)
+
+                if (thoriumMod.TryFind("Lich", out ModNPC lichNPC)
+                    && NPC.AnyNPCs(lichNPC.Type) && !seenLich)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onLich");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("Abyssion").Type) && !seenAbyssion)
+
+                if (thoriumMod.TryFind("Abyssion", out ModNPC abyssNPC)
+                    && NPC.AnyNPCs(abyssNPC.Type) && !seenAbyssion)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAbyssion");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(thoriumMod.Find<ModNPC>("SlagFury").Type) && !seenPrimordials)
-                {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
 
-                    }
+                if (thoriumMod.TryFind("SlagFury", out ModNPC slagNPC)
+                    && NPC.AnyNPCs(slagNPC.Type) && !seenPrimordials)
+                {
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onPrimordials");
                     seenUnknownBossTimer = 300;
                 }
             }
 
-            //Wrath of the Gods
-            if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathOfTheGods))
+            // Wrath of the Gods Mod Bosses
+            if (ModLoader.TryGetMod("NoxusBoss", out Mod wrathMod))
             {
-                if (NPC.AnyNPCs(wrathOfTheGods.Find<ModNPC>("NamelessDeityBoss").Type) && !seenNamelessDeity)
+                if (wrathMod.TryFind("NamelessDeityBoss", out ModNPC deityNPC2)
+                    && NPC.AnyNPCs(deityNPC2.Type) && !seenNamelessDeity)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onNamelessDeity");
                     seenUnknownBossTimer = 300;
                 }
             }
-            //Starlight River
-            if (ModLoader.TryGetMod("StarlightRiver", out Mod starlightRiver))
+
+            // Starlight River Mod Bosses
+            if (ModLoader.TryGetMod("StarlightRiver", out Mod starlightMod))
             {
-                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("Glassweaver").Type) && !seenGlassweaver)
+                if (starlightMod.TryFind("Glassweaver", out ModNPC glassNPC)
+                    && NPC.AnyNPCs(glassNPC.Type) && !seenGlassweaver)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onGlassweaver");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("VitricBoss").Type) && !seenCeiros)
+
+                if (starlightMod.TryFind("VitricBoss", out ModNPC ceirosNPC)
+                    && NPC.AnyNPCs(ceirosNPC.Type) && !seenCeiros)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onCeiros");
                     seenUnknownBossTimer = 300;
                 }
-                if (NPC.AnyNPCs(starlightRiver.Find<ModNPC>("SquidBoss").Type) && !seenAuroracle)
+
+                if (starlightMod.TryFind("SquidBoss", out ModNPC auroracleNPC)
+                    && NPC.AnyNPCs(auroracleNPC.Type) && !seenAuroracle)
                 {
-                    if (starfarerPromptCooldown > 0)
-                    {
-                        starfarerPromptCooldown = 0;
-                    }
+                    if (starfarerPromptCooldown > 0) starfarerPromptCooldown = 0;
                     starfarerPromptActive("onAuroracle");
                     seenUnknownBossTimer = 300;
                 }
             }
+            
         }
         private void UnknownBossStarfarerPrompts()
         {
@@ -12513,6 +12730,114 @@ namespace StarsAbove
                     promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".215", Player.name); //It's sweltering here. Deserts will be the same wherever you are, I guess.
                     seenNeonVeilBiome = true;
                 }
+
+                if (eventPrompt == "onCursedCoffin")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".223", Player.name);
+                    seenCursedCoffin = true;
+                }
+                if (eventPrompt == "onBanishedBaron")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".224", Player.name);
+                    seenBanishedBaron = true;
+                }
+                if (eventPrompt == "onLifelight")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".225", Player.name);
+                    seenLifelight = true;
+                }
+                if (eventPrompt == "onThorn")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".226", Player.name);
+                    seenThorn = true;
+                }
+                if (eventPrompt == "onErhan")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".227", Player.name);
+                    seenErhan = true;
+                }
+                if (eventPrompt == "onTheKeeper")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".228", Player.name);
+                    seenTheKeeper = true;
+                }
+                if (eventPrompt == "onSeedOfInfection")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".229", Player.name);
+                    seenSeedOfInfection = true;
+                }
+                if (eventPrompt == "onKingSlayerIII")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".230", Player.name);
+                    seenKingSlayerIII = true;
+                }
+                if (eventPrompt == "on1stOmegaPrototype")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".231", Player.name);
+                    seen1stOmegaPrototype = true;
+                }
+                if (eventPrompt == "on2ndOmegaPrototype")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".232", Player.name);
+                    seen2ndOmegaPrototype = true;
+                }
+                if (eventPrompt == "on3rdOmegaPrototype")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".233", Player.name);
+                    seen3rdOmegaPrototype = true;
+                }
+                if (eventPrompt == "onPatientZero")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".234", Player.name);
+                    seenPatientZero = true;
+                }
+                if (eventPrompt == "onAncientDeity")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".235", Player.name);
+                    seenAncientDeity = true;
+                }
+                if (eventPrompt == "onNebuleus")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".236", Player.name);
+                    seenNebuleus = true;
+                }
+                if (eventPrompt == "onSirNautilus")
+                {
+                    BossVoiceNeutral();
+                    promptExpression = 1;
+                    promptDialogue = LangHelper.GetTextValue($"Dialogue.PromptDialogue." + starfarerName + ".237", Player.name);
+                    seenSirNautilus = true;
+                }
+
+
                 //Upon entering a biome for the first time..
                 if (eventPrompt == "onEnterDesert")
                 {

@@ -871,15 +871,100 @@ namespace StarsAbove.Dialogue
             }//Ravager 36
             if (chosenDialogue == 214) // Boss dialogue - Astrum Deus
             {
-                if(dialoguePrep)
-                {
-                     
-
-                }
                 string category = "CalamityBossDialogue";
                 string key = category + "." + "AstrumDeus" + "." + starfarerName + ".";
                 WriteDialogue(writeToArchive, category, chosenDialogue, ref dialoguePrep, ref dialogueLeft, ref expression, ref dialogue, ref dialogueFinished, baseKey, key);
-            }//Astrum Deus 37
+            }//Astrum Deus
+            if (chosenDialogue == 215) // Boss dialogue - Providence
+            {
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Providence" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//Providence
+
+            if (chosenDialogue == 216) // Boss dialogue - Devourer of Gods
+            {
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "DevourerOfGods" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//DevourerOfGods
+
+            if (chosenDialogue == 217) // Boss dialogue - Yharon
+            {
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "Yharon" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//Yharon
+
+            if (chosenDialogue == 218) // Boss dialogue - Exo Mechs
+            {
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "ExoMechs" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//ExoMechs
+
+            if (chosenDialogue == 219) // Boss dialogue - Supreme Calamitas
+            {
+                string category = "CalamityBossDialogue";
+                string key = category + "." + "SupremeCalamitas" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//SupremeCalamitas
+
+            if (chosenDialogue == 220) // Boss dialogue - Deviantt
+            {
+                string category = "FargosDialogue";
+                string key = category + "." + "Deviantt" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//Deviantt
+
+            if (chosenDialogue == 221) // Boss dialogue - Abominationn
+            {
+                string category = "FargosDialogue";
+                string key = category + "." + "Abominationn" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//Abominationn
+
+            if (chosenDialogue == 222) // Boss dialogue - Mutant
+            {
+                string category = "FargosDialogue";
+                string key = category + "." + "Mutant" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//Mutant
+
+            if (chosenDialogue == 223) // Unique dialogue - Mjolnir
+            {
+                string category = "ThoriumDialogue";
+                string key = category + "." + "ThoriumMjolnir" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//Mjolnir
+
+            if (chosenDialogue == 224) // Unique dialogue - Soul of Eternity
+            {
+                string category = "FargosDialogue";
+                string key = category + "." + "SoulOfEternity" + "." + starfarerName + ".";
+                WriteDialogue(writeToArchive, category, chosenDialogue,
+                    ref dialoguePrep, ref dialogueLeft, ref expression,
+                    ref dialogue, ref dialogueFinished, baseKey, key);
+            }//SoulOfEternity
+
             #endregion
             #region weaponDialogue
 
