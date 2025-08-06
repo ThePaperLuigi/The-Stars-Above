@@ -20,12 +20,13 @@ namespace StarsAbove.Projectiles.Summon.CandiedSugarball
 		}
 
 		public override void SetDefaults()
-		{
+        {
+            Projectile.CloneDefaults(ProjectileID.MiniMinotaur);
+
             Projectile.minion = true;
             Projectile.DamageType = DamageClass.Summon;
             Projectile.minionSlots = 2f;
 
-            Projectile.CloneDefaults(ProjectileID.MiniMinotaur);
 			AIType = ProjectileID.MiniMinotaur;
 			DrawOriginOffsetY = -8;
 			//AnimationType = ProjectileID.BabyDino;

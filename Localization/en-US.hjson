@@ -13,7 +13,7 @@ Mods: {
 
 		Boss.WarriorOfLight: The Warrior of Light descends!
 		WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will crash, especially when combined with The Stars Above.
-		SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
+		SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Check Subworld transit in Stars Above's Server-side settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
 		SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
 		CombatText: {
@@ -538,7 +538,7 @@ Mods: {
 
 				BeyondInfinity: {
 					Name: "[c/D82BFF:Tier 3] [c/FFC258:'Beyond Infinity']"
-					Description: Lower rarity Aspected Weapons gain drastic bonus damage based on their original rarity, up to 1200% base damage. Does not affect weapons that can scale or upgrade.
+					Description: Lower rarity weapons gain drastic bonus damage based on their original rarity, up to 1200% base damage. Does not affect weapons that can scale or upgrade.
 					Unlock: "[c/9D9D9D:Locked:] Defeat all Terraria bosses"
 				}
 
@@ -4397,14 +4397,12 @@ Mods: {
 					220: That was amazing! You didn't even get hit at all!
 					221: That was close! At least we won in the end.
 					222: Phew! In the end, victory is all that matters.
-					//Mod: Fargo's Souls:
 					//CursedCoffin
 					223: Can't say I didn't see this coming... Pyramids are always riddled with curses.
 					//BanishedBaron
 					224: Ugh, this thing won't let you leave the water... Don't lose sight of it.
 					//Lifelight
 					225: ...That's no pixie... Looks like we have a fight on our hands!
-					//Mod of Redemption
 					//Thorn
 					226: That cursed thing... it's made up of thorns! Don't get caught in its brambles!
 					//Erhan
@@ -17719,6 +17717,11 @@ Mods: {
 					Label: Stellar Nova Cutscenes
 					Tooltip: Determines how frequent the cutscenes of Stellar Novas are displayed.
 				}
+
+				bossVoiceVolume: {
+					Label: boss Voice Volume
+					Tooltip: ""
+				}
 			}
 
 			StarsAboveServersideConfig: {
@@ -17767,6 +17770,11 @@ Mods: {
 				CombatTimer: {
 					Label: Combat Timer
 					Tooltip: When striking a foe or getting struck, this is the time in seconds you are 'in combat.'
+				}
+
+				MultiplayerFallbackSubworlds: {
+					Label: Multiplayer-Fallback Cosmic Voyages
+					Tooltip: When enabled, attempting Cosmic Voyages will spawn loot items on a timer. When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. Use at your own risk and/or with the unoffical patch.
 				}
 			}
 

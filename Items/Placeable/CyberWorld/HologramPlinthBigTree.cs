@@ -1,7 +1,8 @@
 using StarsAbove.Tiles;
 using StarsAbove.Tiles.CyberWorld;
+using Terraria.ID;
 using Terraria.ModLoader;
-
+using static Terraria.ModLoader.ModContent;
 namespace StarsAbove.Items.Placeable.CyberWorld
 {
     public class HologramPlinthBigTree : ModItem
@@ -26,13 +27,15 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.consumable = true;
 			Item.value = 150;
 			Item.createTile = ModContent.TileType<HologramPlinthBigTreeTile>();
-            Item.ResearchUnlockCount = 0;
 
 		}
 
 		public override void AddRecipes()
 		{
-			
-		}
-	}
+            CreateRecipe(1)
+                .AddIngredient(ItemType<DeepAsphalt>(), 25)
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
+    }
 }

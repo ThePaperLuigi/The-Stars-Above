@@ -13,7 +13,7 @@ Mods: {
 
 		Boss.WarriorOfLight: 光之战士 降临！
 		// WOTGCheck: Stars Above: You're using Wrath of the Gods in Multiplayer- note that this is known to cause issues and will crash, especially when combined with The Stars Above.
-		// SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
+		// SLUMPDetected: Stars Above: Subworld Library Unofficial Mod Patch detected. Check Subworld transit in Stars Above's Server-side settings to use Subworlds in multiplayer. Note this mod may not fix all issues.
 		// SLUMPNotDetected: Stars Above: It's recommended you install the Subworld Library Unoffical Mod Patch which can fix multiplayer Subworlds. If this isn't enabled, please disable Subworld transit in Mod Settings.
 
 		CombatText: {
@@ -4397,14 +4397,12 @@ Mods: {
 					220: 太精彩了！你毫发无伤！
 					221: 真是太险了！至少笑到最后的是我们。
 					222: 呼——不管怎么说，胜利最后属于我们。
-					//Mod: Fargo's Souls:
 					//CursedCoffin
 					// 223: Can't say I didn't see this coming... Pyramids are always riddled with curses.
 					//BanishedBaron
 					// 224: Ugh, this thing won't let you leave the water... Don't lose sight of it.
 					//Lifelight
 					// 225: ...That's no pixie... Looks like we have a fight on our hands!
-					//Mod of Redemption
 					//Thorn
 					// 226: That cursed thing... it's made up of thorns! Don't get caught in its brambles!
 					//Erhan
@@ -17706,6 +17704,11 @@ Mods: {
 					// Label: Stellar Nova Cutscenes
 					// Tooltip: Determines how frequent the cutscenes of Stellar Novas are displayed.
 				}
+
+				bossVoiceVolume: {
+					// Label: boss Voice Volume
+					// Tooltip: ""
+				}
 			}
 
 			StarsAboveServersideConfig: {
@@ -17754,6 +17757,11 @@ Mods: {
 				CombatTimer: {
 					Label: 战斗计时器
 					Tooltip: 当你攻击敌人或者被敌人攻击后，获得一个以秒为单位的进战计时器。
+				}
+
+				MultiplayerFallbackSubworlds: {
+					// Label: Multiplayer-Fallback Cosmic Voyages
+					// Tooltip: When enabled, attempting Cosmic Voyages will spawn loot items on a timer. When disabled, allows for players in Multiplayer to undertake Cosmic Voyages. Use at your own risk and/or with the unoffical patch.
 				}
 			}
 

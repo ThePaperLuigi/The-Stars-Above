@@ -3884,7 +3884,7 @@ namespace StarsAbove.Systems
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-
+            //Replace later
             if (SubworldSystem.Current != null)
             {
                 int randomMessage = Main.rand.Next(0, 5);

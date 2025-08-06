@@ -38,21 +38,24 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 		}
 
 		public override void SetDefaults()
-		{
-			Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier2>();
+        {
+            Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier2>(), 0);
+            Item.rare = ItemRarityID.Orange;
+
+            /*
+            Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier2>();
 			Item.width = 20;
 			Item.height = 20;
 			Item.maxStack = 1;
-			Item.rare = ItemRarityID.Orange;
 			Item.useAnimation = 20;
 			Item.useTime = 20;
 			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.UseSound = SoundID.Item44;
 			Item.consumable = true;
-			Item.noUseGraphic = false;
-		}
+			Item.noUseGraphic = false;*/
+        }
 
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			CreateRecipe(1)
 				.AddIngredient(ItemID.Diamond, 3)

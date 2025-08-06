@@ -191,6 +191,8 @@ namespace StarsAbove.Systems
         }
         public override void PostUpdate()
         {
+            ManageFociBuffs();
+
             if (stellarFociAmount > stellarFociMax && Player.HasBuff(BuffType<StellaglyphReady>()))
             {
                 //A buff to signify you're above the limit.
@@ -207,11 +209,7 @@ namespace StarsAbove.Systems
             }
 
         }
-        public override void PostUpdateRunSpeeds()
-        {
-            ManageFociBuffs();
 
-        }
 
         private void CalculateStellarFoci()
         {
@@ -253,9 +251,9 @@ namespace StarsAbove.Systems
             speedFocus += GetInstance<CountStellarFoci>().AgilityT2 * 0.05f;
             speedFocus += GetInstance<CountStellarFoci>().AgilityT3 * 0.07f;
 
-            moneyFocus += GetInstance<CountStellarFoci>().LuckT1 * 7;
-            moneyFocus += GetInstance<CountStellarFoci>().LuckT2 * 15;
-            moneyFocus += GetInstance<CountStellarFoci>().LuckT3 * 30;
+            moneyFocus += GetInstance<CountStellarFoci>().WealthT1 * 7;
+            moneyFocus += GetInstance<CountStellarFoci>().WealthT2 * 15;
+            moneyFocus += GetInstance<CountStellarFoci>().WealthT3 * 30;
 
             maxStatFocus += GetInstance<CountStellarFoci>().ConstitutionT1 * 10;
             maxStatFocus += GetInstance<CountStellarFoci>().ConstitutionT2 * 16;

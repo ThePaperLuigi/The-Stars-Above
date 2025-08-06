@@ -25,7 +25,6 @@ namespace StarsAbove.Items.Placeable.CyberWorld
 			Item.consumable = true;
 			Item.value = 150;
 			Item.createTile = ModContent.TileType<GenericMountedSignageTile>();
-            Item.ResearchUnlockCount = 0;
 
 		}
 

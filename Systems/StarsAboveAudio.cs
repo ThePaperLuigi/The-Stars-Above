@@ -6,6 +6,7 @@ namespace StarsAbove.Systems
 {
     public class StarsAboveAudio : ModSystem
     {
+        public static float bossVoiceVolume = 1f;
         public static float voiceVolume = 0.6f;
         #region Starfarer Voice Lines
 
@@ -889,62 +890,76 @@ namespace StarsAbove.Systems
         #region Nalhaun Voice Lines
         public static readonly SoundStyle Nalhaun_AndNowTheScalesWillTip = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/AndNowTheScalesWillTip")
         {
-
+           Volume = bossVoiceVolume
         };
         public static readonly SoundStyle Nalhaun_AThousandBolts = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/AThousandBolts")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_ComeShowMeMore = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/ComeShowMeMore")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_EscapeIsNotSoEasilyGranted = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/EscapeIsNotSoEasilyGranted")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_EvenTheStrongestShields = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/EvenTheStrongestShields")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_Fools = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/Fools")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_MyDefenses = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/MyDefenses")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_NalhaunDeathQuote = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/NalhaunDeathQuote")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_NalhaunIntroQuote = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/NalhaunIntroQuote")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_PityDisplay = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/PityDisplay")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_RuinationIsCome = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/RuinationIsCome")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_TheGodsWillNotBeWatching = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/TheGodsWillNotBeWatching")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_TheHeartsOfMen = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/TheHeartsOfMen")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_UponMyHolyBlade = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/UponMyHolyBlade")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Nalhaun_WereYouExpectingRust = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Nalhaun/WereYouExpectingRust")
         {
+            Volume = bossVoiceVolume
 
         };
         #endregion
@@ -952,62 +967,78 @@ namespace StarsAbove.Systems
         #region Penthesilea Voice Lines
         public static readonly SoundStyle Penthesilea_AlrightMyTurn = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/AlrightMyTurn")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_HandsOn = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HandsOn")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_HelloLittlePaintbrush = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/HelloLittlePaintbrush")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_FasterThanThat = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/FasterThanThat")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_UnderestimatedYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/UnderestimatedYou")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_DontGetTooDirty = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/DontGetTooDirty")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_IDontThinkYoullLikeWhatComesNext = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/IDontThinkYoullLikeWhatComesNext")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_MoreWhereThatCameFrom = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/MoreWhereThatCameFrom")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_MyNextCanvas = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/MyNextCanvas")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_QuicklyNow = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/QuicklyNow")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_RainButPrettier = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/RainButPrettier")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_TooMuchColor = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/TooMuchColor")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_WhatColor = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WhatColor")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_WouldntItBeSoFunny = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WouldntItBeSoFunny")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Penthesilea_WrappedThingsUp = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Penthesilea/WrappedThingsUp")
         {
+            Volume = bossVoiceVolume
+
 
         };
 
@@ -1016,6 +1047,8 @@ namespace StarsAbove.Systems
         #region Arbitration Voice Lines
         public static readonly SoundStyle Arbitration_Voice = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Arbitration/ArbitrationReverse")
         {
+            Volume = bossVoiceVolume,
+
             Variants = new[]
             {
                 1,2,3,4,5,6
@@ -1026,6 +1059,8 @@ namespace StarsAbove.Systems
         #region Starfarer Boss Voice Lines
         public static readonly SoundStyle StarfarerBoss_Intro = new($"{nameof(StarsAbove)}/Sounds/StarfarerVoiceLines/BossLines/StarfarerIntro")
         {
+            Volume = bossVoiceVolume,
+
             Variants = new[]
             {
                 1,2
@@ -1037,121 +1072,150 @@ namespace StarsAbove.Systems
         #region Warrior Of Light Voice Lines
         public static readonly SoundStyle WarriorOfLight_EveryDream = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/EveryDream")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_FlamesOfBattle = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/FlamesOfBattle")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_NowToTakeYourMeasure = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/NowToTakeYourMeasure")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_WillLightEmbrace = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/WillLightEmbrace")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_TheseMagicksAreNotForYou = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/TheseMagicksAreNotForYou")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_JudgedWorthyToExist = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/JudgedWorthyToExist")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_ForVictory = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ForVictory")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_PowerFromBeyond = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/PowerFromBeyond")
         {
+            Volume = bossVoiceVolume
 
         };
 
         public static readonly SoundStyle WarriorOfLight_BegoneSpawnOfShadow = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/BegoneSpawnOfShadow")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_CladInPrayerIAmInvincible = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/CladInPrayerIAmInvincible")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_DarknessMustBeDestroyed = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/DarknessMustBeDestroyed")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_FinalPhaseGrunt = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/FinalPhaseGrunt")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_ForVictoryIRenderUpMyAll = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ForVictoryIRenderUpMyAll")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_GleamingSteelLightMyPath = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/GleamingSteelLightMyPath")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_HopeGrantMeStrength = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/HopeGrantMeStrength")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_IAmSalvationGivenForm = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/IAmSalvationGivenForm")
         {
+            Volume = bossVoiceVolume
 
         };
 
         public static readonly SoundStyle WarriorOfLight_IWillNotFall = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/IWillNotFall")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_IWillStrikeYouDown = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/IWillStrikeYouDown")
         {
+            Volume = bossVoiceVolume
 
         };
 
         public static readonly SoundStyle WarriorOfLight_MankindsFirstHeroAndHisFinalHope = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/MankindsFirstHeroAndHisFinalHope")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_MySoulKnowsNoSurrender = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/MySoulKnowsNoSurrender")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_RadiantBraver = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/RadiantBraver")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_RefulgentEther = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/RefulgentEther")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_TheBitterEnd = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/TheBitterEnd")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_ToMeWarriorsOfLight = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/ToMeWarriorsOfLight")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_WarriorOfLightDeathQuote = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/WarriorOfLightDeathQuote")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_WarriorOfLightDefeated = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/WarriorOfLightDefeated")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_WarriorOfLightIntroQuote = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/WarriorOfLightIntroQuote")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_YourDemiseShallBeOurSalvation = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/YourDemiseShallBeOurSalvation")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle WarriorOfLight_YouStillStand = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/WarriorOfLight/YouStillStand")
         {
+            Volume = bossVoiceVolume
 
         };
 
@@ -1160,96 +1224,120 @@ namespace StarsAbove.Systems
         #region Tsukiyomi Voice Lines
         public static readonly SoundStyle Tsukiyomi_DeathOfAThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_Struggle = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Struggle")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_NowhereYouCanRun = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/NowhereYouCanRun")
         {
+            Volume = bossVoiceVolume
+
 
         };
         public static readonly SoundStyle Tsukiyomi_AfraidOfTheDark = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/AfraidOfTheDark")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_TryHarder = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TryHarderThanThat")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_ForgettingSomething = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ForgettingSomething")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_Journey = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/EndOfYourJourney")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_Stronger = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StrongerThanIHoped")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_Insignificant = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Insignificant")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_TakeThisOutside = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TakeThisOutside")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_ThousandStars = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ThousandStars")
         {
+            Volume = bossVoiceVolume
 
         };
         //Aspected weapon voice lines.
         public static readonly SoundStyle Tsukiyomi_CarianDarkMoon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CarianDarkMoon")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_BuryTheLight = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/BuryTheLight")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_TheOnlyThingIKnowForReal = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/TheOnlyThingIKnowForReal")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_VoiceOfTheOutbreak = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/VoiceOfTheOutbreak")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_ShadowlessCerulean = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/ShadowlessCerulean")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_DeathInFourActs = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/DeathInFourActs")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_CaesuraOfDespair = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/CaesuraOfDespair")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_StygianNymph = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/StygianNymph")
         {
 
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_MementoMuse = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/MementoMuse")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_LuminaryWand = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/LuminaryWand")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_Takonomicon = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/Takonomicon")
         {
+            Volume = bossVoiceVolume
 
         };
         public static readonly SoundStyle Tsukiyomi_KeyOfTheKingsLaw = new($"{nameof(StarsAbove)}/Sounds/VoiceLines/Tsukiyomi/KeyOfTheKingsLaw")
         {
+            Volume = bossVoiceVolume
 
         };
         /*
@@ -1697,22 +1785,26 @@ namespace StarsAbove.Systems
         };
         public static readonly SoundStyle SFX_AshenExecute = new($"{nameof(StarsAbove)}/Sounds/SFX/AshenExecute")
         {
-
+            Volume = 0.5f
         };
         public static readonly SoundStyle SFX_AshenExecute1 = new($"{nameof(StarsAbove)}/Sounds/SFX/AshenExecute1")
         {
+            Volume = 0.5f
 
         };
         public static readonly SoundStyle SFX_AshenExecute2 = new($"{nameof(StarsAbove)}/Sounds/SFX/AshenExecute2")
         {
+            Volume = 0.5f
 
         };
         public static readonly SoundStyle SFX_AshenExecute3 = new($"{nameof(StarsAbove)}/Sounds/SFX/AshenExecute3")
         {
+            Volume = 0.5f
 
         };
         public static readonly SoundStyle SFX_AshenExecute4 = new($"{nameof(StarsAbove)}/Sounds/SFX/AshenExecute4")
         {
+            Volume = 0.5f
 
         };
         public static readonly SoundStyle SFX_BakaMitai = new($"{nameof(StarsAbove)}/Sounds/SFX/BakaMitai")

@@ -527,6 +527,7 @@ namespace StarsAbove.UI.StarfarerMenu
             modPlayer.starfarerMenuDialogueScrollTimer = 0;
             if (modPlayer.chosenStarfarer == 1)
             {
+
                 switch (randomVoice)
                 {
                     case 0:
@@ -698,7 +699,6 @@ namespace StarsAbove.UI.StarfarerMenu
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CosmicVoyages.Warnings.LunarEvents"), 255, 255, 100); }
 				return;
 			}
-			if (Main.LocalPlayer.whoAmI == Main.myPlayer && Main.netMode == NetmodeID.MultiplayerClient) { Main.NewText(LangHelper.GetTextValue("TempInfo"), 220, 100, 247); }
 
 			Main.LocalPlayer.GetModPlayer<ArchivePlayer>().archiveActive = false;
 			Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().novaUIOpacity = 0;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using StarsAbove.Dialogue;
 using StarsAbove.Items.Consumables;
+using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.Starfarers;
 using System;
 using System.ComponentModel;
@@ -87,6 +88,12 @@ namespace StarsAbove.Systems
 
 
         [Header("$Mods.StarsAbove.Configs.MiscHeader")]
+        [Increment(0.1f)]
+        [Range(0f, 1f)]
+        [DefaultValue(1)]
+        [Slider]
+        public float bossVoiceVolume;
+
         public bool ForceNeonVeilShader;
 
         public bool EnableMusicOverride;
@@ -137,7 +144,7 @@ namespace StarsAbove.Systems
             SpatialDisk.voicesDisabled = DisableStarfarerVoices;
             StarsAboveDialogueSystem.voicesDisabled = DisableStarfarerVoices;
             StarfarerText.voicesDisabled = DisableStarfarerVoices;
-            UI.StarfarerMenu.StarfarerMenu.voicesDisabled = DisableStarfarerVoices;
+            StarfarerMenu.voicesDisabled = DisableStarfarerVoices;
 
             // Depricated!
             //StarsAbovePlayer.ForceNeonVeilShader = ForceNeonVeilShader;
@@ -147,7 +154,7 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.dialogueScrollTimerMax = DialogueScrollValue;
             StarsAbovePlayer.dialogueAudio = DialogueAudio;
             StarsAbovePlayer.disableBlur = DisableBlur;
-
+            StarsAboveAudio.bossVoiceVolume = bossVoiceVolume;
 
             if (EnableMusicOverride)
             {

@@ -322,9 +322,7 @@ namespace StarsAbove.Systems.Items
         {
             if ((StarsAboveGlobalItem.AstralWeapons.Contains(item.type) || StarsAboveGlobalItem.UmbralWeapons.Contains(item.type) || StarsAboveGlobalItem.SpatialWeapons.Contains(item.type)) && tarotCardType == -1)
             {
-                //0 fool, 2 magician, 3 priestess, 4 empress, 5 emperor, 6 heirophant, 7 lovers, 8 chariot, 9 justice,
-                //10 hermit, 11 fortune, 12 strength, 13 hanged man, 14 death, 15 temperance, 16 devil, 17 tower, 18 star, 19 moon, 20 sun
-                tarotCardType = Main.rand.Next(0, 21);
+                tarotCardType = Main.rand.Next(0, 20);
             }
             if(player.GetModPlayer<WeaponPlayer>().LegendaryShieldEquippedAsAccessory)
             {
@@ -374,7 +372,6 @@ namespace StarsAbove.Systems.Items
                 for (int i = 0; i < legendaryShieldMemories.Count; i++)
                 {
                     CheckMemories(item, legendaryShieldMemories[i], player);
-
                 }
             }//All effects are processed at the end just in case some weapons have 'buff other effect' effects
             BuffMemories(player, item);

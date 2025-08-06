@@ -65,7 +65,7 @@ namespace StarsAbove.UI.CelestialCartography
 
 		private UIImageButton QuestionMark;
 
-		public static bool DisableMultiplayerCompatibility = false;
+		public static bool MultiplayerFallbackSubworlds = false;
 
 		public override void OnInitialize() {
 			// Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
@@ -377,7 +377,7 @@ namespace StarsAbove.UI.CelestialCartography
 			if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().chosenStarfarer == 0 || !Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().CelestialCartographyActive)
 				return;
 
-			if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+			if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 			{
 				if(!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                 {
@@ -424,7 +424,7 @@ namespace StarsAbove.UI.CelestialCartography
 				
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -472,7 +472,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 1)
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -521,7 +521,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -570,7 +570,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -621,7 +621,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -672,7 +672,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -723,7 +723,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -781,7 +781,7 @@ namespace StarsAbove.UI.CelestialCartography
                 {
                     if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
                     {
-                        if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+                        if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
                         {
                             if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                             {
@@ -834,7 +834,7 @@ namespace StarsAbove.UI.CelestialCartography
             {
                 if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
                 {
-                    if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+                    if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
                     {
                         if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                         {
@@ -882,7 +882,7 @@ namespace StarsAbove.UI.CelestialCartography
             {
                 if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
                 {
-                    if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+                    if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
                     {
                         if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                         {
@@ -930,7 +930,7 @@ namespace StarsAbove.UI.CelestialCartography
             {
                 if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
                 {
-                    if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+                    if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
                     {
                         if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
                         {
@@ -978,7 +978,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 2)//Tier 2
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -1026,7 +1026,7 @@ namespace StarsAbove.UI.CelestialCartography
 			{
 				if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().andyerIntroDialogue > 0)
 				{
-					if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+					if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 					{
 						if (Main.myPlayer == Main.LocalPlayer.whoAmI)
 						{
@@ -1079,7 +1079,7 @@ namespace StarsAbove.UI.CelestialCartography
                 {
 					if (Main.LocalPlayer.GetModPlayer<CelestialCartographyPlayer>().stellaglyphTier >= 3)//Tier 3
 					{
-						if (Main.netMode == NetmodeID.MultiplayerClient && !DisableMultiplayerCompatibility)
+						if (Main.netMode == NetmodeID.MultiplayerClient && MultiplayerFallbackSubworlds)
 						{
 							if (!Main.LocalPlayer.HasBuff(BuffType<SubworldLootCooldown>()) && Main.myPlayer == Main.LocalPlayer.whoAmI)
 							{

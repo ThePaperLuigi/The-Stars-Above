@@ -37,18 +37,11 @@ namespace StarsAbove.Items.Placeable.Stellaglyphs
 		}
 
 		public override void SetDefaults()
-		{
-			Item.createTile = ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier3>();
-			Item.width = 20;
-			Item.height = 20;
-			Item.maxStack = 1;
-			Item.rare = ItemRarityID.LightRed;
-			Item.useAnimation = 20;
-			Item.useTime = 20;
-			Item.useStyle = ItemUseStyleID.HoldUp;
-			Item.UseSound = SoundID.Item44;
-			Item.consumable = true;
-			Item.noUseGraphic = false;
+        {
+            Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.Stellaglyph.StellaglyphTier3>(), 0);
+
+            Item.rare = ItemRarityID.LightRed;
+
 		}
 
 		public override void AddRecipes()

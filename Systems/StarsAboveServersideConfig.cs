@@ -57,7 +57,7 @@ namespace StarsAbove.Systems
         [Label("$Mods.StarsAbove.Config.SubworldCompatibility.Label")]
         [Tooltip("$Mods.StarsAbove.Config.SubworldCompatibility.Tooltip")]
         [DefaultValue(false)]
-        public bool DisableCompatibilityMode;
+        public bool MultiplayerFallbackSubworlds;
 
         [Increment(1)]
         [Range(5, 60)]
@@ -82,8 +82,8 @@ namespace StarsAbove.Systems
             StarsAboveGlobalBuff.DisableManaSicknessChange = DisableManaSicknessChange;
             BossPlayer.disableBossAggro = DisableBossAggro;
             AttackLibrary.ColorblindEnabled = ColorblindBoss;
-            CelestialCompass.DisableMultiplayerCompatibility = DisableCompatibilityMode;
-            DemonicCrux.MPCompat = DisableCompatibilityMode;
+            CelestialCompass.MultiplayerFallbackSubworlds = MultiplayerFallbackSubworlds;
+            DemonicCrux.MPCompat = MultiplayerFallbackSubworlds;
 
         }
     }

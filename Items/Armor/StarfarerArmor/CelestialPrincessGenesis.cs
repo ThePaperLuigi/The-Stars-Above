@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Terraria.GameContent;
+using StarsAbove.Items.Consumables;
 
 namespace StarsAbove.Items.Armor.StarfarerArmor
 {
@@ -82,21 +83,46 @@ namespace StarsAbove.Items.Armor.StarfarerArmor
 		public override void AddRecipes()
 		{//Outfits should be expensive chase goals, with a complicated recipe.
 
-			CreateRecipe(1)
-				.AddIngredient(ItemType<CelestialPrincessGenesisPrecursor>(), 1)
-				.AddIngredient(ItemType<TwilightNeedle>(), 1)
-				.AddIngredient(ItemType<BoltOfTrueStarsilk>(), 3)
-				.AddIngredient(ItemID.LunarBar, 32)
-				.AddIngredient(ItemID.FragmentNebula, 18)
-				.AddIngredient(ItemID.FragmentStardust, 18)
-				.AddIngredient(ItemID.FragmentSolar, 18)
-				.AddIngredient(ItemID.FragmentVortex, 18)
-				.AddIngredient(ItemID.Ectoplasm, 15)
-				.AddIngredient(ItemID.LastPrism, 1)
-				.AddIngredient(ItemID.FallenStar, 20)
-				.AddIngredient(ItemType<PrismaticCore>(), 20)
-				.AddTile(TileID.Anvils)
-				.Register();
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
+            {
+                CreateRecipe(1)
+                .AddIngredient(ItemType<CelestialPrincessGenesisPrecursor>(), 1)
+                .AddIngredient(ItemType<TwilightNeedle>(), 1)
+                .AddIngredient(ItemType<BoltOfTrueStarsilk>(), 3)
+                .AddIngredient(ItemID.LunarBar, 32)
+                .AddIngredient(ItemID.FragmentNebula, 18)
+                .AddIngredient(ItemID.FragmentStardust, 18)
+                .AddIngredient(ItemID.FragmentSolar, 18)
+                .AddIngredient(ItemID.FragmentVortex, 18)
+                .AddIngredient(ItemID.Ectoplasm, 15)
+                .AddIngredient(ItemID.LastPrism, 1)
+                .AddIngredient(ItemID.FallenStar, 20)
+                .AddIngredient(ItemType<PrismaticCore>(), 20)
+                .AddIngredient(calamityMod.Find<ModItem>("ShadowspecBar").Type, 1)
+                .AddTile(TileID.Anvils)
+                .Register();
+
+            }
+            else
+            {
+                CreateRecipe(1)
+                .AddIngredient(ItemType<CelestialPrincessGenesisPrecursor>(), 1)
+                .AddIngredient(ItemType<TwilightNeedle>(), 1)
+                .AddIngredient(ItemType<BoltOfTrueStarsilk>(), 3)
+                .AddIngredient(ItemID.LunarBar, 32)
+                .AddIngredient(ItemID.FragmentNebula, 18)
+                .AddIngredient(ItemID.FragmentStardust, 18)
+                .AddIngredient(ItemID.FragmentSolar, 18)
+                .AddIngredient(ItemID.FragmentVortex, 18)
+                .AddIngredient(ItemID.Ectoplasm, 15)
+                .AddIngredient(ItemID.LastPrism, 1)
+                .AddIngredient(ItemID.FallenStar, 20)
+                .AddIngredient(ItemType<PrismaticCore>(), 20)
+                .AddTile(TileID.Anvils)
+                .Register();
+            }
+
+            
 			
 		}
 	}

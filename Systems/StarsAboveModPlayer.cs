@@ -2579,7 +2579,7 @@ namespace StarsAbove
         }
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
-            if(beyondinfinity == 2 && !StarsAboveGlobalItem.ScalingWeapons.Contains(item.type))
+            if (beyondinfinity == 2 && !StarsAboveGlobalItem.ScalingWeapons.Contains(item.type) && item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
             {
                 bool gray = item.OriginalRarity == ItemRarityID.Gray;
                 bool white = item.OriginalRarity == ItemRarityID.White;
@@ -2620,7 +2620,7 @@ namespace StarsAbove
                 else
                 {
                     float damageMult = 1f +
-                    (gray ? 20f : 0f) + //No weapons have a base rarity of gray, so this is just for fun
+                    (gray ? 20f : 0f) +              //No weapons have a base rarity of gray, so this is just for fun
                     (white ? 12f : 0f) +
                     (blue ? 9f : 0f) +
                     (green ? 7f : 0f) +
@@ -9238,6 +9238,10 @@ namespace StarsAbove
                 }//triCast
                 if (novaGauge == trueNovaGaugeMax && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && chosenStellarNova == 3)
                 {
+                    if (Player.HasBuff(BuffType<LucidDreamerNovaCooldown>()))
+                    {
+                        return;
+                    }
                     if (Player.whoAmI == Main.myPlayer)
                     {
                         //Activate the Stellar Novas here.
@@ -13602,16 +13606,19 @@ namespace StarsAbove
                         switch (randomVoice)
                         {
                             case 0:
-                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
+                                if(!voicesDisabled)
+                                    SoundEngine.PlaySound(StarsAboveAudio.AOutfit0);
                                 
                                 starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.1");
                                 break;
                             case 1:
-                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
+                                if (!voicesDisabled)
+                                    SoundEngine.PlaySound(StarsAboveAudio.AOutfit1);
                                 starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.2");
                                 break;
                             case 2:
-                                SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
+                                if (!voicesDisabled)
+                                    SoundEngine.PlaySound(StarsAboveAudio.AOutfit2);
                                 starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Asphodene.3");
                                 break;
 
@@ -13623,17 +13630,20 @@ namespace StarsAbove
                         switch (randomVoice)
                         {
                             case 0:
-                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
+                                if (!voicesDisabled)
+                                    SoundEngine.PlaySound(StarsAboveAudio.EOutfit0);
                                 starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.1");
 
                                 break;
                             case 1:
-                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
+                                if (!voicesDisabled)
+                                    SoundEngine.PlaySound(StarsAboveAudio.EOutfit1);
                                 starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.2");
 
                                 break;
                             case 2:
-                                SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
+                                if (!voicesDisabled)
+                                    SoundEngine.PlaySound(StarsAboveAudio.EOutfit2);
                                 starfarerMenuDialogue = LangHelper.GetTextValue($"StarfarerMenuDialogue.StarfarerMenuButtons.StarfarerOutfitChanged.Eridani.3");
 
                                 break;
