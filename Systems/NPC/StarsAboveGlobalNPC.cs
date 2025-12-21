@@ -41,6 +41,7 @@ using StarsAbove.Buffs.Other.Phasmasaber;
 using StarsAbove.Buffs.Subworlds;
 using StarsAbove.Utilities;
 using Terraria.DataStructures;
+using System.Diagnostics.Eventing.Reader;
 
 namespace StarsAbove.Systems
 {
@@ -93,8 +94,28 @@ namespace StarsAbove.Systems
 
                 pool.Add(NPCType<SemaphoreEnemy>(), 1f);
                 pool.Add(NPCType<LogicVirusEnemy>(), 1f);
-                pool.Add(NPCID.GoldenSlime, 0.05f);
-                pool.Add(NPCID.GoldDragonfly, 0.1f);      
+                pool.Add(NPCType<VeilbugAlpha>(), 1f);
+                pool.Add(NPCType<VeilbugBeta>(), 1f);
+                pool.Add(NPCType<Veilspear>(), 0.1f);
+
+                //Rare bonus enemies
+                pool.Add(NPCID.GoldenSlime, 0.005f);
+                pool.Add(NPCID.GoldDragonfly, 0.01f);
+                
+                if (Main.hardMode)
+                {
+                    pool.Add(NPCType<VeilbugOmega>(), 1f);
+
+                    pool.Add(NPCType<Veilcaper>(), 0.1f);
+
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    pool.Add(NPCType<Veilsniper>(), 0.1f);
+
+                }
+
+
 
             }
             

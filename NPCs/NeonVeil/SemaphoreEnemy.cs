@@ -38,7 +38,7 @@ namespace StarsAbove.NPCs.NeonVeil
         public override void SetDefaults() {
 			NPC.CloneDefaults(NPCID.Raven);
 			
-			NPC.damage = 20;
+			NPC.damage = 12;
 			NPC.defense = 0;
 			NPC.lifeMax = 200;
 
