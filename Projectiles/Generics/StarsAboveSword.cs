@@ -351,12 +351,12 @@ namespace StarsAbove.Projectiles.Generics
                     {
                         if (Projectile.ai[1] == 1)
                         {
-                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-45f);
+                            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-45f);
 
                         }
                         else
                         {
-                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+                            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-135f);
 
                         }
                     }
@@ -364,12 +364,12 @@ namespace StarsAbove.Projectiles.Generics
                     {
                         if (Projectile.ai[1] == 1)
                         {
-                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+                            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-135f);
 
                         }
                         else
                         {
-                            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-45f);
+                            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-45f);
 
                         }
                     }
@@ -378,7 +378,7 @@ namespace StarsAbove.Projectiles.Generics
                 }
                 else
                 {
-                    Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+                    Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-90f);
 
                 }
 
@@ -389,13 +389,13 @@ namespace StarsAbove.Projectiles.Generics
                 {
                     if (Projectile.ai[1] == 1)
                     {
-                        Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+                        Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-90f);
 
 
                     }
                     else
                     {
-                        Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-135f);
+                        Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-135f);
 
                     }
 

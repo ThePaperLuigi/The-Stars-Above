@@ -104,7 +104,7 @@ namespace StarsAbove.Projectiles.Melee.Hullwrought
             //rotationSpeed -= 1f;
             //bool rotateClockwise = true;
             //The rotation is set here
-            //projectile.rotation = Vector2.Normalize(Main.player[projectile.owner].Center - projectile.Center).ToRotation() + MathHelper.ToRadians(225f);
+            //projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(225f);
             //projectile.rotation = projectile.velocity.ToRotation();
 
 

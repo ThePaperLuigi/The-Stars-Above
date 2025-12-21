@@ -285,7 +285,7 @@ namespace StarsAbove.Projectiles.Ranged.InheritedCaseM4A1
         }
         private void OrientSprite(Player projOwner)
         {
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
+            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(180f);
             
             //Main.NewText(MathHelper.ToDegrees(Projectile.rotation));
             if (Projectile.rotation >= MathHelper.ToRadians(90) && Projectile.rotation <= MathHelper.ToRadians(270))

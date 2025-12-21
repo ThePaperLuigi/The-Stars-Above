@@ -106,7 +106,7 @@ namespace StarsAbove.Projectiles.Other.DreadmotherDarkIdol
 
 
             }
-            //projectile.rotation = Vector2.Normalize(Main.player[projectile.owner].Center - projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+            //projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-90f);
             Projectile.ai[0]++;
 
 

@@ -124,7 +124,7 @@ namespace StarsAbove.Projectiles.Magic.Ozma
         {
             //for (int d = 0; d < 8; d++)
             {
-                Dust.NewDust(Projectile.Center, 0, 0, ProjectileID.DiamondBolt, Main.rand.NextFloat(-7, 7), Main.rand.NextFloat(-7, 7), 150, default, 0.9f);
+                Dust.NewDust(Projectile.Center, 0, 0, DustID.GemDiamond, Main.rand.NextFloat(-7, 7), Main.rand.NextFloat(-7, 7), 150, default, 0.9f);
 
             }
         }

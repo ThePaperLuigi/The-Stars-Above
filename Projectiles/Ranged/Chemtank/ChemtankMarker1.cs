@@ -134,7 +134,7 @@ namespace StarsAbove.Projectiles.Ranged.Chemtank
 
                 }
             }
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
+            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-90f);
             Projectile.ai[0]--;
 
             if (Projectile.ai[0] > 0)

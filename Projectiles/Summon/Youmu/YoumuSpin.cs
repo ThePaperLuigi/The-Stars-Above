@@ -113,7 +113,7 @@ namespace StarsAbove.Projectiles.Summon.Youmu
             //rotationSpeed -= 1f;
             //bool rotateClockwise = true;
             //The rotation is set here
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
+            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(180f);
             //projectile.rotation = projectile.velocity.ToRotation();
 
         }

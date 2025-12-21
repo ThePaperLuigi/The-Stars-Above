@@ -103,13 +103,13 @@ namespace StarsAbove.Projectiles.Other.Manifestation
                 {//Adjust when facing the other direction
                     Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2 + 19;
                     Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2 - 20 + projOwner.velocity.Y * 0.05f;
-                    Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(100f);
+                    Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(100f);
                 }
                 else
                 {
                     Projectile.position.X = projOwner.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2 - 19;
                     Projectile.position.Y = projOwner.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2 - 20 + projOwner.velocity.Y * 0.05f;
-                    Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(80f);
+                    Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(80f);
                 }
             }
             else
@@ -147,12 +147,12 @@ namespace StarsAbove.Projectiles.Other.Manifestation
                 if (Projectile.spriteDirection == 1)
                 {//Adjust when facing the other direction
 
-                    Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
+                    Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(180f);
                 }
                 else
                 {
 
-                    Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(0f);
+                    Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(0f);
                 }
                 Projectile.rotation += projOwner.velocity.X * 0.05f; //Rotate in the direction of the user when moving
 

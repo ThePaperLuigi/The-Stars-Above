@@ -116,7 +116,7 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
             Vector2 drawPos3 = Vector2.Lerp(Projectile.Center, Main.player[Projectile.owner].Center, 0.45f + bonusEase) - Main.screenPosition;
             Vector2 drawPos4 = Vector2.Lerp(Projectile.Center, Main.player[Projectile.owner].Center, 0.25f + bonusEase) - Main.screenPosition;
 
-            float rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation();
+            float rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation();
             // Draw the main texture
 
             Main.EntitySpriteDraw(texture, drawPos, frame, color, rotation, origin, 0.9f + MathHelper.Lerp(0f, 1f, EaseHelper.InOutQuad((float)((float)Projectile.alpha / 205f))), SpriteEffects.None, 0f);

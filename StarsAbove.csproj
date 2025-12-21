@@ -5,6 +5,7 @@
     <AssemblyName>StarsAbove</AssemblyName>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>

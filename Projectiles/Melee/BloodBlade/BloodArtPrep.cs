@@ -98,10 +98,9 @@ namespace StarsAbove.Projectiles.Melee.BloodBlade
             float rotationsPerSecond = rotationSpeed;
             rotationSpeed -= 0.1f;
             bool rotateClockwise = true;
+
             //The rotation is set here
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(-90f);
-
-
+            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(-90f);
         }
 
         public override void OnKill(int timeLeft)

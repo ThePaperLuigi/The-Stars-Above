@@ -67,7 +67,7 @@ namespace StarsAbove.Projectiles.Other.ArchitectLuminance
             }
             // Apply proper rotation, with an offset of 135 degrees due to the sprite's rotation, notice the usage of MathHelper, use this class!
             // MathHelper.ToRadians(xx degrees here)
-            Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(135f);
+            Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(135f);
             // Offset by 90 degrees here
             if (Projectile.spriteDirection == -1)
             {

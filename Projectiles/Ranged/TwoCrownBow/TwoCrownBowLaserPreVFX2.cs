@@ -111,7 +111,7 @@ namespace StarsAbove.Projectiles.Ranged.TwoCrownBow
             float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 5f);
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
 
-            float rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation();
+            float rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation();
             // Draw the main texture
 
             Main.EntitySpriteDraw(texture, drawPos, frame, color, rotation, origin, 0.7f, SpriteEffects.None, 0f);

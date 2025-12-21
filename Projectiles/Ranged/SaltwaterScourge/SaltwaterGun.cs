@@ -101,12 +101,12 @@ namespace StarsAbove.Projectiles.Ranged.SaltwaterScourge
             if (Projectile.spriteDirection == 1)
             {//Adjust when facing the other direction
 
-                Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(180f);
+                Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(180f);
             }
             else
             {
 
-                Projectile.rotation = Vector2.Normalize(Main.player[Projectile.owner].Center - Projectile.Center).ToRotation() + MathHelper.ToRadians(0f);
+                Projectile.rotation = (Main.player[Projectile.owner].Center - Projectile.Center).SafeNormalize(Vector2.Zero).ToRotation() + MathHelper.ToRadians(0f);
             }
             //Projectile.Center += projOwner.gfxOffY * Vector2.UnitY;//Prevent glitchy animation.
 
