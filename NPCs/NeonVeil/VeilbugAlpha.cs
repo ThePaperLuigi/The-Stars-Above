@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Utilities;
 
-namespace StarsAbove.NPCs.OffworldNPCs.Caelum
+namespace StarsAbove.NPCs.NeonVeil
 {
     public class VeilbugAlpha : ModNPC
 	{

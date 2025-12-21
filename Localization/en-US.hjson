@@ -6600,6 +6600,12 @@ Mods: {
 			SemaphoreEnemy.DisplayName: Semaphore
 			LogicBombEnemy.DisplayName: Logic Bomb
 			LogicVirusEnemy.DisplayName: Logic Virus
+			VeilbugAlpha.DisplayName: Veilbug Alpha
+			VeilbugBeta.DisplayName: Veilbug Beta
+			VeilbugOmega.DisplayName: Veilbug Omega
+			Veilcaper.DisplayName: Veilcaper
+			Veilsniper.DisplayName: Veilsniper
+			Veilspear.DisplayName: Veilspear
 		}
 
 		BossAttacks: {

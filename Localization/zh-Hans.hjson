@@ -6594,6 +6594,12 @@ Mods: {
 			SemaphoreEnemy.DisplayName: 信号量
 			LogicBombEnemy.DisplayName: 逻辑炸弹
 			LogicVirusEnemy.DisplayName: 逻辑病毒
+			// VeilbugAlpha.DisplayName: Veilbug Alpha
+			// VeilbugBeta.DisplayName: Veilbug Beta
+			// VeilbugOmega.DisplayName: Veilbug Omega
+			// Veilcaper.DisplayName: Veilcaper
+			// Veilsniper.DisplayName: Veilsniper
+			// Veilspear.DisplayName: Veilspear
 		}
 
 		BossAttacks: {

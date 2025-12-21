@@ -38,7 +38,7 @@ namespace StarsAbove.NPCs.NeonVeil
 			NPC.timeLeft = 640;
 			NPC.value = 0f;
 			NPC.knockBackResist = 0.5f;
-			NPC.aiStyle = NPCAIStyleID.Corite;
+			NPC.aiStyle = NPCAIStyleID.Bat;
 			NPC.noTileCollide = true;
             SpawnModBiomes = new int[1] { ModContent.GetInstance<Biomes.NeonVeilBiome>().Type };
 
@@ -51,13 +51,13 @@ namespace StarsAbove.NPCs.NeonVeil
 
             LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new Conditions.IsHardmode());
 
-			leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemID.WoodenCrateHard, 5,1,3));
-            leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemID.IronCrateHard, 10,1,3));
-            leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemID.GoldenCrateHard, 20,1,3));
+            leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemID.WoodenCrateHard, 2, 1, 3));
+            leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemID.IronCrateHard, 5, 1, 3));
+            leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemID.GoldenCrateHard, 10, 1, 3));
 
-            leadingConditionRule.OnFailedConditions(ItemDropRule.Common(ItemID.WoodenCrate, 5, 1, 3));
-            leadingConditionRule.OnFailedConditions(ItemDropRule.Common(ItemID.IronCrate, 10, 1, 3));
-            leadingConditionRule.OnFailedConditions(ItemDropRule.Common(ItemID.GoldenCrate, 20, 1, 3));
+            leadingConditionRule.OnFailedConditions(ItemDropRule.Common(ItemID.WoodenCrate, 2, 1, 3));
+            leadingConditionRule.OnFailedConditions(ItemDropRule.Common(ItemID.IronCrate, 5, 1, 3));
+            leadingConditionRule.OnFailedConditions(ItemDropRule.Common(ItemID.GoldenCrate, 10, 1, 3));
 
             npcLoot.Add(leadingConditionRule);
 
