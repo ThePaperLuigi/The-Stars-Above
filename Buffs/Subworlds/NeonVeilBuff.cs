@@ -1,5 +1,4 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.ID;
 
 namespace StarsAbove.Buffs.Subworlds
 {
@@ -7,28 +6,27 @@ namespace StarsAbove.Buffs.Subworlds
     {
         public override void SetStaticDefaults()
         {
-            
+            // Do not show the remaining buff time
             Main.buffNoTimeDisplay[Type] = true;
-            Main.debuff[Type] = false; //Add this so the nurse doesn't remove the buff when healing
+            
+            // Prevents the player from clearing this buff using right click
+            Main.debuff[Type] = true;
+            
+            // Make sure the Nurse NPC cannot remove this (de)buff
+            BuffID.Sets.NurseCannotRemoveDebuff[Type] = true; 
         }
 
         public override void Update(Player player, ref int buffIndex)
         {
-            if(player.HeldItem.pick > 0)
+            // When the player is holding an item that can mine tiles
+            if (player.HeldItem.pick > 0)
             {
+                // Decreases swing speed by 60%
                 player.GetAttackSpeed(DamageClass.Generic) -= 0.6f;
             }
-        }
-        public override void Update(NPC npc, ref int buffIndex)
-        {
 
-
-
-        }
-        public override bool ReApply(NPC npc, int time, int buffIndex)
-        {
-
-            return base.ReApply(npc, time, buffIndex);
+            // Decreases mining speed by 60% (higher value means slower)
+            player.pickSpeed += 0.6f;
         }
     }
 }
