@@ -1,14 +1,10 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Terraria;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.GameContent;
 using StarsAbove.Buffs.Summon.DragaliaFound;
+using StarsAbove.Systems;
 
 namespace StarsAbove.Mounts.DragaliaFound
 {
@@ -131,6 +127,14 @@ namespace StarsAbove.Mounts.DragaliaFound
 
 				skipDust = true;
 			}
+		}
+
+		public override void Dismount(Player player, ref bool skipDust)
+		{
+			// When the player cancels the Dragon Shift by any means, reset the gauge.
+			player.GetModPlayer<WeaponPlayer>().DragonshiftGauge = 0f;
+			
+			base.Dismount(player, ref skipDust);
 		}
 
 		public override bool Draw(List<DrawData> playerDrawData, int drawType, Player drawPlayer, ref Texture2D texture, ref Texture2D glowTexture, ref Vector2 drawPosition, ref Rectangle frame, ref Color drawColor, ref Color glowColor, ref float rotation, ref SpriteEffects spriteEffects, ref Vector2 drawOrigin, ref float drawScale, float shadow)

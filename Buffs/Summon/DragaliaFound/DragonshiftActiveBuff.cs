@@ -20,8 +20,8 @@ namespace StarsAbove.Buffs.Summon.DragaliaFound
             if (player.GetModPlayer<WeaponPlayer>().DragonshiftGauge <= 0)
             {
                 player.DelBuff(buffIndex);
+                buffIndex--;
             }
-
         }
     }
 }
