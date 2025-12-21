@@ -34,6 +34,7 @@ using StarsAbove.Items.Memories.TarotCard;
 using StarsAbove.Buffs.Memories;
 using StarsAbove.Projectiles.Memories;
 using System;
+using System.IO;
 using Terraria.GameInput;
 using System.Reflection;
 using Terraria.Audio;
@@ -157,6 +158,79 @@ namespace StarsAbove.Systems.Items
             ItemType<LegendaryShield>(),
             ItemType<HunterSymphony>(),
         };
+
+        public override GlobalItem Clone(Item item, Item itemClone)
+        {
+            if (item.TryGetGlobalItem(out ItemMemorySystem fromItem)
+                && itemClone.TryGetGlobalItem(out ItemMemorySystem toItem))
+            {
+                toItem.legendaryShieldMemories = new List<int>(fromItem.legendaryShieldMemories);
+            }
+
+            return base.Clone(item, itemClone);
+        }
+
+        public override void NetSend(Item item, BinaryWriter writer)
+        {
+            // Check if this item is from StarsAbove mod
+            if (item.ModItem?.Mod == GetInstance<StarsAbove>())
+            {
+                // Write the weapon memories
+                writer.Write(itemMemorySlot1);
+                writer.Write(itemMemorySlot2);
+                writer.Write(itemMemorySlot3);
+                
+                // Write the tarot card
+                writer.Write(tarotCardType);
+                
+                // Write the shield memories
+                writer.Write(legendaryShieldMemories?.Count ?? -1);
+                if (legendaryShieldMemories != null)
+                {
+                    foreach (var memory in legendaryShieldMemories)
+                    {
+                        writer.Write(memory);
+                    }
+                }
+            }
+
+            base.NetSend(item, writer);
+        }
+
+        public override void NetReceive(Item item, BinaryReader reader)
+        {
+            // Check if this item is from StarsAbove mod
+            if (item.ModItem?.Mod == GetInstance<StarsAbove>())
+            {
+                // Read the weapon memories
+                itemMemorySlot1 = reader.ReadInt32();
+                itemMemorySlot2 = reader.ReadInt32();
+                itemMemorySlot3 = reader.ReadInt32();
+                
+                // Read the tarot card
+                tarotCardType = reader.ReadInt32();
+                
+                // Read the shield memories
+                var count = reader.ReadInt32();
+
+                // Only read additional data when the count is
+                // greater than zero
+                if (count > 0)
+                {
+                    // Reset list
+                    legendaryShieldMemories = [];
+                    
+                    // Loop and read
+                    for (var i = 0; i < count; i++)
+                    {
+                        legendaryShieldMemories.Add(reader.ReadInt32());
+                    }
+                }
+            }
+            
+            base.NetReceive(item, reader);
+        }
+
         public override void SaveData(Item item, TagCompound tag)
         {
             if(item.ModItem?.Mod == ModLoader.GetMod("StarsAbove"))
