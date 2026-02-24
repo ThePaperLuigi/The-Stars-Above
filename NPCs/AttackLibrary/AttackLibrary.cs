@@ -45,6 +45,8 @@ namespace StarsAbove.NPCs.AttackLibrary
 {
     public class AttackLibrary
 	{
+		public static bool disableBossVoiceLines = true;
+
 		// Here we define an enum we will use with the State slot. Using an ai slot as a means to store "state" can simplify things greatly. Think flowchart.
 		// All bosses will look at this ActionState and go from there. Remember this takes the role of NPC.ai[0] so nothing else can go there.
 		public enum ActionState
@@ -1433,7 +1435,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_RuinationIsCome, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_RuinationIsCome, npc.Center);
 				Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().screenShakeTimerGlobal = -80;
 
 
@@ -1552,7 +1554,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
 					if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.Nalhaun.Feint"), 241, 255, 180); }
 
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 					
 				}
 
@@ -1568,7 +1570,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_RuinationIsCome, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_RuinationIsCome, npc.Center);
 
 
 
@@ -2023,7 +2025,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
 				if(npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>())
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheHeartsOfMen, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheHeartsOfMen, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -2213,7 +2215,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 //Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
                 //Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<VagrantSpearSprite>(), 30, 0, Main.myPlayer);
                 if (npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_ComeShowMeMore, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_ComeShowMeMore, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -2562,7 +2564,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 230);
 
@@ -2578,7 +2580,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -2638,7 +2640,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 230);
 
@@ -2654,7 +2656,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -2714,7 +2716,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
 
@@ -2730,7 +2732,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -2789,7 +2791,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 230);
@@ -2806,7 +2808,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -2868,7 +2870,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 230);
@@ -2885,7 +2887,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -2947,7 +2949,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_EscapeIsNotSoEasilyGranted, npc.Center);
 
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
 
@@ -2963,7 +2965,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3024,7 +3026,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 240);
@@ -3041,7 +3043,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3123,7 +3125,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 120);
@@ -3140,7 +3142,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3222,7 +3224,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 240);
@@ -3239,7 +3241,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3322,7 +3324,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
-					SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 					//10 less
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<NalhaunCastSprite>(), 0, 0, Main.myPlayer, 240);
@@ -3339,7 +3341,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3417,7 +3419,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -3438,7 +3440,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3516,7 +3518,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_PityDisplay, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -3537,7 +3539,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -3712,7 +3714,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_WereYouExpectingRust, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_WereYouExpectingRust, npc.Center);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -3801,7 +3803,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_MyDefenses, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_MyDefenses, npc.Center);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -3892,7 +3894,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_MyDefenses, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_MyDefenses, npc.Center);
 				SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -3994,7 +3996,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_AndNowTheScalesWillTip, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_AndNowTheScalesWillTip, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -4066,7 +4068,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
                 if (npc.type == ModContent.NPCType<NalhaunBoss>() || npc.type == ModContent.NPCType<NalhaunBossPhase2>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_EnterDarkness, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -4190,7 +4192,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_EnterDarkness, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -4337,7 +4339,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (npc.type == ModContent.NPCType<ArbitrationBoss>())
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -4592,7 +4594,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (npc.type == ModContent.NPCType<ArbitrationBoss>())
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -4674,7 +4676,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (npc.type == ModContent.NPCType<ArbitrationBoss>())
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -5405,7 +5407,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 if (npc.type == ModContent.NPCType<ArbitrationBoss>())
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -5514,7 +5516,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 if (npc.type == ModContent.NPCType<ArbitrationBoss>())
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -5628,7 +5630,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<ArbitrationBoss>())
                 {
-                    SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -5792,7 +5794,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 if (npc.type == ModContent.NPCType<StarfarerBoss>())
                 {
-                    //SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
+                    //if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Arbitration_Voice, npc.Center);
 
 
                 }
@@ -6404,7 +6406,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_EnterDarkness, npc.Center);
 
 					int type = ProjectileType<NalhaunExplosionIndicator>();
@@ -7053,7 +7055,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_TheGodsWillNotBeWatching, npc.Center);
 					//SoundEngine.PlaySound(StarsAboveAudio.SFX_EnterDarkness, npc.Center);
 
 					int type = ProjectileType<PolluxDiamondDust>();
@@ -7134,7 +7136,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					
-					//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
 
 
 
@@ -7224,7 +7226,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 
-					//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
 
 
 
@@ -8667,13 +8669,13 @@ namespace StarsAbove.NPCs.AttackLibrary
                 if (Main.rand.NextBool())
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WouldntItBeSoFunny, npc.Center);
+                        if(!disableBossVoiceLines)if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WouldntItBeSoFunny, npc.Center);
 
                 }
                 else
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_MoreWhereThatCameFrom, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_MoreWhereThatCameFrom, npc.Center);
 
                 }
 
@@ -8761,13 +8763,13 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if(Main.rand.NextBool())
 				{
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WouldntItBeSoFunny, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WouldntItBeSoFunny, npc.Center);
 
                 }
                 else
 				{
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_MoreWhereThatCameFrom, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_MoreWhereThatCameFrom, npc.Center);
 
                 }
 
@@ -8882,7 +8884,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WhatColor, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WhatColor, npc.Center);
 
 
                 }
@@ -8988,7 +8990,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_IDontThinkYoullLikeWhatComesNext, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_IDontThinkYoullLikeWhatComesNext, npc.Center);
 
 
                 }
@@ -9167,7 +9169,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_AlrightMyTurn, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_AlrightMyTurn, npc.Center);
 
 
                 }
@@ -9280,7 +9282,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_QuicklyNow, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_QuicklyNow, npc.Center);
 
                 float dustAmount = 60f;
                 for (int i = 0; (float)i < dustAmount; i++)
@@ -9373,7 +9375,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WrappedThingsUp, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WrappedThingsUp, npc.Center);
                 float dustAmount = 60f;
                 for (int i = 0; (float)i < dustAmount; i++)
                 {
@@ -9469,13 +9471,13 @@ namespace StarsAbove.NPCs.AttackLibrary
                 if (Main.rand.NextBool())
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WouldntItBeSoFunny, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_WouldntItBeSoFunny, npc.Center);
 
                 }
                 else
                 {
                     if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                        SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_MoreWhereThatCameFrom, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_MoreWhereThatCameFrom, npc.Center);
 
                 }
 
@@ -9564,7 +9566,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_RainButPrettier, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_RainButPrettier, npc.Center);
 
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
@@ -9652,7 +9654,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_HandsOn, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_HandsOn, npc.Center);
 
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
@@ -9901,7 +9903,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, npc.Center);
                 if (npc.type == ModContent.NPCType<PenthesileaBoss>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_TooMuchColor, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_TooMuchColor, npc.Center);
 
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
@@ -10029,7 +10031,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				}
 				if(DownedBossSystem.downedTsuki)//doesn't work yet?
                 {
-					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TakeThisOutside, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TakeThisOutside, npc.Center);
 
 				}
 
@@ -10123,7 +10125,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				}
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Insignificant, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Insignificant, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -10145,7 +10147,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					npc.localAI[0] = 2;
-					//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Tedious, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Tedious, npc.Center);
 				}
 				npc.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 180);
 
@@ -10191,7 +10193,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ForgettingSomething, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ForgettingSomething, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -10716,7 +10718,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_NowhereYouCanRun, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_NowhereYouCanRun, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -10804,7 +10806,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_NowhereYouCanRun, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_NowhereYouCanRun, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -10897,7 +10899,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if(npc.type == NPCType<TsukiyomiBoss>())
 				{
-                    SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ThousandStars, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ThousandStars, npc.Center);
 
                 }
                 if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -11008,7 +11010,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ThousandStars, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ThousandStars, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11119,7 +11121,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Struggle, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Struggle, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11309,7 +11311,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11435,7 +11437,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
-					//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
+					//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
 
 					if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 					{
@@ -11554,7 +11556,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_AfraidOfTheDark, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_AfraidOfTheDark, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11630,7 +11632,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TryHarder, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11702,7 +11704,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<TsukiyomiBoss>())
-                    SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_CarianDarkMoon, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_CarianDarkMoon, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11800,7 +11802,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_CarianDarkMoon, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_CarianDarkMoon, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11896,7 +11898,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_CaesuraOfDespair, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_CaesuraOfDespair, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -11979,7 +11981,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
 
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -12058,7 +12060,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_KeyOfTheKingsLaw, npc.Center);
 
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -12141,12 +12143,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 				if (Main.rand.NextBool())
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_StygianNymph, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_StygianNymph, npc.Center);
 
 				}
 				else
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_MementoMuse, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_MementoMuse, npc.Center);
 
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -12226,12 +12228,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 				if (Main.rand.NextBool())
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_StygianNymph, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_StygianNymph, npc.Center);
 
 				}
 				else
 				{
-					SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_MementoMuse, npc.Center);
+					if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_MementoMuse, npc.Center);
 
 				}
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -12311,7 +12313,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_VoiceOfTheOutbreak, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_VoiceOfTheOutbreak, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -12388,7 +12390,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_VoiceOfTheOutbreak, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_VoiceOfTheOutbreak, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -12468,7 +12470,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ShadowlessCerulean, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_ShadowlessCerulean, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					for (int d = 0; d < 30; d++)
@@ -12581,7 +12583,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
                     if (npc.type == ModContent.NPCType<TsukiyomiBoss>())
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Takonomicon, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Takonomicon, npc.Center);
                         Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiTakonomicon>(), 0, 0f, Main.myPlayer, 120);
                         Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiWings>(), 0, 0f, Main.myPlayer, 120);
                     }
@@ -12668,7 +12670,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				//SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Takonomicon, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Takonomicon, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					for (int d = 0; d < 30; d++)
@@ -12758,7 +12760,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_LuminaryWand, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_LuminaryWand, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					for (int d = 0; d < 30; d++)
@@ -12835,7 +12837,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TheOnlyThingIKnowForReal, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_TheOnlyThingIKnowForReal, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -12961,7 +12963,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					}
                     if (npc.type == ModContent.NPCType<TsukiyomiBoss>())
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_BuryTheLight, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_BuryTheLight, npc.Center);
                         Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiBuryTheLight>(), 0, 0f, Main.myPlayer, 120);
                         Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<TsukiWings>(), 0, 0f, Main.myPlayer, 120);
                     }
@@ -13068,7 +13070,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_BuryTheLight, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_BuryTheLight, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					for (int d = 0; d < 30; d++)
@@ -13188,7 +13190,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_DeathInFourActs, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_DeathInFourActs, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsReload, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -13253,7 +13255,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_DeathInFourActs, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_DeathInFourActs, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_DeathInFourActsReload, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -13327,14 +13329,14 @@ namespace StarsAbove.NPCs.AttackLibrary
 					//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
 
                         Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 40);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
 
                         Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightFinalPhaseSwingingSprite>(), 0, 0, Main.myPlayer, 40);
 
@@ -13441,7 +13443,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -13480,7 +13482,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -13559,7 +13561,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -13589,7 +13591,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -13673,7 +13675,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
@@ -13707,7 +13709,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -13764,12 +13766,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 180);
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_BegoneSpawnOfShadow, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
 
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightFinalPhaseSwingingSprite>(), 0, 0, Main.myPlayer, 180);
 
@@ -13796,7 +13798,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 			if (npc.ai[0] == (float)ActionState.Casting && npc.localAI[3] >= npc.ai[3])//If this attack is called again (which means the cast finished)
 			{
-				//SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
+				//if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_Fools, npc.Center);
 
 				#region attack
 				//Sprite animation. Easier to work with, because it's not tied to the main sprite sheet.
@@ -14068,7 +14070,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
 
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RefulgentEther, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -14189,7 +14191,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_RadiantBraver, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -14331,12 +14333,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
 
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
 
@@ -14486,12 +14488,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
 
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
 
@@ -14639,12 +14641,12 @@ namespace StarsAbove.NPCs.AttackLibrary
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 					{
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightCastingSprite>(), 0, 0, Main.myPlayer, 120);
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_ToMeWarriorsOfLight, npc.Center);
 
 					}
 					if (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>())
 					{
-						SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
+						if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_NowToTakeYourMeasure, npc.Center);
 
 						Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ProjectileType<WarriorOfLightFinalPhaseCastingSprite>(), 0, 0, Main.myPlayer, 120);
 
@@ -14773,7 +14775,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_GleamingSteelLightMyPath, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_GleamingSteelLightMyPath, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -14892,7 +14894,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_GleamingSteelLightMyPath, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_GleamingSteelLightMyPath, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -15208,7 +15210,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, npc.Center);
 				float Speed = 12f;  //projectile speed
 				Vector2 StartPosition = new Vector2(npc.Center.X, npc.Center.Y);
 				int damage = npc.damage/2 + 0/2;  //projectile damage
@@ -15325,7 +15327,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_DarknessMustBeDestroyed, npc.Center);
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 120);
@@ -15428,7 +15430,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
 					Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center.X, npc.Center.Y, 0, 0, ModContent.ProjectileType<WarriorOfLightSwingingSprite>(), 0, 0, Main.myPlayer, 120);
@@ -15532,7 +15534,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
@@ -15635,7 +15637,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_MySoulKnowsNoSurrender, npc.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -15812,7 +15814,7 @@ namespace StarsAbove.NPCs.AttackLibrary
                                      //The NPC will recieve the message when this code is run: "Oh, I'm casting."
                                      //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
                 if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
-                    SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
+                    if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
 
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
@@ -16023,7 +16025,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				{
                     if (npc.type == ModContent.NPCType<WarriorOfLightBoss>() || (npc.type == ModContent.NPCType<WarriorOfLightBossFinalPhase>()))
                     {
-                        SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
+                        if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheBitterEnd, npc.Center);
 
                     }
 					SoundEngine.PlaySound(StarsAboveAudio.SFX_prototokiaActive, target.Center);
@@ -16116,7 +16118,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 
 				#region attack
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_EveryDream, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_EveryDream, npc.Center);
 
 				SoundEngine.PlaySound(StarsAboveAudio.SFX_GardenOfAvalonActivated, npc.Center);
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.GardenOfAvalon"), 255, 185, 0); }
@@ -16177,7 +16179,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 				npc.netUpdate = true;//NetUpdate for good measure.
 									 //The NPC will recieve the message when this code is run: "Oh, I'm casting."
 									 //Then it will think "I'm going to wait the cast time, then ask the Library what to do next."
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_FlamesOfBattle, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_FlamesOfBattle, npc.Center);
 
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
@@ -16291,7 +16293,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.ChargeStarfarer"), 255, 80, 199); }
 
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheseMagicksAreNotForYou, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_TheseMagicksAreNotForYou, npc.Center);
 
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{
@@ -16431,7 +16433,7 @@ namespace StarsAbove.NPCs.AttackLibrary
 
 				if (Main.netMode != NetmodeID.Server) { Main.NewText(LangHelper.GetTextValue($"CombatText.WarriorOfLight.ChargeStarfarer"), 255, 80, 199); }
 
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WillLightEmbrace, npc.Center);
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_WillLightEmbrace, npc.Center);
 
 				if (npc.type == ModContent.NPCType<WarriorOfLightBoss>())
 				{

@@ -272,7 +272,7 @@ namespace StarsAbove.Items.Weapons.Ranged
 					if (player.ownedProjectileCounts[Item.shoot] < 1)
 					{
 						SoundEngine.PlaySound(SoundID.Item1, player.position);
-						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y,type, damage*2, 2, player.whoAmI, 0f);
+						Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.MountedCenter.X, player.MountedCenter.Y, velocity.X, velocity.Y,type, damage*6, 2, player.whoAmI, 0f);
 					}
 					return false;
 				}

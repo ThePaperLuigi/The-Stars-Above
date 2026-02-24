@@ -19,7 +19,8 @@ namespace StarsAbove.Buffs.SubworldModifiers
 
         public override void Update(Player player, ref int buffIndex)
         {
-            
+            player.statDefense *= 2f;
+
         }
         public override void Update(NPC npc, ref int buffIndex)
         {

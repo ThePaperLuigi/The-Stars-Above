@@ -7823,6 +7823,7 @@ namespace StarsAbove
                         }
 
                     }
+                    /*
                     if (ModLoader.TryGetMod("SLUMP", out Mod compatibilityMod))
                     {
                         //[Stars Above] Stars Above detects the Subworld Library Unofficial Mod Patch is installed. Remember to enable Subworld transit in Mod Settings to use Subworlds in multiplayer.
@@ -7834,7 +7835,8 @@ namespace StarsAbove
                         //[Stars Above] Stars Above recommends you install the Subworld Library Unoffical Mod Patch for multiplayer Subworlds. If this isn't enabled, it's recommended to disable Subworld transit in Mod Settings.
                         Main.NewText(LangHelper.GetTextValue($"SLUMPNotDetected"), 185, 97, 97);
 
-                    }
+                    }*/
+                    
                 }
             }
             
@@ -8087,7 +8089,7 @@ namespace StarsAbove
 
             }*/
 
-        }
+                }
         private void OtherModBossStarfarerPrompts()
         {
             // Calamity Mod Bosses

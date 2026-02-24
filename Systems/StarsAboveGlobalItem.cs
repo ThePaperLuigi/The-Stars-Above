@@ -30,6 +30,7 @@ using StarsAbove.Items.Loot;
 using System.Reflection.Metadata;
 using StarsAbove.Items.Consumables;
 using StarsAbove.Systems;
+using Terraria.GameContent.UI.States;
 
 namespace StarsAbove.Systems
 {
@@ -44,6 +45,7 @@ namespace StarsAbove.Systems
 
         public int oldType;// 1 is melee, 2 is ranged, 3 is magic, 4 is summon
         public DamageClass oldDamageClass;
+        public bool damageTypeAspected = false;
         //public int aspect; //0 is Astral, 1 is Umbral, 2 is Dual Aspected.
         public bool spatialWeapon;
         public bool loadItem = true;
@@ -1043,24 +1045,28 @@ namespace StarsAbove.Systems
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MeleeAspect == 2)
                 {
                     item.DamageType = DamageClass.Melee;
+                    item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                 }
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().MagicAspect == 2)
                 {
 
                     item.DamageType = DamageClass.Magic;
+                    item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                 }
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RangedAspect == 2)
                 {
 
                     item.DamageType = DamageClass.Ranged;
+                    item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                 }
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().SummonAspect == 2)
                 {
 
                     item.DamageType = DamageClass.Summon;
+                    item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                 }
                 if (Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>().RogueAspect == 2)
@@ -1069,6 +1075,7 @@ namespace StarsAbove.Systems
                     {
 
                         item.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
+                        item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                     }
 
@@ -1079,6 +1086,7 @@ namespace StarsAbove.Systems
                     {
 
                         item.DamageType = thoriumMod.Find<DamageClass>("BardDamage");
+                        item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                     }
 
@@ -1089,6 +1097,7 @@ namespace StarsAbove.Systems
                     {
 
                         item.DamageType = thoriumMod.Find<DamageClass>("HealerDamage");
+                        item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                     }
 
@@ -1099,6 +1108,7 @@ namespace StarsAbove.Systems
                     {
 
                         item.DamageType = DamageClass.Throwing;
+                        item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = true;
 
                     }
 
@@ -1116,9 +1126,10 @@ namespace StarsAbove.Systems
             {
 
             }
-            if(oldDamageClass != null)
+            if(oldDamageClass != null && item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected)
             {
                 item.DamageType = oldDamageClass;
+                item.GetGlobalItem<StarsAboveGlobalItem>().damageTypeAspected = false;
 
             }
         }

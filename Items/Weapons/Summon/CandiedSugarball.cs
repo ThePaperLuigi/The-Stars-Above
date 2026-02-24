@@ -36,7 +36,7 @@ namespace StarsAbove.Items.Weapons.Summon
 
         public override void SetDefaults()
         {
-            Item.damage = 62;
+            Item.damage = 37;
             Item.DamageType = DamageClass.Summon;
             Item.mana = 60;
             Item.width = 21;

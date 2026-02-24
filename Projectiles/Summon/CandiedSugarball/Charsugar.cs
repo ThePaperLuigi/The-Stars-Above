@@ -107,7 +107,7 @@ namespace StarsAbove.Projectiles.Summon.CandiedSugarball
             Projectile.localAI[2]--;
             if (modPlayer.sugarballMinionType == 0)
             {
-                if (Projectile.ai[2] > 30)
+                if (Projectile.ai[2] > 70)
                 {
 
                     if (foundTarget)
@@ -130,16 +130,16 @@ namespace StarsAbove.Projectiles.Summon.CandiedSugarball
                         Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
                         Vector2 velocity = direction * launchSpeed;
 
-                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage + 15, 0f, player.whoAmI);
+                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage / 5 + 15, 0f, player.whoAmI);
 
-                        Main.projectile[index].originalDamage = Projectile.damage;
+                        Main.projectile[index].originalDamage = Projectile.damage/5;
 
                     }
                 }
             }
             else
             {
-                if (Projectile.ai[2] > 50)
+                if (Projectile.ai[2] > 120)
                 {
 
                     if (foundTarget)
@@ -162,9 +162,9 @@ namespace StarsAbove.Projectiles.Summon.CandiedSugarball
                         Vector2 direction = Vector2.Normalize(targetCenter - Projectile.Center);
                         Vector2 velocity = direction * launchSpeed;
 
-                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage, 0f, player.whoAmI);
+                        int index = Projectile.NewProjectile(Projectile.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y, type, Projectile.damage / 5, 0f, player.whoAmI);
 
-                        Main.projectile[index].originalDamage = Projectile.damage;
+                        Main.projectile[index].originalDamage = Projectile.damage / 5;
 
                     }
                 }

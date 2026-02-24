@@ -21,7 +21,7 @@ namespace StarsAbove.Buffs.SubworldModifiers
         {
             
             
-            player.statDefense -= 10;
+            player.statDefense *= 2f;
             player.GetDamage(DamageClass.Generic) -= 0.2f;
         }
         public override void Update(NPC npc, ref int buffIndex)

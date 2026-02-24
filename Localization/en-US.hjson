@@ -6677,7 +6677,7 @@ Mods: {
 			DelayedInnerAgony: Delayed Inner Agony
 			OuterAgony: Outer Agony
 			DelayedOuterAgony: Delayed Outer Agony
-			VelvetApogee: VelvetApogee
+			VelvetApogee: Velvet Apogee
 			VelvetAzimuth: Velvet Azimuth
 			CarrionCall: Carrion Call
 			Apostasy: Apostasy
@@ -10301,7 +10301,7 @@ Mods: {
 					Charging the bow to its maximum before firing will turn the arrow into a unique [c/25ACF0:Riptide Bolt]
 					[c/25ACF0:Riptide Bolts] will apply [c/4A91FF:Riptide] to foes struck for 12 seconds
 					Right click to consume 200 mana, entering [c/2361C1:Raging Tides] for 8 seconds
-					Within [c/2361C1:Raging Tides], attacks are changed into rapid close-ranged melee strikes that deal double damage and mana will not regenerate
+					Within [c/2361C1:Raging Tides], attacks are changed into rapid close-ranged melee strikes that deal 6x damage and mana will not regenerate
 					Additionally, gain extra Movement Speed for the buff's duration
 					Attacking foes afflicted with [c/4A91FF:Riptide] in this stance will deal extra damage
 					This weapon does not use ammo
@@ -15853,7 +15853,7 @@ Mods: {
 					'''
 					Temporarily transposed to an orbiting celestial body
 
-					Defenses have been reduced by 10
+					Defenses have been doubled
 					Outgoing damage is reduced by 20%
 
 					'''
@@ -17731,6 +17731,11 @@ Mods: {
 				bossVoiceVolume: {
 					Label: boss Voice Volume
 					Tooltip: ""
+				}
+
+				DisableBossVoiceLines: {
+					Label: Disable Boss Voice Lines
+					Tooltip: Disables the legacy boss voice lines.
 				}
 			}
 

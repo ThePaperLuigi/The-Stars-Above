@@ -6677,7 +6677,7 @@ Mods: {
 			// DelayedInnerAgony: Delayed Inner Agony
 			// OuterAgony: Outer Agony
 			// DelayedOuterAgony: Delayed Outer Agony
-			// VelvetApogee: VelvetApogee
+			// VelvetApogee: Velvet Apogee
 			// VelvetAzimuth: Velvet Azimuth
 			// CarrionCall: Carrion Call
 			// Apostasy: Apostasy
@@ -17573,6 +17573,11 @@ Mods: {
 				bossVoiceVolume: {
 					// Label: boss Voice Volume
 					// Tooltip: ""
+				}
+
+				DisableBossVoiceLines: {
+					// Label: Disable Boss Voice Lines
+					// Tooltip: Disables the legacy boss voice lines.
 				}
 			}
 

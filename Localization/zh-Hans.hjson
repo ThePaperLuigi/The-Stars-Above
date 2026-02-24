@@ -17715,6 +17715,11 @@ Mods: {
 					// Label: boss Voice Volume
 					// Tooltip: ""
 				}
+
+				DisableBossVoiceLines: {
+					// Label: Disable Boss Voice Lines
+					// Tooltip: Disables the legacy boss voice lines.
+				}
 			}
 
 			StarsAboveServersideConfig: {
