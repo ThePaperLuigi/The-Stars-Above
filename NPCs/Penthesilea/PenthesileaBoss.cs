@@ -40,7 +40,9 @@ namespace StarsAbove.NPCs.Penthesilea
     [AutoloadBossHead]
 
 	public class PenthesileaBoss : ModNPC
-	{
+    {
+        public static bool disableBossVoiceLines = true;
+
         public static readonly int arenaWidth = (int)(1.2f * 1320);
         public static readonly int arenaHeight = (int)(1.2f * 800);
 
@@ -536,7 +538,7 @@ namespace StarsAbove.NPCs.Penthesilea
 			{
                 Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 250);
                 NPC.position = initialMoveTo;
-                SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_HelloLittlePaintbrush, NPC.Center);
+                if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Penthesilea_HelloLittlePaintbrush, NPC.Center);
                 NPC.netUpdate = true;
                 //SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
                 for (int d = 0; d < 130; d++)

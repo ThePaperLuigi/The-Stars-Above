@@ -2,6 +2,9 @@
 using StarsAbove.Dialogue;
 using StarsAbove.Items.Consumables;
 using StarsAbove.NPCs.AttackLibrary;
+using StarsAbove.NPCs.Penthesilea;
+using StarsAbove.NPCs.Starfarers;
+using StarsAbove.NPCs.WarriorOfLight;
 using StarsAbove.UI.StarfarerMenu;
 using StarsAbove.UI.Starfarers;
 using System;
@@ -154,6 +157,11 @@ namespace StarsAbove.Systems
             StarsAbovePlayer.dialogueAudio = DialogueAudio;
             StarsAbovePlayer.disableBlur = DisableBlur;
             AttackLibrary.disableBossVoiceLines = DisableBossVoiceLines;
+            PenthesileaBoss.disableBossVoiceLines = DisableBossVoiceLines;
+            WarriorOfLightBoss.disableBossVoiceLines = DisableBossVoiceLines;
+            WarriorOfLightBoss.disableBossVoiceLines = DisableBossVoiceLines;
+            StarfarerBoss.disableBossVoiceLines = DisableStarfarerVoices;
+
 
             if (EnableMusicOverride)
             {

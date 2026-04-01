@@ -13428,6 +13428,21 @@ Mods: {
 					“我们掌握了自己的命运！”
 					'''
 			}
+
+			AsphodeneForkliftKey: {
+				// DisplayName: Asphodene's Forklift Key
+				// Tooltip: Summons a mechanical forklift
+			}
+
+			EridaniForkliftKey: {
+				// DisplayName: Eridani's Forklift Key
+				// Tooltip: Summons a mechanical forklift
+			}
+
+			ForkliftKey: {
+				// DisplayName: Unaspected Forklift Key
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -17424,6 +17439,16 @@ Mods: {
 			NovaChainAttackEridani: {
 				// DisplayName: Nova Chain Attack Eridani
 				// Description: Mods.StarsAbove.Buffs.NovaChainAttackEridani.Description
+			}
+
+			AsphodeneForkliftMountBuff: {
+				// DisplayName: Asphodene's Forklift
+				// Description: This is the fastest it can go...? Hey, we should Imprint a jet engine Memory into this thing.
+			}
+
+			EridaniForkliftMountBuff: {
+				// DisplayName: Eridani's Forklift
+				// Description: This is the slowest contraption upon four wheels. Perhaps it is a result of the extra weight, knowing the state of your inventory.
 			}
 		}
 

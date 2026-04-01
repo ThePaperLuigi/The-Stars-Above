@@ -30,8 +30,9 @@ namespace StarsAbove.NPCs.Nalhaun
 
 	public class NalhaunBoss : ModNPC
 	{
+        public static bool disableBossVoiceLines = true;
 
-		private int portalFrame
+        private int portalFrame
 		{
 			get => (int)NPC.localAI[0];
 			set => NPC.localAI[0] = value;
@@ -816,7 +817,7 @@ namespace StarsAbove.NPCs.Nalhaun
 			NPC.position.X = Main.player[NPC.target].Center.X - 80;
 			NPC.position.Y = Main.player[NPC.target].position.Y-160;
 			NPC.netUpdate = true;
-			SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
+            if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Nalhaun_NalhaunIntroQuote, NPC.Center);
 			for (int d = 0; d < 130; d++)
 			{
 				Dust.NewDust(NPC.Center, 0, 0, 0, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);

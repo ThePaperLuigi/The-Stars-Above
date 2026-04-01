@@ -34,9 +34,11 @@ namespace StarsAbove.Systems
                 {
                     if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod))
                     {
-                        projectile.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
-                        
+                        if(calamityMod.Find<DamageClass>("RogueDamageClass") != null)
+                        {
+                            projectile.DamageType = calamityMod.Find<DamageClass>("RogueDamageClass");
 
+                        }
 
                     }
                 }

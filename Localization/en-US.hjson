@@ -13443,6 +13443,21 @@ Mods: {
 				DisplayName: Origin Infinity
 				Tooltip: ""
 			}
+
+			AsphodeneForkliftKey: {
+				DisplayName: Asphodene's Forklift Key
+				Tooltip: Summons a mechanical forklift
+			}
+
+			EridaniForkliftKey: {
+				DisplayName: Eridani's Forklift Key
+				Tooltip: Summons a mechanical forklift
+			}
+
+			ForkliftKey: {
+				DisplayName: Unaspected Forklift Key
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -17420,12 +17435,12 @@ Mods: {
 
 			TrailblazeBuff: {
 				DisplayName: Trailblaze Buff
-				Description: Mods.StarsAbove.Buffs.TrailblazeBuff.Description
+				Description: ""
 			}
 
 			GarridineGadgetCooldown: {
 				DisplayName: Garridine Gadget Cooldown
-				Description: Mods.StarsAbove.Buffs.GarridineGadgetCooldown.Description
+				Description: ""
 			}
 
 			NovaChainAttack: {
@@ -17441,6 +17456,16 @@ Mods: {
 			NovaChainAttackEridani: {
 				DisplayName: Nova Chain Attack Eridani
 				Description: Mods.StarsAbove.Buffs.NovaChainAttackEridani.Description
+			}
+
+			AsphodeneForkliftMountBuff: {
+				DisplayName: Asphodene's Forklift
+				Description: This is the fastest it can go...? Hey, we should Imprint a jet engine Memory into this thing.
+			}
+
+			EridaniForkliftMountBuff: {
+				DisplayName: Eridani's Forklift
+				Description: This is the slowest contraption upon four wheels. Perhaps it is a result of the extra weight, knowing the state of your inventory.
 			}
 		}
 

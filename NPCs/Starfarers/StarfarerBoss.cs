@@ -41,8 +41,9 @@ namespace StarsAbove.NPCs.Starfarers
 
 	public class StarfarerBoss : ModNPC
 	{
+        public static bool disableBossVoiceLines = true;
 
-		public int AttackTimer = 120;
+        public int AttackTimer = 120;
 
 		private enum Frame
 		{
@@ -607,8 +608,10 @@ namespace StarsAbove.NPCs.Starfarers
                 Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 150);
                 NPC.position = initialMoveTo;
                 NPC.netUpdate = true;
-                SoundEngine.PlaySound(StarsAboveAudio.StarfarerBoss_Intro, NPC.Center);
-                for (int d = 0; d < 130; d++)
+                
+				if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.StarfarerBoss_Intro, NPC.Center);
+                
+				for (int d = 0; d < 130; d++)
                 {
                     Dust.NewDust(NPC.Center, 0, 0, DustID.SparksMech, 0f + Main.rand.Next(-30, 30), 0f + Main.rand.Next(-30, 30), 150, default(Color), 1.5f);
                 }

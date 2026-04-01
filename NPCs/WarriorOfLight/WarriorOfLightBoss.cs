@@ -31,8 +31,10 @@ namespace StarsAbove.NPCs.WarriorOfLight
     [AutoloadBossHead]
 
 	public class WarriorOfLightBoss : ModNPC
-	{
-		public int AttackTimer = 120;
+    {
+        public static bool disableBossVoiceLines = true;
+
+        public int AttackTimer = 120;
 
 		private enum Frame
 		{
@@ -185,7 +187,7 @@ namespace StarsAbove.NPCs.WarriorOfLight
 		{
 			if (NPC.ai[0] != (float)ActionState.Dying) //If the boss is defeated, but the death animation hasn't played yet, play the death animation.
 			{
-				SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YouStillStand, NPC.Center);
+                if(!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.WarriorOfLight_YouStillStand, NPC.Center);
 
 				NPC.ai[0] = (float)ActionState.Dying; //Flag boss as "dying"
 				NPC.damage = 0; //Disable contact damage

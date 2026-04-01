@@ -36,8 +36,9 @@ namespace StarsAbove.NPCs.Tsukiyomi
 
 	public class TsukiyomiBoss : ModNPC
 	{
+        public static bool disableBossVoiceLines = true;
 
-		public int AttackTimer = 100;
+        public int AttackTimer = 100;
 
 		private enum Frame
 		{
@@ -1127,7 +1128,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
             if (NPC.localAI[1] == 10)
             {
 				NPC.AddBuff(BuffType<TsukiyomiTeleportBuff>(), 240);
-				SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);
+                if (!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Stronger, NPC.Center);
 
 				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
@@ -1216,7 +1217,7 @@ namespace StarsAbove.NPCs.Tsukiyomi
 				Vector2 initialMoveTo = new Vector2(Main.player[NPC.target].Center.X - 80, Main.player[NPC.target].Center.Y - 350);
 				NPC.position = initialMoveTo;
 			}
-			SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
+            if (!disableBossVoiceLines)SoundEngine.PlaySound(StarsAboveAudio.Tsukiyomi_Journey, NPC.Center);
 
 
 
