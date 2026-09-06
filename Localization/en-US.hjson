@@ -6822,6 +6822,7 @@ Mods: {
 			ConfluxLucidDreamer.MapEntry: Conflux Lucid Dreamer
 			ConfluxLuminousHallow.MapEntry: Conflux Luminous Hallow
 			ConfluxRoyalSunrise.MapEntry: Conflux Royal Sunrise
+			NeonVeilReplicaMonolith.MapEntry: Neon Veil Replica Monolith
 		}
 
 		Items: {
@@ -13458,6 +13459,11 @@ Mods: {
 				DisplayName: Unaspected Forklift Key
 				Tooltip: ""
 			}
+
+			NeonVeilReplicaMonolithItem: {
+				DisplayName: Neon Veil Replica Monolith Item
+				Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -17584,6 +17590,11 @@ Mods: {
 			NeonVeilBiome: {
 				DisplayName: Neon Veil
 				TownNPCDialogueName: the Neon Veil
+			}
+
+			NeonVeilReplicaBiome: {
+				DisplayName: Neon Veil Replica Biome
+				TownNPCDialogueName: the Neon Veil Replica Biome
 			}
 		}
 

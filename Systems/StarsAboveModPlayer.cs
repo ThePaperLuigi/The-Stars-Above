@@ -684,7 +684,6 @@ namespace StarsAbove
         public bool stellarSickness = false;//When set to True, inflicts the player with Stellar Sickness for 1 minute.
 
 
-
         /// <summary>
         /// //////////////////////////////////////////////////////////////////////////////// STELLAR NOVA CODE /////////////////////////////////////////////////////////////////////////
         /// </summary>
@@ -1056,6 +1055,7 @@ namespace StarsAbove
         public bool BleachedWorld;
         public bool City;
         //public int cachedSpawnX = player.SpawnX;
+        public bool NeonVeilReplicaActive = false;//Neon veil monolith
 
 
 
@@ -14134,7 +14134,7 @@ namespace StarsAbove
             SeaOfStars = false;
 
             IsVoidActive = false;
-
+            NeonVeilReplicaActive = false;
 
 
             WarriorBarActive = false;

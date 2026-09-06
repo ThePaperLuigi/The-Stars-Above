@@ -302,7 +302,8 @@ namespace StarsAbove.Projectiles.StellarNovas
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.UIScaleMatrix);
+            // MiscEffect samples VPOS in framebuffer pixels, so its world-space mask must use the game-view transform.
+            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
 			
 			var Texture = Mod.Assets.Request<Texture2D>("Effects/UBWBackground");
@@ -314,6 +315,8 @@ namespace StarsAbove.Projectiles.StellarNovas
 
             // Any other parameters that might be needed but aren't supplied normally
             GameShaders.Misc["CyclePass"].Shader.Parameters["uUIPosition"].SetValue(new Vector2(-Main.LocalPlayer.Center.X, -Main.LocalPlayer.Center.Y));
+            Viewport viewport = Main.instance.GraphicsDevice.Viewport;
+            GameShaders.Misc["CyclePass"].Shader.Parameters["uScreenResolution"].SetValue(new Vector2(viewport.Width, viewport.Height));
 
             GameShaders.Misc["CyclePass"].Shader.Parameters["uDrawWithColor"].SetValue(false);
             GameShaders.Misc["CyclePass"].Shader.Parameters["uDrawInTooptipCoords"].SetValue(false);
@@ -342,7 +345,7 @@ namespace StarsAbove.Projectiles.StellarNovas
 
 			//This applies to everything, so we end the batch again so things go back to normal.
 			Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.UIScaleMatrix);
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 
 			
 			return false;

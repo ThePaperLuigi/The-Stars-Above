@@ -43,8 +43,10 @@ float4 PixelShaderFunction(float2 coords : TEXCOORD0, float4 screenPosition : vP
 	
 	// TODO: still need to account for zoom to be consistent.
 	
-	// This draws the texture consistent with screen space.
-	float4 overlayColor = tex2D(uImage1, screenPosition / uImageSize1 );
+	// VPOS is measured in framebuffer pixels. Normalize it by the active viewport,
+	// not the overlay texture's native size, so the image fills any resolution.
+	float2 screenSize = all(uScreenResolution > 0.0) ? uScreenResolution : uImageSize1;
+	float4 overlayColor = tex2D(uImage1, screenPosition.xy / screenSize);
 
 	// uncomment this line to instead draw texture consistent with position within each individual tooltip line
 	if(uDrawInTooptipCoords){

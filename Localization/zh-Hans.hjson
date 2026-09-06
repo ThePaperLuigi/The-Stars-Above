@@ -6816,6 +6816,7 @@ Mods: {
 			ConfluxLucidDreamer.MapEntry: 清醒梦客底座
 			ConfluxLuminousHallow.MapEntry: 明晰圣者底座
 			ConfluxRoyalSunrise.MapEntry: 皇家日出底座
+			// NeonVeilReplicaMonolith.MapEntry: Neon Veil Replica Monolith
 		}
 
 		Items: {
@@ -13443,6 +13444,11 @@ Mods: {
 				// DisplayName: Unaspected Forklift Key
 				// Tooltip: ""
 			}
+
+			NeonVeilReplicaMonolithItem: {
+				// DisplayName: Neon Veil Replica Monolith Item
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -17567,6 +17573,11 @@ Mods: {
 			NeonVeilBiome: {
 				DisplayName: 霓虹面纱
 				TownNPCDialogueName: 霓虹面纱
+			}
+
+			NeonVeilReplicaBiome: {
+				// DisplayName: Neon Veil Replica Biome
+				// TownNPCDialogueName: the Neon Veil Replica Biome
 			}
 		}
 

@@ -339,6 +339,25 @@ namespace StarsAbove
 
 					}
 				);
+                bossChecklist.Call(//TEMP
+                    "LogBoss",
+                    this,
+                    nameof(VagrantBoss),
+                    20f,
+                    () => DownedBossSystem.downedVagrant,
+                    ModContent.NPCType<VagrantBoss>(),
+                    new Dictionary<string, object>()
+                    {
+                        ["spawnItems"] = ModContent.ItemType<Items.Consumables.ShatteredDisk>(),
+                        ["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) =>
+                        {
+                            Texture2D texture = ModContent.Request<Texture2D>("StarsAbove/Bestiary/PerseusBossChecklist").Value;
+                            Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+                            sb.Draw(texture, centered, color);
+                        }
+
+                    }
+                );
                 //Thespian
                 bossChecklist.Call(
                     "LogBoss",
