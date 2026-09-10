@@ -195,18 +195,19 @@ namespace StarsAbove.Systems
             }
 
             //Aggro marker.
-            if (Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro)
+            if (Main.netMode != NetmodeID.SinglePlayer && !disableBossAggro && Player.active && !Player.dead)
             {
-                for (int i = 0; i <= Main.maxNPCs; i++)
+                for (int i = 0; i < Main.maxNPCs; i++)
                 {
-                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].target == Main.myPlayer)
+                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].target == Player.whoAmI)
                     {
                         hasBossAggro = 10;
-                        if (Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
+                        if (Main.myPlayer == Player.whoAmI && Player.ownedProjectileCounts[ProjectileType<BossAggroMarker>()] < 1)
                         {
                             Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<BossAggroMarker>(), 0, 0, Player.whoAmI);
 
                         }
+                        break;
                     }
 
                 }

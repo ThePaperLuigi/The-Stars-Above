@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.SceneEffects;
 using StarsAbove.Subworlds;
 using StarsAbove.Systems;
 using SubworldLibrary;
@@ -31,7 +32,12 @@ namespace StarsAbove.Biomes
 
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<Observatory>() || SubworldSystem.IsActive<EternalConfluence>())
+			if (GoddessOfMemorySceneEffect.HasSeaOfStarsBuff(player))
+			{
+				return false;
+			}
+			if (GoddessOfMemorySceneEffect.HasObservatoryBuff(player)
+				|| SubworldSystem.IsActive<Observatory>() || SubworldSystem.IsActive<EternalConfluence>())
 			{
 				player.GetModPlayer<StarsAbovePlayer>().Observatory = true;
 				return true;//true

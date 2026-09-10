@@ -6823,6 +6823,11 @@ Mods: {
 			// ConfluxLuminousHallow.MapEntry: Conflux Luminous Hallow
 			// ConfluxRoyalSunrise.MapEntry: Conflux Royal Sunrise
 			// NeonVeilReplicaMonolith.MapEntry: Neon Veil Replica Monolith
+			// GoddessOfMemoryArenaIntermissionTile.MapEntry: Goddess Of Memory Arena Intermission Tile
+			// GoddessOfMemoryArenaPhase1Tile.MapEntry: Goddess Of Memory Arena Phase1 Tile
+			// GoddessOfMemoryArenaPhase2Tile.MapEntry: Goddess Of Memory Arena Phase2 Tile
+			// GoddessOfMemoryArenaPhase3Tile.MapEntry: Goddess Of Memory Arena Phase3 Tile
+			// GoddessOfMemoryArenaPhase4Tile.MapEntry: Goddess Of Memory Arena Phase4 Tile
 		}
 
 		Items: {
@@ -13313,6 +13318,31 @@ Mods: {
 				// DisplayName: Neon Veil Replica Monolith Item
 				// Tooltip: ""
 			}
+
+			DebugGoddessOfMemoryArenaIntermission: {
+				// DisplayName: Debug Goddess Of Memory Arena Intermission
+				// Tooltip: ""
+			}
+
+			DebugGoddessOfMemoryArenaPhase1: {
+				// DisplayName: Debug Goddess Of Memory Arena Phase1
+				// Tooltip: ""
+			}
+
+			DebugGoddessOfMemoryArenaPhase2: {
+				// DisplayName: Debug Goddess Of Memory Arena Phase2
+				// Tooltip: ""
+			}
+
+			DebugGoddessOfMemoryArenaPhase3: {
+				// DisplayName: Debug Goddess Of Memory Arena Phase3
+				// Tooltip: ""
+			}
+
+			DebugGoddessOfMemoryArenaPhase4: {
+				// DisplayName: Debug Goddess Of Memory Arena Phase4
+				// Tooltip: ""
+			}
 		}
 
 		UIElements: {
@@ -13750,6 +13780,12 @@ Mods: {
 			// EridaniBurstFX.DisplayName: EridaniFX
 			// EridaniBurstFX2.DisplayName: EridaniFX2
 			GardenOfAvalon.DisplayName: El Jardín de Avalon
+			// GoddessOfMemoryBackgroundIntermission.DisplayName: Goddess of Memory Background Intermission
+			// GoddessOfMemoryBackgroundPhase1.DisplayName: Goddess of Memory Background Phase 1
+			// GoddessOfMemoryBackgroundPhase2.DisplayName: Goddess of Memory Background Phase 2
+			// GoddessOfMemoryBackgroundPhase3.DisplayName: Goddess of Memory Background Phase 3
+			// GoddessOfMemoryBackgroundPhase4.DisplayName: Goddess of Memory Background Phase 4
+			// GoddessOfMemoryArenaPhaseFinal.DisplayName: Goddess of Memory Arena Phase Final
 			// kiwamiryukenconfirm.DisplayName: Kiwami Ryuken
 			kiwamiryukenstun.DisplayName: Aturdir de Kiwami Ryuken
 			// Laevateinn.DisplayName: Ars Laevateinn

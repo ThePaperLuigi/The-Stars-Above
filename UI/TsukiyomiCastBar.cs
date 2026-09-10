@@ -40,11 +40,12 @@ namespace StarsAbove.UI
 			text.Height.Set(34, 0f);
 			text.Top.Set(40, 0f);
 			text.Left.Set(0, 0f);
+			text.HAlign = 0.5f;
 
 			gradientA = new Color(178, 155, 193); // 
 			gradientB = new Color(252, 194, 26); //
 
-			area.Append(text);
+			barFrame.Append(text);
 			area.Append(barFrame);
 			Append(area);
 		}
@@ -91,7 +92,8 @@ namespace StarsAbove.UI
 
 			
 			// Setting the text per tick to update and show our resource values.
-			text.SetText($"[c/F6CF55:{modPlayer.NextAttack} ]");
+			text.SetText($"[c/F6CF55:{modPlayer.NextAttack}]");
+			text.Recalculate();
 			base.Update(gameTime);
 		}
 	}

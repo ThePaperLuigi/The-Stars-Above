@@ -424,7 +424,7 @@ namespace StarsAbove.Systems
                         Player.velocity = new Vector2(Player.velocity.X, -17);
                     }
                 }
-                if (Player.InModBiome(GetInstance<SeaOfStarsBiome>()))
+                if (Player.InModBiome(GetInstance<SeaOfStarsBiome>()) && SeaOfStarsBiome.IsSubworldActive())
                 {
                     //Make sure the player can't do what's not allowed:
                     Player.AddBuff(BuffType<Superimposed>(), 10);

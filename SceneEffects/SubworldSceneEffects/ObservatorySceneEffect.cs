@@ -23,6 +23,11 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
+            if (GoddessOfMemorySceneEffect.HasBiomeBuff(player))
+            {
+                return;
+            }
+
             if (SubworldSystem.IsActive<Observatory>())
             {
                 Main.dayTime = true;

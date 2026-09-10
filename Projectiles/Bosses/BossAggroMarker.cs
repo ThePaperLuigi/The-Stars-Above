@@ -35,7 +35,7 @@ namespace StarsAbove.Projectiles.Bosses
 			Projectile.tileCollide = false;          //Can the projectile collide with tiles?
 			Projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			Projectile.hide = false;
-			//Projectile.netImportant = true;
+			Projectile.netImportant = true;
 			
 		}
 
@@ -50,8 +50,22 @@ namespace StarsAbove.Projectiles.Bosses
 		{
 			Projectile.timeLeft = 10;
 			Player projOwner = Main.player[Projectile.owner];
+			if (!projOwner.active)
+			{
+				Projectile.Kill();
+				return;
+			}
+			if (Projectile.owner == Main.myPlayer)
+			{
+				float fadeState = projOwner.dead || projOwner.GetModPlayer<BossPlayer>().hasBossAggro <= 0 ? 1f : 0f;
+				if (Projectile.ai[1] != fadeState)
+				{
+					Projectile.ai[1] = fadeState;
+					Projectile.netUpdate = true;
+				}
+			}
 			Projectile.scale = 1f;
-			if ((projOwner.dead && !projOwner.active) || projOwner.GetModPlayer<BossPlayer>().hasBossAggro <= 0)
+			if (Projectile.ai[1] == 1f)
 			{
 				Projectile.alpha += 10;
 			}
@@ -60,9 +74,10 @@ namespace StarsAbove.Projectiles.Bosses
 				Projectile.alpha -= 10;
             }
 
-			if(Projectile.alpha >= 255)
+			if(Projectile.alpha >= 255 && Projectile.owner == Main.myPlayer)
             {
 				Projectile.Kill();
+				return;
             }
 			Projectile.alpha = (int)MathHelper.Clamp(Projectile.alpha, 0, 255);
 
@@ -74,7 +89,6 @@ namespace StarsAbove.Projectiles.Bosses
 			Projectile.position.Y = ownerMountedCenter.Y - (float)(Projectile.height / 2) - projOwner.height/2;
 			Projectile.rotation = projOwner.velocity.X * 0.02f;
 			DrawOffsetX = (int)(projOwner.velocity.X * 1f);
-			Projectile.netUpdate = true;
 		}
 		public override bool PreDraw(ref Color lightColor)
 		{

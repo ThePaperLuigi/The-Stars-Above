@@ -41,6 +41,7 @@ namespace StarsAbove.UI
 			text.Height.Set(34, 0f);
 			text.Top.Set(40, 0f);
 			text.Left.Set(0, 0f);
+			text.HAlign = 0.5f;
 
 			timeLeft = new UIText("", 1f); // text to show stat
 			timeLeft.Width.Set(138, 0f);
@@ -98,7 +99,8 @@ namespace StarsAbove.UI
 				return;
 
 
-			text.SetText($"[c/93A0FC:{modPlayer.NextAttack} ]");
+			text.SetText($"[c/93A0FC:{modPlayer.NextAttack}]");
+			text.Recalculate();
 
 
 

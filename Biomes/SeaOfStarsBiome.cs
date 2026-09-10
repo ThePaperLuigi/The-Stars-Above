@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.Xna.Framework;
+using StarsAbove.SceneEffects;
 using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
 using SubworldLibrary;
@@ -37,22 +38,30 @@ namespace StarsAbove.Biomes
 		
 		// Calculate when the biome is active.
 		public override bool IsBiomeActive(Player player) {
-			if(SubworldSystem.IsActive<CygnusAsteroids>() 
-				|| SubworldSystem.IsActive<MiningStationAries>() 
-				|| SubworldSystem.IsActive<Serpens>()
-                || SubworldSystem.IsActive<FallenTheranhad>()
-                || SubworldSystem.IsActive<FaintArchives>()
-                || SubworldSystem.IsActive<UltraPlant>()
-                                || SubworldSystem.IsActive<Celestia>()
-
-                || SubworldSystem.IsActive<Katabasis>()
-                || SubworldSystem.IsActive<Scorpius>())
+			if (GoddessOfMemorySceneEffect.HasObservatoryBuff(player))
+			{
+				return false;
+			}
+			if (GoddessOfMemorySceneEffect.HasSeaOfStarsBuff(player) || IsSubworldActive())
             {
 				player.ZoneSkyHeight = false;
                 player.ZoneJungle = false;
 				return true;
             }
 			return false;
+		}
+
+		public static bool IsSubworldActive()
+		{
+			return SubworldSystem.IsActive<CygnusAsteroids>()
+				|| SubworldSystem.IsActive<MiningStationAries>()
+				|| SubworldSystem.IsActive<Serpens>()
+				|| SubworldSystem.IsActive<FallenTheranhad>()
+				|| SubworldSystem.IsActive<FaintArchives>()
+				|| SubworldSystem.IsActive<UltraPlant>()
+				|| SubworldSystem.IsActive<Celestia>()
+				|| SubworldSystem.IsActive<Katabasis>()
+				|| SubworldSystem.IsActive<Scorpius>();
 		}
 	}
 }

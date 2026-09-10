@@ -14,6 +14,11 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
 
         public override bool IsSceneEffectActive(Player player)
         {
+            if (GoddessOfMemorySceneEffect.HasBiomeBuff(player))
+            {
+                return false;
+            }
+
             if (SubworldSystem.IsActive<CygnusAsteroids>()
                 || SubworldSystem.IsActive<MiningStationAries>()
                 || SubworldSystem.IsActive<BleachedPlanet>()
@@ -35,6 +40,11 @@ namespace StarsAbove.SceneEffects.SubworldSceneEffects
         }
         public override void SpecialVisuals(Player player, bool isActive)
         {
+            if (GoddessOfMemorySceneEffect.HasBiomeBuff(player))
+            {
+                return;
+            }
+
             if (SubworldSystem.IsActive<CygnusAsteroids>()
                 || SubworldSystem.IsActive<MiningStationAries>()
                 || SubworldSystem.IsActive<BleachedPlanet>()
