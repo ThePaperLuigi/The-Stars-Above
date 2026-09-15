@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using StarsAbove.Buffs.GoddessOfMemory;
+using StarsAbove.NPCs.GoddessOfMemory;
 using Terraria;
 using Terraria.GameContent.Shaders;
 using Terraria.Graphics.Effects;
@@ -43,6 +44,11 @@ namespace StarsAbove.Systems
 
             Player player = Main.LocalPlayer;
             bool isActive = player.active && !player.dead && player.HasBuff<GoddessOfMemoryPhase1Buff>();
+            int bossIndex = NPC.FindFirstNPC(ModContent.NPCType<GoddessOfMemoryBoss>());
+            if (bossIndex >= 0 && Main.npc[bossIndex].ModNPC is GoddessOfMemoryBoss boss && boss.IsCastingSubspaceShift)
+            {
+                isActive = false;
+            }
             player.ManageSpecialBiomeVisuals(BlizzardKey, isActive);
         }
 

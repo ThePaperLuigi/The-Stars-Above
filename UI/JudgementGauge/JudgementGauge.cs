@@ -175,7 +175,7 @@ namespace StarsAbove.UI.JudgementGauge
 
 				if (modPlayer.judgementGauge >= 100)
                 {
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, 18), Color.Gold);
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, 18), Color.Gold);
 
 				}
 			}

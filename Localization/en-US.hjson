@@ -6606,6 +6606,7 @@ Mods: {
 			Veilcaper.DisplayName: Veilcaper
 			Veilsniper.DisplayName: Veilsniper
 			Veilspear.DisplayName: Veilspear
+			GoddessOfMemoryBoss.DisplayName: Goddess of Memory
 		}
 
 		BossAttacks: {
@@ -6750,6 +6751,9 @@ Mods: {
 			BuryTheLight: Bury The Light
 			DeathInFourActs: Death In Four Acts
 			HypertunedDeathInFourActs: Hypertuned Death In Four Acts
+			GoddessOfMemoryTeleportToPlayer: Starskip
+			ArenaChangeIntermission: Subspace Shift
+			ArenaChangePhase: Subspace Shift
 		}
 
 		Tiles: {
@@ -13494,6 +13498,17 @@ Mods: {
 				DisplayName: Debug Goddess Of Memory Arena Phase4
 				Tooltip: ""
 			}
+
+			GoddessOfMemorySubworldTestItem: {
+				DisplayName: Goddess of Memory Subworld Test Item
+				Tooltip:
+					'''
+					Enters the Goddess of Memory subworld
+					Use again inside to summon the Goddess of Memory
+					Requires Structure Helper 3.1.1 or newer
+					[c/F1AF42:Debug item]
+					'''
+			}
 		}
 
 		UIElements: {
@@ -14595,6 +14610,9 @@ Mods: {
 			OriginInfinityNovaAttack.DisplayName: Origin Infinity Nova Attack
 			OriginInfinityNovaAttackAsphodene.DisplayName: Origin Infinity Nova Attack Asphodene
 			OriginInfinityNovaAttackEridani.DisplayName: Origin Infinity Nova Attack Eridani
+			GoddessOfMemoryCast.DisplayName: Goddess Of Memory Cast
+			GoddessOfMemorySpin.DisplayName: Goddess Of Memory Spin
+			GoddessOfMemorySpinfade.DisplayName: Goddess Of Memory Spinfade
 		}
 
 		Buffs: {
@@ -17508,6 +17526,41 @@ Mods: {
 			EridaniForkliftMountBuff: {
 				DisplayName: Eridani's Forklift
 				Description: This is the slowest contraption upon four wheels. Perhaps it is a result of the extra weight, knowing the state of your inventory.
+			}
+
+			CelestialAugury: {
+				DisplayName: Celestial Augury
+				Description: Flight time is unlimited
+			}
+
+			GoddessOfMemoryFinalPhaseBuff: {
+				DisplayName: Void Turmoil
+				Description: Your surroundings reflect the Sea of Stars
+			}
+
+			GoddessOfMemoryPhase1Buff: {
+				DisplayName: Reflective Turmoil
+				Description: A blizzard surrounds you
+			}
+
+			GoddessOfMemoryPhase2Buff: {
+				DisplayName: Reflective Turmoil
+				Description: ""
+			}
+
+			GoddessOfMemoryPhase3Buff: {
+				DisplayName: Reflective Turmoil
+				Description: ""
+			}
+
+			GoddessOfMemoryPhase4Buff: {
+				DisplayName: Reflective Turmoil
+				Description: Your surroundings reflect the Sea of Stars
+			}
+
+			MoiraesReflection: {
+				DisplayName: Moirae's Reflection
+				Description: Your surroundings reflect the Observatory
 			}
 		}
 

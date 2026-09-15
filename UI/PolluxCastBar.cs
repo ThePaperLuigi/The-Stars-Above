@@ -108,7 +108,7 @@ namespace StarsAbove.UI
 
 			
 			// Setting the text per tick to update and show our resource values.
-			text.SetText($"[c/F6CF55:{modPlayer.NextAttack}]");
+			text.SetText(string.IsNullOrWhiteSpace(modPlayer.NextAttack) ? "" : $"[c/F6CF55:{modPlayer.NextAttack}]");
 			area.Recalculate();
 			base.Update(gameTime);
 		}

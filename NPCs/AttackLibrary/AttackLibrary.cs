@@ -17,6 +17,7 @@ using StarsAbove.NPCs.Vagrant;
 using StarsAbove.Buffs.Boss;
 using StarsAbove.Utilities;
 using StarsAbove.Projectiles.Bosses.Nalhaun;
+using StarsAbove.Projectiles.Bosses.GoddessOfMemory;
 using SubworldLibrary;
 using StarsAbove.Projectiles.Bosses.Tsukiyomi;
 using StarsAbove.Projectiles.Bosses.Dioskouroi;
@@ -38,6 +39,7 @@ using SteelSeries.GameSense.DeviceZone;
 using StarsAbove.Projectiles.Bosses.Starfarers;
 using StarsAbove.NPCs.Starfarers;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs.GoddessOfMemory;
 using StarsAbove.Systems;
 using StarsAbove.Buffs.Melee.PenthesileaMuse;
 
@@ -16522,6 +16524,124 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 		}
 		#endregion
+        public static void ArenaChangeIntermission(Player target, NPC npc)
+        {
+            GoddessOfMemoryArenaChange(npc, false);
+        }
+
+        public static void ArenaChangePhase(Player target, NPC npc)
+        {
+            GoddessOfMemoryArenaChange(npc, true);
+        }
+
+        private static void GoddessOfMemoryArenaChange(NPC npc, bool isPhase)
+        {
+            if (npc.ai[0] == (float)ActionState.Idle && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                npc.ai[3] = 120f;
+                npc.localAI[3] = 0f;
+                npc.ai[0] = (float)ActionState.Casting;
+                npc.netUpdate = true;
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (Main.netMode != NetmodeID.Server)
+            {
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().NextAttack = LangHelper.GetTextValue(isPhase
+                    ? "BossAttacks.ArenaChangePhase"
+                    : "BossAttacks.ArenaChangeIntermission");
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+            {
+                return;
+            }
+
+            if (npc.ModNPC is GoddessOfMemoryBoss boss)
+            {
+                boss.ChangeArena(isPhase);
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;
+            npc.ai[1] = 0f;
+            npc.ai[2] = 0f;
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            npc.localAI[3] = 0f;
+            npc.netUpdate = true;
+        }
+
+        public static void GoddessOfMemoryTeleportToPlayer(Player target, NPC npc)
+        {
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                npc.ai[3] = GoddessOfMemorySpinfade.Midpoint;
+                npc.localAI[3] = 0f;
+                npc.ai[0] = (float)ActionState.Casting;
+                npc.localAI[0] = Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<GoddessOfMemorySpinfade>(), 0, 0f, Main.myPlayer) + 1;
+                npc.netUpdate = true;
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting && npc.ai[0] != (float)ActionState.PersistentCast)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+
+            if (Main.netMode != NetmodeID.Server)
+            {
+                Main.LocalPlayer.GetModPlayer<BossPlayer>().NextAttack = LangHelper.GetTextValue("BossAttacks.GoddessOfMemoryTeleportToPlayer");
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            int projectileIndex = (int)npc.localAI[0] - 1;
+            if (projectileIndex >= 0 && projectileIndex < Main.maxProjectiles)
+            {
+                Projectile spin = Main.projectile[projectileIndex];
+                if (spin.active && spin.type == ProjectileType<GoddessOfMemorySpinfade>())
+                {
+                    if (npc.ai[0] == (float)ActionState.Casting && spin.ai[1] >= GoddessOfMemorySpinfade.Midpoint)
+                    {
+                        if (target.active && !target.dead)
+                        {
+                            npc.Center = target.Center - new Vector2(0f, 120f);
+                        }
+
+                        npc.ai[0] = (float)ActionState.PersistentCast;
+                        npc.localAI[3] = npc.ai[3];
+                        npc.netUpdate = true;
+                    }
+
+                    if (spin.ai[1] < GoddessOfMemorySpinfade.Duration)
+                    {
+                        return;
+                    }
+                }
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            npc.ai[0] = (float)ActionState.Idle;
+            npc.ai[1] = 0f;
+            npc.ai[2]++;
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            npc.localAI[3] = 0f;
+            npc.netUpdate = true;
+        }
+
 		public static void ResetState(Player target, NPC npc)//
 		{
 			var modPlayer = Main.LocalPlayer.GetModPlayer<BossPlayer>();

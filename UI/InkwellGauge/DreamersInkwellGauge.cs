@@ -199,7 +199,7 @@ namespace StarsAbove.UI.InkwellGauge
             {
                 //float percent = (float)i / steps; // Alternate Gradient Approach
                 float percent = (float)i / (right - left);
-                spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+                GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
             }
 
             spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/BowChargeFrame"), center.GetInnerDimensions().ToRectangle(), Color.White);

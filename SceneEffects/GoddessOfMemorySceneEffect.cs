@@ -1,4 +1,5 @@
 using StarsAbove.Buffs.GoddessOfMemory;
+using StarsAbove.Systems;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -23,17 +24,27 @@ namespace StarsAbove.SceneEffects
 
         public static bool HasSeaOfStarsBuff(Player player)
         {
+            if (GoddessOfMemoryArenaSystem.IsActive)
+            {
+                return GoddessOfMemoryArenaSystem.ActiveArena == (GoddessOfMemoryArenaSystem.ActiveIsPhase ? 4 : 5);
+            }
+
             return player.HasBuff<GoddessOfMemoryPhase4Buff>() || player.HasBuff<GoddessOfMemoryFinalPhaseBuff>();
         }
 
         public static bool HasObservatoryBuff(Player player)
         {
+            if (GoddessOfMemoryArenaSystem.IsActive)
+            {
+                return !GoddessOfMemoryArenaSystem.ActiveIsPhase && GoddessOfMemoryArenaSystem.ActiveArena == 1;
+            }
+
             return player.HasBuff<MoiraesReflection>() && !HasSeaOfStarsBuff(player);
         }
 
         public static bool HasBiomeBuff(Player player)
         {
-            return player.HasBuff<MoiraesReflection>() || HasSeaOfStarsBuff(player);
+            return HasObservatoryBuff(player) || HasSeaOfStarsBuff(player);
         }
     }
 }

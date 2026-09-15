@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
-using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -58,18 +57,6 @@ namespace StarsAbove.Tiles.GoddessOfMemory
 
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            Vector2 offScreen = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
-            Vector2 position = new Vector2(i * 16, j * 16) - Main.screenPosition + offScreen;
-            Texture2D texture = TextureAssets.MagicPixel.Value;
-            Rectangle frame = new Rectangle(0, 0, 1, 1);
-
-            spriteBatch.Draw(texture, position + new Vector2(1f, 1f), frame, MarkerColor, 0f, Vector2.Zero, new Vector2(14f, 2f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, position + new Vector2(1f, 13f), frame, MarkerColor, 0f, Vector2.Zero, new Vector2(14f, 2f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, position + new Vector2(1f, 3f), frame, MarkerColor, 0f, Vector2.Zero, new Vector2(2f, 10f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, position + new Vector2(13f, 3f), frame, MarkerColor, 0f, Vector2.Zero, new Vector2(2f, 10f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, position + new Vector2(7f, 4f), frame, Color.White, 0f, Vector2.Zero, new Vector2(2f, 8f), SpriteEffects.None, 0f);
-            spriteBatch.Draw(texture, position + new Vector2(4f, 7f), frame, Color.White, 0f, Vector2.Zero, new Vector2(8f, 2f), SpriteEffects.None, 0f);
-
             return false;
         }
     }

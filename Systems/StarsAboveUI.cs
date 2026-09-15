@@ -121,6 +121,9 @@ namespace StarsAbove.Systems
         private UserInterface _NalhaunCastBarUserInterface;
         internal NalhaunCastBar NalhaunCastBar;
 
+        private UserInterface _GoddessOfMemoryCastBarUserInterface;
+        internal GoddessOfMemoryCastBar GoddessOfMemoryCastBar;
+
         private UserInterface _VagrantCastBarUserInterface;
         internal VagrantCastBar VagrantCastBar;
 
@@ -348,6 +351,10 @@ namespace StarsAbove.Systems
                 _NalhaunCastBarUserInterface = new UserInterface();
                 _NalhaunCastBarUserInterface.SetState(NalhaunCastBar);
 
+                GoddessOfMemoryCastBar = new GoddessOfMemoryCastBar();
+                _GoddessOfMemoryCastBarUserInterface = new UserInterface();
+                _GoddessOfMemoryCastBarUserInterface.SetState(GoddessOfMemoryCastBar);
+
                 VagrantCastBar = new VagrantCastBar();
                 _VagrantCastBarUserInterface = new UserInterface();
                 _VagrantCastBarUserInterface.SetState(VagrantCastBar);
@@ -553,6 +560,7 @@ namespace StarsAbove.Systems
             _BattleBoxUserInterface?.Update(gameTime);
             _StellarNovaGaugeUserInterface?.Update(gameTime);
             _NalhaunCastBarUserInterface?.Update(gameTime);
+            _GoddessOfMemoryCastBarUserInterface?.Update(gameTime);
             _ArbiterCastBarUserInterface?.Update(gameTime);
             _TsukiyomiCastBarUserInterface?.Update(gameTime);
             _CastorCastBarUserInterface?.Update(gameTime);
@@ -994,6 +1002,15 @@ namespace StarsAbove.Systems
                     delegate
                     {
                         _NalhaunCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
+                        return true;
+                    },
+                    InterfaceScaleType.UI)
+                );
+                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                    "StarsAbove: Goddess of Memory Cast Bar",
+                    delegate
+                    {
+                        _GoddessOfMemoryCastBarUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)

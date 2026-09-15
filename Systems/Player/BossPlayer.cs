@@ -45,6 +45,7 @@ namespace StarsAbove.Systems
     {
         public bool VagrantBarActive = false;//This changes depending on the boss
         public bool NalhaunBarActive = false;
+        public bool GoddessOfMemoryBarActive = false;
         public bool TsukiyomiBarActive = false;
         public bool WarriorOfLightBarActive = false;
 
@@ -452,6 +453,7 @@ namespace StarsAbove.Systems
             CastTimeMaxAlt = 100;
 
             NalhaunBarActive = false;
+            GoddessOfMemoryBarActive = false;
             VagrantBarActive = false;
             TsukiyomiBarActive = false;
             WarriorOfLightBarActive = false;

@@ -107,12 +107,11 @@ namespace StarsAbove.UI.Hawkmoon
 			for (int i = 0; i < steps; i += 1) {
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
-				if (i >= 113)
-				{
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
-				
-				}
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+			}
+			if (steps > 113)
+			{
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
 			}
 		}
 		public override void Update(GameTime gameTime) {

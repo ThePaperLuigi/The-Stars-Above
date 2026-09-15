@@ -121,12 +121,12 @@ namespace StarsAbove.UI
 				float percent = (float)i / (right - left);
 				if (modPlayer.powderGauge < 80)
 				{
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
 
 				}
 				else
                 {
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), finalColor);
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), finalColor);
 
 				}
 				if (i >= 113)

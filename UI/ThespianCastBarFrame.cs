@@ -99,7 +99,7 @@ namespace StarsAbove.UI
 				return;
 
 
-			text.SetText($"[c/F4D5EF:{modPlayer.NextAttack}]");
+			text.SetText(string.IsNullOrWhiteSpace(modPlayer.NextAttack) ? "" : $"[c/F4D5EF:{modPlayer.NextAttack}]");
 			text.Recalculate();
 
 

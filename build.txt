@@ -3,5 +3,6 @@ author = PaperLuigi
 version = 2.1.8.4
 modReferences = SubworldLibrary
 dllReferences = StructureHelper
+sortAfter = StructureHelper
 homepage = https://discord.gg/kFURRZZszD
 buildIgnore = .gitignore, *.sln, *.csproj, *.user, obj\*, bin\*, .vs\*, Properties\*, .git\*

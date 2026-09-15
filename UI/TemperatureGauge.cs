@@ -88,7 +88,7 @@ namespace StarsAbove.UI
 			for (int i = 0; i < steps; i += 1) {
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientC, gradientD, percent));
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientC, gradientD, percent));
 			}
 
 			float quotient2 = (float)modPlayer.temperatureGaugeHot / (float)100; // Creating a quotient that represents the difference of your currentResource vs your maximumResource, resulting in a float of 0-1f.
@@ -109,7 +109,7 @@ namespace StarsAbove.UI
 			{
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right2 - left2);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left2 - i, hitbox2.Y, 1, hitbox2.Height), Color.Lerp(gradientA, gradientB, percent));
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left2 - i, hitbox2.Y, 1, hitbox2.Height), Color.Lerp(gradientA, gradientB, percent));
 			}
 		}
 		public override void Update(GameTime gameTime) {

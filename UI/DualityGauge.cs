@@ -89,7 +89,7 @@ namespace StarsAbove.UI
 			for (int i = 0; i < steps; i += 1) {
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height ), Color.Lerp(gradientA, gradientB, percent));
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height ), Color.Lerp(gradientA, gradientB, percent));
 				
 			}
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/DualityGauge"), barFrame.GetInnerDimensions().ToRectangle(), Color.White);

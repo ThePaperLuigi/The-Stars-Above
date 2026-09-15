@@ -99,12 +99,11 @@ namespace StarsAbove.UI
 			for (int i = 0; i < steps; i += 1) {
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
-				if (i >= 113)
-				{
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
-
-				}
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+			}
+			if (steps > 113)
+			{
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
 			}
 
 			//Overcharge 1
@@ -113,7 +112,7 @@ namespace StarsAbove.UI
 			{
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientC, gradientD, percent));
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientC, gradientD, percent));
 				
 			}
 
@@ -123,12 +122,11 @@ namespace StarsAbove.UI
 			{
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientE, gradientF, percent));
-				if (i >= 113)
-				{
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
-
-				}
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientE, gradientF, percent));
+			}
+			if (stepsOvercharge2 > 113)
+			{
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalColor);
 			}
 
 			if(modPlayer.M4A1Held)

@@ -98,7 +98,7 @@ namespace StarsAbove.UI
 				//for (int i = 0; i < steps; i += 1) {
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)steps / (right - left);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + steps, hitbox.Y, 5, hitbox.Height), UsedColor);
+				GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + steps, hitbox.Y, 5, hitbox.Height), UsedColor);
 			//}
 		}
 		public override void Update(GameTime gameTime) {

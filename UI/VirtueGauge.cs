@@ -101,12 +101,11 @@ namespace StarsAbove.UI
 				{
 					//float percent = (float)i / steps; // Alternate Gradient Approach
 					float percent = (float)i / (right - left);
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height - 3), Color.Lerp(gradientA, gradientB, percent));
-					if (i >= 113)
-					{
-						spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalcolorA);
-
-					}
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height - 3), Color.Lerp(gradientA, gradientB, percent));
+				}
+				if (steps > 113)
+				{
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalcolorA);
 				}
 			}
 			if(modPlayer.VirtueMode == 1)
@@ -115,12 +114,11 @@ namespace StarsAbove.UI
 				{
 					//float percent = (float)i / steps; // Alternate Gradient Approach
 					float percent = (float)i / (right - left);
-					spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height - 3), Color.Lerp(gradientC, gradientD, percent));
-					if (i >= 113)
-					{
-						spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalcolorB);
-
-					}
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left + i, hitbox.Y, 1, hitbox.Height - 3), Color.Lerp(gradientC, gradientD, percent));
+				}
+				if (steps > 113)
+				{
+					GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(left, hitbox.Y, 113, hitbox.Height), finalcolorB);
 				}
 			}
 		}

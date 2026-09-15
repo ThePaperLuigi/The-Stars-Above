@@ -132,7 +132,7 @@ namespace StarsAbove.UI
 			for (int i = 0; i < steps; i += 1) {
 				//float percent = (float)i / steps; // Alternate Gradient Approach
 				float percent = (float)i / (top - bottom);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(blackManaHitbox.X, bottom - i, blackManaHitbox.Width, 1), colorBlack);
+				GaugeBar.DrawVertical(spriteBatch, new Rectangle(blackManaHitbox.X, bottom - i, blackManaHitbox.Width, 1), colorBlack);
 				
 			}
 
@@ -150,7 +150,7 @@ namespace StarsAbove.UI
 			{
 				//float percent = (float)i / steps1; // Alternate Gradient Approach
 				float percent = (float)i / (top1 - bottom1);
-				spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(whiteManaHitbox.X, bottom - i, whiteManaHitbox.Width, 1), colorWhite);
+				GaugeBar.DrawVertical(spriteBatch, new Rectangle(whiteManaHitbox.X, bottom - i, whiteManaHitbox.Width, 1), colorWhite);
 
 			}
 			spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/RedMage/emptyGem"), area.GetInnerDimensions().ToRectangle(), Color.White);

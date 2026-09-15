@@ -186,12 +186,25 @@ namespace StarsAbove.Systems
                 pool.Add(NPCID.GoldBird, 0.01f);
             }
 
+            if (GoddessOfMemoryArenaSystem.IsActive)
+            {
+                pool.Clear();
+            }
+
             base.EditSpawnPool(pool, spawnInfo);
 
 
 
         }
 
+
+        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+        {
+            if (GoddessOfMemoryArenaSystem.IsActive)
+            {
+                maxSpawns = 0;
+            }
+        }
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {

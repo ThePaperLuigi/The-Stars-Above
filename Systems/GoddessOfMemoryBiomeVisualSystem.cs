@@ -42,8 +42,11 @@ namespace StarsAbove.Systems
             try
             {
                 bool seaOfStars = GoddessOfMemorySceneEffect.HasSeaOfStarsBuff(Main.LocalPlayer);
-                Main.dayTime = !seaOfStars;
-                Main.time = seaOfStars ? 18000 : 12000;
+                if (!GoddessOfMemoryArenaSystem.IsActive)
+                {
+                    Main.dayTime = !seaOfStars;
+                    Main.time = seaOfStars ? 18000 : 12000;
+                }
                 Main.moonPhase = 4;
                 Main.cloudAlpha = 0f;
                 Main.numClouds = 0;

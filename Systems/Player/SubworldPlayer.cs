@@ -632,7 +632,8 @@ namespace StarsAbove.Systems
         }
         public override void UpdateDead()
         {
-            if (Player.whoAmI == Main.myPlayer && Player.respawnTimer <= 60 && SubworldSystem.AnyActive<StarsAbove>())
+            if (Player.whoAmI == Main.myPlayer && Player.respawnTimer <= 60 && SubworldSystem.AnyActive<StarsAbove>()
+                && !GoddessOfMemoryArenaSystem.IsActive)
             {
                 SubworldSystem.Exit();
             }
