@@ -6229,6 +6229,14 @@ Mods: {
 					UmbralBonus: When allies use their Nova to trigger Chain Attack, they gain 3 Stellar Nova Energy. Additionally, gain an extra 1 Stellar Nova Energy per living ally.
 				}
 
+				ThirteenthArcana: {
+					AbilityName: The Thirteenth Arcana
+					AbilitySubName: "[c/5E7FBF:Ultimate Evocation of Death's Full Moon]"
+					AbilityDescription: Evoke an incarnation of death to aid in battle. Upon cast, gain the 'The Thirteenth Arcana' based on Effect Duration and 'Fate Divined' for 30 seconds. Deal damage to all nearby foes, executing non-boss foes. On execute, restore 10 Stellar Nova Energy. When taking damage, ignore damage taken and lower duration of The Thirteenth Arcana by 10 seconds. While Fate Divined is active, use the Nova key to remove Fate Divined, resurrect all dead players, and grant brief Invincibility.
+					AstralBonus: On Crit cast, extend The Thirteenth Arcana by 15 seconds and heal 50% Max HP. Allies are resurrected with full HP.
+					UmbralBonus: On Crit cast, deal 5% Max HP damage to nearby bosses. Execute bosses below 5% Max HP.
+				}
+
 				BaseDamage: Base Damage
 				BaseEnergyCost: Base Energy Cost
 				Damage: Damage
@@ -6433,7 +6441,7 @@ Mods: {
 				'''
 			NeopursuantSetBonusFullMetalArcanist: "[c/F19559:Full Metal Arcanist]: Restore all Mana and cleanse Mana Sickness when activating the Stellar Nova"
 			NeopursuantSetBonusBackupBattery: "[c/F19559:Backup Battery]: When Mana is drained, restore all mana but become frozen for 2 seconds"
-			NeopursuantSetBonusCataphractArms: "[c/F19559:Cataphract Arms]: Gain bonus Defense based on 0.5% of Stellar Nova Energy Cost"
+			NeopursuantSetBonusCataphractArms: "[c/F19559:Cataphract Arms]: Gain bonus Defense based on 5% of Stellar Nova Energy Cost"
 			NeopursuantSetBonusInfiltrator: "[c/F19559:Infiltrator]: Gain 12% bonus damage during immunity frames"
 			NeopursuantSetBonusViralUpload: "[c/F19559:Viral Upload]: Activating the Stellar Nova deals damage to all nearby foes based on your defense"
 			NeopursuantSetBonusEnviroSavant: "[c/F19559:Enviro-Savant]: Gain permanent Hunter and Dangersense buffs and heal 2 HP when defeating foes"
@@ -6754,6 +6762,23 @@ Mods: {
 			GoddessOfMemoryTeleportToPlayer: Starskip
 			ArenaChangeIntermission: Subspace Shift
 			ArenaChangePhase: Subspace Shift
+			Constellation: Constellation
+			ChasingConstellation: Chasing Constellation
+			StarryConstellation: Starry Constellation
+			SpreadOutWarning: Spread out!
+			EdictOfTheEnd: Edict Of The End
+			HammerOfRecognition: Hammer of Recognition
+			HammerOfRecognitionFocusTarget: Hammer of Recognition
+			CandleOfPromiseLeft: Leftward Candle of Promises
+			CandleOfPromiseRight: Rightward Candle of Promises
+			SpearOfNavigation: Spear of Navigation
+			LyreOfNature: Lyre of Nature
+			ScytheOfCausality: Scythe of Causality
+			TomeOfEnergy: Home of Energy
+			PistolsOfGravity: Pistols of Gravity
+			TerminusAxiom: Terminus Axiom
+			SelenicAssault: Selenic Assault
+			RailgunOfSound: Railgun of Sound
 		}
 
 		Tiles: {
@@ -13501,13 +13526,7 @@ Mods: {
 
 			GoddessOfMemorySubworldTestItem: {
 				DisplayName: Goddess of Memory Subworld Test Item
-				Tooltip:
-					'''
-					Enters the Goddess of Memory subworld
-					Use again inside to summon the Goddess of Memory
-					Requires Structure Helper 3.1.1 or newer
-					[c/F1AF42:Debug item]
-					'''
+				Tooltip: "[c/F1AF42:Debug item]"
 			}
 		}
 
@@ -14613,6 +14632,21 @@ Mods: {
 			GoddessOfMemoryCast.DisplayName: Goddess Of Memory Cast
 			GoddessOfMemorySpin.DisplayName: Goddess Of Memory Spin
 			GoddessOfMemorySpinfade.DisplayName: Goddess Of Memory Spinfade
+			BossConstellationAttackStar.DisplayName: Boss Constellation Attack Star
+			BossConstellationTrailing.DisplayName: Boss Constellation Trailing
+			BossCandleOfPromise.DisplayName: Boss Candle Of Promise
+			BossCandleOfPromiseFlame.DisplayName: Boss Candle Of Promise Flame
+			BossExpungenceExplosion.DisplayName: Boss Expungence Explosion
+			BossExpungenceHitEffect.DisplayName: Boss Expungence Hit Effect
+			BossExpungenceMark.DisplayName: Boss Expungence Mark
+			BossHammerOfRecognition.DisplayName: Boss Hammer Of Recognition
+			BossHammerOfRecognitionMark.DisplayName: Boss Hammer Of Recognition Mark
+			EdictMark.DisplayName: Edict Mark
+			EdictTriggerCircle.DisplayName: Edict Trigger Circle
+			EdictTriggerDonut.DisplayName: Edict Trigger Donut
+			GoddessOfMemorySpearCharge.DisplayName: Goddess Of Memory Spear Charge
+			ThirteenthArcanaEvoker.DisplayName: Thirteenth Arcana Evoker
+			ThirteenthArcanaThanatos.DisplayName: Thirteenth Arcana Thanatos
 		}
 
 		Buffs: {
@@ -17561,6 +17595,11 @@ Mods: {
 			MoiraesReflection: {
 				DisplayName: Moirae's Reflection
 				Description: Your surroundings reflect the Observatory
+			}
+
+			MarkedForExpungence: {
+				DisplayName: Marked for Expungence
+				Description: Explode when this mark expires, dealing 200 damage to nearby allies
 			}
 		}
 

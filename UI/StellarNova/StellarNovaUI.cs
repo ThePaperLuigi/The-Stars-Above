@@ -46,6 +46,7 @@ namespace StarsAbove.UI.StellarNova
 		private UIImageButton unlimitedbladeworks;
 		private UIImageButton guardianslight;
         private UIImageButton fireflytypeiv;
+        private UIImageButton thirteentharcana;
         private UIImageButton origininfinity;
 
         private UIText abilityName;
@@ -194,6 +195,15 @@ namespace StarsAbove.UI.StellarNova
             fireflytypeiv.Top.Set(266, 0f);
             fireflytypeiv.OnMouseOver += fireflytypeivHover;
             fireflytypeiv.OnMouseOut += HoverOff;
+
+            thirteentharcana = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/ThirteenthArcana"));
+            thirteentharcana.OnLeftClick += thirteentharcanaSelected;
+            thirteentharcana.Width.Set(98, 0f);
+            thirteentharcana.Height.Set(52, 0f);
+            thirteentharcana.Left.Set(864, 0f);
+            thirteentharcana.Top.Set(266, 0f);
+            thirteentharcana.OnMouseOver += thirteentharcanaHover;
+            thirteentharcana.OnMouseOut += HoverOff;
 
             origininfinity = new UIImageButton(Request<Texture2D>("StarsAbove/UI/StellarNova/origininfinity"));
             origininfinity.OnLeftClick += origininfinitySelected;
@@ -566,6 +576,32 @@ namespace StarsAbove.UI.StellarNova
 
             // We can do stuff in here!
         }
+        private void thirteentharcanaSelected(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+
+            if (player.chosenStarfarer == 0 || !player.novaUIActive)
+                return;
+
+
+            player.description = "";
+            player.textVisible = false;
+            //player.animatedDescription = "";
+            player.novaDialogueScrollNumber = 0;
+            player.novaDialogueScrollTimer = 0;
+            if (player.thirteentharcana == 1)
+            {
+                player.chosenStellarNova = 10;
+            }
+            else
+            {
+
+
+            }
+
+
+            // We can do stuff in here!
+        }
         private void origininfinitySelected(UIMouseEvent evt, UIElement listeningElement)
         {
             var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
@@ -924,6 +960,44 @@ namespace StarsAbove.UI.StellarNova
 
             // We can do stuff in here!
         }
+        private void thirteentharcanaHover(UIMouseEvent evt, UIElement listeningElement)
+        {
+            var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
+
+            if (player.chosenStarfarer == 0 || !player.novaUIActive)
+                return;
+            if (player.chosenStarfarer == 1)
+            {
+                if (player.thirteentharcana != 0)
+                {
+                    player.description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ThirteenthArcana.Unlocked.Asphodene", Main.LocalPlayer);
+
+                }
+                else
+                {
+                    player.description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ThirteenthArcana.Locked.Asphodene", Main.LocalPlayer);
+
+                }
+
+            }
+            if (player.chosenStarfarer == 2)
+            {
+                if (player.thirteentharcana != 0)
+                {
+                    player.description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ThirteenthArcana.Unlocked.Eridani", Main.LocalPlayer);
+                }
+                else
+                {
+                    player.description = LangHelper.GetTextValue($"StellarNova.StellarNovaDialogue.ThirteenthArcana.Locked.Eridani", Main.LocalPlayer);
+
+                }
+
+            }
+            player.textVisible = true;
+
+
+            // We can do stuff in here!
+        }
         private void origininfinityHover(UIMouseEvent evt, UIElement listeningElement)
         {
             var player = Main.LocalPlayer.GetModPlayer<StarsAbovePlayer>();
@@ -1105,6 +1179,7 @@ namespace StarsAbove.UI.StellarNova
             Rectangle unlimitedbladeworksArea = unlimitedbladeworks.GetInnerDimensions().ToRectangle();
             Rectangle guardianslightArea = guardianslight.GetInnerDimensions().ToRectangle();
             Rectangle fireflytypeIVArea = fireflytypeiv.GetInnerDimensions().ToRectangle();
+            Rectangle thirteentharcanaArea = thirteentharcana.GetInnerDimensions().ToRectangle();
             Rectangle origininfinityArea = origininfinity.GetInnerDimensions().ToRectangle();
 
 
@@ -1114,7 +1189,7 @@ namespace StarsAbove.UI.StellarNova
 
             spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/description"), dialogue, Color.White * (modPlayer.descriptionOpacity));
 
-            Localization(spriteBatch, modPlayer, hitbox, prototokiaArea, laevateinnArea, kiwamiryukenArea, gardenofavalonArea, edingenesisquasarArea, unlimitedbladeworksArea, guardianslightArea, fireflytypeIVArea, origininfinityArea);
+            Localization(spriteBatch, modPlayer, hitbox, prototokiaArea, laevateinnArea, kiwamiryukenArea, gardenofavalonArea, edingenesisquasarArea, unlimitedbladeworksArea, guardianslightArea, fireflytypeIVArea, thirteentharcanaArea, origininfinityArea);
           
             if (_affixSlot1.Item != null)
             {
@@ -1229,7 +1304,7 @@ namespace StarsAbove.UI.StellarNova
             }
         }
 
-        private static void Localization(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, Rectangle hitbox, Rectangle prototokiaArea, Rectangle laevateinnArea, Rectangle kiwamiryukenArea, Rectangle gardenofavalonArea, Rectangle edingenesisquasarArea, Rectangle unlimitedbladeworksArea, Rectangle guardianslightArea, Rectangle fireflytypeIVArea, Rectangle origininfinityArea)
+        private static void Localization(SpriteBatch spriteBatch, StarsAbovePlayer modPlayer, Rectangle hitbox, Rectangle prototokiaArea, Rectangle laevateinnArea, Rectangle kiwamiryukenArea, Rectangle gardenofavalonArea, Rectangle edingenesisquasarArea, Rectangle unlimitedbladeworksArea, Rectangle guardianslightArea, Rectangle fireflytypeIVArea, Rectangle thirteentharcanaArea, Rectangle origininfinityArea)
         {
             if (Language.ActiveCulture.LegacyId == ((int)GameCulture.CultureName.Chinese))
             {
@@ -1266,6 +1341,10 @@ namespace StarsAbove.UI.StellarNova
                     case 8:
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIV"), fireflytypeIVArea, Color.White * (modPlayer.novaUIOpacity));
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/fireflytypeIVIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+                        break;
+                    case 10:
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/ThirteenthArcana"), thirteentharcanaArea, Color.White * (modPlayer.novaUIOpacity));
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/CN/ThirteenthArcanaIconCN"), hitbox, Color.White * (modPlayer.novaUIOpacity));
                         break;
                     case 9:
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/origininfinity"), origininfinityArea, Color.White * (modPlayer.novaUIOpacity));
@@ -1310,6 +1389,10 @@ namespace StarsAbove.UI.StellarNova
                     case 8:
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIV"), fireflytypeIVArea, Color.White * (modPlayer.novaUIOpacity));
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/fireflytypeIVIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
+                        break;
+                    case 10:
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/ThirteenthArcana"), thirteentharcanaArea, Color.White * (modPlayer.novaUIOpacity));
+                        spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/ThirteenthArcanaIcon"), hitbox, Color.White * (modPlayer.novaUIOpacity));
                         break;
                     case 9:
                         spriteBatch.Draw((Texture2D)Request<Texture2D>("StarsAbove/UI/StellarNova/origininfinity"), origininfinityArea, Color.White * (modPlayer.novaUIOpacity));
@@ -1453,6 +1536,19 @@ namespace StarsAbove.UI.StellarNova
 				laevateinn.Remove();
 				
 			}
+            if (modPlayer.thirteentharcana > 0)
+            {
+                topStatic -= topAdjustment;
+
+                area.Append(thirteentharcana);
+                thirteentharcana.Top.Set(topStatic + (availableNovas * multiplierAdjustment), 0f);
+
+                availableNovas++;
+            }
+            else
+            {
+                thirteentharcana.Remove();
+            }
             if (modPlayer.origininfinity > 0)
             {
                 topStatic -= topAdjustment;

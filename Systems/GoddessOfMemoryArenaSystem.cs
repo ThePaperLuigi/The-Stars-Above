@@ -149,7 +149,7 @@ namespace StarsAbove.Systems
                 return;
             }
 
-            bool midnight = ActiveIsPhase ? ActiveArena == 4 : ActiveArena == 5;
+            bool midnight = ActiveIsPhase ? ActiveArena == 1 || ActiveArena == 4 : ActiveArena == 5;
             bool dusk = ActiveIsPhase ? ActiveArena == 2 : ActiveArena == 4 || ActiveArena == 6;
             bool morning = !ActiveIsPhase && ActiveArena == 3;
             Main.dayTime = !midnight;

@@ -15,6 +15,7 @@ using StarsAbove.SceneEffects.CustomSkies;
 using ReLogic.Content;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using Terraria.Audio;
 
 using ReLogic.Content.Sources;
 
@@ -24,6 +25,7 @@ using StarsAbove.NPCs.Vagrant;
 using StarsAbove.NPCs.Tsukiyomi;
 using StarsAbove.NPCs.Dioskouroi;
 using StarsAbove.NPCs.Nalhaun;
+using StarsAbove.NPCs.GoddessOfMemory;
 using StarsAbove.NPCs;
 using Terraria.GameContent.UI.Elements;
 using Terraria.IO;
@@ -204,6 +206,32 @@ namespace StarsAbove
 							Logger.WarnFormat("StarsAbove: Unknown Subworld");
 							break;
 					}*/
+
+					break;
+				case 1:
+					int bossIndex = reader.ReadInt16();
+					int hammerIdentity = reader.ReadInt32();
+					int damage = reader.ReadInt32();
+					if (Main.netMode == NetmodeID.Server && bossIndex >= 0 && bossIndex < Main.maxNPCs &&
+						Main.npc[bossIndex].ModNPC is GoddessOfMemoryBoss goddessOfMemory)
+					{
+						goddessOfMemory.HealFromHammerOfRecognition(hammerIdentity, whoAmI, damage);
+					}
+
+					break;
+				case 2:
+					Vector2 healPosition = new Vector2(reader.ReadSingle(), reader.ReadSingle());
+					if (Main.netMode == NetmodeID.MultiplayerClient)
+					{
+						SoundEngine.PlaySound(SoundID.Item29 with { MaxInstances = 0 }, healPosition);
+					}
+
+					break;
+				case 3:
+					if (Main.netMode == NetmodeID.MultiplayerClient)
+					{
+						StarsAbovePlayer.ReviveWithThirteenthArcana();
+					}
 
 					break;
 				default:

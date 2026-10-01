@@ -40,6 +40,7 @@ using StarsAbove.Projectiles.StellarNovas;
 using StarsAbove.Projectiles.StellarNovas.FireflyTypeIV;
 using StarsAbove.Projectiles.StellarNovas.GuardiansLight;
 using StarsAbove.Projectiles.StellarNovas.OriginInfinity;
+using StarsAbove.Projectiles.StellarNovas.ThirteenthArcana;
 using StarsAbove.Subworlds;
 using StarsAbove.Subworlds.ThirdRegion;
 using StarsAbove.Systems;
@@ -770,6 +771,7 @@ namespace StarsAbove
         public int guardianslight;
         public int fireflytypeiv;
         public int origininfinity;
+        public int thirteentharcana;
 
         public int goldenGunShots;
         public bool squallReady;
@@ -1318,6 +1320,7 @@ namespace StarsAbove
             tag["guardianslight"] = guardianslight;
             tag["fireflytypeiv"] = fireflytypeiv;
             tag["origininfinity"] = origininfinity;
+            tag["thirteentharcana"] = thirteentharcana;
 
 
             tag["chosenStellarNova"] = chosenStellarNova;
@@ -1766,6 +1769,7 @@ namespace StarsAbove
             guardianslight = tag.GetInt("guardianslight");
             fireflytypeiv = tag.GetInt("fireflytypeiv");
             origininfinity = tag.GetInt("origininfinity");
+            thirteentharcana = tag.GetInt("thirteentharcana");
 
             seenEyeOfCthulhu = tag.GetBool("seenEyeOfCthulhu");
             seenKingSlime = tag.GetBool("seenKingSlime");
@@ -3257,6 +3261,31 @@ namespace StarsAbove
                     ModifyHitEnemyWithNova(target, ref modifiers);
                 }
 
+            }
+            if (proj.type == ProjectileType<ThirteenthArcanaThanatos>())
+            {
+                modifiers.SourceDamage *= 0f;//Reset damage as we're using unique damage calculation.
+
+                int uniqueCrit = Main.rand.Next(100);
+                if (uniqueCrit <= novaCritChance + novaCritChanceMod)
+                {
+                    modifiers.SetCrit();
+                    modifiers.FinalDamage *= 0.5f;//Halve the final damage to get rid of crit damage calculation.
+                    modifiers.FinalDamage.Flat += (float)(novaCritDamage * (1 + novaCritDamageMod / 100));
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                    ModifyHitEnemyWithNovaCrit(target, ref modifiers);
+
+                }
+                else
+                {
+                    modifiers.DisableCrit();
+                    modifiers.FinalDamage.Flat += (float)(novaDamage * (1 + novaDamageMod / 100));
+                    ModifyHitEnemyWithNovaNoCrit(target, ref modifiers);
+                    ModifyHitEnemyWithNova(target, ref modifiers);
+                }
+
+                modifiers.FinalDamage *= 0.2f;
+                modifiers.FinalDamage.Flat *= 0.2f;
             }
             if (proj.type == ProjectileType<FireflySlash>() || proj.type == ProjectileType<FireflySlashFollowUp>() || proj.type == ProjectileType<FireflyKick>() || proj.type == ProjectileType<FireflySkill>() || proj.type == ProjectileType<FireflyKickExplosion>())
             {
@@ -6026,6 +6055,14 @@ namespace StarsAbove
                         fireflytypeiv = 1;
                     }
 
+                }
+                if (NPC.downedMoonlord)
+                {
+                    if (thirteentharcana == 0)
+                    {
+                        NewStellarNova = true;
+                        thirteentharcana = 1;
+                    }
                 }
                 if(Player.HasItemInAnyInventory(ItemID.Zenith))
                 {
@@ -9151,6 +9188,24 @@ namespace StarsAbove
                 {
                     return;
                 }
+                if (chosenStellarNova == 10 && (Player.ownedProjectileCounts[ProjectileType<ThirteenthArcanaEvoker>()] > 0 || Player.ownedProjectileCounts[ProjectileType<ThirteenthArcanaThanatos>()] > 0))
+                {
+                    return;
+                }
+                if (chosenStellarNova == 10 && StarsAbove.novaKey.JustPressed && !stellarArray && !starfarerDialogue && Player.HasBuff(BuffType<FateDivined>()))
+                {
+                    if (Player.whoAmI == Main.myPlayer)
+                    {
+                        Player.ClearBuff(BuffType<FateDivined>());
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
+                        {
+                            NetMessage.SendData(MessageID.PlayerBuffs, number: Player.whoAmI);
+                        }
+                        SoundEngine.PlaySound(StarsAboveAudio.SFX_summoning, Player.Center);
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(16f * Player.direction, -14f * Player.gravDir), new Vector2(8.32f * Player.direction, 0f), ProjectileType<ThirteenthArcanaThanatos>(), 0, 0f, Player.whoAmI, 0f, 1f);
+                    }
+                    return;
+                }
 
                 EdinGenesisQuasar();
                 if (squallReady && Player.ownedProjectileCounts[ProjectileType<SilenceSquall1>()] <= 0)
@@ -9353,8 +9408,9 @@ namespace StarsAbove
                         novaGauge = 0;
                     }
 
-                    if (chosenStellarNova != 8)
+                    if (chosenStellarNova != 8 && chosenStellarNova != 10)
                     StellarNovaCutIn();
+                    if (chosenStellarNova != 10)
                     StellarNovaVoice();
                     if(lucidDreamerLevel >= 1)
                     {
@@ -9691,10 +9747,48 @@ namespace StarsAbove
                             int index = Projectile.NewProjectile(Player.GetSource_FromThis(), position.X, position.Y, velocity.X, velocity.Y - 40, type, novaDamage, 0f, Player.whoAmI);
 
                         }
+                        else if (chosenStellarNova == 10)
+                        {
+                            novaDrain = 1f;
+                            Player.AddBuff(BuffType<TheThirteenthArcana>(), (int)((novaEffectDuration + novaEffectDurationMod) * 60));
+                            Player.AddBuff(BuffType<FateDivined>(), 1800);
+                            Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<ThirteenthArcanaEvoker>(), 0, 0, Player.whoAmI);
+                        }
                     }
 
 
                 }
+            }
+        }
+
+        public static void ReviveWithThirteenthArcana()
+        {
+            if (Main.netMode == NetmodeID.Server)
+            {
+                ModPacket packet = StarsAbove.Instance.GetPacket();
+                packet.Write((byte)3);
+                packet.Send();
+                return;
+            }
+
+            Player player = Main.LocalPlayer;
+            if (!player.active)
+            {
+                return;
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient && player.dead)
+            {
+                player.respawnTimer = 0;
+                player.ghost = false;
+                player.Spawn(PlayerSpawnContext.ReviveFromDeath);
+                player.statLife = 100;
+                NetMessage.SendData(MessageID.PlayerLifeMana, number: player.whoAmI);
+            }
+            player.AddBuff(BuffType<Invincibility>(), 120);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                NetMessage.SendData(MessageID.PlayerBuffs, number: player.whoAmI);
             }
         }
 
@@ -11198,6 +11292,24 @@ namespace StarsAbove
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)/* tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage */
         {
+            int arcanaIndex = Player.FindBuffIndex(BuffType<TheThirteenthArcana>());
+            if (Player.whoAmI == Main.myPlayer && arcanaIndex >= 0)
+            {
+                Player.buffTime[arcanaIndex] -= 600;
+                if (Player.buffTime[arcanaIndex] <= 0)
+                {
+                    Player.DelBuff(arcanaIndex);
+                }
+                Player.AddBuff(BuffType<Invincibility>(), 30);
+                for (int i = 0; i < 48; i++)
+                {
+                    Vector2 direction = Vector2.UnitX.RotatedBy(i * MathHelper.TwoPi / 48f);
+                    Dust dust = Dust.NewDustPerfect(Player.Center + direction * 32f, DustID.GemSapphire, direction * 6f, 30, default, 1.4f);
+                    dust.noGravity = true;
+                }
+                modifiers.Cancel();
+                return;
+            }
             if (!Player.HasBuff(BuffType<SpatialStratagemCooldown>()) && artofwar == 2)
             {
                 Player.AddBuff(BuffType<SpatialStratagemCooldown>(), 1800);

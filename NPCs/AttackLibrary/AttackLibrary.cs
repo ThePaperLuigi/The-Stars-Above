@@ -48,6 +48,7 @@ namespace StarsAbove.NPCs.AttackLibrary
     public class AttackLibrary
 	{
 		public static bool disableBossVoiceLines = true;
+		private static int edictAttackIdentity;
 
 		// Here we define an enum we will use with the State slot. Using an ai slot as a means to store "state" can simplify things greatly. Think flowchart.
 		// All bosses will look at this ActionState and go from there. Remember this takes the role of NPC.ai[0] so nothing else can go there.
@@ -16524,6 +16525,620 @@ namespace StarsAbove.NPCs.AttackLibrary
 			}
 		}
 		#endregion
+        public static void CandleOfPromiseLeft(Player target, NPC npc)
+        {
+            CastCandleOfPromise(npc, -1);
+        }
+
+        public static void CandleOfPromiseRight(Player target, NPC npc)
+        {
+            CastCandleOfPromise(npc, 1);
+        }
+
+        public static void CandleOfPromiseRandomSide(Player target, NPC npc)
+        {
+            CastCandleOfPromise(npc, 0);
+        }
+
+        private static void CastCandleOfPromise(NPC npc, int side)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss boss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+            if (side == 0)
+            {
+                side = npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient
+                    ? (Main.rand.NextBool() ? -1 : 1)
+                    : boss.CandleOfPromiseSide;
+            }
+
+            string attackName = LangHelper.GetTextValue(side < 0 ? "BossAttacks.CandleOfPromiseLeft" : "BossAttacks.CandleOfPromiseRight");
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = attackName;//The name of the attack.
+                }
+
+                npc.ai[3] = BossCandleOfPromise.CastDuration;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                boss.CandleOfPromiseSide = side;
+
+                int damage = npc.damage / 2 + 50 / 2;
+                npc.localAI[0] = Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + new Vector2(side * 40f, -40f), Vector2.Zero,
+                    ProjectileType<BossCandleOfPromise>(), damage, 0f, Main.myPlayer, npc.whoAmI, side) + 1;
+                npc.netUpdate = true;//NetUpdate for good measure.
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = attackName;//The name of the attack.
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+            {
+                return;
+            }
+
+            int projectileIndex = (int)npc.localAI[0] - 1;
+            if (projectileIndex >= 0 && projectileIndex < Main.maxProjectiles)
+            {
+                Projectile projectile = Main.projectile[projectileIndex];
+                if (projectile.active && projectile.ModProjectile is BossCandleOfPromise gun && gun.BossIndex == npc.whoAmI)
+                {
+                    gun.StartSweep();
+                }
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = Main.expertMode ? -10f : -12f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            boss.CandleOfPromiseSide = 0;
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        public static void HammerOfRecognition(Player target, NPC npc)
+        {
+            CastHammerOfRecognition(target, npc, false);
+        }
+
+        public static void HammerOfRecognitionFocusTarget(Player target, NPC npc)
+        {
+            CastHammerOfRecognition(target, npc, true);
+        }
+
+        private static void CastHammerOfRecognition(Player target, NPC npc, bool focusTarget)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss boss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+            string attackName = LangHelper.GetTextValue(focusTarget ? "BossAttacks.HammerOfRecognitionFocusTarget" : "BossAttacks.HammerOfRecognition");
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = attackName;//The name of the attack.
+                }
+
+                npc.ai[3] = BossHammerOfRecognition.CastDuration;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                boss.BeginHammerOfRecognition();
+                Vector2 markerCenter = focusTarget ? target.Center : npc.Center;
+                for (int i = 0; i < 8; i++)
+                {
+                    Vector2 position;
+                    if (focusTarget)
+                    {
+                        position = markerCenter + Main.rand.NextVector2Circular(150f, 150f);
+                    }
+                    else
+                    {
+                        float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                        float radius = Main.rand.NextFloat(160f, 640f);
+                        position = markerCenter + angle.ToRotationVector2() * radius;
+                    }
+
+                    Projectile.NewProjectile(npc.GetSource_FromAI(), position, Vector2.Zero,
+                        ProjectileType<BossHammerOfRecognitionMark>(), 0, 0f, Main.myPlayer, npc.whoAmI);
+                }
+
+                npc.netUpdate = true;//NetUpdate for good measure.
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = attackName;//The name of the attack.
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+            {
+                return;
+            }
+
+            int damage = npc.damage / 2 + 50 / 2;
+            int throwDelay = 0;
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile projectile = Main.projectile[i];
+                if (projectile.active && projectile.ModProjectile is BossHammerOfRecognitionMark mark && mark.BossIndex == npc.whoAmI)
+                {
+                    mark.QueueLaunch(damage, throwDelay);
+                    throwDelay += BossHammerOfRecognitionMark.ThrowInterval;
+                }
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = Main.expertMode ? -129f : -141f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        public static void ConstellationMirroredTarget(Player target, NPC npc)
+        {
+            CastConstellation(target, npc, ConstellationPattern.MirroredTarget);
+        }
+
+        public static void ConstellationCardinalIntercardinal(Player target, NPC npc)
+        {
+            CastConstellation(target, npc, ConstellationPattern.CardinalIntercardinal);
+        }
+
+        public static void ConstellationCardinalFocusPlayers(Player target, NPC npc)
+        {
+            CastConstellation(target, npc, ConstellationPattern.FocusPlayers);
+        }
+
+        public static void ConstellationTrailing(Player target, NPC npc)
+        {
+            CastConstellation(target, npc, ConstellationPattern.Trailing);
+        }
+
+
+        public static void Expungence(Player target, NPC npc)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Expungence");//The name of the attack.
+                }
+
+                npc.ai[3] = 120f;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.localAI[0] = 0f;
+                npc.localAI[1] = 0f;
+                npc.localAI[2] = 0f;
+                for (int i = 0; i < Main.maxPlayers; i++)
+                {
+                    Player player = Main.player[i];
+                    if (!player.active || player.dead || player.ghost)
+                    {
+                        continue;
+                    }
+
+                    int projectileIndex = Projectile.NewProjectile(npc.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<BossExpungenceMark>(), 0, 0f, Main.myPlayer, player.whoAmI);
+                    if (projectileIndex >= 0 && projectileIndex < Main.maxProjectiles && Main.projectile[projectileIndex].ModProjectile is BossExpungenceMark mark)
+                    {
+                        mark.BossIndex = npc.whoAmI;
+                        Main.projectile[projectileIndex].netUpdate = true;
+                    }
+                }
+
+                npc.netUpdate = true;//NetUpdate for good measure.
+                PlayConstellationSound(npc.Center, false);
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.Expungence");//The name of the attack.
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+            {
+                return;
+            }
+
+            PlayConstellationSound(npc.Center, true);
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile projectile = Main.projectile[i];
+                if (projectile.active && projectile.ModProjectile is BossExpungenceMark mark && mark.BossIndex == npc.whoAmI)
+                {
+                    mark.Detonate();
+                }
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = 0f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            npc.localAI[1] = 0f;
+            npc.localAI[2] = 0f;
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        public static void EdictOfTheEnd(Player target, NPC npc)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)//If this is the first time the attack is being called.
+            {//Trying resets to hopefully make multiplayer more stable
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.EdictOfTheEnd");//The name of the attack.
+                }
+
+                npc.ai[3] = 120f;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.localAI[0] = 0f;
+                npc.localAI[1] = 0f;
+                npc.localAI[2] = 0f;
+                npc.netUpdate = true;//NetUpdate for good measure.
+                PlayConstellationSound(npc.Center, false);
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = LangHelper.GetTextValue($"BossAttacks.EdictOfTheEnd");//The name of the attack.
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+            {
+                return;
+            }
+
+            PlayConstellationSound(npc.Center, true);
+            //Yes this is a mechanic from Everkeep Extreme
+            const int columns = 6;
+            const int rows = 3;
+            const float columnSpacing = 240f;
+            const float rowSpacing = 360f;
+            Vector2 gridOffset = -new Vector2((columns - 1) * columnSpacing, (rows - 1) * rowSpacing) * 0.5f;
+            Vector2[] positions = new Vector2[columns * rows];
+            for (int column = 0; column < columns; column++)
+            {
+                for (int row = 0; row < rows; row++)
+                {
+                    positions[column * rows + row] = gridOffset + new Vector2(column * columnSpacing, row * rowSpacing);
+                }
+            }
+
+            //Radiate the indicators from the center.
+            Array.Sort(positions, (left, right) => left.LengthSquared().CompareTo(right.LengthSquared()));
+            int spawnWave = 0;
+            int attackIdentity = ++edictAttackIdentity;
+            bool marksSpawned = false;
+            int damage = npc.damage / 2 + 50 / 2;
+            for (int i = 0; i < positions.Length; i++)
+            {
+                if (i > 0 && positions[i].LengthSquared() != positions[i - 1].LengthSquared())
+                {
+                    spawnWave++;
+                }
+
+                int projectileIndex = Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center + positions[i], Vector2.Zero, ProjectileType<EdictMark>(), damage, 0f, Main.myPlayer, npc.whoAmI);
+                if (projectileIndex >= 0 && projectileIndex < Main.maxProjectiles && Main.projectile[projectileIndex].ModProjectile is EdictMark mark)
+                {
+                    mark.SpawnDelay = spawnWave * EdictMark.SpawnInterval;
+                    mark.AttackIdentity = attackIdentity;
+                    Main.projectile[projectileIndex].netUpdate = true;
+                    marksSpawned = true;
+                }
+            }
+
+            if (marksSpawned)
+            {//Trigger
+                float leftX = npc.Center.X + gridOffset.X - EdictTriggerDonut.TriggerOffset;
+                float rightX = npc.Center.X - gridOffset.X + EdictTriggerDonut.TriggerOffset;
+                bool donutOnLeft = Main.rand.NextBool();
+                int leftType = donutOnLeft ? ProjectileType<EdictTriggerDonut>() : ProjectileType<EdictTriggerCircle>();
+                int rightType = donutOnLeft ? ProjectileType<EdictTriggerCircle>() : ProjectileType<EdictTriggerDonut>();
+                for (int side = 0; side < 2; side++)
+                {
+                    Vector2 position = new Vector2(side == 0 ? leftX : rightX, npc.Center.Y);
+                    float destinationX = side == 0 ? rightX : leftX;
+                    int projectileType = side == 0 ? leftType : rightType;
+                    int projectileIndex = Projectile.NewProjectile(npc.GetSource_FromAI(), position, Vector2.Zero, projectileType, 0, 0f, Main.myPlayer, npc.whoAmI, destinationX, -spawnWave * EdictMark.SpawnInterval);
+                    if (projectileIndex >= 0 && projectileIndex < Main.maxProjectiles && Main.projectile[projectileIndex].ModProjectile is EdictTriggerDonut trigger)
+                    {
+                        trigger.AttackIdentity = attackIdentity;
+                        Main.projectile[projectileIndex].netUpdate = true;
+                    }
+                }
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = 0f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            npc.localAI[1] = 0f;
+            npc.localAI[2] = 0f;
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        private enum ConstellationPattern
+        {
+            MirroredTarget,
+            CardinalIntercardinal,
+            FocusPlayers,
+            Trailing
+        }
+
+        private static void CastConstellation(Player target, NPC npc, ConstellationPattern pattern)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss boss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+
+            int activationDelay = BossConstellationAttackStar.ActivationDelay + (pattern == ConstellationPattern.CardinalIntercardinal ? 30 : 0);
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)//If this is the first time the attack is being called.
+            {
+                int starCount = Main.rand.Next(5, 8);
+                boss.ConstellationPaths.Clear();
+                switch (pattern)
+                {
+                    case ConstellationPattern.MirroredTarget:
+                        Vector2[] targetPath = CreateConstellationPath(npc.Center, target.Center, starCount);
+                        for (int mirrorX = 1; mirrorX >= -1; mirrorX -= 2)
+                        {
+                            for (int mirrorY = 1; mirrorY >= -1; mirrorY -= 2)
+                            {
+                                Vector2[] path = new Vector2[starCount];
+                                for (int i = 0; i < starCount; i++)
+                                {
+                                    Vector2 offset = targetPath[i] - npc.Center;
+                                    path[i] = npc.Center + new Vector2(offset.X * mirrorX, offset.Y * mirrorY);
+                                }
+
+                                boss.ConstellationPaths.Add(path);
+                            }
+                        }
+                        break;
+                    case ConstellationPattern.CardinalIntercardinal:
+                        for (int i = 0; i < 8; i++)
+                        {
+                            Vector2 direction = (MathHelper.PiOver4 * i).ToRotationVector2();
+                            Vector2 targetPosition = npc.Center + direction * 435.2f;
+                            boss.ConstellationPaths.Add(CreateConstellationPath(npc.Center, targetPosition, starCount, true));
+                        }
+                        break;
+                    case ConstellationPattern.FocusPlayers:
+                        for (int i = 0; i < Main.maxPlayers; i++)
+                        {
+                            Player player = Main.player[i];
+                            if (player.active && !player.dead)
+                            {
+                                boss.ConstellationPaths.Add(CreateConstellationPath(npc.Center, player.Center, starCount, true));
+                            }
+                        }
+                        break;
+                    case ConstellationPattern.Trailing:
+                        boss.ConstellationPaths.Add(CreateConstellationPath(npc.Center, target.Center, starCount, true));
+                        break;
+                }
+
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = LangHelper.GetTextValue(pattern == ConstellationPattern.Trailing ? $"BossAttacks.ChasingConstellation" : $"BossAttacks.Constellation");//The name of the attack.
+                }
+
+                npc.ai[3] = (starCount - 1) * BossConstellationAttackStar.SpawnInterval + activationDelay;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.localAI[0] = 0f;
+                npc.localAI[1] = pattern == ConstellationPattern.Trailing ? target.whoAmI : 0f;
+                npc.localAI[2] = 0f;
+                npc.netUpdate = true;//NetUpdate for good measure.
+                PlayConstellationSound(npc.Center, false);
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting)
+            {
+                return;
+            }
+
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = LangHelper.GetTextValue(pattern == ConstellationPattern.Trailing ? $"BossAttacks.ChasingConstellation" : $"BossAttacks.Constellation");//The name of the attack.
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+			//Create stars, link them, then detonate the final one. Animation is handled in the star proj..
+            int totalStars = (int)(npc.ai[3] - activationDelay) / BossConstellationAttackStar.SpawnInterval + 1;
+            int starIndex = (int)npc.localAI[0];
+            if (starIndex < totalStars && npc.localAI[3] >= starIndex * BossConstellationAttackStar.SpawnInterval)
+            {
+                int damage = npc.damage / 2 + 50 / 2;
+                float detonationDelay = npc.ai[3] - npc.localAI[3];
+                for (int pathIndex = 0; pathIndex < boss.ConstellationPaths.Count; pathIndex++)
+                {
+                    SpawnConstellationStar(npc.GetSource_FromAI(), boss.ConstellationPaths[pathIndex], starIndex, damage, detonationDelay);
+                }
+
+                npc.localAI[0]++;
+            }
+
+            if (npc.localAI[3] < npc.ai[3])
+            {
+                return;
+            }
+
+            PlayConstellationSound(npc.Center, true);
+            if (pattern == ConstellationPattern.Trailing && boss.ConstellationPaths.Count > 0)
+            {
+                Vector2 explosionPosition = boss.ConstellationPaths[0][^1];
+                int damage = npc.damage / 2 + 50 / 2;
+                Projectile.NewProjectile(npc.GetSource_FromAI(), explosionPosition, Vector2.Zero, ProjectileType<BossConstellationTrailing>(), damage, 0f, Main.myPlayer, npc.localAI[1], 3f, npc.whoAmI);
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = Main.expertMode ? -60f : -72f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            npc.localAI[1] = 0f;
+            npc.localAI[2] = 0f;
+            boss.ConstellationPaths.Clear();
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        internal static void SpawnConstellationStar(IEntitySource source, Vector2[] path, int starIndex, int damage, float detonationDelay)
+        {
+            float starRole = starIndex == path.Length - 1 ? 1f : 0f;
+            int projectileIndex = Projectile.NewProjectile(source, path[starIndex], Vector2.Zero, ProjectileType<BossConstellationAttackStar>(), damage, 0f, Main.myPlayer, 0f, detonationDelay, starRole);
+            if (starIndex > 0 && projectileIndex >= 0 && projectileIndex < Main.maxProjectiles && Main.projectile[projectileIndex].ModProjectile is BossConstellationAttackStar star)
+            {
+                star.PreviousStarPosition = path[starIndex - 1];
+                Main.projectile[projectileIndex].netUpdate = true;
+            }
+        }
+
+        internal static void PlayConstellationSound(Vector2 position, bool castFinished)
+        {
+            if (Main.netMode == NetmodeID.Server)
+            {
+                if (SoundID.IndexByName == null)
+                {
+                    SoundID.FillAccessMap();
+                }
+
+                string soundName = castFinished ? nameof(SoundID.DD2_PhantomPhoenixShot) : nameof(SoundID.DD2_EtherianPortalSpawnEnemy);
+                NetMessage.PlayNetSound(new NetMessage.NetSoundInfo(position, SoundID.IndexByName[soundName], style: castFinished ? 0 : -1));
+            }
+            else if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                SoundStyle sound = castFinished
+                    ? SoundID.DD2_PhantomPhoenixShot with { Variants = new[] { 0 } }
+                    : SoundID.DD2_EtherianPortalSpawnEnemy;
+                SoundEngine.PlaySound(sound, position);
+            }
+        }
+
+        internal static Vector2[] CreateConstellationPath(Vector2 origin, Vector2 targetPosition, int starCount, bool exactTarget = false)
+        {
+            Vector2 direction = (targetPosition - origin).SafeNormalize(Vector2.UnitX);
+            Vector2 perpendicular = new Vector2(-direction.Y, direction.X);
+            float distance = Vector2.Distance(origin, targetPosition);
+            float startDistance = Math.Min(80f, distance * 0.2f);
+            float spacing = (distance - startDistance) / (starCount - 1);
+            float spread = Math.Min(80f, spacing * 0.5f);
+            Vector2[] path = new Vector2[starCount];
+            for (int i = 0; i < starCount; i++)
+            {
+                if (exactTarget && i == starCount - 1)
+                {
+                    path[i] = targetPosition;
+                    continue;
+                }
+
+                float offset = startDistance + spacing * i;
+                if (i > 0 && i < starCount - 1)
+                {
+                    offset += Main.rand.NextFloat(-spacing * 0.2f, spacing * 0.2f);
+                }
+
+                path[i] = origin + direction * offset + perpendicular * Main.rand.NextFloat(-spread, spread);
+            }
+
+            return path;
+        }
+
         public static void ArenaChangeIntermission(Player target, NPC npc)
         {
             GoddessOfMemoryArenaChange(npc, false);
@@ -16534,14 +17149,44 @@ namespace StarsAbove.NPCs.AttackLibrary
             GoddessOfMemoryArenaChange(npc, true);
         }
 
-        private static void GoddessOfMemoryArenaChange(NPC npc, bool isPhase)
+        public static void ArenaChangePhase1(Player target, NPC npc)
         {
-            if (npc.ai[0] == (float)ActionState.Idle && Main.netMode != NetmodeID.MultiplayerClient)
+            GoddessOfMemoryArenaChange(npc, true, 1);
+        }
+
+        public static void ArenaChangePhase2(Player target, NPC npc)
+        {
+            GoddessOfMemoryArenaChange(npc, true, 2);
+        }
+
+        public static void ArenaChangePhase3(Player target, NPC npc)
+        {
+            GoddessOfMemoryArenaChange(npc, true, 3);
+        }
+
+        public static void ArenaChangePhase4(Player target, NPC npc)
+        {
+            GoddessOfMemoryArenaChange(npc, true, 4);
+        }
+
+        private static void GoddessOfMemoryArenaChange(NPC npc, bool isPhase, int arena = 0)
+        {
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+
+            if (npc.ai[0] == (float)ActionState.Idle && Main.netMode != NetmodeID.MultiplayerClient)//If this is the first time the attack is being called.
             {
-                npc.ai[3] = 120f;
-                npc.localAI[3] = 0f;
-                npc.ai[0] = (float)ActionState.Casting;
-                npc.netUpdate = true;
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = LangHelper.GetTextValue(isPhase
+                        ? "BossAttacks.ArenaChangePhase"
+                        : "BossAttacks.ArenaChangeIntermission");//The name of the attack.
+                }
+
+                npc.ai[3] = 120f;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.localAI[0] = 0f;
+                npc.netUpdate = true;//NetUpdate for good measure.
             }
 
             if (npc.ai[0] != (float)ActionState.Casting)
@@ -16549,43 +17194,290 @@ namespace StarsAbove.NPCs.AttackLibrary
                 return;
             }
 
-            npc.noGravity = true;
-            npc.velocity = Vector2.Zero;
-            if (Main.netMode != NetmodeID.Server)
+            if (npc.ModNPC is GoddessOfMemoryBoss castingBoss)
             {
-                Main.LocalPlayer.GetModPlayer<BossPlayer>().NextAttack = LangHelper.GetTextValue(isPhase
-                    ? "BossAttacks.ArenaChangePhase"
-                    : "BossAttacks.ArenaChangeIntermission");
+                castingBoss.SuppressCastSprite = true;
             }
 
-            if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = LangHelper.GetTextValue(isPhase
+                    ? "BossAttacks.ArenaChangePhase"
+                    : "BossAttacks.ArenaChangeIntermission");//The name of the attack.
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            if (npc.localAI[0] == 0f && npc.localAI[3] >= npc.ai[3] - GoddessOfMemorySpinfade.Midpoint)
+            {
+                npc.localAI[0] = Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<GoddessOfMemorySpinfade>(), 0, 0f, Main.myPlayer) + 1;
+            }
+
+            if (npc.localAI[3] < npc.ai[3])
             {
                 return;
             }
 
             if (npc.ModNPC is GoddessOfMemoryBoss boss)
             {
-                boss.ChangeArena(isPhase);
+                boss.ChangeArena(isPhase, arena);
             }
 
-            npc.ai[0] = (float)ActionState.Idle;
-            npc.ai[1] = 0f;
-            npc.ai[2] = 0f;
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = 0f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
             npc.ai[3] = 0f;
             npc.localAI[0] = 0f;
-            npc.localAI[3] = 0f;
-            npc.netUpdate = true;
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        public static void SpearOfNavigation(Player target, NPC npc)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss boss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+            string attackName = LangHelper.GetTextValue("BossAttacks.SpearOfNavigation");
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = attackName;//The name of the attack.
+                }
+
+                npc.ai[3] = 63f;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                boss.SpearChargeDestination = npc.Center + (target.Center - npc.Center).SafeNormalize(new Vector2(npc.direction, 0f)) * GoddessOfMemorySpearCharge.ChargeDistance;
+                npc.velocity = Vector2.Zero;
+                npc.netUpdate = true;//NetUpdate for good measure.
+            }
+
+            if (npc.ai[0] == (float)ActionState.Casting)
+            {
+                npc.noGravity = true;
+                npc.velocity = Vector2.Zero;
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = attackName;//The name of the attack.
+                }
+
+                if (!Main.dedServ && (int)npc.localAI[3] % 3 == 0)
+                {
+                    Vector2 markerCenter = boss.SpearChargeDestination;
+                    int dustCount = Math.Clamp((int)(Vector2.Distance(npc.Center, markerCenter) / 12f), 1, 160);
+                    for (int i = 0; i <= dustCount; i++)
+                    {
+                        Vector2 position = Vector2.Lerp(npc.Center, markerCenter, i / (float)dustCount);
+                        Dust dust = Dust.NewDustPerfect(position, DustID.GemRuby, Vector2.Zero, 0, Color.White, 1.3f);
+                        dust.noGravity = true;
+                        dust.noLight = false;
+                    }
+
+                    for (int i = 0; i < 40; i++)
+                    {
+                        Vector2 position = markerCenter + (MathHelper.TwoPi * i / 40f).ToRotationVector2() * 50f;
+                        Dust dust = Dust.NewDustPerfect(position, DustID.GemRuby, Vector2.Zero, 0, Color.White, 1.3f);
+                        dust.noGravity = true;
+                        dust.noLight = false;
+                    }
+                }
+
+                if (Main.netMode == NetmodeID.MultiplayerClient || npc.localAI[3] < npc.ai[3])
+                {
+                    return;
+                }
+
+                Vector2 direction = (boss.SpearChargeDestination - npc.Center).SafeNormalize(new Vector2(npc.direction, 0f));
+                npc.ai[0] = (float)ActionState.PersistentCast;//If the attack continues, change ActionState to PersistentCast instead
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = "";//Empty the UI text.
+                }
+
+                npc.localAI[3] = 0f;//Reset the cast.
+                npc.ai[3] = direction.ToRotation();
+                Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<GoddessOfMemorySpearCharge>(),
+                    0, 0f, Main.myPlayer, npc.whoAmI, npc.ai[3]);
+                npc.netUpdate = true;//NetUpdate for good measure.
+            }
+
+            if (npc.ai[0] != (float)ActionState.PersistentCast)
+            {
+                return;
+            }
+
+            boss.SuppressCastSprite = true;
+            npc.noGravity = true;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            if (npc.localAI[3] < GoddessOfMemorySpearCharge.ChargeDuration)
+            {
+                float remaining = 1f - npc.localAI[3] / GoddessOfMemorySpearCharge.ChargeDuration;
+                float nextRemaining = 1f - (npc.localAI[3] + 1f) / GoddessOfMemorySpearCharge.ChargeDuration;
+                float speed = GoddessOfMemorySpearCharge.ChargeDistance * (remaining * remaining * remaining - nextRemaining * nextRemaining * nextRemaining);
+                npc.velocity = npc.ai[3].ToRotationVector2() * speed;
+                npc.noTileCollide = true;
+                boss.IsSpearCharging = true;
+                npc.localAI[3]++;
+                return;
+            }
+
+            npc.velocity = Vector2.Zero;
+            npc.noTileCollide = false;
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = -14f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            boss.IsSpearCharging = false;
+            npc.netUpdate = true;//NetUpdate for good measure.
+        }
+
+        public static void GoddessOfMemoryTeleportToArenaCenter(Player target, NPC npc)
+        {
+            if (npc.ModNPC is not GoddessOfMemoryBoss boss)
+            {
+                return;
+            }
+
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+            string attackName = LangHelper.GetTextValue("BossAttacks.Transplacement");
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = attackName;//The name of the attack.
+                }
+
+                npc.ai[3] = GoddessOfMemorySpinfade.Midpoint;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
+                npc.localAI[0] = Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero,
+                    ProjectileType<GoddessOfMemorySpinfade>(), 0, 0f, Main.myPlayer) + 1;
+                npc.netUpdate = true;//NetUpdate for good measure.
+            }
+
+            if (npc.ai[0] != (float)ActionState.Casting && npc.ai[0] != (float)ActionState.PersistentCast)
+            {
+                return;
+            }
+
+            boss.SuppressCastSprite = true;
+            npc.noGravity = true;
+            npc.velocity = Vector2.Zero;
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = npc.ai[0] == (float)ActionState.Casting ? attackName : "";//The name of the attack.
+            }
+
+            if (npc.ai[0] == (float)ActionState.PersistentCast)
+            {
+                npc.localAI[3]++;
+            }
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            Projectile spin = null;
+            int projectileIndex = (int)npc.localAI[0] - 1;
+            if (projectileIndex >= 0 && projectileIndex < Main.maxProjectiles)
+            {
+                Projectile projectile = Main.projectile[projectileIndex];
+                if (projectile.active && projectile.type == ProjectileType<GoddessOfMemorySpinfade>())
+                {
+                    spin = projectile;
+                }
+            }
+
+            if (npc.ai[0] == (float)ActionState.Casting)
+            {
+                if ((spin?.ai[1] ?? npc.localAI[3]) < GoddessOfMemorySpinfade.Midpoint)
+                {
+                    return;
+                }
+
+                if (GoddessOfMemoryArenaSystem.IsActive)
+                {
+                    npc.Center = GoddessOfMemoryArenaSystem.ActiveCenter;
+                }
+
+                npc.ai[0] = (float)ActionState.PersistentCast;//If the attack continues, change ActionState to PersistentCast instead
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = "";//Empty the UI text.
+                }
+
+                npc.localAI[3] = 0f;//Reset the cast.
+                npc.netUpdate = true;//NetUpdate for good measure.
+                return;
+            }
+
+            if (spin != null ? spin.ai[1] < GoddessOfMemorySpinfade.Duration : npc.localAI[3] < GoddessOfMemorySpinfade.Duration - GoddessOfMemorySpinfade.Midpoint)
+            {
+                return;
+            }
+
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = -15f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
+            npc.ai[3] = 0f;
+            npc.localAI[0] = 0f;
+            npc.netUpdate = true;//NetUpdate for good measure.
         }
 
         public static void GoddessOfMemoryTeleportToPlayer(Player target, NPC npc)
         {
-            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)
+            var modPlayer = Main.netMode != NetmodeID.Server ? Main.LocalPlayer.GetModPlayer<BossPlayer>() : null;
+
+            if (npc.ai[0] == (float)ActionState.Idle && npc.ai[1] > 0f && Main.netMode != NetmodeID.MultiplayerClient)//If this is the first time the attack is being called.
             {
-                npc.ai[3] = GoddessOfMemorySpinfade.Midpoint;
-                npc.localAI[3] = 0f;
-                npc.ai[0] = (float)ActionState.Casting;
+                if (modPlayer != null)
+                {
+                    modPlayer.NextAttack = LangHelper.GetTextValue("BossAttacks.GoddessOfMemoryTeleportToPlayer");//The name of the attack.
+                }
+
+                npc.ai[3] = GoddessOfMemorySpinfade.Midpoint;//This is the time it takes for the cast to finish.
+                npc.localAI[3] = 0f;//This resets the cast time.
+                npc.ai[0] = (float)ActionState.Casting;//The boss is now in a "casting" state, and can run different animations, etc.
                 npc.localAI[0] = Projectile.NewProjectile(npc.GetSource_FromAI(), npc.Center, Vector2.Zero, ProjectileType<GoddessOfMemorySpinfade>(), 0, 0f, Main.myPlayer) + 1;
-                npc.netUpdate = true;
+                npc.netUpdate = true;//NetUpdate for good measure.
             }
 
             if (npc.ai[0] != (float)ActionState.Casting && npc.ai[0] != (float)ActionState.PersistentCast)
@@ -16596,9 +17488,9 @@ namespace StarsAbove.NPCs.AttackLibrary
             npc.noGravity = true;
             npc.velocity = Vector2.Zero;
 
-            if (Main.netMode != NetmodeID.Server)
+            if (modPlayer != null)
             {
-                Main.LocalPlayer.GetModPlayer<BossPlayer>().NextAttack = LangHelper.GetTextValue("BossAttacks.GoddessOfMemoryTeleportToPlayer");
+                modPlayer.NextAttack = LangHelper.GetTextValue("BossAttacks.GoddessOfMemoryTeleportToPlayer");//The name of the attack.
             }
 
             if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -16619,9 +17511,9 @@ namespace StarsAbove.NPCs.AttackLibrary
                             npc.Center = target.Center - new Vector2(0f, 120f);
                         }
 
-                        npc.ai[0] = (float)ActionState.PersistentCast;
+                        npc.ai[0] = (float)ActionState.PersistentCast;//If the attack continues, change ActionState to PersistentCast instead
                         npc.localAI[3] = npc.ai[3];
-                        npc.netUpdate = true;
+                        npc.netUpdate = true;//NetUpdate for good measure.
                     }
 
                     if (spin.ai[1] < GoddessOfMemorySpinfade.Duration)
@@ -16633,13 +17525,18 @@ namespace StarsAbove.NPCs.AttackLibrary
 
             npc.noGravity = true;
             npc.velocity = Vector2.Zero;
-            npc.ai[0] = (float)ActionState.Idle;
-            npc.ai[1] = 0f;
-            npc.ai[2]++;
+            npc.ai[0] = (float)ActionState.Idle;//If the attack continues, change ActionState to PersistentCast instead
+            if (modPlayer != null)
+            {
+                modPlayer.NextAttack = "";//Empty the UI text.
+            }
+
+            npc.localAI[3] = 0f;//Reset the cast.
+            npc.ai[1] = 0f;//Reset the internal clock before the next attack. Higher values means less of a delay before the next attack.
+            npc.ai[2]++;//Increment the rotation counter.
             npc.ai[3] = 0f;
             npc.localAI[0] = 0f;
-            npc.localAI[3] = 0f;
-            npc.netUpdate = true;
+            npc.netUpdate = true;//NetUpdate for good measure.
         }
 
 		public static void ResetState(Player target, NPC npc)//

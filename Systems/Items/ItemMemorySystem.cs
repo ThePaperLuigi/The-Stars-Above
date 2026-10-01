@@ -698,6 +698,10 @@ namespace StarsAbove.Systems.Items
                         {
                             damage -= (0.08f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
                         }
+                        if (player.HasBuff(BuffType<FateDivined>()))
+                        {
+                            damage += (0.08f + damageModAdditive * damageModMultiplicative) * memoryGlobalMod;
+                        }
                         break;
                     case 14:
                         if (player.HasBuff(BuffID.WellFed) || player.HasBuff(BuffID.WellFed2) || player.HasBuff(BuffID.WellFed3))

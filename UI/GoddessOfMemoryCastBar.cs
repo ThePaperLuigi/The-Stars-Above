@@ -73,7 +73,7 @@ namespace StarsAbove.UI
             for (int i = 0; i < steps; i++)
             {
                 float percent = (float)i / hitbox.Width;
-                spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(hitbox.X + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
+                GaugeBar.DrawHorizontal(spriteBatch, new Rectangle(hitbox.X + i, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
             }
         }
 

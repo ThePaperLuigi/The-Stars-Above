@@ -86,8 +86,7 @@ namespace StarsAbove.Projectiles.Bosses.GoddessOfMemory
             NPC boss = Main.npc[bossIndex];
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Rectangle frame = texture.Frame(1, FrameCount, 0, Projectile.frame);
-            int bossFrameHeight = TextureAssets.Npc[boss.type].Height() / Main.npcFrameCount[boss.type];
-            Vector2 drawPosition = boss.Bottom - Main.screenPosition + new Vector2(0f, 4f + Main.NPCAddHeight(boss) + boss.gfxOffY - bossFrameHeight * boss.scale * 0.5f);
+            Vector2 drawPosition = boss.Center - Main.screenPosition;
             SpriteEffects effects = boss.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Main.EntitySpriteDraw(texture, drawPosition, frame, Projectile.GetAlpha(lightColor), boss.rotation, frame.Size() * 0.5f, boss.scale, effects, 0f);
             return false;
